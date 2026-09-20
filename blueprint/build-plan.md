@@ -68,5 +68,35 @@ If your first pass is just rough bullets, that is okay. Run `/overview` after
 filling both planning docs; it will flag plan-shape problems and can propose a
 cleaned-up checkbox version before generating the project overview.
 
-- [ ] 1. **Feature one** - description
-- [ ] 2. **Feature two** - description
+---
+
+## MVP
+
+Order matters here. The shell carries the theme, so it goes first and everything
+after inherits it. The gallery is the page that sells the work, so it comes
+before the pages that describe it. SEO is last of the content work because it
+needs real pages to describe.
+
+- [ ] 1. **Site shell and theme** - port `prototypes/theme.css` into `globals.css`
+  `@theme`, then build the header, mobile nav and footer against it
+- [ ] 2. **Home page** - hero, the three services, gallery teaser, her story,
+  FAQ and the booking call to action
+- [ ] 3. **Gallery** - the full set of work, filterable by service, at a size
+  where the quality is actually visible
+- [ ] 4. **Service pages** - nails, lashes and makeup, one page each, with
+  treatments, prices and durations
+- [ ] 5. **About** - her training and the trust a new business has not earned yet
+- [ ] 6. **Contact and booking** - the form, validation, Resend delivery, the
+  direct booking route and a thank-you page
+- [ ] 7. **Local SEO** - per-page metadata, sitemap, robots, LocalBusiness and
+  FAQ structured data
+- [ ] 8. **Deployment readiness** - Vercel config, env vars, and a verified
+  production build
+
+## Post-MVP
+
+Not scheduled. Listed so they stop being re-proposed as if they were new.
+
+- [ ] 9. **Spanish** - a genuine and near-uncontested opening in this market
+- [ ] 10. **Reviews on site** - waits until there are reviews worth showing
+- [ ] 11. **Real booking** - availability and deposits, only if DMs stop coping
