@@ -1,0 +1,16 @@
+{
+  "name": "Party House",
+  "short_name": "Party House",
+  "description": "Maths, words and prizes for the boss of Party House.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFF6FB",
+  "theme_color": "#FFF6FB",
+  "lang": "en",
+  "icons": [
+    { "src": "img/icon.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "img/icon.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
 <meta name="theme-color" content="#FFF6FB">
+<!-- Add to Home Screen. On an iPad this is the difference between a
+     bookmark and something that looks like an app: its own icon, its own
+     name, and no browser bar when she opens it. -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Party House">
+<meta name="application-name" content="Party House">
+<link rel="apple-touch-icon" href="img/icon.png">
+<link rel="icon" type="image/png" href="img/icon.png">
+<link rel="manifest" href="manifest.json">
 <title>PARTY HOUSE</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -350,6 +361,17 @@ footer{margin-top:40px;text-align:center;font-size:12.5px;font-weight:500;opacit
 
     <div class="grouphead" data-t="grpBadges"></div>
     <div class="badges" id="badges"></div>
+
+    <div class="grouphead" data-t="grpBackup"></div>
+    <div class="card">
+      <p class="sub" id="backupHint" style="margin:0 0 12px"></p>
+      <div class="entry empty" id="codeBox" style="font-size:19px;min-height:62px;letter-spacing:.06em"></div>
+      <div class="helprow" style="margin-top:0">
+        <button class="help" id="showCode"></button>
+        <button class="help" id="useCode"></button>
+      </div>
+      <div class="say" id="backupSay" style="font-size:16px"></div>
+    </div>
   </section>
 
   <section class="screen" id="s-party">
@@ -450,7 +472,17 @@ var STR = {
   gotIt:['Got it','Ya lo tuve'],
   claimBtn:['I got it!','¡Ya me lo dio!'],
   toGo:['%n stars to go','faltan %n estrellas'],
-  starsAt:['at %n stars','a las %n estrellas']
+  starsAt:['at %n stars','a las %n estrellas'],
+  /* backup code */
+  grpBackup:['💾 Move to another device','💾 Pasar a otro aparato'],
+  backupHint:['Your stars live on this device. Show the code here, then type it on the other one.',
+              'Tus estrellas viven en este aparato. Muestra el código aquí y escríbelo en el otro.'],
+  showCode:['Show my code','Ver mi código'],
+  useCode:['Type a code','Escribir un código'],
+  copied:['Copied! Send it to the other device','¡Copiado! Mándalo al otro aparato'],
+  pasteHere:['Paste the code and press OK','Pega el código y dale OK'],
+  restored:['Restored! Everything is back','¡Listo! Todo volvió'],
+  badCode:['That code did not work','Ese código no sirvió']
 };
 function t(k){ var v = STR[k]; return v ? v[LANG === 'es' ? 1 : 0] : k; }
 function txt(v){ return (v && typeof v === 'object') ? v[LANG] : v; }
@@ -1051,6 +1083,8 @@ function paintLang(){
   applyTheme();
   paintStars();
   paintStuck();
+  var sc=document.getElementById('showCode'), uc=document.getElementById('useCode'), bh=document.getElementById('backupHint');
+  if(sc){sc.textContent=t('showCode');uc.textContent=t('useCode');bh.textContent=t('backupHint');}
 }
 document.getElementById('lang').addEventListener('click',function(){
   LANG=LANG==='en'?'es':'en';store('ph-lang',LANG);
@@ -1058,7 +1092,51 @@ document.getElementById('lang').addEventListener('click',function(){
   TAP();paintLang();
 });
 
+/* ---------------- moving to another device ----------------
+   The db capability would sync this properly, but declaring it makes the
+   artifact organization-internal and she opens it by public link, so it
+   would lock her out of her own app. Instead: a code she can carry.
+   Everything lives in localStorage anyway, so the code is just that,
+   packed and base64'd. Not elegant; it works, needs no account, and a
+   parent can do it in twenty seconds. */
+var KEYS=['ph-stars','ph-spent','ph-spins','ph-best','ph-owned','ph-theme',
+          'ph-claimed','ph-levels','ph-played','ph-lang','ph-sound','ph-mode','ph-bothlang'];
+function makeCode(){
+  var o={}; KEYS.forEach(function(k){var v=store(k); if(v!==null&&v!==undefined)o[k]=v;});
+  try{ return btoa(unescape(encodeURIComponent(JSON.stringify(o)))); }catch(e){ return ''; }
+}
+function useCode(code){
+  try{
+    var o=JSON.parse(decodeURIComponent(escape(atob(code.trim()))));
+    if(!o||typeof o!=='object'||o['ph-stars']===undefined) return false;
+    KEYS.forEach(function(k){ if(o[k]!==undefined) store(k,o[k]); });
+    return true;
+  }catch(e){ return false; }
+}
+var codeBox=document.getElementById('codeBox'), backupSay=document.getElementById('backupSay');
+document.getElementById('showCode').addEventListener('click',function(){
+  var c=makeCode();
+  codeBox.className='entry'; codeBox.textContent=c;
+  backupSay.textContent='';
+  try{
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(c).then(function(){ backupSay.textContent=t('copied'); },function(){});
+    }
+  }catch(e){}
+  TAP();
+});
+document.getElementById('useCode').addEventListener('click',function(){
+  var c=window.prompt(t('pasteHere'));
+  if(!c) return;
+  if(useCode(c)){ WIN(); drop(30,true); backupSay.textContent=t('restored'); setTimeout(function(){location.reload();},1200); }
+  else { TRY(); backupSay.textContent=t('badCode'); }
+});
+
 paintLang();
+document.getElementById('showCode').textContent=t('showCode');
+document.getElementById('useCode').textContent=t('useCode');
+document.getElementById('backupHint').textContent=t('backupHint');
+codeBox.textContent=t('showCode');
 })();
 </script>
 </body>
