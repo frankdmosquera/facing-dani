@@ -5,22 +5,23 @@
  * and the theme, touching no component. If a string naming this business turns
  * up in `components/`, that is a bug and not a preference.
  *
- * Nothing here is keyed by locale. Prices, durations, phone, email, hours and
- * coordinates are shared; prose is what gets a dictionary, and that arrives
- * with the `[locale]` segment in feature 2. Nav items already carry a stable
- * `key` so feature 2 swaps `label` for a lookup without reopening a component.
+ * Nothing here is keyed by locale, and nothing here is prose. Prices,
+ * durations, phone, email, hours and coordinates are shared facts; anything a
+ * visitor reads as a sentence lives in `dictionaries/`. Feature 2 moved the
+ * nav labels and the blurb out of this file for that reason - what is left is
+ * the parts that do not translate.
  */
 
 export type NavItem = {
-  /** Stable across locales. Feature 2 keys the dictionary off this. */
+  /** Stable across locales. The dictionary is keyed off this. */
   key: string;
-  /** English for now. Feature 2 replaces this with a dictionary lookup. */
-  label: string;
   /**
-   * Provisional English route. The slugs are not settled, and whether the
-   * Spanish side translates (`/es/unas`) or mirrors (`/es/nails`) is still
-   * open - see `blueprint/context/current-feature.md`. They live here rather
-   * than in components so deciding is a one-file change.
+   * The route without a locale prefix. Never render this directly: pass it
+   * through `localePath` so /es is owned in one place.
+   *
+   * Provisional English slugs. Whether the Spanish side translates
+   * (`/es/unas`) or mirrors (`/es/nails`) is still open; deciding it changes
+   * `lib/locale.ts` and nothing else.
    */
   href: string;
 };
@@ -39,8 +40,6 @@ export const siteConfig = {
     wordmarkAccent: ".",
     city: "Calgary",
     region: "Alberta",
-    blurb:
-      "Nails, lashes and makeup in Calgary. Trained in Colombia. By appointment.",
   },
 
   social: {
@@ -52,37 +51,34 @@ export const siteConfig = {
     instagram: null as { handle: string; url: string } | null,
   },
 
-  /** The words in the gradient marquee above the header. */
+  /**
+   * The words in the gradient marquee. The same in both languages, which is
+   * why they are here and not in the dictionaries: four identical strings
+   * duplicated per locale would be pretending to be a decision.
+   */
   marquee: ["Nails", "Lashes", "Makeup", "Calgary"],
 
-  meta: {
-    titleDefault: "Dani Moreno - Nails, Lashes and Makeup in Calgary",
-    titleTemplate: "%s - Dani Moreno",
-    description:
-      "Nail, lash and makeup artistry in Calgary, trained in Colombia. Shape, structure and cuticle work that still looks good in week three. Se habla espanol.",
-  },
-
   nav: [
-    { key: "nails", label: "Nails", href: "/nails" },
-    { key: "lashes", label: "Lashes", href: "/lashes" },
-    { key: "makeup", label: "Makeup", href: "/makeup" },
-    { key: "gallery", label: "The work", href: "/gallery" },
-    { key: "about", label: "About", href: "/about" },
+    { key: "nails", href: "/nails" },
+    { key: "lashes", href: "/lashes" },
+    { key: "makeup", href: "/makeup" },
+    { key: "gallery", href: "/gallery" },
+    { key: "about", href: "/about" },
   ] satisfies NavItem[],
 
-  cta: { key: "book", label: "Book now", href: "/contact" } satisfies NavItem,
+  cta: { key: "book", href: "/contact" } satisfies NavItem,
 
   footer: {
     services: [
-      { key: "nails", label: "Nails", href: "/nails" },
-      { key: "lashes", label: "Lashes", href: "/lashes" },
-      { key: "makeup", label: "Makeup", href: "/makeup" },
-      { key: "gallery", label: "The gallery", href: "/gallery" },
+      { key: "nails", href: "/nails" },
+      { key: "lashes", href: "/lashes" },
+      { key: "makeup", href: "/makeup" },
+      { key: "gallery", href: "/gallery" },
     ] satisfies NavItem[],
     contact: [
-      { key: "book", label: "Book an appointment", href: "/contact" },
-      { key: "about", label: "About", href: "/about" },
-      { key: "faq", label: "FAQ", href: "/#faq" },
+      { key: "bookAppointment", href: "/contact" },
+      { key: "about", href: "/about" },
+      { key: "faq", href: "/#faq" },
     ] satisfies NavItem[],
   },
 } as const;

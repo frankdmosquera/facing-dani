@@ -1,18 +1,22 @@
 import Link from "next/link";
 
 import { siteConfig } from "@/data/siteConfig";
+import type { Dictionary } from "@/dictionaries";
+import { localePath, type Locale } from "@/lib/locale";
 
+import { LanguageSwitch } from "./LanguageSwitch";
 import { MobileNav } from "./MobileNav";
 import { Wordmark } from "./Wordmark";
 
 /**
  * Sticky, translucent over the plum ground. Server-rendered apart from the
- * burger, which owns the only state in the shell.
+ * burger and the language switch, which are the only two pieces that need the
+ * client.
  *
  * The 900px breakpoint is the mockup's, not a Tailwind default, so it is
  * written out rather than rounded to `lg`.
  */
-export function SiteHeader() {
+export function SiteHeader({ locale, t }: { locale: Locale; t: Dictionary }) {
   return (
     <header className="sticky top-0 z-40 border-b border-line-soft">
       {/* The frosted ground is a layer inside the header, not the header
@@ -31,35 +35,34 @@ export function SiteHeader() {
           alone never traps a fixed descendant, only transform, filter,
           backdrop-filter, perspective, contain and will-change do. */}
       <div className="relative mx-auto flex max-w-[var(--site)] items-center justify-between gap-6 px-[var(--gutter)] py-3.5">
-        <Wordmark />
+        <Wordmark locale={locale} t={t} />
 
         <nav
-          aria-label="Main"
+          aria-label={t.a11y.mainNav}
           className="hidden items-center gap-[30px] min-[900px]:flex"
         >
           {siteConfig.nav.map((item) => (
             <Link
               key={item.key}
-              href={item.href}
+              href={localePath(locale, item.href)}
               className="text-[14.5px] font-medium text-ink-muted transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
             >
-              {item.label}
+              {t.nav[item.key as keyof Dictionary["nav"]]}
             </Link>
           ))}
         </nav>
 
-        <Link
-          href={siteConfig.cta.href}
-          className="hidden rounded-pill bg-[image:var(--hot)] px-[22px] py-[11px] text-[14px] font-bold text-on-hot focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring min-[900px]:inline-block"
-        >
-          {siteConfig.cta.label}
-        </Link>
+        <div className="hidden items-center gap-5 min-[900px]:flex">
+          <LanguageSwitch locale={locale} t={t} />
+          <Link
+            href={localePath(locale, siteConfig.cta.href)}
+            className="rounded-pill bg-[image:var(--hot)] px-[22px] py-[11px] text-[14px] font-bold text-on-hot focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          >
+            {t.cta.book}
+          </Link>
+        </div>
 
-        <MobileNav
-          items={siteConfig.nav}
-          cta={siteConfig.cta}
-          label={siteConfig.business.name}
-        />
+        <MobileNav locale={locale} t={t} />
       </div>
     </header>
   );

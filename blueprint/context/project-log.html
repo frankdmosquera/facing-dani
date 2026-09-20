@@ -1184,13 +1184,13 @@
       <span class="where-arrow">&rsaquo;</span>
       <div class="where-leg" data-now="yes">
         <div class="where-key">Step now</div>
-        <div class="where-val">Shipped, one fix since. Ready for item 2</div>
+        <div class="where-val">2 &middot; Locale routing, shipped</div>
       </div>
       <span class="where-spacer"></span>
       <div class="where-leg">
         <div class="where-key">MVP items</div>
-        <div class="meter" title="1 of 9 MVP items done">
-          <i data-state="done"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        <div class="meter" title="2 of 9 MVP items done">
+          <i data-state="done"></i><i data-state="done"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
         </div>
       </div>
     </div>
@@ -1302,9 +1302,9 @@
           were pre-build steps and sit in Phase 0 rather than in the list.
         </p>
         <div class="tally">
-          <span class="tally-part" data-state="done"><span class="tally-key">Done</span><span class="tally-val">1 of 9 MVP items</span></span>
+          <span class="tally-part" data-state="done"><span class="tally-key">Done</span><span class="tally-val">2 of 9 MVP items</span></span>
           <span class="tally-part" data-state="active"><span class="tally-key">Now</span><span class="tally-val">Nothing building</span></span>
-          <span class="tally-part" data-state="planned"><span class="tally-key">Next</span><span class="tally-val">2 &middot; Locale routing</span></span>
+          <span class="tally-part" data-state="planned"><span class="tally-key">Next</span><span class="tally-val">3 &middot; Home page</span></span>
         </div>
       </header>
 
@@ -1392,7 +1392,70 @@
             </details>
 
             </div><span class="pill pill--done">Done</span></div>
-          <div class="item"><div class="item-num">2</div><div class="item-body"><div class="item-name">Locale routing</div><p class="item-text">The <code>[locale]</code> segment, a dictionary per locale, the language switch, and the build error on a missing string. Hand-rolled, no package: two languages and eight pages do not need <code>next-intl</code>. Second because retrofitting a second language means reopening every page.</p></div><span class="pill">Planned</span></div>
+          <div class="item" data-state="done"><div class="item-num">2</div><div class="item-body"><div class="item-name">Locale routing</div><p class="item-text">The <code>[locale]</code> segment, a dictionary per locale, the language switch, and the build error on a missing string. Hand-rolled, no package: two languages and eight pages do not need <code>next-intl</code>. Second because retrofitting a second language means reopening every page.</p>
+
+            <div class="gates">
+              <span class="gate-chip" data-state="pass">Spec agreed</span>
+              <span class="gate-chip" data-state="pass">Built &amp; verified</span>
+              <span class="gate-chip" data-state="pass">Commit granted</span>
+            </div>
+
+            <details class="drawer" data-kind="reality">
+              <summary>What was built <span class="tag-drift">4 steps &middot; both locales prerendered</span></summary>
+              <div class="drawer-body">
+                <div class="rows">
+                  <div class="row"><div class="row-key">URLs</div><div class="row-val">English at <code>/</code>, Spanish at <code>/es</code>, both prerendered. <code>/en</code> redirects away, so there is never a second URL for the same page.</div></div>
+                  <div class="row"><div class="row-key">Dictionaries</div><div class="row-val">English is the shape source and Spanish is annotated with it, so a missing key is a type error and the build fails. No fallback, by design.</div></div>
+                  <div class="row"><div class="row-key">Shell</div><div class="row-val">Nav, CTA, footer, menu and skip link all translated. Every link locale-aware through one helper. <code>hreflang</code> set once on the locale layout.</div></div>
+                  <div class="row"><div class="row-key">Switch</div><div class="row-val">Swaps language on the current page rather than returning home. A real link, so it works with JavaScript off.</div></div>
+                </div>
+              </div>
+            </details>
+
+            <details class="drawer" data-kind="reality">
+              <summary>Decisions <span class="tag-drift">3, with what the rejected option cost</span></summary>
+              <div class="drawer-body">
+                <div class="notes"><ul>
+                  <li><b>English is deliberately not <code>as const</code>.</b> That looked like the obvious way to type the dictionary, but it makes every value its own string literal, so Spanish would have to repeat the English words exactly to typecheck. It would have enforced sameness instead of completeness, which is the opposite of the point.</li>
+                  <li><b>The rewrites are written one per route, not as a catch-all.</b> A catch-all with a negative lookahead runs before the filesystem and has to exclude <code>_next</code> and static files by regex. That is the rule that looks right and silently swallows an asset. An explicit list cannot.</li>
+                  <li><b>The dictionary reaches the client components as a prop, never an import.</b> Importing it there would pull both languages into the bundle, so every English visitor would download the Spanish strings.</li>
+                </ul></div>
+              </div>
+            </details>
+
+            <details class="drawer" data-kind="plan">
+              <summary>Still open <span class="tag-drift">2, neither blocking</span></summary>
+              <div class="drawer-body">
+                <div class="notes"><ul>
+                  <li><b>The Spanish copy is a draft and needs Dani.</b> Every Spanish string in the shell was written by the build, not by a native speaker. "Trained in Colombia" especially is a sales line rather than a sentence to translate literally.</li>
+                  <li>Spanish slugs are still mirrored English (<code>/es/nails</code>, not <code>/es/unas</code>). One helper owns the prefix, so deciding is a one-file change.</li>
+                </ul></div>
+              </div>
+            </details>
+
+            <details class="drawer" data-kind="reality">
+              <summary>Log <span class="tag-drift">2 entries, newest first</span></summary>
+              <div class="drawer-body">
+                <div class="log">
+                  <div class="entry" data-kind="done">
+                    <div class="dot"></div>
+                    <div class="entry-body">
+                      <div class="entry-top"><span class="entry-title">Shipped</span><span class="kind-tag">Done</span><span class="stamp">Sep 20</span></div>
+                      <p class="entry-text">The half-translated failure mode is now structurally impossible: deleting a Spanish key fails the build naming that key, which was proved by doing it. The one thing not observed is the root URL being served by something real - the routing was closed against the compiled router table rather than a running app.</p>
+                    </div>
+                  </div>
+                  <div class="entry" data-kind="question">
+                    <div class="dot"></div>
+                    <div class="entry-body">
+                      <div class="entry-top"><span class="entry-title">The plans disagreed about the URL shape</span><span class="kind-tag">Question</span><span class="stamp">Sep 20</span></div>
+                      <p class="entry-text">The build plan asked for a <code>[locale]</code> segment; section 8 asked for English at the root. A locale segment naturally gives <code>/en</code>, so the two did not combine for free. Resolved by keeping the segment and rewriting the root, which keeps one copy of each page across the six still to come.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            </div><span class="pill pill--done">Done</span></div>
           <div class="item"><div class="item-num">3</div><div class="item-body"><div class="item-name">Home page</div><p class="item-text">Hero, the three services, a gallery teaser, her story, FAQ and the booking call to action. This is the page the Instagram bio link lands on, so it carries the short version of the craft angle and the bilingual claim.</p></div><span class="pill">Planned</span></div>
           <div class="item"><div class="item-num">4</div><div class="item-body"><div class="item-name">Gallery</div><p class="item-text">The full set of work, filterable by service, at a size where the quality is actually visible. The headline feature and the reason the site exists at all - Instagram is a grid of squares, and a grid of squares is a poor way to judge a set of nails. Before the service pages, because it is the page that sells the work.</p></div><span class="pill">Planned</span></div>
           <div class="item"><div class="item-num">5</div><div class="item-body"><div class="item-name">Service pages</div><p class="item-text">Nails, lashes and makeup, one page each, with treatments, prices and durations. Three pages and not one services page: a single page listing three services competes with itself and ranks for none of them. Each page owns its own terms and borrows none from the others.</p></div><span class="pill">Planned</span></div>

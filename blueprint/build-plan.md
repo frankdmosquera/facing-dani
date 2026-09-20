@@ -45,7 +45,7 @@ work, so it comes before the pages that describe it.
 
 - [x] 1. **Site shell and theme** - port `prototypes/theme.css` into `globals.css`
   `@theme`, then build the header, mobile nav and footer against it
-- [ ] 2. **Locale routing** - the `[locale]` segment, a dictionary per locale, the
+- [x] 2. **Locale routing** - the `[locale]` segment, a dictionary per locale, the
   language switch, and the missing-string build error. Hand-rolled, no package
 - [ ] 3. **Home page** - hero, the three services, gallery teaser, her story,
   FAQ and the booking call to action
