@@ -1,88 +1,159 @@
 # Project Plan
 
-> One of the two planning docs you provide. Use as much detail as the project
-> needs, including rationale, constraints, examples, edge cases, and explicit
-> exclusions that should guide later feature work. Draft it directly, develop it
-> through any AI conversation, or optionally run `/discovery` for a guided deep
-> planning session. The content is always yours to direct. When it is filled in,
-> run `/overview` to generate the project overview from this plus `build-plan.md`.
-
-> **Placeholders, marked.** Anything tagged `[confirm]` is a working assumption
-> made so the build could start, not a decision. Each one is safe to be wrong:
-> the name lives in one config file, the address is a schema field, the booking
-> route is one component. None of them block design or layout.
+> **Decided, and why.** This project is the first build of a reusable template
+> for beauty businesses, it ships bilingual from day one, and SEO is written into
+> each page rather than bolted on at the end. Those three shape everything below.
+> Anything still tagged `[confirm]` is a working assumption, not a decision, and
+> each one is listed at the bottom with the single place it lives.
 
 ## 1. Problem - What problem are we solving?
 
 A new nail, lash and makeup artist in Calgary has no presence beyond an
-Instagram feed. Instagram is where her clients already are, and it is fine at
+Instagram feed. Instagram is where her clients already are, and it is good at
 showing work, but it is bad at everything that turns a browser into a booking:
 it cannot hold a price list, it buries the answer to "what do you actually do",
-it cannot be found on Google, and a grid of squares is a poor gallery when the
-client wants to inspect one set closely.
+it cannot be found on Google, and a grid of squares is a poor gallery when
+someone wants to inspect one set closely.
 
-The site is the thing her bio link points at. Its job is narrow and it should
-stay narrow:
+The site is what her bio link points at. Its job is narrow and should stay
+narrow:
 
 1. Make her look like a real business rather than a hobby.
 2. Show the work at a size where the quality is visible.
 3. Answer what, how much, and how long, without a DM.
 4. Take the booking, or hand it cleanly to wherever bookings live.
 
-What it is not: a booking engine, a shop, a blog, or a client account system.
-Those are how this kind of project quietly becomes a six-month build.
+**What she is actually selling is craft, not price.** She trained in Colombia,
+where the standard for nail work is higher than most people here expect. Shape,
+structure and cuticle work are what decide whether a set still looks good in
+week three, and that is what she was drilled on. This is the strongest card
+because it is true, it is hard for a competitor to copy, and it survives a price
+rise. The site leads with it everywhere: the About page is the long version, the
+home page is the short version, and the gallery is the proof.
+
+Price is deliberately not the angle. It is the one advantage that disappears the
+moment she raises her rates, and a site built around being cheap is hard to
+rebuild around being good.
+
+**What it is not:** a booking engine, a shop, a blog, or a client account
+system. Those are how a project like this quietly becomes a six-month build.
+
+**She is fully bilingual, and that is a service rather than a setting.** A
+translated site tells a visitor she can read it. A fluent artist tells her she
+can have the whole appointment in Spanish: the consultation, the questions about
+aftercare, the part where she changes her mind about the shape halfway through.
+That is the thing worth saying out loud on the site, and it belongs on the home
+page and the about page as a claim, not left implied by the existence of a `/es`
+URL.
+
+It is also not copyable. A competitor can run a page through a translator in an
+afternoon. They cannot become bilingual.
+
+### The second problem, which is the agency's
+
+Almost no beauty business in Calgary has a bilingual site, because the agencies
+building those sites do not speak Spanish. That is a gap, and this project is
+the first build against it. See section 6.
 
 ## 2. Users - Who is this for?
 
 **The client, roughly 15 to 25.** She arrives from an Instagram bio link, on a
-phone, often at night, often deciding between two or three artists she is
-already following. She is not reading, she is scrolling and judging. She wants
-to see the work, find out whether nails or lashes are in her budget, and book
-without composing a message.
+phone, often at night, often deciding between two or three artists she already
+follows. She is not reading, she is scrolling and judging. She wants to see the
+work, find out whether nails or lashes are in her budget, and book without
+composing a message.
 
 This single fact sets nearly every decision in section 7. Mobile is not a
 consideration, it is the product. Desktop exists and must not be broken, but it
 is the afterthought.
 
 **Her mother, paying for a grad set.** Arrives from Google or from her daughter.
-Needs the business to look legitimate, safe and real in about four seconds:
-prices visible, location clear, a human face and name, no dead links.
+Needs the business to look legitimate and safe in about four seconds: prices
+visible, location clear, a human name, no dead links. She is the reason the
+contact form exists, because she is not going to DM a teenager on Instagram.
 
-**The artist herself.** Needs to send one link that answers everything, so her
-DMs stop being a price list.
+**The Spanish-speaking client.** Searches in Spanish, finds nothing local, and
+settles for an English site or a salon she found by word of mouth. She is
+underserved by every competitor in this market, and she is why the site is
+bilingual rather than translated later.
+
+**The artist herself.** Needs one link that answers everything, so her DMs stop
+being a price list.
 
 ## 3. Features - What does the MVP need?
 
 - Home, framing the three services and pushing to the gallery and to booking
 - One page per service: nails, lashes, makeup, each with pricing and duration
 - A gallery large enough to judge the work, filterable by service
-- An about page carrying her training and the trust the business does not have yet
+- An about page carrying her training and the trust the business has not earned yet
 - A contact page with a form that reaches her, plus the direct booking route
-- Local SEO basics: per-page metadata, sitemap, robots, LocalBusiness structured data
-- A thank-you page, so a submitted form is unambiguous and trackable
+- A thank-you page, so a submitted form is unambiguous
+- **Every one of the above in English and Spanish**, at `/` and `/es`
+- Per-page metadata, JSON-LD and hreflang, written with each page rather than after
+- Sitemap and robots covering both languages
+
+Three rules that decide what is in and what is out:
+
+- **Both languages, per page.** A page is not done until it exists in both. A
+  half-translated site reads worse than an English one, and retrofitting a second
+  language means reopening every page, which is the mistake this plan already
+  made once with SEO.
+- **SEO ships with the page it describes.** The coding standards say SEO is the
+  product and not a finishing pass, so metadata and structured data land in the
+  same commit as the page. What remains at the end is the sitemap, robots and a
+  cross-page audit, which genuinely need all pages to exist.
+- **Nothing ships with placeholder text.** Every visitor-facing string is real
+  before a page is called done. English is drafted from the mockups and the plan,
+  then corrected. Spanish is written by Dani, who is a native speaker, which is
+  the reason bilingual is realistic here and would not be on most projects.
 
 Explicitly out of scope for the MVP: online payment, deposits, real-time
-availability, client accounts, reviews written on the site, a blog, and
-multi-language. Spanish is a genuine opportunity in this market, noted here as a
-later option rather than a v1 feature.
+availability, client accounts, reviews written on the site, and a blog.
 
 ## 4. Data - What are we storing?
 
-**Nothing in a database, because there is no database.** That is a deliberate
-choice, not a gap. Every piece of content is a typed file in the repo, which
-means it is version controlled, reviewable in a diff, and impossible to lose.
+**Nothing in a database, and that is a decision rather than a gap.** Every piece
+of content is a typed file in the repo, so it is version controlled, reviewable
+in a diff, and impossible to lose.
 
-- `siteConfig` - business name, contact details, hours, service area, socials
+- `siteConfig` - business name (**Dani Moreno**, Calgary, Alberta), contact
+  details, hours, service area, socials
 - Service data - the three services, their treatments, prices and durations
 - Gallery data - image records with service tag, alt text and ordering
 - FAQ data - questions and answers, reused for FAQ structured data
+- Copy dictionaries - one per locale, `en` and `es`
 
-The only thing that leaves the machine is a contact form submission, which is
-sent as email and not retained by the site. No accounts, no cookies beyond what
-the framework needs, no analytics until asked for by name.
+**What is keyed by locale and what is not.** Getting this wrong means either a
+duplicated price list that drifts, or an English word on a Spanish page.
 
-Images are served through ImageKit, so the repo holds records and not a hundred
-megabytes of photographs.
+| Locale-keyed | Shared across both |
+|---|---|
+| Service name and description | Price |
+| Treatment labels | Duration |
+| Image alt text | ImageKit path and service tag |
+| FAQ question and answer | Ordering |
+| Page metadata and JSON-LD text | Phone, email, hours, coordinates |
+
+A price is a number and belongs in one place. A treatment label is prose and
+belongs in two. Storing a price twice guarantees that one day they disagree, and
+the visitor will believe whichever one is wrong.
+
+A missing Spanish string is a build error, not a silent fallback to English.
+Falling back quietly is how a site ends up half-translated without anyone
+noticing.
+
+**Because this is a template, the split matters more than usual.** Nothing that
+identifies this particular business may live in a component. A component reads
+`siteConfig.business.name`; it never contains the word Dani. The test is whether
+a second beauty business could be stood up by editing `data/` and `theme.css`
+and touching nothing else. If the answer is no, that is a bug and not a
+preference.
+
+The only thing that leaves the machine is a contact form submission, sent as
+email and not retained. No accounts, no analytics, no cookie banner.
+
+Images are records, not files. The repo stores an ImageKit path, alt text and a
+service tag, never the photograph.
 
 ## 5. Tech - What stack are we using?
 
@@ -91,25 +162,49 @@ rendered, deployed as one unit. Chosen because this is a marketing site where
 page speed and SEO matter more than live data, and because a site with no
 database has nothing to run a backend for.
 
-- **UI** shadcn with Base UI primitives, lucide icons, Tailwind v4 with the
-  theme expressed as CSS variables in `globals.css` `@theme`
-- **Forms** react-hook-form with zod, validated on both sides
-- **Email** Resend, for the contact form only
-- **Images** ImageKit, which is doing real work here given a photo-led gallery
+- **UI** shadcn with Base UI primitives, lucide icons, Tailwind v4 with the theme
+  as CSS variables in `globals.css` `@theme`, ported from `prototypes/theme.css`
+- **Forms** react-hook-form with zod, validated on both sides. Not shadcn's
+  `Form` wrapper, for the reason recorded in the coding standards
+- **Email** Resend, called from a Server Action so the key stays server side
+- **Images** ImageKit, doing real work here given a photo-led gallery
+- **i18n** hand-rolled: a `[locale]` route segment and a dictionary per locale.
+  No package. `next-intl` is more machinery than two languages and eight pages
+  need, and the no-install rule applies
 - **No database, no auth, no object storage, no motion library.** All four were
-  offered by the scaffolder and declined. Animation is CSS.
+  offered by the scaffolder and declined. Animation is CSS
 
 ## 6. Monetize - How will this make money?
 
 The site does not make money. It is a sales asset for a service business, and
-the money is made in a chair.
+the money is made in a chair. Success is bookings that can be traced to the site,
+not traffic.
 
-That means success is measured in bookings that can be traced to the site, not
-in traffic. It also sets the ceiling on what belongs here: any feature that
-cannot plausibly move a visitor toward booking is out, however nice it looks.
+**How that gets measured, concretely:** a "how did you find me" field on the
+contact form, plus Search Console. No analytics script, no cookie banner, no
+privacy policy needed to start. That is a deliberate choice and it matches the
+coding standards, which say analytics is a per-project decision and never a
+default. It also makes the contact form load-bearing: it is both the booking
+route for anyone who will not DM, and the only attribution the site has.
 
-For the agency, this is a client site. Whether it becomes a paid or maintained
-engagement is a separate conversation and not a product decision.
+### The real return is the template
+
+This build is the first of a reusable template for beauty businesses: nail
+studios, lash techs, brow and makeup artists. Calgary has many, most are
+Latin-owned, and almost none have a bilingual site. That is the gap.
+
+What being a template actually requires, in one line each:
+
+- Every business fact in `data/`, never in a component
+- The whole look in `theme.css`, so client two is a palette swap and not a rebuild
+- Both languages structural, not bolted on, so it is a default rather than an upsell
+- Services as data, because the next client may do brows and not lashes
+
+None of that is extra features. It is discipline applied while building anyway,
+and it is worth far more on client two than it costs on client one.
+
+Whether Dani's own build is billed is a separate conversation and not a product
+decision.
 
 ## 7. UI/UX - How should this look and feel?
 
@@ -194,27 +289,83 @@ is the case Vercel is built for, and the free tier covers this traffic.
 - **Workers or cron** none
 - **Health check** not applicable
 
-**Domain** `[confirm]` not registered yet. It follows the business name, so it
-waits on section 1's `[confirm]`.
+**Deploy early, then keep deploying.** A preview URL from the first item, so Dani
+watches it grow on her phone and corrections arrive while they are cheap. The
+alternative is she sees it for the first time when it is finished and expensive
+to change.
+
+**Domain** `[confirm]` not registered yet. Follows the business name, so `danimoreno.ca` or a studio name. Buy the
+`.ca` and the `.com` together; a Calgary business wants the `.ca` and a
+competitor wanting the `.com` later is a headache.
+
+**Locale routing** English at the root, Spanish at `/es`. Not a subdomain and not
+a separate domain, because both split the ranking signal and this site has none
+to spare. Every page carries `hreflang` for both plus `x-default`, or Google
+treats them as duplicates and picks one for you.
 
 **Before launch, and not as a feature:** a Google Business Profile matters more
-than anything on this site for the first year. The site supports it with
+than anything on this site for the first year, and building it out is part of
+the engagement rather than an afterthought. The site supports the profile with
 consistent name, address and phone, and with LocalBusiness structured data. It
-does not replace it.
+does not replace it. Set up Search Console for both locales at launch.
+
+The name, address and phone on the site and on the profile must match character
+for character, including how the business name is written. Google treats a
+mismatch as two businesses, and two half-signals rank worse than one whole one.
+That is the reason section 4 insists every business fact comes from
+`siteConfig`: one file, one source, no drift.
+
+### What this site has to rank for
+
+The target is **nails and makeup in Calgary**, plus lashes. That is the bar, and
+it decides the page structure rather than following from it.
+
+- **One page per service, not one services page.** A single page listing three
+  services competes with itself and ranks for none of them. Separate pages for
+  nails, lashes and makeup are the only way each one can be the best answer to
+  its own query. This is why item 5 of the build plan exists in that shape.
+- **Each service page owns its terms.** Nails owns gel, acrylic, extensions,
+  chrome, nail art. Makeup owns grad, bridal, event, glam. Lashes owns classic,
+  hybrid, volume, fills. No page borrows another page's words.
+- **Calgary belongs in the title, the H1, the copy and the schema**, on every
+  page, without turning into keyword soup that reads badly to a human.
+- **The Spanish pages are a second set of rankings, not duplicates.** They target
+  terms almost nobody local competes for. `hreflang` is what stops Google
+  treating them as duplicates and choosing one.
+- **Be honest about the timeline.** A new domain with no links does not win
+  "nail salon Calgary" quickly. The site wins the long tail first: service plus
+  neighbourhood, service plus occasion, and Spanish. The Business Profile and
+  reviews carry the head terms in the meantime. Anyone promising otherwise is
+  selling something.
 
 ---
 
 ## Open `[confirm]` items
 
-Four assumptions, all cheap to change, none blocking:
+Four assumptions, all cheap to change, none blocking. Each one lives in exactly
+one place, which is the point of the template discipline in section 4.
 
-| | Assumed | Where it lives |
-|---|---|---|
-| Business name | "Dani" as a working brand | `siteConfig`, one file |
-| Logo | None exists, so the palette is not sampled from one | `theme.css`, a palette swap |
-| Location | Service-area business, no public street address | LocalBusiness schema field |
-| Booking | Instagram DM as primary, contact form to Resend as backup | One component on one page |
+| | Assumed | Where it lives | Cost if wrong |
+|---|---|---|---|
+| Logo | None exists, palette not sampled from one | `theme.css` | A palette swap |
+| Location | Service-area business, no public street address | LocalBusiness schema | One field |
+| Booking | Instagram DM primary, form to Resend as the route for everyone else | One component | One page |
+| Domain | Not registered, follows the name | `siteConfig` and Vercel | A DNS change |
 
-The location assumption is the one to actually think about rather than default:
-a young artist working from home should probably not publish a street address,
-and a service-area listing is the normal answer to that.
+The location assumption is the one to actually think about rather than default.
+A seventeen-year-old working from home should probably not publish a street
+address, and a service-area listing is the normal answer to that.
+
+---
+
+## What changed, and when
+
+- **2026-09-20** Direction locked as After Party, section 7 written from rendered
+  options rather than adjectives.
+- **2026-09-20** Four decisions taken: this is the first build of a beauty
+  template, craft and training is the angle rather than price, the site ships
+  bilingual in the MVP, and attribution is a form field plus Search Console
+  rather than an analytics script.
+- **2026-09-20** SEO moved from a single item at the end into each page, because
+  the coding standards say it is the product and not a finishing pass, and the
+  plan contradicted them.
