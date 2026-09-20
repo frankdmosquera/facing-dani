@@ -134,6 +134,35 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(24px,6.5vw,34px);t
 .help{font-weight:700;font-size:13.5px;background:#fff;border:3px solid var(--ink);border-radius:999px;padding:9px 18px;cursor:pointer;box-shadow:3px 3px 0 var(--ink)}
 .help:active{transform:translate(3px,3px);box-shadow:none}
 .lvpill{font-weight:700;font-size:12px;background:var(--lemon);border:3px solid var(--ink);border-radius:999px;padding:8px 14px}
+.modebtn{font-weight:700;font-size:13.5px;background:var(--aqua);border:3px solid var(--ink);border-radius:999px;padding:9px 18px;cursor:pointer;box-shadow:3px 3px 0 var(--ink)}
+.modebtn:active{transform:translate(3px,3px);box-shadow:none}
+
+/* ---------- typing mode ----------
+   No options to guess from. She works it out and types it, which is a
+   different skill from recognising the right answer in a row of three.
+   The entry is deliberately huge; a seven-year-old checking her own
+   answer needs to read it from across the kitchen. */
+.entry{
+  font-family:var(--display);font-weight:800;font-size:clamp(40px,12vw,62px);
+  text-align:center;background:#F7F0FB;border:4px dashed var(--ink);border-radius:20px;
+  padding:10px 14px;margin:0 auto 14px;min-height:82px;min-width:150px;max-width:280px;
+  display:flex;align-items:center;justify-content:center;letter-spacing:.04em;
+}
+/* the placeholder is prose, not a number, so it must not use the
+   answer's display size or it fills the whole box on a phone */
+.entry.empty{color:#B9A9C9;font-family:var(--body);font-weight:600;font-size:16px;letter-spacing:0}
+.entry.good{background:var(--lime);border-style:solid;animation:pop .3s ease}
+.entry.nearly{background:#FFD9E6;border-style:solid;animation:shake .4s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-7px)}40%{transform:translateX(7px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+.pad{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;max-width:330px;margin:0 auto}
+.key{
+  font-family:var(--display);font-weight:800;font-size:clamp(24px,7vw,32px);
+  background:#fff;border:4px solid var(--ink);border-radius:18px;padding:15px 6px;
+  cursor:pointer;box-shadow:var(--pop-sm);color:var(--ink);
+}
+.key:active{transform:translate(3px,3px);box-shadow:none}
+.key.act{background:var(--lemon)}
+.key.ok{background:var(--lime);font-size:clamp(20px,6vw,27px)}
 .week{display:flex;gap:4px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
 .day{font-family:var(--display);font-weight:800;font-size:11.5px;background:#fff;border:3px solid var(--ink);border-radius:11px;padding:7px 6px;min-width:41px;text-align:center}
 .day.here{background:var(--lemon)}
@@ -258,6 +287,7 @@ footer{margin-top:40px;text-align:center;font-size:12.5px;font-weight:500;opacit
       <div class="say" id="gSay"></div>
       <div class="streak" id="gStreak"></div>
       <div class="helprow">
+        <button class="modebtn" id="gMode"></button>
         <button class="help" id="gHelp"></button>
         <span class="lvpill" id="gLevel"></span>
       </div>
@@ -375,7 +405,12 @@ var STR = {
   wonSticker:['You won a sticker!','¡Ganaste una calcomanía!'],
   wonStars:['You won %n stars!','¡Ganaste %n estrellas!'],
   wonAll:['You have everything!','¡Ya tienes todo!'],
-  notEnough:['Not enough stars yet','Aún no tienes suficientes']
+  notEnough:['Not enough stars yet','Aún no tienes suficientes'],
+  /* typing mode */
+  modeType:['⌨️ Type it','⌨️ Escríbelo'],
+  modeChoose:['👆 Choose it','👆 Escoge'],
+  typeHere:['Type your answer','Escribe tu respuesta'],
+  typeStar:['Typing is worth 2 stars','Escribir vale 2 estrellas']
 };
 function t(k){ var v = STR[k]; return v ? v[LANG === 'es' ? 1 : 0] : k; }
 function txt(v){ return (v && typeof v === 'object') ? v[LANG] : v; }
@@ -718,7 +753,17 @@ var cur=null,streak=0;
 var els={title:document.getElementById('gTitle'),sub:document.getElementById('gSub'),visual:document.getElementById('gVisual'),
   q:document.getElementById('gQ'),qsub:document.getElementById('gQSub'),hint:document.getElementById('gHint'),
   opts:document.getElementById('gOpts'),say:document.getElementById('gSay'),streak:document.getElementById('gStreak'),
-  help:document.getElementById('gHelp'),level:document.getElementById('gLevel')};
+  help:document.getElementById('gHelp'),level:document.getElementById('gLevel'),
+  mode:document.getElementById('gMode')};
+
+/* choose | type, remembered between visits */
+var MODE = store('ph-mode') === 'type' ? 'type' : 'choose';
+els.mode.addEventListener('click', function(){
+  MODE = MODE === 'type' ? 'choose' : 'type';
+  store('ph-mode', MODE);
+  TAP();
+  if (cur) ask();
+});
 
 function levelOf(id){return Math.min(3,Math.max(1,levels[id]||1));}
 function bump(id,up){levels[id]=up?Math.min(3,levelOf(id)+1):Math.max(1,levelOf(id)-1);store('ph-levels',JSON.stringify(levels));}
@@ -743,19 +788,22 @@ function ask(){
     var op=document.createElement('div');op.className='hintop';op.textContent=d.hint[1];
     var r2=document.createElement('div');r2.className='hintrow'+(d.hint[3]?' gone':'');r2.textContent=d.hint[2];
     els.hint.appendChild(r1);els.hint.appendChild(op);els.hint.appendChild(r2);}
+  /* typing only makes sense when the answer is a number she can key in,
+     and when the question is not "tap one of these two" */
+  var typeable = /^\d+$/.test(String(d.ans)) && !d.two && !d.wide;
+  els.mode.style.display = typeable ? '' : 'none';
+  var typing = typeable && MODE === 'type';
+  els.mode.textContent = typing ? t('modeChoose') : t('modeType');
+
+  if (typing) { renderPad(d, g); return; }
+
   els.opts.className='opts'+(d.wide?' wide':'')+(d.two?' two':'');
   els.opts.innerHTML='';
   d.opts.forEach(function(v){
     var b=document.createElement('button');b.className='opt';b.textContent=v;
     b.addEventListener('click',function(){
-      if(String(v)===String(d.ans)){
-        b.classList.add('good');WIN();addStar();streak++;
-        if(streak>best){best=streak;store('ph-best',String(best));}
-        if(streak>0&&streak%4===0)bump(g.id,true);
-        els.say.textContent=txt(pick(GOOD));
-        els.streak.textContent=streak>1?(streak+' '+t('inARow')):'';
-        drop(10,true);setTimeout(ask,1050);
-      }else{
+      if(String(v)===String(d.ans)) right(g, 1);
+      else{
         b.classList.add('nearly');TRY();
         if(streak===0)bump(g.id,false);
         streak=0;els.say.textContent=txt(pick(NEARLY));els.streak.textContent='';
@@ -764,6 +812,73 @@ function ask(){
     });
     els.opts.appendChild(b);
   });
+}
+
+/* shared success path, so choosing and typing behave identically */
+function right(g, worth){
+  WIN();
+  for(var i=0;i<worth;i++) addStar();
+  streak++;
+  if(streak>best){best=streak;store('ph-best',String(best));}
+  if(streak>0&&streak%4===0)bump(g.id,true);
+  els.say.textContent=txt(pick(GOOD));
+  els.streak.textContent=streak>1?(streak+' '+t('inARow')):'';
+  drop(worth>1?18:10,true);
+  setTimeout(ask,1100);
+}
+
+/* ---------------- the number pad ----------------
+   Worth two stars instead of one, because working an answer out is
+   harder than spotting it in a row of three, and she should feel that. */
+function renderPad(d, g){
+  var typed = '';
+  els.opts.className = '';
+  els.opts.innerHTML = '';
+
+  var entry = document.createElement('div');
+  entry.className = 'entry empty';
+  entry.textContent = t('typeHere');
+  els.opts.appendChild(entry);
+
+  var pad = document.createElement('div');
+  pad.className = 'pad';
+  els.opts.appendChild(pad);
+
+  function paint(){
+    entry.className = 'entry' + (typed ? '' : ' empty');
+    entry.textContent = typed || t('typeHere');
+  }
+  function key(label, cls, fn){
+    var b=document.createElement('button');
+    b.className='key'+(cls?' '+cls:'');
+    b.textContent=label;
+    b.addEventListener('click',fn);
+    pad.appendChild(b);
+  }
+  function check(){
+    if(!typed) { TRY(); return; }
+    if(typed === String(d.ans)){
+      entry.className='entry good';
+      right(g, 2);
+    }else{
+      entry.className='entry nearly';
+      TRY();
+      if(streak===0)bump(g.id,false);
+      streak=0;
+      els.say.textContent=txt(pick(NEARLY));
+      els.streak.textContent='';
+      setTimeout(function(){ typed=''; paint(); }, 750);
+    }
+  }
+
+  ['7','8','9','4','5','6','1','2','3'].forEach(function(n){
+    key(n, '', function(){ if(typed.length<4){ typed+=n; paint(); beep([520+Number(n)*22],.05);} });
+  });
+  key('⌫','act',function(){ typed=typed.slice(0,-1); paint(); beep([330],.06); });
+  key('0','',function(){ if(typed.length<4){ typed+='0'; paint(); beep([520],.05);} });
+  key('✓','ok',check);
+
+  els.streak.textContent = t('typeStar');
 }
 els.help.addEventListener('click',function(){els.hint.classList.toggle('show');beep([440,587],.08);});
 
