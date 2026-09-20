@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Work &middot; Dani Moreno</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
+<style>
+  /* ---------------------------------------------------------------
+     Gallery. Mockup only, discarded at the first UI feature's /complete.
+
+     WARNING: every photograph here is an Unsplash COMP, not Dani's
+     work. They exist so the page can be judged at real density, since
+     a gallery with six placeholders tells you nothing about a gallery
+     with thirty photos. All of them are replaced by her own sets
+     before anything ships. A nail gallery is a claim about what the
+     client will get, so stock photography must never survive into the
+     built site. See project-plan.md section 3.
+
+     What this page is proving:
+       1. Whether the plum ground holds up behind a wall of colour
+       2. Whether a mixed-aspect masonry grid reads better than a
+          uniform one, given real sets are shot at many crops
+       3. Whether filtering by service is worth the interaction cost
+     --------------------------------------------------------------- */
+
+
+  /* Rejected comps, and why. Do not re-add without a better reason
+     than "it was in the search results".
+       photo-1683719312734  raw lash close-up on bare skin, reads clinical not beautiful
+       photo-1535310172250  stock portrait of a freckled eye, no lash work visible
+       photo-1674049406467  blue surgical gloves, looks like a medical procedure
+       photo-1567629307995  closed pale eye, nothing of the service is visible
+       photo-1699669646912  hand flat on red fabric, the fabric wins and the nails vanish
+       photo-1632345031435  generic salon desk shot, does not show finished work
+       photo-1736434518489  busy marigold background fights the nails for attention
+       photo-1596205521983  editorial beauty portrait, not a result a client could book
+  */
+
+  .glowwrap { position: relative; overflow: hidden; }
+  .glowwrap > * { position: relative; z-index: 1; }
+  .glow { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+  .glow i { position: absolute; border-radius: 50%; filter: blur(90px); display: block; }
+
+  /* ---------- header ---------- */
+  .ticker {
+    background: linear-gradient(90deg, var(--nails), var(--lashes), var(--makeup));
+    color: var(--on-hot);
+    font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+    padding: 8px 0; white-space: nowrap; overflow: hidden;
+  }
+  header.site {
+    position: sticky; top: 0; z-index: 40;
+    background: color-mix(in srgb, var(--ground) 88%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .navrow { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+  .logo { font-family: var(--display); font-weight: 800; font-size: 19px; letter-spacing: -.04em; text-decoration: none; }
+  .logo em { font-style: normal; color: var(--nails); }
+  .nav { display: none; gap: 30px; }
+  .nav a { text-decoration: none; font-size: 14.5px; font-weight: 500; color: var(--muted); }
+  .nav a[aria-current] { color: var(--text); }
+  .navcta { display: none; }
+  .burger { display: flex; flex-direction: column; gap: 4.5px; background: none; border: 0; cursor: pointer; padding: 6px; }
+  .burger i { display: block; width: 21px; height: 2px; border-radius: 2px; background: var(--text); }
+  @media (min-width: 900px) {
+    .nav, .navcta { display: flex; }
+    .burger { display: none; }
+    .navcta .btn { padding: 11px 22px; font-size: 14px; }
+  }
+
+  /* ---------- page head ---------- */
+  .pagehead { padding: 44px 0 30px; }
+  .pagehead .eyebrow { display: block; margin-bottom: 13px; }
+  .pagehead h1 { font-size: clamp(36px, 9vw, 62px); margin-bottom: 16px; }
+  .pagehead h1 em {
+    font-style: normal;
+    background: var(--hot); -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .pagehead p { color: var(--muted); font-size: 16px; max-width: 52ch; }
+
+  /* ---------- filters ---------- */
+  .filters {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    padding: 4px 0 24px;
+    position: sticky; top: 58px; z-index: 30;
+    background: linear-gradient(to bottom, var(--ground) 72%, transparent);
+    padding-top: 14px;
+  }
+  .filters button {
+    font-family: var(--body); font-size: 12.5px; font-weight: 600; cursor: pointer;
+    padding: 9px 17px; border-radius: var(--radius-pill);
+    background: transparent; color: var(--muted); border: 1px solid var(--line);
+  }
+  .filters button:hover { color: var(--text); }
+  .filters button[aria-pressed="true"] { background: var(--nails); border-color: var(--nails); color: var(--on-hot); }
+  .filters button[data-f="lashes"][aria-pressed="true"] { background: var(--lashes); border-color: var(--lashes); }
+  .filters button[data-f="makeup"][aria-pressed="true"] { background: var(--makeup); border-color: var(--makeup); }
+  .count { margin-left: auto; align-self: center; font-size: 12.5px; color: var(--faint); }
+
+  /* ---------- the grid ----------
+     Masonry via CSS columns. Real sets arrive at wildly different
+     crops, and forcing them all to one aspect ratio means cropping
+     away the thing being sold. Columns let each photo keep its shape. */
+  .grid { columns: 2; column-gap: 10px; padding-bottom: 60px; }
+  @media (min-width: 620px) { .grid { columns: 3; column-gap: 12px; } }
+  @media (min-width: 1000px) { .grid { columns: 4; column-gap: 14px; } }
+
+  .shot {
+    break-inside: avoid; margin-bottom: 10px; position: relative;
+    border-radius: var(--radius); overflow: hidden; display: block;
+    background: var(--shot); border: 1px solid var(--line-soft);
+  }
+  @media (min-width: 620px) { .shot { margin-bottom: 12px; } }
+  @media (min-width: 1000px) { .shot { margin-bottom: 14px; } }
+
+  .shot img { display: block; width: 100%; height: auto; }
+  .shot::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(20,15,28,.66), rgba(20,15,28,0) 46%);
+    opacity: 0; transition: opacity .18s ease;
+  }
+  .shot:hover::after { opacity: 1; }
+  .shot .tag {
+    position: absolute; left: 10px; bottom: 10px; z-index: 2;
+    font-size: 9.5px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase;
+    padding: 5px 10px; border-radius: var(--radius-pill);
+    background: rgba(20,15,28,.75); border: 1px solid rgba(255,255,255,.16);
+    opacity: 0; transition: opacity .18s ease;
+  }
+  .shot:hover .tag { opacity: 1; }
+  .shot[data-s="nails"]  .tag { color: var(--nails); }
+  .shot[data-s="lashes"] .tag { color: var(--lashes); }
+  .shot[data-s="makeup"] .tag { color: var(--makeup); }
+  .shot[hidden] { display: none; }
+
+  /* ---------- cta ---------- */
+  .cta-band {
+    border-top: 1px solid var(--line-soft);
+    padding: 64px 0 80px; text-align: center;
+  }
+  .cta-band h2 { font-size: clamp(28px, 7vw, 46px); margin-bottom: 14px; }
+  .cta-band h2 em { font-style: normal; background: var(--hot); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .cta-band p { color: var(--muted); max-width: 42ch; margin: 0 auto 26px; font-size: 15.5px; }
+  .cta-band .acts { display: flex; flex-direction: column; gap: 12px; max-width: 330px; margin: 0 auto; }
+  @media (min-width: 620px) { .cta-band .acts { flex-direction: row; justify-content: center; max-width: none; } }
+
+  .note {
+    margin: 0 auto 44px; max-width: 640px;
+    background: #2E1C22; border: 1px solid #5A3140; border-radius: 16px;
+    padding: 16px 18px; font-size: 13.5px; line-height: 1.6; color: #D6BFC8;
+  }
+  .note b { color: #FF7E9E; display: block; font-size: 11px; letter-spacing: .13em; text-transform: uppercase; margin-bottom: 6px; }
+</style>
+</head>
+<body>
+
+<div class="ticker" aria-hidden="true">
+  &nbsp;&nbsp;NAILS &middot; LASHES &middot; MAKEUP &middot; CALGARY &middot; NAILS &middot; LASHES &middot; MAKEUP &middot; CALGARY &middot; NAILS &middot; LASHES &middot; MAKEUP &middot; CALGARY
+</div>
+
+<header class="site">
+  <div class="wrap navrow">
+    <a class="logo" href="home.html">dani<em>.</em></a>
+    <nav class="nav">
+      <a href="home.html">Services</a>
+      <a href="gallery.html" aria-current="page">The work</a>
+      <a href="home.html">About</a>
+      <a href="home.html">FAQ</a>
+    </nav>
+    <div class="navcta"><a class="btn" href="#book">Book now</a></div>
+    <button class="burger" aria-label="Menu"><i></i><i></i><i></i></button>
+  </div>
+</header>
+
+<section class="glowwrap">
+  <div class="glow" aria-hidden="true">
+    <i style="width:460px;height:460px;background:rgba(255,61,143,.34);top:-110px;right:-150px"></i>
+    <i style="width:380px;height:380px;background:rgba(169,123,255,.26);top:220px;left:-170px"></i>
+  </div>
+  <div class="wrap pagehead">
+    <span class="eyebrow">Every set, nothing hidden</span>
+    <h1>The <em>work</em></h1>
+    <p>
+      Big on purpose. You are choosing someone to sit with for two hours, and a
+      thumbnail tells you nothing about a cuticle line.
+    </p>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="filters">
+    <button data-f="all" aria-pressed="true">All</button>
+    <button data-f="nails" aria-pressed="false">Nails</button>
+    <button data-f="lashes" aria-pressed="false">Lashes</button>
+    <button data-f="makeup" aria-pressed="false">Makeup</button>
+    <span class="count" id="count"></span>
+  </div>
+
+  <div class="grid" id="grid">
+    <!-- NAILS -->
+    <figure class="shot" data-s="nails"><img loading="lazy" src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&q=78&auto=format&fit=crop" alt="Tortoiseshell nails"><span class="tag">Gel &middot; tortoiseshell</span></figure>
+    <figure class="shot" data-s="nails"><img loading="lazy" src="https://images.unsplash.com/photo-1772322586785-3a34772cbc61?w=600&q=78&auto=format&fit=crop" alt="Marbled tips"><span class="tag">Marble tips</span></figure>
+    <figure class="shot" data-s="lashes"><img loading="lazy" src="https://images.unsplash.com/photo-1589710751893-f9a6770ad71b?w=600&q=78&auto=format&fit=crop" alt="Applying lash extensions"><span class="tag">Volume set</span></figure>
+    <figure class="shot" data-s="nails"><img loading="lazy" src="https://images.unsplash.com/photo-1777287852750-53eb2ca506e9?w=600&q=78&auto=format&fit=crop" alt="Red stiletto nails"><span class="tag">Stiletto &middot; red</span></figure>
+    <figure class="shot" data-s="makeup"><img loading="lazy" src="https://images.unsplash.com/photo-1709477542149-f4e0e21d590b?w=600&q=78&auto=format&fit=crop" alt="Makeup application"><span class="tag">Event glam</span></figure>
+    <figure class="shot" data-s="nails"><img loading="lazy" src="https://images.unsplash.com/photo-1754799670410-b282791342c3?w=600&q=78&auto=format&fit=crop" alt="Heart design nails"><span class="tag">Hearts</span></figure>
+    <figure class="shot" data-s="nails"><img loading="lazy" src="https://images.unsplash.com/photo-1571290274554-6a2eaa771e5f?w=600&q=78&auto=format&fit=crop" alt="Manicure"><span class="tag">Classic gel</span></figure>
+    <figure class="shot" data-s="lashes"><img loading="lazy" src="https://images.unsplash.com/photo-1639629509821-c54cdd984227?w=600&q=78&auto=format&fit=crop" alt="Long lashes"><span class="tag">Hybrid</span></figure>
+    <figure class="shot" data-s="nails"><img loading="lazy" src="https://images.unsplash.com/photo-1777287852699-9e818bf236f7?w=600&q=78&auto=format&fit=crop" alt="Cat eye nails"><span class="tag">Cat eye</span></figure>
+    <figure class="shot" data-s="makeup"><img loading="lazy" src="https://images.unsplash.com/photo-1594465919760-441fe5908ab0?w=600&q=78&auto=format&fit=crop" alt="Red lip"><span class="tag">Red lip</span></figure>
+    <figure class="shot" data-s="nails"><img loading="lazy" src="https://images.unsplash.com/photo-1754799670312-8e7da8e40ad7?w=600&q=78&auto=format&fit=crop" alt="Navy and gold nails"><span class="tag">Navy &middot; gold</span></figure>
+    <figure class="shot" data-s="nails"><img loading="lazy" src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=600&q=78&auto=format&fit=crop" alt="Glitter nails"><span class="tag">Glitter</span></figure>
+    <figure class="shot" data-s="lashes"><img loading="lazy" src="https://images.unsplash.com/photo-1548902378-2ec44c906391?w=600&q=78&auto=format&fit=crop" alt="Lash close up"><span class="tag">Classic</span></figure>
+    <figure class="shot" data-s="nails"><img loading="lazy" src="https://images.unsplash.com/photo-1772322586702-73125782bd99?w=600&q=78&auto=format&fit=crop" alt="Ombre nails"><span class="tag">Ombre</span></figure>
+    <figure class="shot" data-s="makeup"><img loading="lazy" src="https://images.unsplash.com/photo-1551392505-f4056032826e?w=600&q=78&auto=format&fit=crop" alt="Gold eyeshadow"><span class="tag">Soft glam</span></figure>
+    <figure class="shot" data-s="nails"><img loading="lazy" src="https://images.unsplash.com/photo-1604654894611-6973b376cbde?w=600&q=78&auto=format&fit=crop" alt="Black manicure"><span class="tag">Black gel</span></figure>
+    <figure class="shot" data-s="nails"><img loading="lazy" src="https://images.unsplash.com/photo-1610992015762-45dca7fa3a85?w=600&q=78&auto=format&fit=crop" alt="Pink manicure"><span class="tag">Soft pink</span></figure>
+    <figure class="shot" data-s="nails"><img loading="lazy" src="https://images.unsplash.com/photo-1606168054091-74617220d1db?w=600&q=78&auto=format&fit=crop" alt="Green manicure"><span class="tag">Green</span></figure>
+    <figure class="shot" data-s="makeup"><img loading="lazy" src="https://images.unsplash.com/photo-1542833807-ad5af0977050?w=600&q=78&auto=format&fit=crop" alt="Eye makeup"><span class="tag">Smoky eye</span></figure>
+    <figure class="shot" data-s="nails"><img loading="lazy" src="https://images.unsplash.com/photo-1587729927069-ef3b7a5ab9b4?w=600&q=78&auto=format&fit=crop" alt="Nails on black"><span class="tag">On black</span></figure>
+    <figure class="shot" data-s="makeup"><img loading="lazy" src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&q=78&auto=format&fit=crop" alt="Lipstick application"><span class="tag">Bridal</span></figure>
+    <figure class="shot" data-s="nails"><img loading="lazy" src="https://images.unsplash.com/photo-1672405313394-93dff75eae32?w=600&q=78&auto=format&fit=crop" alt="Blue and white manicure"><span class="tag">Blue &middot; white</span></figure>
+    <figure class="shot" data-s="lashes"><img loading="lazy" src="https://images.unsplash.com/photo-1528047128849-2382ff646073?w=600&q=78&auto=format&fit=crop" alt="Black lashes"><span class="tag">Dramatic</span></figure>
+    <figure class="shot" data-s="nails"><img loading="lazy" src="https://images.unsplash.com/photo-1572814601679-4ef8f7b5ebd1?w=600&q=78&auto=format&fit=crop" alt="Nail art"><span class="tag">Hand painted</span></figure>
+    <figure class="shot" data-s="nails"><img loading="lazy" src="https://images.unsplash.com/photo-1753285311550-154917dab783?w=600&q=78&auto=format&fit=crop" alt="Painting extensions"><span class="tag">In progress</span></figure>
+    <figure class="shot" data-s="nails"><img loading="lazy" src="https://images.unsplash.com/photo-1612887390768-fb02affea7a6?w=600&q=78&auto=format&fit=crop" alt="Pink manicure"><span class="tag">Baby pink</span></figure>
+    <figure class="shot" data-s="makeup"><img loading="lazy" src="https://images.unsplash.com/photo-1630084775816-7abb7383ded5?w=600&q=78&auto=format&fit=crop" alt="Grad makeup"><span class="tag">Grad</span></figure>
+    <figure class="shot" data-s="nails"><img loading="lazy" src="https://images.unsplash.com/photo-1674691412909-8405f0a19940?w=600&q=78&auto=format&fit=crop" alt="Manicured nail"><span class="tag">Short set</span></figure>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="note">
+    <b>Mockup only</b>
+    Every photograph on this page is an Unsplash comp so the layout can be judged
+    at real density. All of them are replaced by Dani's own sets before anything
+    ships, because a gallery is a claim about what the client will get.
+  </div>
+</div>
+
+<section class="cta-band glowwrap" id="book">
+  <div class="glow" aria-hidden="true">
+    <i style="width:480px;height:480px;background:rgba(255,61,143,.32);top:-90px;left:50%;margin-left:-240px"></i>
+  </div>
+  <div class="wrap">
+    <h2>Seen one you <em>want</em>?</h2>
+    <p>Send it to me and we will make it yours, or bring nothing and we will work it out together.</p>
+    <div class="acts">
+      <a class="btn" href="#">Book with Dani</a>
+      <a class="btn btn--ghost" href="#">Message on Instagram</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  var grid = document.getElementById('grid');
+  var shots = Array.prototype.slice.call(grid.querySelectorAll('.shot'));
+  var buttons = Array.prototype.slice.call(document.querySelectorAll('.filters button'));
+  var count = document.getElementById('count');
+
+  function apply(filter) {
+    var shown = 0;
+    shots.forEach(function (s) {
+      var match = filter === 'all' || s.dataset.s === filter;
+      s.hidden = !match;
+      if (match) shown++;
+    });
+    buttons.forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.f === filter));
+    });
+    count.textContent = shown + (shown === 1 ? ' set' : ' sets');
+  }
+
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () { apply(b.dataset.f); });
+  });
+
+  apply('all');
+</script>
+</body>
+</html>

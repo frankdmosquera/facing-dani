@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Photo Guide &middot; Dani Moreno</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* Photo guide for Dani. Self contained on purpose so it can be sent as one
+     file or kept on a phone with no server. Uses the After Party theme so it
+     feels like her brand rather than homework from an agency.
+
+     Bilingual because she is. Toggle swaps [data-en] / [data-es]. */
+  :root{
+    --ground:#261F36; --surface:#352948; --surface-2:#2E2440; --shot:#1B1426;
+    --line:#514165; --line-soft:#3D3152;
+    --text:#F6F2FA; --muted:#B3A8C2; --faint:#877B99;
+    --nails:#FF3D8F; --lashes:#A97BFF; --makeup:#FF8A3D; --confirm:#3DE8B0;
+    --hot:linear-gradient(92deg,#FF3D8F,#FF8A3D); --on-hot:#231A31;
+    --display:Unbounded,system-ui,sans-serif; --body:Inter,system-ui,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--text);font-family:var(--body);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:660px;margin:0 auto;padding:0 20px 80px}
+
+  h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-height:1.04;margin:0}
+  p{margin:0;line-height:1.6}
+
+  /* toggle */
+  .top{
+    position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--ground) 90%,transparent);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line-soft);
+    display:flex;align-items:center;justify-content:space-between;
+    padding:13px 20px;margin:0 -20px 0;
+  }
+  .brand{font-family:var(--display);font-weight:800;font-size:15px;letter-spacing:-.03em}
+  .brand em{font-style:normal;color:var(--nails)}
+  .langs{display:flex;gap:6px}
+  .langs button{
+    font-family:var(--body);font-size:12px;font-weight:700;cursor:pointer;
+    padding:7px 14px;border-radius:999px;border:1px solid var(--line);
+    background:transparent;color:var(--muted);
+  }
+  .langs button[aria-pressed="true"]{background:var(--nails);border-color:var(--nails);color:var(--on-hot)}
+
+  header.hero{padding:40px 0 30px}
+  .eyebrow{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:13px}
+  h1{font-size:clamp(31px,8vw,44px);margin-bottom:14px}
+  h1 em{font-style:normal;background:var(--hot);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{color:var(--muted);font-size:16px}
+
+  section{margin-top:44px}
+  h2{font-size:23px;margin-bottom:8px}
+  .sub{color:var(--muted);font-size:14.5px;margin-bottom:22px}
+
+  /* rules */
+  .rule{
+    background:var(--surface);border:1px solid var(--line);border-radius:18px;
+    padding:18px 19px;margin-bottom:12px;display:flex;gap:15px;align-items:flex-start;
+  }
+  .rule .n{
+    font-family:var(--display);font-weight:800;font-size:19px;line-height:1;
+    min-width:30px;color:var(--nails);padding-top:2px;
+  }
+  .rule h3{font-size:16px;margin-bottom:6px}
+  .rule p{color:var(--muted);font-size:13.8px}
+  .rule:nth-child(3) .n{color:var(--lashes)}
+  .rule:nth-child(4) .n{color:var(--makeup)}
+  .rule:nth-child(5) .n{color:var(--confirm)}
+
+  /* shots */
+  .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .shot{background:var(--surface-2);border:1px solid var(--line-soft);border-radius:16px;padding:14px 12px;text-align:center}
+  .shot .box{
+    height:74px;border-radius:11px;background:var(--shot);margin-bottom:11px;
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--line-soft);
+  }
+  .shot svg{width:40px;height:40px;stroke:var(--nails);fill:none;stroke-width:1.6}
+  .shot b{display:block;font-family:var(--display);font-weight:700;font-size:12.5px;margin-bottom:4px}
+  .shot span{font-size:11px;color:var(--faint);line-height:1.4;display:block}
+
+  /* avoid */
+  .avoid{background:#2E1C22;border:1px solid #5A3140;border-radius:18px;padding:19px 21px}
+  .avoid h3{font-size:15px;color:#FF7E9E;margin-bottom:12px}
+  .avoid ul{margin:0;padding-left:18px;color:#D6BFC8;font-size:14px;line-height:1.72}
+  .avoid li{margin-bottom:5px}
+  .avoid b{color:#fff;font-weight:600}
+
+  /* need */
+  .need{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+  .need .row{display:flex;justify-content:space-between;gap:16px;padding:14px 19px;border-bottom:1px solid var(--line-soft);align-items:center}
+  .need .row:last-child{border-bottom:0}
+  .need .row span{font-size:14px;color:var(--muted)}
+  .need .row b{font-family:var(--display);font-weight:700;font-size:15px;white-space:nowrap;color:var(--confirm)}
+
+  .closing{
+    margin-top:44px;padding:24px 22px;border-radius:18px;
+    background:var(--surface-2);border:1px solid var(--line);
+  }
+  .closing h3{font-size:17px;margin-bottom:10px}
+  .closing p{color:var(--muted);font-size:14.5px;margin-bottom:10px}
+  .closing p:last-child{margin-bottom:0}
+  .closing b{color:var(--text)}
+
+  [data-es]{display:none}
+  body.es [data-en]{display:none}
+  body.es [data-es]{display:block}
+  body.es span[data-es],body.es b[data-es],body.es li[data-es]{display:inline}
+  body.es li[data-es]{display:list-item}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <div class="brand">dani<em>.</em></div>
+    <div class="langs">
+      <button id="b-en" aria-pressed="true">EN</button>
+      <button id="b-es" aria-pressed="false">ES</button>
+    </div>
+  </div>
+
+  <header class="hero">
+    <span class="eyebrow" data-en>For the website</span>
+    <span class="eyebrow" data-es>Para la página web</span>
+
+    <h1 data-en>Photos that make<br>your work <em>look as good<br>as it is</em></h1>
+    <h1 data-es>Fotos que hacen que<br>tu trabajo <em>se vea tan<br>bien como es</em></h1>
+
+    <p class="lede" data-en>
+      Your website is about 60% photographs. The work is already good, so this is
+      only about not losing it between your hands and the screen. Thirty seconds
+      per set, no studio, no special equipment.
+    </p>
+    <p class="lede" data-es>
+      Tu página web es casi 60% fotos. El trabajo ya es bueno, asi que esto solo
+      se trata de no perderlo entre tus manos y la pantalla. Treinta segundos por
+      set, sin estudio y sin equipo especial.
+    </p>
+  </header>
+
+  <section>
+    <h2 data-en>Four things, in order of how much they matter</h2>
+    <h2 data-es>Cuatro cosas, en orden de importancia</h2>
+    <p class="sub" data-en>The first one alone does most of the work.</p>
+    <p class="sub" data-es>La primera sola hace casi todo el trabajo.</p>
+
+    <div class="rule">
+      <div class="n">1</div>
+      <div>
+        <h3 data-en>A dark background</h3>
+        <h3 data-es>Un fondo oscuro</h3>
+        <p data-en>A piece of black felt, a dark towel, a folded black t-shirt. Keep it rolled up in your kit. Colours pop against dark and disappear against a white desk, and the website is dark too, so the photo will sit on the page like it belongs there.</p>
+        <p data-es>Un pedazo de fieltro negro, una toalla oscura, una camiseta negra doblada. Tenlo siempre en tu maleta. Los colores resaltan sobre el fondo oscuro y desaparecen sobre un escritorio blanco, y la web tambien es oscura, asi que la foto va a encajar perfecto en la pagina.</p>
+      </div>
+    </div>
+
+    <div class="rule">
+      <div class="n">2</div>
+      <div>
+        <h3 data-en>Light from the side, not above</h3>
+        <h3 data-es>Luz de lado, no de arriba</h3>
+        <p data-en>Sit near a window and turn so the light comes across the hand. Ceiling lights come straight down, which flattens everything and turns skin yellow. If you use a ring light, put it to one side instead of straight on.</p>
+        <p data-es>Sientate cerca de una ventana y girate para que la luz entre de lado sobre la mano. La luz del techo cae recta, aplana todo y pone la piel amarilla. Si usas aro de luz, ponlo a un lado en vez de al frente.</p>
+      </div>
+    </div>
+
+    <div class="rule">
+      <div class="n">3</div>
+      <div>
+        <h3 data-en>Get closer than feels right</h3>
+        <h3 data-es>Acercate mas de lo que parece correcto</h3>
+        <p data-en>The hand should almost touch the edges of the frame. People are judging your shape and your cuticle line, and they cannot see either from far away. Do not zoom, move the phone.</p>
+        <p data-es>La mano casi deberia tocar los bordes de la foto. La gente esta juzgando tu forma y tu linea de cuticula, y de lejos no se ve ninguna de las dos. No uses zoom, acerca el telefono.</p>
+      </div>
+    </div>
+
+    <div class="rule">
+      <div class="n">4</div>
+      <div>
+        <h3 data-en>Tap the nails to focus</h3>
+        <h3 data-es>Toca las unas para enfocar</h3>
+        <p data-en>Your phone will focus on the middle of the hand if you let it. Tap directly on the nails, then check the photo is sharp before you move on. A blurry photo of beautiful work is a wasted set.</p>
+        <p data-es>El telefono va a enfocar en el centro de la mano si lo dejas. Toca directamente sobre las unas y revisa que la foto este nitida antes de seguir. Una foto borrosa de un trabajo hermoso es un set desperdiciado.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 data-en>Three shots per set</h2>
+    <h2 data-es>Tres tomas por set</h2>
+    <p class="sub" data-en>Same three every time. It takes thirty seconds and it becomes automatic.</p>
+    <p class="sub" data-es>Las mismas tres siempre. Toma treinta segundos y se vuelve automatico.</p>
+
+    <div class="shots">
+      <div class="shot">
+        <div class="box"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <b data-en>From above</b><b data-es>Desde arriba</b>
+        <span data-en>Flat, fingers together, filling the frame</span>
+        <span data-es>Plana, dedos juntos, llenando el cuadro</span>
+      </div>
+      <div class="shot">
+        <div class="box"><svg viewBox="0 0 24 24"><path d="M3 16c4-6 14-8 18-11"/><path d="M3 20h18"/></svg></div>
+        <b data-en>From the side</b><b data-es>De lado</b>
+        <span data-en>Shows the shape and the curve</span>
+        <span data-es>Muestra la forma y la curva</span>
+      </div>
+      <div class="shot">
+        <div class="box"><svg viewBox="0 0 24 24"><path d="M7 20V9a2 2 0 014 0V4a2 2 0 014 0v6"/><path d="M15 10a2 2 0 014 0v5a6 6 0 01-6 6H9"/></svg></div>
+        <b data-en>Holding something</b><b data-es>Sosteniendo algo</b>
+        <span data-en>A cup, a bag, near the face</span>
+        <span data-es>Una taza, un bolso, cerca de la cara</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 data-en>What ruins a good photo</h2>
+    <h2 data-es>Lo que arruina una buena foto</h2>
+    <div class="avoid" style="margin-top:20px">
+      <h3 data-en>Avoid these four</h3>
+      <h3 data-es>Evita estas cuatro</h3>
+      <ul data-en>
+        <li><b>A white or cluttered desk.</b> The background competes with the nails and wins.</li>
+        <li><b>Filters and beauty smoothing.</b> They soften exactly the detail you are selling. No filter.</li>
+        <li><b>Photos taken from Instagram.</b> Instagram compresses hard. Send the originals from your phone.</li>
+        <li><b>Only your favourites.</b> Simple sets sell too. Not every client wants nail art.</li>
+      </ul>
+      <ul data-es>
+        <li><b>Un escritorio blanco o desordenado.</b> El fondo compite con las unas y gana.</li>
+        <li><b>Filtros y suavizado de piel.</b> Suavizan justo el detalle que estas vendiendo. Sin filtro.</li>
+        <li><b>Fotos bajadas de Instagram.</b> Instagram comprime muchisimo. Manda los originales del telefono.</li>
+        <li><b>Solo tus favoritas.</b> Los sets sencillos tambien venden. No toda clienta quiere nail art.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2 data-en>What we need to launch</h2>
+    <h2 data-es>Lo que necesitamos para lanzar</h2>
+    <p class="sub" data-en>Not all at once. This fills up on its own if you shoot every set.</p>
+    <p class="sub" data-es>No todo de una vez. Esto se llena solo si fotografias cada set.</p>
+
+    <div class="need">
+      <div class="row"><span data-en>Your single best set, for the top of the page</span><span data-es>Tu mejor set, para el inicio de la pagina</span><b>1</b></div>
+      <div class="row"><span data-en>One each for nails, lashes and makeup</span><span data-es>Una de unas, una de pestanas y una de maquillaje</span><b>3</b></div>
+      <div class="row"><span data-en>For the gallery, mixed across all three</span><span data-es>Para la galeria, mezclando los tres servicios</span><b>12&ndash;20</b></div>
+      <div class="row"><span data-en>Of you, for the about page</span><span data-es>De ti, para la pagina sobre ti</span><b>1&ndash;2</b></div>
+    </div>
+  </section>
+
+  <div class="closing">
+    <h3 data-en>The one habit that matters</h3>
+    <h3 data-es>El unico habito que importa</h3>
+    <p data-en>Do not plan a photo session. Take the three shots at the end of <b>every single appointment</b>, while you are admiring them anyway. Thirty seconds.</p>
+    <p data-es>No planees una sesion de fotos. Toma las tres fotos al final de <b>cada cita</b>, mientras las estas admirando de todos modos. Treinta segundos.</p>
+    <p data-en>Do that for a month and the gallery fills itself with better photos than any staged session would give you, because they are real sets on real clients.</p>
+    <p data-es>Haz eso por un mes y la galeria se llena sola con mejores fotos que cualquier sesion montada, porque son sets reales en clientas reales.</p>
+    <p data-en><b>And one last thing:</b> a photo of you matters more than you think. A new business with no reviews yet sells on a person, and people book someone they can picture.</p>
+    <p data-es><b>Y una ultima cosa:</b> una foto tuya importa mas de lo que crees. Un negocio nuevo sin resenas todavia se vende por la persona, y la gente reserva con alguien que puede imaginar.</p>
+  </div>
+
+</div>
+
+<script>
+  var en = document.getElementById('b-en'), es = document.getElementById('b-es');
+  function set(lang) {
+    document.body.classList.toggle('es', lang === 'es');
+    document.documentElement.lang = lang;
+    en.setAttribute('aria-pressed', String(lang === 'en'));
+    es.setAttribute('aria-pressed', String(lang === 'es'));
+    try { localStorage.setItem('dani-photo-guide-lang', lang); } catch (e) {}
+  }
+  en.addEventListener('click', function () { set('en'); });
+  es.addEventListener('click', function () { set('es'); });
+  var saved = 'en';
+  try { saved = localStorage.getItem('dani-photo-guide-lang') || 'en'; } catch (e) {}
+  set(saved);
+</script>
+</body>
+</html>
