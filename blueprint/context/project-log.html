@@ -96,75 +96,75 @@
   }
 
   .shell {
-    max-width: 1140px;
+    max-width: 1180px;
     margin: 0 auto;
-    padding: 0 24px 80px;
-    display: grid;
-    grid-template-columns: 224px minmax(0, 1fr);
-    gap: 48px;
-    align-items: start;
+    padding: 0 22px 70px;
   }
 
-  /* ---------- sidebar ---------- */
+  /* ---------- top bar ----------
+     There is no sidebar. It cost 172px of every screen to hold a
+     three-item toggle, and this page is read at half-screen width beside
+     the app it describes, so that width was the most expensive thing on
+     it. Brand, switcher and position all live in one sticky block. */
 
-  .side {
+  .topbar {
     position: sticky;
     top: env(safe-area-inset-top, 0px);
-    padding: 34px 0;
+    z-index: 10;
+    background: var(--ground);
+    padding: 14px 0 10px;
     display: flex;
     flex-direction: column;
-    gap: 26px;
-    max-height: 100vh;
-    overflow-y: auto;
+    gap: 10px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 6px;
   }
 
-  .brand { display: flex; flex-direction: column; gap: 6px; }
+  .topbar-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 16px;
+  }
+
+  .brand { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
 
   .brand-name {
     font-family: var(--mono);
     font-size: 13px;
     font-weight: 700;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--ink);
   }
 
   .brand-sub {
     font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-    line-height: 1.6;
-  }
-
-  .nav-group { display: flex; flex-direction: column; gap: 2px; }
-
-  .nav-head {
-    font-family: var(--mono);
     font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--ink-3);
-    padding-bottom: 8px;
-    margin-bottom: 5px;
-    border-bottom: 1px solid var(--rule);
   }
+
+  .switch { display: flex; gap: 4px; margin-left: auto; flex-wrap: wrap; }
 
   .nav-link {
     all: unset;
     cursor: pointer;
-    display: grid;
-    grid-template-columns: 18px 1fr;
-    gap: 10px;
+    display: inline-flex;
     align-items: baseline;
-    padding: 7px 9px 7px 6px;
-    border-radius: 5px;
+    gap: 7px;
+    padding: 6px 12px;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    background: var(--surface);
     color: var(--ink-2);
-    font-family: var(--body);
-    font-size: 14.5px;
-    line-height: 1.35;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
   }
 
   .nav-link:hover { background: var(--surface-2); color: var(--ink); }
@@ -172,36 +172,30 @@
 
   .nav-link[aria-current="page"] {
     background: var(--accent-soft);
-    color: var(--ink);
-    font-weight: 600;
+    border-color: var(--accent);
+    color: var(--accent);
   }
 
-  .nav-num {
-    font-family: var(--mono);
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--ink-3);
-    text-align: right;
-    font-variant-numeric: tabular-nums;
-  }
-
+  .nav-num { font-variant-numeric: tabular-nums; color: var(--ink-3); }
   .nav-link[aria-current="page"] .nav-num { color: var(--accent); }
-  .nav-link[data-state="active"] .nav-num { color: var(--pending); font-weight: 700; }
-  .nav-link[data-state="done"] .nav-num { color: var(--done); font-weight: 700; }
+  .nav-link[data-state="active"] .nav-num { color: var(--pending); }
+  .nav-link[data-state="done"] .nav-num { color: var(--done); }
 
-  .nav-dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    justify-self: center; align-self: center;
-    background: var(--rule);
+  /* ---------- key, as a footer strip ---------- */
+
+  .keyrow {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    align-items: center;
   }
-
-  .legend { display: flex; flex-direction: column; gap: 8px; }
 
   .legend-row {
-    display: grid;
-    grid-template-columns: 18px 1fr;
-    gap: 10px;
+    display: inline-flex;
+    gap: 8px;
     align-items: center;
     font-family: var(--mono);
     font-size: 10.5px;
@@ -210,12 +204,13 @@
   }
 
   .legend-mark {
-    width: 18px; height: 18px;
+    width: 17px; height: 17px;
     border-radius: 50%;
     display: grid; place-items: center;
     font-family: var(--mono);
-    font-size: 9.5px; font-weight: 700; line-height: 1;
+    font-size: 10px; font-weight: 700; line-height: 1;
     color: var(--ground);
+    flex: none;
   }
 
   .legend-mark--ask  { background: var(--alert); }
@@ -223,19 +218,98 @@
   .legend-mark--done { background: var(--done); }
   .legend-mark--fix  { background: var(--fixed); }
 
-  .nav-note {
-    font-family: var(--mono);
-    font-size: 10.5px;
-    line-height: 1.65;
-    color: var(--ink-3);
-    padding: 9px 6px 0;
-    border-top: 1px dashed var(--rule);
-    margin-top: 6px;
-  }
-
   /* ---------- main ---------- */
 
   main { padding: 34px 0 0; min-width: 0; }
+
+  /* ---------- position bar ----------
+     The only thing identical in every view: where the build actually is.
+     Three levels, always the same three, so "where are we" is never a
+     question the transcript has to answer. Sticky, because the answer
+     should not scroll away. */
+
+  .where {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 5;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    padding: 11px 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 14px;
+  }
+
+  .where-leg { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+
+  .where-key {
+    font-family: var(--mono);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .where-val {
+    font-family: var(--display);
+    font-size: 15px; font-weight: 600;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .where-leg[data-now="yes"] .where-key { color: var(--pending); }
+  .where-arrow { color: var(--rule); font-size: 15px; align-self: center; }
+  .where-spacer { flex: 1 1 auto; }
+
+  .where-count {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    color: var(--ink-3);
+    text-align: right;
+    line-height: 1.7;
+    white-space: nowrap;
+  }
+
+  .where-count b { color: var(--ink); font-weight: 700; }
+
+  /* ---------- substeps ----------
+     What a step actually contained. A step is one reviewable change, but
+     it is rarely one edit, and "step 1 done" hides which pieces landed. */
+
+  .substeps {
+    margin: 2px 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+
+  .substeps li {
+    position: relative;
+    padding-left: 21px;
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink-2);
+  }
+
+  .substeps li::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 13px;
+    content: "\2013";
+    color: var(--ink-3);
+    text-align: left;
+    font-weight: 400;
+    font-family: var(--mono);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .substeps li[data-done="yes"] { color: var(--done); }
+  .substeps li[data-done="yes"]::before { content: "\2713"; color: var(--done); }
 
   .eyebrow {
     font-family: var(--mono);
@@ -440,7 +514,7 @@
 
   .kind-tag {
     font-family: var(--mono);
-    font-size: 9.5px; font-weight: 700;
+    font-size: 10.5px; font-weight: 700;
     letter-spacing: 0.1em; text-transform: uppercase;
     padding: 2px 7px;
     border-radius: 3px;
@@ -513,8 +587,8 @@
   .step-text { font-size: 15px; color: var(--ink-2); }
 
   .verify {
-    font-family: var(--mono);
-    font-size: 11.5px;
+    font-family: var(--body);
+    font-size: 14px;
     line-height: 1.6;
     color: var(--ink-3);
     padding-left: 11px;
@@ -582,8 +656,8 @@
 
   .item {
     display: grid;
-    grid-template-columns: 32px minmax(0, 1fr) auto;
-    gap: 4px 12px;
+    grid-template-columns: 24px minmax(0, 1fr) auto;
+    gap: 4px 10px;
     padding: 13px 0;
     border-bottom: 1px solid var(--rule-soft);
     align-items: baseline;
@@ -598,6 +672,384 @@
   .item-was { font-family: var(--mono); font-size: 10.5px; color: var(--ink-3); letter-spacing: 0.03em; }
   .item[data-state="active"] .item-num { color: var(--pending); font-weight: 700; }
   .item[data-state="done"] .item-num { color: var(--done); font-weight: 700; }
+
+  /* ---------- the whole plan, as chips ----------
+     28 items, grouped by phase, each chip carrying its own number.
+     Counts were the problem this replaces: "2 done / 1 in progress /
+     25 to go" put bare digits beside a list numbered with the same
+     digits, so "2 done" read as "item 2 is done" when item 2 has not
+     started. A chip cannot be misread: it *is* the item. */
+
+  .strip { display: flex; flex-wrap: wrap; gap: 14px 18px; }
+
+  .strip-phase { display: flex; flex-direction: column; gap: 5px; }
+
+  .strip-label {
+    font-family: var(--mono);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.13em; text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .strip-cells { display: flex; gap: 4px; }
+
+  .cell {
+    min-width: 27px;
+    padding: 4px 6px;
+    border-radius: 3px;
+    border: 1px solid var(--rule);
+    background: var(--surface);
+    color: var(--ink-3);
+    font-family: var(--mono);
+    font-size: 10.5px; font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .cell[data-state="done"] {
+    background: var(--done-soft);
+    border-color: var(--done);
+    color: var(--done);
+    font-weight: 700;
+  }
+
+  .cell[data-state="active"] {
+    background: var(--pending-soft);
+    border-color: var(--pending);
+    color: var(--pending);
+    font-weight: 700;
+    box-shadow: 0 0 0 2px var(--pending-soft);
+  }
+
+  .tally {
+    display: flex; flex-wrap: wrap;
+    gap: 6px 16px; align-items: baseline;
+    font-family: var(--mono);
+    font-size: 11.5px;
+  }
+
+  .tally-part { display: inline-flex; align-items: baseline; gap: 7px; }
+
+  .tally-key {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.13em; text-transform: uppercase;
+  }
+
+  .tally-part[data-state="done"]    .tally-key { color: var(--done); }
+  .tally-part[data-state="active"]  .tally-key { color: var(--pending); }
+  .tally-part[data-state="planned"] .tally-key { color: var(--ink-3); }
+  .tally-val { color: var(--ink); font-weight: 500; }
+
+  /* ---------- the six-step meter in the sticky bar ---------- */
+
+  .meter { display: flex; gap: 3px; align-items: center; }
+
+  .meter i {
+    width: 15px; height: 5px;
+    border-radius: 2px;
+    background: var(--rule);
+    display: block;
+  }
+
+  .meter i[data-state="done"] { background: var(--done); }
+  .meter i[data-state="active"] { background: var(--pending); }
+
+  /* ---------- steps, shown on the roadmap itself ----------
+     The roadmap is the map. An item that is being built shows its own
+     steps right here, with the same numbers, labels and states as the
+     feature group. Two places showing the same thing differently is
+     what made the page unreadable; the feature group is the detail of
+     what is already visible here, never a second version of it. */
+
+  .item-steps {
+    margin: 9px 0 2px;
+    display: flex; flex-direction: column;
+    border-left: 2px solid var(--rule);
+    padding-left: 10px;
+  }
+
+  /* Each step opens into its own plan. Collapsed, the roadmap stays a
+     list you can scan; open, it answers "what is 1.2 actually" without
+     sending the reader to another view. Native details, no script. */
+
+  .rstep { border-bottom: 1px solid var(--rule-soft); }
+  .rstep:last-child { border-bottom: none; }
+
+  .rstep > summary {
+    display: grid;
+    grid-template-columns: 34px 14px minmax(0, 1fr) auto;
+    gap: 11px;
+    align-items: baseline;
+    padding: 9px 0;
+    cursor: pointer;
+    list-style: none;
+    font-family: var(--body);
+    font-size: 15.5px;
+    font-weight: 500;
+    line-height: 1.45;
+    color: var(--ink-2);
+  }
+
+  .rstep > summary::-webkit-details-marker { display: none; }
+  .rstep > summary:hover { color: var(--ink); }
+  .rstep > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+
+  .rstep .sn { font-family: var(--mono); font-size: 12.5px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .rstep .sm { text-align: center; }
+  .rstep .ss { font-family: var(--mono); text-align: right; letter-spacing: 0.08em; text-transform: uppercase; font-size: 10px; font-weight: 700; }
+
+  .rstep[data-state="done"] > summary { color: var(--done); }
+  .rstep[data-state="done"] .sm::before { content: "\2713"; }
+  .rstep[data-state="active"] > summary { color: var(--pending); }
+  .rstep[data-state="active"] .sm::before { content: "\25b8"; }
+  .rstep[data-state="planned"] .sm::before { content: "\00b7"; color: var(--rule); }
+
+  /* A closed step says there is more; an open one stops saying it. */
+  .rstep > summary .ss::after { content: " +"; color: var(--rule); }
+  .rstep[open] > summary .ss::after { content: " \2212"; }
+
+  .rstep-body {
+    padding: 4px 0 16px 16px;
+    display: flex; flex-direction: column; gap: 11px;
+  }
+
+  .rstep-what { font-size: 15.5px; line-height: 1.65; color: var(--ink-2); }
+
+  .rstep-body .substeps { margin: 0; }
+
+  .rstep-when {
+    font-family: var(--body);
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ink-2);
+    padding: 9px 12px;
+    border-left: 3px solid var(--rule);
+    background: var(--surface);
+    border: 1px solid var(--rule-soft);
+    border-left: 3px solid var(--rule);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .rstep[data-state="done"] .rstep-when { border-left-color: var(--done); color: var(--done); }
+  .rstep[data-state="active"] .rstep-when { border-left-color: var(--pending); }
+
+  /* What actually happened. A step that only lists what was built reads
+     like a plan that went perfectly, and none of them do. The snags are
+     the part worth reading back in six months. */
+
+  .snags { display: flex; flex-direction: column; gap: 7px; }
+
+  .snags-head {
+    font-family: var(--mono);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.13em; text-transform: uppercase;
+    color: var(--fixed);
+  }
+
+  .snags ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 7px; }
+
+  .snags li {
+    position: relative;
+    padding-left: 26px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+
+  .snags li::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 16px;
+    text-align: center;
+    content: "\21bb";
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--fixed);
+    line-height: 1.6;
+  }
+
+  .snags b { color: var(--ink); font-weight: 600; }
+
+  /* ---------- plan vs reality ----------
+     The planned pieces, kept as planned, and marked with what actually
+     became of each. Rewriting the plan to match the outcome hides the
+     only interesting part: where the two differed and why. */
+
+  .substeps li[data-outcome] { color: var(--ink-2); }
+  .substeps li[data-outcome="kept"]    { color: var(--done); }
+  .substeps li[data-outcome="kept"]::before    { content: "\2713"; color: var(--done); font-weight: 700; }
+  .substeps li[data-outcome="changed"] { color: var(--fixed); }
+  .substeps li[data-outcome="changed"]::before { content: "\21bb"; color: var(--fixed); }
+  .substeps li[data-outcome="added"]   { color: var(--pending); }
+  .substeps li[data-outcome="added"]::before   { content: "+"; color: var(--pending); }
+  .substeps li[data-outcome="dropped"] { color: var(--ink-3); }
+  .substeps li[data-outcome="dropped"]::before { content: "\2717"; color: var(--ink-3); }
+  .substeps li[data-outcome="dropped"] > s { text-decoration-color: var(--ink-3); }
+
+  /* The reason sits under the piece, in the body face, because it is
+     the sentence actually worth reading. */
+  .substeps li .why {
+    display: block;
+    padding-left: 1px;
+    font-family: var(--body);
+    font-style: normal;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    margin-top: 4px;
+  }
+
+  .verdict {
+    display: flex; flex-wrap: wrap; gap: 5px 8px;
+    font-family: var(--mono);
+    font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+
+  /* ---------- plan / reality, as two drawers ----------
+     A step's plan and its outcome are different documents. Side by side
+     in one blob they blur; as two drawers you can read either alone, and
+     the summaries alone tell you whether it drifted. */
+
+  .drawer {
+    border: 1px solid var(--rule);
+    border-radius: 5px;
+    background: var(--surface);
+    overflow: hidden;
+  }
+
+  /* Open drawers are tinted so a glance shows what is expanded, which
+     matters once six of them nest three deep. */
+  /* ---------- three levels of tint ----------
+     A drawer reads at rest, under the cursor, and open, and each has to
+     look different from the one before it. Mixed from the theme's own
+     ink and green, so light and dark both work from one rule and the
+     card keeps its tint on the body, not just the bar: an open drawer
+     should look like an open card, not a heading with loose text under
+     it. Plan drawers run grey, outcome drawers green, because green
+     already means "this passed" everywhere else on the page. */
+
+  .drawer[data-kind="plan"] > summary {
+    background: color-mix(in srgb, var(--ink) 4%, var(--surface));
+  }
+  .drawer[data-kind="plan"] > summary:hover {
+    background: color-mix(in srgb, var(--ink) 10%, var(--surface));
+  }
+  .drawer[data-kind="plan"][open] {
+    background: color-mix(in srgb, var(--ink) 3%, var(--surface));
+    border-color: color-mix(in srgb, var(--ink) 18%, var(--surface));
+  }
+  .drawer[data-kind="plan"][open] > summary {
+    background: color-mix(in srgb, var(--ink) 9%, var(--surface));
+  }
+  .drawer[data-kind="plan"][open] > .drawer-body {
+    background: color-mix(in srgb, var(--ink) 2%, var(--surface));
+  }
+
+  /* Only the plan card inside a step. It sits next to the green outcome
+     card and has to hold its own against it; the outer grey drawers
+     (Steps, Why, Contracts, Notes) stay light so the page does not turn
+     into one flat slab. */
+
+  .rstep-body > .drawer[data-kind="plan"] > summary {
+    background: color-mix(in srgb, var(--ink) 9%, var(--surface));
+  }
+  .rstep-body > .drawer[data-kind="plan"] > summary:hover {
+    background: color-mix(in srgb, var(--ink) 16%, var(--surface));
+  }
+  .rstep-body > .drawer[data-kind="plan"][open] {
+    background: color-mix(in srgb, var(--ink) 8%, var(--surface));
+    border-color: color-mix(in srgb, var(--ink) 28%, var(--surface));
+  }
+  .rstep-body > .drawer[data-kind="plan"][open] > summary {
+    background: color-mix(in srgb, var(--ink) 15%, var(--surface));
+  }
+  .rstep-body > .drawer[data-kind="plan"][open] > .drawer-body {
+    background: color-mix(in srgb, var(--ink) 5%, var(--surface));
+  }
+
+  .drawer[data-kind="reality"] > summary {
+    background: color-mix(in srgb, var(--done) 9%, var(--surface));
+  }
+  .drawer[data-kind="reality"] > summary:hover {
+    background: color-mix(in srgb, var(--done) 20%, var(--surface));
+  }
+  .drawer[data-kind="reality"][open] {
+    background: color-mix(in srgb, var(--done) 7%, var(--surface));
+    border-color: color-mix(in srgb, var(--done) 40%, var(--surface));
+  }
+  .drawer[data-kind="reality"][open] > summary {
+    background: color-mix(in srgb, var(--done) 18%, var(--surface));
+  }
+  .drawer[data-kind="reality"][open] > .drawer-body {
+    background: color-mix(in srgb, var(--done) 4%, var(--surface));
+  }
+
+  .drawer + .drawer { margin-top: 8px; }
+
+  .drawer > summary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 10px;
+    padding: 10px 14px;
+    cursor: pointer;
+    list-style: none;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .drawer > summary::-webkit-details-marker { display: none; }
+  .drawer > summary:hover { color: var(--ink); }
+  .drawer > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .drawer > summary::after { content: "+"; margin-left: auto; color: var(--ink-3); font-size: 13px; }
+  .drawer[open] > summary::after { content: "\2212"; }
+  .drawer[open] > summary { border-bottom: 1px solid var(--rule); }
+
+  .drawer-body > h3 {
+    font-family: var(--mono);
+    font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-3);
+    margin-top: 6px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .drawer-body > h3:first-of-type { margin-top: 0; }
+
+  .drawer-body { padding: 13px 12px; display: flex; flex-direction: column; gap: 13px; }
+
+  /* Every drawer says what it is for. Two of them, Steps and Log, cover
+     the same work from different angles, and without this the second
+     one reads as a duplicate of the first. */
+  .drawer-what {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink-3);
+    padding-bottom: 11px;
+    border-bottom: 1px dashed var(--rule);
+  }
+
+  .drawer[data-kind="reality"] > summary { color: var(--done); }
+  .drawer[data-kind="plan"] > summary .tag-drift {
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    color: var(--ink-3);
+  }
+
+  .verdict span { padding: 2px 7px; border-radius: 3px; border: 1px solid; }
+  .verdict .v-kept    { color: var(--done);    border-color: var(--done);    background: var(--done-soft); }
+  .verdict .v-changed { color: var(--fixed);   border-color: var(--fixed);   background: var(--fixed-soft); }
+  .verdict .v-added   { color: var(--pending); border-color: var(--pending); background: var(--pending-soft); }
+  .verdict .v-dropped { color: var(--ink-3);   border-color: var(--rule);    background: var(--surface); }
 
   /* ---------- design option wireframes ----------
      For a feature that compares layouts, draw the options as flat CSS
@@ -636,7 +1088,7 @@
 
   .btn {
     font-family: var(--mono);
-    font-size: 8.5px; font-weight: 500;
+    font-size: 9.5px; font-weight: 500;
     letter-spacing: 0.05em;
     padding: 3px 6px;
     border: 1px solid var(--rule);
@@ -684,49 +1136,65 @@
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 
   @media (max-width: 880px) {
-    .shell { grid-template-columns: minmax(0, 1fr); gap: 0; padding: 0 16px 60px; }
-    .side { position: static; max-height: none; padding: 24px 0 0; gap: 18px; }
-    .nav-group { flex-direction: row; flex-wrap: wrap; gap: 6px; }
-    .nav-head { width: 100%; }
-    .nav-link { grid-template-columns: auto auto; gap: 8px; border: 1px solid var(--rule); padding: 6px 11px; font-size: 13.5px; }
-    .nav-note { width: 100%; }
-    main { padding-top: 26px; }
+    .shell { padding: 0 16px 60px; }
+    .switch { margin-left: 0; width: 100%; }
+    .nav-link { padding: 6px 10px; font-size: 10.5px; }
     h1 { font-size: 33px; }
     .lede { font-size: 17px; }
     .scope { grid-template-columns: 1fr; gap: 22px; }
     .row { grid-template-columns: 1fr; }
     .item { grid-template-columns: 28px minmax(0, 1fr); }
     .item .pill { grid-column: 2; justify-self: start; margin-top: 4px; }
+    .where { position: static; gap: 8px 12px; }
+    .where-arrow { display: none; }
+    .where-spacer { display: none; }
+    .where-count { text-align: left; width: 100%; }
+    .strip { gap: 12px 14px; }
+    .cell { min-width: 24px; padding: 4px; font-size: 10px; }
   }
 </style>
 
 <div class="shell">
 
-  <aside class="side">
-    <div class="brand">
-      <div class="brand-name">facing-dani</div>
-      <div class="brand-sub">Build log<br>Not yet published</div>
+  <!-- Brand, switcher and position in one sticky block. The roadmap is
+       home; the other views are two buttons away and take no width when
+       you are not in them. -->
+  <header class="topbar">
+    <div class="topbar-row">
+      <div class="brand">
+        <span class="brand-name">facing-dani</span>
+        <span class="brand-sub">Build log &middot; Sep 20, 2026</span>
+      </div>
+      <nav class="switch" aria-label="Views">
+        <button class="nav-link" data-view="roadmap">Roadmap</button>
+        <button class="nav-link" data-view="project">The project</button>
+      </nav>
     </div>
 
-    <nav class="nav-group" aria-label="Project sections">
-      <div class="nav-head">Project</div>
-      <button class="nav-link" data-view="project"><span class="nav-dot"></span><span>The project</span></button>
-      <button class="nav-link" data-view="roadmap"><span class="nav-dot"></span><span>Roadmap</span></button>
-    </nav>
-
-    <nav class="nav-group" aria-label="Features">
-      <div class="nav-head">Features</div>
-      <div class="nav-note">A group lands here each time <code>/feature</code> specs one. Nothing has been specced yet.</div>
-    </nav>
-
-    <div class="legend" aria-label="What the markers mean">
-      <div class="nav-head">Key</div>
-      <div class="legend-row"><span class="legend-mark legend-mark--ask">!</span><span>Blocked on you &mdash; the build stops until you answer</span></div>
-      <div class="legend-row"><span class="legend-mark legend-mark--open">?</span><span>Open question &mdash; the build continues</span></div>
-      <div class="legend-row"><span class="legend-mark legend-mark--done">&#10003;</span><span>Done, or a decision you approved</span></div>
-      <div class="legend-row"><span class="legend-mark legend-mark--fix">&#8635;</span><span>A real fault found and repaired</span></div>
+    <div class="where">
+      <div class="where-leg">
+        <div class="where-key">Phase</div>
+        <div class="where-val">0 &middot; Planning</div>
+      </div>
+      <span class="where-arrow">&rsaquo;</span>
+      <div class="where-leg">
+        <div class="where-key">Item</div>
+        <div class="where-val">None yet</div>
+      </div>
+      <span class="where-arrow">&rsaquo;</span>
+      <div class="where-leg" data-now="yes">
+        <div class="where-key">Step now</div>
+        <div class="where-val">Design locked, waiting on four answers</div>
+      </div>
+      <span class="where-spacer"></span>
+      <div class="where-leg">
+        <div class="where-key">Plan sections</div>
+        <div class="meter" title="Section 7 written, 1 to 6 and 8 still to write">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i data-state="done"></i><i></i>
+        </div>
+      </div>
     </div>
-  </aside>
+  </header>
 
   <main>
 
@@ -741,9 +1209,10 @@
           <h1>facing-dani</h1>
         </div>
         <p class="lede">
-          This page is the project's status board. It answers where things stand in a few seconds,
-          without reading a transcript. <code>/overview</code> writes this view and the roadmap
-          from the two plan docs; every feature adds its own group as it starts.
+          A small marketing site for a Calgary nail, lash and makeup artist. This page is the
+          project's status board. It answers where things stand in a few seconds, without reading
+          a transcript. <code>/overview</code> writes this view and the roadmap from the two plan
+          docs; every feature adds its own group as it starts.
         </p>
       </header>
 
@@ -756,7 +1225,7 @@
           </div>
           <div class="row">
             <div class="row-key">2 &middot; Users</div>
-            <div class="row-val placeholder">Section 2.</div>
+            <div class="row-val placeholder">Section 2. Known but not yet written: her clients are roughly 15 to 25, phone first, arriving from an Instagram bio link.</div>
           </div>
           <div class="row">
             <div class="row-key">3 &middot; Features</div>
@@ -768,7 +1237,7 @@
           </div>
           <div class="row">
             <div class="row-key">5 &middot; Tech</div>
-            <div class="row-val placeholder">Section 5.</div>
+            <div class="row-val placeholder">Section 5. Scaffolded as Next.js 16 with no separate backend: shadcn, zod and react-hook-form, Resend, ImageKit. No database, no auth.</div>
           </div>
           <div class="row">
             <div class="row-key">6 &middot; Monetize</div>
@@ -776,7 +1245,7 @@
           </div>
           <div class="row">
             <div class="row-key">7 &middot; UI/UX</div>
-            <div class="row-val placeholder">Section 7.</div>
+            <div class="row-val"><strong>After Party.</strong> Vibrant and active, never spa-calm. Plum ground <code>#261F36</code>, four colour-coded accents, Unbounded over Inter, mobile first because the site is an Instagram bio link. Decided from rendered options in <code>blueprint/reference/</code>, not from adjectives. Written in full in <code>project-plan.md</code>.</div>
           </div>
           <div class="row">
             <div class="row-key">8 &middot; Deployment</div>
@@ -787,16 +1256,27 @@
 
       <section>
         <h2>Locked decisions</h2>
-        <div class="empty">
-          <span>No decisions locked yet.</span>
-          <span class="mono">Anything a later feature depends on staying stable gets listed here by <code>/overview</code>.</span>
+        <div class="notes">
+          <ul>
+            <li>The ground is <code>#261F36</code>, a plum rather than a black. Picked over darker options that had more neon punch but read as severe.</li>
+            <li>Four accents, each with a job: pink is nails, violet is lashes, orange is makeup, mint is confirmation. They are navigation, never decoration.</li>
+            <li>Every accent needs a darker twin. The fills fail contrast under 18px, so small text and prices use the darker value, never the fill.</li>
+            <li>Type is Unbounded 800 for headlines and Inter for everything else. Anton read as a gym poster, Fredoka as a cereal box.</li>
+            <li>Dark is the brand. A light twin exists, and the rule is that glow becomes tint. The gradient CTA and ticker are identical in both, which is what keeps it one brand.</li>
+            <li>Whether visitors get a theme toggle is still open. Leaning no.</li>
+            <li>Mobile is the product, not a consideration. Every mockup was drawn at phone width.</li>
+            <li>Her photos need dark-friendly backgrounds. She has to hear this before she shoots, not after.</li>
+            <li>Motion in CSS only. <code>motion</code> is not installed and is not being added.</li>
+            <li>SEO is the slow second engine here. Google Business Profile and her Instagram will out-earn the site for the first year.</li>
+            <li>At 17 and likely working from home, a street address in the schema is a privacy call, not a default.</li>
+          </ul>
         </div>
       </section>
 
       <footer>
-        <span>Not yet generated</span>
+        <span>Generated Sep 20, 2026</span>
         <span>&middot;</span>
-        <span>Sources: blueprint/project-plan.md, build-plan.md, project-overview.md</span>
+        <span>Sources: blueprint/project-plan.md section 7, blueprint/reference/</span>
       </footer>
     </div>
 
@@ -811,115 +1291,181 @@
           <h1>Roadmap</h1>
         </div>
         <p class="lede">
-          Every line of <code>build-plan.md</code>, in build order. Each becomes its own group in
-          this log the moment it starts.
+          Mostly empty on purpose. <code>build-plan.md</code> has not been written yet, and
+          <code>/overview</code> is what fills this view from it. Nothing gets built until the two
+          plan docs are done, which is the point of the gate rather than a delay.
         </p>
-        <div class="facts">
-          <span class="pill pill--plan">0 planned</span>
-          <span class="sep">/</span>
-          <span class="pill pill--live">0 in progress</span>
-          <span class="sep">/</span>
-          <span class="pill pill--done">0 done</span>
+        <div class="tally">
+          <span class="tally-part" data-state="done"><span class="tally-key">Done</span><span class="tally-val">Design direction</span></span>
+          <span class="tally-part" data-state="active"><span class="tally-key">Now</span><span class="tally-val">Writing the two plan docs</span></span>
+          <span class="tally-part" data-state="planned"><span class="tally-key">Next</span><span class="tally-val">/overview, then /prototype</span></span>
         </div>
       </header>
 
       <section>
         <h2>Build plan</h2>
-        <div class="empty">
-          <span>No build plan yet.</span>
-          <span class="mono">Run <code>/overview</code> after both plan docs are written.</span>
+
+        <div class="stage">
+          <div class="stage-head"><span class="stage-name">Phase 0 &middot; Decide</span><span class="stage-note">Exit: both plan docs written, overview generated, theme.css locked</span></div>
+          <div class="item" data-state="done"><div class="item-num">0a</div><div class="item-body"><div class="item-name">Design direction</div><p class="item-text">After Party: plum ground, four colour-coded accents, Unbounded over Inter, dark as the brand with a light twin. Chosen by rendering four directions and comparing them at phone width rather than describing them. The sketches and the reference screenshots that fed them are in <code>blueprint/reference/</code>.</p></div><span class="pill pill--done">Done</span></div>
+          <div class="item" data-state="active"><div class="item-num">0b</div><div class="item-body"><div class="item-name">The two plan docs</div><p class="item-text">Section 7 of <code>project-plan.md</code> is written. Sections 1 to 6 and 8 wait on four answers only the client can give: her business name, whether a logo exists, where she works from, and how bookings should arrive.</p></div><span class="pill">Building</span></div>
+          <div class="item"><div class="item-num">0c</div><div class="item-body"><div class="item-name">Overview and prototype</div><p class="item-text"><code>/overview</code> generates <code>project-overview.md</code> and fills this page. <code>/prototype</code> turns the locked direction into a single <code>prototypes/theme.css</code>, which ports into <code>globals.css</code> <code>@theme</code> at the first UI feature.</p></div><span class="pill">Planned</span></div>
         </div>
+
       </section>
 
       <footer>
-        <span>Not yet generated</span>
-        <span>&middot;</span>
-        <span>Source: blueprint/build-plan.md</span>
+        <span>The rest of the roadmap fills when <code>build-plan.md</code> is written</span>
       </footer>
     </div>
 
-    <!-- ================= FEATURE GROUP TEMPLATE =================
-         /feature copies this block once per feature, replaces N and the
-         name, fills the steps from the spec, and adds a nav-link for it.
-         Keep it hidden and out of the nav; it is a stencil, not a view.
+    <!-- ================= ITEM ROW TEMPLATE =================
+         There is no page per feature. Everything about the item being
+         built lives in its own roadmap row, as the drawers below.
+         /feature builds this when it specs an item; /implement updates
+         it at every step; /complete closes it off.
 
-    <div id="view-feature-N" hidden>
-      <header class="head">
-        <div>
-          <div class="eyebrow">Feature N of M &middot; milestone</div>
-          <h1>Feature name</h1>
-        </div>
-        <div class="facts">
-          <span class="pill pill--live">In progress</span>
-          <span class="sep">/</span>
-          <span>branch <code>feature/slug</code></span>
-          <span class="sep">/</span>
-          <span>0 of K steps done</span>
-        </div>
+         Four rules, each learned by getting it wrong first:
+
+         1. One numbering. Roadmap item N owns steps N.1 to N.k. Never
+            number a feature's steps from 1, and never put a bare count
+            beside a numbered list - "2 done" next to items 1, 2, 3
+            reads as "item 2 is done". Name the items instead.
+         2. Gates carry no numbers, for the same reason.
+         3. Update the .where bar in the topbar in the same edit as the
+            step. It is the only thing every view shares, so a stale one
+            is wrong on both.
+         4. Nothing appears in two places. A second view repeating these
+            steps is exactly what was removed; if something seems to
+            belong in both, link instead of restating.
+
+         Closed, the row is one line among 28. Open, it is the whole
+         record. Only the item being built carries drawers; planned
+         items stay a title and a sentence.
+
+    <div class="item" data-state="active">
+      <div class="item-num">N</div>
+      <div class="item-body">
+        <div class="item-name">Item name</div>
+        <p class="item-text">The one-line plan, then a short paragraph on why this item exists at all.</p>
+
         <div class="gates">
-          <span class="gate-chip" data-state="pass">Gate 1 &mdash; spec agreed</span>
-          <span class="gate-chip">Gate 2 &mdash; built &amp; verified</span>
-          <span class="gate-chip">Gate 3 &mdash; commit granted</span>
+          <span class="gate-chip" data-state="pass">Spec agreed</span>
+          <span class="gate-chip">Built &amp; verified</span>
+          <span class="gate-chip">Commit granted</span>
         </div>
-        <div class="rail">
-          <div class="rail-item" data-state="active"><div class="rail-bar"></div><div class="rail-label">1 Step</div></div>
-          <div class="rail-item"><div class="rail-bar"></div><div class="rail-label">2 Step</div></div>
-        </div>
-      </header>
 
-      <section>
-        <h2>Build log &middot; newest first</h2>
-        <div class="log">
-          <div class="entry" data-kind="decided">
-            <div class="dot"></div>
-            <div class="entry-body">
-              <div class="entry-top">
-                <span class="entry-title">Spec approved</span>
-                <span class="kind-tag">Decided</span>
-                <span class="stamp">Mon D</span>
+        <details class="drawer" data-kind="plan" open>
+          <summary>Steps <span class="tag-drift">N.1 done &middot; N.2 now &middot; k in this item</span></summary>
+          <div class="drawer-body">
+            <div class="item-steps">
+
+              <details class="rstep" data-state="done">
+                <summary><span class="sn">N.1</span><span class="sm"></span><span>Step name</span><span class="ss">Done</span></summary>
+                <div class="rstep-body">
+                  <p class="rstep-what">What this step does, and why it is a step at all.</p>
+
+                  <details class="drawer" data-kind="plan">
+                    <summary>The plan <span class="tag-drift">as written before starting &middot; n pieces</span></summary>
+                    <div class="drawer-body">
+                      <ul class="substeps"><li>a planned piece</li></ul>
+                      <div class="rstep-when">Done when: the gate, as written in the spec.</div>
+                    </div>
+                  </details>
+
+                  <details class="drawer" data-kind="reality">
+                    <summary>What actually happened <span class="tag-drift">x of n pieces moved</span></summary>
+                    <div class="drawer-body">
+                      <div class="verdict">
+                        <span class="v-kept">n as planned</span>
+                        <span class="v-changed">n changed</span>
+                        <span class="v-added">n added</span>
+                        <span class="v-dropped">n dropped</span>
+                      </div>
+                       Never rewrite the plan above to match this. Mark each
+                           planned piece with what became of it; the drift is the
+                           record. The reason goes in an em carrying class "why", which
+                           renders as a block; a bare em in one of these
+                           bullets would be promoted to a block too and split
+                           the line. Use strong or b for inline emphasis. 
+                      <ul class="substeps">
+                        <li data-outcome="kept">done as planned</li>
+                        <li data-outcome="changed">done differently<em class="why">why</em></li>
+                        <li data-outcome="added">not planned<em class="why">what forced it</em></li>
+                        <li data-outcome="dropped"><s>abandoned</s><em class="why">why</em></li>
+                      </ul>
+                      <div class="snags">
+                        <div class="snags-head">What bit</div>
+                        <ul><li><b>The short version.</b> Then the reason. Written unprompted; a step that closes claiming it all went to plan is usually one whose problems went unrecorded.</li></ul>
+                      </div>
+                      <div class="rstep-when">The observed result.</div>
+                    </div>
+                  </details>
+                </div>
+              </details>
+
+            </div>
+          </div>
+        </details>
+
+        <details class="drawer" data-kind="plan">
+          <summary>Why this item exists <span class="tag-drift">and what it locks in</span></summary>
+          <div class="drawer-body">
+            <p>The goal, in plain words.</p>
+            <div class="scope">
+              <div class="scope-in"><div class="scope-head">In</div><ul><li>...</li></ul></div>
+              <div class="scope-out"><div class="scope-head">Out</div><ul><li>... - which item owns it instead</li></ul></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="drawer" data-kind="reality">
+          <summary>Decisions <span class="tag-drift">n made, with why the rejected options lost</span></summary>
+          <div class="drawer-body">
+             When a decision compared alternatives, draw them as .options
+                 cards with .wire diagrams. Prose cannot be compared at a glance. 
+            <div class="options"><div class="opt" data-match="yes">...</div></div>
+          </div>
+        </details>
+
+        <details class="drawer" data-kind="plan">
+          <summary>Contracts <span class="tag-drift">n that later items inherit</span></summary>
+          <div class="drawer-body"><div class="rows"><div class="row"><div class="row-key">Name</div><div class="row-val">The rule.</div></div></div></div>
+        </details>
+
+        <details class="drawer" data-kind="reality">
+          <summary>Log <span class="tag-drift">n entries, newest first</span></summary>
+          <div class="drawer-body">
+            <div class="log">
+              <div class="entry" data-kind="decided">
+                <div class="dot"></div>
+                <div class="entry-body">
+                  <div class="entry-top"><span class="entry-title">What happened</span><span class="kind-tag">Decided</span><span class="stamp">Mon D</span></div>
+                  <p class="entry-text">And why the rejected option was rejected.</p>
+                </div>
               </div>
-              <p class="entry-text">What was chosen, and why the other option lost.</p>
             </div>
           </div>
-        </div>
-      </section>
+        </details>
 
-      <section>
-        <h2>Goal</h2>
-        <p>One paragraph from the spec.</p>
-      </section>
+        <details class="drawer" data-kind="plan">
+          <summary>Notes <span class="tag-drift">departures, additions and loose ends</span></summary>
+          <div class="drawer-body"><div class="notes"><ul><li>...</li></ul></div></div>
+        </details>
 
-      <section>
-        <h2>Build steps</h2>
-        <div class="steps">
-          <div class="step">
-            <div class="box">&#10003;</div>
-            <div class="step-body">
-              <div class="step-name">1 &middot; Step name</div>
-              <p class="step-text">What it does.</p>
-              <div class="verify">Done when: the gate, as written in the spec.</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2>Scope</h2>
-        <div class="scope">
-          <div class="scope-in"><div class="scope-head">In</div><ul><li>...</li></ul></div>
-          <div class="scope-out"><div class="scope-head">Out</div><ul><li>...</li></ul></div>
-        </div>
-      </section>
-
-      <footer>
-        <span>Updated Mon D, YYYY</span>
-        <span>&middot;</span>
-        <span>Source: blueprint/context/current-feature.md</span>
-      </footer>
+      </div>
+      <span class="pill pill--live">In progress</span>
     </div>
     -->
-
+    <!-- ================= FEATURE 1 ================= -->
   </main>
+
+  <div class="keyrow" aria-label="What the markers mean">
+    <span class="legend-row"><span class="legend-mark legend-mark--ask">!</span><span>Blocked on you</span></span>
+    <span class="legend-row"><span class="legend-mark legend-mark--open">?</span><span>Open question, build continues</span></span>
+    <span class="legend-row"><span class="legend-mark legend-mark--done">&#10003;</span><span>Done, or a decision you approved</span></span>
+    <span class="legend-row"><span class="legend-mark legend-mark--fix">&#8635;</span><span>A real fault found and repaired</span></span>
+  </div>
 </div>
 
 <script>
@@ -941,7 +1487,7 @@
     link.addEventListener("click", function () { selectView(link.dataset.view); });
   });
 
-  var initial = "project";
+  var initial = "roadmap";
   try {
     var saved = localStorage.getItem("facing-dani-log-view");
     if (saved && document.getElementById("view-" + saved)) initial = saved;
