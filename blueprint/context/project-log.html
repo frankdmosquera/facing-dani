@@ -1184,13 +1184,13 @@
       <span class="where-arrow">&rsaquo;</span>
       <div class="where-leg" data-now="yes">
         <div class="where-key">Step now</div>
-        <div class="where-val">Design locked, waiting on four answers</div>
+        <div class="where-val">Overview generated, ready to spec item 1</div>
       </div>
       <span class="where-spacer"></span>
       <div class="where-leg">
         <div class="where-key">Plan sections</div>
-        <div class="meter" title="Section 7 written, 1 to 6 and 8 still to write">
-          <i></i><i></i><i></i><i></i><i></i><i></i><i data-state="done"></i><i></i>
+        <div class="meter" title="All eight sections of project-plan.md written">
+          <i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i>
         </div>
       </div>
     </div>
@@ -1221,27 +1221,27 @@
         <div class="rows">
           <div class="row">
             <div class="row-key">1 &middot; Problem</div>
-            <div class="row-val placeholder">Written by <code>/overview</code> from <code>project-plan.md</code> section 1.</div>
+            <div class="row-val">Instagram shows her work but cannot hold a price list, cannot be found on Google, and is a poor gallery when someone wants to inspect one set closely. The site is what her bio link points at, and the job stays narrow: look like a real business, show the work at a size where quality is visible, answer what/how much/how long without a DM, and take the booking. <strong>What she sells is craft, not price</strong> - trained in Colombia, drilled on the shape and cuticle work that decides whether a set still looks good in week three. Price is deliberately not the angle, because it is the one advantage that disappears the moment she raises her rates.</div>
           </div>
           <div class="row">
             <div class="row-key">2 &middot; Users</div>
-            <div class="row-val placeholder">Section 2. Known but not yet written: her clients are roughly 15 to 25, phone first, arriving from an Instagram bio link.</div>
+            <div class="row-val">Four, and the first one decides nearly everything. <strong>The client, roughly 15 to 25</strong>, arrives from an Instagram bio link, on a phone, at night, already choosing between artists she follows. <strong>Her mother</strong>, paying for a grad set, needs the business to look legitimate in four seconds and will not DM a teenager, which is why the form exists. <strong>The Spanish-speaking client</strong> searches in Spanish and currently finds nothing local. <strong>Dani herself</strong> needs one link so her DMs stop being a price list.</div>
           </div>
           <div class="row">
             <div class="row-key">3 &middot; Features</div>
-            <div class="row-val placeholder">Section 3.</div>
+            <div class="row-val">Eight pages in two languages: home, a gallery, one page per service, about, contact and a thank-you page. Three rules decide what is in: <strong>both languages per page</strong> (a page is not done in one), <strong>SEO ships with the page it describes</strong>, and <strong>no placeholder text</strong> - Spanish written by Dani, not by a translator. Out: payment, deposits, real-time availability, client accounts, on-site reviews, a blog.</div>
           </div>
           <div class="row">
             <div class="row-key">4 &middot; Data</div>
-            <div class="row-val placeholder">Section 4.</div>
+            <div class="row-val"><strong>Nothing in a database</strong>, and that is a decision. Every fact is a typed file in the repo, so it is version controlled and reviewable in a diff. The split that matters: prices, durations, ImageKit paths and ordering are <em>shared</em>; names, descriptions, alt text, FAQ copy and metadata are <em>locale-keyed</em>. A price stored twice will one day disagree with itself. Images are records, never files. The only thing that leaves the machine is a contact form submission, emailed and not retained.</div>
           </div>
           <div class="row">
             <div class="row-key">5 &middot; Tech</div>
-            <div class="row-val placeholder">Section 5. Scaffolded as Next.js 16 with no separate backend: shadcn, zod and react-hook-form, Resend, ImageKit. No database, no auth.</div>
+            <div class="row-val">Next.js 16 and React 19, App Router, no separate backend. shadcn on Base UI with lucide, Tailwind v4 with the theme as CSS variables in <code>@theme</code>, react-hook-form with zod validated on both sides, Resend from a Server Action, ImageKit doing real work for a photo-led gallery. <strong>i18n is hand-rolled</strong> - a <code>[locale]</code> segment and a dictionary per locale, no package. No database, no auth, no object storage, no motion library; all four were offered by the scaffolder and declined.</div>
           </div>
           <div class="row">
             <div class="row-key">6 &middot; Monetize</div>
-            <div class="row-val placeholder">Section 6.</div>
+            <div class="row-val">The site does not make money. It is a sales asset, and the money is made in a chair. Success is bookings traceable to the site, measured by a "how did you find me" field plus Search Console - no analytics script, no cookie banner. <strong>The real return is the template.</strong> Calgary has many beauty businesses, most Latin-owned, and almost none have a bilingual site. That discipline costs nothing on client one and is worth a great deal on client two.</div>
           </div>
           <div class="row">
             <div class="row-key">7 &middot; UI/UX</div>
@@ -1249,7 +1249,7 @@
           </div>
           <div class="row">
             <div class="row-key">8 &middot; Deployment</div>
-            <div class="row-val placeholder">Section 8.</div>
+            <div class="row-val"><strong>Vercel</strong>, <code>npm run build</code>, no custom start command, three env vars, no database and no workers. English at the root and Spanish at <code>/es</code> - not a subdomain, because that splits a ranking signal this site has none of to spare. <strong>Deploy early and keep deploying</strong>, so Dani watches it grow on her phone and corrections arrive while they are cheap. The domain is not registered yet. A Google Business Profile will out-earn the site for the first year and is part of the engagement, not an afterthought.</div>
           </div>
         </div>
       </section>
@@ -1269,6 +1269,11 @@
             <li>Motion in CSS only. <code>motion</code> is not installed and is not being added.</li>
             <li>SEO is the slow second engine here. Google Business Profile and her Instagram will out-earn the site for the first year.</li>
             <li>At 17 and likely working from home, a street address in the schema is a privacy call, not a default.</li>
+            <li><strong>No component contains the word Dani.</strong> A component reads <code>siteConfig.business.name</code>. The test is whether a second beauty business could be stood up by editing <code>data/</code> and the theme and nothing else. If the answer is no, that is a bug and not a preference.</li>
+            <li><strong>A price lives in exactly one place.</strong> Prices, durations, ImageKit paths and ordering are shared across locales; only prose is keyed by locale. Storing a price twice guarantees they disagree one day, and the visitor will believe whichever one is wrong.</li>
+            <li><strong>A missing Spanish string is a build error</strong>, never a silent fallback to English. Falling back quietly is how a site ends up half-translated without anyone noticing.</li>
+            <li><strong>Both languages and its own SEO are the definition of done</strong>, not a finishing pass. A page that exists in one language is not done, and its metadata, JSON-LD and hreflang land in the same commit as the page.</li>
+            <li>The gallery comes before the pages that describe the work, because it is the page that sells it.</li>
           </ul>
         </div>
       </section>
@@ -1276,7 +1281,7 @@
       <footer>
         <span>Generated Sep 20, 2026</span>
         <span>&middot;</span>
-        <span>Sources: blueprint/project-plan.md section 7, blueprint/reference/</span>
+        <span>Sources: blueprint/project-plan.md, blueprint/build-plan.md, blueprint/reference/</span>
       </footer>
     </div>
 
@@ -1291,14 +1296,15 @@
           <h1>Roadmap</h1>
         </div>
         <p class="lede">
-          Mostly empty on purpose. <code>build-plan.md</code> has not been written yet, and
-          <code>/overview</code> is what fills this view from it. Nothing gets built until the two
-          plan docs are done, which is the point of the gate rather than a delay.
+          Nine items to an MVP, in build order. The shell carries the theme and the locale routing,
+          so it goes first and everything after inherits both. The gallery is the page that sells
+          the work, so it comes before the pages that describe it. Scaffolding and locking the look
+          were pre-build steps and sit in Phase 0 rather than in the list.
         </p>
         <div class="tally">
-          <span class="tally-part" data-state="done"><span class="tally-key">Done</span><span class="tally-val">Design direction</span></span>
-          <span class="tally-part" data-state="active"><span class="tally-key">Now</span><span class="tally-val">Writing the two plan docs</span></span>
-          <span class="tally-part" data-state="planned"><span class="tally-key">Next</span><span class="tally-val">/overview, then /prototype</span></span>
+          <span class="tally-part" data-state="done"><span class="tally-key">Done</span><span class="tally-val">0 of 9 MVP items</span></span>
+          <span class="tally-part" data-state="active"><span class="tally-key">Now</span><span class="tally-val">Nothing building</span></span>
+          <span class="tally-part" data-state="planned"><span class="tally-key">Next</span><span class="tally-val">1 &middot; Site shell and theme</span></span>
         </div>
       </header>
 
@@ -1308,14 +1314,47 @@
         <div class="stage">
           <div class="stage-head"><span class="stage-name">Phase 0 &middot; Decide</span><span class="stage-note">Exit: both plan docs written, overview generated, theme.css locked</span></div>
           <div class="item" data-state="done"><div class="item-num">0a</div><div class="item-body"><div class="item-name">Design direction</div><p class="item-text">After Party: plum ground, four colour-coded accents, Unbounded over Inter, dark as the brand with a light twin. Chosen by rendering four directions and comparing them at phone width rather than describing them. The sketches and the reference screenshots that fed them are in <code>blueprint/reference/</code>.</p></div><span class="pill pill--done">Done</span></div>
-          <div class="item" data-state="active"><div class="item-num">0b</div><div class="item-body"><div class="item-name">The two plan docs</div><p class="item-text">Section 7 of <code>project-plan.md</code> is written. Sections 1 to 6 and 8 wait on four answers only the client can give: her business name, whether a logo exists, where she works from, and how bookings should arrive.</p></div><span class="pill">Building</span></div>
-          <div class="item"><div class="item-num">0c</div><div class="item-body"><div class="item-name">Overview and prototype</div><p class="item-text"><code>/overview</code> generates <code>project-overview.md</code> and fills this page. <code>/prototype</code> turns the locked direction into a single <code>prototypes/theme.css</code>, which ports into <code>globals.css</code> <code>@theme</code> at the first UI feature.</p></div><span class="pill">Planned</span></div>
+          <div class="item" data-state="done"><div class="item-num">0b</div><div class="item-body"><div class="item-name">The two plan docs</div><p class="item-text">All eight sections of <code>project-plan.md</code> written, and <code>build-plan.md</code> written as nine MVP items plus three parked. Four decisions were taken along the way: this is the first build of a beauty template, craft rather than price is the angle, bilingual ships in the MVP, and attribution is a form field plus Search Console rather than an analytics script. Four assumptions stay tagged <code>[confirm]</code>: logo, location, booking route, domain.</p></div><span class="pill pill--done">Done</span></div>
+          <div class="item" data-state="done"><div class="item-num">0c</div><div class="item-body"><div class="item-name">Overview and prototype</div><p class="item-text"><code>/overview</code> has generated <code>project-overview.md</code> and filled this page. <code>prototypes/theme.css</code> exists and holds the locked direction; it ports into <code>globals.css</code> <code>@theme</code> at item 1. The mockups in <code>prototypes/</code> are throwaway and are not the app.</p></div><span class="pill pill--done">Done</span></div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-head"><span class="stage-name">Phase 1 &middot; MVP</span><span class="stage-note">Exit: eight pages live in both languages, deployed, each carrying its own SEO</span></div>
+          <div class="item"><div class="item-num">1</div><div class="item-body"><div class="item-name">Site shell and theme</div><p class="item-text">Port <code>prototypes/theme.css</code> into <code>globals.css</code> <code>@theme</code>, then build the header, mobile nav and footer against it. First because everything after it inherits the theme, and because a shell built after the pages means touching every page again.</p></div><span class="pill">Planned</span></div>
+          <div class="item"><div class="item-num">2</div><div class="item-body"><div class="item-name">Locale routing</div><p class="item-text">The <code>[locale]</code> segment, a dictionary per locale, the language switch, and the build error on a missing string. Hand-rolled, no package: two languages and eight pages do not need <code>next-intl</code>. Second because retrofitting a second language means reopening every page.</p></div><span class="pill">Planned</span></div>
+          <div class="item"><div class="item-num">3</div><div class="item-body"><div class="item-name">Home page</div><p class="item-text">Hero, the three services, a gallery teaser, her story, FAQ and the booking call to action. This is the page the Instagram bio link lands on, so it carries the short version of the craft angle and the bilingual claim.</p></div><span class="pill">Planned</span></div>
+          <div class="item"><div class="item-num">4</div><div class="item-body"><div class="item-name">Gallery</div><p class="item-text">The full set of work, filterable by service, at a size where the quality is actually visible. The headline feature and the reason the site exists at all - Instagram is a grid of squares, and a grid of squares is a poor way to judge a set of nails. Before the service pages, because it is the page that sells the work.</p></div><span class="pill">Planned</span></div>
+          <div class="item"><div class="item-num">5</div><div class="item-body"><div class="item-name">Service pages</div><p class="item-text">Nails, lashes and makeup, one page each, with treatments, prices and durations. Three pages and not one services page: a single page listing three services competes with itself and ranks for none of them. Each page owns its own terms and borrows none from the others.</p></div><span class="pill">Planned</span></div>
+          <div class="item"><div class="item-num">6</div><div class="item-body"><div class="item-name">About</div><p class="item-text">Her training and the trust a new business has not earned yet. The long version of the craft angle, and where the bilingual claim is made as a claim rather than implied by the existence of a <code>/es</code> URL.</p></div><span class="pill">Planned</span></div>
+          <div class="item"><div class="item-num">7</div><div class="item-body"><div class="item-name">Contact and booking</div><p class="item-text">The form with the "how did you find me" field, validation on both sides, Resend delivery from a Server Action, the direct booking route and a thank-you page. Load-bearing twice over: it is the booking route for anyone who will not DM, and the only attribution the site has.</p></div><span class="pill">Planned</span></div>
+          <div class="item"><div class="item-num">8</div><div class="item-body"><div class="item-name">Deploy</div><p class="item-text">Vercel, env vars, a verified production build and a preview URL Dani can open. Sits mid-list on purpose rather than at the end: if she first sees the site when it is finished, her corrections arrive when they are expensive.</p></div><span class="pill">Planned</span></div>
+          <div class="item"><div class="item-num">9</div><div class="item-body"><div class="item-name">Site-wide SEO pass</div><p class="item-text">Sitemap and robots across both locales, LocalBusiness data, and an audit that every page carries its own metadata and hreflang. The only SEO work that genuinely needs every page to exist - the rest shipped with the page it describes.</p></div><span class="pill">Planned</span></div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-head"><span class="stage-name">Post-MVP</span><span class="stage-note">Not scheduled. Listed so they stop being re-proposed as if they were new</span></div>
+          <div class="item"><div class="item-num">10</div><div class="item-body"><div class="item-name">Reviews on site</div><p class="item-text">Waits until there are reviews worth showing.</p></div><span class="pill pill--plan">Parked</span></div>
+          <div class="item"><div class="item-num">11</div><div class="item-body"><div class="item-name">Real booking</div><p class="item-text">Availability and deposits, only if DMs stop coping.</p></div><span class="pill pill--plan">Parked</span></div>
+          <div class="item"><div class="item-num">12</div><div class="item-body"><div class="item-name">Second client from this template</div><p class="item-text">The real test of the rule that a component never contains the word Dani.</p></div><span class="pill pill--plan">Parked</span></div>
         </div>
 
       </section>
 
+      <section>
+        <h2>Open questions</h2>
+        <div class="notes">
+          <ul>
+            <li><strong>The light theme has no owner.</strong> Section 7 specifies the light twin in detail and there is a rendered sketch, but no build item builds it and the toggle is left "leaning no". Dark only, light via <code>prefers-color-scheme</code> inside item 1, or its own item - only one of those is free. Worth deciding before item 1.</li>
+            <li><strong>Route slugs, and whether the Spanish ones are translated.</strong> <code>/es/unas</code> or <code>/es/nails</code>. Not cosmetic: it sets the hreflang pairing and the Spanish keyword targets. Decide at item 2.</li>
+            <li><strong>Google Business Profile and Search Console are not in the build plan.</strong> Section 8 calls the profile more important than the site for the first year and part of the engagement, but nothing tracks it. Either it gets an item or it is explicitly outside the plan.</li>
+            <li><strong>The business name is settled in one section and open in another.</strong> Section 4 names her Dani Moreno; section 8's domain row still reads "follows the business name, so <code>danimoreno.ca</code> or a studio name". The site and the profile must match character for character, so this has to be final first.</li>
+            <li><strong>Whether service pages carry their own FAQs.</strong> The data shape allows it and section 8 wants each service page to own its terms, but only the home page surfaces FAQ. Cheap at item 5, expensive to retrofit into the structured data.</li>
+          </ul>
+        </div>
+      </section>
+
       <footer>
-        <span>The rest of the roadmap fills when <code>build-plan.md</code> is written</span>
+        <span>Generated Sep 20, 2026 from blueprint/build-plan.md</span>
       </footer>
     </div>
 
