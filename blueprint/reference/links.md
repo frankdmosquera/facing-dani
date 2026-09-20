@@ -11,6 +11,26 @@ nothing; "the way the pricing cards stack on mobile" tells you why you saved it.
 - <url> - what to look at, and why
 ```
 
+## Ours
+
+Published artifacts from this project. Private until shared from each page's
+own Share menu. Republishing the same local file updates the same URL, so these
+links do not change.
+
+- https://claude.ai/artifact/99bTBTUPXZHDPHjTdTxjfZ - the build log,
+  `blueprint/context/project-log.html`. `/overview` refills it and republishes
+  to this same address.
+- https://claude.ai/artifact/EXcCvgP6fDQs4fWfWmyj3R - the home page mockup,
+  `prototypes/home.html`. Note the photos are Unsplash comps loaded from another
+  site, which the artifact viewer blocks, so this one only looks right on
+  `node prototypes/serve.mjs`.
+- https://claude.ai/artifact/RPRPJb24TKNEFjKabxda1Y - the photo guide for Dani,
+  `blueprint/reference/photo-guide.html`. Bilingual, phone shaped. Share it with
+  her before she shoots anything.
+
+The gallery mockup is deliberately not published, for the same comps reason.
+Run it locally.
+
 ## Links
 
 ### Worth copying
