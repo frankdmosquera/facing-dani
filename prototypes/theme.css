@@ -28,10 +28,18 @@
   --line: #514165;
   --line-soft: #3D3152;
 
-  /* text */
+  /* text
+     Measured against both backgrounds rather than eyeballed:
+       text   on ground 14.27  on surface 12.18
+       muted  on ground  6.98  on surface  5.95
+       faint  on ground  5.50  on surface  4.69
+     --faint started at #877B99 and failed AA for body text on both
+     (4.00 and 3.41). It is used at 11px and 13px, which are body sizes
+     whatever they look like, so it was lifted until it passed. This is
+     the lightest value that clears 4.5 on the lighter of the two. */
   --text: #F6F2FA;
   --muted: #B3A8C2;
-  --faint: #877B99;
+  --faint: #9F94AF;
 
   /* accents - each one has a job, none are decoration */
   --nails: #FF3D8F;
@@ -49,6 +57,17 @@
      the two modes reading as one brand. */
   --hot: linear-gradient(92deg, var(--nails), var(--makeup));
   --on-hot: #231A31;
+
+  /* Section glow. These belong here and not in the page, because the
+     whole promise of this file is that changing it reskins everything.
+     Hardcoding rgba() in the markup broke that, and broke light mode:
+     dark-strength blobs washed the light hero pink. Light mode below
+     turns the blur off and drops the alpha, which is the "glow becomes
+     tint" rule from project-plan.md section 7 made real. */
+  --glow-blur: 90px;
+  --glow-a: rgba(255, 61, 143, .42);   /* pink   */
+  --glow-b: rgba(169, 123, 255, .34);  /* violet */
+  --glow-c: rgba(255, 138, 61, .22);   /* orange */
 
   /* type */
   --display: "Unbounded", system-ui, sans-serif;
@@ -76,7 +95,15 @@
 
   --text: #1F1729;
   --muted: #6B6178;
-  --faint: #948BA1;
+  --faint: #7C7289;
+
+  /* Glow becomes tint. No blur, pale fills, same positions. A blurred
+     blob on a light ground reads as a smudge, and at dark-mode alpha it
+     drowns the page in pink. */
+  --glow-blur: 0px;
+  --glow-a: #FFE7F2;
+  --glow-b: #F1E9FF;
+  --glow-c: #FFF1E4;
 }
 
 /* ----------------------------------------------------------------------

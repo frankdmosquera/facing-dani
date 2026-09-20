@@ -24,7 +24,7 @@
   .glowwrap > * { position: relative; z-index: 1; }
   .glow { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
   .glow i {
-    position: absolute; border-radius: 50%; filter: blur(90px); display: block;
+    position: absolute; border-radius: 50%; filter: blur(var(--glow-blur)); display: block;
   }
 
   /* Photo slots.
@@ -282,8 +282,8 @@
 <!-- ================= HERO ================= -->
 <section class="hero glowwrap">
   <div class="glow" aria-hidden="true">
-    <i style="width:420px;height:420px;background:rgba(255,61,143,.42);top:-60px;right:-140px"></i>
-    <i style="width:380px;height:380px;background:rgba(169,123,255,.34);bottom:-40px;left:-160px"></i>
+    <i style="width:420px;height:420px;background:var(--glow-a);top:-60px;right:-140px"></i>
+    <i style="width:380px;height:380px;background:var(--glow-b);bottom:-40px;left:-160px"></i>
   </div>
   <div class="wrap inner">
     <div class="copy">
@@ -316,7 +316,7 @@
 <!-- ================= SERVICES ================= -->
 <section class="band glowwrap" id="services">
   <div class="glow" aria-hidden="true">
-    <i style="width:400px;height:400px;background:rgba(255,138,61,.20);top:60px;left:-180px"></i>
+    <i style="width:400px;height:400px;background:var(--glow-c);top:60px;left:-180px"></i>
   </div>
   <div class="wrap">
     <div class="head">
@@ -421,7 +421,7 @@
 <!-- ================= STORY ================= -->
 <section class="band story glowwrap" id="story">
   <div class="glow" aria-hidden="true">
-    <i style="width:420px;height:420px;background:rgba(169,123,255,.26);top:20px;right:-170px"></i>
+    <i style="width:420px;height:420px;background:var(--glow-b);top:20px;right:-170px"></i>
   </div>
   <div class="wrap inner">
     <div class="ph ph--mix" style="--img:url('https://images.unsplash.com/photo-1622336889416-8d790ad807d7?w=900&q=80&auto=format&fit=crop')" data-label="Dani at work"></div>
@@ -479,8 +479,8 @@
 <!-- ================= FINAL CTA ================= -->
 <section class="band final glowwrap" id="book">
   <div class="glow" aria-hidden="true">
-    <i style="width:480px;height:480px;background:rgba(255,61,143,.38);top:-80px;left:50%;margin-left:-240px"></i>
-    <i style="width:360px;height:360px;background:rgba(255,138,61,.24);bottom:-60px;right:-120px"></i>
+    <i style="width:480px;height:480px;background:var(--glow-a);top:-80px;left:50%;margin-left:-240px"></i>
+    <i style="width:360px;height:360px;background:var(--glow-c);bottom:-60px;right:-120px"></i>
   </div>
   <div class="wrap">
     <span class="eyebrow" style="display:block;margin-bottom:14px">Ready when you are</span>
