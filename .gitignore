@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Her photos. Deliberately not committed: a file can be deleted, git
+# history basically cannot. Frank said these come down later, and this
+# is what makes that actually true.
+prototypes/img/

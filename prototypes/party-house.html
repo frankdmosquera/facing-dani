@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Hers, not the internet's. This page is never indexed. -->
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<title>PARTY HOUSE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ---------------------------------------------------------------
+     PARTY HOUSE. A page for a nearly-seven-year-old, because an uncle
+     made a promise. Deliberately nothing like Dani's site: this one is
+     loud, bright and silly, which is the correct design brief here.
+
+     noindex is in the head on purpose. Everything else is throwaway.
+     --------------------------------------------------------------- */
+  :root{
+    --pink:#FF3D8F; --purple:#9B5CFF; --aqua:#25D9E8; --lemon:#FFD83D;
+    --lime:#7BE85C; --tang:#FF8A3D; --ink:#2B1145; --paper:#FFF6FB;
+    --display:"Baloo 2", system-ui, cursive; --body:Fredoka, system-ui, sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{
+    margin:0; font-family:var(--body); color:var(--ink);
+    background:
+      radial-gradient(1000px 620px at 12% -8%, #FFE3F2 0%, transparent 60%),
+      radial-gradient(880px 560px at 92% 8%, #E4E0FF 0%, transparent 62%),
+      radial-gradient(900px 600px at 50% 104%, #D8FBFF 0%, transparent 60%),
+      var(--paper);
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 18px 70px;position:relative;z-index:2}
+
+  /* confetti, CSS only */
+  .confetti{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+  .confetti i{
+    position:absolute;top:-24px;width:11px;height:16px;border-radius:3px;opacity:.85;
+    animation:fall linear infinite;
+  }
+  @keyframes fall{
+    0%{transform:translateY(-10vh) rotate(0deg)}
+    100%{transform:translateY(112vh) rotate(720deg)}
+  }
+  @media (prefers-reduced-motion: reduce){ .confetti i{animation:none;opacity:.35} }
+
+  /* ---------- title ---------- */
+  header{text-align:center;padding:38px 0 8px}
+  .hello{
+    display:inline-block;font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;
+    background:#fff;border:3px solid var(--ink);border-radius:999px;padding:8px 18px;
+    box-shadow:4px 4px 0 var(--ink); transform:rotate(-2deg); margin-bottom:22px;
+  }
+  h1{
+    font-family:var(--display);font-weight:800;margin:0;
+    font-size:clamp(50px,15vw,108px);line-height:.86;letter-spacing:-.02em;
+    text-transform:uppercase;
+  }
+  h1 span{display:block}
+  h1 .a{color:var(--pink);  transform:rotate(-2deg)}
+  h1 .b{color:var(--purple);transform:rotate(1.5deg)}
+  h1 span{
+    -webkit-text-stroke:3px var(--ink);
+    paint-order:stroke fill;
+    text-shadow:6px 6px 0 rgba(43,17,69,.16);
+  }
+  .tag{
+    margin:20px auto 0;font-size:19px;font-weight:600;max-width:24ch;line-height:1.45;
+  }
+  .tag b{background:var(--lemon);border-radius:8px;padding:1px 8px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+  /* ---------- star photo ---------- */
+  .star{
+    margin:34px auto 0;max-width:420px;position:relative;
+  }
+  .frame{
+    border:6px solid var(--ink);border-radius:26px;overflow:hidden;
+    box-shadow:10px 10px 0 var(--pink); background:#fff;
+    transform:rotate(-1.4deg);
+  }
+  .frame img{display:block;width:100%;height:auto}
+  .sticker{
+    position:absolute;font-family:var(--display);font-weight:800;font-size:16px;
+    background:#fff;border:3px solid var(--ink);border-radius:999px;padding:9px 16px;
+    box-shadow:3px 3px 0 var(--ink); white-space:nowrap; z-index:3;
+  }
+  .s1{top:-16px;left:-8px;transform:rotate(-8deg);color:var(--purple)}
+  .s2{bottom:-16px;right:-6px;transform:rotate(7deg);color:var(--pink)}
+
+  /* ---------- cards ---------- */
+  h2{
+    font-family:var(--display);font-weight:800;font-size:clamp(28px,7vw,42px);
+    text-align:center;margin:56px 0 6px;text-transform:uppercase;letter-spacing:-.01em;
+  }
+  .sub{text-align:center;font-size:16px;font-weight:500;margin:0 0 26px;opacity:.75}
+
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(min-width:620px){.cards{grid-template-columns:repeat(4,1fr)}}
+  .card{
+    background:#fff;border:4px solid var(--ink);border-radius:20px;
+    padding:18px 12px;text-align:center;box-shadow:5px 5px 0 var(--ink);
+  }
+  .card:nth-child(1){background:#FFE3F2;transform:rotate(-1.5deg)}
+  .card:nth-child(2){background:#E7E0FF;transform:rotate(1.2deg)}
+  .card:nth-child(3){background:#D8FBFF;transform:rotate(-1deg)}
+  .card:nth-child(4){background:#FFF3C9;transform:rotate(1.6deg)}
+  .card .em{font-size:38px;line-height:1;display:block;margin-bottom:8px}
+  .card b{font-family:var(--display);font-weight:800;font-size:17px;display:block;margin-bottom:3px}
+  .card span{font-size:13px;font-weight:500;opacity:.8;line-height:1.35;display:block}
+
+  /* ---------- nails ---------- */
+  .nails{
+    margin-top:26px;display:grid;gap:16px;align-items:center;
+    background:#fff;border:4px solid var(--ink);border-radius:24px;
+    padding:18px;box-shadow:6px 6px 0 var(--aqua);
+  }
+  @media(min-width:620px){.nails{grid-template-columns:1fr 1fr}}
+  .nails img{display:block;width:100%;height:auto;border-radius:16px;border:3px solid var(--ink)}
+  .nails h3{font-family:var(--display);font-weight:800;font-size:26px;margin:0 0 8px}
+  .nails p{margin:0 0 8px;font-size:15px;font-weight:500;line-height:1.5}
+  .by{
+    display:inline-block;font-weight:700;font-size:13px;
+    background:var(--lime);border:3px solid var(--ink);border-radius:999px;padding:6px 14px;
+    box-shadow:3px 3px 0 var(--ink);
+  }
+
+  /* ---------- big button ---------- */
+  .cta{text-align:center;margin-top:52px}
+  .big{
+    font-family:var(--display);font-weight:800;font-size:clamp(22px,6vw,34px);
+    background:var(--lemon);color:var(--ink);
+    border:5px solid var(--ink);border-radius:999px;
+    padding:20px 40px;cursor:pointer;
+    box-shadow:8px 8px 0 var(--ink);
+    transition:transform .08s ease, box-shadow .08s ease;
+    text-transform:uppercase;
+  }
+  .big:hover{transform:translate(2px,2px);box-shadow:6px 6px 0 var(--ink)}
+  .big:active{transform:translate(8px,8px);box-shadow:0 0 0 var(--ink)}
+  #yay{
+    margin-top:18px;font-family:var(--display);font-weight:800;
+    font-size:22px;color:var(--purple);min-height:30px;
+  }
+
+  footer{
+    margin-top:64px;text-align:center;font-size:13px;font-weight:500;opacity:.6;line-height:1.6;
+  }
+</style>
+</head>
+<body>
+
+<div class="confetti" aria-hidden="true" id="confetti"></div>
+
+<div class="wrap">
+
+  <header>
+    <div class="hello">Welcome to my website</div>
+    <h1>
+      <span class="a">Party</span>
+      <span class="b">House</span>
+    </h1>
+    <p class="tag">The <b>most fun</b> place in the whole entire world</p>
+  </header>
+
+  <div class="star">
+    <div class="sticker s1">The boss &starf;</div>
+    <div class="frame"><img src="img/her.jpg" alt="The boss of Party House"></div>
+    <div class="sticker s2">Age 6 &frac12;</div>
+  </div>
+
+  <h2>What we do here</h2>
+  <p class="sub">Everything. Obviously.</p>
+
+  <div class="cards">
+    <div class="card"><span class="em">&#127874;</span><b>Cake</b><span>Every single day</span></div>
+    <div class="card"><span class="em">&#127880;</span><b>Parties</b><span>Loud ones</span></div>
+    <div class="card"><span class="em">&#128132;</span><b>Nails</b><span>Sparkly please</span></div>
+    <div class="card"><span class="em">&#127928;</span><b>Dancing</b><span>No sitting down</span></div>
+  </div>
+
+  <h2>My nails</h2>
+  <p class="sub">Look at them. Look.</p>
+
+  <div class="nails">
+    <img src="img/her-nails.jpg" alt="Her manicured nails">
+    <div>
+      <h3>Pretty good huh</h3>
+      <p>These took ages and I had to sit very still the whole time, which was extremely hard.</p>
+      <p>I did not smudge them. Not even once.</p>
+      <span class="by">Done by Dani &hearts;</span>
+    </div>
+  </div>
+
+  <div class="cta">
+    <button class="big" id="go">Press this button</button>
+    <div id="yay"></div>
+  </div>
+
+  <footer>
+    Party House &middot; Established today<br>
+    Built by Uncle Frank, because he promised.
+  </footer>
+
+</div>
+
+<script>
+  // confetti
+  var COLOURS = ['#FF3D8F','#9B5CFF','#25D9E8','#FFD83D','#7BE85C','#FF8A3D'];
+  var box = document.getElementById('confetti');
+  for (var i = 0; i < 60; i++) {
+    var c = document.createElement('i');
+    c.style.left = (Math.random() * 100) + 'vw';
+    c.style.background = COLOURS[i % COLOURS.length];
+    c.style.animationDuration = (5 + Math.random() * 6) + 's';
+    c.style.animationDelay = (-Math.random() * 10) + 's';
+    box.appendChild(c);
+  }
+
+  // the button
+  var LINES = [
+    'YOU PRESSED IT!',
+    'Do it again!',
+    'That was the best one yet',
+    'Official party expert',
+    'Certified excellent nails',
+    'Ten out of ten',
+    'The crowd goes wild',
+    'You are extremely good at this'
+  ];
+  var n = 0;
+  document.getElementById('go').addEventListener('click', function () {
+    document.getElementById('yay').textContent = LINES[n % LINES.length];
+    n++;
+    for (var k = 0; k < 14; k++) {
+      var c = document.createElement('i');
+      c.style.left = (Math.random() * 100) + 'vw';
+      c.style.background = COLOURS[k % COLOURS.length];
+      c.style.animationDuration = (3 + Math.random() * 2) + 's';
+      box.appendChild(c);
+      setTimeout(function (el) { return function () { el.remove(); }; }(c), 5200);
+    }
+  });
+</script>
+</body>
+</html>
