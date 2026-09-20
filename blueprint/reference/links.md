@@ -24,20 +24,24 @@ nothing; "the way the pricing cards stack on mobile" tells you why you saved it.
   the palette; the sage-and-cream is spa-calm and this project is not.
   See `ref-dear-sundays-hero.png`.
 - https://oliveandjune.com/ - the page is a promo-heavy shop and mostly noise,
-  but "Busy Girls Need Fast Manis" set in heavy condensed caps is the right
-  energy for nails. Condensed display type reads as active, serif reads as calm.
-  See `ref-olive-and-june-hero.png`.
+  and the screenshot came out dimmed behind a modal, so it was dropped. The one
+  thing worth remembering: "Busy Girls Need Fast Manis" set in heavy condensed
+  caps is the right energy for nails. Condensed display type reads as active,
+  serif reads as calm. That is why the headline font here is Unbounded and not a
+  serif.
 
-### Counter-examples, saved on purpose
+### Counter-examples, note kept, screenshot dropped
+
+The design is locked, so these no longer need to sit here as images. The lesson
+is the part worth keeping. Screenshots are in git history at `a37ce33` if one is
+ever needed again.
 
 - https://www.paintnailbar.com/ - a script font laid over a busy photo, so the
   headline is nearly unreadable, plus a flat pink band above the logo. This is
   the default beauty-site mistake: decorative type fighting a detailed image.
-  See `ref-paint-nail-bar-hero.png`.
 - http://www.vanityprojectsnyc.com/ - gallery-first positioning for a nail
   artist is the right instinct, but the execution is an art-world puzzle. A
-  visitor cannot tell what is sold or how to book. See
-  `ref-vanity-projects-hero.png`.
+  visitor cannot tell what is sold or how to book.
 
 ### Read on the way past
 

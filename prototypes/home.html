@@ -27,14 +27,31 @@
     position: absolute; border-radius: 50%; filter: blur(90px); display: block;
   }
 
-  /* photo placeholder */
+  /* Photo slots.
+     ===========================================================
+     WARNING: the images below are Unsplash COMPS, not Dani's work.
+     They exist so the design can be judged at the right weight,
+     because a page that is 60% photography cannot be judged with
+     grey rectangles. Every one is replaced by her real work before
+     anything ships. A nail artist's gallery is a claim about what
+     the client will get, so stock photography must never survive
+     into the built site. See project-plan.md section 3.
+     =========================================================== */
   .ph {
-    background: var(--shot);
+    background-color: var(--shot);
+    background-image: var(--img, none);
+    background-size: cover;
+    background-position: center;
     border: 1px solid var(--line-soft);
     border-radius: var(--radius-lg);
     position: relative;
     overflow: hidden;
     display: flex; align-items: flex-end;
+  }
+  /* keeps the label chip readable over a bright photo */
+  .ph[style*="--img"]::before {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(20,15,28,.72), rgba(20,15,28,0) 42%);
   }
   .ph::after {
     content: attr(data-label);
@@ -44,10 +61,13 @@
     border: 1px solid var(--line); border-radius: var(--radius-pill);
     padding: 5px 10px; background: rgba(0,0,0,.25);
   }
-  .ph--nails  { background: linear-gradient(150deg,#4A1E3C,#1B1426 60%,#38143A); }
-  .ph--lashes { background: linear-gradient(150deg,#332055,#1B1426 60%,#281A3E); }
-  .ph--makeup { background: linear-gradient(150deg,#4E2A1A,#1B1426 60%,#3A1E2C); }
-  .ph--mix    { background: linear-gradient(150deg,#45204A,#1B1426 55%,#2C1B3C); }
+  /* Fallback tint per service, shown while a photo loads and if one is
+     missing. background-color only, never the shorthand, because the
+     shorthand resets background-image and would wipe the photo. */
+  .ph--nails  { background-color: #3A1830; }
+  .ph--lashes { background-color: #2A1A44; }
+  .ph--makeup { background-color: #3E2115; }
+  .ph--mix    { background-color: #35183A; }
 
   /* ---------- header ---------- */
   .ticker {
@@ -279,7 +299,7 @@
       </div>
       <p class="dm" style="margin-top:14px">Or send a DM on Instagram, whatever is easier</p>
     </div>
-    <div class="ph ph--nails" data-label="Hero &middot; her best set"></div>
+    <div class="ph ph--nails" style="--img:url('https://images.unsplash.com/photo-1604654894611-6973b376cbde?w=1100&q=80&auto=format&fit=crop')" data-label="Hero &middot; her best set"></div>
   </div>
 </section>
 
@@ -311,7 +331,7 @@
     <div class="svcs">
 
       <article class="svc" data-svc="nails">
-        <div class="ph ph--nails" data-label="Gel &middot; chrome &middot; art"></div>
+        <div class="ph ph--nails" style="--img:url('https://images.unsplash.com/photo-1604654894610-df63bc536371?w=700&q=80&auto=format&fit=crop')" data-label="Gel &middot; chrome &middot; art"></div>
         <div class="svc-body">
           <span class="tagline">Most booked</span>
           <h3>Nails</h3>
@@ -327,7 +347,7 @@
       </article>
 
       <article class="svc" data-svc="lashes">
-        <div class="ph ph--lashes" data-label="Classic &middot; hybrid &middot; volume"></div>
+        <div class="ph ph--lashes" style="--img:url('https://images.unsplash.com/photo-1589710751893-f9a6770ad71b?w=700&q=80&auto=format&fit=crop')" data-label="Classic &middot; hybrid &middot; volume"></div>
         <div class="svc-body">
           <span class="tagline">Lasts 3 weeks</span>
           <h3>Lashes</h3>
@@ -343,7 +363,7 @@
       </article>
 
       <article class="svc" data-svc="makeup">
-        <div class="ph ph--makeup" data-label="Grad &middot; events &middot; photo"></div>
+        <div class="ph ph--makeup" style="--img:url('https://images.unsplash.com/photo-1709477542149-f4e0e21d590b?w=700&q=80&auto=format&fit=crop')" data-label="Grad &middot; events &middot; photo"></div>
         <div class="svc-body">
           <span class="tagline">Book early</span>
           <h3>Makeup</h3>
@@ -383,13 +403,13 @@
     </div>
 
     <div class="grid">
-      <div class="ph ph--nails"  data-label="Chrome french"></div>
-      <div class="ph ph--mix"    data-label="Almond, red"></div>
-      <div class="ph ph--lashes" data-label="Volume set"></div>
-      <div class="ph ph--makeup" data-label="Grad glam"></div>
-      <div class="ph ph--nails"  data-label="Cat eye gel"></div>
-      <div class="ph ph--mix"    data-label="Birthday set"></div>
-      <div class="ph ph--lashes" data-label="Hybrid"></div>
+      <div class="ph ph--nails" style="--img:url('https://images.unsplash.com/photo-1571290274554-6a2eaa771e5f?w=900&q=80&auto=format&fit=crop')" data-label="Chrome french"></div>
+      <div class="ph ph--mix" style="--img:url('https://images.unsplash.com/photo-1587729927069-ef3b7a5ab9b4?w=600&q=80&auto=format&fit=crop')" data-label="Almond, red"></div>
+      <div class="ph ph--lashes" style="--img:url('https://images.unsplash.com/photo-1548902378-2ec44c906391?w=600&q=80&auto=format&fit=crop')" data-label="Volume set"></div>
+      <div class="ph ph--makeup" style="--img:url('https://images.unsplash.com/photo-1630084775816-7abb7383ded5?w=600&q=80&auto=format&fit=crop')" data-label="Grad glam"></div>
+      <div class="ph ph--nails" style="--img:url('https://images.unsplash.com/photo-1588015810531-dd522c9c8bbb?w=600&q=80&auto=format&fit=crop')" data-label="Cat eye gel"></div>
+      <div class="ph ph--mix" style="--img:url('https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=600&q=80&auto=format&fit=crop')" data-label="Birthday set"></div>
+      <div class="ph ph--lashes" style="--img:url('https://images.unsplash.com/photo-1674049406467-824ea37c7184?w=600&q=80&auto=format&fit=crop')" data-label="Hybrid"></div>
     </div>
 
     <div style="margin-top:26px">
@@ -404,7 +424,7 @@
     <i style="width:420px;height:420px;background:rgba(169,123,255,.26);top:20px;right:-170px"></i>
   </div>
   <div class="wrap inner">
-    <div class="ph ph--mix" data-label="Dani at work"></div>
+    <div class="ph ph--mix" style="--img:url('https://images.unsplash.com/photo-1622336889416-8d790ad807d7?w=900&q=80&auto=format&fit=crop')" data-label="Dani at work"></div>
     <div>
       <span class="eyebrow" style="display:block;margin-bottom:12px">Who is doing your nails</span>
       <h2>Trained in Colombia,<br>working in Calgary</h2>
