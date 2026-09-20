@@ -1,8 +1,10 @@
 # Coding Standards
 
-> Your conventions. Edit these once to match your stack. The defaults below
-> assume Next.js + TypeScript + Tailwind + Drizzle; change or trim anything that
-> doesn't fit your project.
+> Your conventions, tuned to this project. The stack here is Next.js 16 +
+> TypeScript + Tailwind v4 + shadcn, with no database, no auth and no separate
+> backend. Rules for things this project does not have were removed rather than
+> left in, because a standard that describes an absent tool teaches you to skim
+> the file.
 >
 > Run `/onboard` after installing the Blueprint. It tunes this file to the real
 > project stack, along with `AGENTS.md`, `CLAUDE.md` when present,
@@ -25,18 +27,19 @@
 
 ## Next.js
 
-- Server components by default
-- Only use `'use client'` when needed (interactivity, hooks, browser APIs)
-- Use Server Actions for form submissions and simple mutations
-- Use API routes when you need:
-  - Webhooks (Stripe, GitHub, better-auth callbacks)
-  - File uploads with progress tracking
-  - Long-running operations
-  - Specific HTTP status codes or headers
-  - Endpoints for future mobile/CLI clients
-  - Third-party integrations
-- Otherwise, fetch data directly in server components
-- Dynamic routes for item/collection pages
+Next 16 has breaking changes against older training data. Read the guide in
+`node_modules/next/dist/docs/` before writing framework code rather than
+recalling it.
+
+- Server components by default. `"use client"` needs a reason you can name in one
+  line: state, an effect, an event handler, or a browser API.
+- Server Actions for form submissions. On this site that is the contact form and
+  nothing else.
+- Dynamic routes for the service and gallery pages, with `generateStaticParams`
+  so each slug is still a static page.
+
+How a given page is rendered is decided under **Rendering** below. It is not
+repeated here, because a rule in two places is a rule that goes stale in one.
 
 ## File Organization
 
@@ -64,35 +67,72 @@ rather than redeclared.
 
 ## Styling
 
-- Tailwind CSS for all styling
+- Tailwind CSS for all styling. No inline styles.
 - Tailwind v4: CSS-first config (`@theme` in `globals.css`), no `tailwind.config.js`
-- Use shadcn/ui components where applicable
-- No inline styles
-- Dark mode first, light mode as option
+- Dark mode first, light mode as option. `globals.css` declares
+  `@custom-variant dark (&:is(.dark *))`, so dark is a class on an ancestor and
+  not a media query. Whether visitors get a toggle is a product decision, not a
+  styling one.
 
-## Database
+### shadcn
 
-- Use Drizzle for all database operations. Schema lives in one file, not spread
-  across call sites.
-- Generate migrations with `drizzle-kit generate`, apply with `drizzle-kit migrate`.
-  Do not use `push` against anything but a local scratch database.
-- Check the generated SQL before committing a migration. Drizzle will happily
-  generate a destructive one.
-- Never edit a migration that has already been applied anywhere real. Write a
-  new one.
+This project uses the `shadcn` package with Base UI primitives, not the older
+copy-in Radix distribution. `components.json` is the source of truth: style
+`base-nova`, `cssVariables: true`, lucide icons, `ui` alias `@/components/ui`.
 
-## Data Fetching
+- Add components with the CLI. Never hand-write a file into `components/ui/`,
+  because the next CLI run will not know about it.
+- `components/ui/` is generated code. Editing it is allowed but the edit becomes
+  yours to maintain forever, so prefer wrapping a component in
+  `components/[feature]/` over changing the primitive.
+- Never restyle a primitive at the call site with a wall of utility classes. If
+  a component needs a different look everywhere, change the theme variable it
+  reads. That is what `cssVariables: true` buys.
+- Icons come from lucide and nothing else. One icon set, no exceptions, because
+  two sets never quite match.
+- The theme lives in `globals.css` under `@theme` and `:root`, ported from
+  `prototypes/theme.css`. Colours are named for their job, never their value: a
+  component reads the nails colour, not a pink.
+- shadcn is a starting point, not a ceiling. A plain `<section>` needs no
+  primitive behind it. Reach for a component when it carries real behaviour such
+  as focus handling, keyboard support or portals.
+- **One exception, and it is easy to trip over: do not use shadcn's `Form` /
+  `FormField` wrapper.** Use its Input, Label, Select and Button, and wire the
+  form with react-hook-form directly. See **Forms** below for why.
 
-- Server components query Drizzle directly
-- Client components use Server Actions
-- Validate all inputs with Zod
-- Scope every user-owned query by the authenticated user id from the session (better-auth); never trust a client-supplied user id
+## Data
+
+There is no database, and that is a decision rather than a gap. Every piece of
+content is a typed file in the repo, which means it is version controlled,
+reviewable in a diff, and impossible to lose.
+
+- Content lives in `data/*.ts` as typed exports: services, gallery records, FAQ,
+  and `siteConfig`. Server components import it directly. Nothing is fetched at
+  request time to render content that has not changed.
+- A `Record` type per data file, exported alongside the data, so a typo in a
+  price is a build error rather than a visitor seeing `undefined`.
+- Images are records, not files. The repo stores an ImageKit path, alt text and a
+  service tag. It does not store the photograph.
+- Zod validates anything crossing a trust boundary. On this site that is exactly
+  one thing: the contact form.
+- Secrets stay server side. `RESEND_API_KEY` and `IMAGEKIT_PRIVATE_KEY` are read
+  in Server Actions only. Anything a client component can reach is public,
+  whatever it is named.
+
+If a feature later needs a database or auth, write the rules for it then,
+against the real schema. Writing them now would mean guessing, and the blueprint
+still ships them for projects that have one.
 
 ## Error Handling
 
 - Use try/catch in Server Actions
-- Return `{ success, data, error }` pattern from actions
-- Display user-friendly error messages via toast
+- Return a `{ success, data, error }` shape from actions
+- Show the visitor a message that tells them what to do next, never the raw
+  error. "Something went wrong, try again or send a DM" beats a stack trace.
+- A failed contact form must never look like a success. Silently swallowing a
+  Resend failure loses a booking and nobody finds out.
+- Log the real error server side. The visitor gets the friendly version, the
+  server keeps the useful one.
 
 ## Testing
 
