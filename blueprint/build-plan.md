@@ -43,7 +43,7 @@ Order matters. The shell carries the theme and the locale routing, so it goes
 first and everything after inherits both. The gallery is the page that sells the
 work, so it comes before the pages that describe it.
 
-- [ ] 1. **Site shell and theme** - port `prototypes/theme.css` into `globals.css`
+- [x] 1. **Site shell and theme** - port `prototypes/theme.css` into `globals.css`
   `@theme`, then build the header, mobile nav and footer against it
 - [ ] 2. **Locale routing** - the `[locale]` segment, a dictionary per locale, the
   language switch, and the missing-string build error. Hand-rolled, no package

@@ -2,119 +2,220 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+/* Dark is the brand, so the After Party tokens live in :root and the light twin
+   lives in .light. That inverts the usual shadcn arrangement on purpose.
+
+   The variant below stays so `dark:` utilities inside generated components keep
+   resolving against a class rather than silently becoming a media query that
+   fires on a visitor's OS setting. The base styles here are already the dark
+   ones, so `dark:` simply never matches. */
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  /* --- brand surfaces --- */
+  --color-ground: var(--ground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-shot: var(--shot);
+  --color-line: var(--line);
+  --color-line-soft: var(--line-soft);
+
+  /* --- brand ink ---
+     Named --ink rather than --text/--muted/--faint because shadcn already owns
+     --muted as a *surface* token. Two different meanings on one name is how a
+     palette quietly stops being one palette. */
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+
+  /* --- the four accents. Each one has a job; none are decoration. --- */
+  --color-nails: var(--nails);
+  --color-lashes: var(--lashes);
+  --color-makeup: var(--makeup);
+  --color-confirm: var(--confirm);
+
+  /* darker twins, for the same accents on light surfaces */
+  --color-nails-on-light: var(--nails-on-light);
+  --color-lashes-on-light: var(--lashes-on-light);
+  --color-makeup-on-light: var(--makeup-on-light);
+  --color-confirm-on-light: var(--confirm-on-light);
+
+  --color-on-hot: var(--on-hot);
+
+  /* --- shadcn semantics, mapped onto brand values --- */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* --- type --- */
+  --font-display: var(--display);
+  --font-body: var(--body);
+  --font-sans: var(--body);
+  --font-mono: var(--mono);
+
+  /* --- scale ---
+     Keys here never share a name with the :root vars they read, or the
+     reference would be circular. */
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+  --radius-xl: var(--radius-card);
+  --radius-2xl: calc(var(--radius-card) * 1.4);
+  --radius-pill: var(--pill);
+
+  --animate-ticker: ticker 34s linear infinite;
+}
+
+@keyframes ticker {
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* ---------- After Party, ported from prototypes/theme.css ----------
+     Ground is a plum, not a black: the lightest of four candidates. It costs
+     some neon punch against a truer black and buys a warmer, less severe page.
+
+     Contrast, measured against --ground rather than assumed:
+       pink   #FF3D8F on #261F36 = 4.73:1
+       violet #A97BFF on #261F36 = 5.19:1
+       orange #FF8A3D on #261F36 = 6.63:1
+     All four accents are safe at any size on this ground. That stops being
+     true on light surfaces, which is what the -on-light twins are for. */
+
+  /* surfaces */
+  --ground: #261f36;
+  --surface: #352948;
+  --surface-2: #2e2440;
+  --shot: #1b1426;
+  --line: #514165;
+  --line-soft: #3d3152;
+
+  /* ink
+       ink        on ground 14.27  on surface 12.18
+       ink-muted  on ground  6.98  on surface  5.95
+       ink-faint  on ground  5.50  on surface  4.69
+     --ink-faint is used at 11px and 13px, which are body sizes whatever they
+     look like, so it is the lightest value that still clears 4.5 on surface. */
+  --ink: #f6f2fa;
+  --ink-muted: #b3a8c2;
+  --ink-faint: #9f94af;
+
+  /* accents */
+  --nails: #ff3d8f;
+  --lashes: #a97bff;
+  --makeup: #ff8a3d;
+  --confirm: #3de8b0;
+
+  --nails-on-light: #d4176b;
+  --lashes-on-light: #7b45e0;
+  --makeup-on-light: #bf5710;
+  --confirm-on-light: #0e8f63;
+
+  /* the one gradient, identical in light and dark, which is what keeps the two
+     modes reading as one brand */
+  --hot: linear-gradient(92deg, var(--nails), var(--makeup));
+  --on-hot: #231a31;
+
+  /* section glow. Lives here and not in the markup, because the whole promise
+     of this block is that changing it reskins everything. */
+  --glow-blur: 90px;
+  --glow-a: rgb(255 61 143 / 0.42);
+  --glow-b: rgb(169 123 255 / 0.34);
+  --glow-c: rgb(255 138 61 / 0.22);
+
+  /* type. next/font sets --font-unbounded and --font-inter on <html>; the
+     literal fallbacks keep the stack valid if either ever fails to load. */
+  --display: var(--font-unbounded, "Unbounded"), system-ui, sans-serif;
+  --body: var(--font-inter, "Inter"), system-ui, sans-serif;
+  --mono: ui-monospace, monospace;
+
+  /* scale */
+  --radius: 14px;
+  --radius-card: 22px;
+  --pill: 999px;
+  --site: 1200px;
+  --gutter: 20px;
+
+  /* ---------- shadcn semantics on brand values ---------- */
+  --background: var(--ground);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--surface);
+  --popover-foreground: var(--ink);
+  --primary: var(--nails);
+  --primary-foreground: var(--on-hot);
+  --secondary: var(--surface-2);
+  --secondary-foreground: var(--ink);
+  --muted: var(--surface-2);
+  --muted-foreground: var(--ink-muted);
+  --accent: var(--surface-2);
+  --accent-foreground: var(--ink);
+  --border: var(--line-soft);
+  --input: var(--line);
+  --ring: var(--nails);
+
+  /* The brand has no red. This is the scaffold's own dark-mode destructive,
+     kept rather than invented, until a feature actually needs one. */
+  --destructive: oklch(0.704 0.191 22.216);
+
+  --chart-1: var(--nails);
+  --chart-2: var(--lashes);
+  --chart-3: var(--makeup);
+  --chart-4: var(--confirm);
+  --chart-5: var(--ink-faint);
 }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+/* Light twin. Glow becomes tint: the blurred colour blobs on dark become the
+   same shapes unblurred and pale here, because a blurred blob on a light ground
+   reads as a smudge and at dark-mode alpha it drowns the page in pink.
+
+   Ported and complete, but nothing activates it - no toggle, no media query.
+   Unreachable until that product decision is made. */
+.light {
+  --ground: #faf6fc;
+  --surface: #ffffff;
+  --surface-2: #f4eef9;
+  --shot: #efe7f5;
+  --line: #e8dfee;
+  --line-soft: #f0e9f4;
+
+  --ink: #1f1729;
+  --ink-muted: #6b6178;
+  --ink-faint: #7c7289;
+
+  --glow-blur: 0px;
+  --glow-a: #ffe7f2;
+  --glow-b: #f1e9ff;
+  --glow-c: #fff1e4;
+
+  /* the fills fail contrast under 18px on these surfaces, so anything that
+     carries text switches to the darker twin */
+  --primary: var(--nails-on-light);
+  --ring: var(--nails-on-light);
+  --primary-foreground: #ffffff;
 }
 
 @layer base {
@@ -122,9 +223,12 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body antialiased;
   }
-  html {
-    @apply font-sans;
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display font-extrabold tracking-[-0.035em] leading-[1.03];
   }
 }

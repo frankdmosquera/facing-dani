@@ -1174,23 +1174,23 @@
     <div class="where">
       <div class="where-leg">
         <div class="where-key">Phase</div>
-        <div class="where-val">0 &middot; Planning</div>
+        <div class="where-val">1 &middot; MVP</div>
       </div>
       <span class="where-arrow">&rsaquo;</span>
       <div class="where-leg">
         <div class="where-key">Item</div>
-        <div class="where-val">None yet</div>
+        <div class="where-val">1 &middot; Site shell and theme</div>
       </div>
       <span class="where-arrow">&rsaquo;</span>
       <div class="where-leg" data-now="yes">
         <div class="where-key">Step now</div>
-        <div class="where-val">Overview generated, ready to spec item 1</div>
+        <div class="where-val">Shipped. Ready to spec item 2</div>
       </div>
       <span class="where-spacer"></span>
       <div class="where-leg">
-        <div class="where-key">Plan sections</div>
-        <div class="meter" title="All eight sections of project-plan.md written">
-          <i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i>
+        <div class="where-key">MVP items</div>
+        <div class="meter" title="1 of 9 MVP items done">
+          <i data-state="done"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
         </div>
       </div>
     </div>
@@ -1302,9 +1302,9 @@
           were pre-build steps and sit in Phase 0 rather than in the list.
         </p>
         <div class="tally">
-          <span class="tally-part" data-state="done"><span class="tally-key">Done</span><span class="tally-val">0 of 9 MVP items</span></span>
+          <span class="tally-part" data-state="done"><span class="tally-key">Done</span><span class="tally-val">1 of 9 MVP items</span></span>
           <span class="tally-part" data-state="active"><span class="tally-key">Now</span><span class="tally-val">Nothing building</span></span>
-          <span class="tally-part" data-state="planned"><span class="tally-key">Next</span><span class="tally-val">1 &middot; Site shell and theme</span></span>
+          <span class="tally-part" data-state="planned"><span class="tally-key">Next</span><span class="tally-val">2 &middot; Locale routing</span></span>
         </div>
       </header>
 
@@ -1320,7 +1320,71 @@
 
         <div class="stage">
           <div class="stage-head"><span class="stage-name">Phase 1 &middot; MVP</span><span class="stage-note">Exit: eight pages live in both languages, deployed, each carrying its own SEO</span></div>
-          <div class="item"><div class="item-num">1</div><div class="item-body"><div class="item-name">Site shell and theme</div><p class="item-text">Port <code>prototypes/theme.css</code> into <code>globals.css</code> <code>@theme</code>, then build the header, mobile nav and footer against it. First because everything after it inherits the theme, and because a shell built after the pages means touching every page again.</p></div><span class="pill">Planned</span></div>
+          <div class="item" data-state="done"><div class="item-num">1</div><div class="item-body"><div class="item-name">Site shell and theme</div><p class="item-text">The After Party theme ported into <code>globals.css</code>, and the header, mobile nav, footer and gradient ticker built against it. First because everything after it inherits the theme, and because a shell built after the pages means touching every page again.</p>
+
+            <div class="gates">
+              <span class="gate-chip" data-state="pass">Spec agreed</span>
+              <span class="gate-chip" data-state="pass">Built &amp; verified</span>
+              <span class="gate-chip" data-state="pass">Commit granted</span>
+            </div>
+
+            <details class="drawer" data-kind="reality">
+              <summary>What was built <span class="tag-drift">4 steps &middot; 9 files &middot; lint and build both clean</span></summary>
+              <div class="drawer-body">
+                <div class="rows">
+                  <div class="row"><div class="row-key">Theme</div><div class="row-val">Brand tokens in <code>:root</code>, the light twin in <code>.light</code>, and the shadcn semantic tokens remapped onto brand values so the generated Button keeps resolving. Zero stock greys left.</div></div>
+                  <div class="row"><div class="row-key">Type</div><div class="row-val">Unbounded 800 and Inter replace Geist, wired through <code>next/font</code> with literal fallbacks.</div></div>
+                  <div class="row"><div class="row-key">Data</div><div class="row-val"><code>data/siteConfig.ts</code>. Every business fact lives here; no component contains the word Dani.</div></div>
+                  <div class="row"><div class="row-key">Chrome</div><div class="row-val">Sticky blurred header, full-screen mobile panel, three-column footer, gradient ticker, skip link. One client component, and the reason is open/closed state.</div></div>
+                </div>
+              </div>
+            </details>
+
+            <details class="drawer" data-kind="reality">
+              <summary>Decisions <span class="tag-drift">3, with what the rejected option cost</span></summary>
+              <div class="drawer-body">
+                <div class="notes"><ul>
+                  <li><b>Brand ink renamed to <code>--ink</code> / <code>--ink-muted</code> / <code>--ink-faint</code>.</b> The mockup used <code>--muted</code> for a text colour and shadcn uses it for a surface. Keeping both would have left one name meaning two things, which is how a palette stops being one palette.</li>
+                  <li><b><code>@custom-variant dark</code> kept, not deleted.</b> Removing it would not remove dark mode, it would convert every <code>dark:</code> utility into a media query that fires on the visitor's OS setting. Class-scoped, it simply never matches, which is right because the base styles already are the dark ones.</li>
+                  <li><b>The mobile panel is a full-screen dialog.</b> The mockup draws a burger and nothing behind it, so the pattern was chosen here: no header-height measurement, survives the sticky header, suits a phone.</li>
+                </ul></div>
+              </div>
+            </details>
+
+            <details class="drawer" data-kind="plan">
+              <summary>Still open <span class="tag-drift">1 missing fact, 2 deferred decisions</span></summary>
+              <div class="drawer-body">
+                <div class="notes"><ul>
+                  <li><b>Her Instagram handle is not written down anywhere.</b> The plans call the bio link the site's main entry point, but no document holds the handle. The footer renders that link only when it is set, so nothing false ships. Needed before item 8 deploys.</li>
+                  <li>The light tokens are ported but nothing activates them. No toggle, no media query, unreachable until that call is made.</li>
+                  <li>Route slugs are provisional English, and whether the Spanish side translates is item 2's call. They live in <code>siteConfig</code>, so deciding is a one-file change.</li>
+                </ul></div>
+              </div>
+            </details>
+
+            <details class="drawer" data-kind="reality">
+              <summary>Log <span class="tag-drift">2 entries, newest first</span></summary>
+              <div class="drawer-body">
+                <div class="log">
+                  <div class="entry" data-kind="done">
+                    <div class="dot"></div>
+                    <div class="entry-body">
+                      <div class="entry-top"><span class="entry-title">Shipped</span><span class="kind-tag">Done</span><span class="stamp">Sep 20</span></div>
+                      <p class="entry-text"><code>npm run lint</code> and <code>npm run build</code> both exit 0. Verified from the build output rather than assumed: the real title, both font faces emitted, the ticker keyframes present, no stock neutrals left. Not verified, because no server was running: the frame at phone and desktop width, the panel interaction, and the ticker actually moving.</p>
+                    </div>
+                  </div>
+                  <div class="entry" data-kind="fix">
+                    <div class="dot"></div>
+                    <div class="entry-body">
+                      <div class="entry-top"><span class="entry-title">Lint caught a real one</span><span class="kind-tag">Fix</span><span class="stamp">Sep 20</span></div>
+                      <p class="entry-text">The first mobile nav closed itself from an effect keyed on the pathname, which <code>react-hooks/set-state-in-effect</code> flagged. The link's own <code>onClick</code> does the same job without the effect.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            </div><span class="pill pill--done">Done</span></div>
           <div class="item"><div class="item-num">2</div><div class="item-body"><div class="item-name">Locale routing</div><p class="item-text">The <code>[locale]</code> segment, a dictionary per locale, the language switch, and the build error on a missing string. Hand-rolled, no package: two languages and eight pages do not need <code>next-intl</code>. Second because retrofitting a second language means reopening every page.</p></div><span class="pill">Planned</span></div>
           <div class="item"><div class="item-num">3</div><div class="item-body"><div class="item-name">Home page</div><p class="item-text">Hero, the three services, a gallery teaser, her story, FAQ and the booking call to action. This is the page the Instagram bio link lands on, so it carries the short version of the craft angle and the bilingual claim.</p></div><span class="pill">Planned</span></div>
           <div class="item"><div class="item-num">4</div><div class="item-body"><div class="item-name">Gallery</div><p class="item-text">The full set of work, filterable by service, at a size where the quality is actually visible. The headline feature and the reason the site exists at all - Instagram is a grid of squares, and a grid of squares is a poor way to judge a set of nails. Before the service pages, because it is the page that sells the work.</p></div><span class="pill">Planned</span></div>
