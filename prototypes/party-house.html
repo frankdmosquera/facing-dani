@@ -221,6 +221,34 @@ body.th-jungle{background:radial-gradient(900px 560px at 10% -6%,#D8F5C7 0%,tran
 
 /* her stickers, floating around the photo on Home */
 .hero .stuck{position:absolute;font-size:26px;z-index:4;pointer-events:none;filter:drop-shadow(2px 2px 0 rgba(43,17,69,.35))}
+
+/* ---------- real prizes ----------
+   These are Frank's promises, not the app's, so they are measured
+   against stars EARNED and never against the balance. Buying a sticker
+   must never cost her a donut. Nothing is deducted here, ever. */
+.real{display:grid;gap:10px;margin-top:14px}
+.prize{
+  background:#fff;border:4px solid var(--ink);border-radius:20px;padding:13px 15px;
+  box-shadow:var(--pop-sm);display:flex;align-items:center;gap:13px;text-align:left;
+}
+.prize .em{font-size:33px;line-height:1;flex:none;filter:grayscale(1);opacity:.35}
+.prize.ready .em,.prize.done .em{filter:none;opacity:1}
+.prize .mid{flex:1;min-width:0}
+.prize b{font-family:var(--display);font-weight:800;font-size:16px;display:block;line-height:1.2}
+.prize .track{height:12px;background:#F0E6F6;border:2px solid var(--ink);border-radius:999px;overflow:hidden;margin-top:7px}
+.prize .track span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--lemon),var(--tang));transition:width .4s ease}
+.prize small{font-size:11.5px;font-weight:600;opacity:.75;display:block;margin-top:5px}
+.prize.ready{background:#FFF3C9;animation:nudge 1.6s ease-in-out infinite}
+.prize.ready small{color:#8A5A00;opacity:1}
+.prize.done{background:#E4FBDD}
+.prize .claim{
+  font-family:var(--body);font-weight:700;font-size:12px;flex:none;
+  background:var(--lime);border:3px solid var(--ink);border-radius:999px;
+  padding:9px 13px;cursor:pointer;box-shadow:3px 3px 0 var(--ink);
+}
+.prize .claim:active{transform:translate(3px,3px);box-shadow:none}
+@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@media (prefers-reduced-motion:reduce){.prize.ready{animation:none}}
 .nails{display:grid;gap:15px;align-items:center}
 @media(min-width:560px){.nails{grid-template-columns:1fr 1fr}}
 .nails img{display:block;width:100%;height:auto;border-radius:16px;border:3px solid var(--ink)}
@@ -298,6 +326,10 @@ footer{margin-top:40px;text-align:center;font-size:12.5px;font-weight:500;opacit
     <h2 data-t="myStars"></h2><p class="sub" data-t="starsSub"></p>
     <div class="bignum" id="bigStars">0</div>
     <p class="sub" id="starsLine" style="margin-top:8px"></p>
+
+    <div class="grouphead" data-t="grpReal"></div>
+    <p class="sub" id="realHint" style="margin-bottom:0"></p>
+    <div class="real" id="realPrizes"></div>
 
     <div class="grouphead" data-t="grpWheel"></div>
     <div class="card wheelwrap">
@@ -410,7 +442,15 @@ var STR = {
   modeType:['⌨️ Type it','⌨️ Escríbelo'],
   modeChoose:['👆 Choose it','👆 Escoge'],
   typeHere:['Type your answer','Escribe tu respuesta'],
-  typeStar:['Typing is worth 2 stars','Escribir vale 2 estrellas']
+  typeStar:['Typing is worth 2 stars','Escribir vale 2 estrellas'],
+  /* real prizes */
+  grpReal:['🍪 Real Prizes','🍪 Premios de Verdad'],
+  realHint:['These are real. Uncle Frank promised.','Estos son de verdad. El tío Frank lo prometió.'],
+  askFrank:['Ask Uncle Frank!','¡Pídeselo al tío Frank!'],
+  gotIt:['Got it','Ya lo tuve'],
+  claimBtn:['I got it!','¡Ya me lo dio!'],
+  toGo:['%n stars to go','faltan %n estrellas'],
+  starsAt:['at %n stars','a las %n estrellas']
 };
 function t(k){ var v = STR[k]; return v ? v[LANG === 'es' ? 1 : 0] : k; }
 function txt(v){ return (v && typeof v === 'object') ? v[LANG] : v; }
@@ -497,7 +537,44 @@ function paintStuck(){
     hero.appendChild(e);
   });
 }
+/* Real prizes. Frank's list, Frank's promise. Measured against stars
+   EARNED, so spending in the shop never costs her a donut. */
+var REAL=[
+  [25, '🥛', B('Milk','Leche')],
+  [50, '🍪', B('Festival cookie','Galleta del festival')],
+  [100,'🍩', B('Chocolate donut','Dona de chocolate')],
+  [200,'🎁', B('You choose','Tú eliges')]
+];
+var claimed={}; try{claimed=JSON.parse(store('ph-claimed')||'{}');}catch(e){claimed={};}
+
+function paintReal(){
+  document.getElementById('realHint').textContent=t('realHint');
+  var host=document.getElementById('realPrizes'); host.innerHTML='';
+  REAL.forEach(function(p){
+    var need=p[0], have=stars>=need, done=!!claimed['r:'+need];
+    var row=document.createElement('div');
+    row.className='prize'+(done?' done':(have?' ready':''));
+    var pct=Math.min(100, Math.round(stars/need*100));
+    row.innerHTML='<span class="em">'+p[1]+'</span><div class="mid"><b>'+txt(p[2])+'</b>'
+      +(done?'':'<div class="track"><span style="width:'+pct+'%"></span></div>')
+      +'<small>'+(done?t('gotIt')+' ✓'
+                 :(have?t('askFrank'):t('toGo').replace('%n',String(need-stars))+' · '+t('starsAt').replace('%n',String(need))))
+      +'</small></div>';
+    if(have&&!done){
+      var btn=document.createElement('button');
+      btn.className='claim'; btn.textContent=t('claimBtn');
+      btn.addEventListener('click',function(){
+        claimed['r:'+need]=1; store('ph-claimed',JSON.stringify(claimed));
+        WIN(); drop(26,true); paintReal();
+      });
+      row.appendChild(btn);
+    }
+    host.appendChild(row);
+  });
+}
+
 function paintPrizes(){
+  paintReal();
   /* wheel */
   var left=spinsLeft();
   document.getElementById('spin').textContent=t('spin')+(left>1?(' ×'+left):'');
