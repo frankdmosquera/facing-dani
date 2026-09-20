@@ -150,6 +150,48 @@ svg.clock,svg.shape{display:block;margin:0 auto}
 .badge b{font-family:var(--display);font-weight:800;font-size:12.5px;display:block;line-height:1.2}
 .badge small{font-size:10px;font-weight:500;opacity:.75;display:block;margin-top:3px}
 .bignum{font-family:var(--display);font-weight:800;font-size:clamp(56px,18vw,96px);text-align:center;line-height:1;color:var(--tang);-webkit-text-stroke:3px var(--ink);paint-order:stroke fill}
+
+/* ---------- prizes ----------
+   Stars are earned forever (badges read that) and spent from a balance,
+   so buying a sticker never takes a badge away. Nothing here can be
+   lost, only gained, which is the whole point at seven. */
+.shelf{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;background:#fff;border:4px solid var(--ink);border-radius:22px;padding:15px 12px;box-shadow:var(--pop);margin-top:14px;min-height:74px}
+.shelf .sk{font-size:31px;line-height:1;filter:grayscale(1);opacity:.22}
+.shelf .sk.got{filter:none;opacity:1;animation:pop .35s ease}
+.shop{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+@media(min-width:560px){.shop{grid-template-columns:repeat(3,1fr)}}
+.buy{
+  font-family:var(--display);font-weight:800;font-size:14px;cursor:pointer;text-align:center;
+  background:#fff;border:4px solid var(--ink);border-radius:18px;padding:13px 8px;
+  box-shadow:var(--pop-sm);color:var(--ink);display:flex;flex-direction:column;gap:5px;align-items:center;
+}
+.buy:active{transform:translate(3px,3px);box-shadow:none}
+.buy .em{font-size:28px;line-height:1}
+.buy .cost{font-family:var(--body);font-weight:700;font-size:11.5px;background:var(--lemon);border:2px solid var(--ink);border-radius:999px;padding:3px 10px}
+.buy.owned{background:#E4FBDD}
+.buy.owned .cost{background:var(--lime)}
+.buy.cant{opacity:.45}
+.buy.on{background:var(--lemon)}
+.wheelwrap{text-align:center;margin-top:16px}
+.wheel{
+  width:190px;height:190px;border-radius:50%;margin:0 auto 14px;
+  border:6px solid var(--ink);box-shadow:var(--pop);position:relative;
+  transition:transform 2.6s cubic-bezier(.17,.67,.2,1);
+  background:conic-gradient(#FF3D8F 0 45deg,#9B5CFF 45deg 90deg,#25D9E8 90deg 135deg,#FFD83D 135deg 180deg,
+    #6FE04E 180deg 225deg,#FF8A3D 225deg 270deg,#FF3D8F 270deg 315deg,#9B5CFF 315deg 360deg);
+}
+.wheelwrap .pin{font-size:26px;line-height:1;margin-bottom:-12px;position:relative;z-index:2}
+.wheelmsg{font-family:var(--display);font-weight:800;font-size:19px;min-height:26px;margin-top:10px;color:var(--purple)}
+
+/* unlockable backgrounds */
+body.th-candy{background:radial-gradient(900px 560px at 10% -6%,#FFD6EC 0%,transparent 60%),radial-gradient(800px 520px at 94% 6%,#FFE9C9 0%,transparent 62%),radial-gradient(900px 600px at 50% 104%,#E7D6FF 0%,transparent 60%),#FFF4F9}
+body.th-mint{background:radial-gradient(900px 560px at 10% -6%,#CFF6E4 0%,transparent 60%),radial-gradient(800px 520px at 94% 6%,#D6F0FF 0%,transparent 62%),radial-gradient(900px 600px at 50% 104%,#FFF6CE 0%,transparent 60%),#F2FFFA}
+body.th-space{background:radial-gradient(900px 560px at 10% -6%,#D7D9FF 0%,transparent 60%),radial-gradient(800px 520px at 94% 6%,#E9D6FF 0%,transparent 62%),radial-gradient(900px 600px at 50% 104%,#CFE2FF 0%,transparent 60%),#F3F2FF}
+body.th-sunset{background:radial-gradient(900px 560px at 10% -6%,#FFD9C2 0%,transparent 60%),radial-gradient(800px 520px at 94% 6%,#FFC9DD 0%,transparent 62%),radial-gradient(900px 600px at 50% 104%,#FFEFC2 0%,transparent 60%),#FFF7F0}
+body.th-jungle{background:radial-gradient(900px 560px at 10% -6%,#D8F5C7 0%,transparent 60%),radial-gradient(800px 520px at 94% 6%,#CDEFE0 0%,transparent 62%),radial-gradient(900px 600px at 50% 104%,#FFF2CC 0%,transparent 60%),#F5FFF0}
+
+/* her stickers, floating around the photo on Home */
+.hero .stuck{position:absolute;font-size:26px;z-index:4;pointer-events:none;filter:drop-shadow(2px 2px 0 rgba(43,17,69,.35))}
 .nails{display:grid;gap:15px;align-items:center}
 @media(min-width:560px){.nails{grid-template-columns:1fr 1fr}}
 .nails img{display:block;width:100%;height:auto;border-radius:16px;border:3px solid var(--ink)}
@@ -226,6 +268,25 @@ footer{margin-top:40px;text-align:center;font-size:12.5px;font-weight:500;opacit
     <h2 data-t="myStars"></h2><p class="sub" data-t="starsSub"></p>
     <div class="bignum" id="bigStars">0</div>
     <p class="sub" id="starsLine" style="margin-top:8px"></p>
+
+    <div class="grouphead" data-t="grpWheel"></div>
+    <div class="card wheelwrap">
+      <div class="pin">&#128071;</div>
+      <div class="wheel" id="wheel"></div>
+      <button class="big" id="spin"></button>
+      <div class="wheelmsg" id="wheelMsg"></div>
+      <p class="sub" id="spinHint" style="margin:10px 0 0"></p>
+    </div>
+
+    <div class="grouphead" data-t="grpStickers"></div>
+    <p class="sub" id="stickerHint" style="margin-bottom:0"></p>
+    <div class="shelf" id="shelf"></div>
+    <div class="shop" id="stickerShop"></div>
+
+    <div class="grouphead" data-t="grpThemes"></div>
+    <div class="shop" id="themeShop"></div>
+
+    <div class="grouphead" data-t="grpBadges"></div>
     <div class="badges" id="badges"></div>
   </section>
 
@@ -295,7 +356,26 @@ var STR = {
   /* group headings */
   grpAdd:['Adding','Sumar'], grpSub:['Taking Away','Restar'], grpTimes:['Times Tables','Tablas'],
   grpNum:['Numbers','Números'], grpMoney:['Money and Time','Dinero y Hora'],
-  grpWords:['Words','Palabras'], grpCal:['Calendar','Calendario'], grpLook:['Look and Say','Mira y Di']
+  grpWords:['Words','Palabras'], grpCal:['Calendar','Calendario'], grpLook:['Look and Say','Mira y Di'],
+  /* prizes */
+  grpWheel:['🎡 Prize Wheel','🎡 Rueda de Premios'],
+  grpStickers:['🌟 Stickers','🌟 Calcomanías'],
+  grpThemes:['🎨 Backgrounds','🎨 Fondos'],
+  grpBadges:['🏅 Badges','🏅 Insignias'],
+  spin:['SPIN!','¡GIRA!'],
+  spinReady:['Free spin ready!','¡Giro gratis listo!'],
+  spinWait:['Earn %n more stars for a free spin','Gana %n estrellas más para otro giro'],
+  stickerHint:['Buy them, then they stick around your photo','Cómpralas y se pegan junto a tu foto'],
+  cost:['%n stars','%n estrellas'],
+  owned:['YOURS','TUYA'],
+  wearing:['ON','PUESTO'],
+  free:['FREE','GRATIS'],
+  spent:['spent','gastadas'],
+  balance:['to spend','para gastar'],
+  wonSticker:['You won a sticker!','¡Ganaste una calcomanía!'],
+  wonStars:['You won %n stars!','¡Ganaste %n estrellas!'],
+  wonAll:['You have everything!','¡Ya tienes todo!'],
+  notEnough:['Not enough stars yet','Aún no tienes suficientes']
 };
 function t(k){ var v = STR[k]; return v ? v[LANG === 'es' ? 1 : 0] : k; }
 function txt(v){ return (v && typeof v === 'object') ? v[LANG] : v; }
@@ -339,12 +419,110 @@ var BADGES=[
   ['🇨🇦',B('Bilingual','Bilingüe'),B('Play in both languages','Juega en los dos idiomas'),function(){return store('ph-bothlang')==='1';}],
   ['🥇',B('Champion','Campeona'),B('200 stars','200 estrellas'),function(){return stars>=200;}]
 ];
+/* ---------------- prizes ----------------
+   stars      = earned forever. badges read this and it never goes down.
+   spent      = what she has bought.
+   balance    = stars - spent, which is what the shop uses.
+   Nothing can be lost here, only gained. That matters at seven. */
+var spent=parseInt(store('ph-spent')||'0',10)||0;
+var spins=parseInt(store('ph-spins')||'0',10)||0;   /* free spins already taken */
+var owned={}; try{owned=JSON.parse(store('ph-owned')||'{}');}catch(e){owned={};}
+var theme=store('ph-theme')||'';
+var SPIN_EVERY=25;
+function balance(){return Math.max(0,stars-spent);}
+function spinsEarned(){return Math.floor(stars/SPIN_EVERY);}
+function spinsLeft(){return Math.max(0,spinsEarned()-spins);}
+
+var STICKERS=['🌈','🦄','🍩','👑','🦋','🍓',
+  '✨','🐙','🌻','🍭','🐼','🚀'];
+var STICKER_COST=10;
+var THEMES=[
+  ['', '🏠', B('Home','Casa'), 0],
+  ['th-candy','🍬',B('Candy','Dulces'),30],
+  ['th-mint','🌿',B('Mint','Menta'),30],
+  ['th-sunset','🌅',B('Sunset','Atardecer'),40],
+  ['th-space','🪐',B('Space','Espacio'),40],
+  ['th-jungle','🌴',B('Jungle','Selva'),50]
+];
+function applyTheme(){
+  document.body.className = theme ? theme : '';
+}
+function stickerPositions(){
+  return [['-6px','auto','auto','-14px'],['auto','-12px','-8px','auto'],['46%','auto','auto','-20px'],
+          ['12%','-18px','auto','auto'],['auto','30%','-16px','auto'],['70%','auto','auto','-16px']];
+}
+function paintStuck(){
+  var hero=document.querySelector('.hero'); if(!hero) return;
+  [].slice.call(hero.querySelectorAll('.stuck')).forEach(function(e){e.remove();});
+  var mine=STICKERS.filter(function(s){return owned['st:'+s];}).slice(0,6);
+  var pos=stickerPositions();
+  mine.forEach(function(s,i){
+    var e=document.createElement('span'); e.className='stuck'; e.textContent=s;
+    e.style.top=pos[i][0]; e.style.right=pos[i][1]; e.style.bottom=pos[i][2]; e.style.left=pos[i][3];
+    hero.appendChild(e);
+  });
+}
+function paintPrizes(){
+  /* wheel */
+  var left=spinsLeft();
+  document.getElementById('spin').textContent=t('spin')+(left>1?(' ×'+left):'');
+  document.getElementById('spin').style.opacity=left>0?1:.45;
+  document.getElementById('spinHint').textContent = left>0
+    ? t('spinReady')
+    : t('spinWait').replace('%n', String(SPIN_EVERY - (stars % SPIN_EVERY)));
+
+  /* stickers */
+  document.getElementById('stickerHint').textContent=t('stickerHint');
+  var shelf=document.getElementById('shelf'); shelf.innerHTML='';
+  STICKERS.forEach(function(s){
+    var e=document.createElement('span'); e.className='sk'+(owned['st:'+s]?' got':''); e.textContent=s;
+    shelf.appendChild(e);
+  });
+  var shop=document.getElementById('stickerShop'); shop.innerHTML='';
+  STICKERS.filter(function(s){return !owned['st:'+s];}).slice(0,6).forEach(function(s){
+    var b=document.createElement('button');
+    var can=balance()>=STICKER_COST;
+    b.className='buy'+(can?'':' cant');
+    b.innerHTML='<span class="em">'+s+'</span><span class="cost">'+t('cost').replace('%n',STICKER_COST)+'</span>';
+    b.addEventListener('click',function(){
+      if(balance()<STICKER_COST){ flash(t('notEnough')); TRY(); return; }
+      spent+=STICKER_COST; store('ph-spent',String(spent));
+      owned['st:'+s]=1; store('ph-owned',JSON.stringify(owned));
+      WIN(); drop(12,true); paintStars(); paintStuck();
+    });
+    shop.appendChild(b);
+  });
+
+  /* themes */
+  var tshop=document.getElementById('themeShop'); tshop.innerHTML='';
+  THEMES.forEach(function(th){
+    var key='th:'+th[0], have=th[3]===0||owned[key], on=theme===th[0];
+    var can=balance()>=th[3];
+    var b=document.createElement('button');
+    b.className='buy'+(on?' on':(have?' owned':(can?'':' cant')));
+    b.innerHTML='<span class="em">'+th[1]+'</span>'+txt(th[2])
+      +'<span class="cost">'+(on?t('wearing'):(have?t('owned'):t('cost').replace('%n',th[3])))+'</span>';
+    b.addEventListener('click',function(){
+      if(!have){
+        if(balance()<th[3]){ flash(t('notEnough')); TRY(); return; }
+        spent+=th[3]; store('ph-spent',String(spent));
+        owned[key]=1; store('ph-owned',JSON.stringify(owned));
+        drop(14,true);
+      }
+      theme=th[0]; store('ph-theme',theme); applyTheme(); WIN(); paintStars();
+    });
+    tshop.appendChild(b);
+  });
+}
+function flash(msg){ var m=document.getElementById('wheelMsg'); m.textContent=msg; setTimeout(function(){ if(m.textContent===msg) m.textContent=''; },1800); }
+
 function paintStars(){
-  starCount.textContent=stars;
-  jarFill.style.width=Math.min(100,(stars%10)*10)+'%';
-  document.getElementById('bigStars').textContent=stars;
+  starCount.textContent=balance();
+  jarFill.style.width=Math.min(100,(stars%SPIN_EVERY)/SPIN_EVERY*100)+'%';
+  document.getElementById('bigStars').textContent=balance();
   document.getElementById('starsLine').textContent=
-    t('bestStreak')+' '+best+' · '+Object.keys(played).length+' '+t('of')+' '+GAMES.length+' '+t('tried');
+    balance()+' '+t('balance')+' · '+stars+' ★ '+t('bestStreak').toLowerCase()+' '+best
+    +' · '+Object.keys(played).length+' '+t('of')+' '+GAMES.length+' '+t('tried');
   var wrap=document.getElementById('badges'); wrap.innerHTML='';
   BADGES.forEach(function(b){
     var got=false; try{got=!!b[3]();}catch(e){}
@@ -352,8 +530,37 @@ function paintStars(){
     d.innerHTML='<span class="em">'+b[0]+'</span><b>'+txt(b[1])+'</b><small>'+txt(b[2])+'</small>';
     wrap.appendChild(d);
   });
+  paintPrizes();
 }
 function addStar(){stars++;store('ph-stars',String(stars));paintStars();if(stars%10===0)drop(30,true);}
+
+/* the wheel */
+var spinning=false, turn=0;
+document.getElementById('spin').addEventListener('click',function(){
+  if(spinning) return;
+  if(spinsLeft()<=0){ flash(t('spinWait').replace('%n',String(SPIN_EVERY-(stars%SPIN_EVERY)))); TRY(); return; }
+  spinning=true;
+  spins++; store('ph-spins',String(spins));
+  turn += 1440 + R(360);
+  document.getElementById('wheel').style.transform='rotate('+turn+'deg)';
+  document.getElementById('wheelMsg').textContent='';
+  beep([392,523,659],.08);
+  setTimeout(function(){
+    spinning=false;
+    var locked=STICKERS.filter(function(s){return !owned['st:'+s];});
+    if(locked.length && Math.random()<.65){
+      var s=pick(locked);
+      owned['st:'+s]=1; store('ph-owned',JSON.stringify(owned));
+      document.getElementById('wheelMsg').textContent=t('wonSticker')+' '+s;
+      paintStuck();
+    }else{
+      var bonus=pick([5,5,10,10,15,20]);
+      stars+=bonus; store('ph-stars',String(stars));
+      document.getElementById('wheelMsg').textContent=t('wonStars').replace('%n',String(bonus));
+    }
+    WIN(); drop(40,true); paintStars();
+  },2700);
+});
 
 /* ---------------- data ---------------- */
 var DAYS=[['Monday','lunes'],['Tuesday','martes'],['Wednesday','miércoles'],['Thursday','jueves'],['Friday','viernes'],['Saturday','sábado'],['Sunday','domingo']];
@@ -649,7 +856,9 @@ function paintLang(){
   if(curScreen==='world')buildMenu('world','worldGroups');
   if(curScreen==='stars')paintStars();
   if(curScreen==='game'&&cur){els.title.textContent=txt(cur.name);els.sub.textContent=txt(cur.note);ask();}
+  applyTheme();
   paintStars();
+  paintStuck();
 }
 document.getElementById('lang').addEventListener('click',function(){
   LANG=LANG==='en'?'es':'en';store('ph-lang',LANG);
