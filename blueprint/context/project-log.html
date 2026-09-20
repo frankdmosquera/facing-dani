@@ -1184,7 +1184,7 @@
       <span class="where-arrow">&rsaquo;</span>
       <div class="where-leg" data-now="yes">
         <div class="where-key">Step now</div>
-        <div class="where-val">Shipped. Ready to spec item 2</div>
+        <div class="where-val">Shipped, one fix since. Ready for item 2</div>
       </div>
       <span class="where-spacer"></span>
       <div class="where-leg">
@@ -1363,9 +1363,16 @@
             </details>
 
             <details class="drawer" data-kind="reality">
-              <summary>Log <span class="tag-drift">2 entries, newest first</span></summary>
+              <summary>Log <span class="tag-drift">3 entries, newest first</span></summary>
               <div class="drawer-body">
                 <div class="log">
+                  <div class="entry" data-kind="fix">
+                    <div class="dot"></div>
+                    <div class="entry-body">
+                      <div class="entry-top"><span class="entry-title">The mobile menu did not work at all</span><span class="kind-tag">Fix</span><span class="stamp">Sep 20</span></div>
+                      <p class="entry-text">Found by opening the deployed site on a phone width, which nothing before that had done. Tapping the burger appeared to do nothing: the panel opened with every piece of its behaviour correct, but rendered into a 64px strip behind the header instead of covering the screen, so none of the links were reachable. The header's <code>backdrop-filter</code> was making it the containing block for the panel's <code>position: fixed</code>, so <code>inset-0</code> measured the header rather than the viewport. Moving the frosted ground onto a layer inside the header fixes it, and the header looks identical. <b>Feature 1 passed lint, build and a careful read of the emitted HTML while this was broken</b> - the defect only exists once a browser computes layout. Archived at <code>blueprint/history/fixes/mobile-nav-panel-is-invisible.md</code>.</p>
+                    </div>
+                  </div>
                   <div class="entry" data-kind="done">
                     <div class="dot"></div>
                     <div class="entry-body">

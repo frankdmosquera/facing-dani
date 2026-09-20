@@ -14,8 +14,23 @@ import { Wordmark } from "./Wordmark";
  */
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-line-soft bg-[color-mix(in_srgb,var(--ground)_88%,transparent)] backdrop-blur-[12px]">
-      <div className="mx-auto flex max-w-[var(--site)] items-center justify-between gap-6 px-[var(--gutter)] py-3.5">
+    <header className="sticky top-0 z-40 border-b border-line-soft">
+      {/* The frosted ground is a layer inside the header, not the header
+          itself. A backdrop-filter makes its element the containing block for
+          every position:fixed descendant, and MobileNav's panel is one: on the
+          header it resolved inset-0 against a 64px box instead of the viewport,
+          so the menu opened invisibly. pointer-events-none because an
+          invisible click-blocker over the wordmark and the CTA is a worse bug
+          than the one being fixed. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[color-mix(in_srgb,var(--ground)_88%,transparent)] backdrop-blur-[12px]"
+      />
+
+      {/* relative so it paints above that layer. Safe for the panel: position
+          alone never traps a fixed descendant, only transform, filter,
+          backdrop-filter, perspective, contain and will-change do. */}
+      <div className="relative mx-auto flex max-w-[var(--site)] items-center justify-between gap-6 px-[var(--gutter)] py-3.5">
         <Wordmark />
 
         <nav
