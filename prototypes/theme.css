@@ -1,0 +1,143 @@
+/* Theme - the durable output of /prototype.
+   The :root block is what ports into the app's globals.css @theme.
+   Everything under "Base layer" is prototype plumbing shared by the mockups
+   and gets rebuilt as components in the real app.
+
+   Direction: After Party. Decided by rendering four options and comparing them
+   at phone width. The reasoning, and the three directions this beat, are in
+   blueprint/reference/. Section 7 of project-plan.md is the written version.
+
+   Ground is a plum, not a black. Frank picked the lightest of four candidates.
+   It costs some neon punch against a truer black and buys a warmer, less
+   severe page, which suits a 17-year-old artist's clientele.
+
+   Contrast, measured against --ground rather than assumed:
+     pink   #FF3D8F on #261F36 = 4.73:1   passes AA for body text
+     violet #A97BFF on #261F36 = 5.19:1   passes
+     orange #FF8A3D on #261F36 = 6.63:1   passes
+   All four accents are safe at any size on this ground. That stops being true
+   in light mode, where the same fills fail under 18px, so each one carries a
+   darker twin below for use on light surfaces. */
+
+:root {
+  /* surfaces */
+  --ground: #261F36;        /* page ground, plum                    */
+  --surface: #352948;       /* cards                                */
+  --surface-2: #2E2440;     /* alternating bands, inputs            */
+  --shot: #1B1426;          /* photo panels, deliberately darker    */
+  --line: #514165;
+  --line-soft: #3D3152;
+
+  /* text */
+  --text: #F6F2FA;
+  --muted: #B3A8C2;
+  --faint: #877B99;
+
+  /* accents - each one has a job, none are decoration */
+  --nails: #FF3D8F;
+  --lashes: #A97BFF;
+  --makeup: #FF8A3D;
+  --confirm: #3DE8B0;
+
+  /* darker twins, for the same accents on light surfaces */
+  --nails-on-light: #D4176B;
+  --lashes-on-light: #7B45E0;
+  --makeup-on-light: #BF5710;
+  --confirm-on-light: #0E8F63;
+
+  /* the one gradient. identical in light and dark, which is what keeps
+     the two modes reading as one brand. */
+  --hot: linear-gradient(92deg, var(--nails), var(--makeup));
+  --on-hot: #231A31;
+
+  /* type */
+  --display: "Unbounded", system-ui, sans-serif;
+  --body: "Inter", system-ui, sans-serif;
+
+  /* scale */
+  --radius: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+  --container: 1200px;
+  --section: 96px;
+  --gutter: 20px;
+}
+
+/* Light mode. Glow becomes tint: the blurred colour blobs on dark become the
+   same shapes unblurred and pale here. Blur on a light ground reads as a smudge.
+   Not wired to a toggle in the prototype; swap by adding .light to <body>. */
+.light {
+  --ground: #FAF6FC;
+  --surface: #FFFFFF;
+  --surface-2: #F4EEF9;
+  --shot: #EFE7F5;
+  --line: #E8DFEE;
+  --line-soft: #F0E9F4;
+
+  --text: #1F1729;
+  --muted: #6B6178;
+  --faint: #948BA1;
+}
+
+/* ----------------------------------------------------------------------
+   Base layer - prototype only
+   ---------------------------------------------------------------------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--text);
+  font-family: var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--display);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.03;
+  margin: 0;
+}
+
+p { margin: 0; line-height: 1.6; }
+a { color: inherit; }
+
+.wrap {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.btn {
+  display: inline-block;
+  font-family: var(--body);
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  border-radius: var(--radius-pill);
+  padding: 15px 28px;
+  font-size: 15px;
+  background: var(--hot);
+  color: var(--on-hot);
+  border: 0;
+  cursor: pointer;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+
+.eyebrow {
+  font-family: var(--body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--faint);
+}

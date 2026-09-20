@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dani &middot; Nails, Lashes and Makeup in Calgary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
+<style>
+  /* ---------------------------------------------------------------
+     Home. Mockup only, thrown away at the first UI feature's /complete.
+     Every colour, font and radius comes from theme.css. Nothing is
+     hardcoded here, which is what lets one file restyle every screen.
+
+     Photo placeholders are .ph blocks. They stand in for her real work
+     and are the reason the layout holds up: roughly 60% of this page is
+     image, by design.
+     --------------------------------------------------------------- */
+
+  /* glow. two blurred blobs per section, the dark-mode mechanism. */
+  .glowwrap { position: relative; overflow: hidden; }
+  .glowwrap > * { position: relative; z-index: 1; }
+  .glow { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+  .glow i {
+    position: absolute; border-radius: 50%; filter: blur(90px); display: block;
+  }
+
+  /* photo placeholder */
+  .ph {
+    background: var(--shot);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-lg);
+    position: relative;
+    overflow: hidden;
+    display: flex; align-items: flex-end;
+  }
+  .ph::after {
+    content: attr(data-label);
+    position: absolute; left: 12px; bottom: 12px;
+    font-size: 9.5px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--faint);
+    border: 1px solid var(--line); border-radius: var(--radius-pill);
+    padding: 5px 10px; background: rgba(0,0,0,.25);
+  }
+  .ph--nails  { background: linear-gradient(150deg,#4A1E3C,#1B1426 60%,#38143A); }
+  .ph--lashes { background: linear-gradient(150deg,#332055,#1B1426 60%,#281A3E); }
+  .ph--makeup { background: linear-gradient(150deg,#4E2A1A,#1B1426 60%,#3A1E2C); }
+  .ph--mix    { background: linear-gradient(150deg,#45204A,#1B1426 55%,#2C1B3C); }
+
+  /* ---------- header ---------- */
+  .ticker {
+    background: linear-gradient(90deg, var(--nails), var(--lashes), var(--makeup));
+    color: var(--on-hot);
+    font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 8px 0; white-space: nowrap; overflow: hidden;
+  }
+  .ticker span { display: inline-block; padding-right: 28px; }
+
+  header.site {
+    position: sticky; top: 0; z-index: 40;
+    background: color-mix(in srgb, var(--ground) 88%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .navrow {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 14px; padding-bottom: 14px;
+  }
+  .logo {
+    font-family: var(--display); font-weight: 800; font-size: 19px;
+    letter-spacing: -0.04em; text-decoration: none;
+  }
+  .logo em { font-style: normal; color: var(--nails); }
+  .nav { display: none; gap: 30px; }
+  .nav a {
+    text-decoration: none; font-size: 14.5px; font-weight: 500; color: var(--muted);
+  }
+  .nav a:hover { color: var(--text); }
+  .navcta { display: none; }
+  .burger { display: flex; flex-direction: column; gap: 4.5px; background: none; border: 0; cursor: pointer; padding: 6px; }
+  .burger i { display: block; width: 21px; height: 2px; border-radius: 2px; background: var(--text); }
+  @media (min-width: 900px) {
+    .nav, .navcta { display: flex; }
+    .burger { display: none; }
+    .navcta .btn { padding: 11px 22px; font-size: 14px; }
+  }
+
+  /* ---------- hero ---------- */
+  .hero { padding-top: 26px; padding-bottom: var(--section); }
+  .hero .ph { height: 380px; margin-top: 30px; }
+  .hero h1 { font-size: clamp(40px, 11vw, 74px); margin-bottom: 16px; }
+  .hero h1 em {
+    font-style: normal;
+    background: var(--hot); -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero .sell { color: var(--muted); font-size: 16px; max-width: 46ch; margin-bottom: 26px; }
+  .hero .acts { display: flex; flex-direction: column; gap: 12px; }
+  .hero .acts .btn { width: 100%; }
+  .hero .dm { font-size: 13px; color: var(--faint); text-align: center; }
+
+  @media (min-width: 900px) {
+    .hero { padding-top: 60px; }
+    .hero .inner { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+    .hero .ph { height: 560px; margin-top: 0; order: 2; }
+    .hero .copy { order: 1; }
+    .hero .acts { flex-direction: row; align-items: center; }
+    .hero .acts .btn { width: auto; }
+    .hero .dm { text-align: left; }
+  }
+
+  /* ---------- strip of proof ---------- */
+  .proof {
+    border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft);
+    background: var(--surface-2);
+    padding: 22px 0;
+  }
+  .proof .inner { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px 12px; text-align: center; }
+  .proof b { display: block; font-family: var(--display); font-weight: 700; font-size: 20px; margin-bottom: 3px; }
+  .proof span { font-size: 11.5px; color: var(--faint); letter-spacing: 0.04em; }
+  @media (min-width: 760px) { .proof .inner { grid-template-columns: repeat(4, 1fr); } }
+
+  /* ---------- section furniture ---------- */
+  section.band { padding-top: var(--section); padding-bottom: var(--section); }
+  .head { margin-bottom: 34px; }
+  .head .eyebrow { display: block; margin-bottom: 12px; }
+  .head h2 { font-size: clamp(30px, 7vw, 46px); margin-bottom: 14px; }
+  .head p { color: var(--muted); max-width: 54ch; font-size: 15.5px; }
+
+  /* ---------- services ---------- */
+  .svcs { display: grid; gap: 16px; }
+  @media (min-width: 860px) { .svcs { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+
+  .svc {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: var(--radius-lg); overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .svc .ph { height: 190px; border: 0; border-radius: 0; }
+  .svc .ph::after { border-color: rgba(255,255,255,.18); }
+  .svc-body { padding: 20px 20px 22px; display: flex; flex-direction: column; flex: 1; }
+  .svc h3 { font-size: 21px; margin-bottom: 8px; }
+  .svc p { color: var(--muted); font-size: 13.5px; margin-bottom: 16px; }
+  .svc ul { list-style: none; margin: 0 0 20px; padding: 0; }
+  .svc li {
+    display: flex; justify-content: space-between; gap: 14px;
+    font-size: 13.5px; padding: 8px 0; border-bottom: 1px solid var(--line-soft);
+  }
+  .svc li:last-child { border-bottom: 0; }
+  .svc li span { color: var(--muted); }
+  .svc li b { font-weight: 700; white-space: nowrap; }
+  .svc .go {
+    margin-top: auto; text-decoration: none; font-size: 13.5px; font-weight: 700;
+    display: inline-flex; align-items: center; gap: 7px;
+  }
+  .svc[data-svc="nails"]  { --c: var(--nails); }
+  .svc[data-svc="lashes"] { --c: var(--lashes); }
+  .svc[data-svc="makeup"] { --c: var(--makeup); }
+  .svc h3, .svc li b, .svc .go { color: var(--c); }
+  .svc h3 { color: var(--text); }
+  .tagline {
+    display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--c); margin-bottom: 10px;
+  }
+
+  /* ---------- gallery ---------- */
+  .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .filters button {
+    font-family: var(--body); font-size: 12.5px; font-weight: 600; cursor: pointer;
+    padding: 9px 16px; border-radius: var(--radius-pill);
+    background: transparent; color: var(--muted); border: 1px solid var(--line);
+  }
+  .filters button[aria-pressed="true"] {
+    background: var(--nails); border-color: var(--nails); color: var(--on-hot);
+  }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .grid .ph { aspect-ratio: 4 / 5; }
+  .grid .ph:nth-child(1) { grid-column: span 2; aspect-ratio: 16 / 11; }
+  @media (min-width: 760px) {
+    .grid { grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .grid .ph:nth-child(1) { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+  }
+
+  /* ---------- her story ---------- */
+  .story .inner { display: grid; gap: 28px; }
+  .story .ph { height: 320px; }
+  .story h2 { font-size: clamp(28px, 6.5vw, 42px); margin-bottom: 16px; }
+  .story p { color: var(--muted); font-size: 15.5px; margin-bottom: 14px; }
+  .story .sig {
+    font-family: var(--display); font-weight: 700; font-size: 15px; color: var(--text);
+    margin-top: 6px;
+  }
+  @media (min-width: 900px) {
+    .story .inner { grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: center; }
+    .story .ph { height: 480px; }
+  }
+
+  /* ---------- faq ---------- */
+  .faq { max-width: 760px; }
+  details.q {
+    border-bottom: 1px solid var(--line-soft);
+    padding: 18px 0;
+  }
+  details.q summary {
+    cursor: pointer; list-style: none;
+    font-family: var(--display); font-weight: 700; font-size: 16px;
+    display: flex; justify-content: space-between; align-items: center; gap: 18px;
+  }
+  details.q summary::-webkit-details-marker { display: none; }
+  details.q summary::after { content: "+"; color: var(--nails); font-size: 20px; font-family: var(--body); }
+  details.q[open] summary::after { content: "\2013"; }
+  details.q p { color: var(--muted); font-size: 14.5px; margin-top: 12px; }
+
+  /* ---------- final cta ---------- */
+  .final { text-align: center; }
+  .final h2 { font-size: clamp(32px, 8vw, 58px); margin-bottom: 16px; }
+  .final h2 em { font-style: normal; background: var(--hot); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .final p { color: var(--muted); max-width: 44ch; margin: 0 auto 28px; font-size: 15.5px; }
+  .final .acts { display: flex; flex-direction: column; gap: 12px; max-width: 340px; margin: 0 auto; }
+  @media (min-width: 620px) { .final .acts { flex-direction: row; justify-content: center; max-width: none; } }
+
+  /* ---------- footer ---------- */
+  footer.site {
+    border-top: 1px solid var(--line-soft);
+    padding-top: 44px; padding-bottom: 36px;
+    background: var(--surface-2);
+  }
+  .foot { display: grid; gap: 30px; }
+  @media (min-width: 760px) { .foot { grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; } }
+  .foot h4 { font-family: var(--body); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--faint); font-weight: 600; margin-bottom: 14px; }
+  .foot a { display: block; text-decoration: none; color: var(--muted); font-size: 14px; padding: 5px 0; }
+  .foot a:hover { color: var(--text); }
+  .foot .blurb { color: var(--muted); font-size: 14px; margin-top: 12px; max-width: 34ch; }
+  .legal {
+    margin-top: 34px; padding-top: 20px; border-top: 1px solid var(--line-soft);
+    display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between;
+    font-size: 12.5px; color: var(--faint);
+  }
+</style>
+</head>
+<body>
+
+<div class="ticker" aria-hidden="true">
+  <span>NAILS &middot; LASHES &middot; MAKEUP &middot; CALGARY &middot; NAILS &middot; LASHES &middot; MAKEUP &middot; CALGARY &middot; NAILS &middot; LASHES &middot; MAKEUP &middot; CALGARY &middot; NAILS &middot; LASHES &middot; MAKEUP &middot; CALGARY</span>
+</div>
+
+<header class="site">
+  <div class="wrap navrow">
+    <a class="logo" href="#">dani<em>.</em></a>
+    <nav class="nav">
+      <a href="#services">Services</a>
+      <a href="#work">The work</a>
+      <a href="#story">About</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="navcta"><a class="btn" href="#book">Book now</a></div>
+    <button class="burger" aria-label="Menu"><i></i><i></i><i></i></button>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero glowwrap">
+  <div class="glow" aria-hidden="true">
+    <i style="width:420px;height:420px;background:rgba(255,61,143,.42);top:-60px;right:-140px"></i>
+    <i style="width:380px;height:380px;background:rgba(169,123,255,.34);bottom:-40px;left:-160px"></i>
+  </div>
+  <div class="wrap inner">
+    <div class="copy">
+      <p class="eyebrow" style="margin-bottom:16px">Calgary &middot; by appointment</p>
+      <h1>Nails that<br><em>get noticed</em></h1>
+      <p class="sell">
+        Custom sets, lash extensions and event makeup. Trained in Colombia, booking
+        now in Calgary. Bring a reference photo or let me build something for you.
+      </p>
+      <div class="acts">
+        <a class="btn" href="#book">Book with Dani</a>
+        <a class="btn btn--ghost" href="#work">See the work</a>
+      </div>
+      <p class="dm" style="margin-top:14px">Or send a DM on Instagram, whatever is easier</p>
+    </div>
+    <div class="ph ph--nails" data-label="Hero &middot; her best set"></div>
+  </div>
+</section>
+
+<!-- ================= PROOF ================= -->
+<div class="proof">
+  <div class="wrap inner">
+    <div><b>3</b><span>SERVICES</span></div>
+    <div><b>Colombia</b><span>TRAINED</span></div>
+    <div><b>Calgary</b><span>BASED</span></div>
+    <div><b>DM</b><span>TO BOOK</span></div>
+  </div>
+</div>
+
+<!-- ================= SERVICES ================= -->
+<section class="band glowwrap" id="services">
+  <div class="glow" aria-hidden="true">
+    <i style="width:400px;height:400px;background:rgba(255,138,61,.20);top:60px;left:-180px"></i>
+  </div>
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">What I do</span>
+      <h2>Three things,<br>done properly</h2>
+      <p>
+        No hair, no facials, no upsell. Nails, lashes and makeup, which is what the
+        training was in and what the work is good at.
+      </p>
+    </div>
+
+    <div class="svcs">
+
+      <article class="svc" data-svc="nails">
+        <div class="ph ph--nails" data-label="Gel &middot; chrome &middot; art"></div>
+        <div class="svc-body">
+          <span class="tagline">Most booked</span>
+          <h3>Nails</h3>
+          <p>Gel, acrylic, extensions and custom art. Chrome, french, cat-eye, whatever you bring me.</p>
+          <ul>
+            <li><span>Gel manicure</span><b>$45</b></li>
+            <li><span>Full set, extensions</span><b>$70</b></li>
+            <li><span>Custom art, per nail</span><b>$5</b></li>
+            <li><span>Fill</span><b>$50</b></li>
+          </ul>
+          <a class="go" href="#">See nail work &rarr;</a>
+        </div>
+      </article>
+
+      <article class="svc" data-svc="lashes">
+        <div class="ph ph--lashes" data-label="Classic &middot; hybrid &middot; volume"></div>
+        <div class="svc-body">
+          <span class="tagline">Lasts 3 weeks</span>
+          <h3>Lashes</h3>
+          <p>Classic, hybrid and volume sets, mapped to your eye shape rather than a template.</p>
+          <ul>
+            <li><span>Classic full set</span><b>$70</b></li>
+            <li><span>Hybrid full set</span><b>$90</b></li>
+            <li><span>Volume full set</span><b>$110</b></li>
+            <li><span>Fill, 2 to 3 weeks</span><b>$45</b></li>
+          </ul>
+          <a class="go" href="#">See lash work &rarr;</a>
+        </div>
+      </article>
+
+      <article class="svc" data-svc="makeup">
+        <div class="ph ph--makeup" data-label="Grad &middot; events &middot; photo"></div>
+        <div class="svc-body">
+          <span class="tagline">Book early</span>
+          <h3>Makeup</h3>
+          <p>Grad, birthdays, photoshoots and events. Soft glam through to full glam.</p>
+          <ul>
+            <li><span>Event makeup</span><b>$60</b></li>
+            <li><span>Grad package</span><b>$85</b></li>
+            <li><span>With lashes applied</span><b>+$15</b></li>
+            <li><span>Trial run</span><b>$40</b></li>
+          </ul>
+          <a class="go" href="#">See makeup work &rarr;</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section class="band" id="work" style="background:var(--surface-2);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">The work</span>
+      <h2>Have a proper look</h2>
+      <p>
+        Big, because you are choosing a nail artist and a thumbnail tells you nothing
+        about the cuticle line.
+      </p>
+    </div>
+
+    <div class="filters">
+      <button aria-pressed="true">All</button>
+      <button aria-pressed="false">Nails</button>
+      <button aria-pressed="false">Lashes</button>
+      <button aria-pressed="false">Makeup</button>
+      <button aria-pressed="false">Chrome</button>
+    </div>
+
+    <div class="grid">
+      <div class="ph ph--nails"  data-label="Chrome french"></div>
+      <div class="ph ph--mix"    data-label="Almond, red"></div>
+      <div class="ph ph--lashes" data-label="Volume set"></div>
+      <div class="ph ph--makeup" data-label="Grad glam"></div>
+      <div class="ph ph--nails"  data-label="Cat eye gel"></div>
+      <div class="ph ph--mix"    data-label="Birthday set"></div>
+      <div class="ph ph--lashes" data-label="Hybrid"></div>
+    </div>
+
+    <div style="margin-top:26px">
+      <a class="btn btn--ghost" href="#">See the full gallery</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STORY ================= -->
+<section class="band story glowwrap" id="story">
+  <div class="glow" aria-hidden="true">
+    <i style="width:420px;height:420px;background:rgba(169,123,255,.26);top:20px;right:-170px"></i>
+  </div>
+  <div class="wrap inner">
+    <div class="ph ph--mix" data-label="Dani at work"></div>
+    <div>
+      <span class="eyebrow" style="display:block;margin-bottom:12px">Who is doing your nails</span>
+      <h2>Trained in Colombia,<br>working in Calgary</h2>
+      <p>
+        I did my training in Colombia, where the standard for nail work is a lot
+        higher than most people here expect. Shape, structure and cuticle work are
+        the parts that decide whether a set still looks good in week three, and
+        they are the parts I was drilled on.
+      </p>
+      <p>
+        I am building this business from the ground up, which means you get the
+        version of me that still cares enormously about every single set. Bring a
+        photo from Pinterest, or sit down with no idea and we will work it out.
+      </p>
+      <p class="sig">Dani</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="band" id="faq" style="background:var(--surface-2);border-top:1px solid var(--line-soft)">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Before you book</span>
+      <h2>The usual questions</h2>
+    </div>
+    <div class="faq">
+      <details class="q" open>
+        <summary>How do I book?</summary>
+        <p>Send a DM on Instagram or use the form on the contact page. Tell me the service, roughly when suits you, and send a reference photo if you have one.</p>
+      </details>
+      <details class="q">
+        <summary>How long does a full set take?</summary>
+        <p>A gel manicure is about an hour. A full set with extensions and art runs two to three hours. Lash sets are around two hours, fills about an hour.</p>
+      </details>
+      <details class="q">
+        <summary>Where are you located?</summary>
+        <p>Calgary, by appointment. The exact address goes out when your booking is confirmed.</p>
+      </details>
+      <details class="q">
+        <summary>What if I need to cancel?</summary>
+        <p>Let me know at least 24 hours before and it is no problem at all. Short notice cancellations make it hard to fill the slot, so please try.</p>
+      </details>
+      <details class="q">
+        <summary>Do you do hair?</summary>
+        <p>No. Nails, lashes and makeup only, and that is on purpose.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="band final glowwrap" id="book">
+  <div class="glow" aria-hidden="true">
+    <i style="width:480px;height:480px;background:rgba(255,61,143,.38);top:-80px;left:50%;margin-left:-240px"></i>
+    <i style="width:360px;height:360px;background:rgba(255,138,61,.24);bottom:-60px;right:-120px"></i>
+  </div>
+  <div class="wrap">
+    <span class="eyebrow" style="display:block;margin-bottom:14px">Ready when you are</span>
+    <h2>Let's do <em>your set</em></h2>
+    <p>Tell me what you are after and when. I will come back with a time.</p>
+    <div class="acts">
+      <a class="btn" href="#">Book with Dani</a>
+      <a class="btn btn--ghost" href="#">Message on Instagram</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site">
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="logo" href="#" style="font-size:22px">dani<em>.</em></a>
+        <p class="blurb">Nails, lashes and makeup in Calgary. Trained in Colombia. By appointment.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <a href="#">Nails</a>
+        <a href="#">Lashes</a>
+        <a href="#">Makeup</a>
+        <a href="#">The gallery</a>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <a href="#">Instagram</a>
+        <a href="#">Book an appointment</a>
+        <a href="#">About Dani</a>
+        <a href="#">FAQ</a>
+      </div>
+    </div>
+    <div class="legal">
+      <span>&copy; 2026 Dani. Calgary, Alberta.</span>
+      <span>Placeholder content. Nothing here is final.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
