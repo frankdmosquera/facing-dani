@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Light and Dark</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --display:Unbounded,system-ui,sans-serif;
+    --body:Inter,system-ui,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;background:#2E2C33;color:#F3F1F6;font-family:var(--body);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1300px;margin:0 auto;padding:52px 24px 90px}
+  .kicker{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9B95A6;font-weight:600;margin:0 0 14px}
+  h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,4.4vw,42px);letter-spacing:-.03em;margin:0 0 16px;line-height:1.05}
+  .lede{font-size:16px;line-height:1.65;color:#C4BFCE;max-width:68ch;margin:0 0 10px}
+  .lede b{color:#fff}
+
+  h2{font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:-.02em;margin:0 0 8px}
+  .sec{margin-top:58px}
+  .sec > p.intro{color:#C4BFCE;font-size:15.5px;line-height:1.62;margin:0 0 26px;max-width:70ch}
+
+  .row{display:flex;gap:28px;justify-content:center;flex-wrap:wrap}
+  figure{margin:0;width:280px}
+  .phone{border-radius:34px;padding:8px;background:#0A090D;box-shadow:0 20px 46px rgba(0,0,0,.45)}
+  .screen{border-radius:27px;overflow:hidden;height:560px;position:relative;display:flex;flex-direction:column;background:var(--ground)}
+  figcaption{margin-top:13px;text-align:center}
+  figcaption .n{font-family:var(--display);font-weight:700;font-size:14px;display:block;margin-bottom:4px}
+  figcaption .hex{font-family:ui-monospace,monospace;font-size:11.5px;color:#B9B3C4}
+
+  /* ---------- shared phone chrome ---------- */
+  .bar{display:flex;align-items:center;justify-content:space-between;padding:15px 17px;position:relative;z-index:3}
+  .burger{display:flex;flex-direction:column;gap:3.5px}
+  .burger i{display:block;width:17px;height:2px;border-radius:2px;background:var(--ink)}
+  .word{font-family:var(--display);font-weight:700;font-size:13.5px;letter-spacing:-.02em;color:var(--ink)}
+  .word em{font-style:normal;color:var(--pink-t)}
+  .ig{font-size:10.5px;color:var(--muted);letter-spacing:.08em}
+  .ticker{
+    background:linear-gradient(90deg,var(--pink),var(--violet),var(--orange));
+    color:#231A31;font-size:8.5px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;
+    padding:6px 0;white-space:nowrap;overflow:hidden;position:relative;z-index:3;
+  }
+  .shot{
+    margin:16px 16px 0;border-radius:20px;height:206px;position:relative;z-index:2;overflow:hidden;
+    background:var(--shot);border:1px solid var(--shot-line);
+    display:flex;align-items:flex-end;padding:11px;
+  }
+  .shot span{
+    font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--shot-tag);
+    border:1px solid var(--shot-tag-line);border-radius:99px;padding:4px 9px;background:var(--shot-tag-bg);
+  }
+  .heroText{padding:19px 18px 0;position:relative;z-index:2}
+  .heroText h3{font-family:var(--display);font-weight:800;font-size:25px;line-height:1.05;letter-spacing:-.035em;margin:0 0 9px;color:var(--ink)}
+  .heroText h3 em{font-style:normal;background:linear-gradient(92deg,var(--pink-t),var(--orange-t));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .heroText p{margin:0 0 14px;font-size:11.5px;line-height:1.55;color:var(--muted)}
+  .cta{
+    display:block;text-decoration:none;text-align:center;font-weight:700;font-size:12.5px;
+    background:linear-gradient(92deg,var(--pink),var(--orange));color:#231A31;padding:13px 0;border-radius:99px;
+  }
+  .sub{display:block;text-align:center;font-size:10px;color:var(--faint);margin-top:9px}
+
+  .stack{padding:16px;display:flex;flex-direction:column;gap:11px;flex:1;position:relative;z-index:2}
+  .ttl{font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:-.02em;margin:2px 0 3px;color:var(--ink)}
+  .card{border-radius:18px;padding:14px 15px;border:1px solid var(--card-line);background:var(--card-bg);position:relative;overflow:hidden}
+  .card h5{font-family:var(--display);font-weight:700;font-size:14px;margin:0 0 4px;letter-spacing:-.02em;position:relative;color:var(--ink)}
+  .card p{margin:0;font-size:10.5px;color:var(--muted);line-height:1.48;position:relative}
+  .card .price{position:absolute;right:14px;top:14px;font-size:11px;font-weight:700}
+  .card.n .price{color:var(--pink-t)} .card.l .price{color:var(--violet-t)} .card.m .price{color:var(--orange-t)}
+
+  /* ---------- DARK: glow does the work ---------- */
+  .dark{
+    --ground:#261F36; --ink:#F6F2FA; --muted:#B3A8C2; --faint:#877B99;
+    --pink:#FF3D8F; --violet:#A97BFF; --orange:#FF8A3D;
+    --pink-t:#FF3D8F; --violet-t:#A97BFF; --orange-t:#FF8A3D;
+    --shot:linear-gradient(150deg,#3B2252,#1B1426 55%,#2C1A3A);
+    --shot-line:rgba(255,255,255,.09); --shot-tag:#B3A8C2;
+    --shot-tag-line:rgba(255,255,255,.2); --shot-tag-bg:rgba(0,0,0,.35);
+    --card-bg:#332747; --card-line:#4A3A60;
+  }
+  .dark .glow{position:absolute;inset:0;z-index:0}
+  .dark .glow::before,.dark .glow::after{content:"";position:absolute;border-radius:50%;filter:blur(48px)}
+  .dark .glow::before{width:250px;height:250px;background:rgba(255,61,143,.5);top:60px;right:-80px}
+  .dark .glow::after{width:220px;height:220px;background:rgba(169,123,255,.42);bottom:92px;left:-76px}
+
+  /* ---------- LIGHT: tint does the work ---------- */
+  .light{
+    --ground:#FAF6FC; --ink:#1F1729; --muted:#6B6178; --faint:#948BA1;
+    --pink:#FF3D8F; --violet:#A97BFF; --orange:#FF8A3D;
+    /* darker twins, for text and small marks, because the fills fail contrast under 18px */
+    --pink-t:#D4176B; --violet-t:#7B45E0; --orange-t:#BF5710;
+    --shot:linear-gradient(150deg,#FFE3F0,#F0E6FF 55%,#FFE9D8);
+    --shot-line:#E8DFEE; --shot-tag:#6B6178;
+    --shot-tag-line:rgba(31,23,41,.16); --shot-tag-bg:rgba(255,255,255,.7);
+    --card-bg:#FFFFFF; --card-line:#EBE3F0;
+  }
+  .light .tintblob{position:absolute;inset:0;z-index:0;overflow:hidden}
+  .light .tintblob::before,.light .tintblob::after{content:"";position:absolute;border-radius:50%}
+  .light .tintblob::before{width:280px;height:280px;background:#FFE7F2;top:50px;right:-96px}
+  .light .tintblob::after{width:250px;height:250px;background:#F1E9FF;bottom:80px;left:-92px}
+  .light .card.n{background:#FFF2F8;border-color:#F8DDEA}
+  .light .card.l{background:#F5EFFF;border-color:#E6DBFA}
+  .light .card.m{background:#FFF4EA;border-color:#F8E3CF}
+
+  /* ---------- notes ---------- */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px}
+  @media(max-width:820px){.cols{grid-template-columns:1fr}}
+  .note{background:#383640;border:1px solid #4A4753;border-radius:16px;padding:22px 24px}
+  .note h4{margin:0 0 11px;font-size:12px;letter-spacing:.11em;text-transform:uppercase;color:#A49DAF;font-weight:600}
+  .note ul{margin:0;padding-left:18px;color:#C9C4D2;font-size:14.5px;line-height:1.66}
+  .note li{margin-bottom:7px}
+  .note li b{color:#fff;font-weight:600}
+  .swatchline{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
+  .mini{width:78px}
+  .mini i{display:block;height:40px;border-radius:9px;border:1px solid rgba(255,255,255,.12)}
+  .mini span{display:block;font-family:ui-monospace,monospace;font-size:10px;color:#B9B3C4;margin-top:5px}
+  .mini em{display:block;font-size:10px;color:#948BA1;font-style:normal}
+
+  .end{margin-top:60px;padding-top:30px;border-top:1px solid #45424D;color:#C4BFCE;font-size:15.5px;line-height:1.72;max-width:72ch}
+  .end b{color:#fff}
+  .end p{margin:0 0 15px}
+  code{font-family:ui-monospace,monospace;font-size:13px;background:#3A373F;padding:2px 6px;border-radius:5px;color:#3DE8B0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">facing-dani / after party / light + dark</p>
+  <h1>Same brand, two grounds</h1>
+  <p class="lede">
+    Dark is your step 3 plum, <b>#261F36</b>. Light is its twin. The accents, the
+    type and the layout do not change. What changes is the mechanism: on dark the
+    colour arrives as <b>glow</b>, on light it arrives as <b>tint</b>.
+  </p>
+
+  <!-- heroes -->
+  <section class="sec">
+    <h2>Home</h2>
+    <p class="intro">
+      The glow blobs behind the dark hero become flat tinted circles on light. Same
+      position, same colours, no blur. Blur on a light ground just looks like a
+      smudge.
+    </p>
+    <div class="row">
+
+      <figure>
+        <div class="phone"><div class="screen dark">
+          <div class="glow"></div>
+          <div class="bar"><div class="burger"><i></i><i></i><i></i></div><div class="word">dani<em>.</em></div><div class="ig">IG</div></div>
+          <div class="ticker">&nbsp;&nbsp;NAILS &middot; LASHES &middot; MAKEUP &middot; CALGARY &middot; NAILS &middot;</div>
+          <div class="shot"><span>Gel &middot; chrome &middot; custom art</span></div>
+          <div class="heroText">
+            <h3>Nails that <em>pop</em></h3>
+            <p>Custom sets, lash extensions and event makeup. Calgary.</p>
+            <a class="cta" href="#">Book with Dani</a>
+            <span class="sub">Or send a DM on Instagram</span>
+          </div>
+        </div></div>
+        <figcaption><span class="n">Dark</span><span class="hex">#261F36</span></figcaption>
+      </figure>
+
+      <figure>
+        <div class="phone"><div class="screen light">
+          <div class="tintblob"></div>
+          <div class="bar"><div class="burger"><i></i><i></i><i></i></div><div class="word">dani<em>.</em></div><div class="ig">IG</div></div>
+          <div class="ticker">&nbsp;&nbsp;NAILS &middot; LASHES &middot; MAKEUP &middot; CALGARY &middot; NAILS &middot;</div>
+          <div class="shot"><span>Gel &middot; chrome &middot; custom art</span></div>
+          <div class="heroText">
+            <h3>Nails that <em>pop</em></h3>
+            <p>Custom sets, lash extensions and event makeup. Calgary.</p>
+            <a class="cta" href="#">Book with Dani</a>
+            <span class="sub">Or send a DM on Instagram</span>
+          </div>
+        </div></div>
+        <figcaption><span class="n">Light</span><span class="hex">#FAF6FC</span></figcaption>
+      </figure>
+
+      <figure>
+        <div class="phone"><div class="screen dark">
+          <div class="glow"></div>
+          <div class="bar"><div class="burger"><i></i><i></i><i></i></div><div class="word">dani<em>.</em></div><div class="ig">IG</div></div>
+          <div class="stack">
+            <p class="ttl">What I do</p>
+            <div class="card n"><h5>Nails</h5><p>Gel, acrylic, extensions, custom art and chrome.</p><span class="price">$45</span></div>
+            <div class="card l"><h5>Lashes</h5><p>Classic, hybrid and volume. Fills every 2 to 3 weeks.</p><span class="price">$70</span></div>
+            <div class="card m"><h5>Makeup</h5><p>Grad, birthdays, photoshoots and events.</p><span class="price">$60</span></div>
+            <a class="cta" style="margin-top:auto" href="#">See the work</a>
+          </div>
+        </div></div>
+        <figcaption><span class="n">Dark &middot; services</span><span class="hex">cards #332747</span></figcaption>
+      </figure>
+
+      <figure>
+        <div class="phone"><div class="screen light">
+          <div class="tintblob"></div>
+          <div class="bar"><div class="burger"><i></i><i></i><i></i></div><div class="word">dani<em>.</em></div><div class="ig">IG</div></div>
+          <div class="stack">
+            <p class="ttl">What I do</p>
+            <div class="card n"><h5>Nails</h5><p>Gel, acrylic, extensions, custom art and chrome.</p><span class="price">$45</span></div>
+            <div class="card l"><h5>Lashes</h5><p>Classic, hybrid and volume. Fills every 2 to 3 weeks.</p><span class="price">$70</span></div>
+            <div class="card m"><h5>Makeup</h5><p>Grad, birthdays, photoshoots and events.</p><span class="price">$60</span></div>
+            <a class="cta" style="margin-top:auto" href="#">See the work</a>
+          </div>
+        </div></div>
+        <figcaption><span class="n">Light &middot; services</span><span class="hex">tinted per service</span></figcaption>
+      </figure>
+
+    </div>
+  </section>
+
+  <!-- notes -->
+  <section class="sec">
+    <h2>The two rules that make it work</h2>
+    <div class="cols">
+      <div class="note">
+        <h4>Glow becomes tint</h4>
+        <ul>
+          <li><b>Dark:</b> blurred colour blobs behind everything, dark cards, the photo sits on a near-black panel.</li>
+          <li><b>Light:</b> the same blobs unblurred and pale, white cards, each service card tinted its own colour.</li>
+          <li>The gradient CTA and the gradient ticker are <b>identical in both</b>. They are the one thing that never flips, which is what keeps it feeling like one brand.</li>
+        </ul>
+      </div>
+      <div class="note">
+        <h4>Every accent needs a darker twin</h4>
+        <ul>
+          <li>The fills stay the same in both modes. The <b>text</b> versions do not.</li>
+          <li>Hot pink on white fails contrast below 18px, so small text and prices use the darker twin instead. Same for orange and violet.</li>
+          <li>Face and body hit this exact problem and solved it the same way. It is the one thing worth copying from that project.</li>
+        </ul>
+        <div class="swatchline">
+          <div class="mini"><i style="background:#FF3D8F"></i><span>#FF3D8F</span><em>fill</em></div>
+          <div class="mini"><i style="background:#D4176B"></i><span>#D4176B</span><em>text</em></div>
+          <div class="mini"><i style="background:#A97BFF"></i><span>#A97BFF</span><em>fill</em></div>
+          <div class="mini"><i style="background:#7B45E0"></i><span>#7B45E0</span><em>text</em></div>
+          <div class="mini"><i style="background:#FF8A3D"></i><span>#FF8A3D</span><em>fill</em></div>
+          <div class="mini"><i style="background:#BF5710"></i><span>#BF5710</span><em>text</em></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="end">
+    <p>
+      <b>One thing worth deciding before we build it.</b> Do you want a visitor-facing
+      toggle, or are you choosing one and committing? They are different jobs. A
+      toggle means every section, every photo treatment and every colour gets checked
+      twice, forever, and it roughly doubles the theme work.
+    </p>
+    <p>
+      My honest read: <b>pick dark and commit.</b> Brands do not flip. Nobody expects
+      a nail artist's site to have a sun icon in the corner, her clients will never
+      look for one, and the dark plum is the whole point of the direction. The light
+      twin still earns its place as the mode for anything that has to print, and as
+      proof the palette is not a one-trick.
+    </p>
+    <p>
+      If you do want the toggle, the scaffold already supports it:
+      <code>app/globals.css</code> line 5 declares the dark variant and line 86 has
+      the <code>.dark</code> block waiting. It is a real option, just not a free one.
+    </p>
+  </div>
+
+</div>
+</body>
+</html>

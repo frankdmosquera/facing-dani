@@ -1,0 +1,163 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Pick one</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Anton&family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"><style>
+  :root{
+    --ink:#14131a;
+    --muted:#65626f;
+    --faint:#a09da9;
+    --line:#e6e4ea;
+    --page:#faf9fb;
+    --card:#ffffff;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--page);
+    color:var(--ink);
+    font-family:Inter,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:64px 24px 120px}
+
+  /* ---------- page head ---------- */
+  .kicker{
+    font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--faint);font-weight:600;margin:0 0 14px;
+  }
+  h1{
+    font-family:Anton,Impact,sans-serif;font-weight:400;
+    font-size:clamp(40px,7vw,68px);line-height:.95;letter-spacing:-.01em;
+    margin:0 0 20px;text-transform:uppercase;
+  }
+  .lede{font-size:18px;line-height:1.6;color:var(--muted);max-width:60ch;margin:0}
+  .brief{
+    margin:36px 0 0;padding:20px 24px;border:1px solid var(--line);
+    border-radius:14px;background:var(--card);
+    display:flex;flex-wrap:wrap;gap:8px 28px;
+  }
+  .brief b{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:3px;font-weight:600}
+  .brief div{font-size:15px}
+
+  /* ---------- direction card ---------- */
+  .dir{
+    margin-top:72px;background:var(--card);border:1px solid var(--line);
+    border-radius:20px;overflow:hidden;
+  }
+  .dir-head{padding:32px 32px 0;display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap}
+  .num{
+    font-family:Anton,sans-serif;font-size:48px;line-height:1;color:var(--line);
+    letter-spacing:-.02em;
+  }
+  .dir-title{flex:1;min-width:240px}
+  .dir-title h2{margin:0 0 6px;font-size:26px;letter-spacing:-.02em}
+  .dir-title p{margin:0;color:var(--muted);font-size:15px;line-height:1.55}
+  .body{padding:28px 32px 36px;display:grid;grid-template-columns:1fr 320px;gap:36px;align-items:start}
+  @media(max-width:860px){.body{grid-template-columns:1fr}}
+
+  .spec h3{
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);
+    margin:0 0 10px;font-weight:600;
+  }
+  .spec + .spec{margin-top:26px}
+  .swatches{display:flex;flex-wrap:wrap;gap:10px}
+  .sw{width:88px}
+  .sw i{display:block;height:52px;border-radius:9px;border:1px solid rgba(0,0,0,.08)}
+  .sw span{display:block;font-size:11px;font-family:"Space Grotesk",monospace;color:var(--muted);margin-top:6px}
+  .sw em{display:block;font-size:11px;color:var(--faint);font-style:normal}
+  .type-row{display:flex;gap:18px;align-items:baseline;flex-wrap:wrap}
+  .type-row div{min-width:150px}
+  .type-row small{display:block;font-size:11px;color:var(--faint);margin-top:4px;letter-spacing:.04em}
+  ul.notes{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:14.5px;line-height:1.65}
+  ul.notes li{margin-bottom:5px}
+  .warn{
+    margin-top:26px;padding:14px 16px;border-radius:11px;font-size:14px;line-height:1.55;
+    background:#fff6e8;border:1px solid #f2dfc2;color:#7a5410;
+  }
+  .warn b{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
+
+  /* ---------- phone mockup ---------- */
+  .phone{
+    width:300px;margin:0 auto;border-radius:34px;padding:9px;
+    background:#1c1b21;box-shadow:0 18px 44px rgba(20,19,26,.22);
+  }
+  .screen{border-radius:26px;overflow:hidden;height:600px;position:relative;display:flex;flex-direction:column}
+  .cap{text-align:center;font-size:12px;color:var(--faint);margin-top:12px;letter-spacing:.04em}
+  .bar{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;font-size:12px}
+  .burger{display:flex;flex-direction:column;gap:3.5px}
+  .burger i{display:block;width:17px;height:1.8px;border-radius:2px}
+  .photo{position:relative;flex:1;overflow:hidden;display:flex;align-items:flex-end}
+  .tag{
+    position:absolute;top:12px;right:12px;font-size:9px;letter-spacing:.14em;
+    text-transform:uppercase;padding:4px 8px;border-radius:99px;opacity:.75;
+  }
+  .btn{display:inline-block;text-decoration:none;font-weight:700;text-align:center}
+
+  /* --- 1 AFTER DARK --- */
+  .d1 .screen{background:#0b0b0f;color:#fff}
+  .d1 .bar{color:#8f8c99}
+  .d1 .burger i{background:#fff}
+  .d1 .word{font-family:Anton,sans-serif;font-size:15px;letter-spacing:.22em;text-transform:uppercase;color:#fff}
+  .d1 .photo{
+    background:
+      radial-gradient(120% 80% at 70% 20%, rgba(255,45,120,.5), transparent 60%),
+      radial-gradient(90% 70% at 20% 80%, rgba(200,255,61,.28), transparent 60%),
+      linear-gradient(160deg,#241826,#0b0b0f);
+  }
+  .d1 .tag{border:1px solid rgba(255,255,255,.35);color:#fff}
+  .d1 .over{padding:22px 20px 26px;width:100%}
+  .d1 h4{
+    font-family:Anton,sans-serif;font-weight:400;text-transform:uppercase;
+    font-size:40px;line-height:.9;margin:0 0 10px;letter-spacing:-.005em;
+  }
+  .d1 h4 em{font-style:normal;color:#C8FF3D}
+  .d1 p{margin:0 0 16px;font-size:12.5px;color:#b9b6c2;line-height:1.5}
+  .d1 .btn{background:#FF2D78;color:#fff;padding:13px 0;width:100%;border-radius:99px;font-size:13px;letter-spacing:.04em}
+
+  /* --- 2 SUGAR RUSH --- */
+  .d2 .screen{background:#fffdf8;color:#21102b;font-family:Fredoka,Inter,sans-serif}
+  .d2 .bar{color:#7c5b8d}
+  .d2 .burger i{background:#21102b}
+  .d2 .word{font-family:Fredoka,sans-serif;font-weight:700;font-size:16px;color:#FF4D9D;letter-spacing:-.01em}
+  .d2 .marq{
+    background:#9B6BFF;color:#fff;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
+    padding:7px 0;white-space:nowrap;overflow:hidden;font-family:Inter,sans-serif;font-weight:600;
+  }
+  .d2 .hero{padding:20px 18px 0}
+  .d2 h4{
+    font-family:Fredoka,sans-serif;font-weight:700;font-size:33px;line-height:1.02;
+    margin:0 0 9px;letter-spacing:-.02em;
+  }
+  .d2 h4 em{font-style:normal;color:#FF7A2F}
+  .d2 p{margin:0 0 15px;font-size:12.5px;color:#6b5577;line-height:1.5;font-family:Inter,sans-serif}
+  .d2 .btn{background:#FF4D9D;color:#fff;padding:13px 22px;border-radius:99px;font-size:13px;font-family:Inter,sans-serif}
+  .d2 .grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:18px;flex:1}
+  .d2 .grid i{border-radius:15px;display:block}
+  .d2 .grid i:nth-child(1){background:linear-gradient(140deg,#FF4D9D,#FF7A2F)}
+  .d2 .grid i:nth-child(2){background:linear-gradient(140deg,#9B6BFF,#5BC8FF)}
+  .d2 .grid i:nth-child(3){background:linear-gradient(140deg,#3DDCA0,#C8FF3D)}
+  .d2 .grid i:nth-child(4){background:linear-gradient(140deg,#FFD23D,#FF7A2F)}
+
+  /* --- 3 CHROME --- */
+  .d3 .screen{background:#f2f1f4;color:#17161c;font-family:"Space Grotesk",sans-serif}
+  .d3 .bar{color:#6d6b78}
+  .d3 .burger i{background:#17161c}
+  .d3 .word{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:14px;letter-spacing:.16em;text-transform:uppercase}
+  .d3 .photo{
+    background:
+      linear-gradient(115deg,#e7e6ec 0%,#c9c7d6 14%,#f6f5f8 26%,#a9b6cc 40%,#efe6f2 54%,#b9a9c9 68%,#f7f6fa 82%,#c6cbd8 100%);
+  }
+  .d3 .tag{border:1px solid rgba(23,22,28,.25);color:#17161c}
+  .d3 .over{padding:20px 18px 24px;width:100%}
+  .d3 h4{
+    font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:31px;line-height:1.02;
+    margin:0 0 9px;letter-spacing:-.035em;
+  }
+  .d3 h4 em{font-style:normal;color:#FF2D78}
+  .d3 p{margin:0 0 15px;font-size:12px;color:#4d4b57;line-height:1.5}
+  .d3 .btn{background:#17161c;color:#fff;padding:13px 0;width:100%;border-radius:8px;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase}
+
+  /* ---------- closing ---------- */
+  .close{margin-top:76px;padding-top:36px;border-top:1px solid var(--line)}
+  .close h2{font-size:22px;margin:0 0 14px;letter-spacing:-.02em}
+  .close p{color:var(--muted);line-height:1.65;font-size:15.5px;max-width:70ch}
+  .close ol{color:var(--muted);line-height:1.7;font-size:15.5px;max-width:70ch;padding-left:20px}
+  .close ol b{color:var(--ink)}
+</style><style>body{background:#f4f3f6}.sheet{max-width:1180px;margin:0 auto;padding:54px 30px 46px;text-align:center}.q{font-family:Inter,sans-serif;font-size:26px;font-weight:700;letter-spacing:-.02em;margin:0 0 8px}.s{font-family:Inter,sans-serif;font-size:15px;color:#65626f;margin:0 0 42px}.row{display:flex;gap:44px;justify-content:center;flex-wrap:wrap}figure{margin:0}figcaption{font-family:Anton,sans-serif;font-size:26px;margin-top:16px;color:#14131a}</style></head><body><div class="sheet"><p class="q">Which one feels like you?</p><p class="s">Don't overthink it. First reaction. The photos are fake, just judge the vibe.</p><div class="row"><figure class="d1"><div class="phone"><div class="screen"><div class="bar"><div class="burger"><i></i><i></i><i></i></div><div class="word">Dani</div><div>IG</div></div><div class="photo"><div class="tag">Gel &middot; Chrome</div><div class="over"><h4>Nails that<br>get <em>noticed</em></h4><p>Gel, acrylic, extensions and custom art. Lashes and makeup too. Calgary.</p><a class="btn" href="#">Book with Dani</a></div></div></div></div><figcaption>A</figcaption></figure><figure class="d2"><div class="phone"><div class="screen"><div class="bar"><div class="burger"><i></i><i></i><i></i></div><div class="word">dani.</div><div>IG</div></div><div class="marq">&nbsp;&nbsp;NAILS &middot; LASHES &middot; MAKEUP &middot; CALGARY &middot; NAILS &middot; LASHES &middot;</div><div class="hero"><h4>Your set,<br><em>your way</em></h4><p>Custom nail art, lash extensions and event makeup in Calgary.</p><a class="btn" href="#">Book now</a></div><div class="grid"><i></i><i></i><i></i><i></i></div></div></div><figcaption>B</figcaption></figure><figure class="d3"><div class="phone"><div class="screen"><div class="bar"><div class="burger"><i></i><i></i><i></i></div><div class="word">Dani</div><div>IG</div></div><div class="photo"><div class="tag">Calgary</div><div class="over"><h4>Nails, lashes<br>and <em>makeup</em></h4><p>Trained in Colombia. Booking now in Calgary.</p><a class="btn" href="#">See the work</a></div></div></div></div><figcaption>C</figcaption></figure></div></div></body></html>

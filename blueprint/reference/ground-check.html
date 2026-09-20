@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ground Check</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink:#FF3D8F; --orange:#FF8A3D; --violet:#A97BFF; --mint:#3DE8B0;
+    --text:#F6F2FA; --muted:#A79BB8; --faint:#6F6284;
+    --display:Unbounded,system-ui,sans-serif;
+    --body:Inter,system-ui,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  /* Neutral grey surround on purpose. Judging a near-black against a purple page
+     lies to you; against neutral grey it does not. */
+  body{margin:0;background:#2E2C33;color:var(--text);font-family:var(--body);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1300px;margin:0 auto;padding:52px 24px 90px}
+  .kicker{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9B95A6;font-weight:600;margin:0 0 14px}
+  h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,4.4vw,42px);letter-spacing:-.03em;margin:0 0 14px;line-height:1.05}
+  .lede{font-size:16px;line-height:1.65;color:#C4BFCE;max-width:66ch;margin:0 0 8px}
+  .lede b{color:#fff}
+
+  .row{display:flex;gap:30px;justify-content:center;flex-wrap:wrap;margin-top:46px}
+  figure{margin:0;width:286px}
+  .phone{border-radius:34px;padding:8px;background:#0A090D;box-shadow:0 20px 46px rgba(0,0,0,.5)}
+  .screen{
+    border-radius:27px;overflow:hidden;height:566px;position:relative;
+    display:flex;flex-direction:column;background:var(--ground);
+  }
+  figcaption{margin-top:14px;text-align:center}
+  figcaption .n{font-family:var(--display);font-weight:700;font-size:15px;display:block;margin-bottom:5px}
+  figcaption .hex{font-family:ui-monospace,monospace;font-size:12px;color:#B9B3C4}
+  figcaption .why{display:block;font-size:11.5px;color:#9B95A6;margin-top:6px;line-height:1.45}
+
+  .glow{position:absolute;inset:0;z-index:0}
+  .glow::before,.glow::after{content:"";position:absolute;border-radius:50%;filter:blur(48px)}
+  .glow::before{width:260px;height:260px;background:rgba(255,61,143,.5);top:62px;right:-84px}
+  .glow::after{width:230px;height:230px;background:rgba(169,123,255,.42);bottom:96px;left:-80px}
+
+  .bar{display:flex;align-items:center;justify-content:space-between;padding:15px 17px;position:relative;z-index:3}
+  .burger{display:flex;flex-direction:column;gap:3.5px}
+  .burger i{display:block;width:17px;height:2px;border-radius:2px;background:var(--text)}
+  .word{font-family:var(--display);font-weight:700;font-size:13.5px;letter-spacing:-.02em}
+  .word em{font-style:normal;color:var(--pink)}
+  .ig{font-size:10.5px;color:var(--muted);letter-spacing:.08em}
+
+  .ticker{
+    background:linear-gradient(90deg,var(--pink),var(--violet),var(--orange));
+    color:#140F1C;font-size:8.5px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;
+    padding:6px 0;white-space:nowrap;overflow:hidden;position:relative;z-index:3;
+  }
+  .shot{
+    margin:16px 16px 0;border-radius:20px;height:218px;position:relative;z-index:2;overflow:hidden;
+    background:var(--shot);border:1px solid rgba(255,255,255,.08);
+    display:flex;align-items:flex-end;padding:11px;
+  }
+  .shot span{
+    font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);
+    border:1px solid rgba(255,255,255,.18);border-radius:99px;padding:4px 9px;
+    background:rgba(0,0,0,.35);
+  }
+  .heroText{padding:20px 18px 0;position:relative;z-index:2}
+  .heroText h3{font-family:var(--display);font-weight:800;font-size:26px;line-height:1.04;letter-spacing:-.035em;margin:0 0 9px}
+  .heroText h3 em{font-style:normal;background:linear-gradient(92deg,var(--pink),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .heroText p{margin:0 0 14px;font-size:11.5px;line-height:1.55;color:var(--muted)}
+  .cta{
+    display:block;text-decoration:none;text-align:center;font-weight:700;font-size:12.5px;
+    background:linear-gradient(92deg,var(--pink),var(--orange));color:#150F1E;padding:13px 0;border-radius:99px;
+  }
+  .sub{display:block;text-align:center;font-size:10px;color:var(--faint);margin-top:9px}
+  .card{
+    margin:14px 16px 0;border-radius:16px;padding:12px 13px;position:relative;z-index:2;
+    background:var(--surface);border:1px solid var(--line);
+  }
+  .card h5{font-family:var(--display);font-weight:700;font-size:13px;margin:0 0 3px;letter-spacing:-.02em}
+  .card p{margin:0;font-size:10.5px;color:var(--muted);line-height:1.45}
+  .card .price{position:absolute;right:13px;top:13px;font-size:11px;font-weight:700;color:var(--pink)}
+
+  /* the four steps. only ground, surface, line and the photo placeholder move. */
+  .g0{--ground:#140F1C;--surface:#221A30;--line:#3A2D4C;--shot:linear-gradient(150deg,#3A2050,#1B1226 55%,#2A1636)}
+  .g1{--ground:#1A1426;--surface:#281F38;--line:#413353;--shot:linear-gradient(150deg,#402356,#221730 55%,#311B3E)}
+  .g2{--ground:#201A2E;--surface:#2E2440;--line:#493A5C;--shot:linear-gradient(150deg,#46275D,#281C38 55%,#382046)}
+  .g3{--ground:#261F36;--surface:#352948;--line:#514165;--shot:linear-gradient(150deg,#4C2B64,#2E2140 55%,#3F254E)}
+
+  .end{
+    margin-top:64px;padding-top:30px;border-top:1px solid #45424D;
+    color:#C4BFCE;font-size:15.5px;line-height:1.7;max-width:72ch;
+  }
+  .end b{color:#fff}
+  .end p{margin:0 0 14px}
+  code{font-family:ui-monospace,monospace;font-size:13px;background:#3A373F;padding:2px 6px;border-radius:5px;color:var(--mint)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">facing-dani / after party / ground</p>
+  <h1>How light is "a tiny lighter"?</h1>
+  <p class="lede">
+    Same hero four times. Only the ground, the card colour and the photo placeholder
+    move; the pink, orange, violet and type are identical in all four. Pick a number
+    and that becomes <b>--ground</b> in the theme.
+  </p>
+  <p class="lede">
+    The surround is neutral grey on purpose. Judging a near-black against a purple
+    page lies to you.
+  </p>
+
+  <div class="row">
+
+    <figure>
+      <div class="phone"><div class="screen g0">
+        <div class="glow"></div>
+        <div class="bar"><div class="burger"><i></i><i></i><i></i></div><div class="word">dani<em>.</em></div><div class="ig">IG</div></div>
+        <div class="ticker">&nbsp;&nbsp;NAILS &middot; LASHES &middot; MAKEUP &middot; CALGARY &middot; NAILS &middot;</div>
+        <div class="shot"><span>Gel &middot; chrome &middot; custom art</span></div>
+        <div class="heroText">
+          <h3>Nails that <em>pop</em></h3>
+          <p>Custom sets, lash extensions and event makeup. Calgary.</p>
+          <a class="cta" href="#">Book with Dani</a>
+          <span class="sub">Or send a DM on Instagram</span>
+        </div>
+        <div class="card"><h5>Nails</h5><p>Gel, acrylic, extensions, chrome.</p><span class="price">from $45</span></div>
+      </div></div>
+      <figcaption>
+        <span class="n">0 &middot; as built</span>
+        <span class="hex">#140F1C</span>
+        <span class="why">Maximum punch. The neon is at its loudest here.</span>
+      </figcaption>
+    </figure>
+
+    <figure>
+      <div class="phone"><div class="screen g1">
+        <div class="glow"></div>
+        <div class="bar"><div class="burger"><i></i><i></i><i></i></div><div class="word">dani<em>.</em></div><div class="ig">IG</div></div>
+        <div class="ticker">&nbsp;&nbsp;NAILS &middot; LASHES &middot; MAKEUP &middot; CALGARY &middot; NAILS &middot;</div>
+        <div class="shot"><span>Gel &middot; chrome &middot; custom art</span></div>
+        <div class="heroText">
+          <h3>Nails that <em>pop</em></h3>
+          <p>Custom sets, lash extensions and event makeup. Calgary.</p>
+          <a class="cta" href="#">Book with Dani</a>
+          <span class="sub">Or send a DM on Instagram</span>
+        </div>
+        <div class="card"><h5>Nails</h5><p>Gel, acrylic, extensions, chrome.</p><span class="price">from $45</span></div>
+      </div></div>
+      <figcaption>
+        <span class="n">1 &middot; a notch</span>
+        <span class="hex">#1A1426</span>
+        <span class="why">Softer, still unmistakably dark. My pick if you want lighter.</span>
+      </figcaption>
+    </figure>
+
+    <figure>
+      <div class="phone"><div class="screen g2">
+        <div class="glow"></div>
+        <div class="bar"><div class="burger"><i></i><i></i><i></i></div><div class="word">dani<em>.</em></div><div class="ig">IG</div></div>
+        <div class="ticker">&nbsp;&nbsp;NAILS &middot; LASHES &middot; MAKEUP &middot; CALGARY &middot; NAILS &middot;</div>
+        <div class="shot"><span>Gel &middot; chrome &middot; custom art</span></div>
+        <div class="heroText">
+          <h3>Nails that <em>pop</em></h3>
+          <p>Custom sets, lash extensions and event makeup. Calgary.</p>
+          <a class="cta" href="#">Book with Dani</a>
+          <span class="sub">Or send a DM on Instagram</span>
+        </div>
+        <div class="card"><h5>Nails</h5><p>Gel, acrylic, extensions, chrome.</p><span class="price">from $45</span></div>
+      </div></div>
+      <figcaption>
+        <span class="n">2 &middot; plum</span>
+        <span class="hex">#201A2E</span>
+        <span class="why">The purple starts reading as a colour, not as a black.</span>
+      </figcaption>
+    </figure>
+
+    <figure>
+      <div class="phone"><div class="screen g3">
+        <div class="glow"></div>
+        <div class="bar"><div class="burger"><i></i><i></i><i></i></div><div class="word">dani<em>.</em></div><div class="ig">IG</div></div>
+        <div class="ticker">&nbsp;&nbsp;NAILS &middot; LASHES &middot; MAKEUP &middot; CALGARY &middot; NAILS &middot;</div>
+        <div class="shot"><span>Gel &middot; chrome &middot; custom art</span></div>
+        <div class="heroText">
+          <h3>Nails that <em>pop</em></h3>
+          <p>Custom sets, lash extensions and event makeup. Calgary.</p>
+          <a class="cta" href="#">Book with Dani</a>
+          <span class="sub">Or send a DM on Instagram</span>
+        </div>
+        <div class="card"><h5>Nails</h5><p>Gel, acrylic, extensions, chrome.</p><span class="price">from $45</span></div>
+      </div></div>
+      <figcaption>
+        <span class="n">3 &middot; too far</span>
+        <span class="hex">#261F36</span>
+        <span class="why">Included as the edge. The neon has visibly lost its bite.</span>
+      </figcaption>
+    </figure>
+
+  </div>
+
+  <div class="end">
+    <p>
+      <b>The tradeoff, said plainly.</b> Every step lighter costs the neon some punch,
+      because the accents only glow against something near-black. Step 3 is in here
+      as the wall, not as a candidate. It is the point where the ground stops being
+      a backdrop and starts being a purple you have to design around.
+    </p>
+    <p>
+      <b>Step 1 is where I would land.</b> It takes the severity off without giving
+      anything real away, and it is kinder to her photos, since a shot with a slightly
+      lifted background will not leave a visible rectangle floating on the page.
+    </p>
+    <p>
+      Say a number and it goes straight into <code>prototypes/theme.css</code> as
+      <code>--ground</code>, with the card colour moving with it.
+    </p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>After Party</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#140F1C;
+    --surface:#221A30;
+    --surface-2:#2C2140;
+    --line:#3A2D4C;
+    --text:#F6F2FA;
+    --muted:#A79BB8;
+    --faint:#6F6284;
+
+    --pink:#FF3D8F;
+    --orange:#FF8A3D;
+    --violet:#A97BFF;
+    --mint:#3DE8B0;
+
+    --display:Unbounded,system-ui,sans-serif;
+    --body:Inter,system-ui,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{
+    margin:0;background:var(--ground);color:var(--text);
+    font-family:var(--body);-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1140px;margin:0 auto;padding:60px 24px 110px}
+
+  .kicker{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);font-weight:600;margin:0 0 16px}
+  h1{
+    font-family:var(--display);font-weight:800;font-size:clamp(34px,6vw,58px);
+    line-height:1.02;letter-spacing:-.03em;margin:0 0 18px;
+  }
+  h1 em{font-style:normal;background:linear-gradient(92deg,var(--pink),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{font-size:17px;line-height:1.65;color:var(--muted);max-width:62ch;margin:0}
+
+  .from{
+    display:flex;gap:10px;flex-wrap:wrap;margin:28px 0 0;
+  }
+  .from span{
+    font-size:12.5px;padding:7px 14px;border-radius:99px;border:1px solid var(--line);
+    color:var(--muted);background:var(--surface);
+  }
+  .from b{color:var(--text);font-weight:600}
+
+  h2{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-.02em;margin:0 0 6px}
+  .sec{margin-top:66px}
+  .sec > p{color:var(--muted);font-size:15.5px;line-height:1.6;margin:0 0 26px;max-width:66ch}
+
+  /* palette */
+  .swatches{display:flex;flex-wrap:wrap;gap:12px}
+  .sw{width:104px}
+  .sw i{display:block;height:62px;border-radius:12px;border:1px solid rgba(255,255,255,.09)}
+  .sw span{display:block;font-size:11.5px;font-family:ui-monospace,monospace;color:var(--muted);margin-top:7px}
+  .sw em{display:block;font-size:11px;color:var(--faint);font-style:normal;margin-top:1px}
+
+  /* type */
+  .typebox{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px 28px}
+  .typebox .big{font-family:var(--display);font-weight:800;font-size:clamp(28px,4.5vw,44px);letter-spacing:-.03em;line-height:1.05;margin:0 0 6px}
+  .typebox .lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-weight:600}
+  .typebox hr{border:0;border-top:1px solid var(--line);margin:22px 0}
+  .typebox .bodytext{font-size:15.5px;line-height:1.6;color:var(--muted);margin:6px 0 0;max-width:60ch}
+
+  /* phones */
+  .phones{display:flex;gap:38px;flex-wrap:wrap;justify-content:center}
+  .phone{width:306px;border-radius:36px;padding:9px;background:#07050B;box-shadow:0 22px 52px rgba(0,0,0,.55)}
+  .screen{border-radius:28px;overflow:hidden;height:628px;background:var(--ground);display:flex;flex-direction:column;position:relative}
+  figure{margin:0}
+  figcaption{text-align:center;font-size:12px;color:var(--faint);margin-top:14px;letter-spacing:.05em}
+
+  .bar{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;position:relative;z-index:3}
+  .burger{display:flex;flex-direction:column;gap:4px}
+  .burger i{display:block;width:18px;height:2px;border-radius:2px;background:var(--text)}
+  .word{font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:-.02em}
+  .word em{font-style:normal;color:var(--pink)}
+  .ig{font-size:11px;color:var(--muted);letter-spacing:.08em}
+
+  .ticker{
+    background:linear-gradient(90deg,var(--pink),var(--violet),var(--orange));
+    color:#140F1C;font-size:9px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;
+    padding:7px 0;white-space:nowrap;overflow:hidden;position:relative;z-index:3;
+  }
+
+  /* screen 1 hero */
+  .glow{position:absolute;inset:0;z-index:0}
+  .glow::before,.glow::after{content:"";position:absolute;border-radius:50%;filter:blur(52px)}
+  .glow::before{width:290px;height:290px;background:rgba(255,61,143,.55);top:70px;right:-90px}
+  .glow::after{width:260px;height:260px;background:rgba(169,123,255,.45);bottom:110px;left:-90px}
+  .shot{
+    margin:18px 18px 0;border-radius:22px;height:246px;position:relative;z-index:2;overflow:hidden;
+    background:linear-gradient(150deg,#3A2050,#1B1226 55%,#2A1636);
+    border:1px solid rgba(255,255,255,.08);
+    display:flex;align-items:flex-end;padding:12px;
+  }
+  .shot span{
+    font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+    border:1px solid rgba(255,255,255,.18);border-radius:99px;padding:4px 9px;
+    background:rgba(20,15,28,.5);
+  }
+  .heroText{padding:22px 20px 0;position:relative;z-index:2}
+  .heroText h3{
+    font-family:var(--display);font-weight:800;font-size:29px;line-height:1.04;
+    letter-spacing:-.035em;margin:0 0 10px;
+  }
+  .heroText h3 em{font-style:normal;background:linear-gradient(92deg,var(--pink),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .heroText p{margin:0 0 16px;font-size:12.5px;line-height:1.55;color:var(--muted)}
+  .cta{
+    display:block;text-decoration:none;text-align:center;font-weight:700;font-size:13.5px;
+    background:linear-gradient(92deg,var(--pink),var(--orange));color:#150F1E;
+    padding:14px 0;border-radius:99px;
+  }
+  .sub{display:block;text-align:center;font-size:11px;color:var(--faint);margin-top:11px}
+
+  /* screen 2 services */
+  .stack{padding:18px;display:flex;flex-direction:column;gap:12px;flex:1;position:relative;z-index:2}
+  .ttl{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.02em;margin:2px 0 4px}
+  .card{
+    border-radius:20px;padding:16px 17px;border:1px solid var(--line);
+    background:var(--surface);position:relative;overflow:hidden;
+  }
+  .card::after{content:"";position:absolute;right:-42px;top:-42px;width:104px;height:104px;border-radius:50%;opacity:.32;filter:blur(20px)}
+  .card.n::after{background:var(--pink)}
+  .card.l::after{background:var(--violet)}
+  .card.m::after{background:var(--orange)}
+  .card h5{font-family:var(--display);font-weight:700;font-size:16px;margin:0 0 5px;letter-spacing:-.02em;position:relative}
+  .card p{margin:0;font-size:11.5px;color:var(--muted);line-height:1.5;position:relative}
+  .card .price{
+    position:absolute;right:15px;bottom:15px;font-size:12px;font-weight:700;
+  }
+  .card.n .price{color:var(--pink)}
+  .card.l .price{color:var(--violet)}
+  .card.m .price{color:var(--orange)}
+
+  /* screen 3 gallery */
+  .pills{display:flex;gap:7px;padding:4px 18px 14px;flex-wrap:wrap;position:relative;z-index:2}
+  .pills b{
+    font-size:10.5px;font-weight:600;padding:6px 12px;border-radius:99px;
+    border:1px solid var(--line);color:var(--muted);
+  }
+  .pills b.on{background:var(--pink);border-color:var(--pink);color:#150F1E}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:0 18px 18px;flex:1;position:relative;z-index:2}
+  .grid i{border-radius:16px;display:block;border:1px solid rgba(255,255,255,.07)}
+  .grid i:nth-child(1){background:linear-gradient(145deg,#FF3D8F,#7A1F4E)}
+  .grid i:nth-child(2){background:linear-gradient(145deg,#A97BFF,#3B2060)}
+  .grid i:nth-child(3){background:linear-gradient(145deg,#3DE8B0,#12503B)}
+  .grid i:nth-child(4){background:linear-gradient(145deg,#FF8A3D,#6B2F10)}
+  .grid i:nth-child(5){background:linear-gradient(145deg,#FF3D8F,#A97BFF)}
+  .grid i:nth-child(6){background:linear-gradient(145deg,#2C2140,#443157)}
+
+  /* notes */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:780px){.cols{grid-template-columns:1fr}}
+  .note{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 24px}
+  .note h4{margin:0 0 10px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-weight:600}
+  .note ul{margin:0;padding-left:18px;color:var(--muted);font-size:14.5px;line-height:1.66}
+  .note li{margin-bottom:6px}
+  .note li b{color:var(--text);font-weight:600}
+  .note.warn{border-color:#5A3A2A;background:#2A1C18}
+  .note.warn h4{color:var(--orange)}
+
+  code{font-family:ui-monospace,monospace;font-size:13px;background:var(--surface-2);padding:2px 6px;border-radius:5px;color:var(--mint)}
+  .end{margin-top:66px;padding-top:32px;border-top:1px solid var(--line);color:var(--muted);font-size:15.5px;line-height:1.7;max-width:70ch}
+  .end b{color:var(--text)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">facing-dani / direction 04</p>
+  <h1>After <em>Party</em></h1>
+  <p class="lede">
+    The one in between. It keeps the dark ground and the confidence of After Dark,
+    then brings in the full candy palette and the round, friendly shapes of Sugar
+    Rush. Premium at a glance, fun on the second look.
+  </p>
+
+  <div class="from">
+    <span><b>From 01:</b> dark ground, glow, big display type, photo-first</span>
+    <span><b>From 02:</b> four colours, pills, ticker, a colour per service</span>
+  </div>
+
+  <!-- palette -->
+  <section class="sec">
+    <h2>Palette</h2>
+    <p>
+      The ground is aubergine-black rather than true black, which is what keeps it
+      from going severe. The four accents are the Sugar Rush colours pushed brighter,
+      because saturated colour survives on dark and pastel dies on it.
+    </p>
+    <div class="swatches">
+      <div class="sw"><i style="background:#140F1C"></i><span>#140F1C</span><em>ground</em></div>
+      <div class="sw"><i style="background:#221A30"></i><span>#221A30</span><em>cards</em></div>
+      <div class="sw"><i style="background:#FF3D8F"></i><span>#FF3D8F</span><em>nails</em></div>
+      <div class="sw"><i style="background:#A97BFF"></i><span>#A97BFF</span><em>lashes</em></div>
+      <div class="sw"><i style="background:#FF8A3D"></i><span>#FF8A3D</span><em>makeup</em></div>
+      <div class="sw"><i style="background:#3DE8B0"></i><span>#3DE8B0</span><em>confirm</em></div>
+      <div class="sw"><i style="background:#F6F2FA"></i><span>#F6F2FA</span><em>text</em></div>
+    </div>
+  </section>
+
+  <!-- type -->
+  <section class="sec">
+    <h2>Type</h2>
+    <p>
+      Anton was too hard and Fredoka was too soft. Unbounded sits between them:
+      geometric and wide, confident at size, but with enough roundness that it never
+      reads as a gym poster.
+    </p>
+    <div class="typebox">
+      <p class="big">Nails that pop</p>
+      <p class="lbl">Unbounded 800 &middot; headlines only</p>
+      <hr>
+      <p class="lbl">Inter &middot; body, prices, buttons, everything else</p>
+      <p class="bodytext">
+        Gel, acrylic, extensions and custom art. Lash extensions and event makeup.
+        Booking now in Calgary, trained in Colombia.
+      </p>
+    </div>
+  </section>
+
+  <!-- screens -->
+  <section class="sec">
+    <h2>Three screens</h2>
+    <p>
+      Hero, services and gallery, at phone width. The colour coding is the idea worth
+      keeping: nails are pink, lashes are violet, makeup is orange, and that holds
+      everywhere on the site so a returning client navigates by colour.
+    </p>
+    <div class="phones">
+
+      <figure>
+        <div class="phone"><div class="screen">
+          <div class="glow"></div>
+          <div class="bar">
+            <div class="burger"><i></i><i></i><i></i></div>
+            <div class="word">dani<em>.</em></div>
+            <div class="ig">IG</div>
+          </div>
+          <div class="ticker">&nbsp;&nbsp;NAILS &middot; LASHES &middot; MAKEUP &middot; CALGARY &middot; NAILS &middot; LASHES &middot;</div>
+          <div class="shot"><span>Gel &middot; chrome &middot; custom art</span></div>
+          <div class="heroText">
+            <h3>Nails that<br><em>pop</em></h3>
+            <p>Custom sets, lash extensions and event makeup. Calgary.</p>
+            <a class="cta" href="#">Book with Dani</a>
+            <span class="sub">Or send a DM on Instagram</span>
+          </div>
+        </div></div>
+        <figcaption>Home</figcaption>
+      </figure>
+
+      <figure>
+        <div class="phone"><div class="screen">
+          <div class="glow"></div>
+          <div class="bar">
+            <div class="burger"><i></i><i></i><i></i></div>
+            <div class="word">dani<em>.</em></div>
+            <div class="ig">IG</div>
+          </div>
+          <div class="stack">
+            <p class="ttl">What I do</p>
+            <div class="card n">
+              <h5>Nails</h5>
+              <p>Gel, acrylic, extensions, custom art and chrome.</p>
+              <span class="price">from $45</span>
+            </div>
+            <div class="card l">
+              <h5>Lashes</h5>
+              <p>Classic, hybrid and volume sets. Fills every 2 to 3 weeks.</p>
+              <span class="price">from $70</span>
+            </div>
+            <div class="card m">
+              <h5>Makeup</h5>
+              <p>Grad, birthdays, photoshoots and events.</p>
+              <span class="price">from $60</span>
+            </div>
+            <a class="cta" style="margin-top:auto" href="#">See the work</a>
+          </div>
+        </div></div>
+        <figcaption>Services, colour coded</figcaption>
+      </figure>
+
+      <figure>
+        <div class="phone"><div class="screen">
+          <div class="glow"></div>
+          <div class="bar">
+            <div class="burger"><i></i><i></i><i></i></div>
+            <div class="word">dani<em>.</em></div>
+            <div class="ig">IG</div>
+          </div>
+          <p class="ttl" style="padding:2px 18px 10px;position:relative;z-index:2">Gallery</p>
+          <div class="pills">
+            <b class="on">All</b><b>Nails</b><b>Lashes</b><b>Makeup</b><b>Chrome</b>
+          </div>
+          <div class="grid"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div></div>
+        <figcaption>Gallery, her real photos go here</figcaption>
+      </figure>
+
+    </div>
+  </section>
+
+  <!-- notes -->
+  <section class="sec">
+    <h2>Why this one holds up</h2>
+    <div class="cols">
+      <div class="note">
+        <h4>What it gets right</h4>
+        <ul>
+          <li><b>Photos still win.</b> Colour saturates on dark, so her nail work is the brightest thing on every screen.</li>
+          <li><b>Colour does the navigating.</b> One colour per service means a returning client never reads a menu twice.</li>
+          <li><b>It reads young without reading cheap.</b> That is the exact gap between 01 and 02.</li>
+          <li><b>Every effect here is CSS.</b> Glows, gradients and the ticker cost nothing and need no library.</li>
+          <li><b>It matches a phone at night,</b> which is when it will actually be opened.</li>
+        </ul>
+      </div>
+      <div class="note warn">
+        <h4>What it will cost you</h4>
+        <ul>
+          <li><b>Contrast needs watching.</b> Orange and mint on dark are fine at size, risky for small grey-on-dark text. The body colour is deliberately light for that reason.</li>
+          <li><b>Four colours is a discipline.</b> They only ever mean nails, lashes, makeup and confirmation. The moment they become decoration it turns into a circus.</li>
+          <li><b>Her photos need dark-friendly backgrounds.</b> Worth telling her before she shoots, not after.</li>
+          <li><b>Still a bet on photography.</b> Less brutal than pure black, but the same bet.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <p class="end">
+    <b>This is a sketch, not the answer.</b> Show it to Dani next to A and B and let her
+    push it. More pink, less purple, rounder, harder, whatever she says. When it
+    settles, the whole thing collapses into one <code>prototypes/theme.css</code>, and
+    that file is what ports into <code>globals.css</code> the first time real UI gets
+    built.
+  </p>
+
+</div>
+</body>
+</html>
