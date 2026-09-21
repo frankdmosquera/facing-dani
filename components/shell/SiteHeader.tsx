@@ -52,17 +52,26 @@ export function SiteHeader({ locale, t }: { locale: Locale; t: Dictionary }) {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-5 min-[900px]:flex">
-          <LanguageSwitch locale={locale} t={t} />
+        <div className="flex items-center gap-5">
+          {/* Visible at every width, and deliberately not inside the menu.
+              It is a setting, not a destination, and on the English page it is
+              the one thing that tells a Spanish-speaking visitor she can use
+              this site in her own language. Behind a burger she has to go
+              looking for it. */}
+          {/* -mx-2 px-2 py-3 grows the tap target to roughly 44px without
+              moving anything: it is a thumb target on a phone now, not a line
+              of text at the bottom of a menu. */}
+          <LanguageSwitch locale={locale} t={t} className="-mx-2 px-2 py-3" />
+
           <Link
             href={localePath(locale, siteConfig.cta.href)}
-            className="rounded-pill bg-[image:var(--hot)] px-[22px] py-[11px] text-[14px] font-bold text-on-hot focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            className="hidden rounded-pill bg-[image:var(--hot)] px-[22px] py-[11px] text-[14px] font-bold text-on-hot focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring min-[900px]:inline-block"
           >
             {t.cta.book}
           </Link>
-        </div>
 
-        <MobileNav locale={locale} t={t} />
+          <MobileNav locale={locale} t={t} />
+        </div>
       </div>
     </header>
   );

@@ -1184,7 +1184,7 @@
       <span class="where-arrow">&rsaquo;</span>
       <div class="where-leg" data-now="yes">
         <div class="where-key">Step now</div>
-        <div class="where-val">2 &middot; Locale routing, shipped</div>
+        <div class="where-val">2 &middot; Locale routing, shipped. One fix since</div>
       </div>
       <span class="where-spacer"></span>
       <div class="where-leg">
@@ -1435,9 +1435,16 @@
             </details>
 
             <details class="drawer" data-kind="reality">
-              <summary>Log <span class="tag-drift">2 entries, newest first</span></summary>
+              <summary>Log <span class="tag-drift">3 entries, newest first</span></summary>
               <div class="drawer-body">
                 <div class="log">
+                  <div class="entry" data-kind="fix">
+                    <div class="dot"></div>
+                    <div class="entry-body">
+                      <div class="entry-top"><span class="entry-title">The language switch was in the wrong place</span><span class="kind-tag">Fix</span><span class="stamp">Sep 21</span></div>
+                      <p class="entry-text">Found by using the preview on a phone: tapping <code>Espa&ntilde;ol</code> inside the mobile menu changed the language, which reloads the page, which closed the menu underneath you. Nothing was closing it by mistake - the panel's open state simply cannot survive a page load. The real error was placement: every other item in that menu is a destination, and the switch is a setting. It now sits in the header at every width and is gone from the menu, which removes the problem rather than patching it. It also puts the site's strongest signal where a Spanish-speaking visitor sees it on arrival instead of behind a burger. Two mistakes were made and caught during the build: the header briefly rendered two burgers, and the tap target was 22px until it was widened to about 44px. Archived at <code>blueprint/history/fixes/language-switch-belongs-in-the-header-not-the-menu.md</code>.</p>
+                    </div>
+                  </div>
                   <div class="entry" data-kind="done">
                     <div class="dot"></div>
                     <div class="entry-body">

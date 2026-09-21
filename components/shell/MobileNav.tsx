@@ -8,8 +8,6 @@ import { siteConfig } from "@/data/siteConfig";
 import type { Dictionary } from "@/dictionaries";
 import { localePath, type Locale } from "@/lib/locale";
 
-import { LanguageSwitch } from "./LanguageSwitch";
-
 /**
  * The burger and the panel behind it.
  *
@@ -136,11 +134,9 @@ export function MobileNav({ locale, t }: { locale: Locale; t: Dictionary }) {
           {t.cta.book}
         </Link>
 
-        <LanguageSwitch
-          locale={locale}
-          t={t}
-          className="mt-8 self-start text-[16px]!"
-        />
+        {/* No language switch here. It lives in the header at every width:
+            it is a setting rather than a destination, and changing language
+            reloads the page, which closed this panel underneath the visitor. */}
       </div>
     </>
   );
