@@ -1184,7 +1184,7 @@
       <span class="where-arrow">&rsaquo;</span>
       <div class="where-leg" data-now="yes">
         <div class="where-key">Step now</div>
-        <div class="where-val">2 &middot; Locale routing, shipped. One fix since</div>
+        <div class="where-val">2 &middot; Locale routing, shipped. Two fixes since</div>
       </div>
       <span class="where-spacer"></span>
       <div class="where-leg">
@@ -1267,6 +1267,7 @@
             <li>Mobile is the product, not a consideration. Every mockup was drawn at phone width.</li>
             <li>Her photos need dark-friendly backgrounds. She has to hear this before she shoots, not after.</li>
             <li>Motion in CSS only. <code>motion</code> is not installed and is not being added.</li>
+            <li><strong>A cast is not a check.</strong> <code>as keyof T</code> asserts that a string is a key of <code>T</code>; it does not verify it. One of those silenced the error that would have caught three empty footer links before they shipped. Any <code>as</code> inside a lookup marks the spot where the compiler was asked to stop helping.</li>
             <li>SEO is the slow second engine here. Google Business Profile and her Instagram will out-earn the site for the first year.</li>
             <li><strong>Spanish is not an SEO target.</strong> English is what the site is trying to rank. The Spanish pages exist so someone who reads Spanish more comfortably can use the site, and <code>hreflang</code> is there to stop Google reading the two as duplicates and dropping one - which protects the English ranking. No Spanish keyword work. Decided 2026-09-21, replacing an earlier line in the plan that treated Spanish as a second set of rankings.</li>
             <li>At 17 and likely working from home, a street address in the schema is a privacy call, not a default.</li>
@@ -1364,9 +1365,16 @@
             </details>
 
             <details class="drawer" data-kind="reality">
-              <summary>Log <span class="tag-drift">3 entries, newest first</span></summary>
+              <summary>Log <span class="tag-drift">4 entries, newest first</span></summary>
               <div class="drawer-body">
                 <div class="log">
+                  <div class="entry" data-kind="fix">
+                    <div class="dot"></div>
+                    <div class="entry-body">
+                      <div class="entry-top"><span class="entry-title">Three footer links shipped with no text</span><span class="kind-tag">Fix</span><span class="stamp">Sep 21</span></div>
+                      <p class="entry-text">Nails, Lashes and Makeup rendered as empty links in the footer of the live site, in both languages - a blank gap to look at, and a link a screen reader announces as just "link". The footer looked its labels up in the wrong half of the dictionary. <b>The reason it shipped is the part worth remembering:</b> the lookup used <code>as keyof</code>, which asserts that a string is a valid key rather than checking it, so the one error that would have caught this was silenced. Feature 2 had built a careful build-time guarantee against missing translations, and a convenience cast three files later walked straight around it. All three casts are gone, the keys are typed against the dictionary, and renaming a key to something that does not exist now fails the build in three places. Archived at <code>blueprint/history/fixes/empty-footer-links-and-the-cast-that-hid-them.md</code>.</p>
+                    </div>
+                  </div>
                   <div class="entry" data-kind="fix">
                     <div class="dot"></div>
                     <div class="entry-body">

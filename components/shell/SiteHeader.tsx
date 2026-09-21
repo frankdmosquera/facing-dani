@@ -47,7 +47,7 @@ export function SiteHeader({ locale, t }: { locale: Locale; t: Dictionary }) {
               href={localePath(locale, item.href)}
               className="text-[14.5px] font-medium text-ink-muted transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
             >
-              {t.nav[item.key as keyof Dictionary["nav"]]}
+              {t.nav[item.key]}
             </Link>
           ))}
         </nav>

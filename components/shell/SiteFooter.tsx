@@ -28,7 +28,6 @@ const linkClass =
 
 export function SiteFooter({ locale, t }: { locale: Locale; t: Dictionary }) {
   const { business, footer, social } = siteConfig;
-  const label = (key: string) => t.footer[key as keyof Dictionary["footer"]];
 
   return (
     <footer className="mt-auto border-t border-line-soft bg-surface-2 pt-11 pb-9">
@@ -41,19 +40,19 @@ export function SiteFooter({ locale, t }: { locale: Locale; t: Dictionary }) {
             </p>
           </div>
 
-          <Column heading={t.footer.services}>
+          <Column heading={t.footer.headings.services}>
             {footer.services.map((item) => (
               <Link
                 key={item.key}
                 href={localePath(locale, item.href)}
                 className={linkClass}
               >
-                {label(item.key)}
+                {t.footer.links[item.key]}
               </Link>
             ))}
           </Column>
 
-          <Column heading={t.footer.contact}>
+          <Column heading={t.footer.headings.contact}>
             {/* Rendered only once the handle is known, so an unset one cannot
                 ship as a dead link. */}
             {social.instagram ? (
@@ -63,7 +62,7 @@ export function SiteFooter({ locale, t }: { locale: Locale; t: Dictionary }) {
                 rel="me noopener noreferrer"
                 target="_blank"
               >
-                {t.footer.instagram}
+                {t.footer.links.instagram}
               </a>
             ) : null}
             {footer.contact.map((item) => (
@@ -72,7 +71,7 @@ export function SiteFooter({ locale, t }: { locale: Locale; t: Dictionary }) {
                 href={localePath(locale, item.href)}
                 className={linkClass}
               >
-                {label(item.key)}
+                {t.footer.links[item.key]}
               </Link>
             ))}
           </Column>

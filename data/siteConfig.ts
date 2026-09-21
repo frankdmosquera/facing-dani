@@ -12,9 +12,26 @@
  * the parts that do not translate.
  */
 
-export type NavItem = {
-  /** Stable across locales. The dictionary is keyed off this. */
-  key: string;
+/**
+ * Type-only import, so this never pulls a dictionary into a bundle. Client
+ * components import siteConfig, and a value import here would ship both
+ * languages to every visitor.
+ */
+import type { Dictionary } from "@/dictionaries/en";
+
+/**
+ * Keys are typed against the dictionary rather than being plain strings, so a
+ * key with no matching label is a compile error.
+ *
+ * This is not theoretical: with `key: string` and an `as keyof` cast at the
+ * lookup, three footer links shipped to production rendering as empty
+ * anchors. The cast silenced the one error that would have caught it.
+ */
+export type NavKey = keyof Dictionary["nav"];
+export type CtaKey = keyof Dictionary["cta"];
+export type FooterKey = keyof Dictionary["footer"]["links"];
+
+type Route = {
   /**
    * The route without a locale prefix. Never render this directly: pass it
    * through `localePath` so /es is owned in one place.
@@ -25,6 +42,10 @@ export type NavItem = {
    */
   href: string;
 };
+
+export type NavItem = Route & { key: NavKey };
+export type CtaItem = Route & { key: CtaKey };
+export type FooterItem = Route & { key: FooterKey };
 
 export const siteConfig = {
   business: {
@@ -66,7 +87,7 @@ export const siteConfig = {
     { key: "about", href: "/about" },
   ] satisfies NavItem[],
 
-  cta: { key: "book", href: "/contact" } satisfies NavItem,
+  cta: { key: "book", href: "/contact" } satisfies CtaItem,
 
   footer: {
     services: [
@@ -74,12 +95,12 @@ export const siteConfig = {
       { key: "lashes", href: "/lashes" },
       { key: "makeup", href: "/makeup" },
       { key: "gallery", href: "/gallery" },
-    ] satisfies NavItem[],
+    ] satisfies FooterItem[],
     contact: [
       { key: "bookAppointment", href: "/contact" },
       { key: "about", href: "/about" },
       { key: "faq", href: "/#faq" },
-    ] satisfies NavItem[],
+    ] satisfies FooterItem[],
   },
 } as const;
 

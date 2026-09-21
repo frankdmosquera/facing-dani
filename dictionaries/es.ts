@@ -37,13 +37,20 @@ export const es: Dictionary = {
   },
 
   footer: {
-    services: "Servicios",
-    contact: "Contacto",
-    gallery: "La galería",
-    bookAppointment: "Reservar una cita",
-    about: "Sobre mí",
-    faq: "Preguntas frecuentes",
-    instagram: "Instagram",
+    headings: {
+      services: "Servicios",
+      contact: "Contacto",
+    },
+    links: {
+      nails: "Uñas",
+      lashes: "Pestañas",
+      makeup: "Maquillaje",
+      gallery: "La galería",
+      bookAppointment: "Reservar una cita",
+      about: "Sobre mí",
+      faq: "Preguntas frecuentes",
+      instagram: "Instagram",
+    },
   },
 
   a11y: {

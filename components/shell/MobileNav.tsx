@@ -121,7 +121,7 @@ export function MobileNav({ locale, t }: { locale: Locale; t: Dictionary }) {
               onClick={() => setOpen(false)}
               className="font-display border-b border-line-soft py-4 text-[28px] font-extrabold tracking-[-0.035em] text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
             >
-              {t.nav[item.key as keyof Dictionary["nav"]]}
+              {t.nav[item.key]}
             </Link>
           ))}
         </nav>

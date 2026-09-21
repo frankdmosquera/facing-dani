@@ -31,14 +31,30 @@ export const en = {
     book: "Book now",
   },
 
+  /**
+   * Headings and links are separate objects so `FooterKey` means "a label a
+   * footer link can use" and nothing else. Flattened, a link could be typed
+   * with the key of a column heading and still compile.
+   *
+   * The footer words some things differently from the nav on purpose -
+   * `gallery` is "The work" up top and "The gallery" down here - so these are
+   * their own strings rather than a reuse of the nav labels.
+   */
   footer: {
-    services: "Services",
-    contact: "Get in touch",
-    gallery: "The gallery",
-    bookAppointment: "Book an appointment",
-    about: "About",
-    faq: "FAQ",
-    instagram: "Instagram",
+    headings: {
+      services: "Services",
+      contact: "Get in touch",
+    },
+    links: {
+      nails: "Nails",
+      lashes: "Lashes",
+      makeup: "Makeup",
+      gallery: "The gallery",
+      bookAppointment: "Book an appointment",
+      about: "About",
+      faq: "FAQ",
+      instagram: "Instagram",
+    },
   },
 
   a11y: {
