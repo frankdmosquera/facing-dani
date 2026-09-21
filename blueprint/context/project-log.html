@@ -1184,13 +1184,13 @@
       <span class="where-arrow">&rsaquo;</span>
       <div class="where-leg" data-now="yes">
         <div class="where-key">Step now</div>
-        <div class="where-val">2 &middot; Locale routing, shipped. Two fixes since</div>
+        <div class="where-val">3 &middot; Home page, shipped</div>
       </div>
       <span class="where-spacer"></span>
       <div class="where-leg">
         <div class="where-key">MVP items</div>
-        <div class="meter" title="2 of 9 MVP items done">
-          <i data-state="done"></i><i data-state="done"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        <div class="meter" title="3 of 9 MVP items done">
+          <i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i></i><i></i><i></i><i></i><i></i><i></i>
         </div>
       </div>
     </div>
@@ -1304,9 +1304,9 @@
           were pre-build steps and sit in Phase 0 rather than in the list.
         </p>
         <div class="tally">
-          <span class="tally-part" data-state="done"><span class="tally-key">Done</span><span class="tally-val">2 of 9 MVP items</span></span>
+          <span class="tally-part" data-state="done"><span class="tally-key">Done</span><span class="tally-val">3 of 9 MVP items</span></span>
           <span class="tally-part" data-state="active"><span class="tally-key">Now</span><span class="tally-val">Nothing building</span></span>
-          <span class="tally-part" data-state="planned"><span class="tally-key">Next</span><span class="tally-val">3 &middot; Home page</span></span>
+          <span class="tally-part" data-state="planned"><span class="tally-key">Next</span><span class="tally-val">4 &middot; Gallery</span></span>
         </div>
       </header>
 
@@ -1472,7 +1472,61 @@
             </details>
 
             </div><span class="pill pill--done">Done</span></div>
-          <div class="item"><div class="item-num">3</div><div class="item-body"><div class="item-name">Home page</div><p class="item-text">Hero, the three services, a gallery teaser, her story, FAQ and the booking call to action. This is the page the Instagram bio link lands on, so it carries the short version of the craft angle and the bilingual claim.</p></div><span class="pill">Planned</span></div>
+          <div class="item" data-state="done"><div class="item-num">3</div><div class="item-body"><div class="item-name">Home page</div><p class="item-text">Hero, the three services, a gallery teaser, her story, FAQ and the booking call to action. This is the page the Instagram bio link lands on, so it carries the short version of the craft angle and the bilingual claim.</p>
+
+            <div class="gates">
+              <span class="gate-chip" data-state="pass">Spec agreed</span>
+              <span class="gate-chip" data-state="pass">Built &amp; verified</span>
+              <span class="gate-chip" data-state="pass">Commit granted</span>
+            </div>
+
+            <details class="drawer" data-kind="reality">
+              <summary>What was built <span class="tag-drift">5 sections &middot; both languages &middot; ~415 words each</span></summary>
+              <div class="drawer-body">
+                <div class="rows">
+                  <div class="row"><div class="row-key">Sections</div><div class="row-val">Hero, three service cards, her story, FAQ, closing booking band. Every string comes from the dictionaries, so it exists in both languages or the build fails.</div></div>
+                  <div class="row"><div class="row-key">FAQ</div><div class="row-val">Native <code>&lt;details&gt;</code>, no JavaScript. The <code>FAQPage</code> structured data is generated from the same source as the visible list, so the two cannot drift apart.</div></div>
+                  <div class="row"><div class="row-key">Data</div><div class="row-val"><code>data/services.ts</code> and <code>data/faq.ts</code>, both keyed against the dictionary. Item 5 extends the service list rather than starting a second one.</div></div>
+                </div>
+              </div>
+            </details>
+
+            <details class="drawer" data-kind="plan">
+              <summary>Deliberately left out <span class="tag-drift">2, and the first one matters</span></summary>
+              <div class="drawer-body">
+                <div class="notes"><ul>
+                  <li><b>Prices.</b> The mockup carries twelve figures from $5 to $110 and <b>every one was invented during prototyping</b> - Dani has never been asked. That is not placeholder text, it is wrong information someone could book against. The build plan assigns prices to item 5 anyway.</li>
+                  <li><b>The gallery teaser and the hero photograph.</b> Both are photographs and there are none. "Photography carries it" is a locked decision, so the hero is currently carrying itself on type alone. This is the strongest argument for pulling item 4 forward.</li>
+                </ul></div>
+              </div>
+            </details>
+
+            <details class="drawer" data-kind="plan">
+              <summary>Still open <span class="tag-drift">the copy needs Dani</span></summary>
+              <div class="drawer-body">
+                <div class="notes"><ul>
+                  <li><b>Every word on this page is a draft.</b> The English came from the mockup, whose own footer called it "placeholder content, nothing here is final", and the Spanish is a translation of that. It reads well and it is written in her first person, which is exactly why she should read it before a client does.</li>
+                  <li>The "send a DM on Instagram" line is prose rather than a link, and the closing Instagram button is hidden, because the handle is still unknown. Both go live the moment it lands in <code>siteConfig</code>.</li>
+                </ul></div>
+              </div>
+            </details>
+
+            <details class="drawer" data-kind="reality">
+              <summary>Log <span class="tag-drift">1 entry</span></summary>
+              <div class="drawer-body">
+                <div class="log">
+                  <div class="entry" data-kind="question">
+                    <div class="dot"></div>
+                    <div class="entry-body">
+                      <div class="entry-top"><span class="entry-title">Shipped without anyone looking at it</span><span class="kind-tag">Question</span><span class="stamp">Sep 21</span></div>
+                      <p class="entry-text">Everything checkable from the build was checked: one h1 per page, five questions per locale, the structured data matching the rendered text word for word, and both new key spaces proved by deliberately breaking them. <b>The page itself was never rendered</b> - no server was running. Layout at phone and desktop width, horizontal overflow, and the FAQ opening without JavaScript are all unobserved. Worth weighing against the two bugs already in the fixes archive: both passed lint, build and output greps, and both were found by opening the page.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            </div><span class="pill pill--done">Done</span></div>
           <div class="item"><div class="item-num">4</div><div class="item-body"><div class="item-name">Gallery</div><p class="item-text">The full set of work, filterable by service, at a size where the quality is actually visible. The headline feature and the reason the site exists at all - Instagram is a grid of squares, and a grid of squares is a poor way to judge a set of nails. Before the service pages, because it is the page that sells the work.</p></div><span class="pill">Planned</span></div>
           <div class="item"><div class="item-num">5</div><div class="item-body"><div class="item-name">Service pages</div><p class="item-text">Nails, lashes and makeup, one page each, with treatments, prices and durations. Three pages and not one services page: a single page listing three services competes with itself and ranks for none of them. Each page owns its own terms and borrows none from the others.</p></div><span class="pill">Planned</span></div>
           <div class="item"><div class="item-num">6</div><div class="item-body"><div class="item-name">About</div><p class="item-text">Her training and the trust a new business has not earned yet. The long version of the craft angle, and where the bilingual claim is made as a claim rather than implied by the existence of a <code>/es</code> URL.</p></div><span class="pill">Planned</span></div>

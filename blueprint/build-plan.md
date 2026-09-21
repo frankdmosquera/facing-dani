@@ -47,7 +47,7 @@ work, so it comes before the pages that describe it.
   `@theme`, then build the header, mobile nav and footer against it
 - [x] 2. **Locale routing** - the `[locale]` segment, a dictionary per locale, the
   language switch, and the missing-string build error. Hand-rolled, no package
-- [ ] 3. **Home page** - hero, the three services, gallery teaser, her story,
+- [x] 3. **Home page** - hero, the three services, gallery teaser, her story,
   FAQ and the booking call to action
 - [ ] 4. **Gallery** - the full set of work, filterable by service, at a size
   where the quality is actually visible

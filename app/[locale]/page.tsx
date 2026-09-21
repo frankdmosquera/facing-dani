@@ -1,13 +1,17 @@
 import { notFound } from "next/navigation";
 
-import { siteConfig } from "@/data/siteConfig";
+import { BookingBand } from "@/components/home/BookingBand";
+import { Faq } from "@/components/home/Faq";
+import { Hero } from "@/components/home/Hero";
+import { ServiceCards } from "@/components/home/ServiceCards";
+import { Story } from "@/components/home/Story";
 import { getDictionary } from "@/dictionaries";
 import { isLocale } from "@/lib/locale";
 
 /**
- * Placeholder. Feature 1 built the frame, feature 2 made it bilingual, and
- * feature 3 builds the home page that goes inside it. This exists so the shell
- * has something to frame and so `#main` is a real target for the skip link.
+ * No `generateMetadata` here on purpose. Home is the root of its locale, so
+ * the layout's default title and description are already its own, and adding
+ * a second copy would be two places to keep in step.
  */
 export default async function Home({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
@@ -15,15 +19,12 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
   const t = getDictionary(locale);
 
   return (
-    <main
-      id="main"
-      className="mx-auto w-full max-w-[var(--site)] px-[var(--gutter)] py-24"
-    >
-      <h1 className="text-[clamp(40px,11vw,74px)]">
-        {siteConfig.business.wordmark}
-        <span className="text-nails">{siteConfig.business.wordmarkAccent}</span>
-      </h1>
-      <p className="mt-4 max-w-[46ch] text-base text-ink-muted">{t.blurb}</p>
+    <main id="main">
+      <Hero locale={locale} t={t} />
+      <ServiceCards locale={locale} t={t} />
+      <Story t={t} />
+      <Faq t={t} />
+      <BookingBand locale={locale} t={t} />
     </main>
   );
 }
