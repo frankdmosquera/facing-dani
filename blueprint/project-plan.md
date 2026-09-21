@@ -329,12 +329,13 @@ it decides the page structure rather than following from it.
   hybrid, volume, fills. No page borrows another page's words.
 - **Calgary belongs in the title, the H1, the copy and the schema**, on every
   page, without turning into keyword soup that reads badly to a human.
-- **The Spanish pages are a second set of rankings, not duplicates.** They target
-  terms almost nobody local competes for. `hreflang` is what stops Google
-  treating them as duplicates and choosing one.
+- **Spanish is not an SEO target.** English is what this site is trying to rank.
+  The Spanish pages exist so a visitor who reads Spanish more comfortably can
+  use the site. `hreflang` is there to stop Google reading the two as duplicates
+  and dropping one, which protects the English ranking. No Spanish keyword work.
 - **Be honest about the timeline.** A new domain with no links does not win
   "nail salon Calgary" quickly. The site wins the long tail first: service plus
-  neighbourhood, service plus occasion, and Spanish. The Business Profile and
+  neighbourhood, and service plus occasion. The Business Profile and
   reviews carry the head terms in the meantime. Anyone promising otherwise is
   selling something.
 
