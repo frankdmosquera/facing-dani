@@ -1,26 +1,36 @@
-import { Image } from "@imagekit/next";
-
+import { Photo } from "@/components/media/Photo";
 import type { GalleryImage } from "@/data/gallery";
 import type { ServiceId } from "@/data/services";
-import { MEDIA_VERSION, imagekitEndpoint } from "@/lib/imagekit";
 
 /**
- * One photograph in the grid.
+ * One photograph in the grid: the image, its scrim and its service tag.
  *
- * `Image` has to come from `@imagekit/next`, which opens with `'use client'`,
- * so the image itself is a client boundary. There is no server-rendered
- * alternative: `@imagekit/next/server` exports `getUploadAuthParams` and
- * nothing else. A `dist/server/types/index.d.ts` inside the package does list
- * an `Image`, but the package's own exports map does not point at that file and
- * the built module does not contain it, so importing from there is a type error
- * and, if it resolved, would be a runtime one.
+ * The image itself and the missing-endpoint fallback belong to `Photo`. What
+ * stays here is the chrome - the figure, the reveal, the tag, and the classes
+ * that take a photo out of the grid when another service is filtered.
  *
- * Everything around the image - this figure, the scrim, the caption - still
- * renders on the server, which is why the grid passes figures to its filter
- * shell as `children` rather than letting the shell build them.
+ * `data-service` is what the filter hides against. It stays on the figure rather
+ * than on a wrapper so the CSS rule has one thing to match.
  *
- * `data-service` is what the filter hides against. It stays on the figure
- * rather than on a wrapper so the CSS rule has one thing to match.
+ * Only the first photograph gets `priority`. Everything else takes Next's
+ * default, which is `loading="lazy"`, and that is correct here.
+ *
+ * This looked wrong and was measured twice. The grid is CSS multi-column, so
+ * items flow *down each column*: at 1280px the four photographs in the top row
+ * are records 1, 4, 7 and 10, not 1 to 4. Preloading the first four therefore
+ * spends two of its four hints below the fold, and two images a visitor sees
+ * immediately are marked lazy.
+ *
+ * It does not matter. On the deployed page in a real foreground tab, all ten
+ * images finished between 255ms and 260ms - the lazy ones within 5ms of the
+ * preloaded ones. Chrome requests in-viewport lazy images during the initial
+ * load; `lazy` only defers what is well below the fold, and a ten-photo grid
+ * sits inside that threshold.
+ *
+ * `loading="eager"` on the rest was tried and reverted. In Next 16 an eager
+ * image also emits a `<link rel="preload" as="image">`, each carrying a full
+ * ten-entry srcset: ten of them added 12.3KB to the document to win nothing.
+ * Ten competing preloads is not a priority hint.
  */
 
 /** Must match the grid's column counts, or Next picks the wrong source width. */
@@ -62,6 +72,10 @@ const hideWhenOtherFiltered: Record<ServiceId, string> = {
  * Hover does not exist on a phone, and the phone is the product. The scrim and
  * the tag are a reveal only where the device can actually hover; everywhere
  * else they are simply on.
+ *
+ * The tag also does the labelling work when no endpoint is configured and
+ * `Photo` has drawn a plain box, which is why it is no longer duplicated inside
+ * the fallback.
  */
 const REVEAL =
   "opacity-0 transition-opacity duration-200 group-hover:opacity-100 [@media(hover:none)]:opacity-100";
@@ -77,41 +91,16 @@ export function GalleryFigure({
   serviceName: string;
   priority?: boolean;
 }) {
-  /**
-   * No endpoint configured: a labelled box that holds the photo's real shape,
-   * so the masonry still lays out and the page is reviewable before anyone has
-   * pulled the env file.
-   */
-  if (!imagekitEndpoint) {
-    return (
-      <figure
-        data-service={image.serviceId}
-        className={`${FIGURE} ${hideWhenOtherFiltered[image.serviceId]}`}
-      >
-        <div
-          role="img"
-          aria-label={alt}
-          style={{ aspectRatio: `${image.width} / ${image.height}` }}
-          className="grid w-full place-items-center p-3 text-center text-[10px] font-semibold tracking-[0.14em] text-ink-faint uppercase"
-        >
-          {serviceName}
-        </div>
-      </figure>
-    );
-  }
-
   return (
     <figure
       data-service={image.serviceId}
       className={`${FIGURE} ${hideWhenOtherFiltered[image.serviceId]}`}
     >
-      <Image
-        urlEndpoint={imagekitEndpoint}
-        src={image.imagekitPath}
+      <Photo
+        path={image.imagekitPath}
         alt={alt}
         width={image.width}
         height={image.height}
-        queryParameters={{ v: MEDIA_VERSION }}
         sizes={SIZES}
         priority={priority}
         className="block h-auto w-full"

@@ -1,6 +1,6 @@
 # facing-dani - Project Overview
 
-<!-- blueprint:source-hash 0902f950604c71f69a43e7211a4429d3ffad86e1e10e9592aaed0adb8af886f8 -->
+<!-- blueprint:source-hash 04bbb1700ba977f5ece6e7eed332b0a3af4ef7b58bf6e2f38c397612ee6fcbef -->
 
 > A bilingual marketing site for a Calgary nail, lash and makeup artist, built as
 > the first instance of a reusable template for beauty businesses.

@@ -1,5 +1,6 @@
 import { siteWideFaq } from "@/data/faq";
 import { orderedGallery } from "@/data/gallery";
+import { portrait } from "@/data/portrait";
 import type { ServiceId } from "@/data/services";
 import { siteConfig } from "@/data/siteConfig";
 import { treatmentLabel, treatmentsFor } from "@/data/treatments";
@@ -106,6 +107,47 @@ export function serviceSchema(serviceId: ServiceId, t: Dictionary) {
       })),
     },
   };
+}
+
+/**
+ * `Person` structured data for the About page.
+ *
+ * `knowsLanguage` is the one field here that is doing real work: it is the
+ * machine-readable half of the bilingual promise the page makes in prose, and
+ * it is the only signal on this site that says a Spanish-speaking client can be
+ * served in Spanish.
+ *
+ * `name` and `worksFor.name` both read `siteConfig.business.name`, which is
+ * correct only while the person and the business share a string. They do today.
+ * Her full legal name is recorded as unresolved in
+ * `blueprint/reference/links.md`, and settling it also settles what goes on the
+ * Google Business Profile, which the overview requires to match character for
+ * character.
+ *
+ * `image` is omitted rather than null when no portrait exists, the same rule
+ * `imageGallerySchema` follows: say nothing rather than claim an empty thing.
+ */
+export function personSchema(t: Dictionary) {
+  const base = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: siteConfig.business.name,
+    jobTitle: t.about.jobTitle,
+    description: t.about.lede,
+    knowsLanguage: ["en", "es"],
+    worksFor: {
+      "@type": "LocalBusiness",
+      name: siteConfig.business.name,
+    },
+    areaServed: {
+      "@type": "City",
+      name: siteConfig.business.city,
+    },
+  };
+
+  if (!portrait || !imagekitEndpoint) return base;
+
+  return { ...base, image: `${imagekitEndpoint}${portrait.imagekitPath}` };
 }
 
 /**
