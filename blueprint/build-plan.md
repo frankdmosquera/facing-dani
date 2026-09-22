@@ -62,7 +62,7 @@ work, so it comes before the pages that describe it.
   validation, Resend delivery, the direct booking route and a thank-you page
 - [ ] 8. **Deploy** - Vercel, env vars, a verified production build and a preview
   URL Dani can open. Early on purpose, so corrections arrive while they are cheap
-- [ ] 9. **Site-wide SEO pass** - sitemap and robots across both locales,
+- [x] 9. **Site-wide SEO pass** - sitemap and robots across both locales,
   LocalBusiness data, and an audit that every page carries its own metadata and
   hreflang. The only SEO work that genuinely needs all pages to exist
 

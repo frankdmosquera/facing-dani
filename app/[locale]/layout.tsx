@@ -14,6 +14,8 @@ import {
   type Locale,
 } from "@/lib/locale";
 
+import { siteUrl } from "@/lib/siteUrl";
+
 import "../globals.css";
 
 /**
@@ -49,6 +51,16 @@ export async function generateMetadata({
   const t = getDictionary(locale);
 
   return {
+    /**
+     * Makes every relative `canonical` and `hreflang` on the site absolute,
+     * in one place, without touching a single page.
+     *
+     * `undefined` when no domain is configured, which leaves them relative.
+     * That is the intended state rather than a gap: a relative canonical is
+     * resolved against whatever host served the page, while an absolute one
+     * pointing at a preview host is believed.
+     */
+    metadataBase: siteUrl ? new URL(siteUrl) : undefined,
     title: { default: t.meta.title, template: t.meta.template },
     description: t.meta.description,
     /**

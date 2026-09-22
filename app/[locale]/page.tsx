@@ -7,6 +7,7 @@ import { Story } from "@/components/home/Story";
 import { BookingBand } from "@/components/site/BookingBand";
 import { getDictionary } from "@/dictionaries";
 import { isLocale } from "@/lib/locale";
+import { jsonLd, localBusinessSchema } from "@/lib/schema";
 
 /**
  * No `generateMetadata` here on purpose. Home is the root of its locale, so
@@ -25,6 +26,14 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
       <Story t={t} />
       <Faq t={t} />
       <BookingBand locale={locale} copy={t.home.booking} />
+
+      {/* The business itself, once for the whole site. Repeating it on every
+          page does not strengthen it and gives Google several entities to
+          reconcile. The FAQ block on this page comes from `Faq`. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLd(localBusinessSchema(t)) }}
+      />
     </main>
   );
 }

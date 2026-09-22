@@ -6,6 +6,7 @@ import { siteConfig } from "@/data/siteConfig";
 import { treatmentLabel, treatmentsFor } from "@/data/treatments";
 import type { Dictionary } from "@/dictionaries/en";
 import { imagekitEndpoint } from "@/lib/imagekit";
+import { siteUrl } from "@/lib/siteUrl";
 
 /**
  * FAQPage structured data, built from the same data and dictionary the visible
@@ -176,6 +177,50 @@ export function contactPageSchema(t: Dictionary) {
       availableLanguage: ["en", "es"],
     },
   };
+}
+
+/**
+ * The business itself, emitted once on the home page and nowhere else.
+ *
+ * `HealthAndBeautyBusiness` rather than the bare `LocalBusiness` it extends: it
+ * is the subtype that says what she actually does, and a more specific type is
+ * free information.
+ *
+ * **No `streetAddress`, deliberately.** The FAQ already tells visitors "Calgary,
+ * by appointment. The exact address goes out when your booking is confirmed."
+ * Publishing one here would contradict the page and put a home address on the
+ * internet. A locality-level `PostalAddress` is what a service-area business can
+ * honestly say, and `areaServed` carries the rest.
+ *
+ * Absent because they do not exist rather than because they were forgotten:
+ * `telephone`, `openingHours`, `geo`, `priceRange`, `logo`. Every one would have
+ * to be invented, and an invented opening hour is a customer standing outside a
+ * door.
+ *
+ * `url` is omitted while no domain is configured, for the same reason nothing
+ * else guesses a host.
+ */
+export function localBusinessSchema(t: Dictionary) {
+  const base = {
+    "@context": "https://schema.org",
+    "@type": "HealthAndBeautyBusiness",
+    name: siteConfig.business.name,
+    description: t.meta.description,
+    email: siteConfig.business.email,
+    areaServed: {
+      "@type": "City",
+      name: siteConfig.business.city,
+    },
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: siteConfig.business.city,
+      addressRegion: "AB",
+      addressCountry: "CA",
+    },
+    availableLanguage: ["en", "es"],
+  };
+
+  return siteUrl ? { ...base, url: siteUrl } : base;
 }
 
 /**
