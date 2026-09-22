@@ -376,23 +376,22 @@ export const es: Dictionary = {
     images: {
       frenchGlitterGems:
         "Uñas almendradas con francesa blanca, una línea fina de glitter sobre la sonrisa y un grupo de cristales en el anular",
-      nudeOvalGloss:
-        "Uñas ovaladas cortas en nude rosado brillante, las dos manos sobre una bandeja negra",
       burgundyCatEye:
         "Uñas almendradas largas en chrome cat-eye borgoña, con la luz marcando una banda en cada uña",
       palePinkGloss:
-        "Uñas ovaladas en rosa pálido brillante, una mano sobre la otra",
+        "Uñas en rosa pálido brillante sobre dedos superpuestos",
       peachFrenchGems:
         "Uñas durazno con francesa blanca y cristales pequeños sobre la línea de la sonrisa",
       whiteGlitterSquare:
-        "Uñas cuadradas en glitter blanco con un cristal de acento",
+        "Uñas cuadradas largas en blanco, combinando acabado de glitter azucarado, textura tejida en relieve y francesa blanca, con escamas iridiscentes en dos uñas",
       blueFrenchFloral:
         "Uñas cuadradas largas con francesa azul claro, flores blancas pintadas a mano y cristales",
       pinkFloralArt:
         "Uñas rosa intenso con flores blancas pequeñas pintadas a mano en dos dedos",
       pastelFrenchTips:
         "Uñas cuadradas con francesas en pastel rosa, amarillo y verde, un color por dedo",
-      lilacSquare: "Uñas cuadradas cortas en lila suave, sin arte",
+      lilacSquare:
+        "Uñas cuadradas en lila perlado con brillo iridiscente, sin arte",
     },
   },
 };

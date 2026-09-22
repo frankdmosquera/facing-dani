@@ -485,23 +485,22 @@ export const en = {
     images: {
       frenchGlitterGems:
         "Almond nails with a white french tip, a fine glitter line along the smile and a cluster of crystals on the ring finger",
-      nudeOvalGloss:
-        "Short oval nails in a glossy nude pink, both hands resting on a black tray",
       burgundyCatEye:
         "Long almond nails in deep burgundy cat-eye chrome, the light catching a band across each nail",
       palePinkGloss:
-        "Pale pink glossy oval nails, one hand resting over the other",
+        "Glossy pale pink nails on overlapping fingers",
       peachFrenchGems:
         "Peach nails with a white french tip and small crystals set along the smile line",
       whiteGlitterSquare:
-        "Square nails in white glitter with a single crystal accent",
+        "Long square nails in white, mixing a sugar-glitter finish, a raised knitted texture and a white french tip, with iridescent flakes on two nails",
       blueFrenchFloral:
         "Long square nails with a pale blue french tip, hand-painted white flowers and scattered crystals",
       pinkFloralArt:
         "Bright pink nails with small hand-painted white flowers on two fingers",
       pastelFrenchTips:
         "Square nails with pastel pink, yellow and green french tips, one colour per finger",
-      lilacSquare: "Short square nails in a soft lilac, no art",
+      lilacSquare:
+        "Square nails in a pearly lilac with an iridescent shimmer, no nail art",
     },
   },
 };

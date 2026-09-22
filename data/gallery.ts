@@ -15,14 +15,24 @@ import { services, type ServiceId } from "./services";
  * a gallery on a nail artist's site is a claim that this is her work, and a
  * client who books on a borrowed photo finds out in the chair.
  *
- * Ten nail sets and nothing else. Two shots of a makeup look exist and are held
+ * Nine nail sets and nothing else. Two shots of a makeup look exist and are held
  * back because the model's face is recognisable and nobody has asked her. There
  * are no lash photographs at all, which is why `lashes` has no chip on the
  * page - see the filter rule in `galleryServiceCounts`.
  *
+ * Every frame is cropped to the nails. The masters shipped uncropped at first,
+ * which put a whole hand in every tile and made the grid read as hands rather
+ * than as nail work. Recut from the originals on 2026-09-22. A tenth set, a
+ * plain glossy nude, was dropped in the same pass: it duplicated
+ * `palePinkGloss` and neither the colour nor the crop gave it a reason to stay.
+ * Its file is still in the library, unreferenced.
+ *
+ * The dimensions below are therefore all different, and every one of them is
+ * the real cropped file. Nothing here is a 3:4 assumption.
+ *
  * Ordered strongest first: the first four load eagerly and are what a visitor
- * sees before scrolling, so the tight close-ups and the dark backgrounds go at
- * the top and the softer, paler sets follow.
+ * sees before scrolling, so the work with visible craft leads - painted flowers,
+ * chrome, crystals - and the plain single colours follow.
  */
 export type GalleryKey = keyof Dictionary["gallery"]["images"];
 
@@ -47,16 +57,15 @@ export type GalleryImage = {
 };
 
 export const gallery: GalleryImage[] = [
-  { key: "frenchGlitterGems", imagekitPath: "/nails/french-glitter-gems.jpg", serviceId: "nails", order: 1, width: 1500, height: 2000 },
-  { key: "nudeOvalGloss", imagekitPath: "/nails/nude-oval-gloss.jpg", serviceId: "nails", order: 2, width: 1500, height: 2000 },
-  { key: "burgundyCatEye", imagekitPath: "/nails/burgundy-cat-eye.jpg", serviceId: "nails", order: 3, width: 1500, height: 2000 },
-  { key: "palePinkGloss", imagekitPath: "/nails/pale-pink-gloss.jpg", serviceId: "nails", order: 4, width: 1500, height: 2000 },
-  { key: "peachFrenchGems", imagekitPath: "/nails/peach-french-gems.jpg", serviceId: "nails", order: 5, width: 1500, height: 2000 },
-  { key: "whiteGlitterSquare", imagekitPath: "/nails/white-glitter-square.jpg", serviceId: "nails", order: 6, width: 1500, height: 2000 },
-  { key: "blueFrenchFloral", imagekitPath: "/nails/blue-french-floral.jpg", serviceId: "nails", order: 7, width: 1200, height: 1600 },
-  { key: "pinkFloralArt", imagekitPath: "/nails/pink-floral-art.jpg", serviceId: "nails", order: 8, width: 1500, height: 2000 },
-  { key: "pastelFrenchTips", imagekitPath: "/nails/pastel-french-tips.jpg", serviceId: "nails", order: 9, width: 1200, height: 1600 },
-  { key: "lilacSquare", imagekitPath: "/nails/lilac-square.jpg", serviceId: "nails", order: 10, width: 1500, height: 2000 },
+  { key: "frenchGlitterGems", imagekitPath: "/nails/french-glitter-gems.jpg", serviceId: "nails", order: 1, width: 2000, height: 1813 },
+  { key: "burgundyCatEye", imagekitPath: "/nails/burgundy-cat-eye.jpg", serviceId: "nails", order: 2, width: 2000, height: 1449 },
+  { key: "blueFrenchFloral", imagekitPath: "/nails/blue-french-floral.jpg", serviceId: "nails", order: 3, width: 1200, height: 1376 },
+  { key: "lilacSquare", imagekitPath: "/nails/lilac-square.jpg", serviceId: "nails", order: 4, width: 1781, height: 2000 },
+  { key: "whiteGlitterSquare", imagekitPath: "/nails/white-glitter-square.jpg", serviceId: "nails", order: 5, width: 1586, height: 2000 },
+  { key: "peachFrenchGems", imagekitPath: "/nails/peach-french-gems.jpg", serviceId: "nails", order: 6, width: 2000, height: 1387 },
+  { key: "pastelFrenchTips", imagekitPath: "/nails/pastel-french-tips.jpg", serviceId: "nails", order: 7, width: 1200, height: 704 },
+  { key: "pinkFloralArt", imagekitPath: "/nails/pink-floral-art.jpg", serviceId: "nails", order: 8, width: 2000, height: 1066 },
+  { key: "palePinkGloss", imagekitPath: "/nails/pale-pink-gloss.jpg", serviceId: "nails", order: 9, width: 2000, height: 1120 },
 ];
 
 /** Photos in display order. */
