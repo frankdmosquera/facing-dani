@@ -28,7 +28,7 @@ export const IMAGEKIT_FOLDER = "facing-dani";
  * URL, so every browser refetches once and then caches again for the year.
  * Leaving it alone costs nothing.
  */
-export const MEDIA_VERSION = "2026-09-22";
+export const MEDIA_VERSION = "2026-09-22b";
 
 function resolveEndpoint(raw: string | undefined): string | undefined {
   if (!raw) return undefined;
