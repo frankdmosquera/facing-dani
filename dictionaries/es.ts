@@ -156,6 +156,73 @@ export const es: Dictionary = {
     },
   },
 
+  contact: {
+    meta: {
+      title: "Reserva tu cita en Calgary",
+      description:
+        "Dime qué buscas y cuándo, y te contesto con una hora. Uñas, pestañas y maquillaje en Calgary, con cita previa. Te atiendo en español.",
+    },
+    eyebrow: "Sin depósito, sin cuenta, sin app",
+    headingLead: "Dime qué",
+    headingAccent: "quieres",
+    lede: "Llena esto y me llega al correo. Contesto todos, casi siempre el mismo día, y no hay nada reservado hasta que acordemos una hora en Calgary que nos sirva a las dos.",
+
+    direct: {
+      heading: "¿Prefieres escribirme directo?",
+      body: "También sirve, y es más rápido si ya sabes lo que quieres.",
+      link: "Escríbeme por Instagram",
+      pending: "Mi Instagram va aquí apenas esté listo.",
+    },
+
+    form: {
+      name: "Tu nombre",
+      email: "Correo",
+      emailHint: "Para poder contestarte. No se manda nada más aquí.",
+      service: "¿Qué estás buscando?",
+      servicePlaceholder: "Todavía no sé",
+      source: "¿Cómo me encontraste?",
+      sourcePlaceholder: "Elige una",
+      message: "¿Qué tienes en mente?",
+      messageHint:
+        "Fechas aproximadas, una foto de referencia que hayas visto, o simplemente cuál es la ocasión.",
+      submit: "Enviar",
+      submitting: "Enviando...",
+      required: "Obligatorio",
+    },
+
+    sources: {
+      instagram: "Instagram",
+      google: "Google",
+      friend: "Me contó una amiga",
+      returning: "Ya he venido antes",
+      other: "En otro lugar",
+    },
+
+    errors: {
+      required: "Este hace falta.",
+      email: "Eso no parece un correo.",
+      tooShort: "Un poco más de detalle me ayuda a contestarte bien.",
+      tooLong: "Eso es más largo de lo que acepta el formulario.",
+    },
+
+    failed:
+      "Eso no se envió, y prefiero decírtelo a fingir que sí. Inténtalo otra vez en un momento, o mándame un DM.",
+  },
+
+  thankYou: {
+    meta: {
+      title: "Mensaje enviado",
+      description: "Tu mensaje ya llegó. Te contesto pronto.",
+    },
+    eyebrow: "Ya quedó",
+    headingLead: "Listo,",
+    headingAccent: "gracias",
+    lede: "Tu mensaje está en mi correo. Contesto todos, casi siempre el mismo día, y te vuelvo a escribir con una hora y un precio.",
+    next: "Mientras tanto, vale la pena ver el resto del trabajo.",
+    gallery: "Ver la galería",
+    home: "Volver al inicio",
+  },
+
   about: {
     meta: {
       title: "Sobre la artista - Uñas y pestañas en Calgary",

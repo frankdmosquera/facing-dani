@@ -181,6 +181,93 @@ export const en = {
   },
 
   /**
+   * The contact page and its thank-you twin.
+   *
+   * The plan calls this form load-bearing for two separate reasons: it is the
+   * booking route for anyone who will not DM, and `sources` is the only
+   * attribution the site has. No analytics, no cookie banner.
+   *
+   * `errors` are keyed off what the zod schema returns, so a schema message and
+   * a sentence a visitor reads are never the same string.
+   */
+  contact: {
+    meta: {
+      title: "Book a Set in Calgary",
+      description:
+        "Tell me what you are after and when, and I will come back with a time. Nails, lashes and makeup in Calgary, by appointment. Se habla espanol.",
+    },
+    eyebrow: "No deposit, no account, no app",
+    headingLead: "Tell me what",
+    headingAccent: "you want",
+    lede: "Fill this in and it lands in my inbox. I answer every one, usually the same day, and nothing is booked until we have agreed a time in Calgary that works for both of us.",
+
+    /**
+     * The other half of the build-plan line. Rendered as a link only once the
+     * handle is known, the same rule the footer and every BookingBand follow -
+     * a dead link is worse than a sentence.
+     */
+    direct: {
+      heading: "Would rather just message me?",
+      body: "That works too, and it is faster if you already know what you want.",
+      link: "Message on Instagram",
+      /** Shown instead of the link while the handle is unknown. */
+      pending: "My Instagram goes here the moment it is set up.",
+    },
+
+    form: {
+      name: "Your name",
+      email: "Email",
+      emailHint: "So I can reply. Nothing else is sent here.",
+      service: "What are you after?",
+      servicePlaceholder: "Not sure yet",
+      source: "How did you find me?",
+      sourcePlaceholder: "Pick one",
+      message: "What are you thinking?",
+      messageHint:
+        "Rough dates, a reference photo you have seen, or just what the occasion is.",
+      submit: "Send it",
+      submitting: "Sending...",
+      required: "Required",
+    },
+
+    sources: {
+      instagram: "Instagram",
+      google: "Google",
+      friend: "A friend told me",
+      returning: "I have been before",
+      other: "Somewhere else",
+    },
+
+    errors: {
+      required: "This one is needed.",
+      email: "That does not look like an email address.",
+      tooShort: "A little more detail would help me answer properly.",
+      tooLong: "That is longer than the form can take.",
+    },
+
+    /**
+     * The form-level failure. It names the way through rather than an error
+     * code, because a visitor who cannot submit still needs to reach her.
+     */
+    failed:
+      "That did not send, and I would rather tell you than pretend it did. Try again in a moment, or send me a DM instead.",
+  },
+
+  thankYou: {
+    meta: {
+      title: "Message Sent",
+      description: "Your enquiry is in. I will come back to you shortly.",
+    },
+    eyebrow: "That is in",
+    headingLead: "Got it,",
+    headingAccent: "thank you",
+    lede: "Your message is in my inbox. I answer every one, usually the same day, and I will come back with a time and a price.",
+    next: "While you wait, the rest of the work is worth a look.",
+    gallery: "See the gallery",
+    home: "Back to the start",
+  },
+
+  /**
    * The About page.
    *
    * Its job is the one the build plan names: the trust a new business has not

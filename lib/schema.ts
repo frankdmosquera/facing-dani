@@ -151,6 +151,34 @@ export function personSchema(t: Dictionary) {
 }
 
 /**
+ * `ContactPage` structured data.
+ *
+ * Deliberately thin. There is no street address to publish - she works by
+ * appointment and the FAQ says the address goes out with the booking - and no
+ * phone number in `siteConfig`, so `LocalBusiness` with a half-filled
+ * `address` would be worse than nothing. What is true is the city she serves
+ * and the languages she works in.
+ */
+export function contactPageSchema(t: Dictionary) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: t.contact.meta.title,
+    description: t.contact.meta.description,
+    mainEntity: {
+      "@type": "LocalBusiness",
+      name: siteConfig.business.name,
+      email: siteConfig.business.email,
+      areaServed: {
+        "@type": "City",
+        name: siteConfig.business.city,
+      },
+      availableLanguage: ["en", "es"],
+    },
+  };
+}
+
+/**
  * Serialise for a `<script type="application/ld+json">`.
  *
  * `<` is escaped because a `</script>` sequence inside the JSON would end the

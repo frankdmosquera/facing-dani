@@ -60,6 +60,16 @@ export const siteConfig = {
     /** Rendered in the nails accent. Colour is navigation, never decoration. */
     wordmarkAccent: ".",
     city: "Calgary",
+
+    /**
+     * Where a contact form enquiry lands.
+     *
+     * **This is the agency's inbox, not hers.** Dani has no business address
+     * yet, so enquiries come here until she does. It is a placeholder with a
+     * real consequence: every booking the site produces arrives in somebody
+     * else's mail until this line changes.
+     */
+    email: "frankdmosquera@gmail.com",
     region: "Alberta",
   },
 

@@ -58,7 +58,7 @@ work, so it comes before the pages that describe it.
     said out loud, what actually happens at an appointment, and Person data
   - [ ] 6b. **Her story** - where she trained, how she got here, and what she
     does between clients. Waits on material only Dani can give
-- [ ] 7. **Contact and booking** - the form with the "how did you find me" field,
+- [x] 7. **Contact and booking** - the form with the "how did you find me" field,
   validation, Resend delivery, the direct booking route and a thank-you page
 - [ ] 8. **Deploy** - Vercel, env vars, a verified production build and a preview
   URL Dani can open. Early on purpose, so corrections arrive while they are cheap
