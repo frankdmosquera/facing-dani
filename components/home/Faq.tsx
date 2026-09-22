@@ -1,8 +1,7 @@
+import { Band, BandHead } from "@/components/site/Band";
 import { siteWideFaq } from "@/data/faq";
 import type { Dictionary } from "@/dictionaries";
 import { faqPageSchema, jsonLd } from "@/lib/schema";
-
-import { Band, BandHead } from "./Band";
 
 /**
  * Native `<details>`. No JavaScript, no client component, works with JS off -

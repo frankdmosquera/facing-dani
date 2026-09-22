@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
 
-import { BookingBand } from "@/components/home/BookingBand";
 import { Faq } from "@/components/home/Faq";
 import { Hero } from "@/components/home/Hero";
 import { ServiceCards } from "@/components/home/ServiceCards";
 import { Story } from "@/components/home/Story";
+import { BookingBand } from "@/components/site/BookingBand";
 import { getDictionary } from "@/dictionaries";
 import { isLocale } from "@/lib/locale";
 
@@ -24,7 +24,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
       <ServiceCards locale={locale} t={t} />
       <Story t={t} />
       <Faq t={t} />
-      <BookingBand locale={locale} t={t} />
+      <BookingBand locale={locale} copy={t.home.booking} />
     </main>
   );
 }

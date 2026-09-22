@@ -145,4 +145,63 @@ export const es: Dictionary = {
       instagram: "Escríbeme por Instagram",
     },
   },
+
+  /**
+   * El español no es un objetivo de posicionamiento, así que este título se
+   * escribe para que se lea bien, no para cargar términos de búsqueda.
+   *
+   * `count.other` lleva un `{n}` literal que se reemplaza al renderizar.
+   */
+  gallery: {
+    meta: {
+      title: "Mi trabajo en Calgary: uñas, pestañas y maquillaje",
+      description:
+        "Sets reales, nunca fotos de archivo. Arte de uñas, extensiones de pestañas y maquillaje para eventos hechos en Calgary, en grande para que juzgues el acabado.",
+    },
+    eyebrow: "Cada foto es mía",
+    headingLead: "El trabajo,",
+    headingAccent: "hecho en Calgary",
+    lede: "En grande a propósito. Vas a elegir a alguien con quien te vas a sentar dos horas, y una miniatura no te dice nada de una línea de cutícula.",
+    filters: {
+      label: "Filtrar por servicio",
+      all: "Todo",
+    },
+    count: {
+      one: "1 foto",
+      other: "{n} fotos",
+    },
+    empty: {
+      heading: "Las fotos vienen en camino",
+      body: "Aquí no sube nada que no sea trabajo mío, así que esta página se va llenando conforme voy fotografiando. Mientras tanto dime qué buscas y te muestro lo que tengo.",
+    },
+    cta: {
+      eyebrow: "La parte fácil",
+      headingLead: "¿Viste una que",
+      headingAccent: "quieras?",
+      lede: "Mándamela y la hacemos tuya, o ven sin nada y lo resolvemos juntas.",
+      book: "Reservar con Dani",
+      instagram: "Escríbeme por Instagram",
+    },
+    images: {
+      frenchGlitterGems:
+        "Uñas almendradas con francesa blanca, una línea fina de glitter sobre la sonrisa y un grupo de cristales en el anular",
+      nudeOvalGloss:
+        "Uñas ovaladas cortas en nude rosado brillante, las dos manos sobre una bandeja negra",
+      burgundyCatEye:
+        "Uñas almendradas largas en chrome cat-eye borgoña, con la luz marcando una banda en cada uña",
+      palePinkGloss:
+        "Uñas ovaladas en rosa pálido brillante, una mano sobre la otra",
+      peachFrenchGems:
+        "Uñas durazno con francesa blanca y cristales pequeños sobre la línea de la sonrisa",
+      whiteGlitterSquare:
+        "Uñas cuadradas en glitter blanco con un cristal de acento",
+      blueFrenchFloral:
+        "Uñas cuadradas largas con francesa azul claro, flores blancas pintadas a mano y cristales",
+      pinkFloralArt:
+        "Uñas rosa intenso con flores blancas pequeñas pintadas a mano en dos dedos",
+      pastelFrenchTips:
+        "Uñas cuadradas con francesas en pastel rosa, amarillo y verde, un color por dedo",
+      lilacSquare: "Uñas cuadradas cortas en lila suave, sin arte",
+    },
+  },
 };

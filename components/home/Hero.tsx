@@ -1,10 +1,9 @@
 import Link from "next/link";
 
+import { Band, Hot } from "@/components/site/Band";
 import { siteConfig } from "@/data/siteConfig";
 import type { Dictionary } from "@/dictionaries";
 import { localePath, type Locale } from "@/lib/locale";
-
-import { Band, Hot } from "./Band";
 
 /**
  * The page the Instagram bio link lands on, above the fold.

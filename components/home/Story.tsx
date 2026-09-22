@@ -1,7 +1,6 @@
+import { Band, BandHead, Hot } from "@/components/site/Band";
 import { siteConfig } from "@/data/siteConfig";
 import type { Dictionary } from "@/dictionaries";
-
-import { Band, BandHead, Hot } from "./Band";
 
 /**
  * The craft angle, in her own voice. This is the page's strongest card: it is

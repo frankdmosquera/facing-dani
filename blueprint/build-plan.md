@@ -49,7 +49,7 @@ work, so it comes before the pages that describe it.
   language switch, and the missing-string build error. Hand-rolled, no package
 - [x] 3. **Home page** - hero, the three services, gallery teaser, her story,
   FAQ and the booking call to action
-- [ ] 4. **Gallery** - the full set of work, filterable by service, at a size
+- [x] 4. **Gallery** - the full set of work, filterable by service, at a size
   where the quality is actually visible
 - [ ] 5. **Service pages** - nails, lashes and makeup, one page each, with
   treatments, prices and durations

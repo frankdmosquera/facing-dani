@@ -1,10 +1,9 @@
 import Link from "next/link";
 
+import { Band, BandHead } from "@/components/site/Band";
 import { services } from "@/data/services";
 import type { Dictionary } from "@/dictionaries";
 import { localePath, type Locale } from "@/lib/locale";
-
-import { Band, BandHead } from "./Band";
 
 /**
  * Colour is navigation on this site: pink is nails, violet lashes, orange

@@ -166,6 +166,79 @@ export const en = {
       instagram: "Message on Instagram",
     },
   },
+
+  /**
+   * The gallery page.
+   *
+   * `meta.title` carries Calgary and the three service terms itself, because
+   * the layout's template only appends the business name and the title is the
+   * headline Google shows. The H1 carries Calgary too.
+   *
+   * `count.other` holds a literal `{n}`, replaced at render. It is never shown
+   * for zero: with no photos the empty state replaces the grid and the filter
+   * row entirely, and a chip only exists for a service that has some.
+   *
+   * `images` is one alt string per photo, keyed. It is empty until her photos
+   * are uploaded, and `data/gallery.ts` is typed off these keys.
+   */
+  gallery: {
+    meta: {
+      title: "Nail, Lash and Makeup Work in Calgary",
+      description:
+        "Real sets, never stock photos. Nail art, lash extensions and event makeup done in Calgary, shown big enough to judge the finish for yourself.",
+    },
+    eyebrow: "Every photo is mine",
+    headingLead: "The work,",
+    headingAccent: "done in Calgary",
+    lede: "Big on purpose. You are choosing someone to sit with for two hours, and a thumbnail tells you nothing about a cuticle line.",
+    filters: {
+      label: "Filter by service",
+      all: "All",
+    },
+    count: {
+      one: "1 photo",
+      other: "{n} photos",
+    },
+    empty: {
+      heading: "Photos are on the way",
+      body: "Nothing goes up here that is not my own work, so this page fills as I shoot. Tell me what you are after in the meantime and I will show you what I have.",
+    },
+    cta: {
+      eyebrow: "The easy part",
+      headingLead: "Seen one you",
+      headingAccent: "want?",
+      lede: "Send it to me and we will make it yours, or bring nothing and we will work it out together.",
+      book: "Book with Dani",
+      instagram: "Message on Instagram",
+    },
+    /**
+     * Alt text describes the work, because that is what a visitor who cannot
+     * see the photo is here to learn: the shape, the finish, the detail. It is
+     * not a place for "nails Calgary". The same strings become the `name` of
+     * each ImageObject in the page's structured data.
+     */
+    images: {
+      frenchGlitterGems:
+        "Almond nails with a white french tip, a fine glitter line along the smile and a cluster of crystals on the ring finger",
+      nudeOvalGloss:
+        "Short oval nails in a glossy nude pink, both hands resting on a black tray",
+      burgundyCatEye:
+        "Long almond nails in deep burgundy cat-eye chrome, the light catching a band across each nail",
+      palePinkGloss:
+        "Pale pink glossy oval nails, one hand resting over the other",
+      peachFrenchGems:
+        "Peach nails with a white french tip and small crystals set along the smile line",
+      whiteGlitterSquare:
+        "Square nails in white glitter with a single crystal accent",
+      blueFrenchFloral:
+        "Long square nails with a pale blue french tip, hand-painted white flowers and scattered crystals",
+      pinkFloralArt:
+        "Bright pink nails with small hand-painted white flowers on two fingers",
+      pastelFrenchTips:
+        "Square nails with pastel pink, yellow and green french tips, one colour per finger",
+      lilacSquare: "Short square nails in a soft lilac, no art",
+    },
+  },
 };
 
 export type Dictionary = typeof en;

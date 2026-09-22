@@ -31,6 +31,47 @@ links do not change.
 The gallery mockup is deliberately not published, for the same comps reason.
 Run it locally.
 
+## Her photos
+
+- https://drive.google.com/drive/folders/1e5lFwx0ih7K99gjqlYF8FKgG-HqFhpg0 -
+  "work", shared by Dani on 2026-09-21 from
+  `danielahernandezmoreno074@gmail.com`. She filled it late that evening, every
+  file stamped between 23:45 and 23:49.
+
+**Assessed on 2026-09-21, during feature 4.** 77 files: 47 iPhone HEIC, 25 JPG,
+5 videos. All 72 stills were decoded and looked at. Ten nail sets shipped to
+`facing-dani/nails` on ImageKit. Three things came out of the pass and none of
+them are code problems:
+
+- **There are no lash photographs. Not one, in 72.** The site sells three
+  services and the gallery can only show two. Item 5's lashes page has the same
+  hole. This is the single biggest content ask outstanding.
+- **Makeup is one look, two frames**, and the model's face is recognisable in
+  both. Held back pending her permission. The same goes for a portrait that is
+  almost certainly Dani, which belongs on item 6 anyway.
+- **Everything was shot in July and August 2025.** Nothing is recent work.
+
+The weak shots fail in ways the photo guide already covers: cluttered domestic
+backgrounds, flat overhead light, framing too far back to read a cuticle line.
+The one failure it does **not** cover is other people in the frame, which is a
+consent question rather than a composition one. Worth a fifth rule, remembering
+the published artifact keeps its old content until it is republished.
+
+**Decided, and unchanged by the photos arriving: no stock photography of nail
+work.** A gallery on a nail artist's site is a claim that this is her work. A
+client books on a borrowed photo and finds out in the chair, which is the worst
+possible place to find out, and it turns the craft angle from a fact into a
+sales line. `prototypes/home.html` said this in a comment before anyone asked.
+
+**The habit still matters more than the backlog.** Three shots at the end of
+every appointment beats another camera-roll dump, and it is the one thing that
+turns ten sets into forty by Christmas.
+
+**Unresolved, and separate: her name.** `siteConfig.business.name` is
+"Dani Moreno". Her email suggests Daniela Hernandez Moreno. The site and the
+Google Business Profile must match character for character or Google reads
+them as two businesses, so this needs confirming before the profile goes up.
+
 ## Links
 
 ### Worth copying
