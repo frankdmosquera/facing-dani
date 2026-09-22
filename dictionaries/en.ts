@@ -76,25 +76,118 @@ export const en = {
   },
 
   /**
-   * Service names and blurbs. Prices and treatments are item 5 and live with
-   * the service data, not here.
+   * One block per service. `name` and `blurb` are the home page's cards; the
+   * rest is that service's own page.
+   *
+   * **Each service owns its vocabulary and borrows nobody else's.** Nails owns
+   * gel, acrylic, extensions, chrome and nail art; lashes owns classic, hybrid,
+   * volume and fills; makeup owns grad, bridal, event and glam. Three pages
+   * exist instead of one so that each can rank for its own terms, and that only
+   * works if no two pages say the same thing. If a sentence here would read
+   * correctly under another service, it is the wrong sentence.
+   *
+   * The page lede is deliberately not a reuse of `blurb`: the home page already
+   * ranks with those words.
+   *
+   * `treatments` is empty until Dani sets her prices. `data/treatments.ts` is
+   * typed off these keys, so a row cannot exist without a label, and a nails
+   * row cannot borrow a lashes label.
    */
   services: {
     nails: {
       name: "Nails",
       blurb:
         "Gel, acrylic, extensions and custom art. Chrome, french, cat-eye, whatever you bring me.",
+      meta: {
+        title: "Gel and Acrylic Nails in Calgary",
+        description:
+          "Gel and acrylic nails in Calgary: full sets, extensions, chrome and hand-painted art. Shape, structure and cuticle work that still looks right in week three.",
+      },
+      eyebrow: "Shape, structure, cuticle line",
+      headingLead: "Nails, done",
+      headingAccent: "properly in Calgary",
+      lede: "Gel and acrylic nails in Calgary: full sets and fills, chrome and hand-painted art. The parts most people never look at are the parts I was drilled on, and they are what decide whether a set still looks good three weeks later.",
+      cta: {
+        eyebrow: "Bring a photo",
+        headingLead: "Let's build",
+        headingAccent: "your set",
+        lede: "Send me a reference or sit down with no idea at all. Either works.",
+        book: "Book with Dani",
+        instagram: "Message on Instagram",
+      },
+      empty: {
+        heading: "Prices are being set",
+        body: "I am putting the list together now. Message me and I will tell you exactly what your set would cost, with no surprises in the chair.",
+      },
+      work: { heading: "Recent nail work", all: "See every set" },
+      treatments: {},
     },
     lashes: {
       name: "Lashes",
       blurb:
         "Classic, hybrid and volume sets, mapped to your eye shape rather than a template.",
+      meta: {
+        title: "Eyelash Extensions in Calgary",
+        description:
+          "Classic, hybrid and volume lash extensions in Calgary, mapped to your eye shape rather than a template. Fills every two to four weeks.",
+      },
+      eyebrow: "Mapped to your eyes",
+      headingLead: "Lash extensions",
+      headingAccent: "in Calgary",
+      lede: "Classic, hybrid and volume. Every set is mapped to your own eye shape and lash line rather than copied off a chart, because the same set does not suit two different faces. Calgary, by appointment, with fills every two to four weeks.",
+      cta: {
+        eyebrow: "First set or a fill",
+        headingLead: "Let's map",
+        headingAccent: "your lashes",
+        lede: "Tell me whether you want them subtle or obvious and I will take it from there.",
+        book: "Book with Dani",
+        instagram: "Message on Instagram",
+      },
+      empty: {
+        heading: "Prices are being set",
+        body: "I am putting the list together now. Message me with the look you are after and I will tell you which set gets you there and what it costs.",
+      },
+      work: { heading: "Recent lash work", all: "See every set" },
+      treatments: {},
     },
     makeup: {
       name: "Makeup",
       blurb:
         "Grad, birthdays, photoshoots and events. Soft glam through to full glam.",
+      meta: {
+        title: "Grad and Event Makeup in Calgary",
+        description:
+          "Grad, bridal and event makeup in Calgary. Soft glam through to full glam, built to last a whole night and to photograph the way it looks in the mirror.",
+      },
+      eyebrow: "Built to last the night",
+      headingLead: "Grad and event makeup",
+      headingAccent: "in Calgary",
+      lede: "Grad, bridal parties, photoshoots and birthdays across Calgary, soft glam through to full glam. It has to survive a whole evening and it has to photograph the way it looks in the mirror, which are two different problems.",
+      cta: {
+        eyebrow: "Tell me the occasion",
+        headingLead: "Let's plan",
+        headingAccent: "the look",
+        lede: "Give me the date and roughly what you are after, and I will come back with a time.",
+        book: "Book with Dani",
+        instagram: "Message on Instagram",
+      },
+      empty: {
+        heading: "Prices are being set",
+        body: "I am putting the list together now. Tell me the occasion and roughly when, and I will come back with a price and a time.",
+      },
+      work: { heading: "Recent makeup", all: "See every set" },
+      treatments: {},
     },
+  },
+
+  /**
+   * Shared across the three service pages. The price itself never translates -
+   * it is a shared fact and renders as `$65` in both languages - but the word
+   * in front of an open-ended price does.
+   */
+  treatmentList: {
+    priceFrom: "From",
+    durationLabel: "Takes",
   },
 
   /**

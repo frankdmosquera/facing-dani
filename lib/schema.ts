@@ -1,5 +1,8 @@
 import { siteWideFaq } from "@/data/faq";
 import { orderedGallery } from "@/data/gallery";
+import type { ServiceId } from "@/data/services";
+import { siteConfig } from "@/data/siteConfig";
+import { treatmentLabel, treatmentsFor } from "@/data/treatments";
 import type { Dictionary } from "@/dictionaries/en";
 import { imagekitEndpoint } from "@/lib/imagekit";
 
@@ -53,6 +56,55 @@ export function imageGallerySchema(t: Dictionary) {
       contentUrl: `${imagekitEndpoint}${image.imagekitPath}`,
       name: t.gallery.images[image.key],
     })),
+  };
+}
+
+/**
+ * `Service` structured data for one service page, from the same records and
+ * dictionary the page renders.
+ *
+ * `provider` reads the business name from `siteConfig`, never a literal, so the
+ * template test holds here too. `areaServed` is Calgary because that is the
+ * whole point of the page.
+ *
+ * `hasOfferCatalog` is omitted entirely rather than emitted empty when a service
+ * has no priced treatments yet. An empty catalogue is a claim that she offers
+ * nothing, which is worse than saying nothing about her offers at all.
+ */
+export function serviceSchema(serviceId: ServiceId, t: Dictionary) {
+  const copy = t.services[serviceId];
+  const rows = treatmentsFor(serviceId);
+
+  const base = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: copy.name,
+    description: copy.meta.description,
+    serviceType: copy.name,
+    areaServed: {
+      "@type": "City",
+      name: siteConfig.business.city,
+    },
+    provider: {
+      "@type": "LocalBusiness",
+      name: siteConfig.business.name,
+    },
+  };
+
+  if (rows.length === 0) return base;
+
+  return {
+    ...base,
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: copy.name,
+      itemListElement: rows.map((row) => ({
+        "@type": "Offer",
+        name: treatmentLabel(t, serviceId, row.key),
+        price: row.priceCad,
+        priceCurrency: "CAD",
+      })),
+    },
   };
 }
 

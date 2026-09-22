@@ -51,7 +51,7 @@ work, so it comes before the pages that describe it.
   FAQ and the booking call to action
 - [x] 4. **Gallery** - the full set of work, filterable by service, at a size
   where the quality is actually visible
-- [ ] 5. **Service pages** - nails, lashes and makeup, one page each, with
+- [x] 5. **Service pages** - nails, lashes and makeup, one page each, with
   treatments, prices and durations
 - [ ] 6. **About** - her training and the trust a new business has not earned yet
 - [ ] 7. **Contact and booking** - the form with the "how did you find me" field,

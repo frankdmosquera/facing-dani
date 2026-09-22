@@ -71,17 +71,94 @@ export const es: Dictionary = {
       name: "Uñas",
       blurb:
         "Gel, acrílico, extensiones y arte personalizado. Chrome, francesa, cat-eye, lo que me traigas.",
+      meta: {
+        title: "Uñas en gel y acrílico en Calgary",
+        description:
+          "Uñas en gel y acrílico en Calgary: sets completos, extensiones, chrome y arte pintado a mano. Forma, estructura y trabajo de cutícula que sigue viéndose bien en la tercera semana.",
+      },
+      eyebrow: "Forma, estructura, cutícula",
+      headingLead: "Uñas, hechas",
+      headingAccent: "como se debe",
+      lede: "Uñas en gel y acrílico en Calgary: sets completos y rellenos, chrome y arte pintado a mano. Las partes que casi nadie mira son justo en las que me entrenaron, y son las que deciden si un set sigue viéndose bien tres semanas después.",
+      cta: {
+        eyebrow: "Tráeme una foto",
+        headingLead: "Armemos",
+        headingAccent: "tu set",
+        lede: "Mándame una referencia o siéntate sin ninguna idea. Las dos cosas funcionan.",
+        book: "Reservar con Dani",
+        instagram: "Escríbeme por Instagram",
+      },
+      empty: {
+        heading: "Estoy definiendo los precios",
+        body: "Estoy armando la lista ahora. Escríbeme y te digo exactamente cuánto te saldría tu set, sin sorpresas en la silla.",
+      },
+      work: { heading: "Trabajo reciente en uñas", all: "Ver todos los sets" },
+      treatments: {},
     },
     lashes: {
       name: "Pestañas",
       blurb:
         "Clásicas, híbridas y de volumen, diseñadas según la forma de tus ojos y no según una plantilla.",
+      meta: {
+        title: "Extensiones de pestañas en Calgary",
+        description:
+          "Extensiones de pestañas clásicas, híbridas y de volumen en Calgary, diseñadas según la forma de tus ojos y no según una plantilla. Rellenos cada dos a cuatro semanas.",
+      },
+      eyebrow: "Diseñadas para tus ojos",
+      headingLead: "Extensiones de pestañas",
+      headingAccent: "en Calgary",
+      lede: "Clásicas, híbridas y de volumen. Cada set se diseña según la forma de tus ojos y tu línea de pestañas, no copiado de una plantilla, porque el mismo set no le queda igual a dos caras distintas. En Calgary, con cita previa y rellenos cada dos a cuatro semanas.",
+      cta: {
+        eyebrow: "Primer set o relleno",
+        headingLead: "Diseñemos",
+        headingAccent: "tus pestañas",
+        lede: "Dime si las quieres discretas o bien marcadas y yo me encargo del resto.",
+        book: "Reservar con Dani",
+        instagram: "Escríbeme por Instagram",
+      },
+      empty: {
+        heading: "Estoy definiendo los precios",
+        body: "Estoy armando la lista ahora. Escríbeme con el look que buscas y te digo qué set te lo da y cuánto cuesta.",
+      },
+      work: {
+        heading: "Trabajo reciente en pestañas",
+        all: "Ver todos los sets",
+      },
+      treatments: {},
     },
     makeup: {
       name: "Maquillaje",
       blurb:
         "Graduaciones, cumpleaños, sesiones de fotos y eventos. Desde soft glam hasta glam completo.",
+      meta: {
+        title: "Maquillaje de graduación y eventos en Calgary",
+        description:
+          "Maquillaje de graduación, novias y eventos en Calgary. Desde soft glam hasta glam completo, hecho para durar toda la noche y para verse en las fotos igual que en el espejo.",
+      },
+      eyebrow: "Hecho para durar la noche",
+      headingLead: "Maquillaje de graduación y eventos",
+      headingAccent: "en Calgary",
+      lede: "Graduaciones, cortejos de novia, sesiones de fotos y cumpleaños en Calgary, desde soft glam hasta glam completo. Tiene que aguantar toda una noche y tiene que verse en las fotos igual que en el espejo, que son dos problemas distintos.",
+      cta: {
+        eyebrow: "Dime la ocasión",
+        headingLead: "Planeemos",
+        headingAccent: "el look",
+        lede: "Dame la fecha y más o menos qué buscas, y te contesto con una hora.",
+        book: "Reservar con Dani",
+        instagram: "Escríbeme por Instagram",
+      },
+      empty: {
+        heading: "Estoy definiendo los precios",
+        body: "Estoy armando la lista ahora. Dime la ocasión y más o menos cuándo, y te contesto con un precio y una hora.",
+      },
+      work: { heading: "Maquillaje reciente", all: "Ver todos los sets" },
+      treatments: {},
     },
+  },
+
+  treatmentList: {
+    priceFrom: "Desde",
+    durationLabel: "Dura",
   },
 
   faq: {
