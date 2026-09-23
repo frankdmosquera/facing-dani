@@ -16,6 +16,15 @@ import type { Dictionary } from "@/dictionaries";
  * Both were saying the same thing this section says, one page further from
  * anyone reading it.
  *
+ * `feeling` is hers rather than drafted: asked what a client should get out
+ * of a session, she said they should leave feeling beautiful and sure of
+ * themselves. It renders unmuted and last because it is the only line here
+ * about the person in the chair rather than the person doing the work.
+ *
+ * **The English says "sure of yourself", never "secure".** The Spanish
+ * `segura` means confident; English "secure" means safe from harm, which is a
+ * different and much stranger promise for a nail page to make.
+ *
  * The portrait is still `null` in `data/portrait.ts` and the page renders
  * without one on purpose: two frames from the set she sent are almost
  * certainly her, but nobody has confirmed it or asked whether she wants her
@@ -43,6 +52,10 @@ export function Story({ t }: { t: Dictionary }) {
             <p>{c.training}</p>
             <p>{c.building}</p>
           </div>
+
+          <p className="mt-5 max-w-[58ch] text-[16.5px] font-medium text-ink">
+            {c.feeling}
+          </p>
 
           <p className="font-display mt-6 text-[19px] font-extrabold tracking-[-0.04em] text-ink">
             {siteConfig.business.wordmark}

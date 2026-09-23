@@ -1,6 +1,6 @@
 # Dani Moreno - Project Overview
 
-<!-- blueprint:source-hash 6da87042c10c82c0d5652416059bb2b7a16ee6744581f69b4489e460753bd0ff -->
+<!-- blueprint:source-hash 9817a116f9c55500b938a8cc7ca82c3e2042f7c0ab9346a924d2ee8ceda4ad02 -->
 
 > A bilingual, SEO-first marketing site for a nail, lash and makeup artist in
 > Calgary, and the first build of a reusable template for beauty businesses.

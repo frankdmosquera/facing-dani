@@ -53,10 +53,10 @@ work, so it comes before the pages that describe it.
   where the quality is actually visible
 - [x] 5. **Service pages** - nails, lashes and makeup, one page each, with
   treatments, prices and durations
-- [ ] 6. **About** - her training and the trust a new business has not earned yet
+- [x] 6. **About** - her training and the trust a new business has not earned yet
   - [x] 6a. **The page** - the route in both languages, the bilingual promise
     said out loud, what actually happens at an appointment, and Person data
-  - [ ] 6b. **Her story** - where she trained, how she got here, and what she
+  - [x] 6b. **Her story** - where she trained, how she got here, and what she
     does between clients. Waits on material only Dani can give
 - [x] 7. **Contact and booking** - the form with the "how did you find me" field,
   validation, Resend delivery, the direct booking route and a thank-you page

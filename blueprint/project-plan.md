@@ -26,10 +26,10 @@ narrow:
 **What she is actually selling is craft, not price.** She trained in Colombia,
 where the standard for nail work is higher than most people here expect. Shape,
 structure and cuticle work are what decide whether a set still looks good in
-week three, and that is what she was drilled on. This is the strongest card
-because it is true, it is hard for a competitor to copy, and it survives a price
-rise. The site leads with it everywhere: the home page carries it in full and the
-gallery is the proof.
+week three, and that is what she was taught to get right. This is the
+strongest card because it is true, it is hard for a competitor to copy, and it
+survives a price rise. The site leads with it everywhere: the home page carries
+it in full and the gallery is the proof.
 
 Price is deliberately not the angle. It is the one advantage that disappears the
 moment she raises her rates, and a site built around being cheap is hard to

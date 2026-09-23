@@ -106,7 +106,7 @@ export const en = {
       eyebrow: "Shape, structure, cuticle line",
       headingLead: "Nails, done",
       headingAccent: "properly in Calgary",
-      lede: "Gel and acrylic nails in Calgary: full sets and fills, chrome and hand-painted art. The parts most people never look at are the parts I was drilled on, and they are what decide whether a set still looks good three weeks later.",
+      lede: "Gel and acrylic nails in Calgary: full sets and fills, chrome and hand-painted art. The parts most people never look at are the parts I was taught to get right, and they are what decide whether a set still looks good three weeks later.",
       cta: {
         eyebrow: "Bring a photo",
         headingLead: "Let's build",
@@ -268,25 +268,6 @@ export const en = {
   },
 
   /**
-   * The About page.
-   *
-   * Its job is the one the build plan names: the trust a new business has not
-   * earned yet. There are no reviews and will not be until item 10, so trust
-   * here has to come from being specific rather than from being praised.
-   *
-   * **This block may not repeat `home.story`.** That section already owns
-   * trained in Colombia, the standard being higher than people expect,
-   * shape/structure/cuticle deciding week three, and building the business from
-   * the ground up. Two pages telling the same story compete with each other in
-   * search, which is the exact failure the three separate service pages exist to
-   * avoid.
-   *
-   * `story` is deliberately absent. It arrives once Dani has answered where she
-   * trained, for how long, and what she does between clients - the last being
-   * the strongest trust signal a nail and lash artist has and the one no
-   * competitor page in `blueprint/reference/links.md` bothers to make.
-   */
-  /**
    * Shared across the three service pages. The price itself never translates -
    * it is a shared fact and renders as `$65` in both languages - but the word
    * in front of an open-ended price does.
@@ -344,14 +325,16 @@ export const en = {
       more: "See more",
     },
     story: {
-    lede: "A new business has no reviews, no word of mouth and nothing to point at except the work and the person doing it. So here is the person, and what two hours in my chair in Calgary actually involves.",
+      lede: "A new business has no reviews, no word of mouth and nothing to point at except the work and the person doing it. So here is the person, and where the way I work comes from.",
       eyebrow: "Who is doing your nails",
       headingLead: "Trained in Colombia,",
       headingAccent: "working in Calgary",
       training:
-        "I did my training in Colombia, where the standard for nail work is a lot higher than most people here expect. Shape, structure and cuticle work are the parts that decide whether a set still looks good in week three, and they are the parts I was drilled on.",
+        "I did my training in Colombia, where the standard for nail work is a lot higher than most people here expect. Shape, structure and cuticle work are the parts that decide whether a set still looks good in week three, and they are the parts I was taught to get right.",
       building:
-        "I am building this business from the ground up, which means you get the version of me that still cares enormously about every single set. Bring a photo from Pinterest, or sit down with no idea and we will work it out.",
+        "Since then I have been doing sets for family and friends constantly, and now I am building this into something of my own. What that means for you is the version of me that still cares enormously about every single set. Bring a photo from Pinterest, or sit down with no idea and we will work it out.",
+      feeling:
+        "What I care about most is how you feel when you leave. Not just that the set looks good, but that you walk out feeling beautiful and sure of yourself.",
     },
     /**
      * The shop window. Its heading is deliberately not "Gallery": the link says
