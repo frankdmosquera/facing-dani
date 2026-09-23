@@ -1,6 +1,6 @@
 # Dani Moreno - Project Overview
 
-<!-- blueprint:source-hash 3d92e19cd2325254652ff501b859ef8b8de9817919fed2f83f4ab45c66d0e7fe -->
+<!-- blueprint:source-hash f9ceb59db0963c633b68359221e2b547b3422e856573ef121e6962929658b8d4 -->
 
 > A bilingual, SEO-first marketing site for a nail, lash and makeup artist in
 > Calgary, and the first build of a reusable template for beauty businesses.
@@ -70,8 +70,10 @@ own metadata, JSON-LD and hreflang, and has real copy rather than placeholders.
    prices and durations. **Open.**
    - 5a. **The pages** - the three routes in both languages, their SEO, and the
      empty state that renders until prices exist. Done.
-   - 5b. **The menu** - treatments, prices and durations in
-     `data/treatments.ts`. **Next unchecked item. Waits on Dani's prices.**
+   - 5b. **The menu and booking policies** - treatments, prices and durations
+     in `data/treatments.ts`, plus the deposit, payment, removal and
+     first-visit answers in the FAQ. Prices researched against Calgary, for
+     Dani to confirm before launch. **Next unchecked item.**
 6. **Who she is** - her training and the trust a new business has not earned
    yet, carried on the home page. Done.
    - 6a. **The page** - the `/about` route, the bilingual promise, what happens
@@ -138,9 +140,10 @@ ImageKit path, never the photograph.
 - `durationMinutes` (number)
 - `order` (number)
 
-> **Empty for all three services until Dani sets her prices.** A price is a
-> promise to a customer and hers are hers to set. Every service page renders its
-> empty state meanwhile. Filling this is item 5b.
+> **Item 5b fills it:** nine nail rows, five lash, four makeup, set by Frank on
+> 2026-09-23 from Calgary research and positioned mid-low, for Dani to confirm
+> before launch. A service with no rows still renders its empty state, because
+> the next client from this template starts with none.
 
 ### GalleryImage
 
@@ -167,6 +170,9 @@ ImageKit path, never the photograph.
 
 - `key`, `order`, `serviceId` (`ServiceId | null`) - null means site-wide.
   Reused for FAQ structured data.
+
+> Nine items, all site-wide, on the home page. No answer states a price; prices
+> live only in `TreatmentRow`.
 
 ### Dictionaries
 
@@ -322,35 +328,40 @@ Target: **nails and makeup in Calgary**, plus lashes.
 
 ## Open questions
 
-1. **Most remaining work is content only Dani can give, and only prices are
-   tracked.** Item 5b tracks the menu. Nothing in the build plan tracks the
-   rest: lash photographs, permission for the two makeup frames, her Instagram
-   handle, her corrections to the Spanish, why she got into nails, and answers
-   to four common questions (deposits, removals and fills, first-timers, payment
-   methods). Without an item, the plan reports near-complete while lashes and
-   makeup have no photographs.
-2. **Section 8 says env vars are "Already in `.env.example`". There is no
+1. **Photographs for lashes and makeup are untracked.** Item 5b covers prices
+   and booking policies. Nothing in the build plan covers images for those two
+   pages: Frank approved licensed decorative stock for them on 2026-09-23,
+   never in the gallery or a work strip, but it is not yet a build-plan item.
+   Permission for the two makeup frames, and why she got into nails, are still
+   open with Dani.
+2. **Instagram DM is the assumed primary booking route, and there is no
+   account.** Section 8's `[confirm]` table and the site copy both assume it.
+   On 2026-09-23 Frank decided a business account waits until Dani is ready,
+   so the contact form is the only working route while the hero and the
+   booking FAQ still point at Instagram. A `/fix` is queued; the plan's
+   assumption should change with it.
+3. **Section 8 says env vars are "Already in `.env.example`". There is no
    committed `.env.example`.** It also names `IMAGEKIT_PRIVATE_KEY` while the
    real variable is `IMAGE_KIT_PRIVATE_KEY`, and omits `RESEND_FROM` and
    `NEXT_PUBLIC_SITE_URL` entirely.
-3. **"Spanish is written by Dani" is not what happens.** Section 3 and the build
+4. **"Spanish is written by Dani" is not what happens.** Section 3 and the build
    plan's definition of done both say so; in practice the Spanish is drafted
-   during each feature and waits for her corrections, marked as a draft in
-   `dictionaries/es.ts`. Either the rule or the practice should change.
-4. **A store is being considered, and section 1 explicitly rules one out**
+   during each feature. Frank reviewed it on 2026-09-23 and called it fine as it
+   stands. Either the rule or the practice should change.
+5. **A store is being considered, and section 1 explicitly rules one out**
    ("What it is not: a booking engine, a shop..."). Parked, to be planned from
    the backend. If it proceeds, section 1 must change.
-5. **A dedicated `/book` page is being considered**, on the Face and Body
+6. **A dedicated `/book` page is being considered**, on the Face and Body
    pattern: one page, service passed in the query string, an inline provider
    iframe, `noindex`. Not yet a build-plan item.
-6. **The light theme has no owner.** Section 7 specifies it and `.light` is
+7. **The light theme has no owner.** Section 7 specifies it and `.light` is
    ported and complete, but nothing activates it. Unreachable until decided.
    Costs nothing to leave.
-7. **Spanish slugs are mirrored English** (`/es/nails`, not `/es/unas`). One
+8. **Spanish slugs are mirrored English** (`/es/nails`, not `/es/unas`). One
    helper owns the prefix, so deciding is a one-file change.
-8. **Four `[confirm]` assumptions remain:** no logo exists (cost: a palette
+9. **Four `[confirm]` assumptions remain:** no logo exists (cost: a palette
    swap), service-area business with no public street address (one schema
    field), Instagram DM primary with the form for everyone else (one
-   component), and the domain (item 15). The location one is worth thinking
+   component, now contradicted; see 2), and the domain (item 15). The location one is worth thinking
    about rather than defaulting - a seventeen-year-old working from home should
    probably not publish a street address.

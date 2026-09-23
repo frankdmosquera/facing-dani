@@ -51,12 +51,14 @@ work, so it comes before the pages that describe it.
   FAQ and the booking call to action
 - [x] 4. **Gallery** - the full set of work, filterable by service, at a size
   where the quality is actually visible
-- [ ] 5. **Service pages** - nails, lashes and makeup, one page each, with
+- [x] 5. **Service pages** - nails, lashes and makeup, one page each, with
   treatments, prices and durations
   - [x] 5a. **The pages** - the three routes in both languages, their SEO,
     and the empty state that renders until prices exist
-  - [ ] 5b. **The menu** - treatments, prices and durations in
-    `data/treatments.ts`. Waits on Dani's prices
+  - [x] 5b. **The menu and booking policies** - treatments, prices and
+    durations in `data/treatments.ts`, plus the deposit, payment, removal and
+    first-visit answers in the FAQ. Prices researched against Calgary, for
+    Dani to confirm before launch
 - [x] 6. **Who she is** - her training and the trust a new business has
   not earned yet, carried on the home page since item 14 deleted `/about`
   - [x] 6a. **The page** - the `/about` route in both languages, the

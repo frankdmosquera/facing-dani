@@ -11,10 +11,14 @@ import type { ServiceId } from "./services";
  * price physically cannot be written with a nails label. A flat list would let
  * the two drift and only show it on the page.
  *
- * Empty until Dani sets her prices. Market research on 2026-09-21 produced a
- * proposed list positioned mid-low against Calgary rates, but a price is a
- * promise to a customer and hers are hers to set, so nothing goes in here until
- * she has said yes to it. A service with no rows renders its empty state.
+ * Set by Frank on 2026-09-23 from Calgary research, positioned mid-low, for Dani
+ * to confirm before launch. The sources and the reasoning are in the feature 5b
+ * archive. A price is a promise to a customer: change one here and it changes
+ * on the page and in the structured data together, which is the point of it
+ * living in exactly one place.
+ *
+ * A service with no rows still renders its empty state. Nothing does today, but
+ * the next client from this template starts with no prices too.
  */
 export type TreatmentRow<S extends ServiceId> = {
   key: keyof Dictionary["services"][S]["treatments"];
@@ -39,9 +43,30 @@ export type TreatmentRow<S extends ServiceId> = {
 export type Treatments = { [S in ServiceId]: TreatmentRow<S>[] };
 
 export const treatments: Treatments = {
-  nails: [],
-  lashes: [],
-  makeup: [],
+  nails: [
+    { key: "gelManicure", priceCad: 40, durationMinutes: 60, order: 1 },
+    { key: "acrylicFullSet", priceCad: 55, from: true, durationMinutes: 120, order: 2 },
+    { key: "acrylicFill", priceCad: 40, durationMinutes: 75, order: 3 },
+    { key: "gelXFullSet", priceCad: 70, from: true, durationMinutes: 120, order: 4 },
+    { key: "gelXFill", priceCad: 55, durationMinutes: 90, order: 5 },
+    { key: "french", priceCad: 10, durationMinutes: 15, order: 6 },
+    { key: "chrome", priceCad: 15, durationMinutes: 15, order: 7 },
+    { key: "nailArt", priceCad: 5, from: true, durationMinutes: 15, order: 8 },
+    { key: "removal", priceCad: 10, from: true, durationMinutes: 30, order: 9 },
+  ],
+  lashes: [
+    { key: "classicFullSet", priceCad: 110, durationMinutes: 105, order: 1 },
+    { key: "hybridFullSet", priceCad: 130, durationMinutes: 120, order: 2 },
+    { key: "volumeFullSet", priceCad: 150, durationMinutes: 135, order: 3 },
+    { key: "fill", priceCad: 65, from: true, durationMinutes: 60, order: 4 },
+    { key: "removal", priceCad: 20, durationMinutes: 30, order: 5 },
+  ],
+  makeup: [
+    { key: "softGlam", priceCad: 75, durationMinutes: 60, order: 1 },
+    { key: "fullGlam", priceCad: 95, durationMinutes: 75, order: 2 },
+    { key: "bridalParty", priceCad: 85, durationMinutes: 60, order: 3 },
+    { key: "stripLashes", priceCad: 10, durationMinutes: 10, order: 4 },
+  ],
 };
 
 /** That service's rows, in display order. */

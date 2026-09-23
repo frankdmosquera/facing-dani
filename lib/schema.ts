@@ -72,6 +72,10 @@ export function imageGallerySchema(t: Dictionary) {
  * `hasOfferCatalog` is omitted entirely rather than emitted empty when a service
  * has no priced treatments yet. An empty catalogue is a claim that she offers
  * nothing, which is worse than saying nothing about her offers at all.
+ *
+ * A `from` row carries its number as a `minPrice`, never as `price`. The page
+ * says "From $5"; an `Offer` with `price: 5` would tell a search engine the
+ * charge *is* $5, which is the one thing the prefix exists to deny.
  */
 export function serviceSchema(serviceId: ServiceId, t: Dictionary) {
   const copy = t.services[serviceId];
@@ -103,8 +107,15 @@ export function serviceSchema(serviceId: ServiceId, t: Dictionary) {
       itemListElement: rows.map((row) => ({
         "@type": "Offer",
         name: treatmentLabel(t, serviceId, row.key),
-        price: row.priceCad,
-        priceCurrency: "CAD",
+        ...(row.from
+          ? {
+              priceSpecification: {
+                "@type": "PriceSpecification",
+                minPrice: row.priceCad,
+                priceCurrency: "CAD",
+              },
+            }
+          : { price: row.priceCad, priceCurrency: "CAD" }),
       })),
     },
   };

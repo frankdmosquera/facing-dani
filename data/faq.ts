@@ -10,7 +10,7 @@ import type { ServiceId } from "./services";
  * the missing-translation build error, since array length is not type-checked.
  * A Spanish list with four entries instead of five would compile and ship.
  *
- * `serviceId` is `null` for all five today. It exists now because item 5 may
+ * `serviceId` is `null` for all nine today. It exists now because item 5 may
  * add per-service questions, and the structured data should not need
  * reshaping when it does.
  */
@@ -24,10 +24,14 @@ export type FaqItem = {
 
 export const faq: FaqItem[] = [
   { key: "booking", order: 1, serviceId: null },
-  { key: "duration", order: 2, serviceId: null },
-  { key: "location", order: 3, serviceId: null },
-  { key: "cancelling", order: 4, serviceId: null },
-  { key: "hair", order: 5, serviceId: null },
+  { key: "deposit", order: 2, serviceId: null },
+  { key: "payment", order: 3, serviceId: null },
+  { key: "duration", order: 4, serviceId: null },
+  { key: "firstVisit", order: 5, serviceId: null },
+  { key: "removalAndFills", order: 6, serviceId: null },
+  { key: "location", order: 7, serviceId: null },
+  { key: "cancelling", order: 8, serviceId: null },
+  { key: "hair", order: 9, serviceId: null },
 ];
 
 /** Site-wide questions, in order. Item 5 will filter by `serviceId`. */

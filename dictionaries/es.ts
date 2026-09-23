@@ -93,7 +93,17 @@ export const es: Dictionary = {
         body: "Estoy armando la lista ahora. Escríbeme y te digo exactamente cuánto te saldría tu set, sin sorpresas en la silla.",
       },
       work: { heading: "Trabajo reciente en uñas", all: "Ver todos los sets" },
-      treatments: {},
+      treatments: {
+        gelManicure: "Manicure en gel",
+        acrylicFullSet: "Set completo en acrílico",
+        acrylicFill: "Relleno de acrílico",
+        gelXFullSet: "Extensiones Gel-X, set completo",
+        gelXFill: "Relleno de Gel-X",
+        french: "Puntas francesas, adicional",
+        chrome: "Chrome, adicional",
+        nailArt: "Arte en uñas, adicional",
+        removal: "Retiro de un set anterior",
+      },
     },
     lashes: {
       name: "Pestañas",
@@ -124,7 +134,13 @@ export const es: Dictionary = {
         heading: "Trabajo reciente en pestañas",
         all: "Ver todos los sets",
       },
-      treatments: {},
+      treatments: {
+        classicFullSet: "Set completo clásico",
+        hybridFullSet: "Set completo híbrido",
+        volumeFullSet: "Set completo de volumen",
+        fill: "Relleno",
+        removal: "Retiro de pestañas",
+      },
     },
     makeup: {
       name: "Maquillaje",
@@ -152,7 +168,12 @@ export const es: Dictionary = {
         body: "Estoy armando la lista ahora. Dime la ocasión y más o menos cuándo, y te contesto con un precio y una hora.",
       },
       work: { heading: "Maquillaje reciente", all: "Ver todos los sets" },
-      treatments: {},
+      treatments: {
+        softGlam: "Soft glam, eventos y sesiones de fotos",
+        fullGlam: "Full glam, graduación y prom, pestañas incluidas",
+        bridalParty: "Cortejo nupcial, por persona",
+        stripLashes: "Pestañas postizas, adicional",
+      },
     },
   },
 
@@ -244,6 +265,22 @@ export const es: Dictionary = {
     cancelling: {
       q: "¿Y si necesito cancelar?",
       a: "Avísame con al menos 24 horas de antelación y no hay ningún problema. Cancelar a última hora hace difícil llenar el espacio, así que por favor inténtalo.",
+    },
+    deposit: {
+      q: "¿Tengo que dejar un depósito?",
+      a: "No hay depósito. Reservas, vienes y pagas al final de la cita.",
+    },
+    payment: {
+      q: "¿Cómo puedo pagar?",
+      a: "En efectivo o con tarjeta, al final de la cita.",
+    },
+    firstVisit: {
+      q: "Es mi primera vez. ¿Qué debería saber?",
+      a: "Ven con las uñas sin nada, o cuéntame qué tienes puesto para planear el tiempo de retirarlo. Para pestañas, llega sin maquillaje en los ojos ni pestañina, evita el café antes para que los ojos estén quietos, y avísame si tienes alguna alergia, porque el pegamento de pestañas puede tener acrílico o látex. Trae una foto de referencia si tienes una, y cuenta con el tiempo completo de la cita.",
+    },
+    removalAndFills: {
+      q: "¿Puedes quitar un set de otro salón, y cada cuánto necesito un relleno?",
+      a: "Sí. El retiro está en la lista de precios de cada servicio; avísame cuando reserves para apartar el tiempo. Los rellenos de uñas son cada dos o tres semanas, y los de pestañas cada dos a cuatro.",
     },
     hair: {
       q: "¿Haces cabello?",

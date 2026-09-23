@@ -120,7 +120,17 @@ export const en = {
         body: "I am putting the list together now. Message me and I will tell you exactly what your set would cost, with no surprises in the chair.",
       },
       work: { heading: "Recent nail work", all: "See every set" },
-      treatments: {},
+      treatments: {
+        gelManicure: "Gel manicure",
+        acrylicFullSet: "Acrylic full set",
+        acrylicFill: "Acrylic fill",
+        gelXFullSet: "Gel-X extensions, full set",
+        gelXFill: "Gel-X fill",
+        french: "French tips, add-on",
+        chrome: "Chrome, add-on",
+        nailArt: "Nail art, add-on",
+        removal: "Removal of a previous set",
+      },
     },
     lashes: {
       name: "Lashes",
@@ -148,7 +158,13 @@ export const en = {
         body: "I am putting the list together now. Message me with the look you are after and I will tell you which set gets you there and what it costs.",
       },
       work: { heading: "Recent lash work", all: "See every set" },
-      treatments: {},
+      treatments: {
+        classicFullSet: "Classic full set",
+        hybridFullSet: "Hybrid full set",
+        volumeFullSet: "Volume full set",
+        fill: "Fill",
+        removal: "Lash removal",
+      },
     },
     makeup: {
       name: "Makeup",
@@ -176,7 +192,12 @@ export const en = {
         body: "I am putting the list together now. Tell me the occasion and roughly when, and I will come back with a price and a time.",
       },
       work: { heading: "Recent makeup", all: "See every set" },
-      treatments: {},
+      treatments: {
+        softGlam: "Soft glam, events and photoshoots",
+        fullGlam: "Full glam, grad and prom, lashes included",
+        bridalParty: "Bridal party, per person",
+        stripLashes: "Strip lashes, add-on",
+      },
     },
   },
 
@@ -300,6 +321,22 @@ export const en = {
     cancelling: {
       q: "What if I need to cancel?",
       a: "Let me know at least 24 hours before and it is no problem at all. Short notice cancellations make it hard to fill the slot, so please try.",
+    },
+    deposit: {
+      q: "Do I need to pay a deposit?",
+      a: "No deposit. You book, you come in, and you pay at the end of the appointment.",
+    },
+    payment: {
+      q: "How can I pay?",
+      a: "Cash or card, at the end of the appointment.",
+    },
+    firstVisit: {
+      q: "It is my first time. What should I know?",
+      a: "Come with bare nails, or tell me what is on them so I can plan time to take it off. For lashes, arrive with no eye makeup or mascara, skip the coffee beforehand so your eyes stay still, and tell me about any allergies, because lash glue can contain acrylic or latex. Bring a reference photo if you have one, and plan for the full appointment time.",
+    },
+    removalAndFills: {
+      q: "Can you take off a set from another salon, and how often do I need a fill?",
+      a: "Yes. Removal is on the price list for each service; mention it when you book so the time is set aside. Nail fills are every two to three weeks, lash fills every two to four.",
     },
     hair: {
       q: "Do you do hair?",
