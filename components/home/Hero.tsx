@@ -62,10 +62,12 @@ export function Hero({ locale, t }: { locale: Locale; t: Dictionary }) {
             </Link>
           </div>
 
-          {/* Prose, not a link: the Instagram handle is still unknown, and a
-              dead link is worse than a sentence. It becomes a link when the
-              handle lands in siteConfig. */}
-          <p className="mt-4 text-[13.5px] text-ink-faint">{c.dmNote}</p>
+          {/* Only once there is an account to send her to: a line naming a
+              route that does not exist is worse than no line at all. Setting
+              the handle in siteConfig brings it back with no code change. */}
+          {siteConfig.social.instagram ? (
+            <p className="mt-4 text-[13.5px] text-ink-faint">{c.dmNote}</p>
+          ) : null}
         </div>
 
         {/*

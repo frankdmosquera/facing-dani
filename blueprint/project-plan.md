@@ -350,7 +350,7 @@ one place, which is the point of the template discipline in section 4.
 |---|---|---|---|
 | Logo | None exists, palette not sampled from one | `theme.css` | A palette swap |
 | Location | Service-area business, no public street address | LocalBusiness schema | One field |
-| Booking | Instagram DM primary, form to Resend as the route for everyone else | One component | One page |
+| Booking | Contact form only until a business Instagram exists, then DMs alongside it | One component | One page |
 | Domain | Not registered, follows the name | `siteConfig` and Vercel | A DNS change |
 
 The location assumption is the one to actually think about rather than default.

@@ -65,17 +65,20 @@ export default async function Contact({
         <ContactForm locale={locale} t={t} />
       </Band>
 
-      {/* The direct booking route: the other half of the build-plan line. */}
-      <Band glow={false}>
-        <div className="max-w-[54ch]">
-          <h2 className="mb-3 text-[clamp(22px,5vw,30px)]">
-            {c.direct.heading}
-          </h2>
-          <p className="mb-4 text-[15.5px] text-ink-muted">{c.direct.body}</p>
-
-          {/* A link only once the handle is known, the same rule the footer and
-              every BookingBand follow. A dead link is worse than a sentence. */}
-          {instagram ? (
+      {/* The direct booking route: the other half of the build-plan line.
+          The whole band waits for a handle, the same rule the footer and every
+          BookingBand follow. Every line in it is about messaging her, so
+          without an account it would offer a route and then admit there is
+          none. */}
+      {instagram ? (
+        <Band glow={false}>
+          <div className="max-w-[54ch]">
+            <h2 className="mb-3 text-[clamp(22px,5vw,30px)]">
+              {c.direct.heading}
+            </h2>
+            <p className="mb-4 text-[15.5px] text-ink-muted">
+              {c.direct.body}
+            </p>
             <a
               href={instagram.url}
               rel="me noopener noreferrer"
@@ -84,11 +87,9 @@ export default async function Contact({
             >
               {c.direct.link}
             </a>
-          ) : (
-            <p className="text-[14px] text-ink-faint">{c.direct.pending}</p>
-          )}
-        </div>
-      </Band>
+          </div>
+        </Band>
+      ) : null}
 
       <script
         type="application/ld+json"

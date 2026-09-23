@@ -192,7 +192,6 @@ export const es: Dictionary = {
       heading: "¿Prefieres escribirme directo?",
       body: "También sirve, y es más rápido si ya sabes lo que quieres.",
       link: "Escríbeme por Instagram",
-      pending: "Mi Instagram va aquí apenas esté listo.",
     },
 
     form: {
@@ -227,7 +226,7 @@ export const es: Dictionary = {
     },
 
     failed:
-      "Eso no se envió, y prefiero decírtelo a fingir que sí. Inténtalo otra vez en un momento, o mándame un DM.",
+      "Eso no se envió, y prefiero decírtelo a fingir que sí. Inténtalo otra vez en un momento.",
   },
 
   thankYou: {
@@ -252,7 +251,7 @@ export const es: Dictionary = {
   faq: {
     booking: {
       q: "¿Cómo reservo?",
-      a: "Mándame un DM por Instagram o usa el formulario en la página de contacto. Dime qué servicio quieres, más o menos cuándo te viene bien, y mándame una foto de referencia si tienes una.",
+      a: "Usa el formulario en la página de contacto. Dime qué servicio quieres, más o menos cuándo te viene bien, y mándame una foto de referencia si tienes una.",
     },
     duration: {
       q: "¿Cuánto dura un set completo?",

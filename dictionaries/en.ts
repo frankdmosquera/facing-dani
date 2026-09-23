@@ -223,16 +223,14 @@ export const en = {
     lede: "Fill this in and it lands in my inbox. I answer every one, usually the same day, and nothing is booked until we have agreed a time in Calgary that works for both of us.",
 
     /**
-     * The other half of the build-plan line. Rendered as a link only once the
-     * handle is known, the same rule the footer and every BookingBand follow -
-     * a dead link is worse than a sentence.
+     * The other half of the build-plan line. The page renders this band only
+     * once the Instagram handle is known, the same rule the footer and every
+     * BookingBand follow.
      */
     direct: {
       heading: "Would rather just message me?",
       body: "That works too, and it is faster if you already know what you want.",
       link: "Message on Instagram",
-      /** Shown instead of the link while the handle is unknown. */
-      pending: "My Instagram goes here the moment it is set up.",
     },
 
     form: {
@@ -267,11 +265,13 @@ export const en = {
     },
 
     /**
-     * The form-level failure. It names the way through rather than an error
-     * code, because a visitor who cannot submit still needs to reach her.
+     * The form-level failure, in words rather than an error code. It used to
+     * offer DMs as the way through. With no Instagram account and no public
+     * email there is no second route to name, so it names none rather than a
+     * dead one.
      */
     failed:
-      "That did not send, and I would rather tell you than pretend it did. Try again in a moment, or send me a DM instead.",
+      "That did not send, and I would rather tell you than pretend it did. Try again in a moment.",
   },
 
   thankYou: {
@@ -306,9 +306,13 @@ export const en = {
    * appointment and publishing one is a privacy call nobody has made.
    */
   faq: {
+    /**
+     * Names only the form, because there is no Instagram account yet. When
+     * `siteConfig.social.instagram` is set, this answer should offer DMs again.
+     */
     booking: {
       q: "How do I book?",
-      a: "Send a DM on Instagram or use the form on the contact page. Tell me the service, roughly when suits you, and send a reference photo if you have one.",
+      a: "Use the form on the contact page. Tell me the service, roughly when suits you, and send a reference photo if you have one.",
     },
     duration: {
       q: "How long does a full set take?",
@@ -352,7 +356,7 @@ export const en = {
       sell: "Custom sets, lash extensions and event makeup. Trained in Colombia, booking now in Calgary. Bring a reference photo or let me build something for you.",
       book: "Book with Dani",
       seeWork: "See the work",
-      /** Prose, not a link. The Instagram handle is not known yet. */
+      /** Rendered only once `siteConfig.social.instagram` is set. */
       dmNote: "Or send a DM on Instagram, whatever is easier",
     },
     services: {

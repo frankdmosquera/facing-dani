@@ -1,6 +1,6 @@
 # Dani Moreno - Project Overview
 
-<!-- blueprint:source-hash f9ceb59db0963c633b68359221e2b547b3422e856573ef121e6962929658b8d4 -->
+<!-- blueprint:source-hash 19677ce5b4e76837a2323e46d0b39f917dd41c7016fd5d5bfc9dcc5b77d1596d -->
 
 > A bilingual, SEO-first marketing site for a nail, lash and makeup artist in
 > Calgary, and the first build of a reusable template for beauty businesses.
@@ -67,13 +67,13 @@ own metadata, JSON-LD and hreflang, and has real copy rather than placeholders.
    the booking CTA. Done; its hero photograph and teaser landed in 14.
 4. **Gallery** - the full set of work, filterable by service. Done.
 5. **Service pages** - nails, lashes and makeup, one page each, with treatments,
-   prices and durations. **Open.**
+   prices and durations. Done.
    - 5a. **The pages** - the three routes in both languages, their SEO, and the
      empty state that renders until prices exist. Done.
    - 5b. **The menu and booking policies** - treatments, prices and durations
      in `data/treatments.ts`, plus the deposit, payment, removal and
      first-visit answers in the FAQ. Prices researched against Calgary, for
-     Dani to confirm before launch. **Next unchecked item.**
+     Dani to confirm before launch. Done.
 6. **Who she is** - her training and the trust a new business has not earned
    yet, carried on the home page. Done.
    - 6a. **The page** - the `/about` route, the bilingual promise, what happens
@@ -334,34 +334,32 @@ Target: **nails and makeup in Calgary**, plus lashes.
    never in the gallery or a work strip, but it is not yet a build-plan item.
    Permission for the two makeup frames, and why she got into nails, are still
    open with Dani.
-2. **Instagram DM is the assumed primary booking route, and there is no
-   account.** Section 8's `[confirm]` table and the site copy both assume it.
-   On 2026-09-23 Frank decided a business account waits until Dani is ready,
-   so the contact form is the only working route while the hero and the
-   booking FAQ still point at Instagram. A `/fix` is queued; the plan's
-   assumption should change with it.
-3. **Section 8 says env vars are "Already in `.env.example`". There is no
+2. **Section 8 says env vars are "Already in `.env.example`". There is no
    committed `.env.example`.** It also names `IMAGEKIT_PRIVATE_KEY` while the
    real variable is `IMAGE_KIT_PRIVATE_KEY`, and omits `RESEND_FROM` and
    `NEXT_PUBLIC_SITE_URL` entirely.
-4. **"Spanish is written by Dani" is not what happens.** Section 3 and the build
+3. **"Spanish is written by Dani" is not what happens.** Section 3 and the build
    plan's definition of done both say so; in practice the Spanish is drafted
    during each feature. Frank reviewed it on 2026-09-23 and called it fine as it
    stands. Either the rule or the practice should change.
-5. **A store is being considered, and section 1 explicitly rules one out**
+4. **A store is being considered, and section 1 explicitly rules one out**
    ("What it is not: a booking engine, a shop..."). Parked, to be planned from
    the backend. If it proceeds, section 1 must change.
-6. **A dedicated `/book` page is being considered**, on the Face and Body
+5. **A dedicated `/book` page is being considered**, on the Face and Body
    pattern: one page, service passed in the query string, an inline provider
    iframe, `noindex`. Not yet a build-plan item.
-7. **The light theme has no owner.** Section 7 specifies it and `.light` is
+6. **The light theme has no owner.** Section 7 specifies it and `.light` is
    ported and complete, but nothing activates it. Unreachable until decided.
    Costs nothing to leave.
-8. **Spanish slugs are mirrored English** (`/es/nails`, not `/es/unas`). One
+7. **Spanish slugs are mirrored English** (`/es/nails`, not `/es/unas`). One
    helper owns the prefix, so deciding is a one-file change.
-9. **Four `[confirm]` assumptions remain:** no logo exists (cost: a palette
+8. **Four `[confirm]` assumptions remain:** no logo exists (cost: a palette
    swap), service-area business with no public street address (one schema
-   field), Instagram DM primary with the form for everyone else (one
-   component, now contradicted; see 2), and the domain (item 15). The location one is worth thinking
-   about rather than defaulting - a seventeen-year-old working from home should
-   probably not publish a street address.
+   field), the contact form as the only booking route until a business
+   Instagram exists (one component), and the domain (item 15). The location one
+   is worth thinking about rather than defaulting - a seventeen-year-old
+   working from home should probably not publish a street address.
+9. **If the contact form fails there is no second route.** No Instagram, and no
+   public email or phone. The only email in `siteConfig` is Frank's personal
+   address and is not published. Closes with a business email, an Instagram
+   account, or item 15 making the form reliable.
