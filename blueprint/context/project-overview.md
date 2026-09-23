@@ -1,6 +1,6 @@
 # Dani Moreno - Project Overview
 
-<!-- blueprint:source-hash 9817a116f9c55500b938a8cc7ca82c3e2042f7c0ab9346a924d2ee8ceda4ad02 -->
+<!-- blueprint:source-hash 3d92e19cd2325254652ff501b859ef8b8de9817919fed2f83f4ab45c66d0e7fe -->
 
 > A bilingual, SEO-first marketing site for a nail, lash and makeup artist in
 > Calgary, and the first build of a reusable template for beauty businesses.
@@ -19,10 +19,10 @@ wherever bookings live.
 
 **The angle is craft, not price.** She trained in Colombia, where the standard
 for nail work is higher than most people here expect, and shape, structure and
-cuticle work are what decide whether a set still looks good in week three. That
-claim is true, hard to copy, and survives a price rise. Price is deliberately
-not the angle, because it is the one advantage that disappears the moment she
-raises her rates.
+cuticle work are what decide whether a set still looks good in week three -
+which is what she was taught to get right. That claim is true, hard to copy, and
+survives a price rise. Price is deliberately not the angle, because it is the
+one advantage that disappears the moment she raises her rates.
 
 **She is fully bilingual, and that is a service rather than a setting.** A
 translated site says she can read it; a fluent artist means the whole
@@ -56,34 +56,46 @@ No accounts and no access tiers. Every page is public.
 In build-plan order. Numbers are stable identifiers, not sequence: 11 to 13 are
 post-MVP and 14 to 15 were added later, so the MVP runs 1-10 then 14-15.
 
+Every content item is done only when it exists in both languages, carries its
+own metadata, JSON-LD and hreflang, and has real copy rather than placeholders.
+
 1. **Site shell and theme** - the theme ported into `globals.css` `@theme`, plus
    header, mobile nav and footer. Done.
 2. **Locale routing** - the `[locale]` segment, a dictionary per locale, the
    language switch, and the missing-string build error. Hand-rolled. Done.
-3. **Home page** - hero, the three services, her story, FAQ and the booking CTA.
-   Done, but shipped without its hero photograph or gallery teaser; see 14.
+3. **Home page** - hero, the three services, gallery teaser, her story, FAQ and
+   the booking CTA. Done; its hero photograph and teaser landed in 14.
 4. **Gallery** - the full set of work, filterable by service. Done.
 5. **Service pages** - nails, lashes and makeup, one page each, with treatments,
-   prices and durations. Built, but every one renders the empty-price state.
-6. **About** - **being absorbed into the home page by 14.** 6a (the page) shipped;
-   6b (her story) is unbuilt and now lands in 14.
+   prices and durations. **Open.**
+   - 5a. **The pages** - the three routes in both languages, their SEO, and the
+     empty state that renders until prices exist. Done.
+   - 5b. **The menu** - treatments, prices and durations in
+     `data/treatments.ts`. **Next unchecked item. Waits on Dani's prices.**
+6. **Who she is** - her training and the trust a new business has not earned
+   yet, carried on the home page. Done.
+   - 6a. **The page** - the `/about` route, the bilingual promise, what happens
+     at an appointment, and Person data. Done, then folded into home by 14.
+   - 6b. **Her story** - where she trained, what she does between clients, and
+     how a client should feel leaving, in the home story section. Done.
 7. **Contact and booking** - the form with the "how did you find me" field,
-   validation, Resend delivery, and a thank-you page. Done.
-8. **Deploy** - Vercel, env vars, a verified production build. Done at item 1;
-   the domain and indexing work once filed here moved to 15.
+   validation, Resend delivery, the direct booking route and a thank-you page.
+   Done.
+8. **Deploy** - Vercel, env vars, a verified production build and a preview URL.
+   Done at item 1; the domain and indexing work moved to 15.
 9. **Site-wide SEO pass** - sitemap and robots across both locales,
    `LocalBusiness` data, and a per-page metadata audit. Done.
 10. **Gallery lightbox** - tap a photo to open it large, with next, previous, a
     thumbnail strip, keyboard and swipe. Done.
-14. **Home page rebuild** - the hero photograph and gallery teaser item 3
-    deferred to item 4 and nobody returned for, plus process and an expanded
-    FAQ. Absorbs About, which is then deleted. **Next, and unblocked.**
+14. **Home page rebuild** - the hero photograph and gallery teaser, the process
+    and expanded FAQ sections, and About absorbed onto home. Done.
 15. **Domain, indexing and production email** - buy the domain, set the site URL
     so robots stops disallowing everything, and give Resend a sender that can
     mail anyone. **Blocked until the domain exists, and it gates launch.**
 
-Post-MVP, not scheduled: **11 Reviews on site**, **12 Real booking**,
-**13 Second client from this template**.
+Post-MVP, not scheduled: **11 Reviews on site** (waits for reviews worth
+showing), **12 Real booking** (only if DMs stop coping), **13 Second client from
+this template**.
 
 **The headline feature is the gallery.** It is the proof the craft claim rests
 on, and it is why items 4 and 10 exist in that shape.
@@ -126,9 +138,9 @@ ImageKit path, never the photograph.
 - `durationMinutes` (number)
 - `order` (number)
 
-> **Currently empty for all three services**, deliberately. Market research on
-> 2026-09-21 produced a proposed list, but a price is a promise to a customer
-> and hers are hers to set. Every service page renders its empty state.
+> **Empty for all three services until Dani sets her prices.** A price is a
+> promise to a customer and hers are hers to set. Every service page renders its
+> empty state meanwhile. Filling this is item 5b.
 
 ### GalleryImage
 
@@ -148,8 +160,8 @@ ImageKit path, never the photograph.
 
 > A portrait is not work, so it is its own file rather than a gallery row -
 > otherwise it would appear in the filtered grid and in `ImageGallery`
-> structured data as something a client can book. The About page is already
-> wired to render one.
+> structured data as something a client can book. The home story section is
+> wired to render one and reads correctly without it.
 
 ### FaqItem
 
@@ -242,12 +254,14 @@ backgrounds; photo panels stay nearer `#1B1426`. **Motion in CSS only.**
 
 Routes, each also at `/es`:
 
-- `/` - home: hero, three services, her story, FAQ, booking band
+- `/` - home: hero photograph, the three services, a work teaser, her story, the
+  bilingual promise, what happens in the chair, FAQ, booking band
 - `/nails`, `/lashes`, `/makeup` - one page per service
 - `/gallery` - the full set, filterable, with the lightbox
-- `/about` - **to be deleted by item 14**, its content moving to `/`
 - `/contact` - the form and the direct booking route
 - `/thank-you` - so a submitted form is unambiguous
+
+`/about` and `/es/about` permanently redirect to `/` and `/es`.
 
 ## Deployment
 
@@ -308,42 +322,35 @@ Target: **nails and makeup in Calgary**, plus lashes.
 
 ## Open questions
 
-1. **The site is code-complete and content-empty, and the plan does not track
-   that.** All three services render "Prices are being set", lashes and makeup
-   have zero photographs, and the home page has none. The build plan has no item
-   for acquiring content, so it will keep reporting near-complete. Six things
-   are needed from Dani: prices, lash photos, makeup permission, her story, her
-   Instagram handle, and her corrections to the Spanish chrome copy.
-2. **Item 5 was checked off against a bar the plan forbids.** Section 3 says
-   "Nothing ships with placeholder text", and the service pages shipped with
-   the price placeholder. Either uncheck item 5 or record that the rule was
-   relaxed; right now the plan contradicts itself.
-3. **Item 6 still reads as an About page** while item 14 deletes that page. 6a
-   is archived as shipped, so deleting the route is partly a reversal of
-   completed work. Worth rewording item 6 to name where its content now lives.
-4. **Section 8 says env vars are "Already in `.env.example`". There is no
+1. **Most remaining work is content only Dani can give, and only prices are
+   tracked.** Item 5b tracks the menu. Nothing in the build plan tracks the
+   rest: lash photographs, permission for the two makeup frames, her Instagram
+   handle, her corrections to the Spanish, why she got into nails, and answers
+   to four common questions (deposits, removals and fills, first-timers, payment
+   methods). Without an item, the plan reports near-complete while lashes and
+   makeup have no photographs.
+2. **Section 8 says env vars are "Already in `.env.example`". There is no
    committed `.env.example`.** It also names `IMAGEKIT_PRIVATE_KEY` while the
    real variable is `IMAGE_KIT_PRIVATE_KEY`, and omits `RESEND_FROM` and
    `NEXT_PUBLIC_SITE_URL` entirely.
-5. **A store is being considered, and section 1 explicitly rules one out**
-   ("What it is not: a booking engine, a shop..."). Parked for now, to be
-   planned from the backend. If it proceeds, section 1 must change.
-6. **A dedicated `/book` page is being considered**, on the Face and Body
-   pattern: one page, service passed in the query string, an inline
-   provider iframe, `noindex`. Not yet a build-plan item.
-7. **Her Instagram handle is not recorded anywhere.** The plan calls the bio
-   link the site's main entry point. `siteConfig.social.instagram` is `null`, so
-   nothing false ships. Needs Dani, not code.
-8. **The light theme has no owner.** Section 7 specifies it and `.light` is
+3. **"Spanish is written by Dani" is not what happens.** Section 3 and the build
+   plan's definition of done both say so; in practice the Spanish is drafted
+   during each feature and waits for her corrections, marked as a draft in
+   `dictionaries/es.ts`. Either the rule or the practice should change.
+4. **A store is being considered, and section 1 explicitly rules one out**
+   ("What it is not: a booking engine, a shop..."). Parked, to be planned from
+   the backend. If it proceeds, section 1 must change.
+5. **A dedicated `/book` page is being considered**, on the Face and Body
+   pattern: one page, service passed in the query string, an inline provider
+   iframe, `noindex`. Not yet a build-plan item.
+6. **The light theme has no owner.** Section 7 specifies it and `.light` is
    ported and complete, but nothing activates it. Unreachable until decided.
    Costs nothing to leave.
-9. **Spanish slugs are mirrored English** (`/es/nails`, not `/es/unas`). One
+7. **Spanish slugs are mirrored English** (`/es/nails`, not `/es/unas`). One
    helper owns the prefix, so deciding is a one-file change.
-10. **The Spanish chrome copy is a draft** written during item 2, not by Dani.
-    Marked as such in `dictionaries/es.ts`. Hers to correct before launch.
-11. **Three `[confirm]` assumptions remain:** no logo exists (cost: a palette
-    swap), service-area business with no public street address (one schema
-    field), Instagram DM primary with the form for everyone else (one
-    component). The location one is worth thinking about rather than
-    defaulting - a seventeen-year-old working from home should probably not
-    publish a street address.
+8. **Four `[confirm]` assumptions remain:** no logo exists (cost: a palette
+   swap), service-area business with no public street address (one schema
+   field), Instagram DM primary with the form for everyone else (one
+   component), and the domain (item 15). The location one is worth thinking
+   about rather than defaulting - a seventeen-year-old working from home should
+   probably not publish a street address.

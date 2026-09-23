@@ -51,13 +51,20 @@ work, so it comes before the pages that describe it.
   FAQ and the booking call to action
 - [x] 4. **Gallery** - the full set of work, filterable by service, at a size
   where the quality is actually visible
-- [x] 5. **Service pages** - nails, lashes and makeup, one page each, with
+- [ ] 5. **Service pages** - nails, lashes and makeup, one page each, with
   treatments, prices and durations
-- [x] 6. **About** - her training and the trust a new business has not earned yet
-  - [x] 6a. **The page** - the route in both languages, the bilingual promise
-    said out loud, what actually happens at an appointment, and Person data
-  - [x] 6b. **Her story** - where she trained, how she got here, and what she
-    does between clients. Waits on material only Dani can give
+  - [x] 5a. **The pages** - the three routes in both languages, their SEO,
+    and the empty state that renders until prices exist
+  - [ ] 5b. **The menu** - treatments, prices and durations in
+    `data/treatments.ts`. Waits on Dani's prices
+- [x] 6. **Who she is** - her training and the trust a new business has
+  not earned yet, carried on the home page since item 14 deleted `/about`
+  - [x] 6a. **The page** - the `/about` route in both languages, the
+    bilingual promise said out loud, what actually happens at an
+    appointment, and Person data. Folded into home by item 14
+  - [x] 6b. **Her story** - where she trained, what she does between
+    clients, and how a client should feel leaving, in the home page's
+    story section
 - [x] 7. **Contact and booking** - the form with the "how did you find me" field,
   validation, Resend delivery, the direct booking route and a thank-you page
 - [x] 8. **Deploy** - Vercel, env vars, a verified production build and a preview
