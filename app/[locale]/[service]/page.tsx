@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { DecorativeImage } from "@/components/service/DecorativeImage";
+import { InspirationGrid } from "@/components/service/InspirationGrid";
 import { TreatmentList } from "@/components/service/TreatmentList";
 import { WorkStrip } from "@/components/service/WorkStrip";
 import { Band, Hot } from "@/components/site/Band";
 import { BookingBand } from "@/components/site/BookingBand";
+import { inspirationFor } from "@/data/decorativeImages";
 import { serviceHasWork } from "@/data/gallery";
 import { orderedServices, serviceBySlug, serviceSlug } from "@/data/services";
 import { getDictionary } from "@/dictionaries";
@@ -107,6 +109,15 @@ export default async function ServicePage({
       {serviceHasWork(service.id) ? (
         <Band glow={false}>
           <WorkStrip serviceId={service.id} locale={locale} t={t} />
+        </Band>
+      ) : null}
+
+      {/* Stock, under a heading that says so. After her own work rather than
+          before it, so on nails the real sets are what a visitor sees first.
+          Same rule as the strip above: no records, no band. */}
+      {inspirationFor(service.id).length > 0 ? (
+        <Band glow={false}>
+          <InspirationGrid serviceId={service.id} t={t} />
         </Band>
       ) : null}
 

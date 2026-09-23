@@ -270,7 +270,10 @@ without darkening the whole site. Where she has no photographs yet, lashes
 and makeup carry licensed decorative stock with no identifiable faces. It is
 decoration, not a claim: never in the gallery or a work strip, never captioned
 or marked up as hers, and each image comes out when her own photo for that
-service arrives.
+service arrives. Each service page, nails included, also carries a grid of
+licensed stock headed "Inspiration" in both languages, under the same rules.
+The heading is what keeps it honest, so the grid never appears without it, and
+it stays when her own photos arrive because it shows styles, not her work.
 
 **Motion in CSS only.** Glows, gradients and the ticker cost nothing and need no
 library. `motion` is not installed and is not being added.

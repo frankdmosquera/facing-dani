@@ -248,6 +248,11 @@ export const es: Dictionary = {
     durationLabel: "Dura",
   },
 
+  inspiration: {
+    heading: "Inspiración",
+    note: "Ideas para traer como referencia. Son fotos de stock, no mi trabajo.",
+  },
+
   faq: {
     booking: {
       q: "¿Cómo reservo?",

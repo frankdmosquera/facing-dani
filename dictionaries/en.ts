@@ -299,6 +299,16 @@ export const en = {
   },
 
   /**
+   * The stock grid on each service page. The note is not optional: without it
+   * the heading alone could read as her portfolio. No key per image, on
+   * purpose - see `data/decorativeImages.ts`.
+   */
+  inspiration: {
+    heading: "Inspiration",
+    note: "Looks to bring in as a reference. These are stock photos, not my work.",
+  },
+
+  /**
    * Rendered twice from one source: as the visible list and as FAQPage
    * structured data. They cannot drift apart.
    *

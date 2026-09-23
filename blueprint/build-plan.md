@@ -86,6 +86,11 @@ work, so it comes before the pages that describe it.
   faces. Never in the gallery, a work strip or structured data, and never
   captioned as her work. Also closes the empty band left below those two menus
   when there are no photos
+- [x] 17. **Inspiration grids on the service pages** - a grid of licensed stock
+  on nails, lashes and makeup, 11 to 14 images each as Frank picked them,
+  headed "Inspiration" in both languages. Same boundary as 16: no identifiable
+  faces, never in the gallery, a work strip or structured data. The lash
+  mapping photo from 16 comes out
 - [ ] 15. **Domain, indexing and production email** - buy the domain, set the
   site URL so robots stops disallowing everything, and give Resend a sender that
   can mail anyone. Blocked until the domain exists
