@@ -105,6 +105,17 @@ export default async function Gallery({
             filterLabel={c.filters.label}
             countOne={c.count.one}
             countOther={c.count.other}
+            /* Same array, same order, same pass as the children below. The
+               delegated click reads an index into this, so the two cannot be
+               built separately without the risk of opening the wrong photo. */
+            photos={images.map((image) => ({
+              imagekitPath: image.imagekitPath,
+              serviceId: image.serviceId,
+              alt: c.images[image.key],
+              width: image.width,
+              height: image.height,
+            }))}
+            lightboxLabels={c.lightbox}
           >
             {images.map((image, index) => (
               <GalleryFigure
@@ -112,6 +123,11 @@ export default async function Gallery({
                 image={image}
                 alt={c.images[image.key]}
                 serviceName={t.services[image.serviceId].name}
+                index={index}
+                openLabel={c.lightbox.open.replace(
+                  "{photo}",
+                  c.images[image.key],
+                )}
                 priority={index < EAGER}
               />
             ))}

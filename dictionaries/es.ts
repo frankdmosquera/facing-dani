@@ -373,6 +373,13 @@ export const es: Dictionary = {
       book: "Reservar con Dani",
       instagram: "Escríbeme por Instagram",
     },
+    lightbox: {
+      open: "Ver más grande: {photo}",
+      close: "Cerrar",
+      previous: "Foto anterior",
+      next: "Siguiente foto",
+      position: "Foto {current} de {total}",
+    },
     images: {
       frenchGlitterGems:
         "Uñas almendradas con francesa blanca, una línea fina de glitter sobre la sonrisa y un grupo de cristales en el anular",
