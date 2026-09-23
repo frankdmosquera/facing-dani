@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { DecorativeImage } from "@/components/service/DecorativeImage";
 import { TreatmentList } from "@/components/service/TreatmentList";
 import { WorkStrip } from "@/components/service/WorkStrip";
 import { Band, Hot } from "@/components/site/Band";
 import { BookingBand } from "@/components/site/BookingBand";
+import { serviceHasWork } from "@/data/gallery";
 import { orderedServices, serviceBySlug, serviceSlug } from "@/data/services";
 import { getDictionary } from "@/dictionaries";
 import { defaultLocale, isLocale, localePath } from "@/lib/locale";
@@ -90,17 +92,23 @@ export default async function ServicePage({
         </h1>
 
         <p className="max-w-[54ch] text-base text-ink-muted">{copy.lede}</p>
+
+        <DecorativeImage serviceId={service.id} />
       </Band>
 
       <Band tinted glow={false}>
         <TreatmentList serviceId={service.id} t={t} />
       </Band>
 
-      {/* Renders nothing when this service has no photographs, which is the
-          case for lashes today. */}
-      <Band glow={false}>
-        <WorkStrip serviceId={service.id} locale={locale} t={t} />
-      </Band>
+      {/* The band only exists when there is work to put in it. `WorkStrip`
+          already renders nothing for a service with no photographs, but the
+          band around it would still draw its padding: an empty gap between
+          the menu and the booking ask that reads as a broken section. */}
+      {serviceHasWork(service.id) ? (
+        <Band glow={false}>
+          <WorkStrip serviceId={service.id} locale={locale} t={t} />
+        </Band>
+      ) : null}
 
       {/* Its own closing ask, not the gallery's. Three pages sharing one CTA
           would be the same duplicate-content mistake the ledes avoid. */}

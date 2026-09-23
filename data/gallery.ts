@@ -74,6 +74,18 @@ export function orderedGallery(): GalleryImage[] {
 }
 
 /**
+ * Whether a service has any of her photographs at all.
+ *
+ * The service page asks this before drawing the band that holds the work
+ * strip, because an empty band is still 192px of padding with nothing in it.
+ * `data/decorativeImages.ts` asks it too: stock comes off a page the moment
+ * her own work for that service exists.
+ */
+export function serviceHasWork(serviceId: ServiceId): boolean {
+  return gallery.some((image) => image.serviceId === serviceId);
+}
+
+/**
  * How many photos each service has, in service order, and only for the ones
  * that have any.
  *

@@ -1,6 +1,6 @@
 # Dani Moreno - Project Overview
 
-<!-- blueprint:source-hash 19677ce5b4e76837a2323e46d0b39f917dd41c7016fd5d5bfc9dcc5b77d1596d -->
+<!-- blueprint:source-hash bb492db0d9da1aeb9d87a5eceed36b5e57b07ba87f67eef5032e15e9620d1e30 -->
 
 > A bilingual, SEO-first marketing site for a nail, lash and makeup artist in
 > Calgary, and the first build of a reusable template for beauty businesses.
@@ -54,7 +54,7 @@ No accounts and no access tiers. Every page is public.
 ## Features
 
 In build-plan order. Numbers are stable identifiers, not sequence: 11 to 13 are
-post-MVP and 14 to 15 were added later, so the MVP runs 1-10 then 14-15.
+post-MVP and 14 to 16 were added later, so the MVP runs 1-10, 14, 16, then 15.
 
 Every content item is done only when it exists in both languages, carries its
 own metadata, JSON-LD and hreflang, and has real copy rather than placeholders.
@@ -91,6 +91,11 @@ own metadata, JSON-LD and hreflang, and has real copy rather than placeholders.
     thumbnail strip, keyboard and swipe. Done.
 14. **Home page rebuild** - the hero photograph and gallery teaser, the process
     and expanded FAQ sections, and About absorbed onto home. Done.
+16. **Decorative imagery for lashes and makeup** - licensed stock (Unsplash or
+    Pexels) on those two service pages only, with no identifiable faces. Never
+    in the gallery, a work strip or structured data, never captioned as her
+    work. Also closes the empty band left below those two menus with no photos.
+    **Next.** Ahead of 15 because 15 is blocked.
 15. **Domain, indexing and production email** - buy the domain, set the site URL
     so robots stops disallowing everything, and give Resend a sender that can
     mail anyone. **Blocked until the domain exists, and it gates launch.**
@@ -156,6 +161,10 @@ ImageKit path, never the photograph.
 > **Nine records, all `nails`.** No lash photographs exist and two makeup frames
 > are held back because the model's face is recognisable and nobody has asked
 > her. This is why the filter row hides a chip for a service with no photos.
+
+> Locked: **decorative stock is never a `GalleryImage`.** A gallery row is a
+> claim of authorship, so item 16's images live outside this model.
+> TODO: their record shape is not in either plan; item 16's spec sets it.
 
 ### Portrait
 
@@ -258,6 +267,11 @@ a consideration, it is the product** - every mockup was drawn at phone width.
 **Photography carries it,** which means her photos need dark-friendly
 backgrounds; photo panels stay nearer `#1B1426`. **Motion in CSS only.**
 
+> Locked: **stock is decoration, not a claim.** Until she has photos for them,
+> lashes and makeup carry licensed decorative stock with no identifiable faces:
+> never in the gallery or a work strip, never captioned or marked up as hers,
+> and each image comes out when her own photo for that service arrives.
+
 Routes, each also at `/es`:
 
 - `/` - home: hero photograph, the three services, a work teaser, her story, the
@@ -328,12 +342,11 @@ Target: **nails and makeup in Calgary**, plus lashes.
 
 ## Open questions
 
-1. **Photographs for lashes and makeup are untracked.** Item 5b covers prices
-   and booking policies. Nothing in the build plan covers images for those two
-   pages: Frank approved licensed decorative stock for them on 2026-09-23,
-   never in the gallery or a work strip, but it is not yet a build-plan item.
-   Permission for the two makeup frames, and why she got into nails, are still
-   open with Dani.
+1. **Item 16 leaves two things to its spec.** Where the stock records live, and
+   what "comes out when her own photo arrives" means in practice: a manual
+   removal, or the page preferring a `GalleryImage` for that service when one
+   exists. Permission for the two makeup frames, and why she got into nails,
+   are still open with Dani.
 2. **Section 8 says env vars are "Already in `.env.example`". There is no
    committed `.env.example`.** It also names `IMAGEKIT_PRIVATE_KEY` while the
    real variable is `IMAGE_KIT_PRIVATE_KEY`, and omits `RESEND_FROM` and

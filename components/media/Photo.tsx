@@ -40,10 +40,16 @@ export function Photo({
   className?: string;
 }) {
   if (!imagekitEndpoint) {
+    // An empty alt means the caller has declared the image decorative. A box
+    // with `role="img"` and an empty label would be an unnamed image to a
+    // screen reader, so a decorative placeholder is hidden instead.
+    const decorative = alt === "";
+
     return (
       <div
-        role="img"
-        aria-label={alt}
+        role={decorative ? undefined : "img"}
+        aria-label={decorative ? undefined : alt}
+        aria-hidden={decorative ? true : undefined}
         style={{ aspectRatio: `${width} / ${height}` }}
         className={`w-full bg-shot ${className ?? ""}`}
       />

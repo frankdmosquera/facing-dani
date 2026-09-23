@@ -1189,8 +1189,8 @@
       <span class="where-spacer"></span>
       <div class="where-leg">
         <div class="where-key">MVP items</div>
-        <div class="meter" title="11 of 12 MVP items done">
-          <i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i></i>
+        <div class="meter" title="12 of 13 MVP items done">
+          <i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i></i>
         </div>
       </div>
     </div>
@@ -1245,7 +1245,7 @@
           </div>
           <div class="row">
             <div class="row-key">7 &middot; UI/UX</div>
-            <div class="row-val"><strong>After Party.</strong> Vibrant and active, never spa-calm. Plum ground <code>#261F36</code>, four colour-coded accents, Unbounded over Inter, mobile first because the site is an Instagram bio link. Decided from rendered options in <code>blueprint/reference/</code>, not from adjectives. Written in full in <code>project-plan.md</code>.</div>
+            <div class="row-val"><strong>After Party.</strong> Vibrant and active, never spa-calm. Plum ground <code>#261F36</code>, four colour-coded accents, Unbounded over Inter, mobile first because the site is an Instagram bio link. Until she has photos for them, lashes and makeup carry licensed decorative stock with no identifiable faces - never in the gallery or a work strip, never captioned as hers. Decided from rendered options in <code>blueprint/reference/</code>, not from adjectives. Written in full in <code>project-plan.md</code>.</div>
           </div>
           <div class="row">
             <div class="row-key">8 &middot; Deployment</div>
@@ -1298,13 +1298,13 @@
           <h1>Roadmap</h1>
         </div>
         <p class="lede">
-          Twelve items to an MVP, in build order. The shell carries the theme and the locale routing,
+          Thirteen items to an MVP, in build order. The shell carries the theme and the locale routing,
           so it goes first and everything after inherits both. The gallery is the page that sells
           the work, so it comes before the pages that describe it. Scaffolding and locking the look
           were pre-build steps and sit in Phase 0 rather than in the list.
         </p>
         <div class="tally">
-          <span class="tally-part" data-state="done"><span class="tally-key">Done</span><span class="tally-val">11 of 12 MVP items</span></span>
+          <span class="tally-part" data-state="done"><span class="tally-key">Done</span><span class="tally-val">12 of 13 MVP items</span></span>
           <span class="tally-part" data-state="active"><span class="tally-key">Now</span><span class="tally-val">Nothing building</span></span>
           <span class="tally-part" data-state="planned"><span class="tally-key">Next</span><span class="tally-val">15 &middot; Domain, blocked until it is bought</span></span>
         </div>
@@ -1539,6 +1539,7 @@
           <div class="item" data-state="done"><div class="item-num">9</div><div class="item-body"><div class="item-name">Site-wide SEO pass</div><p class="item-text">Sitemap and robots across both locales, LocalBusiness data, and an audit that every page carries its own metadata and hreflang. The only SEO work that genuinely needs every page to exist - the rest shipped with the page it describes.</p></div><span class="pill pill--done">Done</span></div>
           <div class="item" data-state="done"><div class="item-num">10</div><div class="item-body"><div class="item-name">Gallery lightbox</div><p class="item-text">Tap a photo to open it large, with next and previous, a thumbnail strip, and keyboard and swipe control. Item 4 promises a size where the quality is visible, but a grid tile renders at roughly 280px - so this is what makes that promise true rather than an extra. Built on the shadcn dialog, which costs no new dependency because <code>@base-ui/react</code> is already installed; the slider is hand-rolled rather than pulling in <code>embla-carousel-react</code>.</p></div><span class="pill pill--done">Done</span></div>
           <div class="item" data-state="done"><div class="item-num">14</div><div class="item-body"><div class="item-name">Home page rebuild</div><p class="item-text">The hero photograph and gallery teaser that item 3 deferred, plus the process and bilingual sections, with About folded in and <code>/about</code> deleted. The home page went from <b>zero</b> images to seven. The FAQ did not grow: the questions visitors actually ask - deposits, removals, first visits, payment - are promises only Dani can make.</p></div><span class="pill pill--done">Done</span></div>
+          <div class="item" data-state="done"><div class="item-num">16</div><div class="item-body"><div class="item-name">Decorative imagery for lashes and makeup</div><p class="item-text">Licensed stock (Unsplash or Pexels) on the lashes and makeup pages only, with no identifiable faces - Dani is 17 and the site shows no portrait, so a stock face could be read as her. Never in the gallery, a work strip or structured data, and never captioned as her work: a gallery row is a claim of authorship, a decorative band is not. Also closes the empty band below those two menus. <b>Shipped Sep 23</b> with one image per page from Pexels, each cropped to a single eye: a lash-mapping close-up and a smoky eye. It comes off by itself when her own photo for that service is added to the gallery. A larger "inspiration" grid was discussed and parked: it would need a visible line saying the photos are references, not her work.</p></div><span class="pill pill--done">Done</span></div>
           <div class="item"><div class="item-num">15</div><div class="item-body"><div class="item-name">Domain, indexing and production email</div><p class="item-text">Buy the domain, set <code>NEXT_PUBLIC_SITE_URL</code> so <code>robots.txt</code> stops serving <code>Disallow: /</code>, and give Resend a sender that can mail anyone rather than only the account owner. <b>This is what gates launch</b>: today nothing is indexable and the contact form cannot deliver in production.</p></div><span class="pill">Blocked on the domain</span></div>
         </div>
 
@@ -1555,7 +1556,7 @@
         <h2>Open questions</h2>
         <div class="notes">
           <ul>
-            <li><strong>Photographs for lashes and makeup are untracked.</strong> Frank approved licensed decorative stock for those two pages on Sep 23, never in the gallery or a work strip, but it is not yet a build-plan item. Permission for the two makeup frames, and why she got into nails, are still open with Dani.</li>
+            <li><strong>Permission for the two makeup frames, and why she got into nails, are still open with Dani.</strong> Item 16 settled the stock questions: the records live in <code>data/decorativeImages.ts</code> and the stock comes off automatically when her own photo for that service exists.</li>
             <li><strong>If the contact form fails, there is no second route.</strong> No Instagram account yet and no public email or phone. Closes with a business email, an Instagram account, or item 15 making the form reliable.</li>
             <li><strong>Section 8 says the env vars are "already in <code>.env.example</code>".</strong> There is no committed <code>.env.example</code>, it names <code>IMAGEKIT_PRIVATE_KEY</code> where the real variable is <code>IMAGE_KIT_PRIVATE_KEY</code>, and it omits <code>RESEND_FROM</code> and <code>NEXT_PUBLIC_SITE_URL</code>.</li>
             <li><strong>"Spanish is written by Dani" is not what happens.</strong> In practice the Spanish is drafted during each feature; Frank reviewed it on Sep 23 and called it fine. Either the rule or the practice should change.</li>

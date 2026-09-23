@@ -81,6 +81,11 @@ work, so it comes before the pages that describe it.
 - [x] 14. **Home page rebuild** - the hero photograph and gallery teaser item 3
   deferred to item 4 and nobody came back for, plus the process and expanded FAQ
   sections. Absorbs About, which is then deleted, so item 6b lands here
+- [x] 16. **Decorative imagery for lashes and makeup** - licensed stock
+  (Unsplash or Pexels) on those two service pages only, with no identifiable
+  faces. Never in the gallery, a work strip or structured data, and never
+  captioned as her work. Also closes the empty band left below those two menus
+  when there are no photos
 - [ ] 15. **Domain, indexing and production email** - buy the domain, set the
   site URL so robots stops disallowing everything, and give Resend a sender that
   can mail anyone. Blocked until the domain exists

@@ -266,7 +266,11 @@ brightest thing on every screen, which is the whole point of a dark ground. It
 also means her photos need dark-friendly backgrounds, and that is worth telling
 her before she shoots a hundred sets against a white desk. Photo panels stay
 nearer `#1B1426` even though the page is `#261F36`, so images keep their punch
-without darkening the whole site.
+without darkening the whole site. Where she has no photographs yet, lashes
+and makeup carry licensed decorative stock with no identifiable faces. It is
+decoration, not a claim: never in the gallery or a work strip, never captioned
+or marked up as hers, and each image comes out when her own photo for that
+service arrives.
 
 **Motion in CSS only.** Glows, gradients and the ticker cost nothing and need no
 library. `motion` is not installed and is not being added.
