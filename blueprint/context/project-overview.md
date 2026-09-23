@@ -1,325 +1,349 @@
-# facing-dani - Project Overview
+# Dani Moreno - Project Overview
 
-<!-- blueprint:source-hash a37254c6f2f555070ab70b36a9641e89689d70e6ab4f800f47339f57c09cbab9 -->
+<!-- blueprint:source-hash 6da87042c10c82c0d5652416059bb2b7a16ee6744581f69b4489e460753bd0ff -->
 
-> A bilingual marketing site for a Calgary nail, lash and makeup artist, built as
-> the first instance of a reusable template for beauty businesses.
+> A bilingual, SEO-first marketing site for a nail, lash and makeup artist in
+> Calgary, and the first build of a reusable template for beauty businesses.
 
 ## Problem
 
-A new nail, lash and makeup artist in Calgary has no presence beyond an Instagram
-feed. Instagram shows work well but cannot hold a price list, cannot be found on
-Google, buries the answer to "what do you actually do", and is a poor gallery when
-someone wants to inspect one set closely. The site is what her bio link points at,
-and its job stays narrow: look like a real business, show the work at a size where
-quality is visible, answer what/how much/how long without a DM, and take the
-booking or hand it off cleanly.
+A new nail, lash and makeup artist in Calgary has no presence beyond Instagram.
+Instagram shows work well but cannot hold a price list, cannot answer "what do
+you actually do", cannot be found on Google, and a grid of squares is a poor
+gallery when someone wants to inspect one set closely.
 
-**What she sells is craft, not price.** She trained in Colombia, where the standard
-for shape, structure and cuticle work is higher than most people here expect - the
-things that decide whether a set still looks good in week three. That is the angle
-everywhere, because it is true, hard to copy, and survives a price rise. Price is
-deliberately not the angle: it is the one advantage that disappears the moment she
+The site is what her bio link points at, and its job stays narrow: make her look
+like a real business, show the work at a size where quality is visible, answer
+what/how much/how long without a DM, and take the booking or hand it cleanly to
+wherever bookings live.
+
+**The angle is craft, not price.** She trained in Colombia, where the standard
+for nail work is higher than most people here expect, and shape, structure and
+cuticle work are what decide whether a set still looks good in week three. That
+claim is true, hard to copy, and survives a price rise. Price is deliberately
+not the angle, because it is the one advantage that disappears the moment she
 raises her rates.
 
-**Bilingual is a service, not a setting.** A translated site tells a visitor she can
-read it; a fluent artist tells her she can have the whole appointment in Spanish.
-That gets said out loud on the home and about pages, not left implied by a `/es`
-URL. A competitor can run a page through a translator in an afternoon; they cannot
-become bilingual.
+**She is fully bilingual, and that is a service rather than a setting.** A
+translated site says she can read it; a fluent artist means the whole
+appointment can happen in Spanish. It is said out loud on the home page as a
+claim, not left implied by the existence of a `/es` URL. A competitor can run a
+page through a translator in an afternoon; they cannot become bilingual.
 
-**Not** a booking engine, a shop, a blog, or a client account system.
+**What it is not:** a booking engine, a shop, a blog, or a client account
+system.
 
 ## Users
 
-| User | Arrives from | Needs |
-|---|---|---|
-| **The client, ~15-25** | Instagram bio link, on a phone, at night | See the work, learn whether it is in budget, book without composing a message |
-| **Her mother, paying for a grad set** | Google, or her daughter | The business to look legitimate in four seconds: prices, location, a human name, no dead links. She will not DM a teenager, so she is why the form exists |
-| **The Spanish-speaking client** | Spanish search, currently finds nothing local | A site and an appointment in her own language |
-| **The artist** | - | One link that answers everything, so her DMs stop being a price list |
+- **The client, roughly 15 to 25.** Arrives from an Instagram bio link, on a
+  phone, often at night, deciding between two or three artists she already
+  follows. Scrolling and judging, not reading. **This sets nearly every UI
+  decision: mobile is not a consideration, it is the product.**
+- **Her mother, paying for a grad set.** Arrives from Google. Needs the business
+  to look legitimate in about four seconds: prices visible, location clear, a
+  human name, no dead links. She is why the contact form exists, because she
+  will not DM a teenager on Instagram.
+- **The Spanish-speaking client.** Searches in Spanish, finds nothing local.
+  Underserved by every competitor in this market, and the reason the site is
+  bilingual rather than translated later.
+- **The artist herself.** Needs one link that answers everything, so her DMs
+  stop being a price list.
 
-The first row decides nearly everything in UI/UX. **Mobile is not a consideration,
-it is the product.** Desktop exists and must not be broken, but it is the
-afterthought.
-
-No accounts, no tiers, no sign-in. Every visitor is anonymous.
+No accounts and no access tiers. Every page is public.
 
 ## Features
 
-MVP, in `build-plan.md` order. The headline is **4. Gallery** - it is the page that
-sells the work, which is why it lands before the pages that describe it.
+In build-plan order. Numbers are stable identifiers, not sequence: 11 to 13 are
+post-MVP and 14 to 15 were added later, so the MVP runs 1-10 then 14-15.
 
-Progress is deliberately not recorded here. The fingerprint below normalizes
-completion markers, so checking an item off is not overview drift; `/status` and
-the build log are where progress lives.
-
-1. **Site shell and theme** - After Party theme in `globals.css`, sticky header,
-   full-screen mobile panel, footer, gradient ticker.
-2. **Locale routing** - `[locale]` segment, a dictionary per locale, the language
-   switch, and a build that fails on a missing Spanish string.
-3. **Home page** - hero, the three services, gallery teaser, her story, FAQ and the
-   booking call to action.
-4. **Gallery** - the full set of work, filterable by service, at a size where the
-   quality is actually visible. **Headline feature.**
+1. **Site shell and theme** - the theme ported into `globals.css` `@theme`, plus
+   header, mobile nav and footer. Done.
+2. **Locale routing** - the `[locale]` segment, a dictionary per locale, the
+   language switch, and the missing-string build error. Hand-rolled. Done.
+3. **Home page** - hero, the three services, her story, FAQ and the booking CTA.
+   Done, but shipped without its hero photograph or gallery teaser; see 14.
+4. **Gallery** - the full set of work, filterable by service. Done.
 5. **Service pages** - nails, lashes and makeup, one page each, with treatments,
-   prices and durations. Three pages and not one, because a single services page
-   competes with itself and ranks for none of them.
-6. **About** - her training, and the trust a new business has not earned yet.
+   prices and durations. Built, but every one renders the empty-price state.
+6. **About** - **being absorbed into the home page by 14.** 6a (the page) shipped;
+   6b (her story) is unbuilt and now lands in 14.
 7. **Contact and booking** - the form with the "how did you find me" field,
-   validation, Resend delivery, the direct booking route, and a thank-you page.
-8. **Deploy** - Vercel, env vars, a verified production build and a preview URL.
-   See Open questions: this item's scope no longer matches reality.
-9. **Site-wide SEO pass** - sitemap and robots across both locales, LocalBusiness
-   data, and an audit that every page carries its own metadata and hreflang.
-10. **Gallery lightbox** - tap a photo to open it large, with next and previous, a
-    thumbnail strip, and keyboard and swipe control. Item 4 promises a size where
-    the quality is visible; a grid tile renders at roughly 280px, so this is what
-    makes that promise true rather than an extra.
+   validation, Resend delivery, and a thank-you page. Done.
+8. **Deploy** - Vercel, env vars, a verified production build. Done at item 1;
+   the domain and indexing work once filed here moved to 15.
+9. **Site-wide SEO pass** - sitemap and robots across both locales,
+   `LocalBusiness` data, and a per-page metadata audit. Done.
+10. **Gallery lightbox** - tap a photo to open it large, with next, previous, a
+    thumbnail strip, keyboard and swipe. Done.
+14. **Home page rebuild** - the hero photograph and gallery teaser item 3
+    deferred to item 4 and nobody returned for, plus process and an expanded
+    FAQ. Absorbs About, which is then deleted. **Next, and unblocked.**
+15. **Domain, indexing and production email** - buy the domain, set the site URL
+    so robots stops disallowing everything, and give Resend a sender that can
+    mail anyone. **Blocked until the domain exists, and it gates launch.**
 
-Post-MVP, listed so they stop being re-proposed: **11.** reviews on site,
-**12.** real booking with availability and deposits, **13.** a second client from
-this template.
-### Definition of done, items 3 onward
+Post-MVP, not scheduled: **11 Reviews on site**, **12 Real booking**,
+**13 Second client from this template**.
 
-Not separate items, because a thing that touches every page cannot be a finishing
-pass:
+**The headline feature is the gallery.** It is the proof the craft claim rests
+on, and it is why items 4 and 10 exist in that shape.
 
-1. **Both languages.** The page exists at `/` and `/es`. Item 2 made this
-   structural: a missing Spanish string fails the build.
-2. **Its own SEO.** Metadata and JSON-LD land in the same commit as the page they
-   describe. `hreflang` is already inherited from the locale layout.
-3. **Real copy.** No placeholder strings. English drafted and corrected, Spanish
-   written by Dani.
-
-Out of scope for the MVP: online payment, deposits, real-time availability, client
-accounts, reviews written on the site, a blog.
+Explicitly out of scope for the MVP: online payment, deposits, real-time
+availability, client accounts, reviews written on the site, and a blog.
 
 ## Data model
 
-**No database, and that is a decision rather than a gap.** Every piece of content is
-a typed file in the repo: version controlled, reviewable in a diff, impossible to
-lose. The only thing that leaves the machine is a contact form submission, sent as
-email and not retained.
+**Nothing in a database, and that is a decision rather than a gap.** Every piece
+of content is a typed file in the repo: version controlled, reviewable in a
+diff, impossible to lose. Images are records, not files - the repo stores an
+ImageKit path, never the photograph.
 
-> **Locked.** A field is either locale-keyed or shared, never both. A price is a
-> number and lives in one place; storing it twice guarantees that one day they
-> disagree and the visitor believes the wrong one.
+### siteConfig
 
-| Locale-keyed (`dictionaries/`) | Shared (`data/siteConfig.ts`) |
+- `business` - name (**Dani Moreno**), Calgary, Alberta, contact details, hours,
+  service area
+- `social` - handles; `instagram` is currently `null`, so the footer link does
+  not render
+- `nav`, `cta`, `footer`, `marquee` - chrome, all locale-neutral structure
+
+> Locked: every business fact comes from here. A component reads
+> `siteConfig.business.name`; it never contains the word Dani.
+
+### Service
+
+- `id` (`"nails" | "lashes" | "makeup"`) - also the dictionary key
+- `order` (number)
+- `href` (string) - no locale prefix; render through `localePath`. The
+  `[service]` route builds its static params from these, so the slug and the
+  link can never disagree.
+
+### TreatmentRow
+
+- `key` - constrained to that service's own treatment labels, so a lash price
+  cannot be written with a nails label
+- `priceCad` (number) - whole Canadian dollars, never cents, never a range
+- `from` (boolean, optional) - renders "From $5"
+- `durationMinutes` (number)
+- `order` (number)
+
+> **Currently empty for all three services**, deliberately. Market research on
+> 2026-09-21 produced a proposed list, but a price is a promise to a customer
+> and hers are hers to set. Every service page renders its empty state.
+
+### GalleryImage
+
+- `key` - keyed against the dictionary, so a photo with no alt text is a compile
+  error
+- `imagekitPath` (string), `serviceId`, `order`
+- `width`, `height` (number) - the real cropped pixels, which reserve each tile
+  before the bytes arrive
+
+> **Nine records, all `nails`.** No lash photographs exist and two makeup frames
+> are held back because the model's face is recognisable and nobody has asked
+> her. This is why the filter row hides a chip for a service with no photos.
+
+### Portrait
+
+- `imagekitPath`, `width`, `height`, or **`null`**, which is the current value
+
+> A portrait is not work, so it is its own file rather than a gallery row -
+> otherwise it would appear in the filtered grid and in `ImageGallery`
+> structured data as something a client can book. The About page is already
+> wired to render one.
+
+### FaqItem
+
+- `key`, `order`, `serviceId` (`ServiceId | null`) - null means site-wide.
+  Reused for FAQ structured data.
+
+### Dictionaries
+
+One per locale, `en` and `es`, keyed so **a missing Spanish string is a build
+error, not a silent fallback**.
+
+| Locale-keyed | Shared across both |
 |---|---|
 | Service name and description | Price |
 | Treatment labels | Duration |
 | Image alt text | ImageKit path and service tag |
 | FAQ question and answer | Ordering |
-| Page metadata and JSON-LD text | Name, phone, email, hours, coordinates |
+| Page metadata and JSON-LD text | Phone, email, hours, coordinates |
 
-> **Locked: no component contains the word Dani.** A component reads
-> `siteConfig.business.name`. The test is whether a second beauty business could be
-> stood up by editing `data/`, `dictionaries/` and the theme. If the answer is no,
-> that is a bug and not a preference.
+> Locked: a price is a number and belongs in one place; a treatment label is
+> prose and belongs in two. Storing a price twice guarantees they disagree one
+> day, and the visitor believes whichever is wrong.
 
-> **Locked and now enforced: a missing Spanish string is a build error.** `en` is
-> the type source, `es` is annotated with it, and `next build` runs TypeScript.
-> There is no fallback to English, by design.
-
-### siteConfig - built in item 1, revised in item 2
-
-Shared facts only. Anything a visitor reads as a sentence moved to `dictionaries/`.
-
-- `business.name` (string) - **Dani Moreno**. Must match the Google Business
-  Profile character for character
-- `business.wordmark` / `wordmarkAccent` (string) - the header mark, deliberately
-  not derived from `name`
-- `business.city` / `region` (string) - Calgary, Alberta
-- `social.instagram` (`{ handle, url } | null`) - **null.** The footer link renders
-  only when set, so an unknown handle cannot ship as a dead link
-- `marquee` (string[]) - the ticker words, identical in both languages
-- `nav`, `cta`, `footer.services`, `footer.contact` - `NavItem[]`
-
-### NavItem - built in item 2
-
-- `key` (string) - stable across locales; the dictionary is keyed off it
-- `href` (string) - the route **without** a locale prefix. Never rendered directly;
-  always through `localePath`
-
-### Dictionary - built in item 2
-
-One per locale in `dictionaries/`. `en.ts` is the shape source and is deliberately
-not `as const`, so Spanish supplies its own strings rather than repeating English
-literals. Currently holds `meta`, `blurb`, `nav`, `cta`, `footer`, `a11y` and
-`languageSwitch`. Page copy joins it from item 3.
-
-### Service - item 5
-
-- `id` (`"nails" | "lashes" | "makeup"`) - also the accent token key
-- `order` (number), `treatments` (Treatment[]) - shared
-- locale-keyed: `name`, `description`, page metadata
-- each service owns its own search terms: nails owns gel, acrylic, extensions,
-  chrome, nail art; lashes owns classic, hybrid, volume, fills; makeup owns grad,
-  bridal, event, glam
-
-### Treatment - item 5
-
-- `id` (string), `serviceId` -> `Service.id`
-- `priceCad` (number), `durationMinutes` (number), `order` (number) - shared
-- locale-keyed: `label`
-
-### GalleryImage - item 4
-
-Images are records, not files. The repo stores a path, never the photograph.
-
-- `id`, `imagekitPath` (string), `serviceId` -> `Service.id`, `order` - shared
-- locale-keyed: `alt`
-
-### FaqItem - item 3
-
-- `id`, `serviceId` (`Service.id | null`), `order` - shared
-- locale-keyed: `question`, `answer`
-- reused for FAQ structured data
-
-### ContactSubmission - item 7
-
-Transient. Validated, emailed, never stored.
-
-- `name`, `email`, `message` (string), `service` (`Service.id | null`)
-- `source` (string) - the "how did you find me" field, the only attribution the
-  site has
-- one zod schema shared by `react-hook-form` and the Server Action
-- delivered by Resend. No accounts, no analytics, no cookie banner
+The only thing that leaves the machine is a contact form submission, sent as
+email and not retained. No accounts, no analytics, no cookie banner.
 
 ## Tech stack
 
-Next.js 16 with React 19, App Router, no separate backend. Static or server
-rendered, deployed as one unit.
-
-- **Next.js 16 / React 19, App Router** - the whole app, one deployable unit
-- **shadcn on Base UI primitives, lucide** - components and icons
+- **Next.js 16 / React 19, App Router** - the whole app, one deployable unit,
+  static or server rendered. No separate backend, because a site with no
+  database has nothing to run one for.
+- **shadcn on Base UI primitives, lucide icons** - UI
 - **Tailwind v4** - theme as CSS variables in `globals.css` `@theme`
-- **react-hook-form + zod** - the contact form, validated on both sides. Not
-  shadcn's `Form` wrapper, for the reason in the coding standards
-- **Resend** - contact email from a Server Action
-- **ImageKit** - a photo-led gallery
-- **i18n, hand-rolled** - `[locale]` segment plus a dictionary per locale. No
-  package
-- **CSS animation** - `motion` is not installed and is not being added
-
-**No database, no auth, no object storage, no motion library.**
+- **react-hook-form with zod** - forms, validated both sides. Not shadcn's
+  `Form` wrapper, for the reason in the coding standards.
+- **Resend** - email, called from a Server Action so the key stays server side
+- **ImageKit** - images, doing real work here given a photo-led gallery
+- **i18n, hand-rolled** - a `[locale]` segment and a dictionary per locale. No
+  package; `next-intl` is more machinery than two languages need.
+- **No database, no auth, no object storage, no motion library.** All four were
+  offered by the scaffolder and declined. Animation is CSS.
 
 ## Monetization
 
-The site does not make money. It is a sales asset for a service business, and the
-money is made in a chair. Success is bookings traceable to the site, measured by the
-"how did you find me" field plus Search Console. No analytics script, no cookie
-banner.
+The site does not make money. It is a sales asset for a service business and the
+money is made in a chair. Success is bookings traceable to the site, not
+traffic.
 
-**The real return is the template.** The first of a reusable template for beauty
-businesses. What that requires is discipline applied while building anyway: every
-business fact in `data/`, prose in `dictionaries/`, the whole look in the theme,
-both languages structural.
+Measured by a "how did you find me" field on the contact form plus Search
+Console. No analytics script, no cookie banner, no privacy policy needed to
+start. **That makes the contact form load-bearing:** it is both the booking
+route for anyone who will not DM, and the only attribution the site has.
+
+**The real return is the template.** Calgary has many beauty businesses, most
+Latin-owned, almost none with a bilingual site. Being a template requires: every
+business fact in `data/`, the whole look in `theme.css`, both languages
+structural, and services as data because the next client may do brows and not
+lashes. The test is whether a second business could be stood up by editing
+`data/` and `theme.css` and touching nothing else.
 
 ## UI/UX
 
-**After Party. Vibrant and active, never spa-calm.** Decided by looking at rendered
-options, not adjectives - the sketches are in `blueprint/reference/`. **Locked, and
-shipped in item 1.**
+**After Party. Vibrant and active, never spa-calm.** A massage studio sells
+calm; nails sell energy, so the site is loud, dark and confident. Sketches are
+in `blueprint/reference/`.
 
-**Ground `#261F36`** - a plum, not a black. Warmer than the darker candidates, which
-read as severe.
+**Ground `#261F36`,** a plum rather than a black, picked over darker options
+that read as severe.
 
 | Token | Fill | Text | Means |
 |---|---|---|---|
 | nails | `#FF3D8F` | `#D4176B` | nail services |
 | lashes | `#A97BFF` | `#7B45E0` | lash services |
 | makeup | `#FF8A3D` | `#BF5710` | makeup services |
-| confirm | `#3DE8B0` | `#0E8F63` | success and confirmation |
+| confirm | `#3DE8B0` | `#0E8F63` | success |
 
-- **Every accent needs a darker twin.** The fills fail contrast under 18px, so small
-  text and prices use the text column on light surfaces, never the fill.
-- **Colour is navigation, not decoration**, and it does not translate.
-- **Type: Unbounded 800 for headlines, Inter for everything else.**
-- **Light and dark.** Dark is the brand and lives in `:root`; the light twin is in
-  `.light` and nothing activates it. See Open questions.
-- **Mobile is the product.** Every mockup was drawn at phone width.
-- **Photography carries it.** Photo panels stay nearer `#1B1426`, and her photos want
-  dark-friendly backgrounds - she needs to hear that before she shoots.
+Cards `#332747`, text `#F6F2FA`, muted `#B3A8C2`.
 
-### Routes - decided and built in item 2
+> Locked: **every accent needs its darker twin.** The fills fail contrast under
+> 18px, so small text and prices use the text column, never the fill.
 
-English at the root, Spanish under `/es`. Both prerendered static HTML. `/en`
-redirects to `/` so no page has two URLs.
+> Locked: **colour is navigation, not decoration.** Pink is always nails, violet
+> always lashes, orange always makeup, on every page.
 
-| Route | Status |
-|---|---|
-| `/` and `/es` | Home. Built; placeholder content until item 3 |
-| `/gallery`, `/es/gallery` | Item 4 |
-| `/nails`, `/lashes`, `/makeup` and `/es/...` | Item 5 |
-| `/about`, `/es/about` | Item 6 |
-| `/contact`, `/thank-you` and `/es/...` | Item 7 |
+**Type: Unbounded 800 for headlines, Inter for everything else.** Dark is the
+brand; a light twin exists at `#FAF6FC` where glow becomes tint. **Mobile is not
+a consideration, it is the product** - every mockup was drawn at phone width.
+**Photography carries it,** which means her photos need dark-friendly
+backgrounds; photo panels stay nearer `#1B1426`. **Motion in CSS only.**
 
-Slugs live in `siteConfig.nav`; the `/es` prefix is owned by `localePath` in
-`lib/locale.ts`. Whether the Spanish slugs translate is still open.
+Routes, each also at `/es`:
+
+- `/` - home: hero, three services, her story, FAQ, booking band
+- `/nails`, `/lashes`, `/makeup` - one page per service
+- `/gallery` - the full set, filterable, with the lightbox
+- `/about` - **to be deleted by item 14**, its content moving to `/`
+- `/contact` - the form and the direct booking route
+- `/thank-you` - so a submitted form is unambiguous
 
 ## Deployment
 
 **Vercel, live.** Repo at `github.com/frankdmosquera/facing-dani`, production
-building from `main`, previews per pushed branch.
+building from `main`, previews per pushed branch. Currently serving at
+`facing-dani.vercel.app`.
 
 | | |
 |---|---|
 | App type | Next.js 16 App Router, standard build output |
 | Build | `npm run build` |
-| Env vars | none needed yet. ImageKit at item 4, Resend at item 7 |
-| Database / storage / workers | none |
-| Local env file | `.env.local`. There is no committed `.env.example` |
+| Start | handled by the platform, no custom command |
+| Database / storage / workers / health check | none |
+| Local env file | `.env.local`. **There is no committed `.env.example`** |
 
-> TODO: **domain not registered.** It follows the business name, so `danimoreno.ca`
-> or a studio name. Buy the `.ca` and the `.com` together. Until it exists,
-> `metadataBase` is unset and the `hreflang` URLs are relative, which Google often
-> ignores - item 9.
+Env vars by name:
 
-**Deploy early, then keep deploying.** A preview URL so Dani watches it grow on her
-phone and corrections arrive while they are cheap.
+- `NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT` - set in production, gallery confirmed working
+- `IMAGE_KIT_PRIVATE_KEY` - upload script only, never shipped to the browser
+- `RESEND_API_KEY`
+- `RESEND_FROM` - **local only, and must not be set in production.** Resend's
+  shared sender delivers only to the account owner and returns 403 for everyone
+  else; the account's two verified domains belong to other clients.
+- `NEXT_PUBLIC_SITE_URL` - **unset**, which is why robots serves `Disallow: /`
+  and the sitemap is empty.
+
+> **The domain is the single blocker.** Not registered. It follows the business
+> name, so `danimoreno.ca` or a studio name; buy the `.ca` and the `.com`
+> together. Until it exists: nothing is indexable, `hreflang` URLs stay
+> relative, and **the contact form cannot deliver mail in production.** This is
+> item 15.
+
+**Locale routing:** English at the root, Spanish at `/es`. Not a subdomain and
+not a separate domain, because both split a ranking signal this site has none to
+spare. Every page carries `hreflang` for both plus `x-default`.
+
+**Before launch, and not as a feature:** a Google Business Profile matters more
+than anything on this site for the first year. Name, address and phone must
+match character for character between site and profile, which is why every
+business fact comes from `siteConfig`. Set up Search Console for both locales.
 
 ### What this site has to rank for
 
-The target is **nails and makeup in Calgary**, plus lashes.
+Target: **nails and makeup in Calgary**, plus lashes.
 
-- One page per service, not one services page - the reason item 5 exists in that shape
-- Each service page owns its terms; no page borrows another's words
-- Calgary in the title, H1, copy and schema on every page, without keyword soup
-- **Spanish is not an SEO target.** English is what this site is trying to rank. The
-  Spanish pages exist so a visitor who reads Spanish more comfortably can use the
-  site. `hreflang` stops Google reading the two as duplicates and dropping one,
-  which protects the English ranking. No Spanish keyword work
-- **Be honest about the timeline.** A new domain wins the long tail first: service
-  plus neighbourhood, service plus occasion. The Business Profile and reviews carry
-  the head terms meanwhile
-
-A Google Business Profile matters more than anything on this site for the first year
-and is part of the engagement. Set up Search Console at launch.
+- **One page per service, not one services page.** A single page listing three
+  services competes with itself and ranks for none. This is why item 5 exists in
+  that shape, and why collapsing the service pages was considered and rejected.
+- **Each service page owns its terms.** Nails owns gel, acrylic, extensions,
+  chrome, nail art. Makeup owns grad, bridal, event, glam. Lashes owns classic,
+  hybrid, volume, fills. No page borrows another's words.
+- **Calgary in the title, H1, copy and schema** on every page, without keyword
+  soup.
+- **Spanish is not an SEO target.** English is what this site is trying to rank;
+  `hreflang` exists to stop Google reading the two as duplicates.
+- **Be honest about the timeline.** A new domain wins the long tail first. The
+  Business Profile and reviews carry the head terms meanwhile.
 
 ## Open questions
 
-1. **Item 8 says "Deploy" but the site is already live.** Deployment happened at
-   item 1 because §8 asks for a preview URL from the first item, which the build
-   plan never reflected. The roadmap now misreports six items' worth of progress.
-   Either retire item 8 or rewrite it as what is genuinely left: the domain,
-   `metadataBase`, and env vars at items 4 and 7.
-2. **Her Instagram handle is not recorded anywhere.** The plans call the bio link
-   the site's main entry point, but no document holds it.
-   `siteConfig.social.instagram` is `null` and the footer link does not render, so
-   nothing false ships. Needed before launch. This one needs Dani, not code.
-3. **The light theme has no owner.** Section 7 specifies it and `.light` is ported
-   and complete, but nothing activates it - no toggle, no media query. Unreachable
-   until the decision is made. Costs nothing to leave.
-4. **Spanish slugs are mirrored English** (`/es/nails`, not `/es/unas`). One helper
-   owns the prefix, so deciding is a one-file change.
-5. **`hreflang` URLs are relative.** Google generally wants absolute. Needs the
-   domain and `metadataBase`. Item 9.
-6. **The Spanish chrome copy is a draft** written during item 2, not by Dani. Marked
-   as such in `dictionaries/es.ts`. Hers to correct before launch.
-7. **Three `[confirm]` assumptions remain:** no logo exists (cost: a palette swap),
-   service-area business with no public street address (one schema field),
-   Instagram DM primary with the form as the route for everyone else (one
-   component). The location one is worth thinking about rather than defaulting.
+1. **The site is code-complete and content-empty, and the plan does not track
+   that.** All three services render "Prices are being set", lashes and makeup
+   have zero photographs, and the home page has none. The build plan has no item
+   for acquiring content, so it will keep reporting near-complete. Six things
+   are needed from Dani: prices, lash photos, makeup permission, her story, her
+   Instagram handle, and her corrections to the Spanish chrome copy.
+2. **Item 5 was checked off against a bar the plan forbids.** Section 3 says
+   "Nothing ships with placeholder text", and the service pages shipped with
+   the price placeholder. Either uncheck item 5 or record that the rule was
+   relaxed; right now the plan contradicts itself.
+3. **Item 6 still reads as an About page** while item 14 deletes that page. 6a
+   is archived as shipped, so deleting the route is partly a reversal of
+   completed work. Worth rewording item 6 to name where its content now lives.
+4. **Section 8 says env vars are "Already in `.env.example`". There is no
+   committed `.env.example`.** It also names `IMAGEKIT_PRIVATE_KEY` while the
+   real variable is `IMAGE_KIT_PRIVATE_KEY`, and omits `RESEND_FROM` and
+   `NEXT_PUBLIC_SITE_URL` entirely.
+5. **A store is being considered, and section 1 explicitly rules one out**
+   ("What it is not: a booking engine, a shop..."). Parked for now, to be
+   planned from the backend. If it proceeds, section 1 must change.
+6. **A dedicated `/book` page is being considered**, on the Face and Body
+   pattern: one page, service passed in the query string, an inline
+   provider iframe, `noindex`. Not yet a build-plan item.
+7. **Her Instagram handle is not recorded anywhere.** The plan calls the bio
+   link the site's main entry point. `siteConfig.social.instagram` is `null`, so
+   nothing false ships. Needs Dani, not code.
+8. **The light theme has no owner.** Section 7 specifies it and `.light` is
+   ported and complete, but nothing activates it. Unreachable until decided.
+   Costs nothing to leave.
+9. **Spanish slugs are mirrored English** (`/es/nails`, not `/es/unas`). One
+   helper owns the prefix, so deciding is a one-file change.
+10. **The Spanish chrome copy is a draft** written during item 2, not by Dani.
+    Marked as such in `dictionaries/es.ts`. Hers to correct before launch.
+11. **Three `[confirm]` assumptions remain:** no logo exists (cost: a palette
+    swap), service-area business with no public street address (one schema
+    field), Instagram DM primary with the form for everyone else (one
+    component). The location one is worth thinking about rather than
+    defaulting - a seventeen-year-old working from home should probably not
+    publish a street address.

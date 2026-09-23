@@ -60,14 +60,21 @@ work, so it comes before the pages that describe it.
     does between clients. Waits on material only Dani can give
 - [x] 7. **Contact and booking** - the form with the "how did you find me" field,
   validation, Resend delivery, the direct booking route and a thank-you page
-- [ ] 8. **Deploy** - Vercel, env vars, a verified production build and a preview
-  URL Dani can open. Early on purpose, so corrections arrive while they are cheap
+- [x] 8. **Deploy** - Vercel, env vars, a verified production build and a preview
+  URL Dani can open. Done at item 1; the plan never reflected it. The domain and
+  indexing work filed here moved to item 15
 - [x] 9. **Site-wide SEO pass** - sitemap and robots across both locales,
   LocalBusiness data, and an audit that every page carries its own metadata and
   hreflang. The only SEO work that genuinely needs all pages to exist
 - [x] 10. **Gallery lightbox** - tap a photo to open it large, with next and
   previous, a thumbnail strip, and keyboard and swipe control. What makes item
   4's "at a size where the quality is actually visible" actually true
+- [x] 14. **Home page rebuild** - the hero photograph and gallery teaser item 3
+  deferred to item 4 and nobody came back for, plus the process and expanded FAQ
+  sections. Absorbs About, which is then deleted, so item 6b lands here
+- [ ] 15. **Domain, indexing and production email** - buy the domain, set the
+  site URL so robots stops disallowing everything, and give Resend a sender that
+  can mail anyone. Blocked until the domain exists
 
 ## Post-MVP
 

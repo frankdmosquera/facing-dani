@@ -20,11 +20,11 @@ export const en = {
     "Nails, lashes and makeup in Calgary. Trained in Colombia. By appointment.",
 
   nav: {
+    home: "Home",
     nails: "Nails",
     lashes: "Lashes",
     makeup: "Makeup",
     gallery: "The work",
-    about: "About",
   },
 
   cta: {
@@ -286,72 +286,6 @@ export const en = {
    * the strongest trust signal a nail and lash artist has and the one no
    * competitor page in `blueprint/reference/links.md` bothers to make.
    */
-  about: {
-    meta: {
-      title: "About the Artist - Nails and Lashes in Calgary",
-      description:
-        "Who you are booking when you book a set in Calgary. A new business with no reviews yet, so here is the person, the training and what an appointment actually involves. Se habla espanol.",
-    },
-    /** Schema only, never rendered: what she is, not what the page is called. */
-    jobTitle: "Nail, lash and makeup artist",
-    eyebrow: "Before you trust me with two hours",
-    headingLead: "The artist you are",
-    headingAccent: "booking in Calgary",
-    lede: "A new business has no reviews, no word of mouth and nothing to point at except the work and the person doing it. So here is the person, and what two hours in my chair in Calgary actually involves.",
-    portraitAlt:
-      "The artist, photographed in the salon where she works, wearing a black t-shirt.",
-
-    /**
-     * The bilingual promise, said out loud. This is a locked contract from the
-     * overview: a translated site tells a visitor she can read it, a fluent
-     * artist tells her she can have the whole appointment in Spanish. Leaving it
-     * implied by a /es URL is exactly what this section exists to prevent.
-     *
-     * The Spanish version is not a translation of this. It is the same promise
-     * written for someone who is already reading in Spanish, because a promise
-     * about fluency delivered in stilted Spanish disproves itself.
-     */
-    bilingual: {
-      heading: "Your appointment can be in Spanish",
-      body: "Not just this website. Spanish is my first language, so the consultation, the small talk, and the part where you change your mind about the colour all happen in whichever language you are more comfortable in. A translated page only tells you that you can read it. This is me telling you that you will be understood.",
-    },
-
-    /**
-     * What actually happens in the chair. Deliberately not a second FAQ: the
-     * home page owns booking, duration, location and cancellation, and none of
-     * those five answers are repeated here.
-     *
-     * Keyed rather than an array, for the reason `data/faq.ts` gives - an array
-     * with a missing Spanish entry would compile and ship.
-     */
-    expect: {
-      heading: "What actually happens",
-      steps: {
-        arriving: {
-          title: "First, I look at your hands",
-          body: "Not at the photo you brought. What you do all day decides how long a set can be and how it has to be built, and that conversation takes two minutes and saves you a broken nail in week one.",
-        },
-        during: {
-          title: "Most of the time goes before any colour",
-          body: "Prep, shape and structure. It is the least interesting part to watch and the entire reason a set survives three weeks instead of one.",
-        },
-        after: {
-          title: "If something lifts, tell me early",
-          body: "Do not wait it out and do not fix it yourself with whatever is in the drawer. Message me as soon as you notice and bring it in while it is still a small problem.",
-        },
-      },
-    },
-
-    cta: {
-      eyebrow: "Still deciding",
-      headingLead: "Ask me",
-      headingAccent: "anything",
-      lede: "If something here did not answer it, send the question. I would rather you booked knowing than guessing.",
-      book: "Book with Dani",
-      instagram: "Message on Instagram",
-    },
-  },
-
   /**
    * Shared across the three service pages. The price itself never translates -
    * it is a shared fact and renders as `$65` in both languages - but the word
@@ -410,6 +344,7 @@ export const en = {
       more: "See more",
     },
     story: {
+    lede: "A new business has no reviews, no word of mouth and nothing to point at except the work and the person doing it. So here is the person, and what two hours in my chair in Calgary actually involves.",
       eyebrow: "Who is doing your nails",
       headingLead: "Trained in Colombia,",
       headingAccent: "working in Calgary",
@@ -418,6 +353,64 @@ export const en = {
       building:
         "I am building this business from the ground up, which means you get the version of me that still cares enormously about every single set. Bring a photo from Pinterest, or sit down with no idea and we will work it out.",
     },
+    /**
+     * The shop window. Its heading is deliberately not "Gallery": the link says
+     * where it goes, and the heading says what is in it.
+     */
+    work: {
+      eyebrow: "Recent sets",
+      heading: "The work, not the promise",
+      all: "See all the work",
+    },
+
+    /** Schema only, never rendered: what she is, not what the page is called. */
+    jobTitle: "Nail, lash and makeup artist",
+
+    portraitAlt:
+      "The artist, photographed in the salon where she works, wearing a black t-shirt.",
+
+    /**
+     * The bilingual promise, said out loud. This is a locked contract from the
+     * project plan: a translated site tells a visitor she can read it, a fluent
+     * artist tells her she can have the whole appointment in Spanish. Leaving it
+     * implied by a /es URL is exactly what this section exists to prevent.
+     *
+     * The Spanish version is not a translation of this. It is the same promise
+     * written for someone who is already reading in Spanish, because a promise
+     * about fluency delivered in stilted Spanish disproves itself.
+     */
+    bilingual: {
+      heading: "Your appointment can be in Spanish",
+      body: "Not just this website. Spanish is my first language, so the consultation, the small talk, and the part where you change your mind about the colour all happen in whichever language you are more comfortable in. A translated page only tells you that you can read it. This is me telling you that you will be understood.",
+    },
+
+    /**
+     * What actually happens in the chair. Deliberately not a second FAQ: the
+     * FAQ below owns booking, duration, location and cancellation, and none of
+     * those answers are repeated here.
+     *
+     * Keyed rather than an array, for the reason `data/faq.ts` gives - an array
+     * with a missing Spanish entry would compile and ship.
+     */
+    expect: {
+      eyebrow: "In the chair",
+      heading: "What actually happens",
+      steps: {
+        arriving: {
+          title: "First, I look at your hands",
+          body: "Not at the photo you brought. What you do all day decides how long a set can be and how it has to be built, and that conversation takes two minutes and saves you a broken nail in week one.",
+        },
+        during: {
+          title: "Most of the time goes before any colour",
+          body: "Prep, shape and structure. It is the least interesting part to watch and the entire reason a set survives three weeks instead of one.",
+        },
+        after: {
+          title: "If something lifts, tell me early",
+          body: "Do not wait it out and do not fix it yourself with whatever is in the drawer. Message me as soon as you notice and bring it in while it is still a small problem.",
+        },
+      },
+    },
+
     faq: {
       eyebrow: "Before you book",
       heading: "The usual questions",

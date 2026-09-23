@@ -25,6 +25,15 @@ const nextConfig: NextConfig = {
         destination: "/:path*",
         permanent: true,
       },
+
+      /**
+       * `/about` was deleted in feature 14 and its content moved onto the
+       * home page. Permanent, and listed for both locales because the root
+       * rewrite only covers English: a held link should land somewhere in the
+       * language it was held in.
+       */
+      { source: "/about", destination: "/", permanent: true },
+      { source: "/es/about", destination: "/es", permanent: true },
     ];
   },
 

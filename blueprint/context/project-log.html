@@ -1179,7 +1179,7 @@
       <span class="where-arrow">&rsaquo;</span>
       <div class="where-leg">
         <div class="where-key">Item</div>
-        <div class="where-val">10 &middot; Gallery lightbox</div>
+        <div class="where-val">14 &middot; Home page rebuild</div>
       </div>
       <span class="where-arrow">&rsaquo;</span>
       <div class="where-leg" data-now="yes">
@@ -1189,8 +1189,8 @@
       <span class="where-spacer"></span>
       <div class="where-leg">
         <div class="where-key">MVP items</div>
-        <div class="meter" title="7 of 10 MVP items done">
-          <i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i></i><i></i><i></i>
+        <div class="meter" title="9 of 12 MVP items done">
+          <i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i></i><i></i><i></i>
         </div>
       </div>
     </div>
@@ -1229,7 +1229,7 @@
           </div>
           <div class="row">
             <div class="row-key">3 &middot; Features</div>
-            <div class="row-val">Eight pages in two languages: home, a gallery, one page per service, about, contact and a thank-you page. Three rules decide what is in: <strong>both languages per page</strong> (a page is not done in one), <strong>SEO ships with the page it describes</strong>, and <strong>no placeholder text</strong> - Spanish written by Dani, not by a translator. Out: payment, deposits, real-time availability, client accounts, on-site reviews, a blog.</div>
+            <div class="row-val">Seven pages in two languages: home, a gallery, one page per service, contact and a thank-you page - About folds into the home page at item 14. Three rules decide what is in: <strong>both languages per page</strong> (a page is not done in one), <strong>SEO ships with the page it describes</strong>, and <strong>no placeholder text</strong> - Spanish written by Dani, not by a translator. Out: payment, deposits, real-time availability, client accounts, on-site reviews, a blog.</div>
           </div>
           <div class="row">
             <div class="row-key">4 &middot; Data</div>
@@ -1249,7 +1249,7 @@
           </div>
           <div class="row">
             <div class="row-key">8 &middot; Deployment</div>
-            <div class="row-val"><strong>Live on Vercel</strong>, building from <code>main</code>, with a preview per pushed branch. No env vars needed yet - ImageKit arrives at item 4 and Resend at item 7. English at the root and Spanish at <code>/es</code>, not a subdomain, because that splits a ranking signal this site has none of to spare. <strong>Deploy early and keep deploying</strong>, so Dani watches it grow on her phone and corrections arrive while they are cheap. <strong>The domain is still not registered</strong>, which also means the <code>hreflang</code> URLs are relative rather than absolute - item 9. A Google Business Profile will out-earn the site for the first year and is part of the engagement, not an afterthought.</div>
+            <div class="row-val"><strong>Live on Vercel</strong> at <code>facing-dani.vercel.app</code>, building from <code>main</code>, with a preview per pushed branch. ImageKit is configured in production and the gallery serves from it; Resend works locally but <strong>cannot deliver in production</strong>, because its only available sender belongs to another client. English at the root and Spanish at <code>/es</code>, not a subdomain, because that splits a ranking signal this site has none of to spare. <strong>Deploy early and keep deploying</strong>, so Dani watches it grow on her phone and corrections arrive while they are cheap. <strong>The domain is still not registered</strong>, and it is now the single blocker: <code>robots.txt</code> serves <code>Disallow: /</code>, the sitemap is empty, the <code>hreflang</code> URLs are relative, and the contact form cannot mail anyone - item 15. A Google Business Profile will out-earn the site for the first year and is part of the engagement, not an afterthought.</div>
           </div>
         </div>
       </section>
@@ -1298,15 +1298,15 @@
           <h1>Roadmap</h1>
         </div>
         <p class="lede">
-          Ten items to an MVP, in build order. The shell carries the theme and the locale routing,
+          Twelve items to an MVP, in build order. The shell carries the theme and the locale routing,
           so it goes first and everything after inherits both. The gallery is the page that sells
           the work, so it comes before the pages that describe it. Scaffolding and locking the look
           were pre-build steps and sit in Phase 0 rather than in the list.
         </p>
         <div class="tally">
-          <span class="tally-part" data-state="done"><span class="tally-key">Done</span><span class="tally-val">7 of 10 MVP items</span></span>
+          <span class="tally-part" data-state="done"><span class="tally-key">Done</span><span class="tally-val">9 of 12 MVP items</span></span>
           <span class="tally-part" data-state="active"><span class="tally-key">Now</span><span class="tally-val">Nothing building</span></span>
-          <span class="tally-part" data-state="planned"><span class="tally-key">Next</span><span class="tally-val">10 &middot; Gallery lightbox</span></span>
+          <span class="tally-part" data-state="planned"><span class="tally-key">Next</span><span class="tally-val">14 &middot; Home page rebuild</span></span>
         </div>
       </header>
 
@@ -1321,7 +1321,7 @@
         </div>
 
         <div class="stage">
-          <div class="stage-head"><span class="stage-name">Phase 1 &middot; MVP</span><span class="stage-note">Exit: eight pages live in both languages, deployed, each carrying its own SEO</span></div>
+          <div class="stage-head"><span class="stage-name">Phase 1 &middot; MVP</span><span class="stage-note">Exit: seven pages live in both languages, deployed, each carrying its own SEO and its real content</span></div>
           <div class="item" data-state="done"><div class="item-num">1</div><div class="item-body"><div class="item-name">Site shell and theme</div><p class="item-text">The After Party theme ported into <code>globals.css</code>, and the header, mobile nav, footer and gradient ticker built against it. First because everything after it inherits the theme, and because a shell built after the pages means touching every page again.</p>
 
             <div class="gates">
@@ -1529,11 +1529,13 @@
             </div><span class="pill pill--done">Done</span></div>
           <div class="item" data-state="done"><div class="item-num">4</div><div class="item-body"><div class="item-name">Gallery</div><p class="item-text">The full set of work, filterable by service, at a size where the quality is actually visible. The headline feature and the reason the site exists at all - Instagram is a grid of squares, and a grid of squares is a poor way to judge a set of nails. Before the service pages, because it is the page that sells the work.</p></div><span class="pill pill--done">Done</span></div>
           <div class="item" data-state="done"><div class="item-num">5</div><div class="item-body"><div class="item-name">Service pages</div><p class="item-text">Nails, lashes and makeup, one page each, with treatments, prices and durations. Three pages and not one services page: a single page listing three services competes with itself and ranks for none of them. Each page owns its own terms and borrows none from the others.</p></div><span class="pill pill--done">Done</span></div>
-          <div class="item"><div class="item-num">6</div><div class="item-body"><div class="item-name">About</div><p class="item-text">Her training and the trust a new business has not earned yet. The long version of the craft angle, and where the bilingual claim is made as a claim rather than implied by the existence of a <code>/es</code> URL.</p></div><span class="pill">Planned</span></div>
+          <div class="item"><div class="item-num">6</div><div class="item-body"><div class="item-name">About</div><p class="item-text">Her training and the trust a new business has not earned yet. <b>Being absorbed into the home page by item 14</b>, after which <code>/about</code> is deleted: 6a shipped the page, and 6b (her story) now lands on the home page instead of a route of its own.</p></div><span class="pill">Folding into 14</span></div>
           <div class="item" data-state="done"><div class="item-num">7</div><div class="item-body"><div class="item-name">Contact and booking</div><p class="item-text">The form with the "how did you find me" field, validation on both sides, Resend delivery from a Server Action, the direct booking route and a thank-you page. Load-bearing twice over: it is the booking route for anyone who will not DM, and the only attribution the site has.</p></div><span class="pill pill--done">Done</span></div>
-          <div class="item"><div class="item-num">8</div><div class="item-body"><div class="item-name">Deploy</div><p class="item-text">Vercel, env vars, a verified production build and a preview URL Dani can open. Sits mid-list on purpose rather than at the end: if she first sees the site when it is finished, her corrections arrive when they are expensive.</p></div><span class="pill">Planned</span></div>
+          <div class="item" data-state="done"><div class="item-num">8</div><div class="item-body"><div class="item-name">Deploy</div><p class="item-text">Vercel, env vars and a verified production build. <b>Actually done at item 1</b> and the plan never reflected it, so this sat unchecked while the site was live at <code>facing-dani.vercel.app</code>. The domain and indexing work once filed here moved to item 15.</p></div><span class="pill pill--done">Done</span></div>
           <div class="item" data-state="done"><div class="item-num">9</div><div class="item-body"><div class="item-name">Site-wide SEO pass</div><p class="item-text">Sitemap and robots across both locales, LocalBusiness data, and an audit that every page carries its own metadata and hreflang. The only SEO work that genuinely needs every page to exist - the rest shipped with the page it describes.</p></div><span class="pill pill--done">Done</span></div>
-          <div class="item"><div class="item-num">10</div><div class="item-body"><div class="item-name">Gallery lightbox</div><p class="item-text">Tap a photo to open it large, with next and previous, a thumbnail strip, and keyboard and swipe control. Item 4 promises a size where the quality is visible, but a grid tile renders at roughly 280px - so this is what makes that promise true rather than an extra. Built on the shadcn dialog, which costs no new dependency because <code>@base-ui/react</code> is already installed; the slider is hand-rolled rather than pulling in <code>embla-carousel-react</code>.</p></div><span class="pill">Planned</span></div>
+          <div class="item" data-state="done"><div class="item-num">10</div><div class="item-body"><div class="item-name">Gallery lightbox</div><p class="item-text">Tap a photo to open it large, with next and previous, a thumbnail strip, and keyboard and swipe control. Item 4 promises a size where the quality is visible, but a grid tile renders at roughly 280px - so this is what makes that promise true rather than an extra. Built on the shadcn dialog, which costs no new dependency because <code>@base-ui/react</code> is already installed; the slider is hand-rolled rather than pulling in <code>embla-carousel-react</code>.</p></div><span class="pill pill--done">Done</span></div>
+          <div class="item"><div class="item-num">14</div><div class="item-body"><div class="item-name">Home page rebuild</div><p class="item-text">The hero photograph and gallery teaser that item 3 deferred to item 4 and nobody came back for, plus a process section and an expanded FAQ. Absorbs About, which is then deleted. Measured against Primo Painters, which ranks on <b>605 words and 132 images</b>; this home page carries 510 words and <b>zero</b>. The gap was never text - it is that there is nothing to look at on a beauty site. Unblocked: the nine existing photos are enough.</p></div><span class="pill">Next</span></div>
+          <div class="item"><div class="item-num">15</div><div class="item-body"><div class="item-name">Domain, indexing and production email</div><p class="item-text">Buy the domain, set <code>NEXT_PUBLIC_SITE_URL</code> so <code>robots.txt</code> stops serving <code>Disallow: /</code>, and give Resend a sender that can mail anyone rather than only the account owner. <b>This is what gates launch</b>: today nothing is indexable and the contact form cannot deliver in production.</p></div><span class="pill">Blocked on the domain</span></div>
         </div>
 
         <div class="stage">
@@ -1549,11 +1551,14 @@
         <h2>Open questions</h2>
         <div class="notes">
           <ul>
-            <li><strong>The light theme has no owner.</strong> Section 7 specifies the light twin in detail and there is a rendered sketch, but no build item builds it and the toggle is left "leaning no". Dark only, light via <code>prefers-color-scheme</code> inside item 1, or its own item - only one of those is free. Worth deciding before item 1.</li>
-            <li><strong>Route slugs, and whether the Spanish ones are translated.</strong> <code>/es/unas</code> or <code>/es/nails</code>. Not cosmetic: it sets the hreflang pairing and the Spanish keyword targets. Decide at item 2.</li>
-            <li><strong>Google Business Profile and Search Console are not in the build plan.</strong> Section 8 calls the profile more important than the site for the first year and part of the engagement, but nothing tracks it. Either it gets an item or it is explicitly outside the plan.</li>
-            <li><strong>The business name is settled in one section and open in another.</strong> Section 4 names her Dani Moreno; section 8's domain row still reads "follows the business name, so <code>danimoreno.ca</code> or a studio name". The site and the profile must match character for character, so this has to be final first.</li>
-            <li><strong>Whether service pages carry their own FAQs.</strong> The data shape allows it and section 8 wants each service page to own its terms, but only the home page surfaces FAQ. Cheap at item 5, expensive to retrofit into the structured data.</li>
+            <li><strong>The site is code-complete and content-empty, and nothing tracks that.</strong> All three services render "Prices are being set", lashes and makeup have zero photographs, and the home page has none at all. The build plan has no item for acquiring content, so it will keep reporting near-complete. Six things are needed from Dani: prices, lash photos, makeup permission, her story, her Instagram handle, and her corrections to the Spanish.</li>
+            <li><strong>Item 5 was checked off against a bar the plan forbids.</strong> Section 3 says <em>nothing ships with placeholder text</em>, and the service pages shipped with the price placeholder. Either uncheck item 5 or record that the rule was relaxed - right now the plan contradicts itself.</li>
+            <li><strong>A store is being considered, and section 1 explicitly rules one out</strong> ("What it is not: a booking engine, a shop"). Parked, to be planned from the backend. Face and Body's products page is the pattern: JSON per category, prices shown, no cart. If it proceeds, section 1 has to change.</li>
+            <li><strong>A dedicated <code>/book</code> page is being considered</strong>, on the Face and Body pattern: one page, the service passed in the query string, an inline provider iframe, <code>noindex</code>. Not yet a build-plan item.</li>
+            <li><strong>The light theme has no owner.</strong> Section 7 specifies it and <code>.light</code> is ported and complete, but nothing activates it. Unreachable until the call is made, and it costs nothing to leave.</li>
+            <li><strong>Google Business Profile and Search Console are not in the build plan.</strong> Section 8 calls the profile more important than the site for the first year, but nothing tracks it. Either it gets an item or it is explicitly outside the plan.</li>
+            <li><strong>Spanish slugs are mirrored English</strong> (<code>/es/nails</code>, not <code>/es/unas</code>). One helper owns the prefix, so deciding is a one-file change.</li>
+            <li><strong>Her Instagram handle is still not recorded anywhere.</strong> The plan calls the bio link the site's main entry point. <code>siteConfig.social.instagram</code> is <code>null</code>, so nothing false ships. Needs Dani, not code.</li>
           </ul>
         </div>
       </section>

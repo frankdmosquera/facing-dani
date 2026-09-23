@@ -35,7 +35,6 @@ export const routes = [
   "/lashes",
   "/makeup",
   "/gallery",
-  "/about",
   "/contact",
   "/thank-you",
 ] as const;

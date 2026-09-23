@@ -90,11 +90,11 @@ export const siteConfig = {
   marquee: ["Nails", "Lashes", "Makeup", "Calgary"],
 
   nav: [
+    { key: "home", href: "/" },
     { key: "nails", href: "/nails" },
     { key: "lashes", href: "/lashes" },
     { key: "makeup", href: "/makeup" },
     { key: "gallery", href: "/gallery" },
-    { key: "about", href: "/about" },
   ] satisfies NavItem[],
 
   cta: { key: "book", href: "/contact" } satisfies CtaItem,
@@ -108,8 +108,7 @@ export const siteConfig = {
     ] satisfies FooterItem[],
     contact: [
       { key: "bookAppointment", href: "/contact" },
-      { key: "about", href: "/about" },
-      { key: "faq", href: "/#faq" },
+        { key: "faq", href: "/#faq" },
     ] satisfies FooterItem[],
   },
 } as const;

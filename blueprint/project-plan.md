@@ -28,8 +28,8 @@ where the standard for nail work is higher than most people here expect. Shape,
 structure and cuticle work are what decide whether a set still looks good in
 week three, and that is what she was drilled on. This is the strongest card
 because it is true, it is hard for a competitor to copy, and it survives a price
-rise. The site leads with it everywhere: the About page is the long version, the
-home page is the short version, and the gallery is the proof.
+rise. The site leads with it everywhere: the home page carries it in full and the
+gallery is the proof.
 
 Price is deliberately not the angle. It is the one advantage that disappears the
 moment she raises her rates, and a site built around being cheap is hard to
@@ -43,8 +43,7 @@ translated site tells a visitor she can read it. A fluent artist tells her she
 can have the whole appointment in Spanish: the consultation, the questions about
 aftercare, the part where she changes her mind about the shape halfway through.
 That is the thing worth saying out loud on the site, and it belongs on the home
-page and the about page as a claim, not left implied by the existence of a `/es`
-URL.
+page as a claim, not left implied by the existence of a `/es` URL.
 
 It is also not copyable. A competitor can run a page through a translator in an
 afternoon. They cannot become bilingual.
@@ -85,7 +84,8 @@ being a price list.
 - Home, framing the three services and pushing to the gallery and to booking
 - One page per service: nails, lashes, makeup, each with pricing and duration
 - A gallery large enough to judge the work, filterable by service
-- An about page carrying her training and the trust the business has not earned yet
+- Her training and the trust the business has not earned yet, carried on the
+  home page rather than a separate about page
 - A contact page with a form that reaches her, plus the direct booking route
 - A thank-you page, so a submitted form is unambiguous
 - **Every one of the above in English and Spanish**, at `/` and `/es`

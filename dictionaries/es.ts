@@ -25,11 +25,11 @@ export const es: Dictionary = {
     "Uñas, pestañas y maquillaje en Calgary. Formación colombiana. Con cita previa.",
 
   nav: {
+    home: "Inicio",
     nails: "Uñas",
     lashes: "Pestañas",
     makeup: "Maquillaje",
     gallery: "El trabajo",
-    about: "Sobre mí",
   },
 
   cta: {
@@ -223,53 +223,6 @@ export const es: Dictionary = {
     home: "Volver al inicio",
   },
 
-  about: {
-    meta: {
-      title: "Sobre la artista - Uñas y pestañas en Calgary",
-      description:
-        "A quién le estás reservando cuando reservas un set en Calgary. Un negocio nuevo, todavía sin reseñas, así que aquí está la persona, la formación y lo que realmente pasa en una cita.",
-    },
-    jobTitle: "Artista de uñas, pestañas y maquillaje",
-    eyebrow: "Antes de confiarme dos horas",
-    headingLead: "La artista a la que",
-    headingAccent: "le reservas en Calgary",
-    lede: "Un negocio nuevo no tiene reseñas, no tiene voz a voz y no tiene nada que mostrar aparte del trabajo y de quien lo hace. Así que aquí estoy yo, y esto es lo que realmente pasa en dos horas en mi silla en Calgary.",
-    portraitAlt:
-      "La artista, fotografiada en el salón donde trabaja, con una camiseta negra.",
-
-    bilingual: {
-      heading: "Tu cita puede ser en español",
-      body: "No solo esta página. El español es mi primer idioma, así que la consulta, la conversación y el momento en el que cambias de opinión sobre el color pasan en el idioma en el que te sientas más cómoda. Una página traducida solo te dice que la puedes leer. Esto es yo diciéndote que te van a entender.",
-    },
-
-    expect: {
-      heading: "Lo que realmente pasa",
-      steps: {
-        arriving: {
-          title: "Primero te miro las manos",
-          body: "No la foto que trajiste. Lo que haces todo el día decide qué tan largo puede ser un set y cómo hay que construirlo, y esa conversación toma dos minutos y te ahorra una uña rota en la primera semana.",
-        },
-        during: {
-          title: "Casi todo el tiempo se va antes del color",
-          body: "Preparación, forma y estructura. Es la parte más aburrida de ver y es exactamente la razón por la que un set aguanta tres semanas en vez de una.",
-        },
-        after: {
-          title: "Si algo se levanta, dime de una vez",
-          body: "No lo aguantes y no lo arregles tú con lo que haya en el cajón. Escríbeme apenas lo notes y tráelo mientras todavía es un problema pequeño.",
-        },
-      },
-    },
-
-    cta: {
-      eyebrow: "¿Todavía lo estás pensando?",
-      headingLead: "Pregúntame",
-      headingAccent: "lo que sea",
-      lede: "Si algo de aquí no te lo respondió, mándame la pregunta. Prefiero que reserves sabiendo y no adivinando.",
-      book: "Reservar con Dani",
-      instagram: "Escríbeme por Instagram",
-    },
-  },
-
   treatmentList: {
     priceFrom: "Desde",
     durationLabel: "Dura",
@@ -315,6 +268,7 @@ export const es: Dictionary = {
       more: "Ver más",
     },
     story: {
+    lede: "Un negocio nuevo no tiene reseñas, no tiene voz a voz y no tiene nada que mostrar aparte del trabajo y de quien lo hace. Así que aquí estoy yo, y esto es lo que realmente pasa en dos horas en mi silla en Calgary.",
       eyebrow: "Quién te hace las uñas",
       headingLead: "Formada en Colombia,",
       headingAccent: "trabajando en Calgary",
@@ -323,6 +277,41 @@ export const es: Dictionary = {
       building:
         "Estoy construyendo este negocio desde cero, lo que significa que recibes la versión de mí que todavía se preocupa muchísimo por cada set. Tráeme una foto de Pinterest, o siéntate sin ninguna idea y lo resolvemos juntas.",
     },
+    work: {
+      eyebrow: "Sets recientes",
+      heading: "El trabajo, no la promesa",
+      all: "Ver todo el trabajo",
+    },
+
+    jobTitle: "Artista de uñas, pestañas y maquillaje",
+
+    portraitAlt:
+      "La artista, fotografiada en el salón donde trabaja, con una camiseta negra.",
+
+    bilingual: {
+      heading: "Tu cita puede ser en español",
+      body: "No solo esta página. El español es mi primer idioma, así que la consulta, la conversación y el momento en el que cambias de opinión sobre el color pasan en el idioma en el que te sientas más cómoda. Una página traducida solo te dice que la puedes leer. Esto es yo diciéndote que te van a entender.",
+    },
+
+    expect: {
+      eyebrow: "En la silla",
+      heading: "Lo que realmente pasa",
+      steps: {
+        arriving: {
+          title: "Primero te miro las manos",
+          body: "No la foto que trajiste. Lo que haces todo el día decide qué tan largo puede ser un set y cómo hay que construirlo, y esa conversación toma dos minutos y te ahorra una uña rota en la primera semana.",
+        },
+        during: {
+          title: "Casi todo el tiempo se va antes del color",
+          body: "Preparación, forma y estructura. Es la parte más aburrida de ver y es exactamente la razón por la que un set aguanta tres semanas en vez de una.",
+        },
+        after: {
+          title: "Si algo se levanta, dime de una vez",
+          body: "No lo aguantes y no lo arregles tú con lo que haya en el cajón. Escríbeme apenas lo notes y tráelo mientras todavía es un problema pequeño.",
+        },
+      },
+    },
+
     faq: {
       eyebrow: "Antes de reservar",
       heading: "Las preguntas de siempre",

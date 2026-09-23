@@ -133,8 +133,8 @@ export function personSchema(t: Dictionary) {
     "@context": "https://schema.org",
     "@type": "Person",
     name: siteConfig.business.name,
-    jobTitle: t.about.jobTitle,
-    description: t.about.lede,
+    jobTitle: t.home.jobTitle,
+    description: t.home.story.lede,
     knowsLanguage: ["en", "es"],
     worksFor: {
       "@type": "LocalBusiness",
