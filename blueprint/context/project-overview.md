@@ -1,6 +1,6 @@
 # facing-dani - Project Overview
 
-<!-- blueprint:source-hash 04bbb1700ba977f5ece6e7eed332b0a3af4ef7b58bf6e2f38c397612ee6fcbef -->
+<!-- blueprint:source-hash a37254c6f2f555070ab70b36a9641e89689d70e6ab4f800f47339f57c09cbab9 -->
 
 > A bilingual marketing site for a Calgary nail, lash and makeup artist, built as
 > the first instance of a reusable template for beauty businesses.
@@ -50,12 +50,16 @@ No accounts, no tiers, no sign-in. Every visitor is anonymous.
 MVP, in `build-plan.md` order. The headline is **4. Gallery** - it is the page that
 sells the work, which is why it lands before the pages that describe it.
 
-1. ~~**Site shell and theme**~~ - **done.** After Party theme in `globals.css`,
-   sticky header, full-screen mobile panel, footer, gradient ticker.
-2. ~~**Locale routing**~~ - **done.** `[locale]` segment, a dictionary per locale,
-   the language switch, and a build that fails on a missing Spanish string.
+Progress is deliberately not recorded here. The fingerprint below normalizes
+completion markers, so checking an item off is not overview drift; `/status` and
+the build log are where progress lives.
+
+1. **Site shell and theme** - After Party theme in `globals.css`, sticky header,
+   full-screen mobile panel, footer, gradient ticker.
+2. **Locale routing** - `[locale]` segment, a dictionary per locale, the language
+   switch, and a build that fails on a missing Spanish string.
 3. **Home page** - hero, the three services, gallery teaser, her story, FAQ and the
-   booking call to action. **Next.**
+   booking call to action.
 4. **Gallery** - the full set of work, filterable by service, at a size where the
    quality is actually visible. **Headline feature.**
 5. **Service pages** - nails, lashes and makeup, one page each, with treatments,
@@ -65,14 +69,17 @@ sells the work, which is why it lands before the pages that describe it.
 7. **Contact and booking** - the form with the "how did you find me" field,
    validation, Resend delivery, the direct booking route, and a thank-you page.
 8. **Deploy** - Vercel, env vars, a verified production build and a preview URL.
-   **Already done, out of order** - see Open questions.
+   See Open questions: this item's scope no longer matches reality.
 9. **Site-wide SEO pass** - sitemap and robots across both locales, LocalBusiness
    data, and an audit that every page carries its own metadata and hreflang.
+10. **Gallery lightbox** - tap a photo to open it large, with next and previous, a
+    thumbnail strip, and keyboard and swipe control. Item 4 promises a size where
+    the quality is visible; a grid tile renders at roughly 280px, so this is what
+    makes that promise true rather than an extra.
 
-Post-MVP, listed so they stop being re-proposed: **10.** reviews on site,
-**11.** real booking with availability and deposits, **12.** a second client from
+Post-MVP, listed so they stop being re-proposed: **11.** reviews on site,
+**12.** real booking with availability and deposits, **13.** a second client from
 this template.
-
 ### Definition of done, items 3 onward
 
 Not separate items, because a thing that touches every page cannot be a finishing

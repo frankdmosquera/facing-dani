@@ -65,12 +65,15 @@ work, so it comes before the pages that describe it.
 - [x] 9. **Site-wide SEO pass** - sitemap and robots across both locales,
   LocalBusiness data, and an audit that every page carries its own metadata and
   hreflang. The only SEO work that genuinely needs all pages to exist
+- [x] 10. **Gallery lightbox** - tap a photo to open it large, with next and
+  previous, a thumbnail strip, and keyboard and swipe control. What makes item
+  4's "at a size where the quality is actually visible" actually true
 
 ## Post-MVP
 
 Not scheduled. Listed so they stop being re-proposed as if they were new.
 
-- [ ] 10. **Reviews on site** - waits until there are reviews worth showing
-- [ ] 11. **Real booking** - availability and deposits, only if DMs stop coping
-- [ ] 12. **Second client from this template** - the real test of section 4's
+- [ ] 11. **Reviews on site** - waits until there are reviews worth showing
+- [ ] 12. **Real booking** - availability and deposits, only if DMs stop coping
+- [ ] 13. **Second client from this template** - the real test of section 4's
   rule that a component never contains the word Dani

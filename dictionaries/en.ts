@@ -482,6 +482,13 @@ export const en = {
      * not a place for "nails Calgary". The same strings become the `name` of
      * each ImageObject in the page's structured data.
      */
+    lightbox: {
+      open: "Open larger: {photo}",
+      close: "Close",
+      previous: "Previous photo",
+      next: "Next photo",
+      position: "Photo {current} of {total}",
+    },
     images: {
       frenchGlitterGems:
         "Almond nails with a white french tip, a fine glitter line along the smile and a cluster of crystals on the ring finger",

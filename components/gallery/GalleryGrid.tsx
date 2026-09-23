@@ -1,8 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import type { ServiceId } from "@/data/services";
+
+import {
+  GalleryLightbox,
+  type LightboxLabels,
+  type LightboxPhoto,
+} from "./GalleryLightbox";
 
 /**
  * The filter, and nothing else.
@@ -53,6 +59,8 @@ export function GalleryGrid({
   filterLabel,
   countOne,
   countOther,
+  photos,
+  lightboxLabels,
   children,
 }: {
   /** One per service that actually has photos, in service order. */
@@ -63,9 +71,70 @@ export function GalleryGrid({
   countOne: string;
   /** Carries a literal `{n}`. */
   countOther: string;
+  /**
+   * The same photographs as `children`, in the same order, as plain data.
+   *
+   * The figures stay server components; the lightbox cannot, because it is
+   * state. Passing the data alongside the rendered children is what lets both
+   * be true at once, and it is why alt text is resolved on the server - sending
+   * the dictionary instead would put both languages in the bundle.
+   */
+  photos: LightboxPhoto[];
+  lightboxLabels: LightboxLabels;
   children: React.ReactNode;
 }) {
   const [active, setActive] = useState<Filter>("all");
+  const [openAt, setOpenAt] = useState<number | null>(null);
+  const openedFrom = useRef<HTMLElement | null>(null);
+
+  /**
+   * One listener on the container rather than one handler per figure.
+   *
+   * `closest` rather than `e.target` because the click lands on the `<img>`
+   * inside the button, never on the button itself. Enter and Space on a focused
+   * button arrive here too, as clicks, so keyboard costs nothing extra.
+   */
+  function openFromGrid(event: React.MouseEvent<HTMLDivElement>) {
+    const trigger = (event.target as HTMLElement).closest<HTMLElement>(
+      "[data-photo-index]",
+    );
+    if (!trigger) return;
+
+    const index = Number(trigger.dataset.photoIndex);
+    if (Number.isInteger(index) && index >= 0 && index < photos.length) {
+      openedFrom.current = trigger;
+      setOpenAt(index);
+    }
+  }
+
+  /**
+   * Put focus back on the tile that was opened.
+   *
+   * The primitive restores focus to whatever held it when the dialog opened,
+   * and the lightbox deliberately moves focus onto its own close button - so by
+   * the time it closes, the element being restored to has just unmounted and
+   * focus lands on the body. Measured: with this removed, closing left
+   * `document.activeElement` as `<body>` and the next Tab started from the top
+   * of the page rather than from the photograph the visitor was just looking
+   * at.
+   */
+  function closeLightbox() {
+    setOpenAt(null);
+    openedFrom.current?.focus();
+  }
+
+  /**
+   * Which photographs the lightbox may move through, derived from the pressed
+   * chip rather than from the page.
+   *
+   * The filter is CSS: the container carries `data-filter` and each figure
+   * hides itself with a variant, so nothing in the DOM says which photographs
+   * are visible. Reading state instead is what stops next and previous walking
+   * into a photograph that is hidden behind the dialog.
+   */
+  const sequence = photos
+    .map((_, index) => index)
+    .filter((index) => active === "all" || photos[index].serviceId === active);
 
   const shown =
     active === "all"
@@ -129,10 +198,22 @@ export function GalleryGrid({
           and forcing one aspect ratio would crop away the thing being sold. */}
       <div
         data-filter={active}
+        onClick={openFromGrid}
         className="group/grid columns-2 gap-2.5 pb-16 min-[620px]:columns-3 min-[620px]:gap-3 min-[1000px]:columns-4 min-[1000px]:gap-3.5"
       >
         {children}
       </div>
+
+      <GalleryLightbox
+        photos={photos}
+        sequence={sequence}
+        openAt={openAt}
+        onOpenChange={(open) => {
+          if (!open) closeLightbox();
+        }}
+        onMove={setOpenAt}
+        labels={lightboxLabels}
+      />
     </>
   );
 }

@@ -84,35 +84,78 @@ export function GalleryFigure({
   image,
   alt,
   serviceName,
+  index,
+  openLabel,
   priority = false,
 }: {
   image: GalleryImage;
   alt: string;
   serviceName: string;
+  /**
+   * Position in the same array the grid was handed as `photos`. This is what
+   * the delegated click reads, so the two must come from one server render or
+   * a tap opens the wrong photograph.
+   *
+   * Optional, and that is the contract with `WorkStrip`. The service pages
+   * render this same figure with no lightbox around it, so without an index
+   * the photograph is drawn exactly as before: no button, nothing focusable,
+   * nothing that offers an interaction the page cannot honour.
+   */
+  index?: number;
+  /** Already interpolated with this photo's alt text. Required with `index`. */
+  openLabel?: string;
   priority?: boolean;
 }) {
+  const photo = (
+    <Photo
+      path={image.imagekitPath}
+      alt={alt}
+      width={image.width}
+      height={image.height}
+      sizes={SIZES}
+      priority={priority}
+      className="block h-auto w-full"
+    />
+  );
+
   return (
     <figure
       data-service={image.serviceId}
       className={`${FIGURE} ${hideWhenOtherFiltered[image.serviceId]}`}
     >
-      <Photo
-        path={image.imagekitPath}
-        alt={alt}
-        width={image.width}
-        height={image.height}
-        sizes={SIZES}
-        priority={priority}
-        className="block h-auto w-full"
-      />
+      {/*
+        A real button, so the tile is reachable by keyboard and announces itself
+        as something that does a thing. It carries no handler: the grid listens
+        once on the container and reads this index off the event target, which
+        is what keeps every figure a server component. An `onClick` here would
+        turn the whole grid into client code and undo the reason the
+        photographs are passed in as children.
+      */}
+      {index === undefined ? (
+        photo
+      ) : (
+        <button
+          type="button"
+          data-photo-index={index}
+          aria-label={openLabel}
+          className="block w-full cursor-zoom-in focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ring"
+        >
+          {photo}
+        </button>
+      )}
 
       <span
         aria-hidden="true"
         className={`pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,rgba(20,15,28,.66),rgba(20,15,28,0)_46%)] ${REVEAL}`}
       />
 
+      {/*
+        `pointer-events-none` because the tag sits on top of the button. Without
+        it, the one part of the tile a visitor is most likely to aim at is the
+        one part that would not open the photograph.
+      */}
       <figcaption
-        className={`absolute bottom-2.5 left-2.5 z-[2] rounded-pill border border-white/15 bg-[rgba(20,15,28,.75)] px-2.5 py-[5px] text-[9.5px] font-semibold tracking-[0.13em] uppercase ${accentText[image.serviceId]} ${REVEAL}`}
+        className={`pointer-events-none absolute bottom-2.5 left-2.5 z-[2] rounded-pill border border-white/15 bg-[rgba(20,15,28,.75)] px-2.5 py-[5px] text-[9.5px] font-semibold tracking-[0.13em] uppercase ${accentText[image.serviceId]} ${REVEAL}`}
       >
         {serviceName}
       </figcaption>
