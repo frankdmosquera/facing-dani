@@ -1,6 +1,8 @@
 import { Photo } from "@/components/media/Photo";
 import type { DecorativeImage } from "@/data/decorativeImages";
 
+import { OpenCue } from "./OpenCue";
+
 const SIZES = "(min-width: 1000px) 380px, (min-width: 620px) 33vw, 50vw";
 
 // Stock, so no alt text. The tag is always visible so it never reads as her work.
@@ -35,6 +37,7 @@ export function InspirationFigure({
       <figcaption className="pointer-events-none absolute bottom-2.5 left-2.5 rounded-pill border border-white/15 bg-[rgba(20,15,28,.75)] px-2.5 py-[5px] text-[9.5px] font-semibold tracking-[0.13em] text-ink-muted uppercase">
         {tag}
       </figcaption>
+      <OpenCue />
     </figure>
   );
 }
