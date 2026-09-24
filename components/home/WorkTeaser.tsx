@@ -1,34 +1,30 @@
 import Link from "next/link";
 
-import { GalleryFigure } from "@/components/gallery/GalleryFigure";
+import { PhotoGrid, type PhotoGridItem } from "@/components/gallery/PhotoGrid";
 import { Band, BandHead } from "@/components/site/Band";
-import { orderedGallery } from "@/data/gallery";
+import { inspirationImage } from "@/data/decorativeImages";
+import { galleryImage } from "@/data/gallery";
+import { HOME_SHOWCASE } from "@/data/homeShowcase";
 import type { Dictionary } from "@/dictionaries";
 import { localePath, type Locale } from "@/lib/locale";
 
-const MAX = 6;
-
-// No index on the figures, so no lightbox here. That lives on the gallery page.
 export function WorkTeaser({ locale, t }: { locale: Locale; t: Dictionary }) {
-  const images = orderedGallery().slice(0, MAX);
-  if (images.length === 0) return null;
-
   const c = t.home.work;
+
+  const items = HOME_SHOWCASE.flatMap((entry): PhotoGridItem[] => {
+    if ("work" in entry) {
+      const image = galleryImage(entry.work);
+      return image ? [{ kind: "work", image }] : [];
+    }
+    const found = inspirationImage(entry.inspiration);
+    return found ? [{ kind: "inspiration", ...found }] : [];
+  });
 
   return (
     <Band glow={false}>
       <BandHead eyebrow={c.eyebrow} heading={c.heading} />
 
-      <div className="columns-2 gap-2.5 min-[620px]:columns-3 min-[620px]:gap-3">
-        {images.map((image) => (
-          <GalleryFigure
-            key={image.key}
-            image={image}
-            alt={t.gallery.images[image.key]}
-            serviceName={t.services[image.serviceId].name}
-          />
-        ))}
-      </div>
+      <PhotoGrid items={items} t={t} />
 
       <Link
         href={localePath(locale, "/gallery")}

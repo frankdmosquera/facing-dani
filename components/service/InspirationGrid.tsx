@@ -1,4 +1,4 @@
-import { Photo } from "@/components/media/Photo";
+import { PhotoGrid } from "@/components/gallery/PhotoGrid";
 import { inspirationFor } from "@/data/decorativeImages";
 import type { ServiceId } from "@/data/services";
 import type { Dictionary } from "@/dictionaries";
@@ -25,27 +25,10 @@ export function InspirationGrid({
         </p>
       </div>
 
-      {/* No alt text on purpose: describing a stock photo would imply it is hers. */}
-      <div
-        aria-hidden="true"
-        className="columns-2 gap-2.5 min-[620px]:columns-3 min-[620px]:gap-3"
-      >
-        {images.map((image) => (
-          <div
-            key={image.imagekitPath}
-            className="mb-2.5 break-inside-avoid overflow-hidden rounded-lg border border-line-soft bg-shot min-[620px]:mb-3"
-          >
-            <Photo
-              path={image.imagekitPath}
-              alt=""
-              width={image.width}
-              height={image.height}
-              sizes="(min-width: 1180px) 360px, (min-width: 620px) 31vw, 48vw"
-              className="block h-auto w-full"
-            />
-          </div>
-        ))}
-      </div>
+      <PhotoGrid
+        items={images.map((image) => ({ kind: "inspiration", image, serviceId }))}
+        t={t}
+      />
     </>
   );
 }

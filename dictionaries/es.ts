@@ -239,6 +239,7 @@ export const es: Dictionary = {
 
   inspiration: {
     heading: "Inspiración",
+    tag: "Inspiración",
     note: "Ideas para traer como referencia. Son fotos de stock, no mi trabajo.",
   },
 
@@ -433,6 +434,16 @@ export const es: Dictionary = {
         "Uñas coffin largas transparentes con líneas blancas finas y detalles de remolinos dorados",
       pinkBlackStars:
         "Uñas rosa y negro con estrellas pintadas a mano, una uña con manchas de leopardo y líneas finas de francesa",
+      blueGraphicEyeProfile:
+        "Maquillaje gráfico de perfil: una franja azul intensa sobre los ojos con estrellitas blancas y labios rosa",
+      blueGraphicEyeTurned:
+        "El mismo maquillaje gráfico azul con estrellas blancas, con la cabeza girada",
+      softNaturalLookFront:
+        "Maquillaje natural suave de frente: cejas definidas, delineado alado y labios nude",
+      softNaturalLookSide:
+        "Maquillaje natural suave de lado, con delineado alado y labios nude",
+      colourSwatchArm:
+        "Muestras de sombra en el brazo: un degradado de morado a naranja junto a un marrón cálido",
     },
   },
 };

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { GalleryFigure } from "@/components/gallery/GalleryFigure";
+import { PhotoGrid } from "@/components/gallery/PhotoGrid";
 import { orderedGallery } from "@/data/gallery";
 import type { ServiceId } from "@/data/services";
 import type { Dictionary } from "@/dictionaries";
@@ -38,17 +38,7 @@ export function WorkStrip({
         </Link>
       </div>
 
-      <div className="columns-2 gap-2.5 min-[620px]:columns-3 min-[620px]:gap-3">
-        {images.map((image, index) => (
-          <GalleryFigure
-            key={image.key}
-            image={image}
-            alt={t.gallery.images[image.key]}
-            serviceName={t.services[image.serviceId].name}
-            priority={index === 0}
-          />
-        ))}
-      </div>
+      <PhotoGrid items={images.map((image) => ({ kind: "work", image }))} t={t} />
     </>
   );
 }

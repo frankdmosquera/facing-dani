@@ -36,6 +36,11 @@ export const gallery: GalleryImage[] = [
   { key: "goldLeafFrench", imagekitPath: "/nails/gold-leaf-french.jpg", serviceId: "nails", order: 16, width: 1361, height: 645 },
   { key: "clearCoffinLinework", imagekitPath: "/nails/clear-coffin-linework.jpg", serviceId: "nails", order: 17, width: 1920, height: 2560 },
   { key: "pinkBlackStars", imagekitPath: "/nails/pink-black-stars.jpg", serviceId: "nails", order: 18, width: 2560, height: 2219 },
+  { key: "blueGraphicEyeProfile", imagekitPath: "/makeup/blue-graphic-eye-profile.jpg", serviceId: "makeup", order: 19, width: 1440, height: 2560 },
+  { key: "blueGraphicEyeTurned", imagekitPath: "/makeup/blue-graphic-eye-turned.jpg", serviceId: "makeup", order: 20, width: 1440, height: 2560 },
+  { key: "softNaturalLookFront", imagekitPath: "/makeup/soft-natural-look-front.jpg", serviceId: "makeup", order: 21, width: 1920, height: 2560 },
+  { key: "softNaturalLookSide", imagekitPath: "/makeup/soft-natural-look-side.jpg", serviceId: "makeup", order: 22, width: 1920, height: 2560 },
+  { key: "colourSwatchArm", imagekitPath: "/makeup/colour-swatch-arm.jpg", serviceId: "makeup", order: 23, width: 1920, height: 2560 },
 ];
 
 // The photo beside the home headline. Independent of the order above.

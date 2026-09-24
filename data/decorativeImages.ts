@@ -328,6 +328,16 @@ export const inspirationImages: Partial<Record<ServiceId, DecorativeImage[]>> = 
   ],
 };
 
+export function inspirationImage(
+  imagekitPath: string,
+): { image: DecorativeImage; serviceId: ServiceId } | undefined {
+  for (const [serviceId, images] of Object.entries(inspirationImages) as [ServiceId, DecorativeImage[]][]) {
+    const image = images.find((candidate) => candidate.imagekitPath === imagekitPath);
+    if (image) return { image, serviceId };
+  }
+  return undefined;
+}
+
 // Null as soon as the service has any of her own photos.
 export function decorativeImageFor(serviceId: ServiceId): DecorativeImage | null {
   if (serviceHasWork(serviceId)) return null;

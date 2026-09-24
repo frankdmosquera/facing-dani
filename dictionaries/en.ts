@@ -236,6 +236,7 @@ export const en = {
 
   inspiration: {
     heading: "Inspiration",
+    tag: "Inspiration",
     note: "Looks to bring in as a reference. These are stock photos, not my work.",
   },
 
@@ -436,6 +437,16 @@ export const en = {
         "Long clear coffin nails with fine white linework and gold swirl details",
       pinkBlackStars:
         "Pink and black nails with hand-painted stars, a leopard-spot nail and thin french lines",
+      blueGraphicEyeProfile:
+        "Graphic makeup in profile: a bold blue band across the eyes with small white stars and a pink lip",
+      blueGraphicEyeTurned:
+        "The same blue graphic eye look with white stars, head turned to the side",
+      softNaturalLookFront:
+        "Soft natural makeup, front view: defined brows, winged liner and a nude lip",
+      softNaturalLookSide:
+        "Soft natural makeup from the side, with winged liner and a nude lip",
+      colourSwatchArm:
+        "Eyeshadow swatches on an arm: a purple to orange blend beside a warm brown",
     },
   },
 };
