@@ -71,7 +71,7 @@ export default async function Contact({
               href={instagram.url}
               rel="me noopener noreferrer"
               target="_blank"
-              className="inline-block rounded-pill border border-line px-7 py-4 text-[15px] font-bold text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              className="inline-block hover-fill rounded-pill border border-line px-7 py-4 text-[15px] font-bold text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
             >
               {c.direct.link}
             </a>

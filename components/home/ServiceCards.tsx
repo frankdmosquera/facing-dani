@@ -48,7 +48,7 @@ export function ServiceCards({
           return (
             <li
               key={service.id}
-              className="flex flex-col overflow-hidden rounded-xl border border-line bg-surface"
+              className="group relative flex flex-col overflow-hidden rounded-xl border border-line bg-surface transition-[translate,border-color] duration-300 ease-out hover:border-primary motion-safe:hover:-translate-y-1"
             >
               {cover ? (
                 <div className="aspect-[4/3] overflow-hidden bg-shot">
@@ -58,7 +58,7 @@ export function ServiceCards({
                     width={cover.width}
                     height={cover.height}
                     sizes="(min-width: 860px) 380px, 100vw"
-                    className="size-full object-cover"
+                    className="size-full object-cover transition-transform duration-700 ease-out motion-safe:group-hover:scale-105"
                   />
                 </div>
               ) : null}
@@ -79,7 +79,8 @@ export function ServiceCards({
 
                 <Link
                   href={localePath(locale, service.href)}
-                  className={`mt-auto inline-flex items-center gap-2 text-[13.5px] font-bold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring ${accentText[service.id]}`}
+                  // after:inset-0 stretches the link over the whole card, so the card that lifts is also the thing you click.
+                  className={`mt-auto inline-flex items-center gap-2 after:absolute after:inset-0 text-[13.5px] font-bold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring ${accentText[service.id]}`}
                 >
                   {c.more}
                   <span aria-hidden="true">&rarr;</span>

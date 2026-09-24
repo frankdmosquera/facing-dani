@@ -31,13 +31,13 @@ export function Hero({ locale, t }: { locale: Locale; t: Dictionary }) {
           <div className="flex flex-col gap-3 min-[560px]:flex-row">
             <Link
               href={localePath(locale, siteConfig.cta.href)}
-              className="rounded-pill bg-[image:var(--hot)] px-7 py-4 text-center text-[15px] font-bold text-on-hot focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              className="hover-glow rounded-pill bg-[image:var(--hot)] px-7 py-4 text-center text-[15px] font-bold text-on-hot focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
             >
               {c.book}
             </Link>
             <Link
               href={localePath(locale, "/gallery")}
-              className="rounded-pill border border-line px-7 py-4 text-center text-[15px] font-bold text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              className="hover-fill rounded-pill border border-line px-7 py-4 text-center text-[15px] font-bold text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
             >
               {c.seeWork}
             </Link>

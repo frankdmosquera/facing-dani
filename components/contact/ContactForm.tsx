@@ -207,7 +207,7 @@ export function ContactForm({ locale, t }: { locale: Locale; t: Dictionary }) {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="mt-6 rounded-pill bg-[image:var(--hot)] px-7 py-4 text-[15px] font-bold text-on-hot focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:opacity-60"
+        className="mt-6 hover-glow rounded-pill bg-[image:var(--hot)] px-7 py-4 text-[15px] font-bold text-on-hot focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:opacity-60"
       >
         {isSubmitting ? c.form.submitting : c.form.submit}
       </button>
