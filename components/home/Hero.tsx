@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { Photo } from "@/components/media/Photo";
 import { Band, Hot } from "@/components/site/Band";
-import { orderedGallery } from "@/data/gallery";
+import { HOME_HERO, galleryImage } from "@/data/gallery";
 import { siteConfig } from "@/data/siteConfig";
 import type { Dictionary } from "@/dictionaries";
 import { localePath, type Locale } from "@/lib/locale";
@@ -10,8 +10,7 @@ import { localePath, type Locale } from "@/lib/locale";
 export function Hero({ locale, t }: { locale: Locale; t: Dictionary }) {
   const c = t.home.hero;
 
-  // The gallery is ordered strongest first. Reorder data/gallery.ts to change the lead photo.
-  const lead = orderedGallery()[0];
+  const lead = galleryImage(HOME_HERO);
 
   return (
     <Band className="pt-[26px]!">
