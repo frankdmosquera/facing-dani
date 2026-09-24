@@ -16,7 +16,7 @@ export type GalleryImage = {
   height: number;
 };
 
-// Strongest first: order 1 is the home hero and the first four load eagerly. 10 to 18 are not ranked yet.
+// Strongest first: the first four load eagerly. 10 to 18 are not ranked yet.
 export const gallery: GalleryImage[] = [
   { key: "frenchGlitterGems", imagekitPath: "/nails/french-glitter-gems.jpg", serviceId: "nails", order: 1, width: 2560, height: 2389 },
   { key: "burgundyCatEye", imagekitPath: "/nails/burgundy-cat-eye.jpg", serviceId: "nails", order: 2, width: 1391, height: 1613 },
@@ -37,6 +37,13 @@ export const gallery: GalleryImage[] = [
   { key: "clearCoffinLinework", imagekitPath: "/nails/clear-coffin-linework.jpg", serviceId: "nails", order: 17, width: 1920, height: 2560 },
   { key: "pinkBlackStars", imagekitPath: "/nails/pink-black-stars.jpg", serviceId: "nails", order: 18, width: 2560, height: 2219 },
 ];
+
+// The photo beside the home headline. Independent of the order above.
+export const HOME_HERO: GalleryKey = "pinkBlackStars";
+
+export function galleryImage(key: GalleryKey): GalleryImage | undefined {
+  return gallery.find((image) => image.key === key);
+}
 
 export function orderedGallery(): GalleryImage[] {
   return [...gallery].sort((a, b) => a.order - b.order);
