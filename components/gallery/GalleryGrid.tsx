@@ -42,6 +42,7 @@ export function GalleryGrid({
   countOther,
   photos,
   lightboxLabels,
+  gridClassName = "columns-2 gap-2.5 pb-16 min-[620px]:columns-3 min-[620px]:gap-3 min-[1000px]:columns-4 min-[1000px]:gap-3.5",
   children,
 }: {
   chips: GalleryChip[];
@@ -54,6 +55,7 @@ export function GalleryGrid({
   // Same photos as children, same order. Alt text is resolved on the server so no dictionary ships to the client.
   photos: LightboxPhoto[];
   lightboxLabels: LightboxLabels;
+  gridClassName?: string;
   children: React.ReactNode;
 }) {
   const [active, setActive] = useState<Filter>("all");
@@ -139,7 +141,7 @@ export function GalleryGrid({
       <div
         data-filter={active}
         onClick={openFromGrid}
-        className="group/grid columns-2 gap-2.5 pb-16 min-[620px]:columns-3 min-[620px]:gap-3 min-[1000px]:columns-4 min-[1000px]:gap-3.5"
+        className={`group/grid ${gridClassName}`}
       >
         {children}
       </div>

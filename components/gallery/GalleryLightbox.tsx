@@ -18,6 +18,8 @@ export type LightboxPhoto = {
   alt: string;
   width: number;
   height: number;
+  // Set on stock photos, so they never read as her work at full size either.
+  tag?: string;
 };
 
 export type LightboxLabels = {
@@ -149,6 +151,11 @@ export function GalleryLightbox({
             </div>
 
             <div className="flex shrink-0 flex-col items-center gap-1.5">
+              {photo.tag ? (
+                <span className="rounded-pill border border-white/15 bg-[rgba(20,15,28,.78)] px-3 py-1 text-[11px] font-semibold tracking-[0.13em] text-ink-muted uppercase">
+                  {photo.tag}
+                </span>
+              ) : null}
               <div className="flex items-center gap-4">
                 {total > 1 ? (
                   <button
