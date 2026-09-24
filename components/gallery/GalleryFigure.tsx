@@ -2,6 +2,8 @@ import { Photo } from "@/components/media/Photo";
 import type { GalleryImage } from "@/data/gallery";
 import type { ServiceId } from "@/data/services";
 
+import { OpenCue } from "./OpenCue";
+
 // Must match the grid's column counts, or Next picks the wrong source width.
 const SIZES = "(min-width: 1000px) 25vw, (min-width: 620px) 33vw, 50vw";
 
@@ -86,6 +88,8 @@ export function GalleryFigure({
       >
         {serviceName}
       </figcaption>
+
+      {index === undefined ? null : <OpenCue />}
     </figure>
   );
 }

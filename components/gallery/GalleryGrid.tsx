@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import type { ServiceId } from "@/data/services";
 
@@ -72,14 +72,33 @@ export function GalleryGrid({
     const index = Number(trigger.dataset.photoIndex);
     if (Number.isInteger(index) && index >= 0 && index < photos.length) {
       openedFrom.current = trigger;
+      // Same URL, nothing reloads. It only gives Back something to undo, so Back closes the viewer instead of leaving the page.
+      window.history.pushState({ lightbox: true }, "");
       setOpenAt(index);
     }
   }
 
   // The dialog would restore focus to its own close button, which is gone by then, so focus ends up on body.
-  function closeLightbox() {
+  function finishClosing() {
     setOpenAt(null);
     openedFrom.current?.focus();
+  }
+
+  // Back removed the entry added on open: treat that as closing.
+  const isOpen = openAt !== null;
+  useEffect(() => {
+    if (!isOpen) return;
+    window.addEventListener("popstate", finishClosing);
+    return () => window.removeEventListener("popstate", finishClosing);
+  }, [isOpen]);
+
+  // Close and Escape go back too. Otherwise the entry outlives the viewer and the next Back does nothing visible.
+  function closeLightbox() {
+    if (window.history.state?.lightbox) {
+      window.history.back(); // popstate then runs finishClosing.
+    } else {
+      finishClosing();
+    }
   }
 
   // From state, not the DOM: the filter is CSS, so nothing in the DOM says which photos are visible.
