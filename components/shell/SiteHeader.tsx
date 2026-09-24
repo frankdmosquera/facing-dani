@@ -41,7 +41,7 @@ export function SiteHeader({ locale, t }: { locale: Locale; t: Dictionary }) {
 
           <Link
             href={localePath(locale, siteConfig.cta.href)}
-            className="hidden rounded-pill bg-[image:var(--hot)] px-[22px] py-[11px] text-[14px] font-bold text-on-hot focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring min-[900px]:inline-block"
+            className="hidden hover-glow rounded-pill bg-[image:var(--hot)] px-[22px] py-[11px] text-[14px] font-bold text-on-hot focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring min-[900px]:inline-block"
           >
             {t.cta.book}
           </Link>

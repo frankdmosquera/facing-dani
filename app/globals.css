@@ -197,3 +197,27 @@
     @apply font-display font-extrabold tracking-[-0.035em] leading-[1.03];
   }
 }
+
+/* Button hovers. Only where a mouse exists, so a tap never leaves a phone stuck mid-hover. */
+@utility hover-glow {
+  transition: translate 200ms ease-out, box-shadow 200ms ease-out;
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      box-shadow: 0 10px 26px -10px var(--nails);
+      @media (prefers-reduced-motion: no-preference) {
+        translate: 0 -2px;
+      }
+    }
+  }
+}
+
+/* The text is already full --ink, so the border brightens instead. */
+@utility hover-fill {
+  transition: background-color 200ms ease-out, border-color 200ms ease-out;
+  @media (hover: hover) {
+    &:hover {
+      background-color: color-mix(in oklab, var(--ink) 8%, transparent);
+      border-color: var(--ink-muted);
+    }
+  }
+}
