@@ -8,32 +8,15 @@ import { LanguageSwitch } from "./LanguageSwitch";
 import { MobileNav } from "./MobileNav";
 import { Wordmark } from "./Wordmark";
 
-/**
- * Sticky, translucent over the plum ground. Server-rendered apart from the
- * burger and the language switch, which are the only two pieces that need the
- * client.
- *
- * The 900px breakpoint is the mockup's, not a Tailwind default, so it is
- * written out rather than rounded to `lg`.
- */
 export function SiteHeader({ locale, t }: { locale: Locale; t: Dictionary }) {
   return (
     <header className="sticky top-0 z-40 border-b border-line-soft">
-      {/* The frosted ground is a layer inside the header, not the header
-          itself. A backdrop-filter makes its element the containing block for
-          every position:fixed descendant, and MobileNav's panel is one: on the
-          header it resolved inset-0 against a 64px box instead of the viewport,
-          so the menu opened invisibly. pointer-events-none because an
-          invisible click-blocker over the wordmark and the CTA is a worse bug
-          than the one being fixed. */}
+      {/* Blur on a separate layer, never on the header: backdrop-filter traps MobileNav's fixed panel inside it. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-[color-mix(in_srgb,var(--ground)_88%,transparent)] backdrop-blur-[12px]"
       />
 
-      {/* relative so it paints above that layer. Safe for the panel: position
-          alone never traps a fixed descendant, only transform, filter,
-          backdrop-filter, perspective, contain and will-change do. */}
       <div className="relative mx-auto flex max-w-[var(--site)] items-center justify-between gap-6 px-[var(--gutter)] py-3.5">
         <Wordmark locale={locale} t={t} />
 
@@ -53,14 +36,7 @@ export function SiteHeader({ locale, t }: { locale: Locale; t: Dictionary }) {
         </nav>
 
         <div className="flex items-center gap-5">
-          {/* Visible at every width, and deliberately not inside the menu.
-              It is a setting, not a destination, and on the English page it is
-              the one thing that tells a Spanish-speaking visitor she can use
-              this site in her own language. Behind a burger she has to go
-              looking for it. */}
-          {/* -mx-2 px-2 py-3 grows the tap target to roughly 44px without
-              moving anything: it is a thumb target on a phone now, not a line
-              of text at the bottom of a menu. */}
+          {/* Padding grows the tap target to about 44px without moving anything. */}
           <LanguageSwitch locale={locale} t={t} className="-mx-2 px-2 py-3" />
 
           <Link

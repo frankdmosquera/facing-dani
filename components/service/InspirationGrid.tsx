@@ -3,23 +3,7 @@ import { inspirationFor } from "@/data/decorativeImages";
 import type { ServiceId } from "@/data/services";
 import type { Dictionary } from "@/dictionaries";
 
-/**
- * Stock photos of styles a client might bring in, under a heading and a line
- * that say plainly they are not her work.
- *
- * The heading and note are the whole point, so they are never hidden and the
- * grid never renders without them. The images themselves are decoration: no
- * alt text and hidden from assistive technology, because any description of
- * one would be a sentence implying it is hers. The rules for what may go in
- * live in `data/decorativeImages.ts`.
- *
- * Same masonry columns as the work strip, so the two read as one family when
- * both are on the nails page. Nothing here is `priority`: the opening image or
- * the menu is already the largest thing above the fold.
- *
- * Renders nothing for a service with no records, which is why the page only
- * draws the band around it when `inspirationFor` returns something.
- */
+// Stock, not her work. The note saying so must always render with the images.
 export function InspirationGrid({
   serviceId,
   t,
@@ -41,6 +25,7 @@ export function InspirationGrid({
         </p>
       </div>
 
+      {/* No alt text on purpose: describing a stock photo would imply it is hers. */}
       <div
         aria-hidden="true"
         className="columns-2 gap-2.5 min-[620px]:columns-3 min-[620px]:gap-3"

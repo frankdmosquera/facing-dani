@@ -2,13 +2,8 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-/* Dark is the brand, so the After Party tokens live in :root and the light twin
-   lives in .light. That inverts the usual shadcn arrangement on purpose.
-
-   The variant below stays so `dark:` utilities inside generated components keep
-   resolving against a class rather than silently becoming a media query that
-   fires on a visitor's OS setting. The base styles here are already the dark
-   ones, so `dark:` simply never matches. */
+/* Dark is the default, in :root. The light theme lives in .light.
+   The dark variant is kept class-based so dark: never follows the OS setting. */
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -20,15 +15,12 @@
   --color-line: var(--line);
   --color-line-soft: var(--line-soft);
 
-  /* --- brand ink ---
-     Named --ink rather than --text/--muted/--faint because shadcn already owns
-     --muted as a *surface* token. Two different meanings on one name is how a
-     palette quietly stops being one palette. */
+  /* --- brand ink. Not --muted: shadcn uses that name for a surface. --- */
   --color-ink: var(--ink);
   --color-ink-muted: var(--ink-muted);
   --color-ink-faint: var(--ink-faint);
 
-  /* --- the four accents. Each one has a job; none are decoration. --- */
+  /* --- accents --- */
   --color-nails: var(--nails);
   --color-lashes: var(--lashes);
   --color-makeup: var(--makeup);
@@ -73,9 +65,7 @@
   --font-sans: var(--body);
   --font-mono: var(--mono);
 
-  /* --- scale ---
-     Keys here never share a name with the :root vars they read, or the
-     reference would be circular. */
+  /* --- scale. Names must differ from the :root vars they read, or they loop. --- */
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -93,16 +83,7 @@
 }
 
 :root {
-  /* ---------- After Party, ported from prototypes/theme.css ----------
-     Ground is a plum, not a black: the lightest of four candidates. It costs
-     some neon punch against a truer black and buys a warmer, less severe page.
-
-     Contrast, measured against --ground rather than assumed:
-       pink   #FF3D8F on #261F36 = 4.73:1
-       violet #A97BFF on #261F36 = 5.19:1
-       orange #FF8A3D on #261F36 = 6.63:1
-     All four accents are safe at any size on this ground. That stops being
-     true on light surfaces, which is what the -on-light twins are for. */
+  /* After Party, from prototypes/theme.css. All four accents clear 4.5:1 on --ground. */
 
   /* surfaces */
   --ground: #261f36;
@@ -112,12 +93,7 @@
   --line: #514165;
   --line-soft: #3d3152;
 
-  /* ink
-       ink        on ground 14.27  on surface 12.18
-       ink-muted  on ground  6.98  on surface  5.95
-       ink-faint  on ground  5.50  on surface  4.69
-     --ink-faint is used at 11px and 13px, which are body sizes whatever they
-     look like, so it is the lightest value that still clears 4.5 on surface. */
+  /* ink. --ink-faint is the lightest that still clears 4.5:1 on --surface. */
   --ink: #f6f2fa;
   --ink-muted: #b3a8c2;
   --ink-faint: #9f94af;
@@ -133,20 +109,16 @@
   --makeup-on-light: #bf5710;
   --confirm-on-light: #0e8f63;
 
-  /* the one gradient, identical in light and dark, which is what keeps the two
-     modes reading as one brand */
   --hot: linear-gradient(92deg, var(--nails), var(--makeup));
   --on-hot: #231a31;
 
-  /* section glow. Lives here and not in the markup, because the whole promise
-     of this block is that changing it reskins everything. */
+  /* section glow */
   --glow-blur: 90px;
   --glow-a: rgb(255 61 143 / 0.42);
   --glow-b: rgb(169 123 255 / 0.34);
   --glow-c: rgb(255 138 61 / 0.22);
 
-  /* type. next/font sets --font-unbounded and --font-inter on <html>; the
-     literal fallbacks keep the stack valid if either ever fails to load. */
+  /* type. next/font sets --font-unbounded and --font-inter on <html>. */
   --display: var(--font-unbounded, "Unbounded"), system-ui, sans-serif;
   --body: var(--font-inter, "Inter"), system-ui, sans-serif;
   --mono: ui-monospace, monospace;
@@ -177,8 +149,7 @@
   --input: var(--line);
   --ring: var(--nails);
 
-  /* The brand has no red. This is the scaffold's own dark-mode destructive,
-     kept rather than invented, until a feature actually needs one. */
+  /* The brand has no red. Scaffold default until something needs one. */
   --destructive: oklch(0.704 0.191 22.216);
 
   --chart-1: var(--nails);
@@ -188,12 +159,7 @@
   --chart-5: var(--ink-faint);
 }
 
-/* Light twin. Glow becomes tint: the blurred colour blobs on dark become the
-   same shapes unblurred and pale here, because a blurred blob on a light ground
-   reads as a smudge and at dark-mode alpha it drowns the page in pink.
-
-   Ported and complete, but nothing activates it - no toggle, no media query.
-   Unreachable until that product decision is made. */
+/* Light theme. Nothing activates it yet. Glow becomes a pale tint: blurred blobs smudge on light. */
 .light {
   --ground: #faf6fc;
   --surface: #ffffff;
@@ -211,8 +177,7 @@
   --glow-b: #f1e9ff;
   --glow-c: #fff1e4;
 
-  /* the fills fail contrast under 18px on these surfaces, so anything that
-     carries text switches to the darker twin */
+  /* accent fills fail contrast on light, so text uses the darker twins */
   --primary: var(--nails-on-light);
   --ring: var(--nails-on-light);
   --primary-foreground: #ffffff;

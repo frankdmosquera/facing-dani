@@ -16,21 +16,8 @@ import {
 } from "@/lib/contactValidation";
 import { localePath, type Locale } from "@/lib/locale";
 
-/**
- * The booking route for anyone who will not DM.
- *
- * Wired with react-hook-form directly and **not** with shadcn's `Form` /
- * `FormField` wrapper. The coding standards name that specifically: shadcn's
- * form layer has not caught up with react-hook-form's current API, and mixing
- * them produces a form that renders but does not work.
- *
- * The controls are plain elements in the site's own theme rather than shadcn's
- * Input and Select. `components/ui/button.tsx` is the only shadcn component in
- * this project and nothing imports it - every other component here is a raw
- * element with brand classes, and shadcn's are styled for its own palette. A
- * native `<select>` is also the better control on a phone, which is the
- * product: it opens the system picker and needs no JavaScript to be usable.
- */
+// Plain react-hook-form, not shadcn's Form wrapper, which lags behind the current react-hook-form API.
+// Native selects on purpose: they open the phone's own picker.
 
 const FIELD =
   "w-full rounded-lg border border-line bg-surface px-4 py-3 text-[15px] text-ink placeholder:text-ink-faint focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring";
@@ -54,7 +41,6 @@ export function ContactForm({ locale, t }: { locale: Locale; t: Dictionary }) {
     defaultValues: { name: "", email: "", service: "", source: "", message: "", company: "" },
   });
 
-  /** Schema messages are keys; the sentences live in the dictionary. */
   const message = (key?: string) =>
     key ? c.errors[key as ContactErrorKey] : undefined;
 
@@ -78,11 +64,6 @@ export function ContactForm({ locale, t }: { locale: Locale; t: Dictionary }) {
     <form
       noValidate
       onSubmit={handleSubmit(onSubmit, (fieldErrors) => {
-        /**
-         * Move focus to the first thing that is wrong. Without this a keyboard
-         * or screen-reader user is left at the submit button with the errors
-         * somewhere above them.
-         */
         const first = Object.keys(fieldErrors)[0] as keyof ContactInput;
         if (first) setFocus(first);
       })}
@@ -202,9 +183,7 @@ export function ContactForm({ locale, t }: { locale: Locale; t: Dictionary }) {
         )}
       </div>
 
-      {/* Honeypot. `hidden` keeps it out of the layout, `aria-hidden` and
-          `tabIndex` keep it away from assistive technology and the keyboard, so
-          only something filling every field in the DOM finds it. */}
+      {/* Honeypot: invisible to people, screen readers and the keyboard. */}
       <div hidden aria-hidden="true">
         <label htmlFor={id("company")}>Company</label>
         <input
@@ -216,9 +195,6 @@ export function ContactForm({ locale, t }: { locale: Locale; t: Dictionary }) {
         />
       </div>
 
-      {/* The form-level failure, announced. It names the way through rather
-          than an error code: a visitor who cannot submit still needs to reach
-          her. */}
       {failed ? (
         <p
           role="alert"

@@ -3,13 +3,6 @@ import { siteWideFaq } from "@/data/faq";
 import type { Dictionary } from "@/dictionaries";
 import { faqPageSchema, jsonLd } from "@/lib/schema";
 
-/**
- * Native `<details>`. No JavaScript, no client component, works with JS off -
- * and the browser gives the keyboard and screen reader behaviour for free.
- *
- * The structured data below is generated from the same data and dictionary, so
- * what Google reads and what a visitor reads are the same sentences.
- */
 export function Faq({ t }: { t: Dictionary }) {
   const c = t.home.faq;
 

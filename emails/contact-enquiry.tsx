@@ -12,19 +12,7 @@ import {
   Text,
 } from "@react-email/components";
 
-/**
- * What lands in the inbox when someone uses the contact form.
- *
- * Written to be read on a phone in ten seconds, because that is when she will
- * see it. The answer to "who is this and what do they want" is above the fold;
- * the message itself is below, where it can be as long as it likes.
- *
- * The brand colours are inlined as literal hex rather than read from the theme.
- * Email clients do not load a stylesheet, do not support CSS custom properties,
- * and Gmail strips most of what survives that - so a token here would render as
- * nothing. These four values are duplicated from `globals.css` on purpose, and
- * that duplication is the cost of the medium.
- */
+// Copied from globals.css on purpose: email clients do not support CSS variables.
 const GROUND = "#261F36";
 const SURFACE = "#352948";
 const INK = "#F6F2FA";
@@ -34,10 +22,8 @@ const NAILS = "#FF3D8F";
 export type ContactEnquiryProps = {
   name: string;
   email: string;
-  /** Already normalised: `null` when she picked nothing. */
   service: string | null;
   source: string;
-  /** Which language the visitor was reading, so the reply matches. */
   locale: string;
   message: string;
 };
@@ -76,7 +62,6 @@ export function ContactEnquiryEmail({
   return (
     <Html lang={locale}>
       <Head />
-      {/* What shows in the inbox list next to the subject. */}
       <Preview>{`${name} - ${service ?? "not sure yet"}`}</Preview>
       <Body
         style={{
@@ -129,11 +114,6 @@ export function ContactEnquiryEmail({
 
           <Hr style={{ borderColor: "#514165", margin: "22px 0" }} />
 
-          {/*
-            `white-space: pre-wrap` keeps the line breaks she typed. React
-            escapes every interpolation, so a visitor who types HTML into the
-            message field gets it back as text rather than as markup.
-          */}
           <Text
             style={{
               margin: 0,

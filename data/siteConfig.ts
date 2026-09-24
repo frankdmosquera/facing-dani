@@ -1,45 +1,15 @@
-/**
- * Every business fact the site renders. A component never hardcodes one.
- *
- * The template test: a second beauty business stands up by editing this file
- * and the theme, touching no component. If a string naming this business turns
- * up in `components/`, that is a bug and not a preference.
- *
- * Nothing here is keyed by locale, and nothing here is prose. Prices,
- * durations, phone, email, hours and coordinates are shared facts; anything a
- * visitor reads as a sentence lives in `dictionaries/`. Feature 2 moved the
- * nav labels and the blurb out of this file for that reason - what is left is
- * the parts that do not translate.
- */
+// Every business fact the site renders. No component hardcodes one. Sentences live in dictionaries/.
 
-/**
- * Type-only import, so this never pulls a dictionary into a bundle. Client
- * components import siteConfig, and a value import here would ship both
- * languages to every visitor.
- */
+// Type-only: client components import siteConfig, and a value import would ship both dictionaries.
 import type { Dictionary } from "@/dictionaries/en";
 
-/**
- * Keys are typed against the dictionary rather than being plain strings, so a
- * key with no matching label is a compile error.
- *
- * This is not theoretical: with `key: string` and an `as keyof` cast at the
- * lookup, three footer links shipped to production rendering as empty
- * anchors. The cast silenced the one error that would have caught it.
- */
+// Typed against the dictionary, never plain strings: a cast here once shipped empty footer links.
 export type NavKey = keyof Dictionary["nav"];
 export type CtaKey = keyof Dictionary["cta"];
 export type FooterKey = keyof Dictionary["footer"]["links"];
 
 type Route = {
-  /**
-   * The route without a locale prefix. Never render this directly: pass it
-   * through `localePath` so /es is owned in one place.
-   *
-   * Provisional English slugs. Whether the Spanish side translates
-   * (`/es/unas`) or mirrors (`/es/nails`) is still open; deciding it changes
-   * `lib/locale.ts` and nothing else.
-   */
+  // No locale prefix. Always render through localePath.
   href: string;
 };
 
@@ -49,44 +19,23 @@ export type FooterItem = Route & { key: FooterKey };
 
 export const siteConfig = {
   business: {
-    /**
-     * The legal name, used in the footer and in LocalBusiness structured data.
-     * This must match the Google Business Profile character for character, or
-     * Google reads the two as separate businesses.
-     */
+    // Must match the Google Business Profile exactly, or Google treats them as two businesses.
     name: "Dani Moreno",
-    /** The tight header mark. Deliberately not derived from `name`. */
     wordmark: "dani",
-    /** Rendered in the nails accent. Colour is navigation, never decoration. */
     wordmarkAccent: ".",
     city: "Calgary",
 
-    /**
-     * Where a contact form enquiry lands.
-     *
-     * **This is the agency's inbox, not hers.** Dani has no business address
-     * yet, so enquiries come here until she does. It is a placeholder with a
-     * real consequence: every booking the site produces arrives in somebody
-     * else's mail until this line changes.
-     */
+    // Placeholder: the agency's inbox, not hers. Every enquiry lands here until this changes.
     email: "frankdmosquera@gmail.com",
     region: "Alberta",
   },
 
   social: {
-    /**
-     * Not yet known. The footer renders the Instagram link only when this is
-     * set, so an unknown handle cannot ship as a dead link. Needed before
-     * feature 8 deploys, since the bio link is the site's main entry point.
-     */
+    // Every Instagram link and line on the site stays hidden while this is null.
     instagram: null as { handle: string; url: string } | null,
   },
 
-  /**
-   * The words in the gradient marquee. The same in both languages, which is
-   * why they are here and not in the dictionaries: four identical strings
-   * duplicated per locale would be pretending to be a decision.
-   */
+  // Same in both languages.
   marquee: ["Nails", "Lashes", "Makeup", "Calgary"],
 
   nav: [

@@ -7,28 +7,10 @@ import { siteConfig } from "@/data/siteConfig";
 import type { Dictionary } from "@/dictionaries";
 import { localePath, type Locale } from "@/lib/locale";
 
-/**
- * The page the Instagram bio link lands on, above the fold.
- *
- * The photograph the mockup puts beside this type was left out of item 3, with
- * the reason recorded in its spec: there were none in the repo and ImageKit was
- * not configured. Item 4 shipped nine and nobody came back, so the page spent
- * four features carrying itself on type alone on a site whose locked direction
- * says photography carries it.
- *
- * It leads with `orderedGallery()[0]` rather than a hand-picked path, because
- * `data/gallery.ts` states the set is ordered strongest first. That keeps the
- * choice in the data, and changing which photograph leads is a reorder there
- * rather than an edit here.
- *
- * Stacked on a phone with the type first, because the headline is what a
- * visitor arriving from a bio link is deciding on. Side by side only from
- * 860px, the same breakpoint the service cards use.
- */
 export function Hero({ locale, t }: { locale: Locale; t: Dictionary }) {
   const c = t.home.hero;
 
-  /** Undefined only if the gallery is empty, which leaves the type-led hero. */
+  // The gallery is ordered strongest first. Reorder data/gallery.ts to change the lead photo.
   const lead = orderedGallery()[0];
 
   return (
@@ -62,23 +44,11 @@ export function Hero({ locale, t }: { locale: Locale; t: Dictionary }) {
             </Link>
           </div>
 
-          {/* Only once there is an account to send her to: a line naming a
-              route that does not exist is worse than no line at all. Setting
-              the handle in siteConfig brings it back with no code change. */}
           {siteConfig.social.instagram ? (
             <p className="mt-4 text-[13.5px] text-ink-faint">{c.dmNote}</p>
           ) : null}
         </div>
 
-        {/*
-          `priority`, because on a phone this is the largest thing above the
-          fold and lazy-loading the LCP element is the one case Next's default
-          gets wrong.
-
-          The panel sits on `bg-shot` rather than the band's own ground: photo
-          panels stay nearer #1B1426 so the work keeps its punch without
-          darkening the whole page. That is a locked decision in the plan.
-        */}
         {lead ? (
           <div className="overflow-hidden rounded-xl border border-line-soft bg-shot min-[860px]:w-[380px] min-[860px]:shrink-0">
             <Photo
@@ -87,7 +57,7 @@ export function Hero({ locale, t }: { locale: Locale; t: Dictionary }) {
               width={lead.width}
               height={lead.height}
               sizes="(min-width: 860px) 380px, 100vw"
-              priority
+              priority // The LCP image on a phone.
               className="block h-auto w-full"
             />
           </div>

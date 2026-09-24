@@ -8,19 +8,7 @@ import { siteConfig } from "@/data/siteConfig";
 import type { Dictionary } from "@/dictionaries";
 import { localePath, type Locale } from "@/lib/locale";
 
-/**
- * The burger and the panel behind it.
- *
- * Client because it holds open/closed state - that is the whole reason. The
- * mockup draws a burger that opens nothing, so the panel's behaviour is
- * defined here rather than ported: Escape closes, focus moves into the panel
- * and returns to the burger, Tab cannot reach the page behind it, and the page
- * cannot scroll while it is open.
- *
- * The dictionary arrives as a prop rather than being imported. Importing it
- * here would pull both locales into the client bundle, so every English
- * visitor would download the Spanish strings.
- */
+// Takes t as a prop: importing the dictionaries here would ship both languages to the client.
 export function MobileNav({ locale, t }: { locale: Locale; t: Dictionary }) {
   const [open, setOpen] = useState(false);
   const burgerRef = useRef<HTMLButtonElement>(null);
@@ -134,9 +122,7 @@ export function MobileNav({ locale, t }: { locale: Locale; t: Dictionary }) {
           {t.cta.book}
         </Link>
 
-        {/* No language switch here. It lives in the header at every width:
-            it is a setting rather than a destination, and changing language
-            reloads the page, which closed this panel underneath the visitor. */}
+        {/* No language switch here: switching reloads the page and closed the panel mid-tap. */}
       </div>
     </>
   );

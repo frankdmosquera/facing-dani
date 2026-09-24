@@ -1,32 +1,6 @@
-/**
- * Uploads a local folder of photographs into the ImageKit media library.
- *
- *   node scripts/uploadImagesToImageKit.mjs <local-dir> <remote-folder> [--dry-run]
- *   node scripts/uploadImagesToImageKit.mjs ./photos/nails nails --dry-run
- *   node scripts/uploadImagesToImageKit.mjs ./photos/nails nails
- *
- * Ported from `face-and-body/scripts/uploadImagesToImageKit.mjs`. Same ImageKit
- * account, different folder.
- *
- * Every photograph on this site is served from ImageKit; `public/` is for icons
- * and the favicon only. The local directory you point this at is a staging area
- * and does not belong in the repo - the repo stores a path, never a photograph.
- *
- * The remote folder is created on demand. ImageKit makes any folder named in an
- * upload request, so there is nothing to set up in the dashboard first.
- *
- * Subfolders are mirrored exactly under `<remote-folder>`, so
- * `./photos/nails/chrome/set-01.jpg` becomes
- * `facing-dani/nails/chrome/set-01.jpg`.
- *
- * Safe to re-run: `overwriteFile` replaces a file in place and
- * `useUniqueFileName` is off, so filenames stay predictable and nothing is ever
- * duplicated with a suffix. Re-running after replacing a photo means bumping
- * MEDIA_VERSION in `lib/imagekit.ts`, or browsers keep showing the old one for
- * a year.
- *
- * The private key is read from .env.local at run time and never printed.
- */
+// Uploads a local folder to ImageKit, mirroring subfolders. Photos never go in the repo.
+//   node scripts/uploadImagesToImageKit.mjs ./photos/nails nails [--dry-run]
+// Overwrites in place, so bump MEDIA_VERSION in lib/imagekit.ts after replacing a photo.
 import fs from "node:fs/promises";
 import path from "node:path";
 
@@ -34,7 +8,7 @@ const ROOT = process.cwd();
 const ENDPOINT = "https://upload.imagekit.io/api/v1/files/upload";
 const CONCURRENCY = 4;
 
-/** Must match IMAGEKIT_FOLDER in lib/imagekit.ts. */
+// Must match IMAGEKIT_FOLDER in lib/imagekit.ts.
 const IMAGEKIT_FOLDER = "facing-dani";
 
 const DRY_RUN = process.argv.includes("--dry-run");
@@ -59,7 +33,7 @@ const TYPES = {
   ".webp": "image/webp",
 };
 
-/** Minimal .env.local reader. The key is used and never printed. */
+// The key is never printed.
 async function readPrivateKey() {
   const raw = await fs.readFile(path.join(ROOT, ".env.local"), "utf8");
   for (const line of raw.split(/\r?\n/)) {
@@ -106,8 +80,7 @@ async function upload(file, auth) {
 
   if (!response.ok) {
     const detail = await response.text();
-    // The key travels in the Authorization header and never comes back in the
-    // response, so this is safe to print. Keep it that way.
+    // Safe to print: the response never contains the key.
     throw new Error(`${response.status} ${detail.slice(0, 200)}`);
   }
 
@@ -115,8 +88,7 @@ async function upload(file, auth) {
 }
 
 async function main() {
-  // A dry run should work on a machine with no key at all, so it is the one
-  // path that does not need .env.local.
+  // A dry run needs no key.
   const auth = DRY_RUN
     ? ""
     : Buffer.from(`${await readPrivateKey()}:`).toString("base64");

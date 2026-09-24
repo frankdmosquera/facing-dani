@@ -53,8 +53,6 @@ export function SiteFooter({ locale, t }: { locale: Locale; t: Dictionary }) {
           </Column>
 
           <Column heading={t.footer.headings.contact}>
-            {/* Rendered only once the handle is known, so an unset one cannot
-                ship as a dead link. */}
             {social.instagram ? (
               <a
                 href={social.instagram.url}

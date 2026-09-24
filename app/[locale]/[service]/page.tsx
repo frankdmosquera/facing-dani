@@ -14,28 +14,11 @@ import { getDictionary } from "@/dictionaries";
 import { defaultLocale, isLocale, localePath } from "@/lib/locale";
 import { jsonLd, serviceSchema } from "@/lib/schema";
 
-/**
- * One template, three pages, three vocabularies.
- *
- * Three routes rather than a single services page, because one page listing
- * everything competes with itself and ranks for none of it. The template is
- * shared; every word on it comes from that service's own dictionary block.
- *
- * `[service]` sits beside the static `gallery` segment. Next resolves a static
- * segment first, so `/gallery` is still the gallery and only the three service
- * slugs reach this file.
- */
-
-/**
- * Both locales come from the layout above; this only has to enumerate its own
- * segment. Slugs are derived from `href` so the URL and the link in the header
- * cannot drift apart.
- */
+// The locales come from the layout; this only lists the services.
 export function generateStaticParams() {
   return orderedServices().map((service) => ({ service: serviceSlug(service) }));
 }
 
-/** Anything that is not one of the three services is not a page. */
 export const dynamicParams = false;
 
 export async function generateMetadata({
@@ -53,12 +36,7 @@ export async function generateMetadata({
   return {
     title: copy.meta.title,
     description: copy.meta.description,
-    /**
-     * Set explicitly, for the same reason the gallery sets it: the layout
-     * points `canonical` and all three `hreflang` values at "/", and a child's
-     * `alternates` replaces the parent's rather than merging. Left out, each of
-     * these three pages would declare the home page to be its canonical.
-     */
+    // Required: without it this page inherits the home page's canonical.
     alternates: {
       canonical: localePath(locale, service.href),
       languages: {
@@ -102,27 +80,20 @@ export default async function ServicePage({
         <TreatmentList serviceId={service.id} t={t} />
       </Band>
 
-      {/* The band only exists when there is work to put in it. `WorkStrip`
-          already renders nothing for a service with no photographs, but the
-          band around it would still draw its padding: an empty gap between
-          the menu and the booking ask that reads as a broken section. */}
+      {/* Checked here too, or the empty band still draws its padding. */}
       {serviceHasWork(service.id) ? (
         <Band glow={false}>
           <WorkStrip serviceId={service.id} locale={locale} t={t} />
         </Band>
       ) : null}
 
-      {/* Stock, under a heading that says so. After her own work rather than
-          before it, so on nails the real sets are what a visitor sees first.
-          Same rule as the strip above: no records, no band. */}
+      {/* Stock photos, after her own work so the real sets come first. */}
       {inspirationFor(service.id).length > 0 ? (
         <Band glow={false}>
           <InspirationGrid serviceId={service.id} t={t} />
         </Band>
       ) : null}
 
-      {/* Its own closing ask, not the gallery's. Three pages sharing one CTA
-          would be the same duplicate-content mistake the ledes avoid. */}
       <BookingBand locale={locale} copy={copy.cta} />
 
       <script

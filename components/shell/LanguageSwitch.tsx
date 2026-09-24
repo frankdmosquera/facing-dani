@@ -11,19 +11,8 @@ import {
   type Locale,
 } from "@/lib/locale";
 
-/**
- * Swaps language on the current page, not back to the home page. From
- * /es/nails it goes to /nails and back, which is the difference between a
- * language switch and a link to the other homepage.
- *
- * Client only because it needs the current path. It is a real link, not a
- * button that pushes, so it is crawlable, middle-clickable, and works with
- * JavaScript off.
- *
- * The current locale comes in as a prop rather than being parsed out of the
- * pathname: under the root rewrite the browser shows "/" while the rendered
- * route is "/en", and the prop is the one that is always right.
- */
+// Same page in the other language: /es/nails <-> /nails.
+// locale comes as a prop because the pathname cannot be trusted under the root rewrite.
 export function LanguageSwitch({
   locale,
   t,

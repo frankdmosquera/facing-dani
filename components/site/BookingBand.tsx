@@ -5,17 +5,7 @@ import { localePath, type Locale } from "@/lib/locale";
 
 import { Band, BandHead, Hot } from "./Band";
 
-/**
- * The closing ask. Last thing on the page, because a visitor who read this far
- * should not have to scroll back up to book.
- *
- * Every page gets one, and each one says something different: the home page
- * closes on "let's do your set", the gallery on "seen one you want". So the
- * copy arrives as a prop rather than being read from `t.home.booking` in here.
- * Reading one page's copy inside a component every page uses is how the same
- * band ends up copy-pasted four times, once per page that needed different
- * words.
- */
+// Copy comes as a prop: each page closes with its own words.
 export type BookingBandCopy = {
   eyebrow: string;
   headingLead: string;
@@ -52,9 +42,6 @@ export function BookingBand({
           {copy.book}
         </Link>
 
-        {/* Rendered only once the handle is known, the same rule the footer
-            uses. The markup is here so it appears the day it lands, rather
-            than shipping a button that goes nowhere. */}
         {siteConfig.social.instagram ? (
           <a
             href={siteConfig.social.instagram.url}

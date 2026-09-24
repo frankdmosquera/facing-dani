@@ -3,19 +3,7 @@ import { treatmentLabel, treatmentsFor } from "@/data/treatments";
 import type { Dictionary } from "@/dictionaries";
 import { formatDuration, formatPrice } from "@/lib/format";
 
-/**
- * What a service costs, as a list rather than a table.
- *
- * A `<table>` would be the semantically tidy choice for three columns, but this
- * is one row of prose per treatment - a name, how long it takes, what it costs -
- * and a two-column price list collapses far better on a phone, which is the
- * product. A definition list keeps the label/value pairing without pretending
- * there is a grid.
- *
- * Generic over the service so the label lookup stays checked: `row.key` is
- * constrained to that service's own treatment keys, so this cannot render a
- * lash label against a nails price.
- */
+// Generic so row.key is typed to this service's own treatments.
 export function TreatmentList<S extends ServiceId>({
   serviceId,
   t,
@@ -26,12 +14,6 @@ export function TreatmentList<S extends ServiceId>({
   const rows = treatmentsFor(serviceId);
   const copy = t.services[serviceId];
 
-  /**
-   * Not a stub. Until Dani sets her prices this is what the page shows, and it
-   * has to read as a new artist still pricing her work rather than as a broken
-   * page. It also keeps a route that the header already links to from being a
-   * dead end.
-   */
   if (rows.length === 0) {
     return (
       <div className="mx-auto max-w-[56ch] rounded-xl border border-line bg-surface p-7 text-center">
@@ -60,14 +42,8 @@ export function TreatmentList<S extends ServiceId>({
             </dd>
           </div>
 
-          {/* The price is the one number a visitor is looking for, so it gets
-              the display face and its own column. Not the service accent: at
-              this size the accent fills fail contrast, and colour on this site
-              means navigation rather than emphasis. */}
           <dd className="font-display shrink-0 text-[17px] font-extrabold tracking-[-0.03em] text-ink">
-            {/* The space is a real character, not just the margin. Without it
-                the text content reads "From$5" to a screen reader and to
-                anyone who copies the line. */}
+            {/* The {" "} is needed, or screen readers read "From$5". */}
             {row.from ? (
               <>
                 <span className="font-body text-[12.5px] font-semibold text-ink-faint">

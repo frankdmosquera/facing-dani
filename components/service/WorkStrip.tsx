@@ -6,21 +6,8 @@ import type { ServiceId } from "@/data/services";
 import type { Dictionary } from "@/dictionaries";
 import { localePath, type Locale } from "@/lib/locale";
 
-/** Enough to prove the work, not so many that this becomes the gallery. */
 const MAX = 6;
 
-/**
- * A few of that service's photographs, with a way through to the full set.
- *
- * Reuses `GalleryFigure` rather than a second figure component, so the hover
- * scrim, the service tag and the missing-endpoint placeholder all behave the
- * same here as on the gallery. The columns are fewer because this strip sits
- * inside a page rather than being the page.
- *
- * Renders nothing at all when the service has no photographs. That is not an
- * edge case: lashes has none, and an empty heading over an empty row would read
- * as a broken section rather than an absent one.
- */
 export function WorkStrip({
   serviceId,
   locale,

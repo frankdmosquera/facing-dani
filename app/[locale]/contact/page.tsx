@@ -8,14 +8,6 @@ import { getDictionary } from "@/dictionaries";
 import { defaultLocale, isLocale, localePath } from "@/lib/locale";
 import { contactPageSchema, jsonLd } from "@/lib/schema";
 
-/**
- * Two routes into a booking on one page: the form, and the DM.
- *
- * The project plan calls the form load-bearing because it is the route for
- * anyone who will not message a teenager on Instagram - the overview's second
- * audience, a mother paying for a grad set - and because the "how did you find
- * me" field is the only attribution this site has.
- */
 export async function generateMetadata({
   params,
 }: PageProps<"/[locale]/contact">): Promise<Metadata> {
@@ -65,11 +57,7 @@ export default async function Contact({
         <ContactForm locale={locale} t={t} />
       </Band>
 
-      {/* The direct booking route: the other half of the build-plan line.
-          The whole band waits for a handle, the same rule the footer and every
-          BookingBand follow. Every line in it is about messaging her, so
-          without an account it would offer a route and then admit there is
-          none. */}
+      {/* Hidden until an Instagram handle exists. */}
       {instagram ? (
         <Band glow={false}>
           <div className="max-w-[54ch]">

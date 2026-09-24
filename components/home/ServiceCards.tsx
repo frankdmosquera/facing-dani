@@ -7,15 +7,6 @@ import { services } from "@/data/services";
 import type { Dictionary } from "@/dictionaries";
 import { localePath, type Locale } from "@/lib/locale";
 
-/**
- * Colour is navigation on this site: pink is nails, violet lashes, orange
- * makeup, on every page. The accent is keyed off the service id, so the two
- * cannot drift.
- *
- * Colour is never the only cue. Each card carries its name as text, so the
- * page works in greyscale and for a colourblind visitor - the accent is
- * reinforcement, not the message.
- */
 const accentText: Record<(typeof services)[number]["id"], string> = {
   nails: "text-nails",
   lashes: "text-lashes",
@@ -40,22 +31,7 @@ export function ServiceCards({
 
   const ordered = [...services].sort((a, b) => a.order - b.order);
 
-  /**
-   * One cover per service, or none.
-   *
-   * **All three or none at all**, and this was measured rather than assumed.
-   * Built per-card first, as the spec asked. The grid stretches every card to
-   * the tallest, so at 1440px all three came out 431px: nails carried a 278px
-   * photograph, and lashes and makeup carried **294px of empty background**
-   * between the blurb and the link. That does not read as "no photo yet", it
-   * reads as two images that failed to load.
-   *
-   * So the row is the unit and the row degrades together - the same judgement
-   * `WorkStrip` already makes about an empty strip, applied one level up.
-   *
-   * This lights up on its own the day lash and makeup photographs land in
-   * `data/gallery.ts`. No code changes with them.
-   */
+  // All three covers or none: the grid stretches cards, so one photo leaves big empty gaps in the others.
   const covers = ordered.map((service) =>
     orderedGallery().find((image) => image.serviceId === service.id),
   );
@@ -87,8 +63,6 @@ export function ServiceCards({
                 </div>
               ) : null}
 
-              {/* The accent as a rule rather than a coloured label: the name
-                  should appear once, and the colour is reinforcement. */}
               <span
                 aria-hidden="true"
                 className={`block h-1 w-full ${accentBar[service.id]}`}

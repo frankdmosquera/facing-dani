@@ -6,14 +6,6 @@ import { Band, Hot } from "@/components/site/Band";
 import { getDictionary } from "@/dictionaries";
 import { defaultLocale, isLocale, localePath } from "@/lib/locale";
 
-/**
- * Where a successful submit lands, so a sent form is unambiguous.
- *
- * Deliberately a real page rather than an inline "thanks" swapped into the
- * form: the plan asks for a page, and a URL change is the clearest possible
- * signal that something happened - it survives a back button, a refresh and a
- * screen reader.
- */
 export async function generateMetadata({
   params,
 }: PageProps<"/[locale]/thank-you">): Promise<Metadata> {
@@ -24,11 +16,7 @@ export async function generateMetadata({
   return {
     title: t.thankYou.meta.title,
     description: t.thankYou.meta.description,
-    /**
-     * Kept out of search. A thank-you page ranks for nothing useful, and
-     * landing on it from Google tells someone their message was sent when it
-     * was not. `follow` stays on so the links out of it still count.
-     */
+    // Landing here from Google would say a message was sent when it was not.
     robots: { index: false, follow: true },
     alternates: {
       canonical: localePath(locale, "/thank-you"),

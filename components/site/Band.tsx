@@ -1,14 +1,3 @@
-/**
- * A page section, with the glow treatment from the mockup.
- *
- * The glow is three blurred colour blobs behind the content, sized and blurred
- * from the `--glow-*` tokens. They live in the theme rather than the markup so
- * that changing the theme reskins the page - and so light mode's "glow becomes
- * tint" rule works without touching a component.
- *
- * `aria-hidden` on the glow because it is decoration. No animation, so nothing
- * to stop under reduced motion.
- */
 export function Band({
   children,
   glow = true,
@@ -17,7 +6,6 @@ export function Band({
 }: {
   children: React.ReactNode;
   glow?: boolean;
-  /** Alternating band background, for rhythm down the page. */
   tinted?: boolean;
   className?: string;
 }) {
@@ -40,7 +28,6 @@ export function Band({
   );
 }
 
-/** Eyebrow, heading and optional lede, the same shape in every band. */
 export function BandHead({
   eyebrow,
   heading,
@@ -63,7 +50,6 @@ export function BandHead({
   );
 }
 
-/** The gradient treatment on part of a heading. */
 export function Hot({ children }: { children: React.ReactNode }) {
   return (
     <span className="bg-[image:var(--hot)] bg-clip-text text-transparent">

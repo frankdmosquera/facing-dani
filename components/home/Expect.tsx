@@ -1,22 +1,6 @@
 import { Band, BandHead } from "@/components/site/Band";
 import type { Dictionary } from "@/dictionaries";
 
-/**
- * What actually happens in the chair, in three steps.
- *
- * This is the trust content the plan describes for "her mother, paying for a
- * grad set": arriving from Google, needing the business to look legitimate in
- * about four seconds. There are no reviews and will not be until item 11, so
- * this section earns trust by being specific instead.
- *
- * Deliberately not a second FAQ. The FAQ below owns booking, duration,
- * location and cancellation, and none of those answers are repeated here.
- *
- * An ordered list, because the order is the content: she looks at your hands
- * before anything else, and most of the appointment happens before any colour.
- * The numbers are `aria-hidden` because `<ol>` already conveys sequence to a
- * screen reader, and reading "one" twice is noise.
- */
 export function Expect({ t }: { t: Dictionary }) {
   const c = t.home.expect;
 

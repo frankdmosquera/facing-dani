@@ -10,24 +10,9 @@ import { getDictionary } from "@/dictionaries";
 import { defaultLocale, isLocale, localePath } from "@/lib/locale";
 import { imageGallerySchema, jsonLd } from "@/lib/schema";
 
-/**
- * How many photos load eagerly. The rest stay lazy, which is the whole point
- * of a long grid.
- */
+// Photos loaded eagerly. The rest are lazy.
 const EAGER = 4;
 
-/**
- * The `alternates` block is not optional and not a copy of the layout's.
- *
- * The layout sets `canonical` and all three `hreflang` values to "/", and a
- * child's `alternates` replaces the parent's rather than merging with it. A
- * page that leaves this out does not inherit something harmless - it tells
- * Google the home page is the canonical version of this one, which is the
- * quiet way a page stops being indexed at all.
- *
- * These stay relative because `metadataBase` is unset until the domain is
- * registered. That is item 9, not this page.
- */
 export async function generateMetadata({
   params,
 }: PageProps<"/[locale]/gallery">): Promise<Metadata> {
@@ -38,6 +23,7 @@ export async function generateMetadata({
   return {
     title: t.gallery.meta.title,
     description: t.gallery.meta.description,
+    // Required: without it this page inherits the home page's canonical.
     alternates: {
       canonical: localePath(locale, "/gallery"),
       languages: {
@@ -62,8 +48,7 @@ export default async function Gallery({
 
   return (
     <main id="main">
-      {/* The page head follows Hero rather than BandHead: BandHead renders an
-          h2, and this is the one heading on the page that has to be the h1. */}
+      {/* Not BandHead: that renders an h2, and this is the page's h1. */}
       <Band className="pt-[26px]!">
         <span className="font-body mb-3 block text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
           {c.eyebrow}
@@ -76,10 +61,6 @@ export default async function Gallery({
         <p className="max-w-[52ch] text-base text-ink-muted">{c.lede}</p>
       </Band>
 
-      {/* Not a stub. With no records this is the whole page, and it is the
-          state the site will genuinely deploy in until her photos are shot and
-          uploaded. It says why the page is empty, because "no photos" on a
-          nail artist's site reads as abandoned rather than as new. */}
       {images.length === 0 ? (
         <Band tinted glow={false}>
           <div className="mx-auto max-w-[56ch] rounded-xl border border-line bg-surface p-7 text-center">
@@ -90,9 +71,7 @@ export default async function Gallery({
           </div>
         </Band>
       ) : (
-        /* The figures are built here, on the server, and handed to the client
-           shell as children. The shell owns the pressed chip and nothing
-           else. */
+        /* Figures render on the server; the client grid only owns the filter. */
         <div className="mx-auto w-full max-w-[var(--site)] px-[var(--gutter)]">
           <GalleryGrid
             chips={galleryServiceCounts().map((entry) => ({
@@ -105,9 +84,7 @@ export default async function Gallery({
             filterLabel={c.filters.label}
             countOne={c.count.one}
             countOther={c.count.other}
-            /* Same array, same order, same pass as the children below. The
-               delegated click reads an index into this, so the two cannot be
-               built separately without the risk of opening the wrong photo. */
+            /* Must stay in the same order as the children: clicks open by index. */
             photos={images.map((image) => ({
               imagekitPath: image.imagekitPath,
               serviceId: image.serviceId,

@@ -1,18 +1,7 @@
 import type { Dictionary } from "./en";
 
-/**
- * The annotation is the whole mechanism. A key that exists in `en` and is
- * missing or misspelled here is a TypeScript error, and `next build` runs
- * TypeScript, so the build fails.
- *
- * There is deliberately no fallback to English. A page that quietly renders
- * half in one language is worse than one that refuses to build, and it is the
- * exact way a bilingual site rots without anyone noticing.
- *
- * Draft copy, written to be corrected. Dani is a native speaker and these
- * strings are hers to approve before launch - "trained in Colombia" in
- * particular is a sales line, not a sentence to translate literally.
- */
+// Typed as Dictionary, so a missing key fails the build. No English fallback on purpose.
+// Draft copy for Dani to approve before launch.
 export const es: Dictionary = {
   meta: {
     title: "Dani Moreno - Uñas, Pestañas y Maquillaje en Calgary",
@@ -369,12 +358,7 @@ export const es: Dictionary = {
     },
   },
 
-  /**
-   * El español no es un objetivo de posicionamiento, así que este título se
-   * escribe para que se lea bien, no para cargar términos de búsqueda.
-   *
-   * `count.other` lleva un `{n}` literal que se reemplaza al renderizar.
-   */
+  // No es objetivo de posicionamiento: el título se escribe para leerse bien.
   gallery: {
     meta: {
       title: "Mi trabajo en Calgary: uñas, pestañas y maquillaje",

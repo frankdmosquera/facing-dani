@@ -4,10 +4,6 @@ import { siteConfig } from "@/data/siteConfig";
 import type { Dictionary } from "@/dictionaries";
 import { localePath, type Locale } from "@/lib/locale";
 
-/**
- * The header and footer mark. Deliberately not the business name: the mark is
- * tight, the name is what has to match the Google Business Profile exactly.
- */
 export function Wordmark({
   locale,
   t,

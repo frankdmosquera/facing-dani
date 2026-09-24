@@ -1,13 +1,5 @@
-/**
- * English is the source of truth for the shape. `Dictionary` is derived from
- * this object, so adding a string here makes the build demand the Spanish one.
- *
- * Deliberately not `as const`: that would type every value as its own string
- * literal, and Spanish would then have to repeat the English words exactly to
- * typecheck. Plain inference gives `string`, which is what a translation is.
- *
- * Only chrome lives here. Page copy arrives with the page that needs it.
- */
+// Source of the Dictionary type: a key added here fails the build until es.ts has it.
+// Not `as const`, so values type as string and Spanish can differ.
 export const en = {
   meta: {
     title: "Dani Moreno - Nails, Lashes and Makeup in Calgary",
@@ -31,15 +23,6 @@ export const en = {
     book: "Book now",
   },
 
-  /**
-   * Headings and links are separate objects so `FooterKey` means "a label a
-   * footer link can use" and nothing else. Flattened, a link could be typed
-   * with the key of a column heading and still compile.
-   *
-   * The footer words some things differently from the nav on purpose -
-   * `gallery` is "The work" up top and "The gallery" down here - so these are
-   * their own strings rather than a reuse of the nav labels.
-   */
   footer: {
     headings: {
       services: "Services",
@@ -62,37 +45,15 @@ export const en = {
     mainNav: "Main",
     openMenu: "Menu",
     closeMenu: "Close menu",
-    /** Appended to the wordmark so the link is not announced as "dani dot". */
     homeSuffix: "home",
   },
 
-  /**
-   * The switch names the language it goes to, in that language, so a visitor
-   * who cannot read the current one can still find it.
-   */
   languageSwitch: {
     to: "Español",
     label: "Ver este sitio en español",
   },
 
-  /**
-   * One block per service. `name` and `blurb` are the home page's cards; the
-   * rest is that service's own page.
-   *
-   * **Each service owns its vocabulary and borrows nobody else's.** Nails owns
-   * gel, acrylic, extensions, chrome and nail art; lashes owns classic, hybrid,
-   * volume and fills; makeup owns grad, bridal, event and glam. Three pages
-   * exist instead of one so that each can rank for its own terms, and that only
-   * works if no two pages say the same thing. If a sentence here would read
-   * correctly under another service, it is the wrong sentence.
-   *
-   * The page lede is deliberately not a reuse of `blurb`: the home page already
-   * ranks with those words.
-   *
-   * `treatments` is empty until Dani sets her prices. `data/treatments.ts` is
-   * typed off these keys, so a row cannot exist without a label, and a nails
-   * row cannot borrow a lashes label.
-   */
+  // Each service owns its own vocabulary. A sentence that fits under another service is the wrong sentence.
   services: {
     nails: {
       name: "Nails",
@@ -201,16 +162,6 @@ export const en = {
     },
   },
 
-  /**
-   * The contact page and its thank-you twin.
-   *
-   * The plan calls this form load-bearing for two separate reasons: it is the
-   * booking route for anyone who will not DM, and `sources` is the only
-   * attribution the site has. No analytics, no cookie banner.
-   *
-   * `errors` are keyed off what the zod schema returns, so a schema message and
-   * a sentence a visitor reads are never the same string.
-   */
   contact: {
     meta: {
       title: "Book a Set in Calgary",
@@ -222,11 +173,6 @@ export const en = {
     headingAccent: "you want",
     lede: "Fill this in and it lands in my inbox. I answer every one, usually the same day, and nothing is booked until we have agreed a time in Calgary that works for both of us.",
 
-    /**
-     * The other half of the build-plan line. The page renders this band only
-     * once the Instagram handle is known, the same rule the footer and every
-     * BookingBand follow.
-     */
     direct: {
       heading: "Would rather just message me?",
       body: "That works too, and it is faster if you already know what you want.",
@@ -264,12 +210,7 @@ export const en = {
       tooLong: "That is longer than the form can take.",
     },
 
-    /**
-     * The form-level failure, in words rather than an error code. It used to
-     * offer DMs as the way through. With no Instagram account and no public
-     * email there is no second route to name, so it names none rather than a
-     * dead one.
-     */
+    // Names no second route: there is no Instagram or public email yet.
     failed:
       "That did not send, and I would rather tell you than pretend it did. Try again in a moment.",
   },
@@ -288,38 +229,18 @@ export const en = {
     home: "Back to the start",
   },
 
-  /**
-   * Shared across the three service pages. The price itself never translates -
-   * it is a shared fact and renders as `$65` in both languages - but the word
-   * in front of an open-ended price does.
-   */
   treatmentList: {
     priceFrom: "From",
     durationLabel: "Takes",
   },
 
-  /**
-   * The stock grid on each service page. The note is not optional: without it
-   * the heading alone could read as her portfolio. No key per image, on
-   * purpose - see `data/decorativeImages.ts`.
-   */
   inspiration: {
     heading: "Inspiration",
     note: "Looks to bring in as a reference. These are stock photos, not my work.",
   },
 
-  /**
-   * Rendered twice from one source: as the visible list and as FAQPage
-   * structured data. They cannot drift apart.
-   *
-   * The location answer deliberately gives no street address. She works by
-   * appointment and publishing one is a privacy call nobody has made.
-   */
   faq: {
-    /**
-     * Names only the form, because there is no Instagram account yet. When
-     * `siteConfig.social.instagram` is set, this answer should offer DMs again.
-     */
+    // Offer DMs here again once siteConfig.social.instagram is set.
     booking: {
       q: "How do I book?",
       a: "Use the form on the contact page. Tell me the service, roughly when suits you, and send a reference photo if you have one.",
@@ -328,6 +249,7 @@ export const en = {
       q: "How long does a full set take?",
       a: "A gel manicure is about an hour. A full set with extensions and art runs two to three hours. Lash sets are around two hours, fills about an hour.",
     },
+    // No street address on purpose: it goes out with the booking.
     location: {
       q: "Where are you located?",
       a: "Calgary, by appointment. The exact address goes out when your booking is confirmed.",
@@ -366,7 +288,6 @@ export const en = {
       sell: "Custom sets, lash extensions and event makeup. Trained in Colombia, booking now in Calgary. Bring a reference photo or let me build something for you.",
       book: "Book with Dani",
       seeWork: "See the work",
-      /** Rendered only once `siteConfig.social.instagram` is set. */
       dmNote: "Or send a DM on Instagram, whatever is easier",
     },
     services: {
@@ -384,48 +305,28 @@ export const en = {
         "I did my training in Colombia, where the standard for nail work is a lot higher than most people here expect. Shape, structure and cuticle work are the parts that decide whether a set still looks good in week three, and they are the parts I was taught to get right.",
       building:
         "Since then I have been doing sets for family and friends constantly, and now I am building this into something of my own. What that means for you is the version of me that still cares enormously about every single set. Bring a photo from Pinterest, or sit down with no idea and we will work it out.",
+      // "Sure of yourself", never "secure": her word "segura" means confident.
       feeling:
         "What I care about most is how you feel when you leave. Not just that the set looks good, but that you walk out feeling beautiful and sure of yourself.",
     },
-    /**
-     * The shop window. Its heading is deliberately not "Gallery": the link says
-     * where it goes, and the heading says what is in it.
-     */
     work: {
       eyebrow: "Recent sets",
       heading: "The work, not the promise",
       all: "See all the work",
     },
 
-    /** Schema only, never rendered: what she is, not what the page is called. */
+    // Schema only, never rendered.
     jobTitle: "Nail, lash and makeup artist",
 
     portraitAlt:
       "The artist, photographed in the salon where she works, wearing a black t-shirt.",
 
-    /**
-     * The bilingual promise, said out loud. This is a locked contract from the
-     * project plan: a translated site tells a visitor she can read it, a fluent
-     * artist tells her she can have the whole appointment in Spanish. Leaving it
-     * implied by a /es URL is exactly what this section exists to prevent.
-     *
-     * The Spanish version is not a translation of this. It is the same promise
-     * written for someone who is already reading in Spanish, because a promise
-     * about fluency delivered in stilted Spanish disproves itself.
-     */
+    // Written fresh in es.ts, not translated: stilted Spanish would disprove the promise.
     bilingual: {
       heading: "Your appointment can be in Spanish",
       body: "Not just this website. Spanish is my first language, so the consultation, the small talk, and the part where you change your mind about the colour all happen in whichever language you are more comfortable in. A translated page only tells you that you can read it. This is me telling you that you will be understood.",
     },
 
-    /**
-     * What actually happens in the chair. Deliberately not a second FAQ: the
-     * FAQ below owns booking, duration, location and cancellation, and none of
-     * those answers are repeated here.
-     *
-     * Keyed rather than an array, for the reason `data/faq.ts` gives - an array
-     * with a missing Spanish entry would compile and ship.
-     */
     expect: {
       eyebrow: "In the chair",
       heading: "What actually happens",
@@ -459,20 +360,7 @@ export const en = {
     },
   },
 
-  /**
-   * The gallery page.
-   *
-   * `meta.title` carries Calgary and the three service terms itself, because
-   * the layout's template only appends the business name and the title is the
-   * headline Google shows. The H1 carries Calgary too.
-   *
-   * `count.other` holds a literal `{n}`, replaced at render. It is never shown
-   * for zero: with no photos the empty state replaces the grid and the filter
-   * row entirely, and a chip only exists for a service that has some.
-   *
-   * `images` is one alt string per photo, keyed. It is empty until her photos
-   * are uploaded, and `data/gallery.ts` is typed off these keys.
-   */
+  // meta.title carries Calgary and the service terms itself: the template only appends the business name.
   gallery: {
     meta: {
       title: "Nail, Lash and Makeup Work in Calgary",
@@ -503,12 +391,7 @@ export const en = {
       book: "Book with Dani",
       instagram: "Message on Instagram",
     },
-    /**
-     * Alt text describes the work, because that is what a visitor who cannot
-     * see the photo is here to learn: the shape, the finish, the detail. It is
-     * not a place for "nails Calgary". The same strings become the `name` of
-     * each ImageObject in the page's structured data.
-     */
+    // Describe the work (shape, finish, detail), not keywords. Also used as ImageObject names.
     lightbox: {
       open: "Open larger: {photo}",
       close: "Close",

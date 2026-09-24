@@ -2,23 +2,10 @@ import type { NextConfig } from "next";
 
 import { defaultLocale, routes } from "./lib/locale";
 
-/**
- * English is served from the root while still living under the [locale]
- * segment, so every page exists once rather than twice.
- *
- * The rewrites are written out one route at a time from the manifest in
- * lib/locale.ts rather than as a catch-all with a negative lookahead. A
- * catch-all here runs before the filesystem and would have to exclude _next,
- * static files and /es by regex, which is exactly the kind of rule that looks
- * right and quietly swallows an asset. An explicit list cannot.
- *
- * The redirects exist so /en/... is never a second URL for the same page.
- * Redirects run before rewrites, and a rewrite is internal, so /en -> / -> (en)
- * resolves without looping.
- */
 const nextConfig: NextConfig = {
   async redirects() {
     return [
+      // /en is never a second URL for a page. Redirects run before rewrites, so this cannot loop.
       { source: `/${defaultLocale}`, destination: "/", permanent: true },
       {
         source: `/${defaultLocale}/:path*`,
@@ -26,12 +13,7 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
 
-      /**
-       * `/about` was deleted in feature 14 and its content moved onto the
-       * home page. Permanent, and listed for both locales because the root
-       * rewrite only covers English: a held link should land somewhere in the
-       * language it was held in.
-       */
+      // /about was merged into the home page.
       { source: "/about", destination: "/", permanent: true },
       { source: "/es/about", destination: "/es", permanent: true },
     ];
@@ -39,6 +21,7 @@ const nextConfig: NextConfig = {
 
   async rewrites() {
     return {
+      // Serves English from the root. One rule per route, not a catch-all that could swallow /_next or /es.
       beforeFiles: routes.map((route) => ({
         source: route,
         destination: route === "/" ? `/${defaultLocale}` : `/${defaultLocale}${route}`,

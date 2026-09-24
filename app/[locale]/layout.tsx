@@ -18,10 +18,6 @@ import { siteUrl } from "@/lib/siteUrl";
 
 import "../globals.css";
 
-/**
- * Unbounded is geometric and wide, confident at size, round enough to stay
- * friendly. Anton read as a gym poster and Fredoka as a cereal box.
- */
 const unbounded = Unbounded({
   variable: "--font-unbounded",
   subsets: ["latin"],
@@ -35,12 +31,11 @@ const inter = Inter({
   display: "swap",
 });
 
-/** Both locales are known at build time, so every page stays static. */
+// Every page below inherits both locales from here, so the whole site is prebuilt.
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-/** Anything outside the two locales is not a page. */
 export const dynamicParams = false;
 
 export async function generateMetadata({
@@ -51,23 +46,11 @@ export async function generateMetadata({
   const t = getDictionary(locale);
 
   return {
-    /**
-     * Makes every relative `canonical` and `hreflang` on the site absolute,
-     * in one place, without touching a single page.
-     *
-     * `undefined` when no domain is configured, which leaves them relative.
-     * That is the intended state rather than a gap: a relative canonical is
-     * resolved against whatever host served the page, while an absolute one
-     * pointing at a preview host is believed.
-     */
+    // Relative canonicals and hreflang until the domain is set.
     metadataBase: siteUrl ? new URL(siteUrl) : undefined,
     title: { default: t.meta.title, template: t.meta.template },
     description: t.meta.description,
-    /**
-     * Set once, here, so every page inherits it. Without hreflang Google reads
-     * the two locales as duplicates and picks one for you, which throws away
-     * the second set of rankings the Spanish pages exist to win.
-     */
+    // Home's values. Every other page must set its own: a child's alternates replace these, not merge.
     alternates: {
       canonical: localePath(locale, "/"),
       languages: {

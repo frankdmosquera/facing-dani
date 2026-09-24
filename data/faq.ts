@@ -2,18 +2,7 @@ import type { Dictionary } from "@/dictionaries/en";
 
 import type { ServiceId } from "./services";
 
-/**
- * The FAQ, as keys and ordering. The questions and answers live in the
- * dictionaries, because they are prose.
- *
- * Keyed rather than an array of strings on purpose: an array would slip past
- * the missing-translation build error, since array length is not type-checked.
- * A Spanish list with four entries instead of five would compile and ship.
- *
- * `serviceId` is `null` for all nine today. It exists now because item 5 may
- * add per-service questions, and the structured data should not need
- * reshaping when it does.
- */
+// Keys, not an array of strings: a missing Spanish answer then fails the build.
 export type FaqKey = keyof Dictionary["faq"];
 
 export type FaqItem = {
@@ -34,7 +23,6 @@ export const faq: FaqItem[] = [
   { key: "hair", order: 9, serviceId: null },
 ];
 
-/** Site-wide questions, in order. Item 5 will filter by `serviceId`. */
 export function siteWideFaq(): FaqItem[] {
   return faq
     .filter((item) => item.serviceId === null)
