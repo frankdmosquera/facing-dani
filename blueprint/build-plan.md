@@ -91,6 +91,12 @@ work, so it comes before the pages that describe it.
   headed "Inspiration" in both languages. Same boundary as 16: no identifiable
   faces, never in the gallery, a work strip or structured data. The lash
   mapping photo from 16 comes out
+- [x] 18. **Her Drive photos in the gallery** - convert the originals Dani put
+  in her Drive folder (mostly iPhone HEIC), Frank cuts them to the strongest
+  from a contact sheet, and they go into the gallery in both languages. Any lash
+  or makeup shots of hers light up those pages' work strips. A recognisable
+  face still stays out until she is asked. The nails and home heroes are picked
+  from this set afterwards
 - [ ] 15. **Domain, indexing and production email** - buy the domain, set the
   site URL so robots stops disallowing everything, and give Resend a sender that
   can mail anyone. Blocked until the domain exists

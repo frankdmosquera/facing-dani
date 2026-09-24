@@ -1,6 +1,6 @@
 # Dani Moreno - Project Overview
 
-<!-- blueprint:source-hash 4f3f4510f6b853ed583fc65f7d4660c6eb2a8610b48d7654773bd521d8bff1fe -->
+<!-- blueprint:source-hash 6d67569a5b614c0eee3a14413c38a2cafa62fcb8f4ea06c4fa1d26484e83344a -->
 
 > A bilingual, SEO-first marketing site for a nail, lash and makeup artist in
 > Calgary, and the first build of a reusable template for beauty businesses.
@@ -54,7 +54,7 @@ No accounts and no access tiers. Every page is public.
 ## Features
 
 In build-plan order. Numbers are stable identifiers, not sequence: 11 to 13 are
-post-MVP and 14 to 17 were added later, so the MVP runs 1-10, 14, 16, 17, then 15.
+post-MVP and 14 to 18 were added later, so the MVP runs 1-10, 14, 16-18, then 15.
 
 Every content item is done only when it exists in both languages, carries its
 own metadata, JSON-LD and hreflang, and has real copy rather than placeholders.
@@ -99,7 +99,10 @@ own metadata, JSON-LD and hreflang, and has real copy rather than placeholders.
 17. **Inspiration grids on the service pages** - licensed stock on nails, lashes
     and makeup, 11 to 14 images each as Frank picked them, headed "Inspiration"
     in both languages, under 16's boundary. The lash mapping photo from 16
-    comes out. **Next.** Ahead of 15 because 15 is blocked.
+    comes out. Done.
+18. **Her Drive photos in the gallery** - her HEIC originals converted, cut to
+    the strongest by Frank, and added to the gallery in both languages. A
+    recognisable face stays out until she is asked. **Next.**
 15. **Domain, indexing and production email** - buy the domain, set the site URL
     so robots stops disallowing everything, and give Resend a sender that can
     mail anyone. **Blocked until the domain exists, and it gates launch.**

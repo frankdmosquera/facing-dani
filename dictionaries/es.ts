@@ -431,6 +431,24 @@ export const es: Dictionary = {
         "Uñas cuadradas con francesas en pastel rosa, amarillo y verde, un color por dedo",
       lilacSquare:
         "Uñas cuadradas en lila perlado con brillo iridiscente, sin arte",
+      christmasShortSet:
+        "Uñas cortas con francesa roja, un moño de regalo pintado a mano, un copo de nieve y una raya de bastón de caramelo",
+      whiteFlowerGoldFrench:
+        "Uñas cuadradas con francesa blanca bordeada en dorado, una flor blanca en relieve en una uña y un pequeño dije dorado en otra",
+      spiderAccentFrench:
+        "Uñas cuadradas con francesa blanca, una uña naranja con una araña negra pintada y una letra dorada en la siguiente",
+      heartsFrench:
+        "Uñas cuadradas cortas con francesa blanca, corazones delineados, un grupo de cristales y una uña iridiscente",
+      almondBowFrench:
+        "Uñas almendradas con francesa blanca, perlas pequeñas y un moño rosa en relieve en una uña",
+      pinkFrenchCrystals:
+        "Uñas cuadradas con francesa rosa intenso, una línea de cristales en una uña y un acento rosa perlado",
+      goldLeafFrench:
+        "Primer plano de uñas cuadradas con hojuelas doradas, francesa blanca, estrellas blancas pintadas a mano y un diseño de hojas blancas",
+      clearCoffinLinework:
+        "Uñas coffin largas transparentes con líneas blancas finas y detalles de remolinos dorados",
+      pinkBlackStars:
+        "Uñas rosa y negro con estrellas pintadas a mano, una uña con manchas de leopardo y líneas finas de francesa",
     },
   },
 };

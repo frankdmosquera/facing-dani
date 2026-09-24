@@ -535,6 +535,24 @@ export const en = {
         "Square nails with pastel pink, yellow and green french tips, one colour per finger",
       lilacSquare:
         "Square nails in a pearly lilac with an iridescent shimmer, no nail art",
+      christmasShortSet:
+        "Short nails with a red french tip, a hand-painted gift bow, a snowflake and a candy-cane stripe",
+      whiteFlowerGoldFrench:
+        "Square nails with a white french tip edged in gold, a raised white flower on one nail and a small gold charm on another",
+      spiderAccentFrench:
+        "Square nails with a white french tip, an orange accent nail with a painted black spider and a gold script letter on the next",
+      heartsFrench:
+        "Short square nails with a white french tip, outlined hearts, a crystal cluster and an iridescent accent nail",
+      almondBowFrench:
+        "Almond nails with a white french tip, small pearls and a raised pink bow on one nail",
+      pinkFrenchCrystals:
+        "Square nails with a bright pink french tip, a line of crystals on one nail and a pink pearl-chrome accent",
+      goldLeafFrench:
+        "Close-up of square nails with gold flakes, a white french tip, hand-painted white stars and a white leaf pattern",
+      clearCoffinLinework:
+        "Long clear coffin nails with fine white linework and gold swirl details",
+      pinkBlackStars:
+        "Pink and black nails with hand-painted stars, a leopard-spot nail and thin french lines",
     },
   },
 };

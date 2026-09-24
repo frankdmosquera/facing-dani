@@ -10,15 +10,22 @@ import { services, type ServiceId } from "./services";
  * Adding a record means adding its English alt first, which makes the build
  * demand the Spanish one.
  *
- * Every record here is her own work, cut from the 72 photographs she sent on
- * 2026-09-21. The one thing this file must never contain is stock photography:
- * a gallery on a nail artist's site is a claim that this is her work, and a
- * client who books on a borrowed photo finds out in the chair.
+ * Every record here is her own work, cut from the photographs she put in her
+ * Drive folder on 2026-09-21. The one thing this file must never contain is
+ * stock photography: a gallery on a nail artist's site is a claim that this is
+ * her work, and a client who books on a borrowed photo finds out in the chair.
+ * Stock lives in `data/decorativeImages.ts`, under a heading that says so.
  *
- * Nine nail sets and nothing else. Two shots of a makeup look exist and are held
- * back because the model's face is recognisable and nobody has asked her. There
- * are no lash photographs at all, which is why `lashes` has no chip on the
- * page - see the filter rule in `galleryServiceCounts`.
+ * Eighteen nail sets and nothing else. The folder holds 101 stills, but the
+ * first nine came from a download that only ever saved the first of two zips,
+ * so 29 photos went unseen until 2026-09-23. Orders 10 to 18 are Frank's picks
+ * from the full set, each cropped on a 10% grid he called by eye.
+ *
+ * Every makeup look in the folder shows the client's whole face, so none is
+ * here until the person in it says yes. There are no lash photographs at all,
+ * which is why `lashes` has no chip on the page - see the filter rule in
+ * `galleryServiceCounts`. Her phone writes GPS into every original; the files
+ * uploaded here were re-encoded without it, and any new one must be too.
  *
  * Every frame is cropped to the nails. The masters shipped uncropped at first,
  * which put a whole hand in every tile and made the grid read as hands rather
@@ -32,7 +39,10 @@ import { services, type ServiceId } from "./services";
  *
  * Ordered strongest first: the first four load eagerly and are what a visitor
  * sees before scrolling, so the work with visible craft leads - painted flowers,
- * chrome, crystals - and the plain single colours follow.
+ * chrome, crystals - and the plain single colours follow. Orders 10 to 18 are
+ * not ranked yet: they sit in pick order so the home page and the nails strip
+ * did not move when they arrived. Ranking all eighteen comes with choosing the
+ * home and nails heroes.
  */
 export type GalleryKey = keyof Dictionary["gallery"]["images"];
 
@@ -66,6 +76,15 @@ export const gallery: GalleryImage[] = [
   { key: "pastelFrenchTips", imagekitPath: "/nails/pastel-french-tips.jpg", serviceId: "nails", order: 7, width: 960, height: 1040 },
   { key: "pinkFloralArt", imagekitPath: "/nails/pink-floral-art.jpg", serviceId: "nails", order: 8, width: 741, height: 1500 },
   { key: "palePinkGloss", imagekitPath: "/nails/pale-pink-gloss.jpg", serviceId: "nails", order: 9, width: 1966, height: 1814 },
+  { key: "christmasShortSet", imagekitPath: "/nails/christmas-short-set.jpg", serviceId: "nails", order: 10, width: 864, height: 1536 },
+  { key: "whiteFlowerGoldFrench", imagekitPath: "/nails/white-flower-gold-french.jpg", serviceId: "nails", order: 11, width: 605, height: 986 },
+  { key: "spiderAccentFrench", imagekitPath: "/nails/spider-accent-french.jpg", serviceId: "nails", order: 12, width: 807, height: 1104 },
+  { key: "heartsFrench", imagekitPath: "/nails/hearts-french.jpg", serviceId: "nails", order: 13, width: 1461, height: 2560 },
+  { key: "almondBowFrench", imagekitPath: "/nails/almond-bow-french.jpg", serviceId: "nails", order: 14, width: 2194, height: 2560 },
+  { key: "pinkFrenchCrystals", imagekitPath: "/nails/pink-french-crystals.jpg", serviceId: "nails", order: 15, width: 1968, height: 2560 },
+  { key: "goldLeafFrench", imagekitPath: "/nails/gold-leaf-french.jpg", serviceId: "nails", order: 16, width: 1361, height: 645 },
+  { key: "clearCoffinLinework", imagekitPath: "/nails/clear-coffin-linework.jpg", serviceId: "nails", order: 17, width: 1920, height: 2560 },
+  { key: "pinkBlackStars", imagekitPath: "/nails/pink-black-stars.jpg", serviceId: "nails", order: 18, width: 2560, height: 2219 },
 ];
 
 /** Photos in display order. */
