@@ -311,7 +311,7 @@ export const es: Dictionary = {
         "Lo que más me importa es cómo te sientes cuando te vas. No solo que el set se vea bien, sino que salgas sintiéndote hermosa y segura de ti misma.",
     },
     work: {
-      eyebrow: "Sets recientes",
+      eyebrow: "Trabajo reciente",
       heading: "El trabajo, no la promesa",
       all: "Ver todo el trabajo",
     },

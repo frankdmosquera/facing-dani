@@ -311,7 +311,7 @@ export const en = {
         "What I care about most is how you feel when you leave. Not just that the set looks good, but that you walk out feeling beautiful and sure of yourself.",
     },
     work: {
-      eyebrow: "Recent sets",
+      eyebrow: "Recent work",
       heading: "The work, not the promise",
       all: "See all the work",
     },
