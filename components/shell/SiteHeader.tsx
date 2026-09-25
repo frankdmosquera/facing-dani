@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { siteConfig } from "@/data/siteConfig";
 import type { Dictionary } from "@/dictionaries";
+import { bookingHref, bookingTrigger } from "@/lib/bookingConfig";
 import { localePath, type Locale } from "@/lib/locale";
 
 import { HeaderScrollHider } from "./HeaderScrollHider";
@@ -41,12 +42,13 @@ export function SiteHeader({ locale, t }: { locale: Locale; t: Dictionary }) {
           {/* Padding grows the tap target to about 44px without moving anything. */}
           <LanguageSwitch locale={locale} t={t} className="-mx-2 px-2 py-3" />
 
-          <Link
-            href={localePath(locale, siteConfig.cta.href)}
+          <a
+            href={bookingHref()}
+            {...bookingTrigger()}
             className="hidden hover-glow rounded-pill bg-[image:var(--hot)] px-[22px] py-[11px] text-[14px] font-bold text-on-hot focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring min-[900px]:inline-block"
           >
             {t.cta.book}
-          </Link>
+          </a>
 
           <MobileNav locale={locale} t={t} />
         </div>

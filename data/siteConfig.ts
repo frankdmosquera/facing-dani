@@ -14,7 +14,8 @@ type Route = {
 };
 
 export type NavItem = Route & { key: NavKey };
-export type CtaItem = Route & { key: CtaKey };
+// No href: every Book button goes through lib/bookingConfig.
+export type CtaItem = { key: CtaKey };
 export type FooterItem = Route & { key: FooterKey };
 
 export const siteConfig = {
@@ -51,7 +52,7 @@ export const siteConfig = {
     { key: "logos", href: "/logos" },
   ] satisfies NavItem[],
 
-  cta: { key: "book", href: "/contact" } satisfies CtaItem,
+  cta: { key: "book" } satisfies CtaItem,
 
   footer: {
     services: [
@@ -61,7 +62,7 @@ export const siteConfig = {
       { key: "gallery", href: "/gallery" },
     ] satisfies FooterItem[],
     contact: [
-      { key: "bookAppointment", href: "/contact" },
+      { key: "contact", href: "/contact" },
         { key: "faq", href: "/#faq" },
     ] satisfies FooterItem[],
   },

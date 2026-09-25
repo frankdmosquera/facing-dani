@@ -1,7 +1,5 @@
-import Link from "next/link";
-
 import { siteConfig } from "@/data/siteConfig";
-import { localePath, type Locale } from "@/lib/locale";
+import { bookingHref, bookingTrigger } from "@/lib/bookingConfig";
 
 import { Band, BandHead, Hot } from "./Band";
 
@@ -15,13 +13,7 @@ export type BookingBandCopy = {
   instagram: string;
 };
 
-export function BookingBand({
-  locale,
-  copy,
-}: {
-  locale: Locale;
-  copy: BookingBandCopy;
-}) {
+export function BookingBand({ copy }: { copy: BookingBandCopy }) {
   return (
     <Band>
       <BandHead
@@ -35,12 +27,13 @@ export function BookingBand({
       />
 
       <div className="flex flex-col gap-3 min-[560px]:flex-row">
-        <Link
-          href={localePath(locale, siteConfig.cta.href)}
+        <a
+          href={bookingHref()}
+          {...bookingTrigger()}
           className="hover-glow rounded-pill bg-[image:var(--hot)] px-7 py-4 text-center text-[15px] font-bold text-on-hot focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
         >
           {copy.book}
-        </Link>
+        </a>
 
         {siteConfig.social.instagram ? (
           <a

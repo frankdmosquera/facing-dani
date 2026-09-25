@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Unbounded } from "next/font/google";
 import { notFound } from "next/navigation";
 
+import { BookingPopup } from "@/components/booking/BookingPopup";
 import { ThemePreview } from "@/components/logos/LogoPreview";
 import { SiteFooter } from "@/components/shell/SiteFooter";
 import { SiteHeader } from "@/components/shell/SiteHeader";
@@ -89,6 +90,7 @@ export default async function LocaleLayout({
         {children}
         <SiteFooter locale={activeLocale} t={t} />
         <ThemePreview />
+        <BookingPopup />
       </body>
     </html>
   );

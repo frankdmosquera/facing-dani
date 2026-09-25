@@ -35,6 +35,7 @@ export const en = {
       makeup: "Makeup",
       gallery: "The gallery",
       bookAppointment: "Book an appointment",
+      contact: "Questions and events",
       about: "About",
       faq: "FAQ",
       instagram: "Instagram",
@@ -233,6 +234,7 @@ export const en = {
   treatmentList: {
     priceFrom: "From",
     durationLabel: "Takes",
+    book: "Book",
   },
 
   inspiration: {

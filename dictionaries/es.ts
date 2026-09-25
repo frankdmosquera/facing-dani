@@ -37,6 +37,7 @@ export const es: Dictionary = {
       makeup: "Maquillaje",
       gallery: "La galería",
       bookAppointment: "Reservar una cita",
+      contact: "Preguntas y eventos",
       about: "Sobre mí",
       faq: "Preguntas frecuentes",
       instagram: "Instagram",
@@ -236,6 +237,7 @@ export const es: Dictionary = {
   treatmentList: {
     priceFrom: "Desde",
     durationLabel: "Dura",
+    book: "Reservar",
   },
 
   inspiration: {

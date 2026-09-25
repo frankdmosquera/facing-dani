@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { siteConfig } from "@/data/siteConfig";
 import type { Dictionary } from "@/dictionaries";
+import { bookingHref, bookingTrigger } from "@/lib/bookingConfig";
 import { localePath, type Locale } from "@/lib/locale";
 
 // Takes t as a prop: importing the dictionaries here would ship both languages to the client.
@@ -114,13 +115,14 @@ export function MobileNav({ locale, t }: { locale: Locale; t: Dictionary }) {
           ))}
         </nav>
 
-        <Link
-          href={localePath(locale, siteConfig.cta.href)}
+        <a
+          href={bookingHref()}
+          {...bookingTrigger()}
           onClick={() => setOpen(false)}
           className="mt-8 hover-glow rounded-pill bg-[image:var(--hot)] px-7 py-4 text-center text-[15px] font-bold text-on-hot focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
         >
           {t.cta.book}
-        </Link>
+        </a>
 
         {/* No language switch here: switching reloads the page and closed the panel mid-tap. */}
       </div>

@@ -1,6 +1,7 @@
 import type { ServiceId } from "@/data/services";
 import { treatmentLabel, treatmentsFor } from "@/data/treatments";
 import type { Dictionary } from "@/dictionaries";
+import { bookingHref, bookingTrigger, eventSlug } from "@/lib/bookingConfig";
 import { formatDuration, formatPrice } from "@/lib/format";
 
 // Generic so row.key is typed to this service's own treatments.
@@ -42,16 +43,32 @@ export function TreatmentList<S extends ServiceId>({
             </dd>
           </div>
 
-          <dd className="font-display shrink-0 text-[17px] font-extrabold tracking-[-0.03em] text-ink">
-            {/* The {" "} is needed, or screen readers read "From$5". */}
-            {row.from ? (
-              <>
-                <span className="font-body text-[12.5px] font-semibold text-ink-faint">
-                  {t.treatmentList.priceFrom}
-                </span>{" "}
-              </>
-            ) : null}
-            {formatPrice(row.priceCad)}
+          <dd className="flex shrink-0 items-center gap-4">
+            <span className="font-display text-[17px] font-extrabold tracking-[-0.03em] text-ink">
+              {/* The {" "} is needed, or screen readers read "From$5". */}
+              {row.from ? (
+                <>
+                  <span className="font-body text-[12.5px] font-semibold text-ink-faint">
+                    {t.treatmentList.priceFrom}
+                  </span>{" "}
+                </>
+              ) : null}
+              {formatPrice(row.priceCad)}
+            </span>
+
+            {/* Add-ons are chosen inside a booking. The spacer keeps their price in line with the rows that have a button. */}
+            {row.addOn ? (
+              <span aria-hidden="true" className="w-[92px]" />
+            ) : (
+              <a
+                href={bookingHref(eventSlug(serviceId, String(row.key)))}
+                {...bookingTrigger(eventSlug(serviceId, String(row.key)))}
+                aria-label={`${t.treatmentList.book}: ${treatmentLabel(t, serviceId, row.key)}`}
+                className="hover-fill min-w-[92px] rounded-pill border border-line px-4 py-2 text-center text-[13.5px] font-bold text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              >
+                {t.treatmentList.book}
+              </a>
+            )}
           </dd>
         </div>
       ))}

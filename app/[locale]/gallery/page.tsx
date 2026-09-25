@@ -112,7 +112,7 @@ export default async function Gallery({
         </div>
       )}
 
-      <BookingBand locale={locale} copy={c.cta} />
+      <BookingBand copy={c.cta} />
 
       {schema ? (
         <script

@@ -12,6 +12,8 @@ export type TreatmentRow<S extends ServiceId> = {
   from?: boolean;
   durationMinutes: number;
   order: number;
+  // Done inside another appointment, so it has no Book button and no Cal.com event of its own.
+  addOn?: true;
 };
 
 export type Treatments = { [S in ServiceId]: TreatmentRow<S>[] };
@@ -23,9 +25,9 @@ export const treatments: Treatments = {
     { key: "acrylicFill", priceCad: 40, durationMinutes: 75, order: 3 },
     { key: "gelXFullSet", priceCad: 70, from: true, durationMinutes: 120, order: 4 },
     { key: "gelXFill", priceCad: 55, durationMinutes: 90, order: 5 },
-    { key: "french", priceCad: 10, durationMinutes: 15, order: 6 },
-    { key: "chrome", priceCad: 15, durationMinutes: 15, order: 7 },
-    { key: "nailArt", priceCad: 5, from: true, durationMinutes: 15, order: 8 },
+    { key: "french", priceCad: 10, durationMinutes: 15, order: 6, addOn: true },
+    { key: "chrome", priceCad: 15, durationMinutes: 15, order: 7, addOn: true },
+    { key: "nailArt", priceCad: 5, from: true, durationMinutes: 15, order: 8, addOn: true },
     { key: "removal", priceCad: 10, from: true, durationMinutes: 30, order: 9 },
   ],
   lashes: [
@@ -39,7 +41,7 @@ export const treatments: Treatments = {
     { key: "softGlam", priceCad: 75, durationMinutes: 60, order: 1 },
     { key: "fullGlam", priceCad: 95, durationMinutes: 75, order: 2 },
     { key: "bridalParty", priceCad: 85, durationMinutes: 60, order: 3 },
-    { key: "stripLashes", priceCad: 10, durationMinutes: 10, order: 4 },
+    { key: "stripLashes", priceCad: 10, durationMinutes: 15, order: 4, addOn: true },
   ],
 };
 

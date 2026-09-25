@@ -5,6 +5,7 @@ import { Band, Hot } from "@/components/site/Band";
 import { HOME_HERO, galleryImage } from "@/data/gallery";
 import { siteConfig } from "@/data/siteConfig";
 import type { Dictionary } from "@/dictionaries";
+import { bookingHref, bookingTrigger } from "@/lib/bookingConfig";
 import { localePath, type Locale } from "@/lib/locale";
 
 export function Hero({ locale, t }: { locale: Locale; t: Dictionary }) {
@@ -29,12 +30,13 @@ export function Hero({ locale, t }: { locale: Locale; t: Dictionary }) {
           </p>
 
           <div className="flex flex-col gap-3 min-[560px]:flex-row">
-            <Link
-              href={localePath(locale, siteConfig.cta.href)}
+            <a
+              href={bookingHref()}
+              {...bookingTrigger()}
               className="hover-glow rounded-pill bg-[image:var(--hot)] px-7 py-4 text-center text-[15px] font-bold text-on-hot focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
             >
               {c.book}
-            </Link>
+            </a>
             <Link
               href={localePath(locale, "/gallery")}
               className="hover-fill rounded-pill border border-line px-7 py-4 text-center text-[15px] font-bold text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
