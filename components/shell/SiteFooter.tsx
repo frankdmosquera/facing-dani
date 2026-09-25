@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { siteConfig } from "@/data/siteConfig";
 import type { Dictionary } from "@/dictionaries";
+import { bookingHref, bookingTrigger } from "@/lib/bookingConfig";
 import { localePath, type Locale } from "@/lib/locale";
 
 import { Wordmark } from "./Wordmark";
@@ -63,6 +64,9 @@ export function SiteFooter({ locale, t }: { locale: Locale; t: Dictionary }) {
                 {t.footer.links.instagram}
               </a>
             ) : null}
+            <a href={bookingHref()} {...bookingTrigger()} className={linkClass}>
+              {t.footer.links.bookAppointment}
+            </a>
             {footer.contact.map((item) => (
               <Link
                 key={item.key}

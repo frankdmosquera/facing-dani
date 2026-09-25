@@ -94,7 +94,7 @@ export default async function ServicePage({
         </Band>
       ) : null}
 
-      <BookingBand locale={locale} copy={copy.cta} />
+      <BookingBand copy={copy.cta} />
 
       <script
         type="application/ld+json"

@@ -27,7 +27,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
       <Bilingual t={t} />
       <Expect t={t} />
       <Faq t={t} />
-      <BookingBand locale={locale} copy={t.home.booking} />
+      <BookingBand copy={t.home.booking} />
 
       {/* Once for the whole site, not on every page. */}
       <script
