@@ -19,6 +19,7 @@ export const es: Dictionary = {
     lashes: "Pestañas",
     makeup: "Maquillaje",
     gallery: "El trabajo",
+    logos: "Logos",
   },
 
   cta: {

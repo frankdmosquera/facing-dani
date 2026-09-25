@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 import { defaultLocale, localePath, locales, routes } from "@/lib/locale";
 import { siteConfig } from "@/data/siteConfig";
 
-const NOINDEX: readonly string[] = ["/thank-you"];
+const NOINDEX: readonly string[] = ["/thank-you", "/logos"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = siteConfig.business.website;

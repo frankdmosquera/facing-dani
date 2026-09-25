@@ -47,6 +47,8 @@ export const siteConfig = {
     { key: "lashes", href: "/lashes" },
     { key: "makeup", href: "/makeup" },
     { key: "gallery", href: "/gallery" },
+    // Temporary, while Dani chooses a logo and theme. The page itself is noindex.
+    { key: "logos", href: "/logos" },
   ] satisfies NavItem[],
 
   cta: { key: "book", href: "/contact" } satisfies CtaItem,

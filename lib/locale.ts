@@ -19,6 +19,7 @@ export const routes = [
   "/gallery",
   "/contact",
   "/thank-you",
+  "/logos",
 ] as const;
 
 // localePath("en", "/nails") -> "/nails", localePath("es", "/nails") -> "/es/nails"

@@ -83,26 +83,26 @@
 }
 
 :root {
-  /* Black and gold, to match her logo. All four accents clear 4.5:1 on --ground.
-     The previous palette, After Party, is kept in blueprint/reference/palette-after-party.css. */
+  /* After Party, from prototypes/theme.css. All four accents clear 4.5:1 on --ground.
+     Black and gold, tried for a day to match her logo, is kept in blueprint/reference/palette-black-and-gold.css. */
 
   /* surfaces */
-  --ground: #0e0c0a;
-  --surface: #1c1915;
-  --surface-2: #161310;
-  --shot: #080706;
-  --line: #3d3429;
-  --line-soft: #2b251e;
+  --ground: #261f36;
+  --surface: #352948;
+  --surface-2: #2e2440;
+  --shot: #1b1426;
+  --line: #514165;
+  --line-soft: #3d3152;
 
   /* ink. --ink-faint is the lightest that still clears 4.5:1 on --surface. */
-  --ink: #f8f2e7;
-  --ink-muted: #c7bca9;
-  --ink-faint: #a99e8b;
+  --ink: #f6f2fa;
+  --ink-muted: #b3a8c2;
+  --ink-faint: #9f94af;
 
   /* accents */
-  --nails: #e9bf5f;
-  --lashes: #eba3a6;
-  --makeup: #db8a4f;
+  --nails: #ff3d8f;
+  --lashes: #a97bff;
+  --makeup: #ff8a3d;
   --confirm: #3de8b0;
 
   --nails-on-light: #d4176b;
@@ -110,14 +110,14 @@
   --makeup-on-light: #bf5710;
   --confirm-on-light: #0e8f63;
 
-  --hot: linear-gradient(92deg, #f6dc8f, #d4a23c 55%, #b9832a);
-  --on-hot: #1a1206;
+  --hot: linear-gradient(92deg, var(--nails), var(--makeup));
+  --on-hot: #231a31;
 
   /* section glow */
   --glow-blur: 90px;
-  --glow-a: rgb(233 191 95 / 0.26);
-  --glow-b: rgb(235 163 166 / 0.14);
-  --glow-c: rgb(219 138 79 / 0.14);
+  --glow-a: rgb(255 61 143 / 0.42);
+  --glow-b: rgb(169 123 255 / 0.34);
+  --glow-c: rgb(255 138 61 / 0.22);
 
   /* type. next/font sets --font-unbounded and --font-inter on <html>. */
   --display: var(--font-unbounded, "Unbounded"), system-ui, sans-serif;
@@ -160,7 +160,7 @@
   --chart-5: var(--ink-faint);
 }
 
-/* Light theme. Nothing activates it yet. Glow becomes a pale tint: blurred blobs smudge on light. */
+/* Light theme. Only the switch on /logos activates it. Glow becomes a pale tint: blurred blobs smudge on light. */
 .light {
   --ground: #faf6fc;
   --surface: #ffffff;
@@ -184,25 +184,40 @@
   --primary-foreground: #ffffff;
 }
 
-/* Temporary: the old After Party palette, switched on by PaletteCompare for Dani to compare. Delete with it. */
-:root.after-party {
-  --ground: #261f36;
-  --surface: #352948;
-  --surface-2: #2e2440;
-  --shot: #1b1426;
-  --line: #514165;
-  --line-soft: #3d3152;
-  --ink: #f6f2fa;
-  --ink-muted: #b3a8c2;
-  --ink-faint: #9f94af;
-  --nails: #ff3d8f;
-  --lashes: #a97bff;
-  --makeup: #ff8a3d;
-  --hot: linear-gradient(92deg, var(--nails), var(--makeup));
-  --on-hot: #231a31;
-  --glow-a: rgb(255 61 143 / 0.42);
-  --glow-b: rgb(169 123 255 / 0.34);
-  --glow-c: rgb(255 138 61 / 0.22);
+/* Black and gold, for the theme switch on /logos only. Same values as blueprint/reference/palette-black-and-gold.css. */
+:root.gold {
+  /* surfaces */
+  --ground: #0e0c0a;
+  --surface: #1c1915;
+  --surface-2: #161310;
+  --shot: #080706;
+  --line: #3d3429;
+  --line-soft: #2b251e;
+
+  /* ink. --ink-faint is the lightest that still clears 4.5:1 on --surface. */
+  --ink: #f8f2e7;
+  --ink-muted: #c7bca9;
+  --ink-faint: #a99e8b;
+
+  /* accents */
+  --nails: #e9bf5f;
+  --lashes: #eba3a6;
+  --makeup: #db8a4f;
+  --confirm: #3de8b0;
+
+  --nails-on-light: #d4176b;
+  --lashes-on-light: #7b45e0;
+  --makeup-on-light: #bf5710;
+  --confirm-on-light: #0e8f63;
+
+  --hot: linear-gradient(92deg, #f6dc8f, #d4a23c 55%, #b9832a);
+  --on-hot: #1a1206;
+
+  /* section glow */
+  --glow-blur: 90px;
+  --glow-a: rgb(233 191 95 / 0.26);
+  --glow-b: rgb(235 163 166 / 0.14);
+  --glow-c: rgb(219 138 79 / 0.14);
 }
 
 @layer base {

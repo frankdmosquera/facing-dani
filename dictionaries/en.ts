@@ -17,6 +17,7 @@ export const en = {
     lashes: "Lashes",
     makeup: "Makeup",
     gallery: "The work",
+    logos: "Logos",
   },
 
   cta: {

@@ -5,6 +5,8 @@ import { siteConfig } from "@/data/siteConfig";
 import type { Dictionary } from "@/dictionaries";
 import { localePath, type Locale } from "@/lib/locale";
 
+import { LogoPreview } from "@/components/logos/LogoPreview";
+
 export function Wordmark({
   locale,
   t,
@@ -17,17 +19,19 @@ export function Wordmark({
   return (
     <Link
       href={localePath(locale, "/")}
-      className={`inline-flex items-center gap-2.5 font-display text-[19px] font-extrabold tracking-[-0.04em] text-ink ${className ?? ""}`}
+      className={`inline-flex items-center gap-2.5 font-display text-[22.5px] font-extrabold min-[900px]:text-[24px] tracking-[-0.04em] text-ink ${className ?? ""}`}
     >
       {/* Sized in em so the footer's larger text scales it. The name is inside the logo, so it is spoken, not shown. */}
-      <Image
-        src="/logo.png"
-        alt=""
-        width={96}
-        height={96}
-        priority
-        className="size-[3em] shrink-0 rounded-full min-[900px]:size-[4em]"
-      />
+      <LogoPreview className="size-[3em] shrink-0 min-[900px]:size-[4em]">
+        <Image
+          src="/logo.png"
+          alt=""
+          width={96}
+          height={96}
+          priority
+          className="size-[3em] shrink-0 rounded-full min-[900px]:size-[4em]"
+        />
+      </LogoPreview>
       <span className="sr-only">
         {siteConfig.business.name}, {t.a11y.homeSuffix}
       </span>
