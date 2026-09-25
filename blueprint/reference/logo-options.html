@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Logo options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Great+Vibes&family=Inter:wght@400;600&display=block" rel="stylesheet">
+<style>
+  body { margin: 0; background: #261f36; color: #f6f2fa; font-family: Inter, system-ui, sans-serif; }
+  .wrap { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; padding: 40px; max-width: 1200px; margin: 0 auto; }
+  .opt { min-width: 0; background: #2e2440; border: 1px solid #3d3152; border-radius: 22px; padding: 28px; display: flex; flex-direction: column; align-items: center; gap: 22px; }
+  .opt h2 { margin: 0; font-size: 18px; font-weight: 600; }
+  .opt p { margin: 0; font-size: 13px; color: #b3a8c2; text-align: center; }
+  .big { width: 100%; max-width: 300px; aspect-ratio: 1; }
+  .bar { width: 100%; display: flex; align-items: center; justify-content: space-between; background: #261f36; border: 1px solid #3d3152; border-radius: 12px; padding: 10px 16px; box-sizing: border-box; }
+  .small { width: 96px; height: 96px; }
+  .pill { background: linear-gradient(92deg, #ff3d8f, #ff8a3d); color: #231a31; font-weight: 600; font-size: 13px; padding: 9px 16px; border-radius: 999px; }
+</style>
+<style>h1{max-width:1200px;margin:32px auto -12px;padding:0 40px;box-sizing:border-box;font-size:20px;font-weight:600;color:#f6f2fa}h1 span{font-weight:400;color:#b3a8c2;font-size:14px;margin-left:10px}</style></head>
+<body>
+<h1>Round 2 <span>between the original and round 1</span></h1>
+<div class="wrap" id="wrap2"></div>
+<h1>Round 1 <span>too girly</span></h1>
+<div class="wrap" id="wrap1"></div>
+<script>(() => {
+const opts = [
+  { id: "a", name: "A - Blush", note: "Soft pink card, pink-to-orange ring and GB, like the Book button",
+    bg: ["#fff6fa", "#f9d8ea"], ring: ["#ff3d8f", "#ff8a3d"], gb: ["#ff3d8f", "#ff8a3d"], ink: "#2e2440", sub: "#6b5a80", spark: "#ff3d8f" },
+  { id: "b", name: "B - Lavender", note: "Lilac card, purple-to-pink ring and GB, closest to the site",
+    bg: ["#faf6ff", "#dccbff"], ring: ["#a97bff", "#ff3d8f"], gb: ["#8a55f0", "#ff3d8f"], ink: "#261f36", sub: "#5d4d78", spark: "#a97bff" },
+  { id: "c", name: "C - Pearl", note: "Warm cream card, ring runs through all three service colours",
+    bg: ["#fffbf6", "#fbe6d8"], ring: ["#a97bff", "#ff8a3d"], gb: ["#ff3d8f", "#ff8a3d"], ink: "#261f36", sub: "#6b5a80", spark: "#ff8a3d", inner: ["#ff3d8f", "#ff8a3d"] },
+];
+
+const wing = {
+  up: "M1,-2 C6,-26 30,-46 46,-40 C58,-35 52,-14 38,-6 C28,0 12,1 1,-2 Z",
+  low: "M1,2 C14,2 32,8 34,22 C36,34 22,38 14,30 C8,24 3,14 1,2 Z",
+  veins: "M3,-3 C16,-14 30,-26 42,-35 M3,-2 C18,-8 30,-10 42,-10 M3,3 C12,10 20,18 25,28",
+};
+const half = (g, dark) => `
+  <path d="${wing.up}" fill="url(#${g})"/>
+  <path d="${wing.low}" fill="url(#${g})"/>
+  <path d="${wing.up}" transform="translate(16,-12) scale(.5)" fill="#fff" opacity=".35"/>
+  <path d="${wing.veins}" fill="none" stroke="#fff" stroke-width="1.1" opacity=".55"/>`;
+const butterfly = (x, y, rot, s, g, dark) => `
+  <g transform="translate(${x},${y}) rotate(${rot}) scale(${s})">
+    <g>${half(g, dark)}</g>
+    <g transform="scale(-1,1)">${half(g, dark)}</g>
+    <ellipse rx="2.8" ry="15" fill="${dark}"/>
+    <circle cy="-17" r="3.2" fill="${dark}"/>
+    <path d="M-1,-19 C-4,-29 -9,-33 -14,-34 M1,-19 C4,-29 9,-33 14,-34" fill="none" stroke="${dark}" stroke-width="1.3" stroke-linecap="round"/>
+    <circle cx="-14" cy="-34" r="1.8" fill="${dark}"/><circle cx="14" cy="-34" r="1.8" fill="${dark}"/>
+  </g>`;
+const star = (x, y, s, c, o) => `<path transform="translate(${x},${y}) scale(${s})" d="M0,-6 L1.3,-1.3 L6,0 L1.3,1.3 L0,6 L-1.3,1.3 L-6,0 L-1.3,-1.3 Z" fill="${c}" opacity="${o}"/>`;
+const stars = [[70,240,1.4,.5],[405,95,1.2,.55],[150,95,.9,.4],[330,120,.8,.4],[420,300,1.1,.45],[80,330,.9,.4],[345,400,1.3,.5],[130,420,.8,.35],[250,60,.9,.4],[395,360,.7,.35],[60,170,.7,.35]];
+
+function logo(o, uid) {
+  const k = o.id + uid;
+  const lin = (id, [a, b]) => `<linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient>`;
+  return `<svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg${k}" cx=".42" cy=".36" r=".72"><stop offset="0" stop-color="${o.bg[0]}"/><stop offset="1" stop-color="${o.bg[1]}"/></radialGradient>
+    ${lin("ring" + k, o.ring)}${lin("gb" + k, o.gb)}${lin("in" + k, o.inner || o.ring)}
+    ${lin("pk" + k, ["#ff3d8f", "#ff9cc8"])}${lin("pu" + k, ["#8a55f0", "#cdb4ff"])}${lin("or" + k, ["#ff7a2a", "#ffc18f"])}
+  </defs>
+  <circle cx="240" cy="240" r="232" fill="url(#bg${k})"/>
+  <circle cx="240" cy="240" r="232" fill="none" stroke="url(#ring${k})" stroke-width="9"/>
+  <circle cx="240" cy="240" r="215" fill="none" stroke="url(#in${k})" stroke-width="1.4" opacity=".55"/>
+  ${stars.map(([x, y, s, op]) => star(x, y, s, o.spark, op)).join("")}
+  <text x="240" y="184" text-anchor="middle" font-family="Great Vibes" font-size="128" fill="url(#gb${k})">GB</text>
+  <text x="240" y="282" text-anchor="middle" font-family="Cinzel" font-weight="600" font-size="56" letter-spacing="3" fill="${o.ink}">GLAMMED</text>
+  <line x1="112" y1="314" x2="160" y2="314" stroke="${o.sub}" stroke-width="1.4"/>
+  <line x1="320" y1="314" x2="368" y2="314" stroke="${o.sub}" stroke-width="1.4"/>
+  <text x="244" y="321" text-anchor="middle" font-family="Cinzel" font-weight="500" font-size="20" letter-spacing="8" fill="${o.sub}">BEAUTY</text>
+  <path transform="translate(240,348) scale(.9)" d="M0,6 C-9,-1 -9,-9 -4,-9 C-2,-9 -1,-8 0,-6 C1,-8 2,-9 4,-9 C9,-9 9,-1 0,6 Z" fill="url(#gb${k})"/>
+  ${butterfly(104, 150, -22, .72, "pk" + k, o.ink)}
+  ${butterfly(378, 156, 20, .78, "pu" + k, o.ink)}
+  ${butterfly(240, 410, -6, 1, "or" + k, o.ink)}
+</svg>`;
+}
+
+document.getElementById("wrap1").innerHTML = opts.map(o => `
+  <div class="opt">
+    <h2>${o.name}</h2>
+    <div class="big">${logo(o, "L")}</div>
+    <div class="bar"><div class="small">${logo(o, "S")}</div><span class="pill">Book now</span></div>
+    <p>${o.note}</p>
+  </div>`).join("");
+})();</script>
+<script>(() => {
+// Metallic foils: light bands between the colour give the printed-foil look of the original gold.
+const foils = {
+  rose:  ["#f6c7b9", "#fff1ea", "#d98c93", "#f5b9ab", "#a95a6b"],
+  roseD: ["#d9848f", "#f7d3cb", "#a8506a", "#d8858f", "#7c3450"],
+  hot:   ["#ff8fbf", "#ffe3ee", "#ff3d8f", "#ffb07a", "#e0592a"],
+  pink:  ["#ff7fb3", "#ffe0ec", "#ff3d8f", "#ff9cc6", "#c41f69"],
+  lilac: ["#cdb4ff", "#f6f0ff", "#a97bff", "#dccbff", "#6f43cf"],
+  peach: ["#ffc79e", "#fff2e8", "#ff8a3d", "#ffc08c", "#c55a1c"],
+};
+
+const opts = [
+  { id: "d", name: "D - Rose gold on plum", note: "Closest to the original: dark and rich, but plum and rose gold instead of black and yellow",
+    bg: ["#4d2c62", "#1d1128"], ring: "rose", gb: "rose", title: "url(#rose)", sub: "#ecc9cc", body: "#f7d9d0", star: "#ffe3ea", trail: "#f6c7b9" },
+  { id: "e", name: "E - Champagne", note: "Light nude card that pops on the purple, rose-gold foil, deep plum lettering",
+    bg: ["#fcf3ee", "#ead0c6"], ring: "roseD", gb: "roseD", title: "#2e1a3a", sub: "#7a5a6e", body: "#3a2140", star: "#c57886", trail: "#c57886" },
+  { id: "f", name: "F - Night foil (chosen)", note: "The site's own purple, with the Book button's pink-to-orange as foil",
+    bg: ["#3d2f57", "#17111f"], ring: "hot", gb: "hot", title: "#f6f2fa", sub: "#d8cce6", body: "#ffe8f0", star: "#ffd6e6", trail: "#ff9cc6" },
+];
+
+const wing = {
+  up: "M1,-3 C4,-22 22,-48 50,-46 C61,-44 57,-27 45,-16 C34,-6 14,-1 1,-3 Z",
+  low: "M1,2 C12,4 30,10 32,26 C33,38 20,40 13,30 C7,22 3,12 1,2 Z",
+  veins: "M3,-4 C16,-18 30,-32 46,-42 M3,-3 C18,-10 32,-14 46,-18 M3,3 C12,10 20,18 25,30",
+};
+const half = (g) => `
+  <path d="${wing.up}" fill="url(#${g})"/>
+  <path d="${wing.low}" fill="url(#${g})"/>
+  <path d="${wing.veins}" fill="none" stroke="#fff" stroke-width="1" opacity=".5"/>`;
+const butterfly = (x, y, rot, s, g, body) => `
+  <g transform="translate(${x},${y}) rotate(${rot}) scale(${s})">
+    <g>${half(g)}</g><g transform="scale(-1,1)">${half(g)}</g>
+    <ellipse rx="2.4" ry="15" fill="${body}"/>
+    <circle cy="-17" r="3" fill="${body}"/>
+    <path d="M-1,-19 C-4,-29 -9,-34 -15,-36 M1,-19 C4,-29 9,-34 15,-36" fill="none" stroke="${body}" stroke-width="1.2" stroke-linecap="round"/>
+  </g>`;
+const star = (x, y, s, c, o) => `<path transform="translate(${x},${y}) scale(${s})" d="M0,-7 L1,-1 L7,0 L1,1 L0,7 L-1,1 L-7,0 L-1,-1 Z" fill="${c}" opacity="${o}"/>`;
+const stars = [[70,240,1.5,.8],[408,96,1.3,.85],[152,92,.8,.6],[420,300,1.1,.7],[78,330,.9,.6],[350,402,1.4,.8],[128,420,.8,.5],[252,58,.9,.6],[60,170,.7,.5]];
+
+// Glitter trail along the right edge, like the swirl in the original. Seeded so every render matches.
+function trail(color) {
+  let seed = 7, out = "";
+  const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  for (let i = 0; i < 140; i++) {
+    const t = rnd();
+    const a = (-70 + t * 150) * Math.PI / 180;
+    const rad = 200 + (rnd() - .5) * 26 * (1 - Math.abs(t - .5));
+    const x = 240 + rad * Math.cos(a), y = 240 + rad * Math.sin(a);
+    out += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(.5 + rnd() * 1.6).toFixed(2)}" fill="${color}" opacity="${(.25 + rnd() * .7).toFixed(2)}"/>`;
+  }
+  return out;
+}
+
+function logo(o, uid) {
+  const k = o.id + uid;
+  const foil = (name) => {
+    const c = foils[name];
+    return `<linearGradient id="${name}${k}" x1="0" y1="0" x2="1" y2="1">${c.map((s, i) => `<stop offset="${(i / (c.length - 1)).toFixed(2)}" stop-color="${s}"/>`).join("")}</linearGradient>`;
+  };
+  const title = o.title.startsWith("url") ? `url(#rose${k})` : o.title;
+  return `<svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg${k}" cx=".42" cy=".36" r=".75"><stop offset="0" stop-color="${o.bg[0]}"/><stop offset="1" stop-color="${o.bg[1]}"/></radialGradient>
+    ${Object.keys(foils).map(foil).join("")}
+  </defs>
+  <circle cx="240" cy="240" r="232" fill="url(#bg${k})"/>
+  <circle cx="240" cy="240" r="231" fill="none" stroke="url(#${o.ring}${k})" stroke-width="8"/>
+  <circle cx="240" cy="240" r="217" fill="none" stroke="url(#${o.ring}${k})" stroke-width="1.2" opacity=".6"/>
+  ${trail(o.trail)}
+  ${stars.map(([x, y, s, op]) => star(x, y, s, o.star, op)).join("")}
+  <text x="240" y="184" text-anchor="middle" font-family="Great Vibes" font-size="128" fill="url(#${o.gb}${k})">GB</text>
+  <text x="240" y="282" text-anchor="middle" font-family="Cinzel" font-weight="600" font-size="56" letter-spacing="3" fill="${title}">GLAMMED</text>
+  <line x1="112" y1="314" x2="160" y2="314" stroke="${o.sub}" stroke-width="1.2" opacity=".8"/>
+  <line x1="320" y1="314" x2="368" y2="314" stroke="${o.sub}" stroke-width="1.2" opacity=".8"/>
+  <text x="244" y="321" text-anchor="middle" font-family="Cinzel" font-weight="500" font-size="20" letter-spacing="8" fill="${o.sub}">BEAUTY</text>
+  <path transform="translate(240,348) scale(.9)" d="M0,6 C-9,-1 -9,-9 -4,-9 C-2,-9 -1,-8 0,-6 C1,-8 2,-9 4,-9 C9,-9 9,-1 0,6 Z" fill="url(#${o.gb}${k})"/>
+  ${butterfly(104, 150, -22, .72, "pink" + k, o.body)}
+  ${butterfly(378, 156, 20, .78, "lilac" + k, o.body)}
+  ${butterfly(240, 408, -6, 1, "peach" + k, o.body)}
+</svg>`;
+}
+
+document.getElementById("wrap2").innerHTML = opts.map(o => `
+  <div class="opt">
+    <h2>${o.name}</h2>
+    <div class="big">${logo(o, "L")}</div>
+    <div class="bar"><div class="small">${logo(o, "S")}</div><span class="pill">Book now</span></div>
+    <p>${o.note}</p>
+  </div>`).join("");
+})();</script>
+</body>
+</html>

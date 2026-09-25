@@ -41,7 +41,8 @@ export async function submitContact(
     const { data, error } = await resend.emails.send({
       // Resend's shared sender only delivers to the account owner. Production needs RESEND_FROM.
       from: process.env.RESEND_FROM ?? "onboarding@resend.dev",
-      to: [siteConfig.business.email],
+      // Straight to her Gmail, not the forwarded address: the forwarder rejects Resend's shared IPs whenever SpamCop lists one. Kept out of git.
+      to: [process.env.CONTACT_INBOX ?? siteConfig.business.email],
       replyTo: email,
       subject: `New enquiry from ${name}`,
       text: [

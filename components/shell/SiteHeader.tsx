@@ -4,20 +4,21 @@ import { siteConfig } from "@/data/siteConfig";
 import type { Dictionary } from "@/dictionaries";
 import { localePath, type Locale } from "@/lib/locale";
 
+import { HeaderScrollHider } from "./HeaderScrollHider";
 import { LanguageSwitch } from "./LanguageSwitch";
 import { MobileNav } from "./MobileNav";
 import { Wordmark } from "./Wordmark";
 
 export function SiteHeader({ locale, t }: { locale: Locale; t: Dictionary }) {
   return (
-    <header className="sticky top-0 z-40 border-b border-line-soft">
+    <HeaderScrollHider>
       {/* Blur on a separate layer, never on the header: backdrop-filter traps MobileNav's fixed panel inside it. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-[color-mix(in_srgb,var(--ground)_88%,transparent)] backdrop-blur-[12px]"
       />
 
-      <div className="relative mx-auto flex max-w-[var(--site)] items-center justify-between gap-6 px-[var(--gutter)] py-3.5">
+      <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-6 px-[var(--gutter)] py-3.5">
         <Wordmark locale={locale} t={t} />
 
         <nav
@@ -49,6 +50,6 @@ export function SiteHeader({ locale, t }: { locale: Locale; t: Dictionary }) {
           <MobileNav locale={locale} t={t} />
         </div>
       </div>
-    </header>
+    </HeaderScrollHider>
   );
 }

@@ -123,6 +123,23 @@ Deployment is also explicit. `/release` can prepare local Render or Vercel confi
 and run readiness checks, but it must stop before deploy, remote service changes,
 push, or publish unless the user gives a separate yes in the current chat.
 
+### How to present work
+
+**Decided 2026-09-25.** Whenever there is more than one thing to get through (a
+list, open items, a review, a setup, build steps), every reply has the same
+parts, and each part has one job:
+
+| Part | Its job |
+|---|---|
+| **Table** | Where we are. The whole list as a table first; after that, only the open points, with the current one named. Never bullets for a list. |
+| **Diagram** | The explaining. One small inline diagram for the point when structure, flow or a choice is involved. Often the only part read. Skip it when it would not help. |
+| **One or two lines** | What the point is, in plain words, told from the visitor's or Dani's side. No stories, no background nobody asked for. |
+| **One question** | Yes/no, or a pick between two or three options. |
+
+One point per reply. Never ask again about something already agreed. When a
+point needs more explanation, give it a better diagram, not more text: extra
+explanation and boilerplate overwhelm instead of helping.
+
 ## Dashboard activity
 
 The dashboard can show the active or most recent substantial Blueprint command

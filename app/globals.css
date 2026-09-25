@@ -83,7 +83,8 @@
 }
 
 :root {
-  /* After Party, from prototypes/theme.css. All four accents clear 4.5:1 on --ground. */
+  /* After Party, from prototypes/theme.css. All four accents clear 4.5:1 on --ground.
+     Black and gold, tried for a day to match her logo, is kept in blueprint/reference/palette-black-and-gold.css. */
 
   /* surfaces */
   --ground: #261f36;
@@ -159,7 +160,7 @@
   --chart-5: var(--ink-faint);
 }
 
-/* Light theme. Nothing activates it yet. Glow becomes a pale tint: blurred blobs smudge on light. */
+/* Light theme. Only the switch on /logos activates it. Glow becomes a pale tint: blurred blobs smudge on light. */
 .light {
   --ground: #faf6fc;
   --surface: #ffffff;
@@ -181,6 +182,42 @@
   --primary: var(--nails-on-light);
   --ring: var(--nails-on-light);
   --primary-foreground: #ffffff;
+}
+
+/* Black and gold, for the theme switch on /logos only. Same values as blueprint/reference/palette-black-and-gold.css. */
+:root.gold {
+  /* surfaces */
+  --ground: #0e0c0a;
+  --surface: #1c1915;
+  --surface-2: #161310;
+  --shot: #080706;
+  --line: #3d3429;
+  --line-soft: #2b251e;
+
+  /* ink. --ink-faint is the lightest that still clears 4.5:1 on --surface. */
+  --ink: #f8f2e7;
+  --ink-muted: #c7bca9;
+  --ink-faint: #a99e8b;
+
+  /* accents */
+  --nails: #e9bf5f;
+  --lashes: #eba3a6;
+  --makeup: #db8a4f;
+  --confirm: #3de8b0;
+
+  --nails-on-light: #d4176b;
+  --lashes-on-light: #7b45e0;
+  --makeup-on-light: #bf5710;
+  --confirm-on-light: #0e8f63;
+
+  --hot: linear-gradient(92deg, #f6dc8f, #d4a23c 55%, #b9832a);
+  --on-hot: #1a1206;
+
+  /* section glow */
+  --glow-blur: 90px;
+  --glow-a: rgb(233 191 95 / 0.26);
+  --glow-b: rgb(235 163 166 / 0.14);
+  --glow-c: rgb(219 138 79 / 0.14);
 }
 
 @layer base {

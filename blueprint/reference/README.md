@@ -26,6 +26,19 @@ Keep them in `links.md` next to this file, with one line saying what to look at.
 A bare URL is close to useless six weeks later - the point is the note, not the
 link.
 
+## Logo options
+
+`logo-options.html` holds six redraws of her logo in the site colours, from
+2026-09-25. Open it in a browser (double-click); it needs internet for the fonts.
+Each logo is drawn by the script inside the file, so any one can be copied out
+as SVG from the page. **F - Night foil** is the one chosen for the site.
+A - C (round 1) read as too girly; D - F (round 2) sit between those and the
+original black and gold.
+
+The same six live on the site at `/logos` (noindex, linked from nowhere), drawn
+from `data/logoDesigns.ts`. Tapping one swaps the header and footer logo in that
+browser only, so it can be seen on every page.
+
 ## What belongs here
 
 - A site whose layout, spacing or motion is worth copying

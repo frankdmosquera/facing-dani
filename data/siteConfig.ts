@@ -20,13 +20,16 @@ export type FooterItem = Route & { key: FooterKey };
 export const siteConfig = {
   business: {
     // Must match the Google Business Profile exactly, or Google treats them as two businesses.
-    name: "Dani Moreno",
-    wordmark: "dani",
+    name: "Glammed Beauty Studio",
+    // The person: Person data and her sign-off under the story. First name only: she is 17 and her full name is unconfirmed.
+    ownerName: "Dani",
     wordmarkAccent: ".",
     city: "Calgary",
+    // The canonical host. Bare glammedbeautystudio.com redirects here.
+    website: "https://www.glammedbeautystudio.com",
 
-    // Placeholder: the agency's inbox, not hers. Every enquiry lands here until this changes.
-    email: "frankdmosquera@gmail.com",
+    // Forwards to her Gmail through ImprovMX; the form sends here through Resend.
+    email: "dani@glammedbeautystudio.com",
     region: "Alberta",
   },
 
@@ -44,6 +47,8 @@ export const siteConfig = {
     { key: "lashes", href: "/lashes" },
     { key: "makeup", href: "/makeup" },
     { key: "gallery", href: "/gallery" },
+    // Temporary, while Dani chooses a logo and theme. The page itself is noindex.
+    { key: "logos", href: "/logos" },
   ] satisfies NavItem[],
 
   cta: { key: "book", href: "/contact" } satisfies CtaItem,

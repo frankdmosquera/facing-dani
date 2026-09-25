@@ -2,8 +2,8 @@
 // Not `as const`, so values type as string and Spanish can differ.
 export const en = {
   meta: {
-    title: "Dani Moreno - Nails, Lashes and Makeup in Calgary",
-    template: "%s - Dani Moreno",
+    title: "Glammed Beauty Studio - Nails, Lashes and Makeup in Calgary",
+    template: "%s - Glammed Beauty Studio",
     description:
       "Nail, lash and makeup artistry in Calgary, trained in Colombia. Shape, structure and cuticle work that still looks good in week three. Se habla espanol.",
   },
@@ -17,6 +17,7 @@ export const en = {
     lashes: "Lashes",
     makeup: "Makeup",
     gallery: "The work",
+    logos: "Logos",
   },
 
   cta: {
@@ -311,7 +312,7 @@ export const en = {
         "What I care about most is how you feel when you leave. Not just that the set looks good, but that you walk out feeling beautiful and sure of yourself.",
     },
     work: {
-      eyebrow: "Recent sets",
+      eyebrow: "Recent work",
       heading: "The work, not the promise",
       all: "See all the work",
     },

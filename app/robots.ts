@@ -1,15 +1,8 @@
 import type { MetadataRoute } from "next";
 
-import { siteUrl, siteUrlConfigured } from "@/lib/siteUrl";
+import { siteConfig } from "@/data/siteConfig";
 
 export default function robots(): MetadataRoute.Robots {
-  // No domain yet: keep crawlers off the Vercel preview host.
-  if (!siteUrlConfigured) {
-    return {
-      rules: { userAgent: "*", disallow: "/" },
-    };
-  }
-
   return {
     rules: {
       userAgent: "*",
@@ -17,6 +10,6 @@ export default function robots(): MetadataRoute.Robots {
       // Also noindex and out of the sitemap.
       disallow: ["/thank-you", "/es/thank-you"],
     },
-    sitemap: `${siteUrl}/sitemap.xml`,
+    sitemap: `${siteConfig.business.website}/sitemap.xml`,
   };
 }

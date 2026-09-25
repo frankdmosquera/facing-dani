@@ -1,0 +1,40 @@
+/* Black and gold: the site palette for one day, 2026-09-25, to match her gold logo. Dropped for After Party
+   the same day because it read as yellow. To go back, paste these variables over the matching ones in the
+   :root block of app/globals.css. The rest of that block did not change. */
+
+:root {
+  /* Black and gold, to match her logo. All four accents clear 4.5:1 on --ground. */
+
+  /* surfaces */
+  --ground: #0e0c0a;
+  --surface: #1c1915;
+  --surface-2: #161310;
+  --shot: #080706;
+  --line: #3d3429;
+  --line-soft: #2b251e;
+
+  /* ink. --ink-faint is the lightest that still clears 4.5:1 on --surface. */
+  --ink: #f8f2e7;
+  --ink-muted: #c7bca9;
+  --ink-faint: #a99e8b;
+
+  /* accents */
+  --nails: #e9bf5f;
+  --lashes: #eba3a6;
+  --makeup: #db8a4f;
+  --confirm: #3de8b0;
+
+  --nails-on-light: #d4176b;
+  --lashes-on-light: #7b45e0;
+  --makeup-on-light: #bf5710;
+  --confirm-on-light: #0e8f63;
+
+  --hot: linear-gradient(92deg, #f6dc8f, #d4a23c 55%, #b9832a);
+  --on-hot: #1a1206;
+
+  /* section glow */
+  --glow-blur: 90px;
+  --glow-a: rgb(233 191 95 / 0.26);
+  --glow-b: rgb(235 163 166 / 0.14);
+  --glow-c: rgb(219 138 79 / 0.14);
+}
