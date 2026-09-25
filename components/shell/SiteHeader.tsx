@@ -18,8 +18,9 @@ export function SiteHeader({ locale, t }: { locale: Locale; t: Dictionary }) {
         className="pointer-events-none absolute inset-0 bg-[color-mix(in_srgb,var(--ground)_88%,transparent)] backdrop-blur-[12px]"
       />
 
-      <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-6 px-[var(--gutter)] py-3.5">
-        <Wordmark locale={locale} t={t} />
+      {/* Three columns, not justify-between: the logo and the right group differ in width, which pushed the links 45px off centre. */}
+      <div className="relative mx-auto grid max-w-[81rem] grid-cols-[1fr_auto_1fr] items-center gap-6 px-[var(--gutter)] py-3.5">
+        <Wordmark locale={locale} t={t} className="justify-self-start" />
 
         <nav
           aria-label={t.a11y.mainNav}
@@ -36,7 +37,7 @@ export function SiteHeader({ locale, t }: { locale: Locale; t: Dictionary }) {
           ))}
         </nav>
 
-        <div className="flex items-center gap-5">
+        <div className="col-start-3 flex items-center gap-5 justify-self-end">
           {/* Padding grows the tap target to about 44px without moving anything. */}
           <LanguageSwitch locale={locale} t={t} className="-mx-2 px-2 py-3" />
 
