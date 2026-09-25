@@ -134,7 +134,7 @@ export function contactPageSchema(t: Dictionary) {
 export function localBusinessSchema(t: Dictionary) {
   const base = {
     "@context": "https://schema.org",
-    "@type": "HealthAndBeautyBusiness",
+    "@type": "NailSalon",
     name: siteConfig.business.name,
     description: t.meta.description,
     email: siteConfig.business.email,

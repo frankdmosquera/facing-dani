@@ -97,6 +97,18 @@ work, so it comes before the pages that describe it.
   or makeup shots of hers light up those pages' work strips. A recognisable
   face still stays out until she is asked. The nails and home heroes are picked
   from this set afterwards
+- [ ] 19. **Nails and events** - nails is the one professional service, parties
+  the second side, where she is a station at someone else's party. Lashes and
+  makeup are mentioned lightly. Menu becomes Home, Nails, Events, About, Contact
+  - [ ] 19a. **Home page in the new order** - head title and description lead
+    with nails then parties; hero, nails menu with Book buttons in place of the
+    three service cards, work, a new events section, shorter story, Spanish, in
+    the chair, FAQ, closing band
+  - [ ] 19b. **Events and contact** - one contact page for party requests and
+    questions, the event fields shown only for a party. Absorbs punch item 6
+  - [ ] 19c. **About returns** - its own page again, linked from the story
+  - [ ] 19d. **Lashes and makeup made light** - then their pages and Cal.com
+    events hidden, last, once the offer is settled
 - [ ] 15. **Domain, indexing and production email** - buy the domain, set the
   site URL so robots stops disallowing everything, and give Resend a sender that
   can mail anyone. Blocked until the domain exists

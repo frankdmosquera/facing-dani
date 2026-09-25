@@ -2,14 +2,15 @@
 // Not `as const`, so values type as string and Spanish can differ.
 export const en = {
   meta: {
-    title: "Glammed Beauty Studio - Nails, Lashes and Makeup in Calgary",
+    // Nails first; "your party" because she is a station at someone else's party, not the organiser.
+    title: "Nails in Calgary, by Appointment or at Your Party - Glammed Beauty Studio",
     template: "%s - Glammed Beauty Studio",
     description:
-      "Nail, lash and makeup artistry in Calgary, trained in Colombia. Shape, structure and cuticle work that still looks good in week three. Se habla espanol.",
+      "Custom gel and acrylic nails in Calgary, trained in Colombia. Hosting a kids' or teen party? I can come and do nails for the guests.",
   },
 
   blurb:
-    "Nails, lashes and makeup in Calgary. Trained in Colombia. By appointment.",
+    "Nails in Calgary, by appointment. Trained in Colombia. I also do nails at kids' and teen parties.",
 
   nav: {
     home: "Home",
@@ -320,7 +321,7 @@ export const en = {
     },
 
     // Schema only, never rendered.
-    jobTitle: "Nail, lash and makeup artist",
+    jobTitle: "Nail artist",
 
     portraitAlt:
       "The artist, photographed in the salon where she works, wearing a black t-shirt.",

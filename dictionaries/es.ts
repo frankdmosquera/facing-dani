@@ -4,14 +4,14 @@ import type { Dictionary } from "./en";
 // Draft copy for Dani to approve before launch.
 export const es: Dictionary = {
   meta: {
-    title: "Glammed Beauty Studio - Uñas, Pestañas y Maquillaje en Calgary",
+    title: "Uñas en Calgary, con cita o en tu fiesta - Glammed Beauty Studio",
     template: "%s - Glammed Beauty Studio",
     description:
-      "Uñas, pestañas y maquillaje en Calgary, con formación colombiana. Forma, estructura y trabajo de cutícula que sigue viéndose bien en la tercera semana. Te atiendo en español.",
+      "Uñas de gel y acrílico en Calgary, con formación colombiana. ¿Organizas una fiesta de niños o adolescentes? Puedo ir y hacerles las uñas a los invitados.",
   },
 
   blurb:
-    "Uñas, pestañas y maquillaje en Calgary. Formación colombiana. Con cita previa.",
+    "Uñas en Calgary, con cita previa. Formación colombiana. También hago uñas en fiestas de niños y adolescentes.",
 
   nav: {
     home: "Inicio",
@@ -319,7 +319,7 @@ export const es: Dictionary = {
       all: "Ver todo el trabajo",
     },
 
-    jobTitle: "Artista de uñas, pestañas y maquillaje",
+    jobTitle: "Artista de uñas",
 
     portraitAlt:
       "La artista, fotografiada en el salón donde trabaja, con una camiseta negra.",
