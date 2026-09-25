@@ -220,6 +220,36 @@
   --glow-c: rgb(219 138 79 / 0.14);
 }
 
+/* Light gold, the light twin of black and gold, for the /logos switch only. The golds are darkened to read on cream. */
+:root.gold-light {
+  --ground: #fbf7f0;
+  --surface: #ffffff;
+  --surface-2: #f5eee2;
+  --shot: #efe6d6;
+  --line: #e6dccb;
+  --line-soft: #efe7da;
+
+  --ink: #1f1a14;
+  --ink-muted: #6b5f4e;
+  --ink-faint: #7a6d5a;
+
+  --nails: #8f6414;
+  --lashes: #a4525c;
+  --makeup: #9c5220;
+
+  --hot: linear-gradient(92deg, #a8751c, #8f6414 55%, #7d5410);
+  --on-hot: #ffffff;
+
+  --glow-blur: 0px;
+  --glow-a: #fbefd6;
+  --glow-b: #f8e8e6;
+  --glow-c: #f9ecdc;
+
+  --primary: var(--nails);
+  --ring: var(--nails);
+  --primary-foreground: #ffffff;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

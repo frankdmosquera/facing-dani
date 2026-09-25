@@ -1,80 +1,72 @@
 "use client";
 
 import Image from "next/image";
-import { useSyncExternalStore } from "react";
+import { useSyncExternalStore, type ReactNode } from "react";
 
 import { logoDesigns, originalVariants } from "@/data/logoDesigns";
 
 import { LogoArt } from "./LogoArt";
 import { logoPreview, themePreview, themes } from "./previewStore";
 
-const card =
-  "flex cursor-pointer flex-col items-center gap-4 rounded-[var(--radius-card)] border bg-surface p-6 text-center transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring";
+const ring =
+  "cursor-pointer border transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring";
 const state = (on: boolean) => (on ? "border-nails" : "border-line hover:border-ink-faint");
 
 export function ThemePicker() {
   const picked = useSyncExternalStore(themePreview.subscribe, themePreview.read, themePreview.server);
 
   return (
-    <div className="grid gap-4 sm:grid-cols-3">
+    <div className="flex flex-wrap gap-2.5">
       {themes.map((theme) => (
         <button
           key={theme.name}
           type="button"
           onClick={() => themePreview.write(theme.id)}
           aria-pressed={picked === theme.id}
-          className={`${card} items-start! gap-1! p-5! text-left! ${state(picked === theme.id)}`}
+          className={`${ring} rounded-pill bg-surface px-4 py-2 text-[14px] font-semibold text-ink ${state(picked === theme.id)}`}
         >
-          <span className="font-display text-[17px] font-extrabold text-ink">{theme.name}</span>
-          <span className="text-[14px] text-ink-muted">{theme.note}</span>
+          {theme.name}
         </button>
       ))}
     </div>
   );
 }
 
+function Card({ id, name, picked, children }: { id: string | null; name: string; picked: string | null; children: ReactNode }) {
+  return (
+    <button
+      type="button"
+      onClick={() => logoPreview.write(id)}
+      aria-pressed={picked === id}
+      className={`${ring} flex flex-col items-center gap-2.5 rounded-[var(--radius-card)] bg-surface p-3 text-center ${state(picked === id)}`}
+    >
+      {children}
+      <span className="text-[13.5px] font-semibold text-ink">{name}</span>
+    </button>
+  );
+}
+
+const art = "aspect-square w-full max-w-[150px]";
+
 export function LogoPicker() {
   const picked = useSyncExternalStore(logoPreview.subscribe, logoPreview.read, logoPreview.server);
 
   return (
-    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      <button
-        type="button"
-        onClick={() => logoPreview.write(null)}
-        aria-pressed={picked === null}
-        className={`${card} ${state(picked === null)}`}
-      >
-        <Image src="/logo.png" alt="" width={480} height={480} className="aspect-square w-full max-w-[260px] rounded-full" />
-        <span className="font-display text-[17px] font-extrabold text-ink">Current logo</span>
-        <span className="text-[14px] text-ink-muted">Her original black and gold, what visitors see</span>
-      </button>
+    <div className="grid max-w-[1000px] grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+      <Card id={null} name="Current logo" picked={picked}>
+        <Image src="/logo.png" alt="" width={240} height={240} className={`${art} rounded-full`} />
+      </Card>
 
       {originalVariants.map((variant) => (
-        <button
-          key={variant.id}
-          type="button"
-          onClick={() => logoPreview.write(variant.id)}
-          aria-pressed={picked === variant.id}
-          className={`${card} ${state(picked === variant.id)}`}
-        >
-          <Image src={variant.src} alt="" width={480} height={480} className="aspect-square w-full max-w-[260px] rounded-full" />
-          <span className="font-display text-[17px] font-extrabold text-ink">{variant.name}</span>
-          <span className="text-[14px] text-ink-muted">{variant.note}</span>
-        </button>
+        <Card key={variant.id} id={variant.id} name={variant.name} picked={picked}>
+          <Image src={variant.src} alt="" width={240} height={240} className={`${art} rounded-full`} />
+        </Card>
       ))}
 
       {logoDesigns.map((design) => (
-        <button
-          key={design.id}
-          type="button"
-          onClick={() => logoPreview.write(design.id)}
-          aria-pressed={picked === design.id}
-          className={`${card} ${state(picked === design.id)}`}
-        >
-          <LogoArt design={design} uid="pick" className="aspect-square w-full max-w-[260px]" />
-          <span className="font-display text-[17px] font-extrabold text-ink">{design.name}</span>
-          <span className="text-[14px] text-ink-muted">{design.note}</span>
-        </button>
+        <Card key={design.id} id={design.id} name={design.name} picked={picked}>
+          <LogoArt design={design} uid="pick" className={art} />
+        </Card>
       ))}
     </div>
   );

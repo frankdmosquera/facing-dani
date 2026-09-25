@@ -37,7 +37,8 @@ export const themePreview = createPreviewStore("theme-preview");
 
 // Class names match the blocks in globals.css.
 export const themes = [
-  { id: null, name: "Purple", note: "After Party, what visitors see" },
-  { id: "light", name: "Light", note: "Never finished, see item 11" },
-  { id: "gold", name: "Black and gold", note: "Tried for a day to match her old logo" },
+  { id: null, name: "Purple" },
+  { id: "light", name: "Light purple" },
+  { id: "gold", name: "Black and gold" },
+  { id: "gold-light", name: "Light gold" },
 ] as const;

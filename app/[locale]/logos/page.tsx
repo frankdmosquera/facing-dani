@@ -25,19 +25,16 @@ export default async function Logos({ params }: PageProps<"/[locale]/logos">) {
   return (
     <main id="main">
       <Band className="pt-[26px]! pb-40!">
-        <h1 className="mb-4 text-[clamp(36px,9vw,62px)]">
+        {/* Picks stay in this browser only, across every page, until Purple and Current logo are tapped again. */}
+        <h1 className="mb-8 text-[clamp(36px,9vw,62px)]">
           Pick a <Hot>look</Hot>
         </h1>
-        <p className="mb-10 max-w-[54ch] text-base text-ink-muted">
-          Tap a theme and a logo, then browse the site to see them together.
-          Both picks stay in this browser only, across every page, until you
-          tap Purple and Current logo.
-        </p>
 
-        <h2 className="mb-4 text-[clamp(22px,5vw,28px)]">Theme</h2>
-        <ThemePicker />
+        <div className="mb-10 flex flex-wrap items-center gap-x-5 gap-y-3">
+          <h2 className="text-[clamp(22px,5vw,28px)]">Theme</h2>
+          <ThemePicker />
+        </div>
 
-        <h2 className="mt-14 mb-4 text-[clamp(22px,5vw,28px)]">Logo</h2>
         <LogoPicker />
       </Band>
     </main>
