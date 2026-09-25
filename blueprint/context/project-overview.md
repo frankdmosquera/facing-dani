@@ -315,8 +315,8 @@ Env vars by name:
 - `RESEND_FROM` - **local only, and must not be set in production.** Resend's
   shared sender delivers only to the account owner and returns 403 for everyone
   else; the account's two verified domains belong to other clients.
-- `NEXT_PUBLIC_SITE_URL` - **unset**, which is why robots serves `Disallow: /`
-  and the sitemap is empty.
+- No site URL variable. The domain is `siteConfig.business.website` in code,
+  since 2026-09-24, the same way `primo-painters` does it.
 
 > **The domain is the single blocker.** Not registered. It follows the business
 > name, so `danimoreno.ca` or a studio name; buy the `.ca` and the `.com`

@@ -2,8 +2,8 @@
 // Not `as const`, so values type as string and Spanish can differ.
 export const en = {
   meta: {
-    title: "Dani Moreno - Nails, Lashes and Makeup in Calgary",
-    template: "%s - Dani Moreno",
+    title: "Glammed Beauty Studio - Nails, Lashes and Makeup in Calgary",
+    template: "%s - Glammed Beauty Studio",
     description:
       "Nail, lash and makeup artistry in Calgary, trained in Colombia. Shape, structure and cuticle work that still looks good in week three. Se habla espanol.",
   },

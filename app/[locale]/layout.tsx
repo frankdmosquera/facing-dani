@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/shell/SiteFooter";
 import { SiteHeader } from "@/components/shell/SiteHeader";
 import { Ticker } from "@/components/shell/Ticker";
+import { siteConfig } from "@/data/siteConfig";
 import { getDictionary } from "@/dictionaries";
 import {
   defaultLocale,
@@ -14,7 +15,6 @@ import {
   type Locale,
 } from "@/lib/locale";
 
-import { siteUrl } from "@/lib/siteUrl";
 
 import "../globals.css";
 
@@ -46,8 +46,7 @@ export async function generateMetadata({
   const t = getDictionary(locale);
 
   return {
-    // Relative canonicals and hreflang until the domain is set.
-    metadataBase: siteUrl ? new URL(siteUrl) : undefined,
+    metadataBase: new URL(siteConfig.business.website),
     title: { default: t.meta.title, template: t.meta.template },
     description: t.meta.description,
     // Home's values. Every other page must set its own: a child's alternates replace these, not merge.

@@ -6,7 +6,6 @@ import { siteConfig } from "@/data/siteConfig";
 import { treatmentLabel, treatmentsFor } from "@/data/treatments";
 import type { Dictionary } from "@/dictionaries/en";
 import { imagekitEndpoint } from "@/lib/imagekit";
-import { siteUrl } from "@/lib/siteUrl";
 
 // JSON-LD builders. Each reads the same data and dictionary its page renders, so they cannot disagree.
 
@@ -93,7 +92,7 @@ export function personSchema(t: Dictionary) {
   const base = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: siteConfig.business.name,
+    name: siteConfig.business.ownerName,
     jobTitle: t.home.jobTitle,
     description: t.home.story.lede,
     knowsLanguage: ["en", "es"],
@@ -152,7 +151,7 @@ export function localBusinessSchema(t: Dictionary) {
     availableLanguage: ["en", "es"],
   };
 
-  return siteUrl ? { ...base, url: siteUrl } : base;
+  return { ...base, url: siteConfig.business.website };
 }
 
 // Escapes `<` so a "</script>" in the data cannot close the tag early.

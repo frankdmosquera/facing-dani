@@ -1,13 +1,12 @@
 import type { MetadataRoute } from "next";
 
 import { defaultLocale, localePath, locales, routes } from "@/lib/locale";
-import { siteUrl } from "@/lib/siteUrl";
+import { siteConfig } from "@/data/siteConfig";
 
 const NOINDEX: readonly string[] = ["/thank-you"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Sitemaps need absolute URLs, and without a domain the only host is a preview.
-  if (!siteUrl) return [];
+  const siteUrl = siteConfig.business.website;
 
   const indexable = routes.filter((route) => !NOINDEX.includes(route));
 

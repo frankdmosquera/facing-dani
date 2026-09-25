@@ -4,8 +4,8 @@ import type { Dictionary } from "./en";
 // Draft copy for Dani to approve before launch.
 export const es: Dictionary = {
   meta: {
-    title: "Dani Moreno - Uñas, Pestañas y Maquillaje en Calgary",
-    template: "%s - Dani Moreno",
+    title: "Glammed Beauty Studio - Uñas, Pestañas y Maquillaje en Calgary",
+    template: "%s - Glammed Beauty Studio",
     description:
       "Uñas, pestañas y maquillaje en Calgary, con formación colombiana. Forma, estructura y trabajo de cutícula que sigue viéndose bien en la tercera semana. Te atiendo en español.",
   },
