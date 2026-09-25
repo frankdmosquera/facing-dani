@@ -102,49 +102,47 @@
   }
 
   /* ---------- top bar ----------
-     There is no sidebar. It cost 172px of every screen to hold a
-     three-item toggle, and this page is read at half-screen width beside
-     the app it describes, so that width was the most expensive thing on
-     it. Brand, switcher and position all live in one sticky block. */
+     One bar across the full window, outside the shell, because it is read
+     on a large screen and the whole plan should fit in it. It carries the
+     view switch, every item as a chip by phase, the item being built opened
+     into its steps, and a Now line. A chip jumps to its row. */
 
   .topbar {
     position: sticky;
     top: env(safe-area-inset-top, 0px);
     z-index: 10;
-    background: var(--ground);
-    padding: 14px 0 10px;
+    background: var(--surface);
+    padding: 10px 16px 9px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
     border-bottom: 1px solid var(--rule);
-    margin-bottom: 6px;
   }
 
-  .topbar-row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px 16px;
-  }
+  .bar { display: flex; flex-wrap: nowrap; align-items: flex-end; justify-content: center; gap: 10px 12px; }
+  /* On a screen too narrow for one row, the last phases wrap under the rest; the buttons stay put. */
+  .bar .bar-plan { gap: 8px 4px; flex: 0 1 auto; min-width: 0; }
+  .bar .strip-label { letter-spacing: 0.06em; }
+  .bar .switch { margin-left: 0; margin-right: 14px; align-self: flex-end; flex: none; flex-wrap: nowrap; }
+  .bar .nav-link { padding: 5px 7px; letter-spacing: 0.03em; }
+  .bar .cell { min-width: 23px; padding: 4px 4px; }
+  .bar .cell--step { min-width: 26px; }
+  /* What is happening now, written above the item being built. */
+  .bar .now-note { color: var(--pending); }
+  .bar .strip-phase:has(.cell-open) .strip-label { color: var(--pending); }
 
-  .brand { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  a.cell { text-decoration: none; cursor: pointer; }
+  a.cell:hover { border-color: var(--ink-3); color: var(--ink); }
+  a.cell:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  /* The item being built, opened into its steps beside its own chip. */
+  .cell-open { display: inline-flex; gap: 3px; padding: 3px 4px; margin: -4px 8px; background: color-mix(in srgb, var(--pending-soft) 50%, var(--surface)); border: 1px solid color-mix(in srgb, var(--pending) 40%, var(--surface)); border-radius: 6px; }
+  .cell--step { min-width: 30px; font-size: 10px; }
+  .cell[data-state="next"] { border-color: var(--pending); color: var(--pending); font-weight: 700; }
 
-  .brand-name {
-    font-family: var(--mono);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--ink);
-  }
+  /* A jump lands below the sticky bar, not under it. */
+  .item, .rstep { scroll-margin-top: 150px; }
 
-  .brand-sub {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-  }
+  .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
   .switch { display: flex; gap: 4px; margin-left: auto; flex-wrap: wrap; }
 
@@ -221,58 +219,6 @@
   /* ---------- main ---------- */
 
   main { padding: 34px 0 0; min-width: 0; }
-
-  /* ---------- position bar ----------
-     The only thing identical in every view: where the build actually is.
-     Three levels, always the same three, so "where are we" is never a
-     question the transcript has to answer. Sticky, because the answer
-     should not scroll away. */
-
-  .where {
-    position: sticky;
-    top: env(safe-area-inset-top, 0px);
-    z-index: 5;
-    background: var(--surface);
-    border: 1px solid var(--rule);
-    border-radius: 5px;
-    padding: 11px 15px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px 14px;
-  }
-
-  .where-leg { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
-
-  .where-key {
-    font-family: var(--mono);
-    font-size: 10px; font-weight: 700;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--ink-3);
-  }
-
-  .where-val {
-    font-family: var(--display);
-    font-size: 15px; font-weight: 600;
-    line-height: 1.25;
-    color: var(--ink);
-  }
-
-  .where-leg[data-now="yes"] .where-key { color: var(--pending); }
-  .where-arrow { color: var(--rule); font-size: 15px; align-self: center; }
-  .where-spacer { flex: 1 1 auto; }
-
-  .where-count {
-    font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: 0.06em;
-    color: var(--ink-3);
-    text-align: right;
-    line-height: 1.7;
-    white-space: nowrap;
-  }
-
-  .where-count b { color: var(--ink); font-weight: 700; }
 
   /* ---------- substeps ----------
      What a step actually contained. A step is one reviewable change, but
@@ -553,6 +499,16 @@
   .callout p { color: var(--ink-2); font-size: 15.5px; }
   .callout-title { font-family: var(--display); font-size: 17px; font-weight: 600; color: var(--ink); }
 
+  details.callout > summary { cursor: pointer; list-style: none; display: flex; align-items: baseline; gap: 10px; }
+  details.callout > summary::-webkit-details-marker { display: none; }
+  details.callout > summary::after { content: "+"; margin-left: auto; font-family: var(--mono); font-size: 13px; color: var(--ink-3); }
+  details.callout[open] > summary::after { content: "\2212"; }
+  details.callout:not([open]) { padding-top: 11px; padding-bottom: 11px; }
+  .callout--map { border-left-color: var(--accent); }
+  .callout--map .callout-count { color: var(--accent); }
+  .callout-count { font-family: var(--mono); font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--pending); }
+  .callout .map-what { font-size: 14px; color: var(--ink-3); }
+
   /* ---------- steps ---------- */
 
   .steps { display: flex; flex-direction: column; }
@@ -740,20 +696,6 @@
   .tally-part[data-state="active"]  .tally-key { color: var(--pending); }
   .tally-part[data-state="planned"] .tally-key { color: var(--ink-3); }
   .tally-val { color: var(--ink); font-weight: 500; }
-
-  /* ---------- the six-step meter in the sticky bar ---------- */
-
-  .meter { display: flex; gap: 3px; align-items: center; }
-
-  .meter i {
-    width: 15px; height: 5px;
-    border-radius: 2px;
-    background: var(--rule);
-    display: block;
-  }
-
-  .meter i[data-state="done"] { background: var(--done); }
-  .meter i[data-state="active"] { background: var(--pending); }
 
   /* ---------- steps, shown on the roadmap itself ----------
      The roadmap is the map. An item that is being built shows its own
@@ -1105,6 +1047,25 @@
   .wire-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; }
   .wire-card { height: 21px; border: 1px solid var(--rule); border-radius: 3px; background: var(--surface); }
 
+  /* ---------- diagrams ----------
+     Drawn with this page's own tokens so they follow light and dark.
+     Below 560px the figure scrolls sideways instead of shrinking the
+     labels past reading size. */
+
+  .fig { margin: 0; padding: 12px; border: 1px solid var(--rule-soft); border-radius: 5px; background: var(--surface); display: flex; flex-direction: column; gap: 8px; overflow-x: auto; }
+  .fig svg { display: block; width: 100%; min-width: 560px; height: auto; }
+  .fig figcaption { font-size: 13.5px; line-height: 1.55; color: var(--ink-3); }
+  .fig .bx { fill: var(--surface-2); stroke: var(--rule); stroke-width: 1.25; }
+  .fig .bx-acc { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.5; }
+  .fig .bx-later { fill: var(--surface); stroke: var(--ink-3); stroke-width: 1.1; stroke-dasharray: 5 4; }
+  .fig .ln { stroke: var(--ink-3); stroke-width: 1.25; fill: none; }
+  .fig .ln-acc { stroke: var(--accent); stroke-width: 1.5; fill: none; }
+  .fig .ln-dash { stroke: var(--ink-3); stroke-width: 1.1; fill: none; stroke-dasharray: 5 4; }
+  .fig .th { fill: var(--ink); font-family: var(--body); font-size: 13px; font-weight: 600; }
+  .fig .ts { fill: var(--ink-3); font-family: var(--mono); font-size: 10.5px; }
+  .fig .ta { fill: var(--accent); font-family: var(--mono); font-size: 10.5px; }
+  .fig .tl { fill: var(--ink-3); font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; }
+
   /* ---------- notes ---------- */
 
   .notes ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 10px; }
@@ -1133,6 +1094,14 @@
     gap: 6px 14px;
   }
 
+  /* A large screen has room to spread the phases and set the feature being built further apart. */
+  @media (min-width: 1700px) {
+    .bar .bar-plan { gap: 8px 13px; }
+    .bar .strip-phase + .strip-phase { border-left: 1px solid var(--rule-soft); padding-left: 13px; }
+    .cell-open { margin: -4px 22px; padding: 4px 6px; }
+    .bar .switch { margin-right: 24px; }
+  }
+
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 
   @media (max-width: 880px) {
@@ -1145,56 +1114,69 @@
     .row { grid-template-columns: 1fr; }
     .item { grid-template-columns: 28px minmax(0, 1fr); }
     .item .pill { grid-column: 2; justify-self: start; margin-top: 4px; }
-    .where { position: static; gap: 8px 12px; }
-    .where-arrow { display: none; }
-    .where-spacer { display: none; }
-    .where-count { text-align: left; width: 100%; }
+    .topbar { position: static; padding: 10px 16px; }
+    .bar { flex-wrap: wrap; justify-content: flex-start; }
     .strip { gap: 12px 14px; }
     .cell { min-width: 24px; padding: 4px; font-size: 10px; }
   }
 </style>
 
+<!-- One bar, one row, across the whole window: the two views, then every
+     item as a chip grouped by phase. The item being built opens into its
+     steps, with what is happening now written above them. A chip jumps to
+     its row. -->
+<header class="topbar">
+  <div class="bar">
+    <nav class="switch" aria-label="Views">
+      <button class="nav-link" data-view="roadmap">Roadmap</button>
+      <button class="nav-link" data-view="project">Project</button>
+    </nav>
+    <nav class="strip bar-plan" aria-label="Every item, by phase">
+          <div class="strip-phase">
+            <div class="strip-label">Ph 0 Decide</div>
+            <div class="strip-cells">
+                <a class="cell" href="#item-0a" data-goto="item-0a" data-state="done" title="0a Design direction - done">0a</a>
+                <a class="cell" href="#item-0b" data-goto="item-0b" data-state="done" title="0b The two plan docs - done">0b</a>
+                <a class="cell" href="#item-0c" data-goto="item-0c" data-state="done" title="0c Overview and prototype - done">0c</a>
+            </div>
+          </div>
+          <div class="strip-phase">
+            <div class="strip-label">Ph 1 MVP <span class="now-note">&middot; now: 15.5, ship with the rebrand</span></div>
+            <div class="strip-cells">
+                <a class="cell" href="#item-1" data-goto="item-1" data-state="done" title="1 Site shell and theme - done">1</a>
+                <a class="cell" href="#item-2" data-goto="item-2" data-state="done" title="2 Locale routing - done">2</a>
+                <a class="cell" href="#item-3" data-goto="item-3" data-state="done" title="3 Home page - done">3</a>
+                <a class="cell" href="#item-4" data-goto="item-4" data-state="done" title="4 Gallery - done">4</a>
+                <a class="cell" href="#item-5" data-goto="item-5" data-state="done" title="5 Service pages - done">5</a>
+                <a class="cell" href="#item-5a" data-goto="item-5a" data-state="done" title="5a The pages - done">5a</a>
+                <a class="cell" href="#item-5b" data-goto="item-5b" data-state="done" title="5b The menu and booking policies - done">5b</a>
+                <a class="cell" href="#item-6" data-goto="item-6" data-state="done" title="6 Who she is - done">6</a>
+                <a class="cell" href="#item-6a" data-goto="item-6a" data-state="done" title="6a The page - done">6a</a>
+                <a class="cell" href="#item-6b" data-goto="item-6b" data-state="done" title="6b Her story - done">6b</a>
+                <a class="cell" href="#item-7" data-goto="item-7" data-state="done" title="7 Contact and booking - done">7</a>
+                <a class="cell" href="#item-8" data-goto="item-8" data-state="done" title="8 Deploy - done">8</a>
+                <a class="cell" href="#item-9" data-goto="item-9" data-state="done" title="9 Site-wide SEO pass - done">9</a>
+                <a class="cell" href="#item-10" data-goto="item-10" data-state="done" title="10 Gallery lightbox - done">10</a>
+                <a class="cell" href="#item-14" data-goto="item-14" data-state="done" title="14 Home page rebuild - done">14</a>
+                <a class="cell" href="#item-16" data-goto="item-16" data-state="done" title="16 Decorative imagery for lashes and makeup - done">16</a>
+                <a class="cell" href="#item-17" data-goto="item-17" data-state="done" title="17 Inspiration grids on the service pages - done">17</a>
+                <a class="cell" href="#item-18" data-goto="item-18" data-state="done" title="18 Her Drive photos in the gallery - done">18</a>
+                <span class="cell-open" title="Item 15 is being built; its steps follow"><a class="cell" href="#item-15" data-goto="item-15" data-state="active" title="15 Domain, indexing and production email - being built">15</a><a class="cell cell--step" href="#step-15-1" data-goto="step-15-1" data-state="done" title="15.1 Buy the domain - done">15.1</a><a class="cell cell--step" href="#step-15-2" data-goto="step-15-2" data-state="done" title="15.2 A business address for $0 - done">15.2</a><a class="cell cell--step" href="#step-15-3" data-goto="step-15-3" data-state="done" title="15.3 The contact form delivers - done">15.3</a><a class="cell cell--step" href="#step-15-4" data-goto="step-15-4" data-state="done" title="15.4 The domain in code, indexing opens - done">15.4</a><a class="cell cell--step" href="#step-15-5" data-goto="step-15-5" data-state="next" title="15.5 Ship with the Glammed rebrand - next">15.5</a></span>
+            </div>
+          </div>
+          <div class="strip-phase">
+            <div class="strip-label">Post-MVP</div>
+            <div class="strip-cells">
+                <a class="cell" href="#item-11" data-goto="item-11" title="11 Reviews on site">11</a>
+                <a class="cell" href="#item-12" data-goto="item-12" title="12 Real booking">12</a>
+                <a class="cell" href="#item-13" data-goto="item-13" title="13 Second client from this template">13</a>
+            </div>
+          </div>
+    </nav>
+  </div>
+</header>
+
 <div class="shell">
-
-  <!-- Brand, switcher and position in one sticky block. The roadmap is
-       home; the other views are two buttons away and take no width when
-       you are not in them. -->
-  <header class="topbar">
-    <div class="topbar-row">
-      <div class="brand">
-        <span class="brand-name">facing-dani</span>
-        <span class="brand-sub">Build log &middot; Sep 23, 2026</span>
-      </div>
-      <nav class="switch" aria-label="Views">
-        <button class="nav-link" data-view="roadmap">Roadmap</button>
-        <button class="nav-link" data-view="project">The project</button>
-      </nav>
-    </div>
-
-    <div class="where">
-      <div class="where-leg">
-        <div class="where-key">Phase</div>
-        <div class="where-val">1 &middot; MVP</div>
-      </div>
-      <span class="where-arrow">&rsaquo;</span>
-      <div class="where-leg">
-        <div class="where-key">Item</div>
-        <div class="where-val">15 &middot; Domain, indexing and production email</div>
-      </div>
-      <span class="where-arrow">&rsaquo;</span>
-      <div class="where-leg" data-now="yes">
-        <div class="where-key">Step now</div>
-        <div class="where-val">Blocked until the domain is bought</div>
-      </div>
-      <span class="where-spacer"></span>
-      <div class="where-leg">
-        <div class="where-key">MVP items</div>
-        <div class="meter" title="14 of 15 MVP items done">
-          <i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i data-state="done"></i><i></i>
-        </div>
-      </div>
-    </div>
-  </header>
 
   <main>
 
@@ -1249,7 +1231,7 @@
           </div>
           <div class="row">
             <div class="row-key">8 &middot; Deployment</div>
-            <div class="row-val"><strong>Live on Vercel</strong> at <code>facing-dani.vercel.app</code>, building from <code>main</code>, with a preview per pushed branch. ImageKit is configured in production and the gallery serves from it; Resend works locally but <strong>cannot deliver in production</strong>, because its only available sender belongs to another client. English at the root and Spanish at <code>/es</code>, not a subdomain, because that splits a ranking signal this site has none of to spare. <strong>Deploy early and keep deploying</strong>, so Dani watches it grow on her phone and corrections arrive while they are cheap. <strong>The domain is still not registered</strong>, and it is now the single blocker: <code>robots.txt</code> serves <code>Disallow: /</code>, the sitemap is empty, the <code>hreflang</code> URLs are relative, and the contact form cannot mail anyone - item 15. A Google Business Profile will out-earn the site for the first year and is part of the engagement, not an afterthought.</div>
+            <div class="row-val"><strong>Live on Vercel</strong> at <code>facing-dani.vercel.app</code>, building from <code>main</code>, with a preview per pushed branch. ImageKit is configured in production and the gallery serves from it; Resend sends as <code>glammedbeautystudio.com</code> since Sep 24, verified; production picks it up when item 15 ships. English at the root and Spanish at <code>/es</code>, not a subdomain, because that splits a ranking signal this site has none of to spare. <strong>Deploy early and keep deploying</strong>, so Dani watches it grow on her phone and corrections arrive while they are cheap. <strong>The domain is <code>glammedbeautystudio.com</code></strong>, bought Sep 24 and live on Vercel. Indexing stays closed until item 15 ships with the rename to Glammed Beauty Studio, so Google's first look carries the right name. A Google Business Profile will out-earn the site for the first year and is part of the engagement, not an afterthought.</div>
           </div>
         </div>
       </section>
@@ -1293,10 +1275,7 @@
          milestone headings. -->
     <div id="view-roadmap" hidden>
       <header class="head">
-        <div>
-          <div class="eyebrow">Build order</div>
-          <h1>Roadmap</h1>
-        </div>
+        <h1 class="visually-hidden">Roadmap</h1>
         <p class="lede">
           Fifteen items to an MVP, in build order. The shell carries the theme and the locale routing,
           so it goes first and everything after inherits both. The gallery is the page that sells
@@ -1305,9 +1284,45 @@
         </p>
         <div class="tally">
           <span class="tally-part" data-state="done"><span class="tally-key">Done</span><span class="tally-val">14 of 15 MVP items</span></span>
-          <span class="tally-part" data-state="active"><span class="tally-key">Now</span><span class="tally-val">Nothing building</span></span>
-          <span class="tally-part" data-state="planned"><span class="tally-key">Next</span><span class="tally-val">15 &middot; Domain, blocked until it is bought</span></span>
+          <span class="tally-part" data-state="active"><span class="tally-key">Now</span><span class="tally-val">15 &middot; domain and email done, ships with the rebrand</span></span>
+          <span class="tally-part" data-state="planned"><span class="tally-key">Next</span><span class="tally-val">Rename to Glammed Beauty Studio, then booking</span></span>
         </div>
+        <details class="callout callout--map">
+          <summary class="callout-title">How it all fits together <span class="callout-count">the site and everything it touches</span></summary>
+          <p class="map-what">Where visitors come from, what the site runs on, and where every photo, enquiry and email goes. Drawn Sep 24, when the domain and her email went in.</p>
+          <figure class="fig"><svg viewBox="0 0 680 500" role="img" aria-label="How the site fits together. Visitors arrive from her Instagram bio link, and later from Google search and her Business Profile. The site at glammedbeautystudio.com runs on Vercel. It pulls every photo from ImageKit and sends form enquiries through Resend to her Gmail. Mail to dani@ reaches the same Gmail through ImprovMX. Booking through Cal.com, checking her calendar, is the next step.">
+            <defs><marker id="mfit" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="currentColor"/></marker></defs>
+            <rect class="bx" x="40" y="20" width="180" height="64" rx="6"/><text class="th" x="130" y="46" text-anchor="middle">Instagram bio link</text><text class="ts" x="130" y="66" text-anchor="middle">glammed.beauty.studio</text>
+            <rect class="bx-later" x="250" y="20" width="180" height="64" rx="6"/><text class="th" x="340" y="46" text-anchor="middle">Google search</text><text class="ts" x="340" y="66" text-anchor="middle">opens with 15.5</text>
+            <rect class="bx-later" x="460" y="20" width="180" height="64" rx="6"/><text class="th" x="550" y="46" text-anchor="middle">Business Profile</text><text class="ts" x="550" y="66" text-anchor="middle">not started</text>
+            <rect class="bx-acc" x="40" y="130" width="600" height="76" rx="6"/><text class="th" x="340" y="158" text-anchor="middle">glammedbeautystudio.com</text><text class="ta" x="340" y="178" text-anchor="middle">Next.js on Vercel &#183; English at /, Spanish at /es</text><text class="ts" x="340" y="195" text-anchor="middle">home, gallery with viewer, three service pages, contact</text>
+            <rect class="bx" x="40" y="252" width="180" height="64" rx="6"/><text class="th" x="130" y="278" text-anchor="middle">ImageKit</text><text class="ts" x="130" y="298" text-anchor="middle">her photos and stock</text>
+            <rect class="bx" x="250" y="252" width="180" height="64" rx="6"/><text class="th" x="340" y="278" text-anchor="middle">Resend</text><text class="ts" x="340" y="298" text-anchor="middle">sends as the domain</text>
+            <rect class="bx-later" x="460" y="252" width="180" height="64" rx="6"/><text class="th" x="550" y="278" text-anchor="middle">Cal.com</text><text class="ts" x="550" y="298" text-anchor="middle">one event per service</text>
+            <rect class="bx" x="40" y="362" width="180" height="64" rx="6"/><text class="th" x="130" y="388" text-anchor="middle">ImprovMX</text><text class="ts" x="130" y="408" text-anchor="middle">mail to dani@ comes in</text>
+            <rect class="bx" x="250" y="362" width="180" height="64" rx="6"/><text class="th" x="340" y="388" text-anchor="middle">Her Gmail</text><text class="ts" x="340" y="408" text-anchor="middle">one inbox for all of it</text>
+            <rect class="bx-later" x="460" y="362" width="180" height="64" rx="6"/><text class="th" x="550" y="388" text-anchor="middle">Her calendar</text><text class="ts" x="550" y="408" text-anchor="middle">Cal.com checks it</text>
+            <g style="color: var(--ink-3)">
+              <line class="ln" x1="130" y1="84" x2="130" y2="124" marker-end="url(#mfit)"/>
+              <line class="ln-dash" x1="340" y1="84" x2="340" y2="124" marker-end="url(#mfit)"/>
+              <line class="ln-dash" x1="550" y1="84" x2="550" y2="124" marker-end="url(#mfit)"/>
+              <line class="ln" x1="130" y1="206" x2="130" y2="246" marker-end="url(#mfit)"/>
+              <line class="ln" x1="340" y1="206" x2="340" y2="246" marker-end="url(#mfit)"/>
+              <line class="ln-dash" x1="550" y1="206" x2="550" y2="246" marker-end="url(#mfit)"/>
+              <line class="ln" x1="340" y1="316" x2="340" y2="356" marker-end="url(#mfit)"/>
+              <line class="ln" x1="220" y1="394" x2="244" y2="394" marker-end="url(#mfit)"/>
+              <line class="ln-dash" x1="550" y1="316" x2="550" y2="356" marker-end="url(#mfit)"/>
+            </g>
+            <text class="ts" x="138" y="108">visitors</text>
+            <text class="ts" x="138" y="230">every photo</text>
+            <text class="ts" x="348" y="230">the form</text>
+            <text class="ts" x="558" y="230">Book buttons</text>
+            <text class="ts" x="348" y="340">enquiries</text>
+            <text class="ts" x="558" y="340">appointments</text>
+            <text class="ts" x="340" y="462" text-anchor="middle">Solid: live today. Dashed: planned. Blue: the site itself.</text>
+            <text class="ts" x="340" y="482" text-anchor="middle">No database and no login: every fact is a typed file in the repo.</text>
+          </svg><figcaption>Everything the site touches, on one page. Customers only ever see the domain: the site, dani@ and, after item 12, a booking calendar. Her Gmail is the one place everything arrives.</figcaption></figure>
+        </details>
       </header>
 
       <section>
@@ -1315,14 +1330,14 @@
 
         <div class="stage">
           <div class="stage-head"><span class="stage-name">Phase 0 &middot; Decide</span><span class="stage-note">Exit: both plan docs written, overview generated, theme.css locked</span></div>
-          <div class="item" data-state="done"><div class="item-num">0a</div><div class="item-body"><div class="item-name">Design direction</div><p class="item-text">After Party: plum ground, four colour-coded accents, Unbounded over Inter, dark as the brand with a light twin. Chosen by rendering four directions and comparing them at phone width rather than describing them. The sketches and the reference screenshots that fed them are in <code>blueprint/reference/</code>.</p></div><span class="pill pill--done">Done</span></div>
-          <div class="item" data-state="done"><div class="item-num">0b</div><div class="item-body"><div class="item-name">The two plan docs</div><p class="item-text">All eight sections of <code>project-plan.md</code> written, and <code>build-plan.md</code> written as nine MVP items plus three parked. Four decisions were taken along the way: this is the first build of a beauty template, craft rather than price is the angle, bilingual ships in the MVP, and attribution is a form field plus Search Console rather than an analytics script. Four assumptions stay tagged <code>[confirm]</code>: logo, location, booking route, domain.</p></div><span class="pill pill--done">Done</span></div>
-          <div class="item" data-state="done"><div class="item-num">0c</div><div class="item-body"><div class="item-name">Overview and prototype</div><p class="item-text"><code>/overview</code> has generated <code>project-overview.md</code> and filled this page. <code>prototypes/theme.css</code> exists and holds the locked direction; it ports into <code>globals.css</code> <code>@theme</code> at item 1. The mockups in <code>prototypes/</code> are throwaway and are not the app.</p></div><span class="pill pill--done">Done</span></div>
+          <div class="item" id="item-0a" data-state="done"><div class="item-num">0a</div><div class="item-body"><div class="item-name">Design direction</div><p class="item-text">After Party: plum ground, four colour-coded accents, Unbounded over Inter, dark as the brand with a light twin. Chosen by rendering four directions and comparing them at phone width rather than describing them. The sketches and the reference screenshots that fed them are in <code>blueprint/reference/</code>.</p></div><span class="pill pill--done">Done</span></div>
+          <div class="item" id="item-0b" data-state="done"><div class="item-num">0b</div><div class="item-body"><div class="item-name">The two plan docs</div><p class="item-text">All eight sections of <code>project-plan.md</code> written, and <code>build-plan.md</code> written as nine MVP items plus three parked. Four decisions were taken along the way: this is the first build of a beauty template, craft rather than price is the angle, bilingual ships in the MVP, and attribution is a form field plus Search Console rather than an analytics script. Four assumptions stay tagged <code>[confirm]</code>: logo, location, booking route, domain.</p></div><span class="pill pill--done">Done</span></div>
+          <div class="item" id="item-0c" data-state="done"><div class="item-num">0c</div><div class="item-body"><div class="item-name">Overview and prototype</div><p class="item-text"><code>/overview</code> has generated <code>project-overview.md</code> and filled this page. <code>prototypes/theme.css</code> exists and holds the locked direction; it ports into <code>globals.css</code> <code>@theme</code> at item 1. The mockups in <code>prototypes/</code> are throwaway and are not the app.</p></div><span class="pill pill--done">Done</span></div>
         </div>
 
         <div class="stage">
           <div class="stage-head"><span class="stage-name">Phase 1 &middot; MVP</span><span class="stage-note">Exit: seven pages live in both languages, deployed, each carrying its own SEO and its real content</span></div>
-          <div class="item" data-state="done"><div class="item-num">1</div><div class="item-body"><div class="item-name">Site shell and theme</div><p class="item-text">The After Party theme ported into <code>globals.css</code>, and the header, mobile nav, footer and gradient ticker built against it. First because everything after it inherits the theme, and because a shell built after the pages means touching every page again.</p>
+          <div class="item" id="item-1" data-state="done"><div class="item-num">1</div><div class="item-body"><div class="item-name">Site shell and theme</div><p class="item-text">The After Party theme ported into <code>globals.css</code>, and the header, mobile nav, footer and gradient ticker built against it. First because everything after it inherits the theme, and because a shell built after the pages means touching every page again.</p>
 
             <div class="gates">
               <span class="gate-chip" data-state="pass">Spec agreed</span>
@@ -1365,9 +1380,23 @@
             </details>
 
             <details class="drawer" data-kind="reality">
-              <summary>Log <span class="tag-drift">4 entries, newest first</span></summary>
+              <summary>Log <span class="tag-drift">6 entries, newest first</span></summary>
               <div class="drawer-body">
                 <div class="log">
+                  <div class="entry" data-kind="change">
+                    <div class="dot"></div>
+                    <div class="entry-body">
+                      <div class="entry-top"><span class="entry-title">Hover effects on every button and the service cards</span><span class="kind-tag">Change</span><span class="stamp">Sep 24</span></div>
+                      <p class="entry-text">Book buttons lift two pixels over a pink glow, outline buttons fill in and brighten their border, and the home service cards lift and turn pink at the edge. The cards also became fully clickable, because a card that lifts but only has a link in its corner feels broken. Two utilities in <code>globals.css</code>, <code>hover-glow</code> and <code>hover-fill</code>, shared by six files. Everything sits behind <code>(hover: hover)</code>, so a tap never leaves a phone stuck mid-hover. The photo zoom on the cards is wired but invisible until lashes has a photo of its own.</p>
+                    </div>
+                  </div>
+                  <div class="entry" data-kind="change">
+                    <div class="dot"></div>
+                    <div class="entry-body">
+                      <div class="entry-top"><span class="entry-title">Code comments cut down to what matters</span><span class="kind-tag">Change</span><span class="stamp">Sep 24</span></div>
+                      <p class="entry-text">Build history and restated code came out of the comments; what stayed is traps and reasons a reader could not work out alone. Archived at <code>blueprint/history/fixes/cut-the-comments-down-to-what-matters.md</code>.</p>
+                    </div>
+                  </div>
                   <div class="entry" data-kind="fix">
                     <div class="dot"></div>
                     <div class="entry-body">
@@ -1401,7 +1430,7 @@
             </details>
 
             </div><span class="pill pill--done">Done</span></div>
-          <div class="item" data-state="done"><div class="item-num">2</div><div class="item-body"><div class="item-name">Locale routing</div><p class="item-text">The <code>[locale]</code> segment, a dictionary per locale, the language switch, and the build error on a missing string. Hand-rolled, no package: two languages and eight pages do not need <code>next-intl</code>. Second because retrofitting a second language means reopening every page.</p>
+          <div class="item" id="item-2" data-state="done"><div class="item-num">2</div><div class="item-body"><div class="item-name">Locale routing</div><p class="item-text">The <code>[locale]</code> segment, a dictionary per locale, the language switch, and the build error on a missing string. Hand-rolled, no package: two languages and eight pages do not need <code>next-intl</code>. Second because retrofitting a second language means reopening every page.</p>
 
             <div class="gates">
               <span class="gate-chip" data-state="pass">Spec agreed</span>
@@ -1472,7 +1501,7 @@
             </details>
 
             </div><span class="pill pill--done">Done</span></div>
-          <div class="item" data-state="done"><div class="item-num">3</div><div class="item-body"><div class="item-name">Home page</div><p class="item-text">Hero, the three services, a gallery teaser, her story, FAQ and the booking call to action. This is the page the Instagram bio link lands on, so it carries the short version of the craft angle and the bilingual claim.</p>
+          <div class="item" id="item-3" data-state="done"><div class="item-num">3</div><div class="item-body"><div class="item-name">Home page</div><p class="item-text">Hero, the three services, a gallery teaser, her story, FAQ and the booking call to action. This is the page the Instagram bio link lands on, so it carries the short version of the craft angle and the bilingual claim.</p>
 
             <div class="gates">
               <span class="gate-chip" data-state="pass">Spec agreed</span>
@@ -1527,20 +1556,61 @@
             </details>
 
             </div><span class="pill pill--done">Done</span></div>
-          <div class="item" data-state="done"><div class="item-num">4</div><div class="item-body"><div class="item-name">Gallery</div><p class="item-text">The full set of work, filterable by service, at a size where the quality is actually visible. The headline feature and the reason the site exists at all - Instagram is a grid of squares, and a grid of squares is a poor way to judge a set of nails. Before the service pages, because it is the page that sells the work.</p></div><span class="pill pill--done">Done</span></div>
-          <div class="item" data-state="done"><div class="item-num">5</div><div class="item-body"><div class="item-name">Service pages</div><p class="item-text">Nails, lashes and makeup, one page each, with treatments, prices and durations. Three pages and not one services page: a single page listing three services competes with itself and ranks for none of them. Each page owns its own terms and borrows none from the others. <b>Reopened on Sep 23</b>: it was checked while every page still read "Prices are being set", which the plan's own no-placeholder rule does not allow. Closed the same day by 5b.</p></div><span class="pill pill--done">Done</span></div>
-          <div class="item" data-state="done"><div class="item-num">5a</div><div class="item-body"><div class="item-name">The pages</div><p class="item-text">The three routes in both languages, their SEO, and the empty state that renders until prices exist.</p></div><span class="pill pill--done">Done</span></div>
-          <div class="item" data-state="done"><div class="item-num">5b</div><div class="item-body"><div class="item-name">The menu and booking policies</div><p class="item-text">Treatments, prices and durations for all three services, plus the deposit, payment, removal and first-visit answers in the home page FAQ. Prices set by Frank on Sep 23 from Calgary research, positioned mid-low, <b>for Dani to confirm before launch</b>. "From" prices reach Google as a minimum, not an exact charge.</p></div><span class="pill pill--done">Done</span></div>
-          <div class="item" data-state="done"><div class="item-num">6</div><div class="item-body"><div class="item-name">Who she is</div><p class="item-text">Her training and the trust a new business has not earned yet, carried on the home page since item 14 deleted <code>/about</code>.</p></div><span class="pill pill--done">Done</span></div>
-          <div class="item" data-state="done"><div class="item-num">6a</div><div class="item-body"><div class="item-name">The page</div><p class="item-text">The <code>/about</code> route in both languages, the bilingual promise, what happens at an appointment, and Person data. Folded into home by item 14; <code>/about</code> now redirects there.</p></div><span class="pill pill--done">Done</span></div>
-          <div class="item" data-state="done"><div class="item-num">6b</div><div class="item-body"><div class="item-name">Her story</div><p class="item-text">Where she trained, what she does between clients, and how a client should feel leaving. Shipped Sep 23, replacing a line that claimed more training than she has. No age and no portrait, both decisions for her and her parents.</p></div><span class="pill pill--done">Done</span></div>
-          <div class="item" data-state="done"><div class="item-num">7</div><div class="item-body"><div class="item-name">Contact and booking</div><p class="item-text">The form with the "how did you find me" field, validation on both sides, Resend delivery from a Server Action, the direct booking route and a thank-you page. Load-bearing twice over: it is the booking route for anyone who will not DM, and the only attribution the site has.</p></div><span class="pill pill--done">Done</span></div>
-          <div class="item" data-state="done"><div class="item-num">8</div><div class="item-body"><div class="item-name">Deploy</div><p class="item-text">Vercel, env vars and a verified production build. <b>Actually done at item 1</b> and the plan never reflected it, so this sat unchecked while the site was live at <code>facing-dani.vercel.app</code>. The domain and indexing work once filed here moved to item 15.</p></div><span class="pill pill--done">Done</span></div>
-          <div class="item" data-state="done"><div class="item-num">9</div><div class="item-body"><div class="item-name">Site-wide SEO pass</div><p class="item-text">Sitemap and robots across both locales, LocalBusiness data, and an audit that every page carries its own metadata and hreflang. The only SEO work that genuinely needs every page to exist - the rest shipped with the page it describes.</p></div><span class="pill pill--done">Done</span></div>
-          <div class="item" data-state="done"><div class="item-num">10</div><div class="item-body"><div class="item-name">Gallery lightbox</div><p class="item-text">Tap a photo to open it large, with next and previous, a thumbnail strip, and keyboard and swipe control. Item 4 promises a size where the quality is visible, but a grid tile renders at roughly 280px - so this is what makes that promise true rather than an extra. Built on the shadcn dialog, which costs no new dependency because <code>@base-ui/react</code> is already installed; the slider is hand-rolled rather than pulling in <code>embla-carousel-react</code>.</p></div><span class="pill pill--done">Done</span></div>
-          <div class="item" data-state="done"><div class="item-num">14</div><div class="item-body"><div class="item-name">Home page rebuild</div><p class="item-text">The hero photograph and gallery teaser that item 3 deferred, plus the process and bilingual sections, with About folded in and <code>/about</code> deleted. The home page went from <b>zero</b> images to seven. The FAQ did not grow: the questions visitors actually ask - deposits, removals, first visits, payment - are promises only Dani can make.</p></div><span class="pill pill--done">Done</span></div>
-          <div class="item" data-state="done"><div class="item-num">16</div><div class="item-body"><div class="item-name">Decorative imagery for lashes and makeup</div><p class="item-text">Licensed stock (Unsplash or Pexels) on the lashes and makeup pages only, with no identifiable faces - Dani is 17 and the site shows no portrait, so a stock face could be read as her. Never in the gallery, a work strip or structured data, and never captioned as her work: a gallery row is a claim of authorship, a decorative band is not. Also closes the empty band below those two menus. <b>Shipped Sep 23</b> with one image per page from Pexels, each cropped to a single eye: a lash-mapping close-up and a smoky eye. It comes off by itself when her own photo for that service is added to the gallery. A larger "inspiration" grid was discussed and parked: it would need a visible line saying the photos are references, not her work.</p></div><span class="pill pill--done">Done</span></div>
-          <div class="item" data-state="done"><div class="item-num">17</div><div class="item-body"><div class="item-name">Inspiration grids on the service pages</div><p class="item-text">A grid of licensed stock on nails, lashes and makeup, 11 to 14 images each as Frank picked them from a contact sheet, headed "Inspiration" in both languages. Same boundary as 16: no identifiable faces, never in the gallery, a work strip or structured data. Nails gets one too, which widens the stock rule past 16, and the heading is what keeps it honest. The lash mapping photo from 16 comes out. <b>Built Sep 23</b>: 36 photos downloaded, cropped by eye so no face is in frame, and uploaded; none of the picks had to be dropped. The grid sits after her own work on nails and after the menu on lashes and makeup, under a line saying these are stock photos, not her work.</p>
+          <div class="item" id="item-4" data-state="done"><div class="item-num">4</div><div class="item-body"><div class="item-name">Gallery</div><p class="item-text">The full set of work, filterable by service, at a size where the quality is actually visible. The headline feature and the reason the site exists at all - Instagram is a grid of squares, and a grid of squares is a poor way to judge a set of nails. Before the service pages, because it is the page that sells the work.</p></div><span class="pill pill--done">Done</span></div>
+          <div class="item" id="item-5" data-state="done"><div class="item-num">5</div><div class="item-body"><div class="item-name">Service pages</div><p class="item-text">Nails, lashes and makeup, one page each, with treatments, prices and durations. Three pages and not one services page: a single page listing three services competes with itself and ranks for none of them. Each page owns its own terms and borrows none from the others. <b>Reopened on Sep 23</b>: it was checked while every page still read "Prices are being set", which the plan's own no-placeholder rule does not allow. Closed the same day by 5b.</p></div><span class="pill pill--done">Done</span></div>
+          <div class="item" id="item-5a" data-state="done"><div class="item-num">5a</div><div class="item-body"><div class="item-name">The pages</div><p class="item-text">The three routes in both languages, their SEO, and the empty state that renders until prices exist.</p></div><span class="pill pill--done">Done</span></div>
+          <div class="item" id="item-5b" data-state="done"><div class="item-num">5b</div><div class="item-body"><div class="item-name">The menu and booking policies</div><p class="item-text">Treatments, prices and durations for all three services, plus the deposit, payment, removal and first-visit answers in the home page FAQ. Prices set by Frank on Sep 23 from Calgary research, positioned mid-low, <b>for Dani to confirm before launch</b>. "From" prices reach Google as a minimum, not an exact charge.</p></div><span class="pill pill--done">Done</span></div>
+          <div class="item" id="item-6" data-state="done"><div class="item-num">6</div><div class="item-body"><div class="item-name">Who she is</div><p class="item-text">Her training and the trust a new business has not earned yet, carried on the home page since item 14 deleted <code>/about</code>.</p></div><span class="pill pill--done">Done</span></div>
+          <div class="item" id="item-6a" data-state="done"><div class="item-num">6a</div><div class="item-body"><div class="item-name">The page</div><p class="item-text">The <code>/about</code> route in both languages, the bilingual promise, what happens at an appointment, and Person data. Folded into home by item 14; <code>/about</code> now redirects there.</p></div><span class="pill pill--done">Done</span></div>
+          <div class="item" id="item-6b" data-state="done"><div class="item-num">6b</div><div class="item-body"><div class="item-name">Her story</div><p class="item-text">Where she trained, what she does between clients, and how a client should feel leaving. Shipped Sep 23, replacing a line that claimed more training than she has. No age and no portrait, both decisions for her and her parents.</p></div><span class="pill pill--done">Done</span></div>
+          <div class="item" id="item-7" data-state="done"><div class="item-num">7</div><div class="item-body"><div class="item-name">Contact and booking</div><p class="item-text">The form with the "how did you find me" field, validation on both sides, Resend delivery from a Server Action, the direct booking route and a thank-you page. Load-bearing twice over: it is the booking route for anyone who will not DM, and the only attribution the site has.</p></div><span class="pill pill--done">Done</span></div>
+          <div class="item" id="item-8" data-state="done"><div class="item-num">8</div><div class="item-body"><div class="item-name">Deploy</div><p class="item-text">Vercel, env vars and a verified production build. <b>Actually done at item 1</b> and the plan never reflected it, so this sat unchecked while the site was live at <code>facing-dani.vercel.app</code>. The domain and indexing work once filed here moved to item 15.</p></div><span class="pill pill--done">Done</span></div>
+          <div class="item" id="item-9" data-state="done"><div class="item-num">9</div><div class="item-body"><div class="item-name">Site-wide SEO pass</div><p class="item-text">Sitemap and robots across both locales, LocalBusiness data, and an audit that every page carries its own metadata and hreflang. The only SEO work that genuinely needs every page to exist - the rest shipped with the page it describes.</p></div><span class="pill pill--done">Done</span></div>
+          <div class="item" id="item-10" data-state="done"><div class="item-num">10</div><div class="item-body"><div class="item-name">Gallery lightbox</div><p class="item-text">Tap a photo to open it large, with next and previous, a thumbnail strip, and keyboard and swipe control. Item 4 promises a size where the quality is visible, but a grid tile renders at roughly 280px - so this is what makes that promise true rather than an extra. Built on the shadcn dialog, which costs no new dependency because <code>@base-ui/react</code> is already installed; the slider is hand-rolled rather than pulling in <code>embla-carousel-react</code>.</p>
+
+            <details class="drawer" data-kind="reality">
+              <summary>Log <span class="tag-drift">1 entry</span></summary>
+              <div class="drawer-body">
+                <div class="log">
+                  <div class="entry" data-kind="fix">
+                    <div class="dot"></div>
+                    <div class="entry-body">
+                      <div class="entry-top"><span class="entry-title">Back left the page instead of closing the photo</span><span class="kind-tag">Fix</span><span class="stamp">Sep 24</span></div>
+                      <p class="entry-text">Frank closed the viewer with Back more than half the time and landed off the site. Opening a photo now adds a history entry with <code>pushState</code>, Back closes the viewer and keeps the scroll position, and Close and Escape step back themselves so no dead entry is left behind. Every grid shares <code>GalleryGrid</code>, so one change covers home, the service pages and the gallery. The same change put an expand icon on each photo on touch screens only, since a phone has no zoom cursor to say a photo opens. Checked on the live site. Left alone: a reload with the viewer open makes the next Back do nothing, once.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            </div><span class="pill pill--done">Done</span></div>
+          <div class="item" id="item-14" data-state="done"><div class="item-num">14</div><div class="item-body"><div class="item-name">Home page rebuild</div><p class="item-text">The hero photograph and gallery teaser that item 3 deferred, plus the process and bilingual sections, with About folded in and <code>/about</code> deleted. The home page went from <b>zero</b> images to seven. The FAQ did not grow: the questions visitors actually ask - deposits, removals, first visits, payment - are promises only Dani can make.</p>
+
+            <details class="drawer" data-kind="reality">
+              <summary>Log <span class="tag-drift">2 entries, newest first</span></summary>
+              <div class="drawer-body">
+                <div class="log">
+                  <div class="entry" data-kind="change">
+                    <div class="dot"></div>
+                    <div class="entry-body">
+                      <div class="entry-top"><span class="entry-title">The home work section shows all three services</span><span class="kind-tag">Change</span><span class="stamp">Sep 24</span></div>
+                      <p class="entry-text">The work section had been nails only. It now mixes her nail sets and makeup with stock tagged Inspiration for lashes and makeup, set in <code>data/homeShowcase.ts</code>. Five of her makeup photos joined the gallery at orders 19 to 23, which reverses item 18's call to keep makeup out; the gallery gained Nails and Makeup chips as a result. Every photo grid now opens the same viewer, with stock tagged in the grid and under the photo. Merged without a spec.</p>
+                    </div>
+                  </div>
+                  <div class="entry" data-kind="fix">
+                    <div class="dot"></div>
+                    <div class="entry-body">
+                      <div class="entry-top"><span class="entry-title">The hero got its own photo</span><span class="kind-tag">Fix</span><span class="stamp">Sep 24</span></div>
+                      <p class="entry-text">The hero was repeating a photo from the work section below it. It now carries the pink and black stars set. Archived at <code>blueprint/history/fixes/swap-the-home-hero-image.md</code>.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            </div><span class="pill pill--done">Done</span></div>
+          <div class="item" id="item-16" data-state="done"><div class="item-num">16</div><div class="item-body"><div class="item-name">Decorative imagery for lashes and makeup</div><p class="item-text">Licensed stock (Unsplash or Pexels) on the lashes and makeup pages only, with no identifiable faces - Dani is 17 and the site shows no portrait, so a stock face could be read as her. Never in the gallery, a work strip or structured data, and never captioned as her work: a gallery row is a claim of authorship, a decorative band is not. Also closes the empty band below those two menus. <b>Shipped Sep 23</b> with one image per page from Pexels, each cropped to a single eye: a lash-mapping close-up and a smoky eye. It comes off by itself when her own photo for that service is added to the gallery. A larger "inspiration" grid was discussed and parked: it would need a visible line saying the photos are references, not her work.</p></div><span class="pill pill--done">Done</span></div>
+          <div class="item" id="item-17" data-state="done"><div class="item-num">17</div><div class="item-body"><div class="item-name">Inspiration grids on the service pages</div><p class="item-text">A grid of licensed stock on nails, lashes and makeup, 11 to 14 images each as Frank picked them from a contact sheet, headed "Inspiration" in both languages. Same boundary as 16: no identifiable faces, never in the gallery, a work strip or structured data. Nails gets one too, which widens the stock rule past 16, and the heading is what keeps it honest. The lash mapping photo from 16 comes out. <b>Built Sep 23</b>: 36 photos downloaded, cropped by eye so no face is in frame, and uploaded; none of the picks had to be dropped. The grid sits after her own work on nails and after the menu on lashes and makeup, under a line saying these are stock photos, not her work.</p>
 
             <div class="gates">
               <span class="gate-chip" data-state="pass">Spec agreed</span>
@@ -1549,7 +1619,7 @@
             </div>
 
             </div><span class="pill pill--done">Done</span></div>
-          <div class="item" data-state="done"><div class="item-num">18</div><div class="item-body"><div class="item-name">Her Drive photos in the gallery</div><p class="item-text">The gallery sat at nine because her Drive folder downloaded as two zips and only the first was ever saved: 29 photos were never seen. With all 101 pulled, Frank cut them to nine more nail sets and called each crop on a 10% grid. They join as ordinary gallery records with alt text in both languages, at orders 10 to 18, so the home page does not move until the heroes are chosen. Every makeup shot shows a client's face and stays out; there are no lash photos. Her originals carry GPS in their metadata, and the re-encode strips it.</p>
+          <div class="item" id="item-18" data-state="done"><div class="item-num">18</div><div class="item-body"><div class="item-name">Her Drive photos in the gallery</div><p class="item-text">The gallery sat at nine because her Drive folder downloaded as two zips and only the first was ever saved: 29 photos were never seen. With all 101 pulled, Frank cut them to nine more nail sets and called each crop on a 10% grid. They join as ordinary gallery records with alt text in both languages, at orders 10 to 18, so the home page does not move until the heroes are chosen. Every makeup shot shows a client's face and stays out; there are no lash photos. Her originals carry GPS in their metadata, and the re-encode strips it.</p>
 
             <div class="gates">
               <span class="gate-chip" data-state="pass">Spec agreed</span>
@@ -1558,14 +1628,134 @@
             </div>
 
             </div><span class="pill pill--done">Done</span></div>
-          <div class="item"><div class="item-num">15</div><div class="item-body"><div class="item-name">Domain, indexing and production email</div><p class="item-text">Buy the domain, set <code>NEXT_PUBLIC_SITE_URL</code> so <code>robots.txt</code> stops serving <code>Disallow: /</code>, and give Resend a sender that can mail anyone rather than only the account owner. <b>This is what gates launch</b>: today nothing is indexable and the contact form cannot deliver in production.</p></div><span class="pill">Blocked on the domain</span></div>
+          <div class="item" id="item-15" data-state="active"><div class="item-num">15</div><div class="item-body"><div class="item-name">Domain, indexing and production email</div><p class="item-text">Buy the domain, open indexing, and give the business a real address and a form that delivers in production. <b>This is what gates launch.</b> On Sep 24 the domain came from her Instagram handle, <code>glammed.beauty.studio</code>, so the site is being renamed to Glammed Beauty Studio at the same time, and this item ships with that rename rather than before it.</p>
+
+            <div class="gates">
+              <span class="gate-chip">Spec agreed</span>
+              <span class="gate-chip" data-state="pass">Built &amp; verified</span>
+              <span class="gate-chip">Commit granted</span>
+            </div>
+
+            <details class="drawer" data-kind="plan" open>
+              <summary>Steps <span class="tag-drift">15.1 to 15.4 done &middot; 15.5 next &middot; 5 in this item</span></summary>
+              <div class="drawer-body">
+                <div class="item-steps">
+                  <details class="rstep" id="step-15-1" data-state="done">
+                    <summary><span class="sn">15.1</span><span class="sm"></span><span>Buy the domain</span><span class="ss">Done</span></summary>
+                    <div class="rstep-body"><p class="rstep-what"><code>glammedbeautystudio.com</code>, taken from her Instagram handle. DNS is hosted on Vercel, and the bare domain redirects to <code>www</code>, which is the canonical host.</p></div>
+                  </details>
+                  <details class="rstep" id="step-15-2" data-state="done">
+                    <summary><span class="sn">15.2</span><span class="sm"></span><span>A business address for $0</span><span class="ss">Done</span></summary>
+                    <div class="rstep-body">
+                      <p class="rstep-what"><code>dani@glammedbeautystudio.com</code>, chosen over <code>info@</code> because a 17-year-old solo artist reads warmer as a person. ImprovMX forwards everything at the domain into her Gmail, and Gmail's "Send mail as" replies through Resend, so customers never see the Gmail address. No Workspace subscription.</p>
+                      <div class="rstep-when">Tested both ways on Sep 24: mail to <code>dani@</code> lands in her inbox, and a reply arrives as <b>Dani &middot; Glammed Beauty Studio &lt;dani@glammedbeautystudio.com&gt;</b>, mailed by <code>send.glammedbeautystudio.com</code> and signed by the domain.</div>
+                    </div>
+                  </details>
+                  <details class="rstep" id="step-15-3" data-state="done">
+                    <summary><span class="sn">15.3</span><span class="sm"></span><span>The contact form delivers</span><span class="ss">Done</span></summary>
+                    <div class="rstep-body">
+                      <p class="rstep-what">The form sends from <code>website@glammedbeautystudio.com</code> straight to her Gmail through <code>CONTACT_INBOX</code>, kept out of git, with the customer as reply-to. It falls back to <code>dani@</code> if the variable is missing.</p>
+                      <div class="rstep-when">Verified on the local build: Resend reports the enquiry delivered, and it arrived in her inbox, not Spam. Not live yet.</div>
+                    </div>
+                  </details>
+                  <details class="rstep" id="step-15-4" data-state="done">
+                    <summary><span class="sn">15.4</span><span class="sm"></span><span>The domain in code, indexing opens</span><span class="ss">Done</span></summary>
+                    <div class="rstep-body">
+                      <p class="rstep-what"><code>siteConfig.business.website</code> replaces the <code>NEXT_PUBLIC_SITE_URL</code> variable, the way <code>primo-painters</code> does it, and <code>lib/siteUrl.ts</code> is gone. <code>robots.txt</code> allows crawling and points at a full sitemap, and every canonical and <code>hreflang</code> link is absolute.</p>
+                      <div class="rstep-when">Checked on the dev server. On branch <code>feature/glammed-rebrand</code>, uncommitted, with the logo and favicon.</div>
+                    </div>
+                  </details>
+                  <details class="rstep" id="step-15-5" data-state="planned">
+                    <summary><span class="sn">15.5</span><span class="sm"></span><span>Ship with the Glammed rebrand</span><span class="ss">Next</span></summary>
+                    <div class="rstep-body">
+                      <ul class="substeps">
+                        <li data-done="yes">Rename "Dani Moreno" to Glammed Beauty Studio in titles, footer and structured data. The Person data now says Dani, first name only, from a new <code>ownerName</code>, so Google is never told the person is the studio</li>
+                        <li>Vercel: <code>CONTACT_INBOX</code> and <code>RESEND_FROM</code>, and a Resend key of the site's own in place of the one named for Primo</li>
+                        <li>Merge and push, then redirect <code>facing-dani.vercel.app</code> to the domain and submit the sitemap in Search Console</li>
+                      </ul>
+                    </div>
+                  </details>
+                </div>
+              </div>
+            </details>
+
+            <details class="drawer" data-kind="reality">
+              <summary>How her email works <span class="tag-drift">the diagram, the pieces, the records</span></summary>
+              <div class="drawer-body">
+                <figure class="fig">
+                  <svg viewBox="0 0 880 330" role="img" aria-label="Mail in: a customer writes to dani at glammedbeautystudio.com, Vercel DNS points it at ImprovMX, which forwards it to her Gmail. Mail out: her replies leave Gmail through Resend, signed as the domain. The contact form sends through Resend straight to her Gmail.">
+                    <defs><marker id="m15" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="currentColor"/></marker></defs>
+                    <text class="tl" x="200" y="26">MAIL IN &#183; IMPROVMX, FREE</text>
+                    <rect class="bx" x="200" y="40" width="150" height="46" rx="4"/><text class="th" x="275" y="60" text-anchor="middle">Vercel DNS</text><text class="ts" x="275" y="76" text-anchor="middle">MX records</text>
+                    <rect class="bx-acc" x="420" y="40" width="180" height="46" rx="4"/><text class="th" x="510" y="60" text-anchor="middle">ImprovMX</text><text class="ta" x="510" y="76" text-anchor="middle">forwards, keeps nothing</text>
+                    <rect class="bx" x="16" y="115" width="130" height="60" rx="4"/><text class="th" x="81" y="142" text-anchor="middle">customer</text><text class="ts" x="81" y="159" text-anchor="middle">any inbox</text>
+                    <rect class="bx" x="720" y="115" width="144" height="60" rx="4"/><text class="th" x="792" y="142" text-anchor="middle">her Gmail</text><text class="ts" x="792" y="159" text-anchor="middle">on her phone</text>
+                    <text class="tl" x="420" y="197">MAIL OUT &#183; RESEND</text>
+                    <rect class="bx-acc" x="420" y="205" width="180" height="50" rx="4"/><text class="th" x="510" y="226" text-anchor="middle">Resend</text><text class="ta" x="510" y="242" text-anchor="middle">signs as the domain</text>
+                    <rect class="bx" x="200" y="270" width="150" height="44" rx="4"/><text class="th" x="275" y="289" text-anchor="middle">contact form</text><text class="ts" x="275" y="305" text-anchor="middle">server action</text>
+                    <g style="color: var(--ink-3)">
+                      <path class="ln" d="M81,115 L81,63 L194,63" marker-end="url(#m15)"/>
+                      <path class="ln" d="M350,292 L510,292 L510,261" marker-end="url(#m15)"/>
+                      <path class="ln-dash" d="M600,244 L764,244 L764,181" marker-end="url(#m15)"/>
+                    </g>
+                    <g style="color: var(--accent)">
+                      <line class="ln-acc" x1="350" y1="63" x2="414" y2="63" marker-end="url(#m15)"/>
+                      <path class="ln-acc" d="M600,63 L792,63 L792,109" marker-end="url(#m15)"/>
+                      <path class="ln-acc" d="M820,175 L820,222 L606,222" marker-end="url(#m15)"/>
+                      <path class="ln-acc" d="M420,230 L81,230 L81,181" marker-end="url(#m15)"/>
+                    </g>
+                    <text class="ts" x="137" y="55" text-anchor="middle">writes to dani@</text>
+                    <text class="ta" x="382" y="55" text-anchor="middle">"go here"</text>
+                    <text class="ta" x="696" y="55" text-anchor="middle">forwards</text>
+                    <text class="ta" x="684" y="214" text-anchor="middle">her replies &#183; SMTP</text>
+                    <text class="ts" x="682" y="260" text-anchor="middle">enquiries, direct</text>
+                    <text class="ta" x="250" y="222" text-anchor="middle">From: dani@</text>
+                    <text class="ts" x="430" y="285" text-anchor="middle">API</text>
+                  </svg>
+                  <figcaption>The accent path is one conversation. Customers only ever see dani@glammedbeautystudio.com, both ways. The form skips ImprovMX on purpose; see What bit.</figcaption>
+                </figure>
+                <div class="rows">
+                  <div class="row"><div class="row-key">Vercel DNS</div><div class="row-val">Holds every record. Reached through the project's Domains tab, then View DNS Records; the domain does not appear in the team-level Domains list.</div></div>
+                  <div class="row"><div class="row-key">ImprovMX</div><div class="row-val">Receiving only. Account on her Gmail, catch-all to it. Records: MX <code>mx1.improvmx.com</code> 10, MX <code>mx2.improvmx.com</code> 20, TXT <code>v=spf1 include:spf.improvmx.com ~all</code>, all on <code>@</code>, added by hand.</div></div>
+                  <div class="row"><div class="row-key">Resend</div><div class="row-val">Sending only, receiving <b>off</b>. Its records sit on the <code>send</code> subdomain and <code>resend._domainkey</code>, added by Resend's automatic setup, so its SPF never collides with ImprovMX's.</div></div>
+                  <div class="row"><div class="row-key">Her Gmail</div><div class="row-val"><code>danisglammedstudio@gmail.com</code>. Send mail as <code>dani@</code> through <code>smtp.resend.com</code> on 587 with TLS, username <code>resend</code>, password a sending-only key named "Gmail - Dani". <code>dani@</code> is the default, and replies always come from it.</div></div>
+                </div>
+                <p class="drawer-what">Full walkthrough: <a href="https://claude.ai/artifact/8K15PV61sjfankPozHjsuE">Glammed Email Setup</a>.</p>
+              </div>
+            </details>
+
+            <details class="drawer" data-kind="reality">
+              <summary>What bit <span class="tag-drift">4, each would have lost mail quietly</span></summary>
+              <div class="drawer-body">
+                <div class="snags"><ul>
+                  <li><b>Two of three form enquiries bounced.</b> ImprovMX refuses mail from IPs on the SpamCop list, and Resend sends from shared Amazon SES IPs that land on it now and then. The visitor still saw "Got it, thank you". The form now delivers straight to her Gmail, which does not use SpamCop; mail customers send from their own inboxes is unaffected.</li>
+                  <li><b>"Reply from the same address" would have leaked her Gmail.</b> Form enquiries arrive at the Gmail address directly, so that setting replies from it. Gmail is set to always reply from the default, <code>dani@</code>.</li>
+                  <li><b>ImprovMX looked finished and was not.</b> Its screen showed the domain while Vercel held no MX records, so every message would have bounced. Only a lookup against <code>ns1.vercel-dns.com</code> showed it. Resend could write the records itself; ImprovMX could not.</li>
+                  <li><b>Gmail hides "make default" until the address is verified</b>, and pre-fills ImprovMX's server as the SMTP host. Both look like a setting that silently did nothing.</li>
+                </ul></div>
+              </div>
+            </details>
+
+            <details class="drawer" data-kind="reality">
+              <summary>Decisions <span class="tag-drift">4, with why the rejected option lost</span></summary>
+              <div class="drawer-body">
+                <div class="notes"><ul>
+                  <li><b>The domain lives in code, not an env var.</b> The variable was a lock for a site live without a domain. With the domain real it is a fact, and a fact in Vercel settings drifts from the laptop, as face-and-body's booking username did. The rule, a <code>null</code> website that keeps Google out until the domain lands, is now in the <code>nextjs</code> blueprint standards.</li>
+                  <li><b>Forwarding plus Gmail over Google Workspace.</b> $0 against about $8 a month, and she keeps the one app she knows. Workspace wins the day she hires someone; <code>dani@</code> would not change.</li>
+                  <li><b><code>dani@</code> over <code>info@</code>.</b> Personal for a solo teen artist. The catch-all means <code>info@</code> or <code>book@</code> already reach her if they are ever published.</li>
+                  <li><b>One Resend key per job.</b> Rotating the key named for Primo must never stop Dani's replies. Gmail has its own sending-only key; the site gets its own in 15.5.</li>
+                </ul></div>
+              </div>
+            </details>
+
+            </div><span class="pill pill--live">In progress</span></div>
         </div>
 
         <div class="stage">
           <div class="stage-head"><span class="stage-name">Post-MVP</span><span class="stage-note">Not scheduled. Listed so they stop being re-proposed as if they were new</span></div>
-          <div class="item"><div class="item-num">11</div><div class="item-body"><div class="item-name">Reviews on site</div><p class="item-text">Waits until there are reviews worth showing.</p></div><span class="pill pill--plan">Parked</span></div>
-          <div class="item"><div class="item-num">12</div><div class="item-body"><div class="item-name">Real booking</div><p class="item-text">Availability and deposits, only if DMs stop coping.</p></div><span class="pill pill--plan">Parked</span></div>
-          <div class="item"><div class="item-num">13</div><div class="item-body"><div class="item-name">Second client from this template</div><p class="item-text">The real test of the rule that a component never contains the word Dani.</p></div><span class="pill pill--plan">Parked</span></div>
+          <div class="item" id="item-11"><div class="item-num">11</div><div class="item-body"><div class="item-name">Reviews on site</div><p class="item-text">Waits until there are reviews worth showing.</p></div><span class="pill pill--plan">Parked</span></div>
+          <div class="item" id="item-12"><div class="item-num">12</div><div class="item-body"><div class="item-name">Real booking</div><p class="item-text">Availability and deposits, only if DMs stop coping.</p></div><span class="pill pill--plan">Parked</span></div>
+          <div class="item" id="item-13"><div class="item-num">13</div><div class="item-body"><div class="item-name">Second client from this template</div><p class="item-text">The real test of the rule that a component never contains the word Dani.</p></div><span class="pill pill--plan">Parked</span></div>
         </div>
 
       </section>
@@ -1575,7 +1765,7 @@
         <div class="notes">
           <ul>
             <li><strong>Permission for the two makeup frames, and why she got into nails, are still open with Dani.</strong> Item 16 settled where stock records live (<code>data/decorativeImages.ts</code>) and that its single image comes off when her own photo for that service exists. Item 17's Inspiration grid is the exception: it stays.</li>
-            <li><strong>If the contact form fails, there is no second route.</strong> No Instagram account yet and no public email or phone. Closes with a business email, an Instagram account, or item 15 making the form reliable.</li>
+            <li><strong>If the contact form fails, there is now a second route:</strong> <code>dani@glammedbeautystudio.com</code>, live since Sep 24. Her Instagram is <code>glammed.beauty.studio</code> and is not linked from the site yet.</li>
             <li><strong>Section 8 says the env vars are "already in <code>.env.example</code>".</strong> There is no committed <code>.env.example</code>, it names <code>IMAGEKIT_PRIVATE_KEY</code> where the real variable is <code>IMAGE_KIT_PRIVATE_KEY</code>, and it omits <code>RESEND_FROM</code> and <code>NEXT_PUBLIC_SITE_URL</code>.</li>
             <li><strong>"Spanish is written by Dani" is not what happens.</strong> In practice the Spanish is drafted during each feature; Frank reviewed it on Sep 23 and called it fine. Either the rule or the practice should change.</li>
             <li><strong>A store is being considered, and section 1 explicitly rules one out</strong> ("What it is not: a booking engine, a shop"). Parked, to be planned from the backend. Face and Body's products page is the pattern: JSON per category, prices shown, no cart. If it proceeds, section 1 has to change.</li>
@@ -1767,4 +1957,19 @@
   } catch (e) {}
 
   selectView(initial);
+
+  // A chip in the bar jumps to its item or step: switch to the roadmap,
+  // open every drawer around the target, then scroll to it.
+  document.querySelectorAll("[data-goto]").forEach(function (chip) {
+    chip.addEventListener("click", function (event) {
+      var target = document.getElementById(chip.dataset.goto);
+      if (!target) return;
+      event.preventDefault();
+      selectView("roadmap");
+      for (var node = target; node; node = node.parentElement) {
+        if (node.tagName === "DETAILS") node.open = true;
+      }
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
 </script>
