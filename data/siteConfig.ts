@@ -21,9 +21,8 @@ export const siteConfig = {
   business: {
     // Must match the Google Business Profile exactly, or Google treats them as two businesses.
     name: "Glammed Beauty Studio",
-    // The person, for Person data. First name only: she is 17 and her full name is unconfirmed.
+    // The person: Person data and her sign-off under the story. First name only: she is 17 and her full name is unconfirmed.
     ownerName: "Dani",
-    wordmark: "glammed",
     wordmarkAccent: ".",
     city: "Calgary",
     // The canonical host. Bare glammedbeautystudio.com redirects here.

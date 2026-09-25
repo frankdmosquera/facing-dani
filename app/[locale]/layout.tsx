@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Unbounded } from "next/font/google";
 import { notFound } from "next/navigation";
 
+import { PaletteCompare } from "@/components/shell/PaletteCompare";
 import { SiteFooter } from "@/components/shell/SiteFooter";
 import { SiteHeader } from "@/components/shell/SiteHeader";
 import { Ticker } from "@/components/shell/Ticker";
@@ -87,6 +88,7 @@ export default async function LocaleLayout({
         <SiteHeader locale={activeLocale} t={t} />
         {children}
         <SiteFooter locale={activeLocale} t={t} />
+        <PaletteCompare />
       </body>
     </html>
   );

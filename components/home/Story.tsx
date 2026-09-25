@@ -31,7 +31,7 @@ export function Story({ t }: { t: Dictionary }) {
           </p>
 
           <p className="font-display mt-6 text-[19px] font-extrabold tracking-[-0.04em] text-ink">
-            {siteConfig.business.wordmark}
+            {siteConfig.business.ownerName.toLowerCase()}
             <span className="text-nails">
               {siteConfig.business.wordmarkAccent}
             </span>

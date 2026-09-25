@@ -1,0 +1,79 @@
+/* After Party: the site palette until 2026-09-25, when it moved to black and gold to match her logo.
+   To go back, paste this :root block over the one in app/globals.css. The full design notes are in prototypes/theme.css. */
+
+:root {
+  /* After Party, from prototypes/theme.css. All four accents clear 4.5:1 on --ground. */
+
+  /* surfaces */
+  --ground: #261f36;
+  --surface: #352948;
+  --surface-2: #2e2440;
+  --shot: #1b1426;
+  --line: #514165;
+  --line-soft: #3d3152;
+
+  /* ink. --ink-faint is the lightest that still clears 4.5:1 on --surface. */
+  --ink: #f6f2fa;
+  --ink-muted: #b3a8c2;
+  --ink-faint: #9f94af;
+
+  /* accents */
+  --nails: #ff3d8f;
+  --lashes: #a97bff;
+  --makeup: #ff8a3d;
+  --confirm: #3de8b0;
+
+  --nails-on-light: #d4176b;
+  --lashes-on-light: #7b45e0;
+  --makeup-on-light: #bf5710;
+  --confirm-on-light: #0e8f63;
+
+  --hot: linear-gradient(92deg, var(--nails), var(--makeup));
+  --on-hot: #231a31;
+
+  /* section glow */
+  --glow-blur: 90px;
+  --glow-a: rgb(255 61 143 / 0.42);
+  --glow-b: rgb(169 123 255 / 0.34);
+  --glow-c: rgb(255 138 61 / 0.22);
+
+  /* type. next/font sets --font-unbounded and --font-inter on <html>. */
+  --display: var(--font-unbounded, "Unbounded"), system-ui, sans-serif;
+  --body: var(--font-inter, "Inter"), system-ui, sans-serif;
+  --mono: ui-monospace, monospace;
+
+  /* scale */
+  --radius: 14px;
+  --radius-card: 22px;
+  --pill: 999px;
+  --site: 1200px;
+  --gutter: 20px;
+
+  /* ---------- shadcn semantics on brand values ---------- */
+  --background: var(--ground);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--surface);
+  --popover-foreground: var(--ink);
+  --primary: var(--nails);
+  --primary-foreground: var(--on-hot);
+  --secondary: var(--surface-2);
+  --secondary-foreground: var(--ink);
+  --muted: var(--surface-2);
+  --muted-foreground: var(--ink-muted);
+  --accent: var(--surface-2);
+  --accent-foreground: var(--ink);
+  --border: var(--line-soft);
+  --input: var(--line);
+  --ring: var(--nails);
+
+  /* The brand has no red. Scaffold default until something needs one. */
+  --destructive: oklch(0.704 0.191 22.216);
+
+  --chart-1: var(--nails);
+  --chart-2: var(--lashes);
+  --chart-3: var(--makeup);
+  --chart-4: var(--confirm);
+  --chart-5: var(--ink-faint);
+}
