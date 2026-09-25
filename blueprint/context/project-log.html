@@ -1141,7 +1141,7 @@
             </div>
           </div>
           <div class="strip-phase">
-            <div class="strip-label">Ph 1 MVP <span class="now-note">&middot; now: 15.5, ship with the rebrand</span></div>
+            <div class="strip-label">Ph 1 MVP <span class="now-note">&middot; now: 15.5, redirect, Search Console and a live form test</span></div>
             <div class="strip-cells">
                 <a class="cell" href="#item-1" data-goto="item-1" data-state="done" title="1 Site shell and theme - done">1</a>
                 <a class="cell" href="#item-2" data-goto="item-2" data-state="done" title="2 Locale routing - done">2</a>
@@ -1161,7 +1161,7 @@
                 <a class="cell" href="#item-16" data-goto="item-16" data-state="done" title="16 Decorative imagery for lashes and makeup - done">16</a>
                 <a class="cell" href="#item-17" data-goto="item-17" data-state="done" title="17 Inspiration grids on the service pages - done">17</a>
                 <a class="cell" href="#item-18" data-goto="item-18" data-state="done" title="18 Her Drive photos in the gallery - done">18</a>
-                <span class="cell-open" title="Item 15 is being built; its steps follow"><a class="cell" href="#item-15" data-goto="item-15" data-state="active" title="15 Domain, indexing and production email - being built">15</a><a class="cell cell--step" href="#step-15-1" data-goto="step-15-1" data-state="done" title="15.1 Buy the domain - done">15.1</a><a class="cell cell--step" href="#step-15-2" data-goto="step-15-2" data-state="done" title="15.2 A business address for $0 - done">15.2</a><a class="cell cell--step" href="#step-15-3" data-goto="step-15-3" data-state="done" title="15.3 The contact form delivers - done">15.3</a><a class="cell cell--step" href="#step-15-4" data-goto="step-15-4" data-state="done" title="15.4 The domain in code, indexing opens - done">15.4</a><a class="cell cell--step" href="#step-15-5" data-goto="step-15-5" data-state="next" title="15.5 Ship with the Glammed rebrand - next">15.5</a></span>
+                <span class="cell-open" title="Item 15 is being built; its steps follow"><a class="cell" href="#item-15" data-goto="item-15" data-state="active" title="15 Domain, indexing and production email - being built">15</a><a class="cell cell--step" href="#step-15-1" data-goto="step-15-1" data-state="done" title="15.1 Buy the domain - done">15.1</a><a class="cell cell--step" href="#step-15-2" data-goto="step-15-2" data-state="done" title="15.2 A business address for $0 - done">15.2</a><a class="cell cell--step" href="#step-15-3" data-goto="step-15-3" data-state="done" title="15.3 The contact form delivers - done">15.3</a><a class="cell cell--step" href="#step-15-4" data-goto="step-15-4" data-state="done" title="15.4 The domain in code, indexing opens - done">15.4</a><a class="cell cell--step" href="#step-15-5" data-goto="step-15-5" data-state="active" title="15.5 Ship with the Glammed rebrand - being built">15.5</a></span>
             </div>
           </div>
           <div class="strip-phase">
@@ -1284,8 +1284,8 @@
         </p>
         <div class="tally">
           <span class="tally-part" data-state="done"><span class="tally-key">Done</span><span class="tally-val">14 of 15 MVP items</span></span>
-          <span class="tally-part" data-state="active"><span class="tally-key">Now</span><span class="tally-val">15 &middot; domain and email done, ships with the rebrand</span></span>
-          <span class="tally-part" data-state="planned"><span class="tally-key">Next</span><span class="tally-val">Rename to Glammed Beauty Studio, then booking</span></span>
+          <span class="tally-part" data-state="active"><span class="tally-key">Now</span><span class="tally-val">15 &middot; live as Glammed Beauty Studio since Sep 25; redirect, Search Console and a live form test left</span></span>
+          <span class="tally-part" data-state="planned"><span class="tally-key">Next</span><span class="tally-val">Booking with Cal.com, then the punch list</span></span>
         </div>
         <details class="callout callout--map">
           <summary class="callout-title">How it all fits together <span class="callout-count">the site and everything it touches</span></summary>
@@ -1637,7 +1637,7 @@
             </div>
 
             <details class="drawer" data-kind="plan" open>
-              <summary>Steps <span class="tag-drift">15.1 to 15.4 done &middot; 15.5 next &middot; 5 in this item</span></summary>
+              <summary>Steps <span class="tag-drift">15.1 to 15.4 done &middot; 15.5 in progress &middot; 5 in this item</span></summary>
               <div class="drawer-body">
                 <div class="item-steps">
                   <details class="rstep" id="step-15-1" data-state="done">
@@ -1665,16 +1665,40 @@
                       <div class="rstep-when">Checked on the dev server. On branch <code>feature/glammed-rebrand</code>, uncommitted, with the logo and favicon.</div>
                     </div>
                   </details>
-                  <details class="rstep" id="step-15-5" data-state="planned">
-                    <summary><span class="sn">15.5</span><span class="sm"></span><span>Ship with the Glammed rebrand</span><span class="ss">Next</span></summary>
+                  <details class="rstep" id="step-15-5" data-state="active">
+                    <summary><span class="sn">15.5</span><span class="sm"></span><span>Ship with the Glammed rebrand</span><span class="ss">In progress</span></summary>
                     <div class="rstep-body">
                       <ul class="substeps">
                         <li data-done="yes">Rename "Dani Moreno" to Glammed Beauty Studio in titles, footer and structured data. The Person data now says Dani, first name only, from a new <code>ownerName</code>, so Google is never told the person is the studio</li>
-                        <li>Vercel: <code>CONTACT_INBOX</code> and <code>RESEND_FROM</code>, and a Resend key of the site's own in place of the one named for Primo</li>
-                        <li>Merge and push, then redirect <code>facing-dani.vercel.app</code> to the domain and submit the sitemap in Search Console</li>
+                        <li data-done="yes">Vercel: <code>CONTACT_INBOX</code> and <code>RESEND_FROM</code>, and a Resend key of the site's own in place of the one named for Primo</li>
+                        <li data-done="yes">Merge and push. Live on <code>www.glammedbeautystudio.com</code> since Sep 25</li>
+                        <li>Redirect <code>facing-dani.vercel.app</code> to the domain, submit the sitemap in Search Console, and send one form enquiry from the live site</li>
                       </ul>
+                      <div class="rstep-when">Merged to <code>main</code> twice on Sep 25, <code>8bb82a5</code> and <code>1134425</code>. See the Log below.</div>
                     </div>
                   </details>
+                </div>
+              </div>
+            </details>
+
+            <details class="drawer" data-kind="reality" open>
+              <summary>Log <span class="tag-drift">2 entries, newest first</span></summary>
+              <div class="drawer-body">
+                <div class="log">
+                  <div class="entry" data-kind="change">
+                    <div class="dot"></div>
+                    <div class="entry-body">
+                      <div class="entry-top"><span class="entry-title">Header centred, a light gold theme, a tighter logos page</span><span class="kind-tag">Change</span><span class="stamp">Sep 25</span></div>
+                      <p class="entry-text">The header links sat 45px left of centre: the row was three blocks spread apart, and the logo is narrower than the language and Book group. It is now a three-column grid, half a rem wider each side. <b>Light gold</b> joins the theme switch as the cream twin of black and gold, its golds darkened to pass contrast on cream. <code>/logos</code> lost its descriptions and shows the ten logos in two rows of five, so it fits one laptop screen. Merge <code>1134425</code>.</p>
+                    </div>
+                  </div>
+                  <div class="entry" data-kind="done">
+                    <div class="dot"></div>
+                    <div class="entry-body">
+                      <div class="entry-top"><span class="entry-title">Glammed Beauty Studio is live</span><span class="kind-tag">Done</span><span class="stamp">Sep 25</span></div>
+                      <p class="entry-text">The rebrand branch merged and deployed: the new name, the domain, the form going straight to her Gmail. On the way in, the header learned to slide away on scroll and back on the way up, runs 1280px against the page's 1200px, and carries a bigger logo. <b>Black and gold was tried for a day and dropped</b> because it read as yellow; the site is back on After Party, and the gold is kept in <code>blueprint/reference/palette-black-and-gold.css</code>. A <code>/logos</code> page lets Dani try her logo, three light recolours of it and six redraws against four themes, saved in her browser only. It is noindex and out of the sitemap, with a menu link that comes out once she picks. Merge <code>8bb82a5</code>.</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </details>
@@ -1770,7 +1794,7 @@
             <li><strong>"Spanish is written by Dani" is not what happens.</strong> In practice the Spanish is drafted during each feature; Frank reviewed it on Sep 23 and called it fine. Either the rule or the practice should change.</li>
             <li><strong>A store is being considered, and section 1 explicitly rules one out</strong> ("What it is not: a booking engine, a shop"). Parked, to be planned from the backend. Face and Body's products page is the pattern: JSON per category, prices shown, no cart. If it proceeds, section 1 has to change.</li>
             <li><strong>A dedicated <code>/book</code> page is being considered</strong>, on the Face and Body pattern: one page, the service passed in the query string, an inline provider iframe, <code>noindex</code>. Not yet a build-plan item.</li>
-            <li><strong>The light theme has no owner.</strong> Section 7 specifies it and <code>.light</code> is ported and complete, but nothing activates it. Unreachable until the call is made, and it costs nothing to leave.</li>
+            <li><strong>The light theme has no owner.</strong> Section 7 specifies it and <code>.light</code> is ported, but visitors never see it. Since Sep 25 the <code>/logos</code> switch shows it, next to Black and gold and Light gold, for Dani to compare. Labels over photos still turn dark on dark in the light themes.</li>
             <li><strong>Google Business Profile and Search Console are not in the build plan.</strong> Section 8 calls the profile more important than the site for the first year, but nothing tracks it. Either it gets an item or it is explicitly outside the plan.</li>
             <li><strong>Spanish slugs are mirrored English</strong> (<code>/es/nails</code>, not <code>/es/unas</code>). One helper owns the prefix, so deciding is a one-file change.</li>
           </ul>
