@@ -76,7 +76,7 @@ export function MobileNav({ locale, t }: { locale: Locale; t: Dictionary }) {
         aria-expanded={open}
         aria-controls="mobile-nav"
         aria-haspopup="dialog"
-        className="-mr-1.5 cursor-pointer rounded-lg p-1.5 text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring min-[900px]:hidden"
+        className="-mr-1.5 cursor-pointer rounded-lg p-1.5 text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring min-[1100px]:hidden"
       >
         <Menu className="size-6" aria-hidden="true" />
         <span className="sr-only">{t.a11y.openMenu}</span>
@@ -89,7 +89,7 @@ export function MobileNav({ locale, t }: { locale: Locale; t: Dictionary }) {
         aria-modal="true"
         aria-label={siteConfig.business.name}
         hidden={!open}
-        className="fixed inset-0 z-50 flex flex-col overflow-y-auto bg-ground px-5 pt-3.5 pb-10 min-[900px]:hidden"
+        className="fixed inset-0 z-50 flex flex-col overflow-y-auto bg-ground px-5 pt-3.5 pb-10 min-[1100px]:hidden"
       >
         <div className="flex items-center justify-end">
           <button

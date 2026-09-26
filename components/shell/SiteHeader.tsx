@@ -25,7 +25,8 @@ export function SiteHeader({ locale, t }: { locale: Locale; t: Dictionary }) {
 
         <nav
           aria-label={t.a11y.mainNav}
-          className="hidden items-center gap-[30px] min-[900px]:flex"
+          // Every link on one line needs about 1,050px in Spanish; below 1,100px the menu button takes over.
+          className="hidden items-center gap-[30px] whitespace-nowrap min-[1100px]:flex"
         >
           {siteConfig.nav.filter((item) => !("mobileOnly" in item)).map((item) => (
             <Link
@@ -45,7 +46,7 @@ export function SiteHeader({ locale, t }: { locale: Locale; t: Dictionary }) {
           <a
             href={bookingHref()}
             {...bookingTrigger()}
-            className="hidden hover-glow rounded-pill bg-[image:var(--hot)] px-[22px] py-[11px] text-[14px] font-bold text-on-hot focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring min-[900px]:inline-block"
+            className="hidden hover-glow rounded-pill bg-[image:var(--hot)] px-[22px] py-[11px] text-[14px] font-bold text-on-hot focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring min-[1100px]:inline-block"
           >
             {t.cta.book}
           </a>

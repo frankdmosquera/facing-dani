@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 
 import { GalleryFigure } from "@/components/gallery/GalleryFigure";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
+import { GalleryStyles } from "@/components/gallery/GalleryStyles";
 import { Band, Hot } from "@/components/site/Band";
 import { BookingBand } from "@/components/site/BookingBand";
 import { galleryServiceCounts, orderedGallery } from "@/data/gallery";
@@ -111,6 +112,8 @@ export default async function Gallery({
           </GalleryGrid>
         </div>
       )}
+
+      {images.length === 0 ? null : <GalleryStyles t={t} />}
 
       <BookingBand copy={c.cta} />
 
