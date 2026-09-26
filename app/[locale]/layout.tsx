@@ -85,7 +85,7 @@ export default async function LocaleLayout({
         >
           {t.a11y.skipToContent}
         </a>
-        <Ticker />
+        <Ticker words={t.marquee} />
         <SiteHeader locale={activeLocale} t={t} />
         {children}
         <SiteFooter locale={activeLocale} t={t} />

@@ -13,6 +13,8 @@ export const es: Dictionary = {
   blurb:
     "Uñas en Calgary, con cita previa. Formación colombiana. También hago uñas en fiestas de niños y adolescentes.",
 
+  marquee: ["Uñas", "Fiestas", "Calgary"],
+
   nav: {
     home: "Inicio",
     nails: "Uñas",
@@ -290,7 +292,7 @@ export const es: Dictionary = {
       eyebrow: "Calgary · con cita previa",
       headingLead: "Uñas que",
       headingAccent: "se notan",
-      sell: "Sets personalizados, extensiones de pestañas y maquillaje para eventos. Con formación colombiana, tomando citas ahora en Calgary. Tráeme una foto de referencia o déjame crear algo para ti.",
+      sell: "Sets de gel y acrílico, con formación colombiana, tomando citas ahora en Calgary. Tráeme una foto de referencia o déjame crear algo para ti. ¿Organizas una fiesta de niños o adolescentes? Puedo ir y hacerles las uñas a los invitados.",
       book: "Reservar con Dani",
       seeWork: "Ver el trabajo",
       dmNote: "O mándame un DM por Instagram, lo que te sea más fácil",

@@ -12,6 +12,8 @@ export const en = {
   blurb:
     "Nails in Calgary, by appointment. Trained in Colombia. I also do nails at kids' and teen parties.",
 
+  marquee: ["Nails", "Parties", "Calgary"],
+
   nav: {
     home: "Home",
     nails: "Nails",
@@ -290,7 +292,7 @@ export const en = {
       eyebrow: "Calgary · by appointment",
       headingLead: "Nails that",
       headingAccent: "get noticed",
-      sell: "Custom sets, lash extensions and event makeup. Trained in Colombia, booking now in Calgary. Bring a reference photo or let me build something for you.",
+      sell: "Custom gel and acrylic sets, trained in Colombia, booking now in Calgary. Bring a reference photo or let me build something for you. Hosting a kids' or teen party? I can come and do the guests' nails.",
       book: "Book with Dani",
       seeWork: "See the work",
       dmNote: "Or send a DM on Instagram, whatever is easier",

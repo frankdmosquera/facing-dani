@@ -39,9 +39,6 @@ export const siteConfig = {
     instagram: null as { handle: string; url: string } | null,
   },
 
-  // Same in both languages.
-  marquee: ["Nails", "Lashes", "Makeup", "Calgary"],
-
   nav: [
     { key: "home", href: "/" },
     { key: "nails", href: "/nails" },
