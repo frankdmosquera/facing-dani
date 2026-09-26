@@ -360,6 +360,9 @@ export const en = {
         body: "Spanish is my first language, so your appointment can happen in whichever language you are more comfortable in.",
       },
     },
+    // "Sure of yourself", never "secure": her word "segura" means confident.
+    feeling:
+      "What I care about most is how you feel when you leave. Not just that the set looks good, but that you walk out feeling beautiful and sure of yourself.",
     nails: "See the nails menu",
     party: "Nails for your party",
   },
@@ -457,12 +460,10 @@ export const en = {
       eyebrow: "Who is doing your nails",
       headingLead: "Trained in Colombia,",
       headingAccent: "working in Calgary",
-      training:
-        "I did my training in Colombia, where the standard for nail work is a lot higher than most people here expect. Shape, structure and cuticle work are the parts that decide whether a set still looks good in week three, and they are the parts I was taught to get right.",
+      // Two lines on purpose: the full story lives on /about, and home must not repeat it.
+      intro:
+        "I learned nails in Colombia, where the finish is everything, and now I do sets in Calgary, in English or in Spanish.",
       more: "More about me",
-      // "Sure of yourself", never "secure": her word "segura" means confident.
-      feeling:
-        "What I care about most is how you feel when you leave. Not just that the set looks good, but that you walk out feeling beautiful and sure of yourself.",
     },
     work: {
       eyebrow: "Recent work",

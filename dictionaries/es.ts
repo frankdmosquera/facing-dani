@@ -359,6 +359,8 @@ export const es: Dictionary = {
         body: "El español es mi primer idioma, así que tu cita puede ser en el idioma en que te sientas más cómoda.",
       },
     },
+    feeling:
+      "Lo que más me importa es cómo te sientes cuando te vas. No solo que el set se vea bien, sino que salgas sintiéndote hermosa y segura de ti misma.",
     nails: "Ver el menú de uñas",
     party: "Uñas para tu fiesta",
   },
@@ -454,11 +456,9 @@ export const es: Dictionary = {
       eyebrow: "Quién te hace las uñas",
       headingLead: "Formada en Colombia,",
       headingAccent: "trabajando en Calgary",
-      training:
-        "Me formé en Colombia, donde el estándar del trabajo de uñas es bastante más alto de lo que la mayoría espera aquí. La forma, la estructura y el trabajo de cutícula son lo que decide si un set sigue viéndose bien en la tercera semana, y es justo lo que me enseñaron a hacer bien.",
+      intro:
+        "Aprendí uñas en Colombia, donde el acabado lo es todo, y ahora hago sets en Calgary, en inglés o en español.",
       more: "Más sobre mí",
-      feeling:
-        "Lo que más me importa es cómo te sientes cuando te vas. No solo que el set se vea bien, sino que salgas sintiéndote hermosa y segura de ti misma.",
     },
     work: {
       eyebrow: "Trabajo reciente",
