@@ -88,6 +88,7 @@ export const en = {
         heading: "Prices are being set",
         body: "I am putting the list together now. Message me and I will tell you exactly what your set would cost, with no surprises in the chair.",
       },
+      menuHeading: "Nail prices in Calgary",
       work: { heading: "Recent nail work", all: "See every set" },
       // Nails only: which set to book. General technique, no promises about her.
       guide: {
@@ -154,6 +155,7 @@ export const en = {
         heading: "Prices are being set",
         body: "I am putting the list together now. Message me with the look you are after and I will tell you which set gets you there and what it costs.",
       },
+      menuHeading: "Lash prices in Calgary",
       work: { heading: "Recent lash work", all: "See every set" },
       treatments: {
         classicFullSet: "Classic full set",
@@ -188,6 +190,7 @@ export const en = {
         heading: "Prices are being set",
         body: "I am putting the list together now. Tell me the occasion and roughly when, and I will come back with a price and a time.",
       },
+      menuHeading: "Makeup prices in Calgary",
       work: { heading: "Recent makeup", all: "See every set" },
       treatments: {
         softGlam: "Soft glam, events and photoshoots",

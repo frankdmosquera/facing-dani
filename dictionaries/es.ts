@@ -88,6 +88,7 @@ export const es: Dictionary = {
         heading: "Estoy definiendo los precios",
         body: "Estoy armando la lista ahora. Escríbeme y te digo exactamente cuánto te saldría tu set, sin sorpresas en la silla.",
       },
+      menuHeading: "Precios de uñas en Calgary",
       work: { heading: "Trabajo reciente en uñas", all: "Ver todos los sets" },
       guide: {
         eyebrow: "Qué set es para ti",
@@ -153,6 +154,7 @@ export const es: Dictionary = {
         heading: "Estoy definiendo los precios",
         body: "Estoy armando la lista ahora. Escríbeme con el look que buscas y te digo qué set te lo da y cuánto cuesta.",
       },
+      menuHeading: "Precios de pestañas en Calgary",
       work: {
         heading: "Trabajo reciente en pestañas",
         all: "Ver todos los sets",
@@ -190,6 +192,7 @@ export const es: Dictionary = {
         heading: "Estoy definiendo los precios",
         body: "Estoy armando la lista ahora. Dime la ocasión y más o menos cuándo, y te contesto con un precio y una hora.",
       },
+      menuHeading: "Precios de maquillaje en Calgary",
       work: { heading: "Maquillaje reciente", all: "Ver todos los sets" },
       treatments: {
         softGlam: "Soft glam, eventos y sesiones de fotos",

@@ -78,6 +78,9 @@ export default async function ServicePage({
       </Band>
 
       <Band tinted glow={false}>
+        <h2 className="mb-[26px] text-[clamp(24px,5.5vw,34px)]">
+          {copy.menuHeading}
+        </h2>
         <TreatmentList serviceId={service.id} t={t} />
       </Band>
 
