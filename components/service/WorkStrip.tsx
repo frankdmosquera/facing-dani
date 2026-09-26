@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { PhotoGrid } from "@/components/gallery/PhotoGrid";
-import { orderedGallery } from "@/data/gallery";
+import { SERVICE_HERO, orderedGallery } from "@/data/gallery";
 import type { ServiceId } from "@/data/services";
 import type { Dictionary } from "@/dictionaries";
 import { localePath, type Locale } from "@/lib/locale";
@@ -18,7 +18,10 @@ export function WorkStrip({
   t: Dictionary;
 }) {
   const images = orderedGallery()
-    .filter((image) => image.serviceId === serviceId)
+    .filter(
+      (image) =>
+        image.serviceId === serviceId && image.key !== SERVICE_HERO[serviceId],
+    )
     .slice(0, MAX);
 
   if (images.length === 0) return null;

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { Photo } from "@/components/media/Photo";
 import { DecorativeImage } from "@/components/service/DecorativeImage";
 import { InspirationGrid } from "@/components/service/InspirationGrid";
 import { NailGuide } from "@/components/service/NailGuide";
@@ -9,7 +10,7 @@ import { WorkStrip } from "@/components/service/WorkStrip";
 import { Band, Hot } from "@/components/site/Band";
 import { BookingBand } from "@/components/site/BookingBand";
 import { inspirationFor } from "@/data/decorativeImages";
-import { serviceHasWork } from "@/data/gallery";
+import { SERVICE_HERO, galleryImage, serviceHasWork } from "@/data/gallery";
 import { orderedServices, serviceBySlug, serviceSlug } from "@/data/services";
 import { getDictionary } from "@/dictionaries";
 import { defaultLocale, isLocale, localePath } from "@/lib/locale";
@@ -60,21 +61,41 @@ export default async function ServicePage({
 
   const t = getDictionary(locale);
   const copy = t.services[service.id];
+  const heroKey = SERVICE_HERO[service.id];
+  const hero = heroKey ? galleryImage(heroKey) : undefined;
 
   return (
     <main id="main">
       <Band className="pt-[26px]!">
-        <span className="font-body mb-3 block text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
-          {copy.eyebrow}
-        </span>
+        <div className="flex flex-col gap-10 min-[860px]:flex-row min-[860px]:items-center min-[860px]:gap-14">
+          <div className="min-w-0 min-[860px]:flex-1">
+            <span className="font-body mb-3 block text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
+              {copy.eyebrow}
+            </span>
 
-        <h1 className="mb-4 text-[clamp(36px,9vw,62px)]">
-          {copy.headingLead} <Hot>{copy.headingAccent}</Hot>
-        </h1>
+            <h1 className="mb-4 text-[clamp(36px,9vw,62px)]">
+              {copy.headingLead} <Hot>{copy.headingAccent}</Hot>
+            </h1>
 
-        <p className="max-w-[54ch] text-base text-ink-muted">{copy.lede}</p>
+            <p className="max-w-[54ch] text-base text-ink-muted">{copy.lede}</p>
 
-        <DecorativeImage serviceId={service.id} />
+            {hero ? null : <DecorativeImage serviceId={service.id} />}
+          </div>
+
+          {hero ? (
+            <div className="overflow-hidden rounded-xl border border-line-soft bg-shot min-[860px]:w-[380px] min-[860px]:shrink-0">
+              <Photo
+                path={hero.imagekitPath}
+                alt={t.gallery.images[hero.key]}
+                width={hero.width}
+                height={hero.height}
+                sizes="(min-width: 860px) 380px, 100vw"
+                priority // The LCP image on a phone.
+                className="block h-auto w-full"
+              />
+            </div>
+          ) : null}
+        </div>
       </Band>
 
       <Band tinted glow={false}>
