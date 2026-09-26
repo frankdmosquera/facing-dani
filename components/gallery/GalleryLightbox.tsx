@@ -37,7 +37,7 @@ const THUMB_SIZES = "72px";
 // translate-none and transform-none are both needed: Tailwind v4 puts translate in its own property.
 // Sides are zeroed by name because tailwind-merge does not let inset-0 override the primitive's top/left.
 const SURFACE =
-  "top-0 right-0 bottom-0 left-0 flex h-auto max-h-none w-auto max-w-none translate-none transform-none flex-col gap-2 rounded-none border-0 bg-[rgba(14,9,20,0.94)] p-2 ring-0 duration-0 data-closed:animate-none data-open:animate-none sm:p-3 sm:max-w-none";
+  "on-dark top-0 right-0 bottom-0 left-0 flex h-auto max-h-none w-auto max-w-none translate-none transform-none flex-col gap-2 rounded-none border-0 bg-[rgba(14,9,20,0.94)] p-2 ring-0 duration-0 data-closed:animate-none data-open:animate-none sm:p-3 sm:max-w-none";
 
 const CONTROL =
   "grid size-10 shrink-0 place-items-center rounded-full border border-white/20 bg-[rgba(20,15,28,.72)] text-ink backdrop-blur-sm transition-colors hover:bg-[rgba(20,15,28,.95)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring";

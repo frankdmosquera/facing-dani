@@ -56,7 +56,7 @@ export function BandHead({
 
 export function Hot({ children }: { children: React.ReactNode }) {
   return (
-    <span className="bg-[image:var(--hot)] bg-clip-text text-transparent">
+    <span className="bg-[image:var(--hot-text)] bg-clip-text text-transparent">
       {children}
     </span>
   );

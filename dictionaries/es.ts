@@ -58,6 +58,8 @@ export const es: Dictionary = {
     openMenu: "Menú",
     closeMenu: "Cerrar menú",
     homeSuffix: "inicio",
+    lightMode: "Cambiar a modo claro",
+    darkMode: "Cambiar a modo oscuro",
   },
 
   languageSwitch: {

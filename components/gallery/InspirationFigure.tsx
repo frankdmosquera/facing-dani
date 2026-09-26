@@ -34,7 +34,7 @@ export function InspirationFigure({
           className="block h-auto w-full"
         />
       </button>
-      <figcaption className="pointer-events-none absolute bottom-2.5 left-2.5 rounded-pill border border-white/15 bg-[rgba(20,15,28,.75)] px-2.5 py-[5px] text-[9.5px] font-semibold tracking-[0.13em] text-ink-muted uppercase">
+      <figcaption className="on-dark pointer-events-none absolute bottom-2.5 left-2.5 rounded-pill border border-white/15 bg-[rgba(20,15,28,.75)] px-2.5 py-[5px] text-[9.5px] font-semibold tracking-[0.13em] text-ink-muted uppercase">
         {tag}
       </figcaption>
       <OpenCue />

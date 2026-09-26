@@ -57,6 +57,8 @@ export const en = {
     openMenu: "Menu",
     closeMenu: "Close menu",
     homeSuffix: "home",
+    lightMode: "Switch to light mode",
+    darkMode: "Switch to dark mode",
   },
 
   languageSwitch: {
