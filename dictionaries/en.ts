@@ -509,9 +509,9 @@ export const en = {
   // meta.title carries Calgary and the service terms itself: the template only appends the business name.
   gallery: {
     meta: {
-      title: "Nail, Lash and Makeup Work in Calgary",
+      title: "Nail Art and Sets Done in Calgary",
       description:
-        "Real sets, never stock photos. Nail art, lash extensions and event makeup done in Calgary, shown big enough to judge the finish for yourself.",
+        "Real sets, never stock photos. Nail art, French, chrome and Gel-X done in Calgary, plus some of my makeup, shown big enough to judge the finish for yourself.",
     },
     eyebrow: "Every photo is mine",
     headingLead: "The work,",
