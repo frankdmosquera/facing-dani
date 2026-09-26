@@ -1,10 +1,13 @@
+import Link from "next/link";
+
 import { Photo } from "@/components/media/Photo";
 import { Band, BandHead, Hot } from "@/components/site/Band";
 import { portrait } from "@/data/portrait";
 import { siteConfig } from "@/data/siteConfig";
 import type { Dictionary } from "@/dictionaries";
+import { localePath, type Locale } from "@/lib/locale";
 
-export function Story({ t }: { t: Dictionary }) {
+export function Story({ locale, t }: { locale: Locale; t: Dictionary }) {
   const c = t.home.story;
 
   return (
@@ -34,6 +37,14 @@ export function Story({ t }: { t: Dictionary }) {
               {siteConfig.business.wordmarkAccent}
             </span>
           </p>
+
+          <Link
+            href={localePath(locale, "/about")}
+            className="mt-6 inline-flex items-center gap-2 text-[15px] font-bold text-nails focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          >
+            {c.more}
+            <span aria-hidden="true">&rarr;</span>
+          </Link>
         </div>
 
         {portrait ? (

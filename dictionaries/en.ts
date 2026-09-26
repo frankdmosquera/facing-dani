@@ -18,6 +18,7 @@ export const en = {
     home: "Home",
     nails: "Nails",
     parties: "Parties",
+    about: "About",
     lashes: "Lashes",
     makeup: "Makeup",
     gallery: "The work",
@@ -299,6 +300,39 @@ export const en = {
     },
   },
 
+  // No age and no photo of her. Written in her voice, like the rest of the site.
+  about: {
+    meta: {
+      title: "About Dani, Nail Artist in Calgary",
+      description:
+        "Trained in Colombia, doing nails in Calgary by appointment and at kids' and teen parties. Who is doing your nails, and why the finish matters to me.",
+    },
+    eyebrow: "About",
+    headingLead: "The person doing",
+    headingAccent: "your nails",
+    lede: "A new business has no reviews, no word of mouth and nothing to point at except the work and the person doing it. So here is the person, and where the way I work comes from.",
+    sections: {
+      training: {
+        heading: "Trained in Colombia",
+        body: "I did my training in Colombia, where the standard for nail work is a lot higher than most people here expect. Shape, structure and cuticle work are the parts that decide whether a set still looks good in week three, and they are the parts I was taught to get right.",
+      },
+      building: {
+        heading: "Building something of my own",
+        body: "Since then I have been doing sets for family and friends constantly, and now I am building this into something of my own. What that means for you is the version of me that still cares enormously about every single set. Bring a photo from Pinterest, or sit down with no idea and we will work it out.",
+      },
+      parties: {
+        heading: "Parties, too",
+        body: "Besides appointments, I come to kids' and teen parties and do the guests' nails. You host the party; I bring the nail station and do my part.",
+      },
+      spanish: {
+        heading: "In English or in Spanish",
+        body: "Spanish is my first language, so your appointment can happen in whichever language you are more comfortable in.",
+      },
+    },
+    nails: "See the nails menu",
+    party: "Nails for your party",
+  },
+
   thankYou: {
     meta: {
       title: "Message Sent",
@@ -394,6 +428,7 @@ export const en = {
       headingAccent: "working in Calgary",
       training:
         "I did my training in Colombia, where the standard for nail work is a lot higher than most people here expect. Shape, structure and cuticle work are the parts that decide whether a set still looks good in week three, and they are the parts I was taught to get right.",
+      more: "More about me",
       // "Sure of yourself", never "secure": her word "segura" means confident.
       feeling:
         "What I care about most is how you feel when you leave. Not just that the set looks good, but that you walk out feeling beautiful and sure of yourself.",

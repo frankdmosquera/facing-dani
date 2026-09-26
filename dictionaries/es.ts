@@ -19,6 +19,7 @@ export const es: Dictionary = {
     home: "Inicio",
     nails: "Uñas",
     parties: "Fiestas",
+    about: "Sobre mí",
     lashes: "Pestañas",
     makeup: "Maquillaje",
     gallery: "El trabajo",
@@ -300,6 +301,38 @@ export const es: Dictionary = {
     },
   },
 
+  about: {
+    meta: {
+      title: "Sobre Dani, artista de uñas en Calgary",
+      description:
+        "Formada en Colombia, haciendo uñas en Calgary con cita previa y en fiestas de niños y adolescentes. Quién te hace las uñas, y por qué el acabado me importa.",
+    },
+    eyebrow: "Sobre mí",
+    headingLead: "Quién te hace",
+    headingAccent: "las uñas",
+    lede: "Un negocio nuevo no tiene reseñas, no tiene voz a voz y no tiene nada que mostrar aparte del trabajo y de quien lo hace. Así que aquí estoy yo, y de dónde viene mi manera de trabajar.",
+    sections: {
+      training: {
+        heading: "Formada en Colombia",
+        body: "Me formé en Colombia, donde el estándar del trabajo de uñas es bastante más alto de lo que la mayoría espera aquí. La forma, la estructura y el trabajo de cutícula son lo que decide si un set sigue viéndose bien en la tercera semana, y es justo lo que me enseñaron a hacer bien.",
+      },
+      building: {
+        heading: "Construyendo algo mío",
+        body: "Desde entonces no he parado de hacerle las uñas a mi familia y a mis amigas, y ahora estoy construyendo esto como algo mío. Lo que eso significa para ti es que recibes la versión de mí que todavía se preocupa muchísimo por cada set. Tráeme una foto de Pinterest, o siéntate sin ninguna idea y lo resolvemos juntas.",
+      },
+      parties: {
+        heading: "También fiestas",
+        body: "Además de las citas, voy a fiestas de niños y adolescentes y les hago las uñas a los invitados. Tú organizas la fiesta; yo llevo la estación de uñas y hago mi parte.",
+      },
+      spanish: {
+        heading: "En inglés o en español",
+        body: "El español es mi primer idioma, así que tu cita puede ser en el idioma en que te sientas más cómoda.",
+      },
+    },
+    nails: "Ver el menú de uñas",
+    party: "Uñas para tu fiesta",
+  },
+
   thankYou: {
     meta: {
       title: "Mensaje enviado",
@@ -393,6 +426,7 @@ export const es: Dictionary = {
       headingAccent: "trabajando en Calgary",
       training:
         "Me formé en Colombia, donde el estándar del trabajo de uñas es bastante más alto de lo que la mayoría espera aquí. La forma, la estructura y el trabajo de cutícula son lo que decide si un set sigue viéndose bien en la tercera semana, y es justo lo que me enseñaron a hacer bien.",
+      more: "Más sobre mí",
       feeling:
         "Lo que más me importa es cómo te sientes cuando te vas. No solo que el set se vea bien, sino que salgas sintiéndote hermosa y segura de ti misma.",
     },
