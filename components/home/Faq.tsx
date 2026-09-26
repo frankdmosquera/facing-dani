@@ -7,7 +7,7 @@ export function Faq({ t }: { t: Dictionary }) {
   const c = t.home.faq;
 
   return (
-    <Band tinted glow={false}>
+    <Band id="faq" tinted glow={false}>
       <BandHead eyebrow={c.eyebrow} heading={c.heading} />
 
       <div className="max-w-[70ch]">

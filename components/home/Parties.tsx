@@ -9,7 +9,7 @@ export function Parties({ locale, t }: { locale: Locale; t: Dictionary }) {
   const c = t.home.parties;
 
   return (
-    <Band>
+    <Band id="parties">
       <BandHead
         eyebrow={c.eyebrow}
         heading={

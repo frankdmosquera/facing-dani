@@ -104,8 +104,11 @@ work, so it comes before the pages that describe it.
     with nails then parties; hero, nails menu with Book buttons in place of the
     three service cards, work, a new events section, shorter story, Spanish, in
     the chair, FAQ, closing band
-  - [ ] 19b. **Events and contact** - one contact page for party requests and
-    questions, the event fields shown only for a party. Absorbs punch item 6
+  - [ ] 19b. **Parties page and contact** - a `/parties` page that says what
+    she does at someone else's party, and one contact page for party requests
+    and questions, the party fields shown only for a party. The header link,
+    the hero button and the home section's button move to it. Absorbs punch
+    item 6
   - [ ] 19c. **About returns** - its own page again, linked from the story
     ("More about me"). Starts from the story's "new business" lede and "building"
     paragraph, cut from home in 19a (git history has both languages). Remove

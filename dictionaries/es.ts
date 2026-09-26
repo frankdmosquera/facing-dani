@@ -18,6 +18,7 @@ export const es: Dictionary = {
   nav: {
     home: "Inicio",
     nails: "Uñas",
+    parties: "Fiestas",
     lashes: "Pestañas",
     makeup: "Maquillaje",
     gallery: "El trabajo",

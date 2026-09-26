@@ -3,14 +3,18 @@ export function Band({
   glow = true,
   tinted = false,
   className,
+  id,
 }: {
   children: React.ReactNode;
   glow?: boolean;
   tinted?: boolean;
   className?: string;
+  // For in-page links such as /#faq.
+  id?: string;
 }) {
   return (
     <section
+      id={id}
       className={`relative overflow-hidden py-24 ${tinted ? "bg-surface-2" : ""} ${className ?? ""}`}
     >
       {glow ? (

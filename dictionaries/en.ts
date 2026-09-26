@@ -17,6 +17,7 @@ export const en = {
   nav: {
     home: "Home",
     nails: "Nails",
+    parties: "Parties",
     lashes: "Lashes",
     makeup: "Makeup",
     gallery: "The work",
