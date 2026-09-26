@@ -113,8 +113,9 @@ work, so it comes before the pages that describe it.
     ("More about me"). Starts from the story's "new business" lede and "building"
     paragraph, cut from home in 19a (git history has both languages). Remove
     the `/about` redirect in `next.config.ts`
-  - [ ] 19d. **Lashes and makeup made light** - then their pages and Cal.com
-    events hidden, last, once the offer is settled
+  - [ ] 19d. **Lashes and makeup made light** - off the desktop header, kept
+    in the phone menu and footer, gone from home and the search copy. Their
+    pages and Cal.com events stay until Frank decides whether they go
 - [ ] 15. **Domain, indexing and production email** - buy the domain, set the
   site URL so robots stops disallowing everything, and give Resend a sender that
   can mail anyone. Blocked until the domain exists
