@@ -121,6 +121,77 @@ export const en = {
           },
         },
       },
+      // Where the two hours of a full set go. Times match data/treatments.ts.
+      steps: {
+        eyebrow: "Your appointment",
+        headingLead: "A nail appointment,",
+        headingAccent: "step by step",
+        lede: "Why a full set takes about two hours, and where that time goes. A gel manicure skips the building and takes about one.",
+        items: {
+          talk: {
+            title: "We look at your hands and your photo",
+            time: "About 5 minutes",
+            body: "What you do all day decides how long a set can be and which shape will hold. Length, shape and colour are settled before anything starts.",
+          },
+          removal: {
+            title: "Removal, if you come in with a set",
+            time: "About 30 minutes",
+            body: "An old set is soaked and filed off gently, never pried. Mention it when you book so the time is there.",
+          },
+          prep: {
+            title: "Prep",
+            time: "About 15 minutes",
+            body: "Cuticles pushed back and cleaned up, the surface lightly buffed and dried out. Most lifting starts with skipped prep, so this part is never rushed.",
+          },
+          build: {
+            title: "Building and shaping",
+            time: "About 45 to 60 minutes",
+            body: "Acrylic or Gel‑X goes on, then every nail is filed to the same length and shape, with the thickest point where the nail needs its strength.",
+          },
+          colour: {
+            title: "Colour and art",
+            time: "About 20 to 40 minutes",
+            body: "Gel colour, then French, chrome, cat-eye or hand-painted art if you asked for it. Every layer cures under the lamp.",
+          },
+          finish: {
+            title: "Top coat, oil and aftercare",
+            time: "About 10 minutes",
+            body: "A top coat for shine, cuticle oil, and a quick word on keeping the set looking good until your fill.",
+          },
+        },
+      },
+      // Nails only, and none of these repeat the site-wide FAQ on home.
+      faq: {
+        eyebrow: "Before your set",
+        headingLead: "Nail",
+        headingAccent: "questions",
+        items: {
+          lasting: {
+            q: "How long do gel and acrylic nails last?",
+            a: "A gel manicure lasts about two to three weeks before it grows out. Acrylic and Gel‑X last as long as you keep up the fills, every two to three weeks, because the set moves forward as your nails grow.",
+          },
+          shortNails: {
+            q: "Can I get a set if my nails are very short or bitten?",
+            a: "Usually, yes. Acrylic and Gel‑X add length over a short nail. If the nail bed is very small, a shorter, natural length holds up better at first, and it can go longer at the next fill.",
+          },
+          damage: {
+            q: "Do acrylic nails ruin your natural nails?",
+            a: "The damage people blame on acrylic mostly comes from heavy filing and from picking or ripping a set off. Filed with care and taken off properly, the nails underneath stay healthy.",
+          },
+          length: {
+            q: "How do I choose a length and shape?",
+            a: "Start with what your hands do all day. Short square or oval suits typing and chores, almond is strong for everyday wear at medium length, and coffin needs length and suits a statement set. Not sure? Bring a photo and we decide together.",
+          },
+          broken: {
+            q: "What if a nail breaks or lifts?",
+            a: "Message me as soon as it happens. Do not glue it or peel it at home: a lifted corner pulled off takes a layer of your own nail with it.",
+          },
+          reference: {
+            q: "Can I bring a photo from Instagram or Pinterest?",
+            a: "Yes, please. A photo is the quickest way to show a shape, a colour or a design. I will tell you if anything needs adjusting for your nail length, and art is priced as the nail art add-on.",
+          },
+        },
+      },
       treatments: {
         gelManicure: "Gel manicure",
         acrylicFullSet: "Acrylic full set",

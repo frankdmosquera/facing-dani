@@ -24,6 +24,21 @@ export function faqPageSchema(t: Dictionary) {
   };
 }
 
+export function nailFaqSchema(t: Dictionary) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: Object.values(t.services.nails.faq.items).map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.a,
+      },
+    })),
+  };
+}
+
 export function imageGallerySchema(t: Dictionary) {
   const images = orderedGallery();
   if (images.length === 0 || !imagekitEndpoint) return null;

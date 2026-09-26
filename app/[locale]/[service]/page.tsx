@@ -4,7 +4,9 @@ import { notFound } from "next/navigation";
 import { Photo } from "@/components/media/Photo";
 import { DecorativeImage } from "@/components/service/DecorativeImage";
 import { InspirationGrid } from "@/components/service/InspirationGrid";
+import { NailFaq } from "@/components/service/NailFaq";
 import { NailGuide } from "@/components/service/NailGuide";
+import { NailSteps } from "@/components/service/NailSteps";
 import { TreatmentList } from "@/components/service/TreatmentList";
 import { WorkStrip } from "@/components/service/WorkStrip";
 import { Band, Hot } from "@/components/site/Band";
@@ -107,6 +109,8 @@ export default async function ServicePage({
 
       {service.id === "nails" ? <NailGuide locale={locale} t={t} /> : null}
 
+      {service.id === "nails" ? <NailSteps t={t} /> : null}
+
       {/* Checked here too, or the empty band still draws its padding. */}
       {serviceHasWork(service.id) ? (
         <Band glow={false}>
@@ -120,6 +124,8 @@ export default async function ServicePage({
           <InspirationGrid serviceId={service.id} t={t} />
         </Band>
       ) : null}
+
+      {service.id === "nails" ? <NailFaq t={t} /> : null}
 
       <BookingBand copy={copy.cta} />
 

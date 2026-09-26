@@ -120,6 +120,75 @@ export const es: Dictionary = {
           },
         },
       },
+      steps: {
+        eyebrow: "Tu cita",
+        headingLead: "Una cita de uñas,",
+        headingAccent: "paso a paso",
+        lede: "Por qué un set completo toma unas dos horas, y en qué se va ese tiempo. Un manicure en gel no lleva construcción y toma más o menos una.",
+        items: {
+          talk: {
+            title: "Miramos tus manos y tu foto",
+            time: "Unos 5 minutos",
+            body: "Lo que haces todo el día decide qué tan largo puede ser un set y qué forma va a aguantar. El largo, la forma y el color quedan definidos antes de empezar.",
+          },
+          removal: {
+            title: "Retiro, si vienes con un set puesto",
+            time: "Unos 30 minutos",
+            body: "El set anterior se remoja y se lima con cuidado, nunca se arranca. Avísame cuando reserves para que haya tiempo.",
+          },
+          prep: {
+            title: "Preparación",
+            time: "Unos 15 minutos",
+            body: "Cutículas empujadas y limpias, la superficie pulida suave y deshidratada. Casi todo levantamiento empieza por una preparación a medias, así que esta parte nunca va con prisa.",
+          },
+          build: {
+            title: "Construcción y forma",
+            time: "Unos 45 a 60 minutos",
+            body: "Se pone el acrílico o el Gel‑X, y luego cada uña se lima al mismo largo y la misma forma, con el punto más grueso donde la uña necesita resistencia.",
+          },
+          colour: {
+            title: "Color y arte",
+            time: "Unos 20 a 40 minutos",
+            body: "El color en gel, y después francesa, chrome, cat-eye o arte a mano si lo pediste. Cada capa se cura en la lámpara.",
+          },
+          finish: {
+            title: "Top coat, aceite y cuidados",
+            time: "Unos 10 minutos",
+            body: "Un top coat para el brillo, aceite de cutícula y un par de consejos para que el set se vea bien hasta tu relleno.",
+          },
+        },
+      },
+      faq: {
+        eyebrow: "Antes de tu set",
+        headingLead: "Preguntas sobre",
+        headingAccent: "uñas",
+        items: {
+          lasting: {
+            q: "¿Cuánto duran las uñas de gel y de acrílico?",
+            a: "Un manicure en gel dura unas dos a tres semanas antes de que se note el crecimiento. El acrílico y el Gel‑X duran mientras hagas los rellenos, cada dos a tres semanas, porque el set avanza a medida que crece tu uña.",
+          },
+          shortNails: {
+            q: "¿Me puedo hacer un set si tengo las uñas muy cortas o mordidas?",
+            a: "Casi siempre, sí. El acrílico y el Gel‑X agregan largo sobre una uña corta. Si el lecho de la uña es muy pequeño, al principio aguanta mejor un largo corto y natural, y en el siguiente relleno se puede ir más largo.",
+          },
+          damage: {
+            q: "¿El acrílico daña las uñas naturales?",
+            a: "El daño que se le echa al acrílico viene casi siempre de limar de más y de arrancar o despegar el set. Limado con cuidado y retirado como se debe, las uñas de abajo quedan sanas.",
+          },
+          length: {
+            q: "¿Cómo elijo el largo y la forma?",
+            a: "Empieza por lo que hacen tus manos todo el día. Cuadrada u ovalada corta va bien para escribir en el computador y para las tareas de la casa, almendra es resistente para el día a día en largo medio, y coffin necesita largo y es para un set llamativo. ¿No sabes cuál? Trae una foto y lo decidimos juntas.",
+          },
+          broken: {
+            q: "¿Y si se me rompe o se me levanta una uña?",
+            a: "Escríbeme apenas pase. No la pegues ni la despegues en casa: si arrancas una esquina levantada, se lleva una capa de tu propia uña.",
+          },
+          reference: {
+            q: "¿Puedo traer una foto de Instagram o Pinterest?",
+            a: "Sí, por favor. Una foto es la forma más rápida de mostrar una forma, un color o un diseño. Te digo si hay que ajustar algo para el largo de tus uñas, y el arte se cobra como el adicional de arte en uñas.",
+          },
+        },
+      },
       treatments: {
         gelManicure: "Manicure en gel",
         acrylicFullSet: "Set completo en acrílico",
