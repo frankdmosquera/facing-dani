@@ -46,6 +46,11 @@ export const gallery: GalleryImage[] = [
 // The photo beside the home headline. Independent of the order above.
 export const HOME_HERO: GalleryKey = "pinkBlackStars";
 
+// The photo beside a service page's headline. The work strip on that page skips it.
+export const SERVICE_HERO: Partial<Record<ServiceId, GalleryKey>> = {
+  nails: "burgundyCatEye",
+};
+
 export function galleryImage(key: GalleryKey): GalleryImage | undefined {
   return gallery.find((image) => image.key === key);
 }
