@@ -740,6 +740,8 @@ export const en = {
       headingLead: "The styles",
       headingAccent: "in these photos",
       lede: "The sets above fall into a few families. If one of them is what you are after, say so when you book and bring the photo.",
+      // Before the add-on's own label: "Book it: any set + French tips, add-on".
+      bookAs: "Book it: any set +",
       groups: {
         french: {
           title: "French, every way",
@@ -762,6 +764,27 @@ export const en = {
           body: "A graphic blue eye and a soft, natural everyday look. Makeup is a smaller part of what I do, so there are fewer of these.",
         },
       },
+    },
+    // From a photo in the grid to a booking. Nails only: makeup is not being built on.
+    photo: {
+      eyebrow: "How to book a look",
+      headingLead: "Turn a photo into",
+      headingAccent: "your set",
+      steps: {
+        save: {
+          title: "Save the photo",
+          body: "A screenshot from here, Instagram or Pinterest is perfect. It shows the shape, the length, the colour and the art better than any description.",
+        },
+        book: {
+          title: "Book the set underneath it",
+          body: "Pick the base on the nails menu: a gel manicure on your own nails, or acrylic or Gel‑X for length. French, chrome or art go on top.",
+        },
+        bring: {
+          title: "Bring it to the appointment",
+          body: "We look at it together with your hands. A photo cannot show whether that length suits your nail bed, so the shape or length may shift a little so the set holds up for three weeks.",
+        },
+      },
+      menu: "See the nails menu",
     },
     lightbox: {
       open: "Open larger: {photo}",

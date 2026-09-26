@@ -729,6 +729,7 @@ export const es: Dictionary = {
       headingLead: "Los estilos",
       headingAccent: "de estas fotos",
       lede: "Los sets de arriba caen en unas pocas familias. Si una de ellas es lo que buscas, dilo al reservar y trae la foto.",
+      bookAs: "Resérvalo: cualquier set +",
       groups: {
         french: {
           title: "Francés, de todas las formas",
@@ -751,6 +752,26 @@ export const es: Dictionary = {
           body: "Un ojo gráfico azul y un look suave y natural para el día a día. El maquillaje es una parte más pequeña de lo que hago, así que hay menos de estos.",
         },
       },
+    },
+    photo: {
+      eyebrow: "Cómo reservar un look",
+      headingLead: "Convierte una foto en",
+      headingAccent: "tu set",
+      steps: {
+        save: {
+          title: "Guarda la foto",
+          body: "Un pantallazo de aquí, de Instagram o de Pinterest es perfecto. Muestra la forma, el largo, el color y el arte mejor que cualquier descripción.",
+        },
+        book: {
+          title: "Reserva el set que lleva",
+          body: "Elige la base en el menú de uñas: manicure en gel sobre tus propias uñas, o acrílico o Gel‑X para dar largo. La francesa, el chrome o el arte van encima.",
+        },
+        bring: {
+          title: "Tráela a la cita",
+          body: "La miramos junto con tus manos. Una foto no muestra si ese largo le va a tu lecho de uña, así que la forma o el largo pueden cambiar un poco para que el set aguante tres semanas.",
+        },
+      },
+      menu: "Ver el menú de uñas",
     },
     lightbox: {
       open: "Ver más grande: {photo}",
