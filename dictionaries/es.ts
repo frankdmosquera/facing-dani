@@ -23,7 +23,7 @@ export const es: Dictionary = {
     store: "Tienda",
     lashes: "Pestañas",
     makeup: "Maquillaje",
-    gallery: "El trabajo",
+    gallery: "Galería",
     logos: "Logos",
   },
 
@@ -42,7 +42,7 @@ export const es: Dictionary = {
       store: "Tienda",
       lashes: "Pestañas",
       makeup: "Maquillaje",
-      gallery: "La galería",
+      gallery: "Galería",
       bookAppointment: "Reservar una cita",
       contact: "Preguntas y fiestas",
       about: "Sobre mí",

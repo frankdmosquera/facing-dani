@@ -22,7 +22,7 @@ export const en = {
     store: "Store",
     lashes: "Lashes",
     makeup: "Makeup",
-    gallery: "The work",
+    gallery: "Gallery",
     logos: "Logos",
   },
 
@@ -41,7 +41,7 @@ export const en = {
       store: "Store",
       lashes: "Lashes",
       makeup: "Makeup",
-      gallery: "The gallery",
+      gallery: "Gallery",
       bookAppointment: "Book an appointment",
       contact: "Questions and parties",
       about: "About",
