@@ -251,11 +251,15 @@ export const en = {
     // Offer DMs here again once siteConfig.social.instagram is set.
     booking: {
       q: "How do I book?",
-      a: "Use the form on the contact page. Tell me the service, roughly when suits you, and send a reference photo if you have one.",
+      a: "Open the nails page, tap Book next to the treatment you want, and pick a time in the calendar. Questions first? The contact page is always open.",
+    },
+    parties: {
+      q: "Can you come to a party?",
+      a: "Yes, as the nail station at a party you host, for kids or teens. Parties are not booked online: send me the date, how many guests and the area through the contact page, and I will confirm by email.",
     },
     duration: {
       q: "How long does a full set take?",
-      a: "A gel manicure is about an hour. A full set with extensions and art runs two to three hours. Lash sets are around two hours, fills about an hour.",
+      a: "A gel manicure is about an hour. A full set with extensions and art runs two to three hours, and a fill about an hour and a half.",
     },
     // No street address on purpose: it goes out with the booking.
     location: {
@@ -276,15 +280,15 @@ export const en = {
     },
     firstVisit: {
       q: "It is my first time. What should I know?",
-      a: "Come with bare nails, or tell me what is on them so I can plan time to take it off. For lashes, arrive with no eye makeup or mascara, skip the coffee beforehand so your eyes stay still, and tell me about any allergies, because lash glue can contain acrylic or latex. Bring a reference photo if you have one, and plan for the full appointment time.",
+      a: "Come with bare nails, or tell me what is on them so I can plan time to take it off. Bring a reference photo if you have one, and plan for the full appointment time. Booking lashes? Come with no eye makeup and tell me about any allergies, because lash glue can contain acrylic or latex.",
     },
     removalAndFills: {
       q: "Can you take off a set from another salon, and how often do I need a fill?",
-      a: "Yes. Removal is on the price list for each service; mention it when you book so the time is set aside. Nail fills are every two to three weeks, lash fills every two to four.",
+      a: "Yes. Removal is on the nails price list; mention it when you book so the time is set aside. Fills are every two to three weeks.",
     },
     hair: {
       q: "Do you do hair?",
-      a: "No. Nails, lashes and makeup only, and that is on purpose.",
+      a: "No. Nails are what I do, with makeup and lashes on request, and that is on purpose.",
     },
   },
 

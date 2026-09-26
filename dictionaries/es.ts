@@ -252,11 +252,15 @@ export const es: Dictionary = {
   faq: {
     booking: {
       q: "¿Cómo reservo?",
-      a: "Usa el formulario en la página de contacto. Dime qué servicio quieres, más o menos cuándo te viene bien, y mándame una foto de referencia si tienes una.",
+      a: "Abre la página de uñas, toca Reservar junto al tratamiento que quieres y elige una hora en el calendario. ¿Tienes preguntas antes? La página de contacto siempre está abierta.",
+    },
+    parties: {
+      q: "¿Puedes ir a una fiesta?",
+      a: "Sí, como la estación de uñas en una fiesta que tú organizas, para niños o adolescentes. Las fiestas no se reservan en línea: mándame la fecha, cuántos invitados y la zona desde la página de contacto, y te confirmo por correo.",
     },
     duration: {
       q: "¿Cuánto dura un set completo?",
-      a: "Una manicura en gel toma alrededor de una hora. Un set completo con extensiones y arte toma de dos a tres horas. Las pestañas alrededor de dos horas, los rellenos cerca de una.",
+      a: "Una manicura en gel toma alrededor de una hora. Un set completo con extensiones y arte toma de dos a tres horas, y un relleno cerca de una hora y media.",
     },
     location: {
       q: "¿Dónde estás ubicada?",
@@ -276,15 +280,15 @@ export const es: Dictionary = {
     },
     firstVisit: {
       q: "Es mi primera vez. ¿Qué debería saber?",
-      a: "Ven con las uñas sin nada, o cuéntame qué tienes puesto para planear el tiempo de retirarlo. Para pestañas, llega sin maquillaje en los ojos ni pestañina, evita el café antes para que los ojos estén quietos, y avísame si tienes alguna alergia, porque el pegamento de pestañas puede tener acrílico o látex. Trae una foto de referencia si tienes una, y cuenta con el tiempo completo de la cita.",
+      a: "Ven con las uñas sin nada, o cuéntame qué tienes puesto para planear el tiempo de retirarlo. Trae una foto de referencia si tienes una, y cuenta con el tiempo completo de la cita. ¿Vas a reservar pestañas? Llega sin maquillaje en los ojos y avísame si tienes alguna alergia, porque el pegamento de pestañas puede tener acrílico o látex.",
     },
     removalAndFills: {
       q: "¿Puedes quitar un set de otro salón, y cada cuánto necesito un relleno?",
-      a: "Sí. El retiro está en la lista de precios de cada servicio; avísame cuando reserves para apartar el tiempo. Los rellenos de uñas son cada dos o tres semanas, y los de pestañas cada dos a cuatro.",
+      a: "Sí. El retiro está en la lista de precios de uñas; avísame cuando reserves para apartar el tiempo. Los rellenos son cada dos o tres semanas.",
     },
     hair: {
       q: "¿Haces cabello?",
-      a: "No. Solo uñas, pestañas y maquillaje, y es a propósito.",
+      a: "No. Lo mío son las uñas, con maquillaje y pestañas si los pides, y es a propósito.",
     },
   },
 
