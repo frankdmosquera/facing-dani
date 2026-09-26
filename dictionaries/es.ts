@@ -36,11 +36,12 @@ export const es: Dictionary = {
     },
     links: {
       nails: "Uñas",
+      parties: "Fiestas",
       lashes: "Pestañas",
       makeup: "Maquillaje",
       gallery: "La galería",
       bookAppointment: "Reservar una cita",
-      contact: "Preguntas y eventos",
+      contact: "Preguntas y fiestas",
       about: "Sobre mí",
       faq: "Preguntas frecuentes",
       instagram: "Instagram",
@@ -173,14 +174,14 @@ export const es: Dictionary = {
 
   contact: {
     meta: {
-      title: "Reserva tu cita en Calgary",
+      title: "Preguntas y fiestas en Calgary",
       description:
-        "Dime qué buscas y cuándo, y te contesto con una hora. Uñas, pestañas y maquillaje en Calgary, con cita previa. Te atiendo en español.",
+        "Pregúntame lo que quieras, o cuéntame de la fiesta que organizas en Calgary: la fecha, cuántos invitados y la zona. Contesto todos los mensajes, casi siempre el mismo día. Te atiendo en español.",
     },
-    eyebrow: "Sin depósito, sin cuenta, sin app",
+    eyebrow: "Preguntas y fiestas",
     headingLead: "Dime qué",
-    headingAccent: "quieres",
-    lede: "Llena esto y me llega al correo. Contesto todos, casi siempre el mismo día, y no hay nada reservado hasta que acordemos una hora en Calgary que nos sirva a las dos.",
+    headingAccent: "necesitas",
+    lede: "Pregúntame lo que quieras, o cuéntame de una fiesta que estás organizando. Me llega al correo y contesto todos, casi siempre el mismo día. Para reservar una cita de uñas es más rápido desde la página de uñas.",
 
     direct: {
       heading: "¿Prefieres escribirme directo?",
@@ -192,16 +193,34 @@ export const es: Dictionary = {
       name: "Tu nombre",
       email: "Correo",
       emailHint: "Para poder contestarte. No se manda nada más aquí.",
-      service: "¿Qué estás buscando?",
-      servicePlaceholder: "Todavía no sé",
+      topic: "¿De qué se trata?",
+      topicPlaceholder: "Elige una",
+      partyKind: "¿Qué tipo de fiesta?",
+      partyDate: "Fecha",
+      guests: "¿Cuántos invitados?",
+      guestsHint: "Más o menos está bien.",
+      area: "Zona de Calgary",
+      areaHint: "Con el barrio basta por ahora.",
       source: "¿Cómo me encontraste?",
       sourcePlaceholder: "Elige una",
       message: "¿Qué tienes en mente?",
-      messageHint:
-        "Fechas aproximadas, una foto de referencia que hayas visto, o simplemente cuál es la ocasión.",
+      messageHint: "Tu pregunta, o una foto de referencia que hayas visto.",
+      messageHintParty: "Sus edades, el estilo que buscan, lo que deba saber.",
       submit: "Enviar",
       submitting: "Enviando...",
       required: "Obligatorio",
+    },
+
+    topics: {
+      party: "Una fiesta que organizo",
+      question: "Una pregunta",
+      other: "Otra cosa",
+    },
+
+    partyKinds: {
+      birthday: "Cumpleaños",
+      school: "Evento escolar",
+      other: "Otra cosa",
     },
 
     sources: {
@@ -217,10 +236,68 @@ export const es: Dictionary = {
       email: "Eso no parece un correo.",
       tooShort: "Un poco más de detalle me ayuda a contestarte bien.",
       tooLong: "Eso es más largo de lo que acepta el formulario.",
+      date: "Elige la fecha de la fiesta.",
+      guests: "Un número del 1 al 50, por favor.",
     },
 
     failed:
       "Eso no se envió, y prefiero decírtelo a fingir que sí. Inténtalo otra vez en un momento.",
+  },
+
+  partiesPage: {
+    meta: {
+      title: "Uñas para fiestas de niños y adolescentes en Calgary",
+      description:
+        "¿Organizas un cumpleaños o un evento escolar en Calgary? Voy a tu fiesta y les hago las uñas a los invitados: diseños sencillos y lindos para niños, sets más de moda para adolescentes.",
+    },
+    serviceType: "Uñas para fiestas",
+    eyebrow: "Fiestas en Calgary",
+    headingLead: "Uñas para",
+    headingAccent: "tu fiesta",
+    lede: "¿Organizas un cumpleaños, una pijamada o un evento escolar para niños o adolescentes? Tú haces la fiesta. Yo llego, armo una estación de uñas y les hago las uñas a los invitados.",
+    ask: "Pregunta por tu fiesta",
+    what: {
+      eyebrow: "Lo que hago allí",
+      heading: "Mi parte, y solo mi parte",
+      points: {
+        host: {
+          title: "Tú organizas",
+          body: "El pastel, los juegos, los invitados y el lugar son tuyos. Yo soy una cosa ese día, no toda la fiesta.",
+        },
+        nails: {
+          title: "Yo hago las uñas",
+          body: "Una estación de uñas y un diseño para cada invitado. Sencillos y lindos para niños, sets más de moda para adolescentes.",
+        },
+        extras: {
+          title: "Maquillaje si lo pides",
+          body: "Para los invitados mayores que quieran, puedo agregar maquillaje suave. Menciónalo cuando preguntes.",
+        },
+      },
+    },
+    how: {
+      eyebrow: "Cómo funciona",
+      heading: "Tres pasos, sin sistema de reservas",
+      steps: {
+        ask: {
+          title: "Cuéntame de la fiesta",
+          body: "La fecha, cuántos invitados y la zona de Calgary, desde el formulario de contacto. Sus edades también ayudan.",
+        },
+        confirm: {
+          title: "Te confirmo por correo",
+          body: "Reviso la fecha y te contesto con los detalles, para que sepas exactamente qué esperar.",
+        },
+        day: {
+          title: "Ese día, llego a la fiesta",
+          body: "Me instalo, atiendo a los invitados y recojo cuando termino. El resto de la fiesta sigue siendo tuyo.",
+        },
+      },
+    },
+    closing: {
+      eyebrow: "¿Ya tienes fecha?",
+      headingLead: "Hagamos que",
+      headingAccent: "brille",
+      lede: "Mándame la fecha, el número de invitados y la zona, y te contesto, casi siempre el mismo día.",
+    },
   },
 
   thankYou: {

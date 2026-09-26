@@ -35,9 +35,8 @@ export function Hero({ locale, t }: { locale: Locale; t: Dictionary }) {
             >
               {c.nails}
             </Link>
-            {/* To /contact until the events page (19b) exists. */}
             <Link
-              href={localePath(locale, "/contact")}
+              href={localePath(locale, "/parties")}
               className="hover-fill rounded-pill border border-line px-7 py-4 text-center text-[15px] font-bold text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
             >
               {c.party}

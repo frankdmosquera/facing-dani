@@ -2,15 +2,17 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { useId, useState } from "react";
-import { useForm } from "react-hook-form";
+import { useEffect, useId, useState } from "react";
+import { useForm, useWatch } from "react-hook-form";
 
 import { submitContact } from "@/actions/contactAction";
 import { contactSourceKeys } from "@/data/contactSources";
-import { services } from "@/data/services";
 import type { Dictionary } from "@/dictionaries";
 import {
   contactSchema,
+  contactTopics,
+  MAX_GUESTS,
+  partyKinds,
   type ContactErrorKey,
   type ContactInput,
 } from "@/lib/contactValidation";
@@ -25,6 +27,13 @@ const LABEL = "mb-1.5 block text-[13.5px] font-medium text-ink";
 const HINT = "mt-1.5 block text-[12.5px] text-ink-faint";
 const ERROR = "mt-1.5 block text-[12.5px] font-medium text-[var(--nails)]";
 
+// Local date, not toISOString: that is UTC, which is already tomorrow on a Calgary evening.
+function today(): string {
+  const now = new Date();
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+}
+
 export function ContactForm({ locale, t }: { locale: Locale; t: Dictionary }) {
   const c = t.contact;
   const router = useRouter();
@@ -35,11 +44,34 @@ export function ContactForm({ locale, t }: { locale: Locale; t: Dictionary }) {
     register,
     handleSubmit,
     setFocus,
+    setValue,
+    control,
     formState: { errors, isSubmitting },
   } = useForm<ContactInput>({
     resolver: zodResolver(contactSchema),
-    defaultValues: { name: "", email: "", service: "", source: "", message: "", company: "" },
+    defaultValues: {
+      name: "",
+      email: "",
+      topic: "",
+      partyKind: "",
+      partyDate: "",
+      guests: "",
+      area: "",
+      source: "",
+      message: "",
+      company: "",
+    },
   });
+
+  const isParty = useWatch({ control, name: "topic" }) === "party";
+
+  // The parties page links here with ?topic=party. Read after mount, so the page itself stays static.
+  useEffect(() => {
+    const topic = new URLSearchParams(window.location.search).get("topic");
+    if (topic && (contactTopics as readonly string[]).includes(topic)) {
+      setValue("topic", topic);
+    }
+  }, [setValue]);
 
   const message = (key?: string) =>
     key ? c.errors[key as ContactErrorKey] : undefined;
@@ -117,19 +149,28 @@ export function ContactForm({ locale, t }: { locale: Locale; t: Dictionary }) {
         </div>
 
         <div>
-          <label className={LABEL} htmlFor={id("service")}>
-            {c.form.service}
+          <label className={LABEL} htmlFor={id("topic")}>
+            {c.form.topic}
           </label>
-          <select id={id("service")} className={FIELD} {...register("service")}>
-            <option value="">{c.form.servicePlaceholder}</option>
-            {[...services]
-              .sort((a, b) => a.order - b.order)
-              .map((service) => (
-                <option key={service.id} value={service.id}>
-                  {t.services[service.id].name}
-                </option>
-              ))}
+          <select
+            id={id("topic")}
+            className={FIELD}
+            aria-invalid={errors.topic ? true : undefined}
+            aria-describedby={errors.topic ? errorId("topic") : undefined}
+            {...register("topic")}
+          >
+            <option value="">{c.form.topicPlaceholder}</option>
+            {contactTopics.map((key) => (
+              <option key={key} value={key}>
+                {c.topics[key]}
+              </option>
+            ))}
           </select>
+          {errors.topic ? (
+            <span id={errorId("topic")} role="alert" className={ERROR}>
+              {message(errors.topic.message)}
+            </span>
+          ) : null}
         </div>
 
         <div>
@@ -158,6 +199,105 @@ export function ContactForm({ locale, t }: { locale: Locale; t: Dictionary }) {
         </div>
       </div>
 
+      {/* Only for a party. Hidden fields are not checked: the schema skips them for any other topic. */}
+      {isParty ? (
+        <fieldset className="mt-5 grid gap-5 rounded-xl border border-line p-5 min-[620px]:grid-cols-2">
+          <div>
+            <label className={LABEL} htmlFor={id("partyKind")}>
+              {c.form.partyKind}
+            </label>
+            <select
+              id={id("partyKind")}
+              className={FIELD}
+              aria-invalid={errors.partyKind ? true : undefined}
+              aria-describedby={errors.partyKind ? errorId("partyKind") : undefined}
+              {...register("partyKind")}
+            >
+              <option value="">{c.form.topicPlaceholder}</option>
+              {partyKinds.map((key) => (
+                <option key={key} value={key}>
+                  {c.partyKinds[key]}
+                </option>
+              ))}
+            </select>
+            {errors.partyKind ? (
+              <span id={errorId("partyKind")} role="alert" className={ERROR}>
+                {message(errors.partyKind.message)}
+              </span>
+            ) : null}
+          </div>
+
+          <div>
+            <label className={LABEL} htmlFor={id("partyDate")}>
+              {c.form.partyDate}
+            </label>
+            <input
+              id={id("partyDate")}
+              type="date"
+              min={today()}
+              className={FIELD}
+              aria-invalid={errors.partyDate ? true : undefined}
+              aria-describedby={errors.partyDate ? errorId("partyDate") : undefined}
+              {...register("partyDate")}
+            />
+            {errors.partyDate ? (
+              <span id={errorId("partyDate")} role="alert" className={ERROR}>
+                {message(errors.partyDate.message)}
+              </span>
+            ) : null}
+          </div>
+
+          <div>
+            <label className={LABEL} htmlFor={id("guests")}>
+              {c.form.guests}
+            </label>
+            <input
+              id={id("guests")}
+              type="number"
+              inputMode="numeric"
+              min={1}
+              max={MAX_GUESTS}
+              className={FIELD}
+              aria-invalid={errors.guests ? true : undefined}
+              aria-describedby={errors.guests ? errorId("guests") : hintId("guests")}
+              {...register("guests")}
+            />
+            {errors.guests ? (
+              <span id={errorId("guests")} role="alert" className={ERROR}>
+                {message(errors.guests.message)}
+              </span>
+            ) : (
+              <span id={hintId("guests")} className={HINT}>
+                {c.form.guestsHint}
+              </span>
+            )}
+          </div>
+
+          <div>
+            <label className={LABEL} htmlFor={id("area")}>
+              {c.form.area}
+            </label>
+            <input
+              id={id("area")}
+              type="text"
+              className={FIELD}
+              aria-invalid={errors.area ? true : undefined}
+              aria-describedby={errors.area ? errorId("area") : hintId("area")}
+              {...register("area")}
+            />
+            {errors.area ? (
+              <span id={errorId("area")} role="alert" className={ERROR}>
+                {message(errors.area.message)}
+              </span>
+            ) : (
+              <span id={hintId("area")} className={HINT}>
+                {c.form.areaHint}
+              </span>
+            )}
+          </div>
+        </fieldset>
+      ) : null}
+
       <div className="mt-5">
         <label className={LABEL} htmlFor={id("message")}>
           {c.form.message}
@@ -178,7 +318,7 @@ export function ContactForm({ locale, t }: { locale: Locale; t: Dictionary }) {
           </span>
         ) : (
           <span id={hintId("message")} className={HINT}>
-            {c.form.messageHint}
+            {isParty ? c.form.messageHintParty : c.form.messageHint}
           </span>
         )}
       </div>
