@@ -5,6 +5,7 @@ import { Expect } from "@/components/home/Expect";
 import { Faq } from "@/components/home/Faq";
 import { Hero } from "@/components/home/Hero";
 import { NailsTeaser } from "@/components/home/NailsTeaser";
+import { Parties } from "@/components/home/Parties";
 import { Story } from "@/components/home/Story";
 import { WorkTeaser } from "@/components/home/WorkTeaser";
 import { BookingBand } from "@/components/site/BookingBand";
@@ -23,6 +24,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
       <Hero locale={locale} t={t} />
       <NailsTeaser locale={locale} t={t} />
       <WorkTeaser locale={locale} t={t} />
+      <Parties locale={locale} t={t} />
       <Story t={t} />
       <Bilingual t={t} />
       <Expect t={t} />

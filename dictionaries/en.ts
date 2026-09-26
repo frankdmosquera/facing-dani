@@ -336,6 +336,28 @@ export const en = {
       body: "Not just this website. Spanish is my first language, so the consultation, the small talk, and the part where you change your mind about the colour all happen in whichever language you are more comfortable in. A translated page only tells you that you can read it. This is me telling you that you will be understood.",
     },
 
+    parties: {
+      eyebrow: "Parties",
+      headingLead: "Nails for",
+      headingAccent: "your party",
+      lede: "Hosting a birthday or a get-together for kids or teens? You run the party, I come and do the guests' nails.",
+      points: {
+        host: {
+          title: "You host, I do the nails",
+          body: "Cake, games and guests are yours. I set up a nail station and work through the guests.",
+        },
+        age: {
+          title: "Made for their age",
+          body: "Simple, cute designs for kids, trendier sets for teens. Makeup on request.",
+        },
+        ask: {
+          title: "Ask first",
+          body: "Parties are not booked online. Send me the date, how many guests and the area, and I will confirm by email.",
+        },
+      },
+      ask: "Ask about your party",
+    },
+
     expect: {
       eyebrow: "In the chair",
       heading: "What actually happens",

@@ -333,6 +333,28 @@ export const es: Dictionary = {
       body: "No solo esta página. El español es mi primer idioma, así que la consulta, la conversación y el momento en el que cambias de opinión sobre el color pasan en el idioma en el que te sientas más cómoda. Una página traducida solo te dice que la puedes leer. Esto es yo diciéndote que te van a entender.",
     },
 
+    parties: {
+      eyebrow: "Fiestas",
+      headingLead: "Uñas para",
+      headingAccent: "tu fiesta",
+      lede: "¿Organizas un cumpleaños o una reunión para niños o adolescentes? Tú haces la fiesta, yo voy y les hago las uñas a los invitados.",
+      points: {
+        host: {
+          title: "Tú organizas, yo hago las uñas",
+          body: "El pastel, los juegos y los invitados son tuyos. Yo armo una estación de uñas y voy atendiendo a los invitados.",
+        },
+        age: {
+          title: "Pensado para su edad",
+          body: "Diseños sencillos y lindos para los niños, sets más de moda para los adolescentes. Maquillaje si lo pides.",
+        },
+        ask: {
+          title: "Pregunta primero",
+          body: "Las fiestas no se reservan en línea. Mándame la fecha, cuántos invitados y la zona, y te confirmo por correo.",
+        },
+      },
+      ask: "Pregunta por tu fiesta",
+    },
+
     expect: {
       eyebrow: "En la silla",
       heading: "Lo que realmente pasa",
