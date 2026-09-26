@@ -16,15 +16,13 @@ export function Story({ t }: { t: Dictionary }) {
             {c.headingLead} <Hot>{c.headingAccent}</Hot>
           </>
         }
-        lede={c.lede}
       />
 
       <div className="flex flex-col gap-10 min-[860px]:flex-row min-[860px]:items-start min-[860px]:gap-14">
         <div className="min-w-0 flex-1">
-          <div className="flex max-w-[58ch] flex-col gap-4 text-[15.5px] text-ink-muted">
-            <p>{c.training}</p>
-            <p>{c.building}</p>
-          </div>
+          <p className="max-w-[58ch] text-[15.5px] text-ink-muted">
+            {c.training}
+          </p>
 
           <p className="mt-5 max-w-[58ch] text-[16.5px] font-medium text-ink">
             {c.feeling}

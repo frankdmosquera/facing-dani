@@ -27,7 +27,7 @@ export function SiteHeader({ locale, t }: { locale: Locale; t: Dictionary }) {
           aria-label={t.a11y.mainNav}
           className="hidden items-center gap-[30px] min-[900px]:flex"
         >
-          {siteConfig.nav.map((item) => (
+          {siteConfig.nav.filter((item) => !("mobileOnly" in item)).map((item) => (
             <Link
               key={item.key}
               href={localePath(locale, item.href)}

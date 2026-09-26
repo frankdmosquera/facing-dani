@@ -2,18 +2,22 @@
 // Not `as const`, so values type as string and Spanish can differ.
 export const en = {
   meta: {
-    title: "Glammed Beauty Studio - Nails, Lashes and Makeup in Calgary",
+    // Nails first; "your party" because she is a station at someone else's party, not the organiser.
+    title: "Nails in Calgary, by Appointment or at Your Party - Glammed Beauty Studio",
     template: "%s - Glammed Beauty Studio",
     description:
-      "Nail, lash and makeup artistry in Calgary, trained in Colombia. Shape, structure and cuticle work that still looks good in week three. Se habla espanol.",
+      "Custom gel and acrylic nails in Calgary, trained in Colombia. Hosting a kids' or teen party? I can come and do nails for the guests.",
   },
 
   blurb:
-    "Nails, lashes and makeup in Calgary. Trained in Colombia. By appointment.",
+    "Nails in Calgary, by appointment. Trained in Colombia. I also do nails at kids' and teen parties.",
+
+  marquee: ["Nails", "Parties", "Calgary"],
 
   nav: {
     home: "Home",
     nails: "Nails",
+    parties: "Parties",
     lashes: "Lashes",
     makeup: "Makeup",
     gallery: "The work",
@@ -247,11 +251,15 @@ export const en = {
     // Offer DMs here again once siteConfig.social.instagram is set.
     booking: {
       q: "How do I book?",
-      a: "Use the form on the contact page. Tell me the service, roughly when suits you, and send a reference photo if you have one.",
+      a: "Open the nails page, tap Book next to the treatment you want, and pick a time in the calendar. Questions first? The contact page is always open.",
+    },
+    parties: {
+      q: "Can you come to a party?",
+      a: "Yes, as the nail station at a party you host, for kids or teens. Parties are not booked online: send me the date, how many guests and the area through the contact page, and I will confirm by email.",
     },
     duration: {
       q: "How long does a full set take?",
-      a: "A gel manicure is about an hour. A full set with extensions and art runs two to three hours. Lash sets are around two hours, fills about an hour.",
+      a: "A gel manicure is about an hour. A full set with extensions and art runs two to three hours, and a fill about an hour and a half.",
     },
     // No street address on purpose: it goes out with the booking.
     location: {
@@ -272,15 +280,15 @@ export const en = {
     },
     firstVisit: {
       q: "It is my first time. What should I know?",
-      a: "Come with bare nails, or tell me what is on them so I can plan time to take it off. For lashes, arrive with no eye makeup or mascara, skip the coffee beforehand so your eyes stay still, and tell me about any allergies, because lash glue can contain acrylic or latex. Bring a reference photo if you have one, and plan for the full appointment time.",
+      a: "Come with bare nails, or tell me what is on them so I can plan time to take it off. Bring a reference photo if you have one, and plan for the full appointment time. Booking lashes? Come with no eye makeup and tell me about any allergies, because lash glue can contain acrylic or latex.",
     },
     removalAndFills: {
       q: "Can you take off a set from another salon, and how often do I need a fill?",
-      a: "Yes. Removal is on the price list for each service; mention it when you book so the time is set aside. Nail fills are every two to three weeks, lash fills every two to four.",
+      a: "Yes. Removal is on the nails price list; mention it when you book so the time is set aside. Fills are every two to three weeks.",
     },
     hair: {
       q: "Do you do hair?",
-      a: "No. Nails, lashes and makeup only, and that is on purpose.",
+      a: "No. Nails are what I do, with makeup and lashes on request, and that is on purpose.",
     },
   },
 
@@ -289,26 +297,25 @@ export const en = {
       eyebrow: "Calgary · by appointment",
       headingLead: "Nails that",
       headingAccent: "get noticed",
-      sell: "Custom sets, lash extensions and event makeup. Trained in Colombia, booking now in Calgary. Bring a reference photo or let me build something for you.",
-      book: "Book with Dani",
-      seeWork: "See the work",
+      sell: "Custom gel and acrylic sets, trained in Colombia, booking now in Calgary. Bring a reference photo or let me build something for you. Hosting a kids' or teen party? I can come and do the guests' nails.",
+      nails: "Book nails",
+      party: "Nails for your party",
       dmNote: "Or send a DM on Instagram, whatever is easier",
     },
-    services: {
-      eyebrow: "What I do",
-      heading: "Three things, done properly",
-      lede: "No hair, no facials, no upsell. Nails, lashes and makeup, which is what the training was in and what the work is good at.",
-      more: "See more",
+    nails: {
+      eyebrow: "Nails",
+      headingLead: "Gel, acrylic and",
+      headingAccent: "Gel-X in Calgary",
+      lede: "Full sets and fills, chrome, French and hand-painted art. Shape and cuticle work that still looks good in week three.",
+      addOns: "Add French tips, chrome or nail art to any set.",
+      more: "See the full menu and book",
     },
     story: {
-      lede: "A new business has no reviews, no word of mouth and nothing to point at except the work and the person doing it. So here is the person, and where the way I work comes from.",
       eyebrow: "Who is doing your nails",
       headingLead: "Trained in Colombia,",
       headingAccent: "working in Calgary",
       training:
         "I did my training in Colombia, where the standard for nail work is a lot higher than most people here expect. Shape, structure and cuticle work are the parts that decide whether a set still looks good in week three, and they are the parts I was taught to get right.",
-      building:
-        "Since then I have been doing sets for family and friends constantly, and now I am building this into something of my own. What that means for you is the version of me that still cares enormously about every single set. Bring a photo from Pinterest, or sit down with no idea and we will work it out.",
       // "Sure of yourself", never "secure": her word "segura" means confident.
       feeling:
         "What I care about most is how you feel when you leave. Not just that the set looks good, but that you walk out feeling beautiful and sure of yourself.",
@@ -320,7 +327,7 @@ export const en = {
     },
 
     // Schema only, never rendered.
-    jobTitle: "Nail, lash and makeup artist",
+    jobTitle: "Nail artist",
 
     portraitAlt:
       "The artist, photographed in the salon where she works, wearing a black t-shirt.",
@@ -329,6 +336,28 @@ export const en = {
     bilingual: {
       heading: "Your appointment can be in Spanish",
       body: "Not just this website. Spanish is my first language, so the consultation, the small talk, and the part where you change your mind about the colour all happen in whichever language you are more comfortable in. A translated page only tells you that you can read it. This is me telling you that you will be understood.",
+    },
+
+    parties: {
+      eyebrow: "Parties",
+      headingLead: "Nails for",
+      headingAccent: "your party",
+      lede: "Hosting a birthday or a get-together for kids or teens? You run the party, I come and do the guests' nails.",
+      points: {
+        host: {
+          title: "You host, I do the nails",
+          body: "Cake, games and guests are yours. I set up a nail station and work through the guests.",
+        },
+        age: {
+          title: "Made for their age",
+          body: "Simple, cute designs for kids, trendier sets for teens. Makeup on request.",
+        },
+        ask: {
+          title: "Ask first",
+          body: "Parties are not booked online. Send me the date, how many guests and the area, and I will confirm by email.",
+        },
+      },
+      ask: "Ask about your party",
     },
 
     expect: {

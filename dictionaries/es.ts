@@ -4,18 +4,21 @@ import type { Dictionary } from "./en";
 // Draft copy for Dani to approve before launch.
 export const es: Dictionary = {
   meta: {
-    title: "Glammed Beauty Studio - Uñas, Pestañas y Maquillaje en Calgary",
+    title: "Uñas en Calgary, con cita o en tu fiesta - Glammed Beauty Studio",
     template: "%s - Glammed Beauty Studio",
     description:
-      "Uñas, pestañas y maquillaje en Calgary, con formación colombiana. Forma, estructura y trabajo de cutícula que sigue viéndose bien en la tercera semana. Te atiendo en español.",
+      "Uñas de gel y acrílico en Calgary, con formación colombiana. ¿Organizas una fiesta de niños o adolescentes? Puedo ir y hacerles las uñas a los invitados.",
   },
 
   blurb:
-    "Uñas, pestañas y maquillaje en Calgary. Formación colombiana. Con cita previa.",
+    "Uñas en Calgary, con cita previa. Formación colombiana. También hago uñas en fiestas de niños y adolescentes.",
+
+  marquee: ["Uñas", "Fiestas", "Calgary"],
 
   nav: {
     home: "Inicio",
     nails: "Uñas",
+    parties: "Fiestas",
     lashes: "Pestañas",
     makeup: "Maquillaje",
     gallery: "El trabajo",
@@ -249,11 +252,15 @@ export const es: Dictionary = {
   faq: {
     booking: {
       q: "¿Cómo reservo?",
-      a: "Usa el formulario en la página de contacto. Dime qué servicio quieres, más o menos cuándo te viene bien, y mándame una foto de referencia si tienes una.",
+      a: "Abre la página de uñas, toca Reservar junto al tratamiento que quieres y elige una hora en el calendario. ¿Tienes preguntas antes? La página de contacto siempre está abierta.",
+    },
+    parties: {
+      q: "¿Puedes ir a una fiesta?",
+      a: "Sí, como la estación de uñas en una fiesta que tú organizas, para niños o adolescentes. Las fiestas no se reservan en línea: mándame la fecha, cuántos invitados y la zona desde la página de contacto, y te confirmo por correo.",
     },
     duration: {
       q: "¿Cuánto dura un set completo?",
-      a: "Una manicura en gel toma alrededor de una hora. Un set completo con extensiones y arte toma de dos a tres horas. Las pestañas alrededor de dos horas, los rellenos cerca de una.",
+      a: "Una manicura en gel toma alrededor de una hora. Un set completo con extensiones y arte toma de dos a tres horas, y un relleno cerca de una hora y media.",
     },
     location: {
       q: "¿Dónde estás ubicada?",
@@ -273,15 +280,15 @@ export const es: Dictionary = {
     },
     firstVisit: {
       q: "Es mi primera vez. ¿Qué debería saber?",
-      a: "Ven con las uñas sin nada, o cuéntame qué tienes puesto para planear el tiempo de retirarlo. Para pestañas, llega sin maquillaje en los ojos ni pestañina, evita el café antes para que los ojos estén quietos, y avísame si tienes alguna alergia, porque el pegamento de pestañas puede tener acrílico o látex. Trae una foto de referencia si tienes una, y cuenta con el tiempo completo de la cita.",
+      a: "Ven con las uñas sin nada, o cuéntame qué tienes puesto para planear el tiempo de retirarlo. Trae una foto de referencia si tienes una, y cuenta con el tiempo completo de la cita. ¿Vas a reservar pestañas? Llega sin maquillaje en los ojos y avísame si tienes alguna alergia, porque el pegamento de pestañas puede tener acrílico o látex.",
     },
     removalAndFills: {
       q: "¿Puedes quitar un set de otro salón, y cada cuánto necesito un relleno?",
-      a: "Sí. El retiro está en la lista de precios de cada servicio; avísame cuando reserves para apartar el tiempo. Los rellenos de uñas son cada dos o tres semanas, y los de pestañas cada dos a cuatro.",
+      a: "Sí. El retiro está en la lista de precios de uñas; avísame cuando reserves para apartar el tiempo. Los rellenos son cada dos o tres semanas.",
     },
     hair: {
       q: "¿Haces cabello?",
-      a: "No. Solo uñas, pestañas y maquillaje, y es a propósito.",
+      a: "No. Lo mío son las uñas, con maquillaje y pestañas si los pides, y es a propósito.",
     },
   },
 
@@ -290,26 +297,25 @@ export const es: Dictionary = {
       eyebrow: "Calgary · con cita previa",
       headingLead: "Uñas que",
       headingAccent: "se notan",
-      sell: "Sets personalizados, extensiones de pestañas y maquillaje para eventos. Con formación colombiana, tomando citas ahora en Calgary. Tráeme una foto de referencia o déjame crear algo para ti.",
-      book: "Reservar con Dani",
-      seeWork: "Ver el trabajo",
+      sell: "Sets de gel y acrílico, con formación colombiana, tomando citas ahora en Calgary. Tráeme una foto de referencia o déjame crear algo para ti. ¿Organizas una fiesta de niños o adolescentes? Puedo ir y hacerles las uñas a los invitados.",
+      nails: "Reservar uñas",
+      party: "Uñas para tu fiesta",
       dmNote: "O mándame un DM por Instagram, lo que te sea más fácil",
     },
-    services: {
-      eyebrow: "Lo que hago",
-      heading: "Tres cosas, bien hechas",
-      lede: "Nada de cabello, nada de faciales, nada de venderte de más. Uñas, pestañas y maquillaje, que es en lo que me formé y en lo que el trabajo es bueno.",
-      more: "Ver más",
+    nails: {
+      eyebrow: "Uñas",
+      headingLead: "Gel, acrílico y",
+      headingAccent: "Gel-X en Calgary",
+      lede: "Sets completos y rellenos, cromado, francés y arte a mano. Forma y trabajo de cutícula que siguen viéndose bien en la tercera semana.",
+      addOns: "Agrega francés, cromado o arte a cualquier set.",
+      more: "Ver el menú completo y reservar",
     },
     story: {
-      lede: "Un negocio nuevo no tiene reseñas, no tiene voz a voz y no tiene nada que mostrar aparte del trabajo y de quien lo hace. Así que aquí estoy yo, y de dónde viene mi manera de trabajar.",
       eyebrow: "Quién te hace las uñas",
       headingLead: "Formada en Colombia,",
       headingAccent: "trabajando en Calgary",
       training:
         "Me formé en Colombia, donde el estándar del trabajo de uñas es bastante más alto de lo que la mayoría espera aquí. La forma, la estructura y el trabajo de cutícula son lo que decide si un set sigue viéndose bien en la tercera semana, y es justo lo que me enseñaron a hacer bien.",
-      building:
-        "Desde entonces no he parado de hacerle las uñas a mi familia y a mis amigas, y ahora estoy construyendo esto como algo mío. Lo que eso significa para ti es que recibes la versión de mí que todavía se preocupa muchísimo por cada set. Tráeme una foto de Pinterest, o siéntate sin ninguna idea y lo resolvemos juntas.",
       feeling:
         "Lo que más me importa es cómo te sientes cuando te vas. No solo que el set se vea bien, sino que salgas sintiéndote hermosa y segura de ti misma.",
     },
@@ -319,7 +325,7 @@ export const es: Dictionary = {
       all: "Ver todo el trabajo",
     },
 
-    jobTitle: "Artista de uñas, pestañas y maquillaje",
+    jobTitle: "Artista de uñas",
 
     portraitAlt:
       "La artista, fotografiada en el salón donde trabaja, con una camiseta negra.",
@@ -327,6 +333,28 @@ export const es: Dictionary = {
     bilingual: {
       heading: "Tu cita puede ser en español",
       body: "No solo esta página. El español es mi primer idioma, así que la consulta, la conversación y el momento en el que cambias de opinión sobre el color pasan en el idioma en el que te sientas más cómoda. Una página traducida solo te dice que la puedes leer. Esto es yo diciéndote que te van a entender.",
+    },
+
+    parties: {
+      eyebrow: "Fiestas",
+      headingLead: "Uñas para",
+      headingAccent: "tu fiesta",
+      lede: "¿Organizas un cumpleaños o una reunión para niños o adolescentes? Tú haces la fiesta, yo voy y les hago las uñas a los invitados.",
+      points: {
+        host: {
+          title: "Tú organizas, yo hago las uñas",
+          body: "El pastel, los juegos y los invitados son tuyos. Yo armo una estación de uñas y voy atendiendo a los invitados.",
+        },
+        age: {
+          title: "Pensado para su edad",
+          body: "Diseños sencillos y lindos para los niños, sets más de moda para los adolescentes. Maquillaje si lo pides.",
+        },
+        ask: {
+          title: "Pregunta primero",
+          body: "Las fiestas no se reservan en línea. Mándame la fecha, cuántos invitados y la zona, y te confirmo por correo.",
+        },
+      },
+      ask: "Pregunta por tu fiesta",
     },
 
     expect: {

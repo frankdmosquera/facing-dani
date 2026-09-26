@@ -13,14 +13,15 @@ export type FaqItem = {
 
 export const faq: FaqItem[] = [
   { key: "booking", order: 1, serviceId: null },
-  { key: "deposit", order: 2, serviceId: null },
-  { key: "payment", order: 3, serviceId: null },
-  { key: "duration", order: 4, serviceId: null },
-  { key: "firstVisit", order: 5, serviceId: null },
-  { key: "removalAndFills", order: 6, serviceId: null },
-  { key: "location", order: 7, serviceId: null },
-  { key: "cancelling", order: 8, serviceId: null },
-  { key: "hair", order: 9, serviceId: null },
+  { key: "parties", order: 2, serviceId: null },
+  { key: "deposit", order: 3, serviceId: null },
+  { key: "payment", order: 4, serviceId: null },
+  { key: "duration", order: 5, serviceId: null },
+  { key: "firstVisit", order: 6, serviceId: null },
+  { key: "removalAndFills", order: 7, serviceId: null },
+  { key: "location", order: 8, serviceId: null },
+  { key: "cancelling", order: 9, serviceId: null },
+  { key: "hair", order: 10, serviceId: null },
 ];
 
 export function siteWideFaq(): FaqItem[] {

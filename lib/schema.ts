@@ -94,7 +94,7 @@ export function personSchema(t: Dictionary) {
     "@type": "Person",
     name: siteConfig.business.ownerName,
     jobTitle: t.home.jobTitle,
-    description: t.home.story.lede,
+    description: t.home.story.training,
     knowsLanguage: ["en", "es"],
     worksFor: {
       "@type": "LocalBusiness",
@@ -134,7 +134,7 @@ export function contactPageSchema(t: Dictionary) {
 export function localBusinessSchema(t: Dictionary) {
   const base = {
     "@context": "https://schema.org",
-    "@type": "HealthAndBeautyBusiness",
+    "@type": "NailSalon",
     name: siteConfig.business.name,
     description: t.meta.description,
     email: siteConfig.business.email,

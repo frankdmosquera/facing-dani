@@ -13,7 +13,8 @@ type Route = {
   href: string;
 };
 
-export type NavItem = Route & { key: NavKey };
+// mobileOnly: left out of the desktop header, still in the phone menu.
+export type NavItem = Route & { key: NavKey; mobileOnly?: true };
 // No href: every Book button goes through lib/bookingConfig.
 export type CtaItem = { key: CtaKey };
 export type FooterItem = Route & { key: FooterKey };
@@ -39,14 +40,14 @@ export const siteConfig = {
     instagram: null as { handle: string; url: string } | null,
   },
 
-  // Same in both languages.
-  marquee: ["Nails", "Lashes", "Makeup", "Calgary"],
-
   nav: [
     { key: "home", href: "/" },
     { key: "nails", href: "/nails" },
-    { key: "lashes", href: "/lashes" },
-    { key: "makeup", href: "/makeup" },
+    // The home section until the parties page (19b) exists.
+    { key: "parties", href: "/#parties" },
+    // Kept on phones until it is decided whether these pages stay. Never delete them uninvited.
+    { key: "lashes", href: "/lashes", mobileOnly: true },
+    { key: "makeup", href: "/makeup", mobileOnly: true },
     { key: "gallery", href: "/gallery" },
     // Temporary, while Dani chooses a logo and theme. The page itself is noindex.
     { key: "logos", href: "/logos" },
