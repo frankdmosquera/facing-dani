@@ -297,11 +297,13 @@ export const en = {
       party: "Nails for your party",
       dmNote: "Or send a DM on Instagram, whatever is easier",
     },
-    services: {
-      eyebrow: "What I do",
-      heading: "Three things, done properly",
-      lede: "No hair, no facials, no upsell. Nails, lashes and makeup, which is what the training was in and what the work is good at.",
-      more: "See more",
+    nails: {
+      eyebrow: "Nails",
+      headingLead: "Gel, acrylic and",
+      headingAccent: "Gel-X in Calgary",
+      lede: "Full sets and fills, chrome, French and hand-painted art. Shape and cuticle work that still looks good in week three.",
+      addOns: "Add French tips, chrome or nail art to any set.",
+      more: "See the full menu and book",
     },
     story: {
       lede: "A new business has no reviews, no word of mouth and nothing to point at except the work and the person doing it. So here is the person, and where the way I work comes from.",

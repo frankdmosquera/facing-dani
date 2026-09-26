@@ -297,11 +297,13 @@ export const es: Dictionary = {
       party: "Uñas para tu fiesta",
       dmNote: "O mándame un DM por Instagram, lo que te sea más fácil",
     },
-    services: {
-      eyebrow: "Lo que hago",
-      heading: "Tres cosas, bien hechas",
-      lede: "Nada de cabello, nada de faciales, nada de venderte de más. Uñas, pestañas y maquillaje, que es en lo que me formé y en lo que el trabajo es bueno.",
-      more: "Ver más",
+    nails: {
+      eyebrow: "Uñas",
+      headingLead: "Gel, acrílico y",
+      headingAccent: "Gel-X en Calgary",
+      lede: "Sets completos y rellenos, cromado, francés y arte a mano. Forma y trabajo de cutícula que siguen viéndose bien en la tercera semana.",
+      addOns: "Agrega francés, cromado o arte a cualquier set.",
+      more: "Ver el menú completo y reservar",
     },
     story: {
       lede: "Un negocio nuevo no tiene reseñas, no tiene voz a voz y no tiene nada que mostrar aparte del trabajo y de quien lo hace. Así que aquí estoy yo, y de dónde viene mi manera de trabajar.",
