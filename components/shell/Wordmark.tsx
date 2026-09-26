@@ -29,7 +29,15 @@ export function Wordmark({
           width={96}
           height={96}
           priority
-          className="size-[3em] shrink-0 rounded-full min-[900px]:size-[4em]"
+          className="size-[3em] shrink-0 rounded-full min-[900px]:size-[4em] light:hidden"
+        />
+        {/* Her logo recoloured in lilac, the light page's own purple. Only loads once light mode shows it. */}
+        <Image
+          src="/logos/original-lilac.png"
+          alt=""
+          width={96}
+          height={96}
+          className="hidden size-[3em] shrink-0 rounded-full min-[900px]:size-[4em] light:block"
         />
       </LogoPreview>
       <span className="sr-only">

@@ -5,7 +5,7 @@ export function OpenCue() {
   return (
     <span
       aria-hidden="true"
-      className="pointer-events-none absolute top-2 right-2 z-[2] hidden size-7 place-items-center rounded-full border border-white/15 bg-[rgba(20,15,28,.7)] text-ink [@media(hover:none)]:grid"
+      className="on-dark pointer-events-none absolute top-2 right-2 z-[2] hidden size-7 place-items-center rounded-full border border-white/15 bg-[rgba(20,15,28,.7)] text-ink [@media(hover:none)]:grid"
     >
       <Maximize2 className="size-3.5" />
     </span>

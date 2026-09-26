@@ -89,7 +89,7 @@ export function GalleryFigure({
 
       {/* pointer-events-none so a tap on the tag still opens the photo. */}
       <figcaption
-        className={`pointer-events-none absolute bottom-2.5 left-2.5 z-[2] rounded-pill border border-white/15 bg-[rgba(20,15,28,.75)] px-2.5 py-[5px] text-[9.5px] font-semibold tracking-[0.13em] uppercase ${accentText[image.serviceId]} ${REVEAL}`}
+        className={`on-dark pointer-events-none absolute bottom-2.5 left-2.5 z-[2] rounded-pill border border-white/15 bg-[rgba(20,15,28,.75)] px-2.5 py-[5px] text-[9.5px] font-semibold tracking-[0.13em] uppercase ${accentText[image.serviceId]} ${REVEAL}`}
       >
         {serviceName}
       </figcaption>

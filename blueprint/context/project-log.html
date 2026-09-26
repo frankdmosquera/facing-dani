@@ -1251,7 +1251,7 @@
             <li>Every accent needs a darker twin. The fills fail contrast under 18px, so small text and prices use the darker value, never the fill.</li>
             <li>Type is Unbounded 800 for headlines and Inter for everything else. Anton read as a gym poster, Fredoka as a cereal box.</li>
             <li>Dark is the brand. A light twin exists, and the rule is that glow becomes tint. The gradient CTA and ticker are identical in both, which is what keeps it one brand.</li>
-            <li>Whether visitors get a theme toggle is still open. Leaning no.</li>
+            <li>Visitors get a light mode button in the header, decided Sep 26. Dark stays the default; the phone setting is not followed.</li>
             <li>Mobile is the product, not a consideration. Every mockup was drawn at phone width.</li>
             <li>Her photos need dark-friendly backgrounds. She has to hear this before she shoots, not after.</li>
             <li>Motion in CSS only. <code>motion</code> is not installed and is not being added.</li>
@@ -1291,7 +1291,7 @@
         <div class="tally">
           <span class="tally-part" data-state="done"><span class="tally-key">Done</span><span class="tally-val">16 of 17 MVP items</span></span>
           <span class="tally-part" data-state="active"><span class="tally-key">Now</span><span class="tally-val">15 &middot; live as Glammed Beauty Studio since Sep 25; redirect, Search Console and a live form test left</span></span>
-          <span class="tally-part" data-state="planned"><span class="tally-key">Next</span><span class="tally-val">Punch list: About from Dani's answers (8), light mode (11)</span></span>
+          <span class="tally-part" data-state="planned"><span class="tally-key">Next</span><span class="tally-val">Punch list: About from Dani's answers (8)</span></span>
         </div>
         <details class="callout callout--map">
           <summary class="callout-title">How it all fits together <span class="callout-count">the site and everything it touches</span></summary>
@@ -1637,9 +1637,16 @@
           <div class="item" id="item-19" data-state="done"><div class="item-num">19</div><div class="item-body"><div class="item-name">Nails and parties</div><p class="item-text">Dani is strong at nails and still learning lashes and makeup, so the site stopped presenting three equal professional services. <b>Nails</b> is the one professional service. <b>Parties</b> is the second side: she comes to a kids' or teen party someone else hosts and does the guests' nails, never the organiser and never instantly bookable. Lashes and makeup keep their pages, reached from the phone menu and the footer. Decided and built on Sep 25, one point at a time, then as a full round.</p>
 
             <details class="drawer" data-kind="reality">
-              <summary>Log <span class="tag-drift">9 entries, newest first</span></summary>
+              <summary>Log <span class="tag-drift">10 entries, newest first</span></summary>
               <div class="drawer-body">
                 <div class="log">
+                  <div class="entry" data-kind="change">
+                    <div class="dot"></div>
+                    <div class="entry-body">
+                      <div class="entry-top"><span class="entry-title">Light mode, behind a button</span><span class="kind-tag">Change</span><span class="stamp">Sep 26</span></div>
+                      <p class="entry-text">Punch item 11. A sun button in the header switches to light and the choice is remembered; <b>dark stays the default</b> and the phone setting is not followed, because dark is the brand. A small script sets the theme before the page draws, so there is no flash. Light mode shows her logo recoloured in lilac. Testing it found three things: the /logos preview was clearing the light class on every page, the photo viewer and photo labels turned dark text on dark, and the orange end of gradient headings measured 2.19:1 on the light ground. Headings and small accent labels now use the darker twins in light mode; the Book buttons keep the bright gradient.</p>
+                    </div>
+                  </div>
                   <div class="entry" data-kind="change">
                     <div class="dot"></div>
                     <div class="entry-body">
@@ -1929,7 +1936,7 @@
             <li><strong>"Spanish is written by Dani" is not what happens.</strong> In practice the Spanish is drafted during each feature; Frank reviewed it on Sep 23 and called it fine. Either the rule or the practice should change.</li>
             <li><strong>A store is being considered, and section 1 explicitly rules one out</strong> ("What it is not: a booking engine, a shop"). Parked, to be planned from the backend. Face and Body's products page is the pattern: JSON per category, prices shown, no cart. If it proceeds, section 1 has to change.</li>
             <li><strong>No <code>/book</code> page, decided Sep 25.</strong> Under the Cal.com popup each Book button is a plain link to cal.com, so a middle click or a phone without JavaScript books on Cal.com directly. The cost is that those rare visitors leave the site to book.</li>
-            <li><strong>The light theme has no owner.</strong> Section 7 specifies it and <code>.light</code> is ported, but visitors never see it. Since Sep 25 the <code>/logos</code> switch shows it, next to Black and gold and Light gold, for Dani to compare. Labels over photos still turn dark on dark in the light themes.</li>
+            <li><strong>Light mode is live behind a header button</strong> since Sep 26, with her logo in lilac. The <code>/logos</code> switch still previews Black and gold and Light gold, and its pick wins while that page exists.</li>
             <li><strong>Google Business Profile and Search Console are not in the build plan.</strong> Section 8 calls the profile more important than the site for the first year, but nothing tracks it. Either it gets an item or it is explicitly outside the plan.</li>
             <li><strong>Spanish slugs are mirrored English</strong> (<code>/es/nails</code>, not <code>/es/unas</code>). One helper owns the prefix, so deciding is a one-file change.</li>
           </ul>

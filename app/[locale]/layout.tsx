@@ -3,9 +3,10 @@ import { Inter, Unbounded } from "next/font/google";
 import { notFound } from "next/navigation";
 
 import { BookingPopup } from "@/components/booking/BookingPopup";
-import { ThemePreview } from "@/components/logos/LogoPreview";
 import { SiteFooter } from "@/components/shell/SiteFooter";
 import { SiteHeader } from "@/components/shell/SiteHeader";
+import { themeScript } from "@/components/shell/theme";
+import { ThemeApplier } from "@/components/shell/ThemeApplier";
 import { Ticker } from "@/components/shell/Ticker";
 import { siteConfig } from "@/data/siteConfig";
 import { getDictionary } from "@/dictionaries";
@@ -77,8 +78,11 @@ export default async function LocaleLayout({
     <html
       lang={activeLocale}
       className={`${unbounded.variable} ${inter.variable} h-full`}
+      // The theme script adds a class before React hydrates.
+      suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col">
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <a
           href="#main"
           className="sr-only rounded-lg bg-surface px-4 py-2 text-ink focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-60 focus:outline-2 focus:outline-offset-2 focus:outline-ring"
@@ -89,7 +93,7 @@ export default async function LocaleLayout({
         <SiteHeader locale={activeLocale} t={t} />
         {children}
         <SiteFooter locale={activeLocale} t={t} />
-        <ThemePreview />
+        <ThemeApplier />
         <BookingPopup />
       </body>
     </html>

@@ -5,6 +5,8 @@
 /* Dark is the default, in :root. The light theme lives in .light.
    The dark variant is kept class-based so dark: never follows the OS setting. */
 @custom-variant dark (&:is(.dark *));
+/* light: utilities, for the few things that swap outright in light mode, such as the logo. */
+@custom-variant light (&:is(.light *));
 
 @theme inline {
   /* --- brand surfaces --- */
@@ -21,10 +23,11 @@
   --color-ink-faint: var(--ink-faint);
 
   /* --- accents --- */
-  --color-nails: var(--nails);
-  --color-lashes: var(--lashes);
-  --color-makeup: var(--makeup);
-  --color-confirm: var(--confirm);
+  /* Through *-ui so light mode can swap in the darker twins; --hot reads the fills directly. */
+  --color-nails: var(--nails-ui);
+  --color-lashes: var(--lashes-ui);
+  --color-makeup: var(--makeup-ui);
+  --color-confirm: var(--confirm-ui);
 
   /* darker twins, for the same accents on light surfaces */
   --color-nails-on-light: var(--nails-on-light);
@@ -110,7 +113,14 @@
   --makeup-on-light: #bf5710;
   --confirm-on-light: #0e8f63;
 
+  --nails-ui: var(--nails);
+  --lashes-ui: var(--lashes);
+  --makeup-ui: var(--makeup);
+  --confirm-ui: var(--confirm);
+
   --hot: linear-gradient(92deg, var(--nails), var(--makeup));
+  /* Gradient headings. Split from --hot so light mode can darken the text and keep the buttons. */
+  --hot-text: var(--hot);
   --on-hot: #231a31;
 
   /* section glow */
@@ -160,7 +170,7 @@
   --chart-5: var(--ink-faint);
 }
 
-/* Light theme. Only the switch on /logos activates it. Glow becomes a pale tint: blurred blobs smudge on light. */
+/* Light theme. The header button (and the /logos preview) activates it. Glow becomes a pale tint: blurred blobs smudge on light. */
 .light {
   --ground: #faf6fc;
   --surface: #ffffff;
@@ -180,8 +190,25 @@
 
   /* accent fills fail contrast on light, so text uses the darker twins */
   --primary: var(--nails-on-light);
+  /* The bright orange is 2.2:1 on this ground; the on-light twins clear 4.2:1. */
+  --hot-text: linear-gradient(92deg, var(--nails-on-light), var(--makeup-on-light));
+  --nails-ui: var(--nails-on-light);
+  --lashes-ui: var(--lashes-on-light);
+  --makeup-ui: var(--makeup-on-light);
+  --confirm-ui: var(--confirm-on-light);
   --ring: var(--nails-on-light);
   --primary-foreground: #ffffff;
+}
+
+/* Surfaces that stay dark in every theme (the photo viewer, labels on photos) keep the dark ink. Same values as :root. */
+.on-dark {
+  --ink: #f6f2fa;
+  --ink-muted: #b3a8c2;
+  --ink-faint: #9f94af;
+  --nails-ui: var(--nails);
+  --lashes-ui: var(--lashes);
+  --makeup-ui: var(--makeup);
+  --confirm-ui: var(--confirm);
 }
 
 /* Black and gold, for the theme switch on /logos only. Same values as blueprint/reference/palette-black-and-gold.css. */

@@ -8,6 +8,7 @@ import { localePath, type Locale } from "@/lib/locale";
 import { HeaderScrollHider } from "./HeaderScrollHider";
 import { LanguageSwitch } from "./LanguageSwitch";
 import { MobileNav } from "./MobileNav";
+import { ThemeToggle } from "./ThemeToggle";
 import { Wordmark } from "./Wordmark";
 
 export function SiteHeader({ locale, t }: { locale: Locale; t: Dictionary }) {
@@ -39,7 +40,9 @@ export function SiteHeader({ locale, t }: { locale: Locale; t: Dictionary }) {
           ))}
         </nav>
 
-        <div className="col-start-3 flex items-center gap-5 justify-self-end">
+        <div className="col-start-3 flex items-center gap-3 justify-self-end min-[560px]:gap-5">
+          <ThemeToggle t={t} className="-mx-2" />
+
           {/* Padding grows the tap target to about 44px without moving anything. */}
           <LanguageSwitch locale={locale} t={t} className="-mx-2 px-2 py-3" />
 
