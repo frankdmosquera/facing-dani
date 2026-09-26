@@ -116,6 +116,10 @@ work, so it comes before the pages that describe it.
   - [x] 19d. **Lashes and makeup made light** - off the desktop header, kept
     in the phone menu and footer, gone from home and the search copy. Their
     pages and Cal.com events stay until Frank decides whether they go
+- [ ] 20. **Store** - press-ons and nail care, face-and-body's pattern: category
+  tabs, a card per product with its price, no cart, bought with an appointment
+  or asked about through the contact form. Prices set by Frank on 2026-09-25
+  for Dani to confirm. Stock photos, marked as stock, until she shoots her own
 - [ ] 15. **Domain, indexing and production email** - buy the domain, set the
   site URL so robots stops disallowing everything, and give Resend a sender that
   can mail anyone. Blocked until the domain exists

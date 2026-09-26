@@ -19,6 +19,7 @@ export const en = {
     nails: "Nails",
     parties: "Parties",
     about: "About",
+    store: "Store",
     lashes: "Lashes",
     makeup: "Makeup",
     gallery: "The work",
@@ -37,6 +38,7 @@ export const en = {
     links: {
       nails: "Nails",
       parties: "Parties",
+      store: "Store",
       lashes: "Lashes",
       makeup: "Makeup",
       gallery: "The gallery",
@@ -243,6 +245,7 @@ export const en = {
     topics: {
       party: "A party I am hosting",
       question: "A question",
+      product: "A product from the store",
       other: "Something else",
     },
 
@@ -365,6 +368,56 @@ export const en = {
       "What I care about most is how you feel when you leave. Not just that the set looks good, but that you walk out feeling beautiful and sure of yourself.",
     nails: "See the nails menu",
     party: "For your party",
+  },
+
+  // Sold in person: no cart, no shipping, no online payment.
+  store: {
+    meta: {
+      title: "Press-On Nails and Nail Care in Calgary",
+      description:
+        "Press-on nail sets made in Calgary, ready-made or custom to your sizes, plus cuticle oil, glass files and care kits. Sold in person, no shipping.",
+    },
+    eyebrow: "Store",
+    headingLead: "Press-ons and",
+    headingAccent: "nail care",
+    lede: "Press-on sets I make, and the care that keeps any set looking good between appointments. Add it to your appointment, or ask and pick it up.",
+    tabsLabel: "Products by type",
+    all: "All",
+    categories: {
+      pressOns: "Press-ons",
+      nailCare: "Nail care",
+    },
+    products: {
+      readyPressOns: {
+        name: "Ready-made press-on set",
+        body: "One of my designs, with a range of sizes in each box so it fits most hands.",
+      },
+      customPressOns: {
+        name: "Custom press-on set",
+        body: "Made to your sizes and your design. Send me a photo of what you want and I will size and build it.",
+      },
+      cuticleOilPen: {
+        name: "Cuticle oil pen",
+        body: "A click pen that fits in a bag. A little every day keeps cuticles soft and helps a set last.",
+      },
+      cuticleOilBottle: {
+        name: "Cuticle oil, 15 ml",
+        body: "The bottle with a brush, for at home. Same job, more of it.",
+      },
+      glassFile: {
+        name: "Glass nail file",
+        body: "Files gently and rinses clean. Lasts for years, unlike a paper board.",
+      },
+      careKit: {
+        name: "Nail care kit",
+        body: "Cuticle oil, a glass file and a buffer. What keeps a set looking good in week three.",
+      },
+    },
+    buy: {
+      heading: "How to buy",
+      body: "No cart and no shipping. Add it to your appointment when you book, or ask me and pick it up in Calgary.",
+      ask: "Ask about a product",
+    },
   },
 
   thankYou: {

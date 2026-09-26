@@ -20,6 +20,7 @@ export const es: Dictionary = {
     nails: "Uñas",
     parties: "Fiestas",
     about: "Sobre mí",
+    store: "Tienda",
     lashes: "Pestañas",
     makeup: "Maquillaje",
     gallery: "El trabajo",
@@ -38,6 +39,7 @@ export const es: Dictionary = {
     links: {
       nails: "Uñas",
       parties: "Fiestas",
+      store: "Tienda",
       lashes: "Pestañas",
       makeup: "Maquillaje",
       gallery: "La galería",
@@ -245,6 +247,7 @@ export const es: Dictionary = {
     topics: {
       party: "Una fiesta que organizo",
       question: "Una pregunta",
+      product: "Un producto de la tienda",
       other: "Otra cosa",
     },
 
@@ -363,6 +366,55 @@ export const es: Dictionary = {
       "Lo que más me importa es cómo te sientes cuando te vas. No solo que el set se vea bien, sino que salgas sintiéndote hermosa y segura de ti misma.",
     nails: "Ver el menú de uñas",
     party: "Para tu fiesta",
+  },
+
+  store: {
+    meta: {
+      title: "Uñas press-on y cuidado de uñas en Calgary",
+      description:
+        "Sets de uñas press-on hechos en Calgary, listos o a tu medida, además de aceite de cutícula, limas de vidrio y kits de cuidado. Venta en persona, sin envíos.",
+    },
+    eyebrow: "Tienda",
+    headingLead: "Press-ons y",
+    headingAccent: "cuidado de uñas",
+    lede: "Sets press-on que hago yo, y el cuidado que mantiene cualquier set bonito entre citas. Agrégalo a tu cita, o pregúntame y lo recoges.",
+    tabsLabel: "Productos por tipo",
+    all: "Todo",
+    categories: {
+      pressOns: "Press-ons",
+      nailCare: "Cuidado de uñas",
+    },
+    products: {
+      readyPressOns: {
+        name: "Set press-on listo",
+        body: "Uno de mis diseños, con varias tallas en cada caja para que le quede a casi cualquier mano.",
+      },
+      customPressOns: {
+        name: "Set press-on a tu medida",
+        body: "Hecho a tus tallas y con tu diseño. Mándame una foto de lo que quieres y yo lo mido y lo armo.",
+      },
+      cuticleOilPen: {
+        name: "Aceite de cutícula en lápiz",
+        body: "Un lápiz que cabe en la cartera. Un poco cada día mantiene las cutículas suaves y hace que el set dure.",
+      },
+      cuticleOilBottle: {
+        name: "Aceite de cutícula, 15 ml",
+        body: "El frasco con pincel, para la casa. El mismo trabajo, en más cantidad.",
+      },
+      glassFile: {
+        name: "Lima de vidrio",
+        body: "Lima suave y se lava fácil. Dura años, no como una lima de cartón.",
+      },
+      careKit: {
+        name: "Kit de cuidado de uñas",
+        body: "Aceite de cutícula, una lima de vidrio y un pulidor. Lo que mantiene un set bonito en la tercera semana.",
+      },
+    },
+    buy: {
+      heading: "Cómo comprar",
+      body: "Sin carrito y sin envíos. Agrégalo a tu cita cuando reserves, o pregúntame y lo recoges en Calgary.",
+      ask: "Pregunta por un producto",
+    },
   },
 
   thankYou: {
