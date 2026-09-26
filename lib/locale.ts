@@ -1,4 +1,4 @@
-// English lives at the root and Spanish under /es. See the rewrites in next.config.ts.
+// English lives at the root and Spanish under /es. proxy.ts does the mapping.
 
 export const locales = ["en", "es"] as const;
 
@@ -10,7 +10,7 @@ export function isLocale(value: string): value is Locale {
   return (locales as readonly string[]).includes(value);
 }
 
-// Every route without its locale prefix. Feeds the root rewrites and the sitemap.
+// Every route without its locale prefix. Feeds the sitemap; a page missing here is still served, just not listed.
 export const routes = [
   "/",
   "/nails",
