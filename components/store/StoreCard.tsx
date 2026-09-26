@@ -27,6 +27,12 @@ export function StoreCard({ product, t }: { product: StoreProduct; t: Dictionary
             sizes="(min-width: 900px) 380px, (min-width: 560px) 50vw, 100vw"
             className="absolute inset-0 size-full object-cover"
           />
+        ) : null}
+
+        {product.image ? (
+          <span className="pointer-events-none absolute bottom-2.5 left-2.5 rounded-pill border border-white/15 bg-[rgba(20,15,28,.75)] px-2.5 py-[5px] text-[9.5px] font-semibold tracking-[0.13em] text-ink uppercase">
+            {c.stockTag}
+          </span>
         ) : (
           <div
             aria-hidden="true"

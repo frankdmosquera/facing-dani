@@ -382,6 +382,7 @@ export const en = {
     headingAccent: "nail care",
     lede: "Press-on sets I make, and the care that keeps any set looking good between appointments. Add it to your appointment, or ask and pick it up.",
     tabsLabel: "Products by type",
+    stockTag: "Stock photo",
     all: "All",
     categories: {
       pressOns: "Press-ons",

@@ -379,6 +379,7 @@ export const es: Dictionary = {
     headingAccent: "cuidado de uñas",
     lede: "Sets press-on que hago yo, y el cuidado que mantiene cualquier set bonito entre citas. Agrégalo a tu cita, o pregúntame y lo recoges.",
     tabsLabel: "Productos por tipo",
+    stockTag: "Foto de archivo",
     all: "Todo",
     categories: {
       pressOns: "Press-ons",
