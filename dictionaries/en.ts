@@ -89,6 +89,34 @@ export const en = {
         body: "I am putting the list together now. Message me and I will tell you exactly what your set would cost, with no surprises in the chair.",
       },
       work: { heading: "Recent nail work", all: "See every set" },
+      // Nails only: which set to book. General technique, no promises about her.
+      guide: {
+        eyebrow: "Which set is for you",
+        headingLead: "Gel, acrylic",
+        headingAccent: "or Gel‑X",
+        lede: "Three ways to get the nails you want. Not sure which one? Send me a photo of what you are after and I will tell you what to book.",
+        ask: "Ask me first",
+        kinds: {
+          gel: {
+            name: "Gel manicure",
+            tag: "Your own nails",
+            body: "Gel polish on your natural nails, cured under a lamp. Glossy, no chipping, and no added length. The one to book if your nails are already the length you like.",
+            lasts: "Lasts about two to three weeks.",
+          },
+          acrylic: {
+            name: "Acrylic",
+            tag: "Length and strength",
+            body: "Acrylic built over your nail or a tip and shaped by hand. The strongest option, and the one for long, sculpted shapes.",
+            lasts: "A fill every two to three weeks.",
+          },
+          gelX: {
+            name: "Gel‑X",
+            tag: "Length, lighter feel",
+            body: "Soft gel tips that cover the whole nail, bonded with gel. Lighter than acrylic, quicker to put on, and gentler to take off.",
+            lasts: "A fill every two to three weeks.",
+          },
+        },
+      },
       treatments: {
         gelManicure: "Gel manicure",
         acrylicFullSet: "Acrylic full set",

@@ -89,6 +89,33 @@ export const es: Dictionary = {
         body: "Estoy armando la lista ahora. Escríbeme y te digo exactamente cuánto te saldría tu set, sin sorpresas en la silla.",
       },
       work: { heading: "Trabajo reciente en uñas", all: "Ver todos los sets" },
+      guide: {
+        eyebrow: "Qué set es para ti",
+        headingLead: "Gel, acrílico",
+        headingAccent: "o Gel‑X",
+        lede: "Tres maneras de tener las uñas que quieres. ¿No sabes cuál? Mándame una foto de lo que buscas y te digo qué reservar.",
+        ask: "Pregúntame primero",
+        kinds: {
+          gel: {
+            name: "Manicure en gel",
+            tag: "Tus propias uñas",
+            body: "Esmalte en gel sobre tus uñas naturales, curado con lámpara. Brillante, no se descascara y no agrega largo. La opción si tus uñas ya tienen el largo que te gusta.",
+            lasts: "Dura unas dos a tres semanas.",
+          },
+          acrylic: {
+            name: "Acrílico",
+            tag: "Largo y resistencia",
+            body: "Acrílico construido sobre tu uña o sobre un tip y moldeado a mano. La opción más resistente, y la de las formas largas y esculpidas.",
+            lasts: "Un relleno cada dos a tres semanas.",
+          },
+          gelX: {
+            name: "Gel‑X",
+            tag: "Largo, más liviano",
+            body: "Tips de gel suave que cubren toda la uña, pegados con gel. Más livianos que el acrílico, más rápidos de poner y más suaves de retirar.",
+            lasts: "Un relleno cada dos a tres semanas.",
+          },
+        },
+      },
       treatments: {
         gelManicure: "Manicure en gel",
         acrylicFullSet: "Set completo en acrílico",
