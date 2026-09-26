@@ -530,6 +530,60 @@ export const es: Dictionary = {
         body: "Aceite de cutícula, una lima de vidrio y un pulidor. Lo que mantiene un set bonito en la tercera semana.",
       },
     },
+    guide: {
+      eyebrow: "Press-ons",
+      headingLead: "Press-ons,",
+      headingAccent: "de principio a fin",
+      lede: "Se ven como un set de salón y te las quitas cuando quieras. Cuánto duran depende sobre todo de cómo te las pongas.",
+      columns: {
+        on: {
+          heading: "Póntelas",
+          items: {
+            prep: "Lávate las manos, empuja las cutículas y pule cada uña suavemente, para que no quede brillo ni grasa.",
+            wipe: "Limpia cada uña con alcohol y deja que se seque.",
+            sizes: "Escoge una talla para cada dedo antes de empezar. Si estás entre dos, toma la más grande y lima los lados.",
+            glue: "Pegamento para una semana o más, adhesivos para un día o un evento.",
+            press: "Presiona cada uña en ángulo, desde la cutícula hacia abajo, y sostenla 30 segundos.",
+          },
+        },
+        last: {
+          heading: "Que duren",
+          items: {
+            water: "No metas las manos en agua caliente durante la primera hora.",
+            gloves: "Guantes para lavar platos y limpiar.",
+            oil: "Aceite de cutícula alrededor de los bordes cada día, nunca debajo de la uña.",
+            tools: "Abre latas y despega etiquetas con las yemas de los dedos, no con las uñas.",
+          },
+        },
+        off: {
+          heading: "Quítatelas",
+          items: {
+            soak: "Remoja las manos en agua tibia con jabón o en aceite de 10 a 15 minutos.",
+            lift: "Levántalas con cuidado desde los lados con un palito de cutícula. Nunca las arranques.",
+            buff: "Pule el pegamento que quede en tus uñas y ponles aceite.",
+            reuse: "Limpia el pegamento de la parte de atrás y el set se puede volver a usar.",
+          },
+        },
+      },
+    },
+    compare: {
+      eyebrow: "¿No sabes cuál?",
+      headingLead: "¿Press-ons o",
+      headingAccent: "un set de salón?",
+      options: {
+        pressOns: {
+          name: "Press-ons",
+          best: "Para un fin de semana, un viaje o un evento",
+          body: "Te las pones en casa en minutos y te las quitas cuando quieras. Con pegamento duran de una a dos semanas, con adhesivos uno o dos días.",
+        },
+        salon: {
+          name: "Un set de salón",
+          best: "Para las uñas de todos los días",
+          body: "Gel, acrílico o Gel‑X construido sobre tus propias uñas y con la forma de tus manos, que dura de dos a tres semanas entre rellenos.",
+        },
+      },
+      menu: "Ver el menú de uñas",
+    },
     buy: {
       heading: "Cómo comprar",
       body: "Sin carrito y sin envíos. Agrégalo a tu cita cuando reserves, o pregúntame y lo recoges en Calgary.",

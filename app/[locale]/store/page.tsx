@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Band, Hot } from "@/components/site/Band";
+import { PressOnCompare } from "@/components/store/PressOnCompare";
+import { PressOnGuide } from "@/components/store/PressOnGuide";
 import { StoreCard } from "@/components/store/StoreCard";
 import { StoreGrid } from "@/components/store/StoreGrid";
 import { orderedStoreProducts, type StoreCategory } from "@/data/store";
@@ -66,6 +68,10 @@ export default async function Store({ params }: PageProps<"/[locale]/store">) {
           ))}
         </StoreGrid>
       </Band>
+
+      <PressOnGuide t={t} />
+
+      <PressOnCompare locale={locale} t={t} />
 
       <Band>
         <div className="max-w-[54ch]">

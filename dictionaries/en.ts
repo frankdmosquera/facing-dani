@@ -537,6 +537,61 @@ export const en = {
         body: "Cuticle oil, a glass file and a buffer. What keeps a set looking good in week three.",
       },
     },
+    // General press-on know-how. What is in her box and how she sizes a custom set are Dani's to say.
+    guide: {
+      eyebrow: "Press-ons",
+      headingLead: "Press-ons,",
+      headingAccent: "start to finish",
+      lede: "They look like a salon set and come off when you want. How long they last depends mostly on how they go on.",
+      columns: {
+        on: {
+          heading: "Put them on",
+          items: {
+            prep: "Wash your hands, push back your cuticles and buff each nail lightly, so nothing shiny or oily is left.",
+            wipe: "Wipe every nail with rubbing alcohol and let it dry.",
+            sizes: "Lay out a size for each finger before you start. Between two sizes, take the bigger one and file the sides.",
+            glue: "Glue for a week or more, adhesive tabs for a day or an event.",
+            press: "Press each nail on at an angle, from the cuticle down, and hold it for 30 seconds.",
+          },
+        },
+        last: {
+          heading: "Make them last",
+          items: {
+            water: "Keep your hands out of hot water for the first hour.",
+            gloves: "Gloves for dishes and cleaning.",
+            oil: "Cuticle oil around the edges every day, never under the nail.",
+            tools: "Open cans and peel stickers with your fingertips, not the nails.",
+          },
+        },
+        off: {
+          heading: "Take them off",
+          items: {
+            soak: "Soak your hands in warm, soapy water or oil for 10 to 15 minutes.",
+            lift: "Lift gently from the sides with a cuticle stick. Never pry or rip.",
+            buff: "Buff off any glue left on your nails, then oil them.",
+            reuse: "Clean the glue off the back and the set can be worn again.",
+          },
+        },
+      },
+    },
+    compare: {
+      eyebrow: "Not sure?",
+      headingLead: "Press-ons or",
+      headingAccent: "a salon set?",
+      options: {
+        pressOns: {
+          name: "Press-ons",
+          best: "For a weekend, a trip or an event",
+          body: "On at home in minutes and off when you want. With glue they last about one to two weeks, with tabs a day or two.",
+        },
+        salon: {
+          name: "A salon set",
+          best: "For everyday nails",
+          body: "Gel, acrylic or Gel‑X built on your own nails and shaped to your hands, lasting two to three weeks between fills.",
+        },
+      },
+      menu: "See the nails menu",
+    },
     buy: {
       heading: "How to buy",
       body: "No cart and no shipping. Add it to your appointment when you book, or ask me and pick it up in Calgary.",
