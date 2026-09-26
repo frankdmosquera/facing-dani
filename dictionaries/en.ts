@@ -121,6 +121,77 @@ export const en = {
           },
         },
       },
+      // Where the two hours of a full set go. Times match data/treatments.ts.
+      steps: {
+        eyebrow: "Your appointment",
+        headingLead: "A nail appointment,",
+        headingAccent: "step by step",
+        lede: "Why a full set takes about two hours, and where that time goes. A gel manicure skips the building and takes about one.",
+        items: {
+          talk: {
+            title: "We look at your hands and your photo",
+            time: "About 5 minutes",
+            body: "What you do all day decides how long a set can be and which shape will hold. Length, shape and colour are settled before anything starts.",
+          },
+          removal: {
+            title: "Removal, if you come in with a set",
+            time: "About 30 minutes",
+            body: "An old set is soaked and filed off gently, never pried. Mention it when you book so the time is there.",
+          },
+          prep: {
+            title: "Prep",
+            time: "About 15 minutes",
+            body: "Cuticles pushed back and cleaned up, the surface lightly buffed and dried out. Most lifting starts with skipped prep, so this part is never rushed.",
+          },
+          build: {
+            title: "Building and shaping",
+            time: "About 45 to 60 minutes",
+            body: "Acrylic or Gel‑X goes on, then every nail is filed to the same length and shape, with the thickest point where the nail needs its strength.",
+          },
+          colour: {
+            title: "Colour and art",
+            time: "About 20 to 40 minutes",
+            body: "Gel colour, then French, chrome, cat-eye or hand-painted art if you asked for it. Every layer cures under the lamp.",
+          },
+          finish: {
+            title: "Top coat, oil and aftercare",
+            time: "About 10 minutes",
+            body: "A top coat for shine, cuticle oil, and a quick word on keeping the set looking good until your fill.",
+          },
+        },
+      },
+      // Nails only, and none of these repeat the site-wide FAQ on home.
+      faq: {
+        eyebrow: "Before your set",
+        headingLead: "Nail",
+        headingAccent: "questions",
+        items: {
+          lasting: {
+            q: "How long do gel and acrylic nails last?",
+            a: "A gel manicure lasts about two to three weeks before it grows out. Acrylic and Gel‑X last as long as you keep up the fills, every two to three weeks, because the set moves forward as your nails grow.",
+          },
+          shortNails: {
+            q: "Can I get a set if my nails are very short or bitten?",
+            a: "Usually, yes. Acrylic and Gel‑X add length over a short nail. If the nail bed is very small, a shorter, natural length holds up better at first, and it can go longer at the next fill.",
+          },
+          damage: {
+            q: "Do acrylic nails ruin your natural nails?",
+            a: "The damage people blame on acrylic mostly comes from heavy filing and from picking or ripping a set off. Filed with care and taken off properly, the nails underneath stay healthy.",
+          },
+          length: {
+            q: "How do I choose a length and shape?",
+            a: "Start with what your hands do all day. Short square or oval suits typing and chores, almond is strong for everyday wear at medium length, and coffin needs length and suits a statement set. Not sure? Bring a photo and we decide together.",
+          },
+          broken: {
+            q: "What if a nail breaks or lifts?",
+            a: "Message me as soon as it happens. Do not glue it or peel it at home: a lifted corner pulled off takes a layer of your own nail with it.",
+          },
+          reference: {
+            q: "Can I bring a photo from Instagram or Pinterest?",
+            a: "Yes, please. A photo is the quickest way to show a shape, a colour or a design. I will tell you if anything needs adjusting for your nail length, and art is priced as the nail art add-on.",
+          },
+        },
+      },
       treatments: {
         gelManicure: "Gel manicure",
         acrylicFullSet: "Acrylic full set",
@@ -327,6 +398,57 @@ export const en = {
         },
       },
     },
+    // Host-side only: what helps the day, never a promise about her.
+    ready: {
+      eyebrow: "Before I arrive",
+      heading: "What to have ready",
+      lede: "Small things that make the station run smoothly and give every guest the same time.",
+      items: {
+        table: {
+          title: "A table and two chairs",
+          body: "Near a plug, for my equipment. A kitchen or dining table is perfect.",
+        },
+        light: {
+          title: "Good light",
+          body: "By a window in the day, or under a bright lamp in the evening. Nails and face painting both need to be seen up close.",
+        },
+        space: {
+          title: "Away from the food",
+          body: "A corner away from the drinks and the cake, so nothing lands on wet polish or paint.",
+        },
+        list: {
+          title: "Names, ages and allergies",
+          body: "A quick list of the guests and their ages, and any allergies to nail products, face paint or makeup, sent before the day.",
+        },
+      },
+    },
+    // No prices and no guest limits: those are Dani's to set, so each answer points back to the form.
+    faq: {
+      eyebrow: "Before you ask",
+      heading: "Party questions",
+      items: {
+        guests: {
+          q: "How many guests can you do?",
+          a: "It depends on how long the party runs and what each guest gets: face painting is quick, a nail set takes longer. Send me the number of guests and the times, and I will tell you what fits.",
+        },
+        time: {
+          q: "How long does each guest take?",
+          a: "From a few minutes for face painting to longer for nails or makeup. I plan the order so nobody waits too long, and the timing comes with my confirmation.",
+        },
+        bring: {
+          q: "What do you bring?",
+          a: "My station: the tools, polish, paints and makeup for what we agreed. You only need the table, the light and the space.",
+        },
+        cost: {
+          q: "How much does a party cost?",
+          a: "There is no set party price, because every party is different. Once I know the guests, their ages and what they want, I send you a price by email before anything is confirmed.",
+        },
+        ages: {
+          q: "What ages do you do?",
+          a: "Kids and teens. Face painting and simple, cute nails for the younger ones; trendier sets and makeup for teens, with lashes on request.",
+        },
+      },
+    },
     closing: {
       eyebrow: "Got a date?",
       headingLead: "Let's make it",
@@ -414,6 +536,61 @@ export const en = {
         name: "Nail care kit",
         body: "Cuticle oil, a glass file and a buffer. What keeps a set looking good in week three.",
       },
+    },
+    // General press-on know-how. What is in her box and how she sizes a custom set are Dani's to say.
+    guide: {
+      eyebrow: "Press-ons",
+      headingLead: "Press-ons,",
+      headingAccent: "start to finish",
+      lede: "They look like a salon set and come off when you want. How long they last depends mostly on how they go on.",
+      columns: {
+        on: {
+          heading: "Put them on",
+          items: {
+            prep: "Wash your hands, push back your cuticles and buff each nail lightly, so nothing shiny or oily is left.",
+            wipe: "Wipe every nail with rubbing alcohol and let it dry.",
+            sizes: "Lay out a size for each finger before you start. Between two sizes, take the bigger one and file the sides.",
+            glue: "Glue for a week or more, adhesive tabs for a day or an event.",
+            press: "Press each nail on at an angle, from the cuticle down, and hold it for 30 seconds.",
+          },
+        },
+        last: {
+          heading: "Make them last",
+          items: {
+            water: "Keep your hands out of hot water for the first hour.",
+            gloves: "Gloves for dishes and cleaning.",
+            oil: "Cuticle oil around the edges every day, never under the nail.",
+            tools: "Open cans and peel stickers with your fingertips, not the nails.",
+          },
+        },
+        off: {
+          heading: "Take them off",
+          items: {
+            soak: "Soak your hands in warm, soapy water or oil for 10 to 15 minutes.",
+            lift: "Lift gently from the sides with a cuticle stick. Never pry or rip.",
+            buff: "Buff off any glue left on your nails, then oil them.",
+            reuse: "Clean the glue off the back and the set can be worn again.",
+          },
+        },
+      },
+    },
+    compare: {
+      eyebrow: "Not sure?",
+      headingLead: "Press-ons or",
+      headingAccent: "a salon set?",
+      options: {
+        pressOns: {
+          name: "Press-ons",
+          best: "For a weekend, a trip or an event",
+          body: "On at home in minutes and off when you want. With glue they last about one to two weeks, with tabs a day or two.",
+        },
+        salon: {
+          name: "A salon set",
+          best: "For everyday nails",
+          body: "Gel, acrylic or Gel‑X built on your own nails and shaped to your hands, lasting two to three weeks between fills.",
+        },
+      },
+      menu: "See the nails menu",
     },
     buy: {
       heading: "How to buy",
@@ -669,6 +846,8 @@ export const en = {
       headingLead: "The styles",
       headingAccent: "in these photos",
       lede: "The sets above fall into a few families. If one of them is what you are after, say so when you book and bring the photo.",
+      // Before the add-on's own label: "Book it: any set + French tips, add-on".
+      bookAs: "Book it: any set +",
       groups: {
         french: {
           title: "French, every way",
@@ -691,6 +870,27 @@ export const en = {
           body: "A graphic blue eye and a soft, natural everyday look. Makeup is a smaller part of what I do, so there are fewer of these.",
         },
       },
+    },
+    // From a photo in the grid to a booking. Nails only: makeup is not being built on.
+    photo: {
+      eyebrow: "How to book a look",
+      headingLead: "Turn a photo into",
+      headingAccent: "your set",
+      steps: {
+        save: {
+          title: "Save the photo",
+          body: "A screenshot from here, Instagram or Pinterest is perfect. It shows the shape, the length, the colour and the art better than any description.",
+        },
+        book: {
+          title: "Book the set underneath it",
+          body: "Pick the base on the nails menu: a gel manicure on your own nails, or acrylic or Gel‑X for length. French, chrome or art go on top.",
+        },
+        bring: {
+          title: "Bring it to the appointment",
+          body: "We look at it together with your hands. A photo cannot show whether that length suits your nail bed, so the shape or length may shift a little so the set holds up for three weeks.",
+        },
+      },
+      menu: "See the nails menu",
     },
     lightbox: {
       open: "Open larger: {photo}",

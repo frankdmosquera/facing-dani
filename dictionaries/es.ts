@@ -120,6 +120,75 @@ export const es: Dictionary = {
           },
         },
       },
+      steps: {
+        eyebrow: "Tu cita",
+        headingLead: "Una cita de uñas,",
+        headingAccent: "paso a paso",
+        lede: "Por qué un set completo toma unas dos horas, y en qué se va ese tiempo. Un manicure en gel no lleva construcción y toma más o menos una.",
+        items: {
+          talk: {
+            title: "Miramos tus manos y tu foto",
+            time: "Unos 5 minutos",
+            body: "Lo que haces todo el día decide qué tan largo puede ser un set y qué forma va a aguantar. El largo, la forma y el color quedan definidos antes de empezar.",
+          },
+          removal: {
+            title: "Retiro, si vienes con un set puesto",
+            time: "Unos 30 minutos",
+            body: "El set anterior se remoja y se lima con cuidado, nunca se arranca. Avísame cuando reserves para que haya tiempo.",
+          },
+          prep: {
+            title: "Preparación",
+            time: "Unos 15 minutos",
+            body: "Cutículas empujadas y limpias, la superficie pulida suave y deshidratada. Casi todo levantamiento empieza por una preparación a medias, así que esta parte nunca va con prisa.",
+          },
+          build: {
+            title: "Construcción y forma",
+            time: "Unos 45 a 60 minutos",
+            body: "Se pone el acrílico o el Gel‑X, y luego cada uña se lima al mismo largo y la misma forma, con el punto más grueso donde la uña necesita resistencia.",
+          },
+          colour: {
+            title: "Color y arte",
+            time: "Unos 20 a 40 minutos",
+            body: "El color en gel, y después francesa, chrome, cat-eye o arte a mano si lo pediste. Cada capa se cura en la lámpara.",
+          },
+          finish: {
+            title: "Top coat, aceite y cuidados",
+            time: "Unos 10 minutos",
+            body: "Un top coat para el brillo, aceite de cutícula y un par de consejos para que el set se vea bien hasta tu relleno.",
+          },
+        },
+      },
+      faq: {
+        eyebrow: "Antes de tu set",
+        headingLead: "Preguntas sobre",
+        headingAccent: "uñas",
+        items: {
+          lasting: {
+            q: "¿Cuánto duran las uñas de gel y de acrílico?",
+            a: "Un manicure en gel dura unas dos a tres semanas antes de que se note el crecimiento. El acrílico y el Gel‑X duran mientras hagas los rellenos, cada dos a tres semanas, porque el set avanza a medida que crece tu uña.",
+          },
+          shortNails: {
+            q: "¿Me puedo hacer un set si tengo las uñas muy cortas o mordidas?",
+            a: "Casi siempre, sí. El acrílico y el Gel‑X agregan largo sobre una uña corta. Si el lecho de la uña es muy pequeño, al principio aguanta mejor un largo corto y natural, y en el siguiente relleno se puede ir más largo.",
+          },
+          damage: {
+            q: "¿El acrílico daña las uñas naturales?",
+            a: "El daño que se le echa al acrílico viene casi siempre de limar de más y de arrancar o despegar el set. Limado con cuidado y retirado como se debe, las uñas de abajo quedan sanas.",
+          },
+          length: {
+            q: "¿Cómo elijo el largo y la forma?",
+            a: "Empieza por lo que hacen tus manos todo el día. Cuadrada u ovalada corta va bien para escribir en el computador y para las tareas de la casa, almendra es resistente para el día a día en largo medio, y coffin necesita largo y es para un set llamativo. ¿No sabes cuál? Trae una foto y lo decidimos juntas.",
+          },
+          broken: {
+            q: "¿Y si se me rompe o se me levanta una uña?",
+            a: "Escríbeme apenas pase. No la pegues ni la despegues en casa: si arrancas una esquina levantada, se lleva una capa de tu propia uña.",
+          },
+          reference: {
+            q: "¿Puedo traer una foto de Instagram o Pinterest?",
+            a: "Sí, por favor. Una foto es la forma más rápida de mostrar una forma, un color o un diseño. Te digo si hay que ajustar algo para el largo de tus uñas, y el arte se cobra como el adicional de arte en uñas.",
+          },
+        },
+      },
       treatments: {
         gelManicure: "Manicure en gel",
         acrylicFullSet: "Set completo en acrílico",
@@ -327,6 +396,55 @@ export const es: Dictionary = {
         },
       },
     },
+    ready: {
+      eyebrow: "Antes de que llegue",
+      heading: "Qué tener listo",
+      lede: "Cosas pequeñas que hacen que la estación funcione bien y que cada invitado tenga el mismo tiempo.",
+      items: {
+        table: {
+          title: "Una mesa y dos sillas",
+          body: "Cerca de un enchufe, para mis equipos. La mesa de la cocina o del comedor es perfecta.",
+        },
+        light: {
+          title: "Buena luz",
+          body: "Junto a una ventana de día, o bajo una lámpara con buena luz en la noche. Las uñas y la pintura facial se tienen que ver de cerca.",
+        },
+        space: {
+          title: "Lejos de la comida",
+          body: "Un rincón lejos de las bebidas y el pastel, para que nada caiga sobre el esmalte o la pintura fresca.",
+        },
+        list: {
+          title: "Nombres, edades y alergias",
+          body: "Una lista rápida de los invitados y sus edades, y cualquier alergia a productos de uñas, pintura facial o maquillaje, enviada antes del día.",
+        },
+      },
+    },
+    faq: {
+      eyebrow: "Antes de que preguntes",
+      heading: "Preguntas sobre fiestas",
+      items: {
+        guests: {
+          q: "¿A cuántos invitados puedes atender?",
+          a: "Depende de cuánto dure la fiesta y de lo que reciba cada invitado: la pintura facial es rápida, un set de uñas toma más. Mándame el número de invitados y los horarios, y te digo qué alcanza.",
+        },
+        time: {
+          q: "¿Cuánto tiempo toma cada invitado?",
+          a: "Desde unos minutos para la pintura facial hasta más para uñas o maquillaje. Organizo el orden para que nadie espere demasiado, y los tiempos van con mi confirmación.",
+        },
+        bring: {
+          q: "¿Qué llevas?",
+          a: "Mi estación: las herramientas, esmaltes, pinturas y maquillaje para lo que acordamos. Tú solo pones la mesa, la luz y el espacio.",
+        },
+        cost: {
+          q: "¿Cuánto cuesta una fiesta?",
+          a: "No hay un precio fijo para fiestas, porque cada una es distinta. Cuando sé cuántos invitados son, sus edades y lo que quieren, te mando un precio por correo antes de confirmar nada.",
+        },
+        ages: {
+          q: "¿Para qué edades es?",
+          a: "Niños y adolescentes. Pintura facial y uñas sencillas y lindas para los más pequeños; sets más de moda y maquillaje para adolescentes, con pestañas si las piden.",
+        },
+      },
+    },
     closing: {
       eyebrow: "¿Ya tienes fecha?",
       headingLead: "Hagamos que",
@@ -411,6 +529,60 @@ export const es: Dictionary = {
         name: "Kit de cuidado de uñas",
         body: "Aceite de cutícula, una lima de vidrio y un pulidor. Lo que mantiene un set bonito en la tercera semana.",
       },
+    },
+    guide: {
+      eyebrow: "Press-ons",
+      headingLead: "Press-ons,",
+      headingAccent: "de principio a fin",
+      lede: "Se ven como un set de salón y te las quitas cuando quieras. Cuánto duran depende sobre todo de cómo te las pongas.",
+      columns: {
+        on: {
+          heading: "Póntelas",
+          items: {
+            prep: "Lávate las manos, empuja las cutículas y pule cada uña suavemente, para que no quede brillo ni grasa.",
+            wipe: "Limpia cada uña con alcohol y deja que se seque.",
+            sizes: "Escoge una talla para cada dedo antes de empezar. Si estás entre dos, toma la más grande y lima los lados.",
+            glue: "Pegamento para una semana o más, adhesivos para un día o un evento.",
+            press: "Presiona cada uña en ángulo, desde la cutícula hacia abajo, y sostenla 30 segundos.",
+          },
+        },
+        last: {
+          heading: "Que duren",
+          items: {
+            water: "No metas las manos en agua caliente durante la primera hora.",
+            gloves: "Guantes para lavar platos y limpiar.",
+            oil: "Aceite de cutícula alrededor de los bordes cada día, nunca debajo de la uña.",
+            tools: "Abre latas y despega etiquetas con las yemas de los dedos, no con las uñas.",
+          },
+        },
+        off: {
+          heading: "Quítatelas",
+          items: {
+            soak: "Remoja las manos en agua tibia con jabón o en aceite de 10 a 15 minutos.",
+            lift: "Levántalas con cuidado desde los lados con un palito de cutícula. Nunca las arranques.",
+            buff: "Pule el pegamento que quede en tus uñas y ponles aceite.",
+            reuse: "Limpia el pegamento de la parte de atrás y el set se puede volver a usar.",
+          },
+        },
+      },
+    },
+    compare: {
+      eyebrow: "¿No sabes cuál?",
+      headingLead: "¿Press-ons o",
+      headingAccent: "un set de salón?",
+      options: {
+        pressOns: {
+          name: "Press-ons",
+          best: "Para un fin de semana, un viaje o un evento",
+          body: "Te las pones en casa en minutos y te las quitas cuando quieras. Con pegamento duran de una a dos semanas, con adhesivos uno o dos días.",
+        },
+        salon: {
+          name: "Un set de salón",
+          best: "Para las uñas de todos los días",
+          body: "Gel, acrílico o Gel‑X construido sobre tus propias uñas y con la forma de tus manos, que dura de dos a tres semanas entre rellenos.",
+        },
+      },
+      menu: "Ver el menú de uñas",
     },
     buy: {
       heading: "Cómo comprar",
@@ -660,6 +832,7 @@ export const es: Dictionary = {
       headingLead: "Los estilos",
       headingAccent: "de estas fotos",
       lede: "Los sets de arriba caen en unas pocas familias. Si una de ellas es lo que buscas, dilo al reservar y trae la foto.",
+      bookAs: "Resérvalo: cualquier set +",
       groups: {
         french: {
           title: "Francés, de todas las formas",
@@ -682,6 +855,26 @@ export const es: Dictionary = {
           body: "Un ojo gráfico azul y un look suave y natural para el día a día. El maquillaje es una parte más pequeña de lo que hago, así que hay menos de estos.",
         },
       },
+    },
+    photo: {
+      eyebrow: "Cómo reservar un look",
+      headingLead: "Convierte una foto en",
+      headingAccent: "tu set",
+      steps: {
+        save: {
+          title: "Guarda la foto",
+          body: "Un pantallazo de aquí, de Instagram o de Pinterest es perfecto. Muestra la forma, el largo, el color y el arte mejor que cualquier descripción.",
+        },
+        book: {
+          title: "Reserva el set que lleva",
+          body: "Elige la base en el menú de uñas: manicure en gel sobre tus propias uñas, o acrílico o Gel‑X para dar largo. La francesa, el chrome o el arte van encima.",
+        },
+        bring: {
+          title: "Tráela a la cita",
+          body: "La miramos junto con tus manos. Una foto no muestra si ese largo le va a tu lecho de uña, así que la forma o el largo pueden cambiar un poco para que el set aguante tres semanas.",
+        },
+      },
+      menu: "Ver el menú de uñas",
     },
     lightbox: {
       open: "Ver más grande: {photo}",

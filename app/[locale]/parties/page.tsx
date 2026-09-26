@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Band, BandHead, Hot } from "@/components/site/Band";
+import { FaqList } from "@/components/site/FaqList";
 import { getDictionary } from "@/dictionaries";
 import { defaultLocale, isLocale, localePath } from "@/lib/locale";
 import { jsonLd, partiesSchema } from "@/lib/schema";
@@ -77,6 +78,23 @@ export default async function Parties({
       </Band>
 
       <Band glow={false}>
+        <BandHead
+          eyebrow={c.ready.eyebrow}
+          heading={c.ready.heading}
+          lede={c.ready.lede}
+        />
+
+        <ul className="grid gap-4 min-[640px]:grid-cols-2 min-[1024px]:grid-cols-4 min-[1024px]:gap-5">
+          {Object.entries(c.ready.items).map(([key, item]) => (
+            <li key={key} className="rounded-xl border border-line bg-surface p-5">
+              <h3 className="mb-2 text-[17px]">{item.title}</h3>
+              <p className="text-[14.5px] text-ink-muted">{item.body}</p>
+            </li>
+          ))}
+        </ul>
+      </Band>
+
+      <Band tinted glow={false}>
         <BandHead eyebrow={c.how.eyebrow} heading={c.how.heading} />
 
         <ol className="max-w-[66ch]">
@@ -98,6 +116,13 @@ export default async function Parties({
             </li>
           ))}
         </ol>
+      </Band>
+
+      <Band glow={false}>
+        <BandHead eyebrow={c.faq.eyebrow} heading={c.faq.heading} />
+        <FaqList
+          items={Object.entries(c.faq.items).map(([key, item]) => ({ key, ...item }))}
+        />
       </Band>
 
       <Band>

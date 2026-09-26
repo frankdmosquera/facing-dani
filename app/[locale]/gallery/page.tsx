@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 
 import { GalleryFigure } from "@/components/gallery/GalleryFigure";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
+import { GalleryPhotoSteps } from "@/components/gallery/GalleryPhotoSteps";
 import { GalleryStyles } from "@/components/gallery/GalleryStyles";
 import { Band, Hot } from "@/components/site/Band";
 import { BookingBand } from "@/components/site/BookingBand";
@@ -113,7 +114,9 @@ export default async function Gallery({
         </div>
       )}
 
-      {images.length === 0 ? null : <GalleryStyles t={t} />}
+      {images.length === 0 ? null : <GalleryStyles locale={locale} t={t} />}
+
+      {images.length === 0 ? null : <GalleryPhotoSteps locale={locale} t={t} />}
 
       <BookingBand copy={c.cta} />
 

@@ -1,4 +1,3 @@
-import { siteWideFaq } from "@/data/faq";
 import { orderedGallery } from "@/data/gallery";
 import { portrait } from "@/data/portrait";
 import type { ServiceId } from "@/data/services";
@@ -9,16 +8,17 @@ import { imagekitEndpoint } from "@/lib/imagekit";
 
 // JSON-LD builders. Each reads the same data and dictionary its page renders, so they cannot disagree.
 
-export function faqPageSchema(t: Dictionary) {
+// Takes the list FaqList renders, never a second copy of it.
+export function questionsSchema(items: { q: string; a: string }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: siteWideFaq().map((item) => ({
+    mainEntity: items.map((item) => ({
       "@type": "Question",
-      name: t.faq[item.key].q,
+      name: item.q,
       acceptedAnswer: {
         "@type": "Answer",
-        text: t.faq[item.key].a,
+        text: item.a,
       },
     })),
   };
