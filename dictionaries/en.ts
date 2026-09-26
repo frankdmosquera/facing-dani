@@ -663,6 +663,34 @@ export const en = {
       instagram: "Message on Instagram",
     },
     // Describe the work (shape, finish, detail), not keywords. Also used as ImageObject names.
+    styles: {
+      eyebrow: "What you are looking at",
+      headingLead: "The styles",
+      headingAccent: "in these photos",
+      lede: "The sets above fall into a few families. If one of them is what you are after, say so when you book and bring the photo.",
+      groups: {
+        french: {
+          title: "French, every way",
+          body: "Classic white tips, pastel tips in a different colour on each finger, a pale blue French with hand-painted flowers, and a white tip edged in gold. A French line is the detail that shows shape work best, which is why there are so many.",
+        },
+        chrome: {
+          title: "Chrome, cat-eye and shimmer",
+          body: "A deep burgundy cat-eye that throws a band of light across each nail, a pearly lilac with an iridescent shimmer, and iridescent flakes over white.",
+        },
+        art: {
+          title: "Hand-painted art",
+          body: "Small white flowers on bright pink, hearts, stars on pink and black, a raised white flower, and seasonal sets like a Christmas bow, snowflake and candy cane.",
+        },
+        sparkle: {
+          title: "Glitter and crystals",
+          body: "A fine glitter line along the smile, crystals set along the tip or clustered on one accent nail, and a sugar-glitter finish next to a knitted texture.",
+        },
+        makeup: {
+          title: "Some makeup too",
+          body: "A graphic blue eye and a soft, natural everyday look. Makeup is a smaller part of what I do, so there are fewer of these.",
+        },
+      },
+    },
     lightbox: {
       open: "Open larger: {photo}",
       close: "Close",

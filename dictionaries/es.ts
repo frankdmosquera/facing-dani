@@ -654,6 +654,34 @@ export const es: Dictionary = {
       book: "Reservar con Dani",
       instagram: "Escríbeme por Instagram",
     },
+    styles: {
+      eyebrow: "Lo que estás viendo",
+      headingLead: "Los estilos",
+      headingAccent: "de estas fotos",
+      lede: "Los sets de arriba caen en unas pocas familias. Si una de ellas es lo que buscas, dilo al reservar y trae la foto.",
+      groups: {
+        french: {
+          title: "Francés, de todas las formas",
+          body: "Puntas blancas clásicas, puntas pastel de un color distinto en cada dedo, un francés azul claro con flores pintadas a mano y una punta blanca bordeada en dorado. La línea del francés es el detalle que mejor muestra el trabajo de forma, por eso hay tantas.",
+        },
+        chrome: {
+          title: "Cromado, ojo de gato y brillo",
+          body: "Un ojo de gato burdeos profundo que refleja una franja de luz en cada uña, un lila perlado con brillo iridiscente y hojuelas iridiscentes sobre blanco.",
+        },
+        art: {
+          title: "Arte a mano",
+          body: "Florecitas blancas sobre rosado intenso, corazones, estrellas en rosado y negro, una flor blanca en relieve, y sets de temporada como un lazo de Navidad, un copo de nieve y un bastón de caramelo.",
+        },
+        sparkle: {
+          title: "Glitter y cristales",
+          body: "Una línea fina de glitter en la sonrisa, cristales a lo largo de la punta o agrupados en una uña de acento, y un acabado de glitter azucarado junto a una textura tejida.",
+        },
+        makeup: {
+          title: "También algo de maquillaje",
+          body: "Un ojo gráfico azul y un look suave y natural para el día a día. El maquillaje es una parte más pequeña de lo que hago, así que hay menos de estos.",
+        },
+      },
+    },
     lightbox: {
       open: "Ver más grande: {photo}",
       close: "Cerrar",
