@@ -16,10 +16,13 @@ export function PhotoGrid({
   items,
   t,
   gridClassName = "columns-2 gap-2.5 min-[620px]:columns-3 min-[620px]:gap-3",
+  square = false,
 }: {
   items: PhotoGridItem[];
   t: Dictionary;
   gridClassName?: string;
+  // Her work as square tiles. Inspiration stock keeps its own shape.
+  square?: boolean;
 }) {
   if (items.length === 0) return null;
 
@@ -67,6 +70,7 @@ export function PhotoGrid({
             serviceName={t.services[item.image.serviceId].name}
             index={index}
             openLabel={openLabel(c.images[item.image.key])}
+            square={square}
           />
         ) : (
           <InspirationFigure
