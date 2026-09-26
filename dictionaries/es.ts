@@ -396,6 +396,55 @@ export const es: Dictionary = {
         },
       },
     },
+    ready: {
+      eyebrow: "Antes de que llegue",
+      heading: "Qué tener listo",
+      lede: "Cosas pequeñas que hacen que la estación funcione bien y que cada invitado tenga el mismo tiempo.",
+      items: {
+        table: {
+          title: "Una mesa y dos sillas",
+          body: "Cerca de un enchufe, para mis equipos. La mesa de la cocina o del comedor es perfecta.",
+        },
+        light: {
+          title: "Buena luz",
+          body: "Junto a una ventana de día, o bajo una lámpara con buena luz en la noche. Las uñas y la pintura facial se tienen que ver de cerca.",
+        },
+        space: {
+          title: "Lejos de la comida",
+          body: "Un rincón lejos de las bebidas y el pastel, para que nada caiga sobre el esmalte o la pintura fresca.",
+        },
+        list: {
+          title: "Nombres, edades y alergias",
+          body: "Una lista rápida de los invitados y sus edades, y cualquier alergia a productos de uñas, pintura facial o maquillaje, enviada antes del día.",
+        },
+      },
+    },
+    faq: {
+      eyebrow: "Antes de que preguntes",
+      heading: "Preguntas sobre fiestas",
+      items: {
+        guests: {
+          q: "¿A cuántos invitados puedes atender?",
+          a: "Depende de cuánto dure la fiesta y de lo que reciba cada invitado: la pintura facial es rápida, un set de uñas toma más. Mándame el número de invitados y los horarios, y te digo qué alcanza.",
+        },
+        time: {
+          q: "¿Cuánto tiempo toma cada invitado?",
+          a: "Desde unos minutos para la pintura facial hasta más para uñas o maquillaje. Organizo el orden para que nadie espere demasiado, y los tiempos van con mi confirmación.",
+        },
+        bring: {
+          q: "¿Qué llevas?",
+          a: "Mi estación: las herramientas, esmaltes, pinturas y maquillaje para lo que acordamos. Tú solo pones la mesa, la luz y el espacio.",
+        },
+        cost: {
+          q: "¿Cuánto cuesta una fiesta?",
+          a: "No hay un precio fijo para fiestas, porque cada una es distinta. Cuando sé cuántos invitados son, sus edades y lo que quieren, te mando un precio por correo antes de confirmar nada.",
+        },
+        ages: {
+          q: "¿Para qué edades es?",
+          a: "Niños y adolescentes. Pintura facial y uñas sencillas y lindas para los más pequeños; sets más de moda y maquillaje para adolescentes, con pestañas si las piden.",
+        },
+      },
+    },
     closing: {
       eyebrow: "¿Ya tienes fecha?",
       headingLead: "Hagamos que",

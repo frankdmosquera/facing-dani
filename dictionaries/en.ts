@@ -398,6 +398,57 @@ export const en = {
         },
       },
     },
+    // Host-side only: what helps the day, never a promise about her.
+    ready: {
+      eyebrow: "Before I arrive",
+      heading: "What to have ready",
+      lede: "Small things that make the station run smoothly and give every guest the same time.",
+      items: {
+        table: {
+          title: "A table and two chairs",
+          body: "Near a plug, for my equipment. A kitchen or dining table is perfect.",
+        },
+        light: {
+          title: "Good light",
+          body: "By a window in the day, or under a bright lamp in the evening. Nails and face painting both need to be seen up close.",
+        },
+        space: {
+          title: "Away from the food",
+          body: "A corner away from the drinks and the cake, so nothing lands on wet polish or paint.",
+        },
+        list: {
+          title: "Names, ages and allergies",
+          body: "A quick list of the guests and their ages, and any allergies to nail products, face paint or makeup, sent before the day.",
+        },
+      },
+    },
+    // No prices and no guest limits: those are Dani's to set, so each answer points back to the form.
+    faq: {
+      eyebrow: "Before you ask",
+      heading: "Party questions",
+      items: {
+        guests: {
+          q: "How many guests can you do?",
+          a: "It depends on how long the party runs and what each guest gets: face painting is quick, a nail set takes longer. Send me the number of guests and the times, and I will tell you what fits.",
+        },
+        time: {
+          q: "How long does each guest take?",
+          a: "From a few minutes for face painting to longer for nails or makeup. I plan the order so nobody waits too long, and the timing comes with my confirmation.",
+        },
+        bring: {
+          q: "What do you bring?",
+          a: "My station: the tools, polish, paints and makeup for what we agreed. You only need the table, the light and the space.",
+        },
+        cost: {
+          q: "How much does a party cost?",
+          a: "There is no set party price, because every party is different. Once I know the guests, their ages and what they want, I send you a price by email before anything is confirmed.",
+        },
+        ages: {
+          q: "What ages do you do?",
+          a: "Kids and teens. Face painting and simple, cute nails for the younger ones; trendier sets and makeup for teens, with lashes on request.",
+        },
+      },
+    },
     closing: {
       eyebrow: "Got a date?",
       headingLead: "Let's make it",
