@@ -1197,7 +1197,7 @@
           <h1>facing-dani</h1>
         </div>
         <p class="lede">
-          A small marketing site for a Calgary nail, lash and makeup artist. This page is the
+          A small marketing site for Glammed Beauty Studio, a Calgary nail artist who also works kids' and teen parties. This page is the
           project's status board. It answers where things stand in a few seconds, without reading
           a transcript. <code>/overview</code> writes this view and the roadmap from the two plan
           docs; every feature adds its own group as it starts.
@@ -1209,15 +1209,15 @@
         <div class="rows">
           <div class="row">
             <div class="row-key">1 &middot; Problem</div>
-            <div class="row-val">Instagram shows her work but cannot hold a price list, cannot be found on Google, and is a poor gallery when someone wants to inspect one set closely. The site is what her bio link points at, and the job stays narrow: look like a real business, show the work at a size where quality is visible, answer what/how much/how long without a DM, and take the booking. <strong>What she sells is craft, not price</strong> - trained in Colombia, and taught to get right the shape and cuticle work that decides whether a set still looks good in week three. Price is deliberately not the angle, because it is the one advantage that disappears the moment she raises her rates.</div>
+            <div class="row-val">Instagram shows her work but cannot hold a price list, cannot be found on Google, and is a poor gallery when someone wants to inspect one set closely. The site is what her bio link points at, and the job stays narrow: look like a real business, show the work at a size where quality is visible, answer what/how much/how long without a DM, and take the booking. <strong>What she sells is craft, not price</strong> - trained in Colombia, and taught the shape and cuticle work that decides whether a set still looks good in week three. <strong>Since Sep 25, nails is the one professional service</strong> and parties the second side; lashes and makeup keep their pages but are no longer sold on.</div>
           </div>
           <div class="row">
             <div class="row-key">2 &middot; Users</div>
-            <div class="row-val">Four, and the first one decides nearly everything. <strong>The client, roughly 15 to 25</strong>, arrives from an Instagram bio link, on a phone, at night, already choosing between artists she follows. <strong>Her mother</strong>, paying for a grad set, needs the business to look legitimate in four seconds and will not DM a teenager, which is why the form exists. <strong>The Spanish-speaking client</strong> searches in Spanish and currently finds nothing local. <strong>Dani herself</strong> needs one link so her DMs stop being a price list.</div>
+            <div class="row-val">The first one decides nearly everything. <strong>The client, roughly 15 to 25</strong>, arrives from an Instagram bio link, on a phone, at night, already choosing between artists she follows. <strong>Her mother</strong>, paying for a grad set, needs the business to look legitimate in four seconds and will not DM a teenager, which is why the form exists. <strong>A parent hosting a party</strong> asks through the same form. <strong>The Spanish-speaking client</strong> finds nothing local in Spanish. <strong>Dani herself</strong> needs one link so her DMs stop being a price list.</div>
           </div>
           <div class="row">
             <div class="row-key">3 &middot; Features</div>
-            <div class="row-val">Seven pages in two languages: home, a gallery, one page per service, contact and a thank-you page. Her story and the trust a new business has not earned yet live on the home page, not a separate About page. Three rules decide what is in: <strong>both languages per page</strong> (a page is not done in one), <strong>SEO ships with the page it describes</strong>, and <strong>no placeholder text</strong> - Spanish written by Dani, not by a translator. Out: payment, deposits, real-time availability, client accounts, on-site reviews, a blog.</div>
+            <div class="row-val">Home leading with nails then parties, a nails page with a Book button per treatment, a parties page, a gallery, an about page, a store for press-ons and nail care, contact for questions and party requests, and a thank-you page. Lashes and makeup keep their pages, reached from the phone menu and the footer. Three rules decide what is in: <strong>both languages per page</strong>, <strong>SEO ships with the page it describes</strong>, and <strong>no placeholder text</strong>. Out: online payment, deposits, client accounts, on-site reviews, a blog.</div>
           </div>
           <div class="row">
             <div class="row-key">4 &middot; Data</div>
@@ -1225,7 +1225,7 @@
           </div>
           <div class="row">
             <div class="row-key">5 &middot; Tech</div>
-            <div class="row-val">Next.js 16 and React 19, App Router, no separate backend. shadcn on Base UI with lucide, Tailwind v4 with the theme as CSS variables in <code>@theme</code>, react-hook-form with zod validated on both sides, Resend from a Server Action, ImageKit doing real work for a photo-led gallery. <strong>i18n is hand-rolled</strong> - a <code>[locale]</code> segment and a dictionary per locale, no package. No database, no auth, no object storage, no motion library; all four were offered by the scaffolder and declined.</div>
+            <div class="row-val">Next.js 16 and React 19, App Router, no separate backend. shadcn on Base UI with lucide, Tailwind v4 with the theme as CSS variables, react-hook-form with zod on both sides, Resend from a Server Action, ImageKit for every photo, and <strong>Cal.com</strong> for booking, one event per treatment. <strong>i18n is hand-rolled</strong> - a <code>[locale]</code> segment and a dictionary per locale, no package. No database, no auth, no object storage, no motion library.</div>
           </div>
           <div class="row">
             <div class="row-key">6 &middot; Monetize</div>
@@ -1233,11 +1233,11 @@
           </div>
           <div class="row">
             <div class="row-key">7 &middot; UI/UX</div>
-            <div class="row-val"><strong>After Party.</strong> Vibrant and active, never spa-calm. Plum ground <code>#261F36</code>, four colour-coded accents, Unbounded over Inter, mobile first because the site is an Instagram bio link. Until she has photos for them, lashes and makeup carry licensed decorative stock with no identifiable faces - never in the gallery or a work strip, never captioned as hers. Every service page, nails included, also carries a stock grid headed "Inspiration" in both languages, which stays when her photos arrive because it shows styles, not her work. Decided from rendered options in <code>blueprint/reference/</code>, not from adjectives. Written in full in <code>project-plan.md</code>.</div>
+            <div class="row-val"><strong>After Party.</strong> Vibrant and active, never spa-calm. Plum ground <code>#261F36</code>, four colour-coded accents each with a darker twin, Unbounded over Inter, mobile first. <strong>Dark is the brand</strong>; since Sep 26 a header button switches to the light twin, with her logo in lilac. Menu: Home, Nails, Parties, About, Store, Gallery, Contact. Stock photos are decoration only - never in the gallery or a work strip, never captioned as hers - and every service page carries an "Inspiration" grid under that heading.</div>
           </div>
           <div class="row">
             <div class="row-key">8 &middot; Deployment</div>
-            <div class="row-val"><strong>Live on Vercel</strong> at <code>facing-dani.vercel.app</code>, building from <code>main</code>, with a preview per pushed branch. ImageKit is configured in production and the gallery serves from it; Resend sends as <code>glammedbeautystudio.com</code> since Sep 24, verified; production picks it up when item 15 ships. English at the root and Spanish at <code>/es</code>, not a subdomain, because that splits a ranking signal this site has none of to spare. <strong>Deploy early and keep deploying</strong>, so Dani watches it grow on her phone and corrections arrive while they are cheap. <strong>The domain is <code>glammedbeautystudio.com</code></strong>, bought Sep 24 and live on Vercel. Indexing stays closed until item 15 ships with the rename to Glammed Beauty Studio, so Google's first look carries the right name. A Google Business Profile will out-earn the site for the first year and is part of the engagement, not an afterthought.</div>
+            <div class="row-val"><strong>Live on Vercel at <code>www.glammedbeautystudio.com</code></strong> since Sep 25, building from <code>main</code>, with a preview per pushed branch. English at the root and Spanish at <code>/es</code>, with <code>hreflang</code> on every page. The form sends through Resend straight to her Gmail. <strong>Left of item 15:</strong> redirect <code>facing-dani.vercel.app</code> to the domain, submit the sitemap in Search Console, and send one real form enquiry. A Google Business Profile will out-earn the site for the first year and is part of the engagement.</div>
           </div>
         </div>
       </section>
@@ -1269,7 +1269,7 @@
       </section>
 
       <footer>
-        <span>Generated Sep 23, 2026</span>
+        <span>Generated Sep 26, 2026</span>
         <span>&middot;</span>
         <span>Sources: blueprint/project-plan.md, blueprint/build-plan.md, blueprint/reference/</span>
       </footer>
@@ -1944,7 +1944,7 @@
       </section>
 
       <footer>
-        <span>Generated Sep 23, 2026 from blueprint/build-plan.md</span>
+        <span>Generated Sep 26, 2026 from blueprint/build-plan.md</span>
       </footer>
     </div>
 
