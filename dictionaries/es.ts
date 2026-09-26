@@ -293,8 +293,8 @@ export const es: Dictionary = {
       headingLead: "Uñas que",
       headingAccent: "se notan",
       sell: "Sets de gel y acrílico, con formación colombiana, tomando citas ahora en Calgary. Tráeme una foto de referencia o déjame crear algo para ti. ¿Organizas una fiesta de niños o adolescentes? Puedo ir y hacerles las uñas a los invitados.",
-      book: "Reservar con Dani",
-      seeWork: "Ver el trabajo",
+      nails: "Reservar uñas",
+      party: "Uñas para tu fiesta",
       dmNote: "O mándame un DM por Instagram, lo que te sea más fácil",
     },
     services: {

@@ -293,8 +293,8 @@ export const en = {
       headingLead: "Nails that",
       headingAccent: "get noticed",
       sell: "Custom gel and acrylic sets, trained in Colombia, booking now in Calgary. Bring a reference photo or let me build something for you. Hosting a kids' or teen party? I can come and do the guests' nails.",
-      book: "Book with Dani",
-      seeWork: "See the work",
+      nails: "Book nails",
+      party: "Nails for your party",
       dmNote: "Or send a DM on Instagram, whatever is easier",
     },
     services: {
