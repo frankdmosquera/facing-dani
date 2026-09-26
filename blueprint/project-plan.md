@@ -35,7 +35,7 @@ Price is deliberately not the angle. It is the one advantage that disappears the
 moment she raises her rates, and a site built around being cheap is hard to
 rebuild around being good.
 
-**What it is not:** a booking engine, a shop, a blog, or a client account
+**What it is not:** a booking engine, an online shop, a blog, or a client account
 system. Those are how a project like this quietly becomes a six-month build.
 
 **She is fully bilingual, and that is a service rather than a setting.** A
@@ -395,3 +395,6 @@ address, and a service-area listing is the normal answer to that.
   navigation, contact and search copy were rebuilt around that as build-plan
   item 19, and about came back as its own page. Lashes and makeup keep their
   pages until it is decided whether they stay.
+- **2026-09-25** A store page: press-ons and nail care she sells in person, with
+  prices and no cart, on face-and-body's pattern. Section 1 now rules out an
+  online shop rather than any shop.

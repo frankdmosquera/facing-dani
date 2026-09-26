@@ -65,7 +65,7 @@ export default async function About({ params }: PageProps<"/[locale]/about">) {
 
       <Band>
         <p className="mb-2 max-w-[54ch] text-[clamp(20px,4.5vw,26px)] font-medium text-ink">
-          {t.home.story.feeling}
+          {c.feeling}
         </p>
 
         <p className="font-display mb-8 text-[19px] font-extrabold tracking-[-0.04em] text-ink">

@@ -7,11 +7,11 @@ export const es: Dictionary = {
     title: "Uñas en Calgary, con cita o en tu fiesta - Glammed Beauty Studio",
     template: "%s - Glammed Beauty Studio",
     description:
-      "Uñas de gel y acrílico en Calgary, con formación colombiana. ¿Organizas una fiesta de niños o adolescentes? Puedo ir y hacerles las uñas a los invitados.",
+      "Uñas de gel y acrílico en Calgary, con formación colombiana. ¿Organizas una fiesta de niños o adolescentes? Puedo ir con uñas, pintura facial y maquillaje para los invitados.",
   },
 
   blurb:
-    "Uñas en Calgary, con cita previa. Formación colombiana. También hago uñas en fiestas de niños y adolescentes.",
+    "Uñas en Calgary, con cita previa. Formación colombiana. También voy a fiestas de niños y adolescentes.",
 
   marquee: ["Uñas", "Fiestas", "Calgary"],
 
@@ -20,6 +20,7 @@ export const es: Dictionary = {
     nails: "Uñas",
     parties: "Fiestas",
     about: "Sobre mí",
+    store: "Tienda",
     lashes: "Pestañas",
     makeup: "Maquillaje",
     gallery: "El trabajo",
@@ -38,6 +39,7 @@ export const es: Dictionary = {
     links: {
       nails: "Uñas",
       parties: "Fiestas",
+      store: "Tienda",
       lashes: "Pestañas",
       makeup: "Maquillaje",
       gallery: "La galería",
@@ -88,7 +90,35 @@ export const es: Dictionary = {
         heading: "Estoy definiendo los precios",
         body: "Estoy armando la lista ahora. Escríbeme y te digo exactamente cuánto te saldría tu set, sin sorpresas en la silla.",
       },
+      menuHeading: "Precios de uñas en Calgary",
       work: { heading: "Trabajo reciente en uñas", all: "Ver todos los sets" },
+      guide: {
+        eyebrow: "Qué set es para ti",
+        headingLead: "Gel, acrílico",
+        headingAccent: "o Gel‑X",
+        lede: "Tres maneras de tener las uñas que quieres. ¿No sabes cuál? Mándame una foto de lo que buscas y te digo qué reservar.",
+        ask: "Pregúntame primero",
+        kinds: {
+          gel: {
+            name: "Manicure en gel",
+            tag: "Tus propias uñas",
+            body: "Esmalte en gel sobre tus uñas naturales, curado con lámpara. Brillante, no se descascara y no agrega largo. La opción si tus uñas ya tienen el largo que te gusta.",
+            lasts: "Dura unas dos a tres semanas.",
+          },
+          acrylic: {
+            name: "Acrílico",
+            tag: "Largo y resistencia",
+            body: "Acrílico construido sobre tu uña o sobre un tip y moldeado a mano. La opción más resistente, y la de las formas largas y esculpidas.",
+            lasts: "Un relleno cada dos a tres semanas.",
+          },
+          gelX: {
+            name: "Gel‑X",
+            tag: "Largo, más liviano",
+            body: "Tips de gel suave que cubren toda la uña, pegados con gel. Más livianos que el acrílico, más rápidos de poner y más suaves de retirar.",
+            lasts: "Un relleno cada dos a tres semanas.",
+          },
+        },
+      },
       treatments: {
         gelManicure: "Manicure en gel",
         acrylicFullSet: "Set completo en acrílico",
@@ -126,6 +156,7 @@ export const es: Dictionary = {
         heading: "Estoy definiendo los precios",
         body: "Estoy armando la lista ahora. Escríbeme con el look que buscas y te digo qué set te lo da y cuánto cuesta.",
       },
+      menuHeading: "Precios de pestañas en Calgary",
       work: {
         heading: "Trabajo reciente en pestañas",
         all: "Ver todos los sets",
@@ -163,6 +194,7 @@ export const es: Dictionary = {
         heading: "Estoy definiendo los precios",
         body: "Estoy armando la lista ahora. Dime la ocasión y más o menos cuándo, y te contesto con un precio y una hora.",
       },
+      menuHeading: "Precios de maquillaje en Calgary",
       work: { heading: "Maquillaje reciente", all: "Ver todos los sets" },
       treatments: {
         softGlam: "Soft glam, eventos y sesiones de fotos",
@@ -215,6 +247,7 @@ export const es: Dictionary = {
     topics: {
       party: "Una fiesta que organizo",
       question: "Una pregunta",
+      product: "Un producto de la tienda",
       other: "Otra cosa",
     },
 
@@ -247,15 +280,15 @@ export const es: Dictionary = {
 
   partiesPage: {
     meta: {
-      title: "Uñas para fiestas de niños y adolescentes en Calgary",
+      title: "Uñas, pintura facial y maquillaje para fiestas en Calgary",
       description:
-        "¿Organizas un cumpleaños o un evento escolar en Calgary? Voy a tu fiesta y les hago las uñas a los invitados: diseños sencillos y lindos para niños, sets más de moda para adolescentes.",
+        "¿Organizas un cumpleaños o un evento escolar en Calgary? Voy a tu fiesta con uñas, pintura facial y maquillaje para los invitados: sencillo y divertido para niños, más de moda para adolescentes.",
     },
-    serviceType: "Uñas para fiestas",
+    serviceType: "Uñas, pintura facial y maquillaje para fiestas",
     eyebrow: "Fiestas en Calgary",
-    headingLead: "Uñas para",
+    headingLead: "Uñas y más para",
     headingAccent: "tu fiesta",
-    lede: "¿Organizas un cumpleaños, una pijamada o un evento escolar para niños o adolescentes? Tú haces la fiesta. Yo llego, armo una estación de uñas y les hago las uñas a los invitados.",
+    lede: "¿Organizas un cumpleaños, una pijamada o un evento escolar para niños o adolescentes? Tú haces la fiesta. Yo llego, armo mi estación y les hago uñas, pintura facial y maquillaje a los invitados.",
     ask: "Pregunta por tu fiesta",
     what: {
       eyebrow: "Lo que hago allí",
@@ -266,12 +299,12 @@ export const es: Dictionary = {
           body: "El pastel, los juegos, los invitados y el lugar son tuyos. Yo soy una cosa ese día, no toda la fiesta.",
         },
         nails: {
-          title: "Yo hago las uñas",
-          body: "Una estación de uñas y un diseño para cada invitado. Sencillos y lindos para niños, sets más de moda para adolescentes.",
+          title: "Yo hago la belleza",
+          body: "Uñas, pintura facial y maquillaje, un look para cada invitado. Sencillo y divertido para niños, sets y maquillaje más de moda para adolescentes.",
         },
         extras: {
-          title: "Maquillaje si lo pides",
-          body: "Para los invitados mayores que quieran, puedo agregar maquillaje suave. Menciónalo cuando preguntes.",
+          title: "Pestañas si las pides",
+          body: "Para los invitados mayores que las quieran, puedo agregar pestañas. Menciónalo cuando preguntes.",
         },
       },
     },
@@ -322,15 +355,67 @@ export const es: Dictionary = {
       },
       parties: {
         heading: "También fiestas",
-        body: "Además de las citas, voy a fiestas de niños y adolescentes y les hago las uñas a los invitados. Tú organizas la fiesta; yo llevo la estación de uñas y hago mi parte.",
+        body: "Además de las citas, voy a fiestas de niños y adolescentes con uñas, pintura facial y maquillaje para los invitados. Tú organizas la fiesta; yo llevo mi estación y hago mi parte.",
       },
       spanish: {
         heading: "En inglés o en español",
         body: "El español es mi primer idioma, así que tu cita puede ser en el idioma en que te sientas más cómoda.",
       },
     },
+    feeling:
+      "Lo que más me importa es cómo te sientes cuando te vas. No solo que el set se vea bien, sino que salgas sintiéndote hermosa y segura de ti misma.",
     nails: "Ver el menú de uñas",
-    party: "Uñas para tu fiesta",
+    party: "Para tu fiesta",
+  },
+
+  store: {
+    meta: {
+      title: "Uñas press-on y cuidado de uñas en Calgary",
+      description:
+        "Sets de uñas press-on hechos en Calgary, listos o a tu medida, además de aceite de cutícula, limas de vidrio y kits de cuidado. Venta en persona, sin envíos.",
+    },
+    eyebrow: "Tienda",
+    headingLead: "Press-ons y",
+    headingAccent: "cuidado de uñas",
+    lede: "Sets press-on que hago yo, y el cuidado que mantiene cualquier set bonito entre citas. Agrégalo a tu cita, o pregúntame y lo recoges.",
+    tabsLabel: "Productos por tipo",
+    stockTag: "Foto de archivo",
+    all: "Todo",
+    categories: {
+      pressOns: "Press-ons",
+      nailCare: "Cuidado de uñas",
+    },
+    products: {
+      readyPressOns: {
+        name: "Set press-on listo",
+        body: "Uno de mis diseños, con varias tallas en cada caja para que le quede a casi cualquier mano.",
+      },
+      customPressOns: {
+        name: "Set press-on a tu medida",
+        body: "Hecho a tus tallas y con tu diseño. Mándame una foto de lo que quieres y yo lo mido y lo armo.",
+      },
+      cuticleOilPen: {
+        name: "Aceite de cutícula en lápiz",
+        body: "Un lápiz que cabe en la cartera. Un poco cada día mantiene las cutículas suaves y hace que el set dure.",
+      },
+      cuticleOilBottle: {
+        name: "Aceite de cutícula, 15 ml",
+        body: "El frasco con pincel, para la casa. El mismo trabajo, en más cantidad.",
+      },
+      glassFile: {
+        name: "Lima de vidrio",
+        body: "Lima suave y se lava fácil. Dura años, no como una lima de cartón.",
+      },
+      careKit: {
+        name: "Kit de cuidado de uñas",
+        body: "Aceite de cutícula, una lima de vidrio y un pulidor. Lo que mantiene un set bonito en la tercera semana.",
+      },
+    },
+    buy: {
+      heading: "Cómo comprar",
+      body: "Sin carrito y sin envíos. Agrégalo a tu cita cuando reserves, o pregúntame y lo recoges en Calgary.",
+      ask: "Pregunta por un producto",
+    },
   },
 
   thankYou: {
@@ -366,7 +451,7 @@ export const es: Dictionary = {
     },
     parties: {
       q: "¿Puedes ir a una fiesta?",
-      a: "Sí, como la estación de uñas en una fiesta que tú organizas, para niños o adolescentes. Las fiestas no se reservan en línea: mándame la fecha, cuántos invitados y la zona desde la página de contacto, y te confirmo por correo.",
+      a: "Sí, con mi estación en una fiesta que tú organizas, para niños o adolescentes: uñas, pintura facial y maquillaje. Las fiestas no se reservan en línea: mándame la fecha, cuántos invitados y la zona desde la página de contacto, y te confirmo por correo.",
     },
     duration: {
       q: "¿Cuánto dura un set completo?",
@@ -407,9 +492,9 @@ export const es: Dictionary = {
       eyebrow: "Calgary · con cita previa",
       headingLead: "Uñas que",
       headingAccent: "se notan",
-      sell: "Sets de gel y acrílico, con formación colombiana, tomando citas ahora en Calgary. Tráeme una foto de referencia o déjame crear algo para ti. ¿Organizas una fiesta de niños o adolescentes? Puedo ir y hacerles las uñas a los invitados.",
+      sell: "Sets de gel y acrílico, con formación colombiana, tomando citas ahora en Calgary. Tráeme una foto de referencia o déjame crear algo para ti. ¿Organizas una fiesta de niños o adolescentes? Puedo ir con uñas, pintura facial y maquillaje para los invitados.",
       nails: "Reservar uñas",
-      party: "Uñas para tu fiesta",
+      party: "Para tu fiesta",
       dmNote: "O mándame un DM por Instagram, lo que te sea más fácil",
     },
     nails: {
@@ -424,11 +509,9 @@ export const es: Dictionary = {
       eyebrow: "Quién te hace las uñas",
       headingLead: "Formada en Colombia,",
       headingAccent: "trabajando en Calgary",
-      training:
-        "Me formé en Colombia, donde el estándar del trabajo de uñas es bastante más alto de lo que la mayoría espera aquí. La forma, la estructura y el trabajo de cutícula son lo que decide si un set sigue viéndose bien en la tercera semana, y es justo lo que me enseñaron a hacer bien.",
+      intro:
+        "Aprendí uñas en Colombia, donde el acabado lo es todo, y ahora hago sets en Calgary, en inglés o en español.",
       more: "Más sobre mí",
-      feeling:
-        "Lo que más me importa es cómo te sientes cuando te vas. No solo que el set se vea bien, sino que salgas sintiéndote hermosa y segura de ti misma.",
     },
     work: {
       eyebrow: "Trabajo reciente",
@@ -448,17 +531,17 @@ export const es: Dictionary = {
 
     parties: {
       eyebrow: "Fiestas",
-      headingLead: "Uñas para",
+      headingLead: "Uñas y más para",
       headingAccent: "tu fiesta",
-      lede: "¿Organizas un cumpleaños o una reunión para niños o adolescentes? Tú haces la fiesta, yo voy y les hago las uñas a los invitados.",
+      lede: "¿Organizas un cumpleaños o una reunión para niños o adolescentes? Tú haces la fiesta, yo llego y me encargo de los invitados: uñas, pintura facial, maquillaje, y pestañas para los mayores.",
       points: {
         host: {
-          title: "Tú organizas, yo hago las uñas",
-          body: "El pastel, los juegos y los invitados son tuyos. Yo armo una estación de uñas y voy atendiendo a los invitados.",
+          title: "Tú organizas, yo hago la belleza",
+          body: "El pastel, los juegos y los invitados son tuyos. Yo armo mi estación y voy atendiendo a los invitados.",
         },
         age: {
           title: "Pensado para su edad",
-          body: "Diseños sencillos y lindos para los niños, sets más de moda para los adolescentes. Maquillaje si lo pides.",
+          body: "Pintura facial y uñas sencillas y lindas para los niños. Sets más de moda, maquillaje y pestañas para los adolescentes.",
         },
         ask: {
           title: "Pregunta primero",
@@ -466,6 +549,45 @@ export const es: Dictionary = {
         },
       },
       ask: "Pregunta por tu fiesta",
+    },
+
+    guide: {
+      eyebrow: "Guía de uñas",
+      headingLead: "Formas, acabados",
+      headingAccent: "y cuidado",
+      lede: "Una guía rápida de qué pedir, y de cómo mantenerlo bonito cuando te vas.",
+      storeLink: "Aceite de cutícula en la tienda",
+      columns: {
+        shapes: {
+          heading: "Formas",
+          items: {
+            almond: { term: "Almendra", text: "Lados que se afinan y punta redondeada. Estiliza los dedos y aguanta el día a día." },
+            coffin: { term: "Coffin", text: "Larga, con lados rectos y punta plana. La forma de los sets llamativos, y necesita largo, así que acrílico o Gel‑X." },
+            square: { term: "Cuadrada", text: "Lados rectos y borde plano. Fácil de llevar corta, y la punta luce muy bien con francés." },
+            oval: { term: "Ovalada", text: "Suave y redondeada. El look más natural, y la que menos se engancha." },
+          },
+        },
+        finishes: {
+          heading: "Acabados",
+          items: {
+            chrome: { term: "Cromado", text: "Un polvo espejo o perlado pulido sobre el gel, para que toda la uña refleje la luz." },
+            french: { term: "Francés", text: "Una línea limpia en la punta, blanca clásica o de cualquier color, gruesa o micro." },
+            catEye: { term: "Ojo de gato", text: "Gel magnético que forma una franja de brillo sobre la uña, como luz moviéndose en terciopelo." },
+            sparkle: { term: "Glitter y piedras", text: "Glitter fino, una línea brillante en la sonrisa, o cristales en una uña de acento." },
+            art: { term: "Arte a mano", text: "Flores, corazones, líneas, estrellas. Trae una foto de referencia y se arma para tus uñas." },
+          },
+        },
+        care: {
+          heading: "Que dure",
+          items: {
+            oil: { term: "Aceite de cutícula a diario", text: "Las uñas hidratadas se doblan en vez de romperse, y el set sigue brillante en los bordes." },
+            gloves: { term: "Guantes para limpiar", text: "El agua caliente y los productos de limpieza son lo que levanta un set antes de tiempo." },
+            tools: { term: "Las uñas no son herramientas", text: "Abre latas y despega etiquetas con otra cosa. Así es como se rompen las puntas." },
+            lifting: { term: "Nunca arranques una esquina", text: "Si despegas una esquina levantada, se lleva una capa de tu uña natural. Escríbeme y lo arreglamos." },
+            fills: { term: "Relleno cada dos o tres semanas", text: "Mientras tu uña crece, el relleno mantiene el equilibrio para que el set no se quiebre." },
+          },
+        },
+      },
     },
 
     expect: {

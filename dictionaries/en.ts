@@ -6,11 +6,11 @@ export const en = {
     title: "Nails in Calgary, by Appointment or at Your Party - Glammed Beauty Studio",
     template: "%s - Glammed Beauty Studio",
     description:
-      "Custom gel and acrylic nails in Calgary, trained in Colombia. Hosting a kids' or teen party? I can come and do nails for the guests.",
+      "Custom gel and acrylic nails in Calgary, trained in Colombia. Hosting a kids' or teen party? I can come with nails, face painting and makeup for the guests.",
   },
 
   blurb:
-    "Nails in Calgary, by appointment. Trained in Colombia. I also do nails at kids' and teen parties.",
+    "Nails in Calgary, by appointment. Trained in Colombia. I also come to kids' and teen parties.",
 
   marquee: ["Nails", "Parties", "Calgary"],
 
@@ -19,6 +19,7 @@ export const en = {
     nails: "Nails",
     parties: "Parties",
     about: "About",
+    store: "Store",
     lashes: "Lashes",
     makeup: "Makeup",
     gallery: "The work",
@@ -37,6 +38,7 @@ export const en = {
     links: {
       nails: "Nails",
       parties: "Parties",
+      store: "Store",
       lashes: "Lashes",
       makeup: "Makeup",
       gallery: "The gallery",
@@ -88,7 +90,36 @@ export const en = {
         heading: "Prices are being set",
         body: "I am putting the list together now. Message me and I will tell you exactly what your set would cost, with no surprises in the chair.",
       },
+      menuHeading: "Nail prices in Calgary",
       work: { heading: "Recent nail work", all: "See every set" },
+      // Nails only: which set to book. General technique, no promises about her.
+      guide: {
+        eyebrow: "Which set is for you",
+        headingLead: "Gel, acrylic",
+        headingAccent: "or Gel‑X",
+        lede: "Three ways to get the nails you want. Not sure which one? Send me a photo of what you are after and I will tell you what to book.",
+        ask: "Ask me first",
+        kinds: {
+          gel: {
+            name: "Gel manicure",
+            tag: "Your own nails",
+            body: "Gel polish on your natural nails, cured under a lamp. Glossy, no chipping, and no added length. The one to book if your nails are already the length you like.",
+            lasts: "Lasts about two to three weeks.",
+          },
+          acrylic: {
+            name: "Acrylic",
+            tag: "Length and strength",
+            body: "Acrylic built over your nail or a tip and shaped by hand. The strongest option, and the one for long, sculpted shapes.",
+            lasts: "A fill every two to three weeks.",
+          },
+          gelX: {
+            name: "Gel‑X",
+            tag: "Length, lighter feel",
+            body: "Soft gel tips that cover the whole nail, bonded with gel. Lighter than acrylic, quicker to put on, and gentler to take off.",
+            lasts: "A fill every two to three weeks.",
+          },
+        },
+      },
       treatments: {
         gelManicure: "Gel manicure",
         acrylicFullSet: "Acrylic full set",
@@ -126,6 +157,7 @@ export const en = {
         heading: "Prices are being set",
         body: "I am putting the list together now. Message me with the look you are after and I will tell you which set gets you there and what it costs.",
       },
+      menuHeading: "Lash prices in Calgary",
       work: { heading: "Recent lash work", all: "See every set" },
       treatments: {
         classicFullSet: "Classic full set",
@@ -160,6 +192,7 @@ export const en = {
         heading: "Prices are being set",
         body: "I am putting the list together now. Tell me the occasion and roughly when, and I will come back with a price and a time.",
       },
+      menuHeading: "Makeup prices in Calgary",
       work: { heading: "Recent makeup", all: "See every set" },
       treatments: {
         softGlam: "Soft glam, events and photoshoots",
@@ -212,6 +245,7 @@ export const en = {
     topics: {
       party: "A party I am hosting",
       question: "A question",
+      product: "A product from the store",
       other: "Something else",
     },
 
@@ -243,18 +277,18 @@ export const en = {
       "That did not send, and I would rather tell you than pretend it did. Try again in a moment.",
   },
 
-  // A parent hosts; she comes and does the guests' nails. Never "book me for your party".
+  // A parent hosts; she comes and does her part: nails, face painting, makeup. Never "book me for your party".
   partiesPage: {
     meta: {
-      title: "Nails for Kids' and Teen Parties in Calgary",
+      title: "Party Nails, Face Painting and Makeup in Calgary",
       description:
-        "Hosting a birthday or a school event in Calgary? I come to your party and do the guests' nails: simple, cute designs for kids, trendier sets for teens.",
+        "Hosting a birthday or a school event in Calgary? I come to your party with nails, face painting and makeup for the guests: simple and fun for kids, trendier for teens.",
     },
-    serviceType: "Party nails",
+    serviceType: "Party nails, face painting and makeup",
     eyebrow: "Parties in Calgary",
-    headingLead: "Nails for",
+    headingLead: "Nails and more for",
     headingAccent: "your party",
-    lede: "Hosting a birthday, a sleepover or a school event for kids or teens? You run the party. I come along, set up a nail station and do the guests' nails.",
+    lede: "Hosting a birthday, a sleepover or a school event for kids or teens? You run the party. I come along, set up a station and do the guests' nails, faces and makeup.",
     ask: "Ask about your party",
     what: {
       eyebrow: "What I do there",
@@ -265,12 +299,12 @@ export const en = {
           body: "The cake, the games, the guests and the place are yours. I am one thing on the day, not the whole party.",
         },
         nails: {
-          title: "I do the nails",
-          body: "A nail station and a design for each guest. Simple and cute for kids, trendier sets for teens.",
+          title: "I do the beauty",
+          body: "Nails, face painting and makeup, a look for each guest. Simple and fun for kids, trendier sets and makeup for teens.",
         },
         extras: {
-          title: "Makeup on request",
-          body: "For older guests who want it, I can add light makeup. Mention it when you ask.",
+          title: "Lashes on request",
+          body: "For older guests who want them, I can add lashes. Mention it when you ask.",
         },
       },
     },
@@ -322,15 +356,69 @@ export const en = {
       },
       parties: {
         heading: "Parties, too",
-        body: "Besides appointments, I come to kids' and teen parties and do the guests' nails. You host the party; I bring the nail station and do my part.",
+        body: "Besides appointments, I come to kids' and teen parties with nails, face painting and makeup for the guests. You host the party; I bring my station and do my part.",
       },
       spanish: {
         heading: "In English or in Spanish",
         body: "Spanish is my first language, so your appointment can happen in whichever language you are more comfortable in.",
       },
     },
+    // "Sure of yourself", never "secure": her word "segura" means confident.
+    feeling:
+      "What I care about most is how you feel when you leave. Not just that the set looks good, but that you walk out feeling beautiful and sure of yourself.",
     nails: "See the nails menu",
-    party: "Nails for your party",
+    party: "For your party",
+  },
+
+  // Sold in person: no cart, no shipping, no online payment.
+  store: {
+    meta: {
+      title: "Press-On Nails and Nail Care in Calgary",
+      description:
+        "Press-on nail sets made in Calgary, ready-made or custom to your sizes, plus cuticle oil, glass files and care kits. Sold in person, no shipping.",
+    },
+    eyebrow: "Store",
+    headingLead: "Press-ons and",
+    headingAccent: "nail care",
+    lede: "Press-on sets I make, and the care that keeps any set looking good between appointments. Add it to your appointment, or ask and pick it up.",
+    tabsLabel: "Products by type",
+    stockTag: "Stock photo",
+    all: "All",
+    categories: {
+      pressOns: "Press-ons",
+      nailCare: "Nail care",
+    },
+    products: {
+      readyPressOns: {
+        name: "Ready-made press-on set",
+        body: "One of my designs, with a range of sizes in each box so it fits most hands.",
+      },
+      customPressOns: {
+        name: "Custom press-on set",
+        body: "Made to your sizes and your design. Send me a photo of what you want and I will size and build it.",
+      },
+      cuticleOilPen: {
+        name: "Cuticle oil pen",
+        body: "A click pen that fits in a bag. A little every day keeps cuticles soft and helps a set last.",
+      },
+      cuticleOilBottle: {
+        name: "Cuticle oil, 15 ml",
+        body: "The bottle with a brush, for at home. Same job, more of it.",
+      },
+      glassFile: {
+        name: "Glass nail file",
+        body: "Files gently and rinses clean. Lasts for years, unlike a paper board.",
+      },
+      careKit: {
+        name: "Nail care kit",
+        body: "Cuticle oil, a glass file and a buffer. What keeps a set looking good in week three.",
+      },
+    },
+    buy: {
+      heading: "How to buy",
+      body: "No cart and no shipping. Add it to your appointment when you book, or ask me and pick it up in Calgary.",
+      ask: "Ask about a product",
+    },
   },
 
   thankYou: {
@@ -367,7 +455,7 @@ export const en = {
     },
     parties: {
       q: "Can you come to a party?",
-      a: "Yes, as the nail station at a party you host, for kids or teens. Parties are not booked online: send me the date, how many guests and the area through the contact page, and I will confirm by email.",
+      a: "Yes, with my station at a party you host, for kids or teens: nails, face painting and makeup. Parties are not booked online: send me the date, how many guests and the area through the contact page, and I will confirm by email.",
     },
     duration: {
       q: "How long does a full set take?",
@@ -409,9 +497,9 @@ export const en = {
       eyebrow: "Calgary · by appointment",
       headingLead: "Nails that",
       headingAccent: "get noticed",
-      sell: "Custom gel and acrylic sets, trained in Colombia, booking now in Calgary. Bring a reference photo or let me build something for you. Hosting a kids' or teen party? I can come and do the guests' nails.",
+      sell: "Custom gel and acrylic sets, trained in Colombia, booking now in Calgary. Bring a reference photo or let me build something for you. Hosting a kids' or teen party? I can come with nails, face painting and makeup for the guests.",
       nails: "Book nails",
-      party: "Nails for your party",
+      party: "For your party",
       dmNote: "Or send a DM on Instagram, whatever is easier",
     },
     nails: {
@@ -426,12 +514,10 @@ export const en = {
       eyebrow: "Who is doing your nails",
       headingLead: "Trained in Colombia,",
       headingAccent: "working in Calgary",
-      training:
-        "I did my training in Colombia, where the standard for nail work is a lot higher than most people here expect. Shape, structure and cuticle work are the parts that decide whether a set still looks good in week three, and they are the parts I was taught to get right.",
+      // Two lines on purpose: the full story lives on /about, and home must not repeat it.
+      intro:
+        "I learned nails in Colombia, where the finish is everything, and now I do sets in Calgary, in English or in Spanish.",
       more: "More about me",
-      // "Sure of yourself", never "secure": her word "segura" means confident.
-      feeling:
-        "What I care about most is how you feel when you leave. Not just that the set looks good, but that you walk out feeling beautiful and sure of yourself.",
     },
     work: {
       eyebrow: "Recent work",
@@ -453,17 +539,17 @@ export const en = {
 
     parties: {
       eyebrow: "Parties",
-      headingLead: "Nails for",
+      headingLead: "Nails and more for",
       headingAccent: "your party",
-      lede: "Hosting a birthday or a get-together for kids or teens? You run the party, I come and do the guests' nails.",
+      lede: "Hosting a birthday or a get-together for kids or teens? You run the party, I come and set up for the guests: nails, face painting, makeup, and lashes for the older ones.",
       points: {
         host: {
-          title: "You host, I do the nails",
-          body: "Cake, games and guests are yours. I set up a nail station and work through the guests.",
+          title: "You host, I do the beauty",
+          body: "Cake, games and guests are yours. I set up a station and work through the guests.",
         },
         age: {
           title: "Made for their age",
-          body: "Simple, cute designs for kids, trendier sets for teens. Makeup on request.",
+          body: "Face painting and simple, cute nails for kids. Trendier sets, makeup and lashes for teens.",
         },
         ask: {
           title: "Ask first",
@@ -471,6 +557,45 @@ export const en = {
         },
       },
       ask: "Ask about your party",
+    },
+
+    guide: {
+      eyebrow: "Nail guide",
+      headingLead: "Shapes, finishes",
+      headingAccent: "and aftercare",
+      lede: "A quick guide to what to ask for, and how to keep it looking good once you walk out.",
+      storeLink: "Cuticle oil in the store",
+      columns: {
+        shapes: {
+          heading: "Shapes",
+          items: {
+            almond: { term: "Almond", text: "Tapered sides and a rounded tip. It slims and lengthens the fingers, and it is strong enough for every day." },
+            coffin: { term: "Coffin", text: "Long, with straight sides and a flat tip. The shape for statement sets, and it needs length, so acrylic or Gel‑X." },
+            square: { term: "Square", text: "Straight sides and a flat edge. Easy to wear short, and the tip takes a French line well." },
+            oval: { term: "Oval", text: "Soft and rounded. The most natural look, and the least likely to snag on things." },
+          },
+        },
+        finishes: {
+          heading: "Finishes",
+          items: {
+            chrome: { term: "Chrome", text: "A mirror or pearl powder buffed over gel, so the whole nail catches the light." },
+            french: { term: "French", text: "A clean tip line, classic white or any colour, thick or micro." },
+            catEye: { term: "Cat-eye", text: "Magnetic gel that pulls a band of shimmer across the nail, like light moving on velvet." },
+            sparkle: { term: "Glitter and gems", text: "Fine glitter, a sparkle line along the smile, or crystals on an accent nail." },
+            art: { term: "Hand-painted art", text: "Flowers, hearts, lines, stars. Bring a reference photo and it gets built for your nails." },
+          },
+        },
+        care: {
+          heading: "Make it last",
+          items: {
+            oil: { term: "Cuticle oil every day", text: "Hydrated nails flex instead of cracking, and the set stays glossy at the edges." },
+            gloves: { term: "Gloves for cleaning", text: "Hot water and cleaning products are what lift a set early." },
+            tools: { term: "Nails are not tools", text: "Open cans and peel stickers with something else. That is how tips crack." },
+            lifting: { term: "Never pick a lift", text: "Peeling a lifted corner takes a layer of your own nail with it. Message me and get it fixed." },
+            fills: { term: "Fills every two to three weeks", text: "As your nails grow, a fill keeps the balance right so the set does not snap." },
+          },
+        },
+      },
     },
 
     expect: {

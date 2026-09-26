@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 
 import { DecorativeImage } from "@/components/service/DecorativeImage";
 import { InspirationGrid } from "@/components/service/InspirationGrid";
+import { NailGuide } from "@/components/service/NailGuide";
 import { TreatmentList } from "@/components/service/TreatmentList";
 import { WorkStrip } from "@/components/service/WorkStrip";
 import { Band, Hot } from "@/components/site/Band";
@@ -77,8 +78,13 @@ export default async function ServicePage({
       </Band>
 
       <Band tinted glow={false}>
+        <h2 className="mb-[26px] text-[clamp(24px,5.5vw,34px)]">
+          {copy.menuHeading}
+        </h2>
         <TreatmentList serviceId={service.id} t={t} />
       </Band>
+
+      {service.id === "nails" ? <NailGuide locale={locale} t={t} /> : null}
 
       {/* Checked here too, or the empty band still draws its padding. */}
       {serviceHasWork(service.id) ? (

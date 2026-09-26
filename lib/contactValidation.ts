@@ -4,7 +4,7 @@ import { contactSourceKeys } from "@/data/contactSources";
 
 // Shared by the form and the Server Action. Messages are dictionary keys, not sentences.
 
-export const contactTopics = ["party", "question", "other"] as const;
+export const contactTopics = ["party", "question", "product", "other"] as const;
 export type ContactTopic = (typeof contactTopics)[number];
 
 export const partyKinds = ["birthday", "school", "other"] as const;

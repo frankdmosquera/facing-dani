@@ -1,32 +1,21 @@
 import type { NextConfig } from "next";
 
-import { defaultLocale, routes } from "./lib/locale";
+import { defaultLocale } from "./lib/locale";
 
 const nextConfig: NextConfig = {
   async redirects() {
     return [
-      // /en is never a second URL for a page. Redirects run before rewrites, so this cannot loop.
+      // /en is never a second URL for a page. Redirects run before proxy.ts, so its /en rewrite cannot loop.
       { source: `/${defaultLocale}`, destination: "/", permanent: true },
       {
         source: `/${defaultLocale}/:path*`,
         destination: "/:path*",
         permanent: true,
       },
-
     ];
   },
 
-  async rewrites() {
-    return {
-      // Serves English from the root. One rule per route, not a catch-all that could swallow /_next or /es.
-      beforeFiles: routes.map((route) => ({
-        source: route,
-        destination: route === "/" ? `/${defaultLocale}` : `/${defaultLocale}${route}`,
-      })),
-      afterFiles: [],
-      fallback: [],
-    };
-  },
+  // English is served from the root by proxy.ts, not by rewrites here.
 };
 
 export default nextConfig;

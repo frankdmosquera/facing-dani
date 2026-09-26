@@ -45,6 +45,7 @@ export const siteConfig = {
     { key: "nails", href: "/nails" },
     { key: "parties", href: "/parties" },
     { key: "about", href: "/about" },
+    { key: "store", href: "/store" },
     // Kept on phones until it is decided whether these pages stay. Never delete them uninvited.
     { key: "lashes", href: "/lashes", mobileOnly: true },
     { key: "makeup", href: "/makeup", mobileOnly: true },
@@ -59,6 +60,7 @@ export const siteConfig = {
     services: [
       { key: "nails", href: "/nails" },
       { key: "parties", href: "/parties" },
+      { key: "store", href: "/store" },
       { key: "lashes", href: "/lashes" },
       { key: "makeup", href: "/makeup" },
       { key: "gallery", href: "/gallery" },

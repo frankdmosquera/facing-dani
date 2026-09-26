@@ -23,12 +23,8 @@ export function Story({ locale, t }: { locale: Locale; t: Dictionary }) {
 
       <div className="flex flex-col gap-10 min-[860px]:flex-row min-[860px]:items-start min-[860px]:gap-14">
         <div className="min-w-0 flex-1">
-          <p className="max-w-[58ch] text-[15.5px] text-ink-muted">
-            {c.training}
-          </p>
-
-          <p className="mt-5 max-w-[58ch] text-[16.5px] font-medium text-ink">
-            {c.feeling}
+          <p className="max-w-[52ch] text-[16.5px] text-ink-muted">
+            {c.intro}
           </p>
 
           <p className="font-display mt-6 text-[19px] font-extrabold tracking-[-0.04em] text-ink">

@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { Bilingual } from "@/components/home/Bilingual";
+import { CareGuide } from "@/components/home/CareGuide";
 import { Expect } from "@/components/home/Expect";
 import { Faq } from "@/components/home/Faq";
 import { Hero } from "@/components/home/Hero";
@@ -28,6 +29,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
       <WorkTeaser locale={locale} t={t} />
       <Bilingual t={t} />
       <Expect t={t} />
+      <CareGuide locale={locale} t={t} />
       <Faq t={t} />
       <BookingBand copy={t.home.booking} />
 
