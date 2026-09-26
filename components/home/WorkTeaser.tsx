@@ -24,7 +24,13 @@ export function WorkTeaser({ locale, t }: { locale: Locale; t: Dictionary }) {
     <Band glow={false}>
       <BandHead eyebrow={c.eyebrow} heading={c.heading} />
 
-      <PhotoGrid items={items} t={t} />
+      {/* Eight small squares, not the full wall: the gallery page has every photo. */}
+      <PhotoGrid
+        items={items}
+        t={t}
+        square
+        gridClassName="grid grid-cols-4 gap-2 min-[620px]:gap-3 min-[900px]:grid-cols-8"
+      />
 
       <Link
         href={localePath(locale, "/gallery")}

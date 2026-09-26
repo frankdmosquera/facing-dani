@@ -23,9 +23,9 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
     <main id="main">
       <Hero locale={locale} t={t} />
       <NailsTeaser locale={locale} t={t} />
-      <WorkTeaser locale={locale} t={t} />
       <Parties locale={locale} t={t} />
       <Story locale={locale} t={t} />
+      <WorkTeaser locale={locale} t={t} />
       <Bilingual t={t} />
       <Expect t={t} />
       <Faq t={t} />

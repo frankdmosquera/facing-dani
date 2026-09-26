@@ -6,6 +6,8 @@ import { OpenCue } from "./OpenCue";
 
 // Must match the grid's column counts, or Next picks the wrong source width.
 const SIZES = "(min-width: 1000px) 25vw, (min-width: 620px) 33vw, 50vw";
+// Square tiles: four across on a phone, eight across from 900px, inside the 1200px page.
+const SQUARE_SIZES = "(min-width: 900px) 150px, 25vw";
 
 const accentText: Record<ServiceId, string> = {
   nails: "text-nails",
@@ -37,6 +39,7 @@ export function GalleryFigure({
   index,
   openLabel,
   priority = false,
+  square = false,
 }: {
   image: GalleryImage;
   alt: string;
@@ -45,6 +48,8 @@ export function GalleryFigure({
   index?: number;
   openLabel?: string;
   priority?: boolean;
+  // Cropped to a square tile instead of the photo's own shape, for compact teasers.
+  square?: boolean;
 }) {
   const photo = (
     <Photo
@@ -52,16 +57,16 @@ export function GalleryFigure({
       alt={alt}
       width={image.width}
       height={image.height}
-      sizes={SIZES}
+      sizes={square ? SQUARE_SIZES : SIZES}
       priority={priority}
-      className="block h-auto w-full"
+      className={square ? "block size-full object-cover" : "block h-auto w-full"}
     />
   );
 
   return (
     <figure
       data-service={image.serviceId}
-      className={`${FIGURE} ${hideWhenOtherFiltered[image.serviceId]}`}
+      className={`${FIGURE} ${square ? "mb-0! aspect-square" : ""} ${hideWhenOtherFiltered[image.serviceId]}`}
     >
       {/* No onClick: the grid listens once on its container, which keeps this a server component. */}
       {index === undefined ? (
@@ -71,7 +76,7 @@ export function GalleryFigure({
           type="button"
           data-photo-index={index}
           aria-label={openLabel}
-          className="block w-full cursor-zoom-in focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ring"
+          className={`block w-full ${square ? "h-full" : ""} cursor-zoom-in focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ring`}
         >
           {photo}
         </button>
