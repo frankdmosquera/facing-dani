@@ -415,7 +415,7 @@ export const es: Dictionary = {
     nails: {
       eyebrow: "Uñas",
       headingLead: "Gel, acrílico y",
-      headingAccent: "Gel-X en Calgary",
+      headingAccent: "Gel‑X en Calgary",
       lede: "Sets completos y rellenos, cromado, francés y arte a mano. Forma y trabajo de cutícula que siguen viéndose bien en la tercera semana.",
       addOns: "Agrega francés, cromado o arte a cualquier set.",
       more: "Ver el menú completo y reservar",

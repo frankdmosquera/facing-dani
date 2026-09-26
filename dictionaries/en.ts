@@ -417,7 +417,7 @@ export const en = {
     nails: {
       eyebrow: "Nails",
       headingLead: "Gel, acrylic and",
-      headingAccent: "Gel-X in Calgary",
+      headingAccent: "Gel‑X in Calgary",
       lede: "Full sets and fills, chrome, French and hand-painted art. Shape and cuticle work that still looks good in week three.",
       addOns: "Add French tips, chrome or nail art to any set.",
       more: "See the full menu and book",
