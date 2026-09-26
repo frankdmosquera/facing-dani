@@ -24,6 +24,7 @@ export const es: Dictionary = {
     lashes: "Pestañas",
     makeup: "Maquillaje",
     gallery: "Galería",
+    contact: "Contacto",
     logos: "Logos",
   },
 

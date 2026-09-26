@@ -23,6 +23,7 @@ export const en = {
     lashes: "Lashes",
     makeup: "Makeup",
     gallery: "Gallery",
+    contact: "Contact",
     logos: "Logos",
   },
 
