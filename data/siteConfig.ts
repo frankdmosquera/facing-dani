@@ -43,8 +43,7 @@ export const siteConfig = {
   nav: [
     { key: "home", href: "/" },
     { key: "nails", href: "/nails" },
-    // The home section until the parties page (19b) exists.
-    { key: "parties", href: "/#parties" },
+    { key: "parties", href: "/parties" },
     // Kept on phones until it is decided whether these pages stay. Never delete them uninvited.
     { key: "lashes", href: "/lashes", mobileOnly: true },
     { key: "makeup", href: "/makeup", mobileOnly: true },
@@ -58,6 +57,7 @@ export const siteConfig = {
   footer: {
     services: [
       { key: "nails", href: "/nails" },
+      { key: "parties", href: "/parties" },
       { key: "lashes", href: "/lashes" },
       { key: "makeup", href: "/makeup" },
       { key: "gallery", href: "/gallery" },

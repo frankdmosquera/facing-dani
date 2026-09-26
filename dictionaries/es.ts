@@ -36,6 +36,7 @@ export const es: Dictionary = {
     },
     links: {
       nails: "Uñas",
+      parties: "Fiestas",
       lashes: "Pestañas",
       makeup: "Maquillaje",
       gallery: "La galería",
@@ -241,6 +242,62 @@ export const es: Dictionary = {
 
     failed:
       "Eso no se envió, y prefiero decírtelo a fingir que sí. Inténtalo otra vez en un momento.",
+  },
+
+  partiesPage: {
+    meta: {
+      title: "Uñas para fiestas de niños y adolescentes en Calgary",
+      description:
+        "¿Organizas un cumpleaños o un evento escolar en Calgary? Voy a tu fiesta y les hago las uñas a los invitados: diseños sencillos y lindos para niños, sets más de moda para adolescentes.",
+    },
+    serviceType: "Uñas para fiestas",
+    eyebrow: "Fiestas en Calgary",
+    headingLead: "Uñas para",
+    headingAccent: "tu fiesta",
+    lede: "¿Organizas un cumpleaños, una pijamada o un evento escolar para niños o adolescentes? Tú haces la fiesta. Yo llego, armo una estación de uñas y les hago las uñas a los invitados.",
+    ask: "Pregunta por tu fiesta",
+    what: {
+      eyebrow: "Lo que hago allí",
+      heading: "Mi parte, y solo mi parte",
+      points: {
+        host: {
+          title: "Tú organizas",
+          body: "El pastel, los juegos, los invitados y el lugar son tuyos. Yo soy una cosa ese día, no toda la fiesta.",
+        },
+        nails: {
+          title: "Yo hago las uñas",
+          body: "Una estación de uñas y un diseño para cada invitado. Sencillos y lindos para niños, sets más de moda para adolescentes.",
+        },
+        extras: {
+          title: "Maquillaje si lo pides",
+          body: "Para los invitados mayores que quieran, puedo agregar maquillaje suave. Menciónalo cuando preguntes.",
+        },
+      },
+    },
+    how: {
+      eyebrow: "Cómo funciona",
+      heading: "Tres pasos, sin sistema de reservas",
+      steps: {
+        ask: {
+          title: "Cuéntame de la fiesta",
+          body: "La fecha, cuántos invitados y la zona de Calgary, desde el formulario de contacto. Sus edades también ayudan.",
+        },
+        confirm: {
+          title: "Te confirmo por correo",
+          body: "Reviso la fecha y te contesto con los detalles, para que sepas exactamente qué esperar.",
+        },
+        day: {
+          title: "Ese día, llego a la fiesta",
+          body: "Me instalo, atiendo a los invitados y recojo cuando termino. El resto de la fiesta sigue siendo tuyo.",
+        },
+      },
+    },
+    closing: {
+      eyebrow: "¿Ya tienes fecha?",
+      headingLead: "Hagamos que",
+      headingAccent: "brille",
+      lede: "Mándame la fecha, el número de invitados y la zona, y te contesto, casi siempre el mismo día.",
+    },
   },
 
   thankYou: {

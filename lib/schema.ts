@@ -42,6 +42,25 @@ export function imageGallerySchema(t: Dictionary) {
   };
 }
 
+// No offers: parties have no set price yet.
+export function partiesSchema(t: Dictionary) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: t.partiesPage.meta.title,
+    description: t.partiesPage.meta.description,
+    serviceType: t.partiesPage.serviceType,
+    areaServed: {
+      "@type": "City",
+      name: siteConfig.business.city,
+    },
+    provider: {
+      "@type": "LocalBusiness",
+      name: siteConfig.business.name,
+    },
+  };
+}
+
 export function serviceSchema(serviceId: ServiceId, t: Dictionary) {
   const copy = t.services[serviceId];
   const rows = treatmentsFor(serviceId);

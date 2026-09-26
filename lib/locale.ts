@@ -14,6 +14,7 @@ export function isLocale(value: string): value is Locale {
 export const routes = [
   "/",
   "/nails",
+  "/parties",
   "/lashes",
   "/makeup",
   "/gallery",

@@ -35,6 +35,7 @@ export const en = {
     },
     links: {
       nails: "Nails",
+      parties: "Parties",
       lashes: "Lashes",
       makeup: "Makeup",
       gallery: "The gallery",
@@ -239,6 +240,63 @@ export const en = {
     // Names no second route: there is no Instagram or public email yet.
     failed:
       "That did not send, and I would rather tell you than pretend it did. Try again in a moment.",
+  },
+
+  // A parent hosts; she comes and does the guests' nails. Never "book me for your party".
+  partiesPage: {
+    meta: {
+      title: "Nails for Kids' and Teen Parties in Calgary",
+      description:
+        "Hosting a birthday or a school event in Calgary? I come to your party and do the guests' nails: simple, cute designs for kids, trendier sets for teens.",
+    },
+    serviceType: "Party nails",
+    eyebrow: "Parties in Calgary",
+    headingLead: "Nails for",
+    headingAccent: "your party",
+    lede: "Hosting a birthday, a sleepover or a school event for kids or teens? You run the party. I come along, set up a nail station and do the guests' nails.",
+    ask: "Ask about your party",
+    what: {
+      eyebrow: "What I do there",
+      heading: "My part, and only my part",
+      points: {
+        host: {
+          title: "You host",
+          body: "The cake, the games, the guests and the place are yours. I am one thing on the day, not the whole party.",
+        },
+        nails: {
+          title: "I do the nails",
+          body: "A nail station and a design for each guest. Simple and cute for kids, trendier sets for teens.",
+        },
+        extras: {
+          title: "Makeup on request",
+          body: "For older guests who want it, I can add light makeup. Mention it when you ask.",
+        },
+      },
+    },
+    how: {
+      eyebrow: "How it works",
+      heading: "Three steps, no booking system",
+      steps: {
+        ask: {
+          title: "Tell me about the party",
+          body: "The date, how many guests and the area of Calgary, through the contact form. Their ages help too.",
+        },
+        confirm: {
+          title: "I confirm by email",
+          body: "I check the date and come back to you with the details, so you know exactly what to expect.",
+        },
+        day: {
+          title: "On the day, I come to you",
+          body: "I set up, work through the guests, and pack up when I am done. The rest of the party stays yours.",
+        },
+      },
+    },
+    closing: {
+      eyebrow: "Got a date?",
+      headingLead: "Let's make it",
+      headingAccent: "shine",
+      lede: "Send me the date, the number of guests and the area, and I will come back to you, usually the same day.",
+    },
   },
 
   thankYou: {
