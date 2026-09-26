@@ -13,9 +13,6 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
 
-      // /about was merged into the home page.
-      { source: "/about", destination: "/", permanent: true },
-      { source: "/es/about", destination: "/es", permanent: true },
     ];
   },
 

@@ -44,6 +44,7 @@ export const siteConfig = {
     { key: "home", href: "/" },
     { key: "nails", href: "/nails" },
     { key: "parties", href: "/parties" },
+    { key: "about", href: "/about" },
     // Kept on phones until it is decided whether these pages stay. Never delete them uninvited.
     { key: "lashes", href: "/lashes", mobileOnly: true },
     { key: "makeup", href: "/makeup", mobileOnly: true },
@@ -63,8 +64,9 @@ export const siteConfig = {
       { key: "gallery", href: "/gallery" },
     ] satisfies FooterItem[],
     contact: [
+      { key: "about", href: "/about" },
       { key: "contact", href: "/contact" },
-        { key: "faq", href: "/#faq" },
+      { key: "faq", href: "/#faq" },
     ] satisfies FooterItem[],
   },
 } as const;

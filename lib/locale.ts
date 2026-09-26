@@ -15,6 +15,7 @@ export const routes = [
   "/",
   "/nails",
   "/parties",
+  "/about",
   "/lashes",
   "/makeup",
   "/gallery",
