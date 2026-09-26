@@ -1166,6 +1166,7 @@
                 <a class="cell" href="#item-19b" data-goto="item-19b" data-state="done" title="19b Parties page and contact - done">19b</a>
                 <a class="cell" href="#item-19c" data-goto="item-19c" data-state="done" title="19c About returns - done">19c</a>
                 <a class="cell" href="#item-19d" data-goto="item-19d" data-state="done" title="19d Lashes and makeup made light - done">19d</a>
+                <a class="cell" href="#item-20" data-goto="item-20" data-state="done" title="20 Store - done">20</a>
                 <span class="cell-open" title="Item 15 is being built; its steps follow"><a class="cell" href="#item-15" data-goto="item-15" data-state="active" title="15 Domain, indexing and production email - being built">15</a><a class="cell cell--step" href="#step-15-1" data-goto="step-15-1" data-state="done" title="15.1 Buy the domain - done">15.1</a><a class="cell cell--step" href="#step-15-2" data-goto="step-15-2" data-state="done" title="15.2 A business address for $0 - done">15.2</a><a class="cell cell--step" href="#step-15-3" data-goto="step-15-3" data-state="done" title="15.3 The contact form delivers - done">15.3</a><a class="cell cell--step" href="#step-15-4" data-goto="step-15-4" data-state="done" title="15.4 The domain in code, indexing opens - done">15.4</a><a class="cell cell--step" href="#step-15-5" data-goto="step-15-5" data-state="active" title="15.5 Ship with the Glammed rebrand - being built">15.5</a></span>
             </div>
           </div>
@@ -1288,7 +1289,7 @@
           were pre-build steps and sit in Phase 0 rather than in the list.
         </p>
         <div class="tally">
-          <span class="tally-part" data-state="done"><span class="tally-key">Done</span><span class="tally-val">15 of 16 MVP items</span></span>
+          <span class="tally-part" data-state="done"><span class="tally-key">Done</span><span class="tally-val">16 of 17 MVP items</span></span>
           <span class="tally-part" data-state="active"><span class="tally-key">Now</span><span class="tally-val">15 &middot; live as Glammed Beauty Studio since Sep 25; redirect, Search Console and a live form test left</span></span>
           <span class="tally-part" data-state="planned"><span class="tally-key">Next</span><span class="tally-val">Punch list: thin content (8), nails and makeup hero images (9), light mode (11)</span></span>
         </div>
@@ -1636,9 +1637,23 @@
           <div class="item" id="item-19" data-state="done"><div class="item-num">19</div><div class="item-body"><div class="item-name">Nails and parties</div><p class="item-text">Dani is strong at nails and still learning lashes and makeup, so the site stopped presenting three equal professional services. <b>Nails</b> is the one professional service. <b>Parties</b> is the second side: she comes to a kids' or teen party someone else hosts and does the guests' nails, never the organiser and never instantly bookable. Lashes and makeup keep their pages, reached from the phone menu and the footer. Decided and built on Sep 25, one point at a time, then as a full round.</p>
 
             <details class="drawer" data-kind="reality">
-              <summary>Log <span class="tag-drift">4 entries, newest first</span></summary>
+              <summary>Log <span class="tag-drift">6 entries, newest first</span></summary>
               <div class="drawer-body">
                 <div class="log">
+                  <div class="entry" data-kind="change">
+                    <div class="dot"></div>
+                    <div class="entry-body">
+                      <div class="entry-top"><span class="entry-title">Frank's review round</span><span class="kind-tag">Change</span><span class="stamp">Sep 25</span></div>
+                      <p class="entry-text">Walking the live site, Frank asked for less and more. <b>Less:</b> the home work wall became eight small squares below the story, and the home story shrank to two lines so About stops repeating it. <b>More:</b> a Gel, acrylic or Gel-X guide and a price heading on the nails page, and a Shapes, finishes and aftercare guide on home, taking it from about 730 words to about 1,000. The party copy opened up from nails only to nails, face painting and makeup, lashes for teens, because nails-only wording made parties sound like a nail appointment. All on one branch and pushed once, after the earlier small fixes had each gone out on their own.</p>
+                    </div>
+                  </div>
+                  <div class="entry" data-kind="fix">
+                    <div class="dot"></div>
+                    <div class="entry-body">
+                      <div class="entry-top"><span class="entry-title">New pages no longer need a restart</span><span class="kind-tag">Fix</span><span class="stamp">Sep 25</span></div>
+                      <p class="entry-text">Frank kept seeing a page missing on his dev server that existed in the code. English was served by one rewrite per route in <code>next.config.ts</code>, built once when the dev server starts, so a new page 404'd until a restart. <code>proxy.ts</code> now maps every non-<code>/es</code> address to English per request; a throwaway page was proved to load without a restart. Separately, <code>/about</code> kept going home in his browser because the old redirect was permanent and browsers cache those.</p>
+                    </div>
+                  </div>
                   <div class="entry" data-kind="done">
                     <div class="dot"></div>
                     <div class="entry-body">
@@ -1687,6 +1702,7 @@
           <div class="item" id="item-19b" data-state="done"><div class="item-num">19b</div><div class="item-body"><div class="item-name">Parties page and contact</div><p class="item-text">A <code>/parties</code> page and one contact form for questions and party requests. Absorbs punch item 6.</p></div><span class="pill pill--done">Done</span></div>
           <div class="item" id="item-19c" data-state="done"><div class="item-num">19c</div><div class="item-body"><div class="item-name">About returns</div><p class="item-text">Its own page again, linked from the story.</p></div><span class="pill pill--done">Done</span></div>
           <div class="item" id="item-19d" data-state="done"><div class="item-num">19d</div><div class="item-body"><div class="item-name">Lashes and makeup made light</div><p class="item-text">Out of the header and the search copy; pages and Cal.com events kept.</p></div><span class="pill pill--done">Done</span></div>
+          <div class="item" id="item-20" data-state="done"><div class="item-num">20</div><div class="item-body"><div class="item-name">Store</div><p class="item-text">Press-ons and nail care on <code>/store</code>, on face-and-body's pattern: tabs by category, a card per product with its price, no cart. Bought with an appointment or asked about through the contact form, which gained "A product from the store". Six products at prices Frank set on Sep 25 <b>for Dani to confirm</b>. The photos are Pexels stock Frank picked from a contact sheet, tagged "Stock photo" on every card and credited in <code>data/store.ts</code>. No Product data for Google until she photographs her own, because Google would show a stock photo as the product. Section 1 of the plan now rules out an online shop rather than any shop.</p></div><span class="pill pill--done">Done</span></div>
           <div class="item" id="item-15" data-state="active"><div class="item-num">15</div><div class="item-body"><div class="item-name">Domain, indexing and production email</div><p class="item-text">Buy the domain, open indexing, and give the business a real address and a form that delivers in production. <b>This is what gates launch.</b> On Sep 24 the domain came from her Instagram handle, <code>glammed.beauty.studio</code>, so the site is being renamed to Glammed Beauty Studio at the same time, and this item ships with that rename rather than before it.</p>
 
             <div class="gates">
