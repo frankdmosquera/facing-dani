@@ -32,9 +32,9 @@ export function Parties({ locale, t }: { locale: Locale; t: Dictionary }) {
         ))}
       </ul>
 
-      {/* To /contact until the events page (19b) exists. */}
+      {/* ?topic=party opens the form with the party fields showing. */}
       <Link
-        href={localePath(locale, "/contact")}
+        href={`${localePath(locale, "/contact")}?topic=party`}
         className="hover-glow inline-block rounded-pill bg-[image:var(--hot)] px-7 py-4 text-center text-[15px] font-bold text-on-hot focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
       >
         {c.ask}

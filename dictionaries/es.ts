@@ -40,7 +40,7 @@ export const es: Dictionary = {
       makeup: "Maquillaje",
       gallery: "La galería",
       bookAppointment: "Reservar una cita",
-      contact: "Preguntas y eventos",
+      contact: "Preguntas y fiestas",
       about: "Sobre mí",
       faq: "Preguntas frecuentes",
       instagram: "Instagram",
@@ -173,14 +173,14 @@ export const es: Dictionary = {
 
   contact: {
     meta: {
-      title: "Reserva tu cita en Calgary",
+      title: "Preguntas y fiestas en Calgary",
       description:
-        "Dime qué buscas y cuándo, y te contesto con una hora. Uñas, pestañas y maquillaje en Calgary, con cita previa. Te atiendo en español.",
+        "Pregúntame lo que quieras, o cuéntame de la fiesta que organizas en Calgary: la fecha, cuántos invitados y la zona. Contesto todos los mensajes, casi siempre el mismo día. Te atiendo en español.",
     },
-    eyebrow: "Sin depósito, sin cuenta, sin app",
+    eyebrow: "Preguntas y fiestas",
     headingLead: "Dime qué",
-    headingAccent: "quieres",
-    lede: "Llena esto y me llega al correo. Contesto todos, casi siempre el mismo día, y no hay nada reservado hasta que acordemos una hora en Calgary que nos sirva a las dos.",
+    headingAccent: "necesitas",
+    lede: "Pregúntame lo que quieras, o cuéntame de una fiesta que estás organizando. Me llega al correo y contesto todos, casi siempre el mismo día. Para reservar una cita de uñas es más rápido desde la página de uñas.",
 
     direct: {
       heading: "¿Prefieres escribirme directo?",
@@ -192,16 +192,34 @@ export const es: Dictionary = {
       name: "Tu nombre",
       email: "Correo",
       emailHint: "Para poder contestarte. No se manda nada más aquí.",
-      service: "¿Qué estás buscando?",
-      servicePlaceholder: "Todavía no sé",
+      topic: "¿De qué se trata?",
+      topicPlaceholder: "Elige una",
+      partyKind: "¿Qué tipo de fiesta?",
+      partyDate: "Fecha",
+      guests: "¿Cuántos invitados?",
+      guestsHint: "Más o menos está bien.",
+      area: "Zona de Calgary",
+      areaHint: "Con el barrio basta por ahora.",
       source: "¿Cómo me encontraste?",
       sourcePlaceholder: "Elige una",
       message: "¿Qué tienes en mente?",
-      messageHint:
-        "Fechas aproximadas, una foto de referencia que hayas visto, o simplemente cuál es la ocasión.",
+      messageHint: "Tu pregunta, o una foto de referencia que hayas visto.",
+      messageHintParty: "Sus edades, el estilo que buscan, lo que deba saber.",
       submit: "Enviar",
       submitting: "Enviando...",
       required: "Obligatorio",
+    },
+
+    topics: {
+      party: "Una fiesta que organizo",
+      question: "Una pregunta",
+      other: "Otra cosa",
+    },
+
+    partyKinds: {
+      birthday: "Cumpleaños",
+      school: "Evento escolar",
+      other: "Otra cosa",
     },
 
     sources: {
@@ -217,6 +235,8 @@ export const es: Dictionary = {
       email: "Eso no parece un correo.",
       tooShort: "Un poco más de detalle me ayuda a contestarte bien.",
       tooLong: "Eso es más largo de lo que acepta el formulario.",
+      date: "Elige la fecha de la fiesta.",
+      guests: "Un número del 1 al 50, por favor.",
     },
 
     failed:

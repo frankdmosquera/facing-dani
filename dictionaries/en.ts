@@ -39,7 +39,7 @@ export const en = {
       makeup: "Makeup",
       gallery: "The gallery",
       bookAppointment: "Book an appointment",
-      contact: "Questions and events",
+      contact: "Questions and parties",
       about: "About",
       faq: "FAQ",
       instagram: "Instagram",
@@ -170,14 +170,14 @@ export const en = {
 
   contact: {
     meta: {
-      title: "Book a Set in Calgary",
+      title: "Questions and Party Requests in Calgary",
       description:
-        "Tell me what you are after and when, and I will come back with a time. Nails, lashes and makeup in Calgary, by appointment. Se habla espanol.",
+        "Ask me anything, or tell me about the party you are hosting in Calgary: the date, how many guests and the area. I answer every message, usually the same day. Se habla espanol.",
     },
-    eyebrow: "No deposit, no account, no app",
+    eyebrow: "Questions and parties",
     headingLead: "Tell me what",
-    headingAccent: "you want",
-    lede: "Fill this in and it lands in my inbox. I answer every one, usually the same day, and nothing is booked until we have agreed a time in Calgary that works for both of us.",
+    headingAccent: "you need",
+    lede: "Ask me anything, or tell me about a party you are hosting. It lands in my inbox and I answer every one, usually the same day. Booking a nail appointment is quicker from the nails page.",
 
     direct: {
       heading: "Would rather just message me?",
@@ -189,16 +189,34 @@ export const en = {
       name: "Your name",
       email: "Email",
       emailHint: "So I can reply. Nothing else is sent here.",
-      service: "What are you after?",
-      servicePlaceholder: "Not sure yet",
+      topic: "What is it about?",
+      topicPlaceholder: "Pick one",
+      partyKind: "What kind of party?",
+      partyDate: "Date",
+      guests: "How many guests?",
+      guestsHint: "Roughly is fine.",
+      area: "Area of Calgary",
+      areaHint: "The neighbourhood is enough for now.",
       source: "How did you find me?",
       sourcePlaceholder: "Pick one",
       message: "What are you thinking?",
-      messageHint:
-        "Rough dates, a reference photo you have seen, or just what the occasion is.",
+      messageHint: "Your question, or a reference photo you have seen.",
+      messageHintParty: "Their ages, the look they are after, anything I should know.",
       submit: "Send it",
       submitting: "Sending...",
       required: "Required",
+    },
+
+    topics: {
+      party: "A party I am hosting",
+      question: "A question",
+      other: "Something else",
+    },
+
+    partyKinds: {
+      birthday: "Birthday",
+      school: "School event",
+      other: "Something else",
     },
 
     sources: {
@@ -214,6 +232,8 @@ export const en = {
       email: "That does not look like an email address.",
       tooShort: "A little more detail would help me answer properly.",
       tooLong: "That is longer than the form can take.",
+      date: "Pick the date of the party.",
+      guests: "A number from 1 to 50, please.",
     },
 
     // Names no second route: there is no Instagram or public email yet.

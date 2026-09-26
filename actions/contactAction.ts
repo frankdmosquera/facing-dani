@@ -32,8 +32,17 @@ export async function submitContact(
     return FAILED;
   }
 
-  const { name, email, source, message } = parsed.data;
-  const service = parsed.data.service || null;
+  const { name, email, topic, source, message } = parsed.data;
+  // Only a party request carries these; for any other topic they are ignored.
+  const party =
+    topic === "party"
+      ? {
+          kind: parsed.data.partyKind,
+          date: parsed.data.partyDate,
+          guests: Number(parsed.data.guests),
+          area: parsed.data.area,
+        }
+      : null;
 
   try {
     const resend = new Resend(apiKey);
@@ -44,11 +53,21 @@ export async function submitContact(
       // Straight to her Gmail, not the forwarded address: the forwarder rejects Resend's shared IPs whenever SpamCop lists one. Kept out of git.
       to: [process.env.CONTACT_INBOX ?? siteConfig.business.email],
       replyTo: email,
-      subject: `New enquiry from ${name}`,
+      subject: party
+        ? `Party request from ${name}, ${party.date}`
+        : `New ${topic} from ${name}`,
       text: [
         `Name:    ${name}`,
         `Email:   ${email}`,
-        `Service: ${service ?? "not sure yet"}`,
+        `About:   ${topic}`,
+        ...(party
+          ? [
+              `Party:   ${party.kind}`,
+              `Date:    ${party.date}`,
+              `Guests:  ${party.guests}`,
+              `Area:    ${party.area}`,
+            ]
+          : []),
         `Found:   ${source}`,
         `Language: ${locale}`,
         "",
@@ -58,7 +77,8 @@ export async function submitContact(
       react: createElement(ContactEnquiryEmail, {
         name,
         email,
-        service,
+        topic,
+        party,
         source,
         locale,
         message,

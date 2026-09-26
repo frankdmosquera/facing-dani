@@ -19,10 +19,18 @@ const INK = "#F6F2FA";
 const MUTED = "#B3A8C2";
 const NAILS = "#FF3D8F";
 
+export type PartyDetails = {
+  kind: string;
+  date: string;
+  guests: number;
+  area: string;
+};
+
 export type ContactEnquiryProps = {
   name: string;
   email: string;
-  service: string | null;
+  topic: string;
+  party: PartyDetails | null;
   source: string;
   locale: string;
   message: string;
@@ -54,7 +62,8 @@ function Field({ label, value }: { label: string; value: string }) {
 export function ContactEnquiryEmail({
   name,
   email,
-  service,
+  topic,
+  party,
   source,
   locale,
   message,
@@ -62,7 +71,9 @@ export function ContactEnquiryEmail({
   return (
     <Html lang={locale}>
       <Head />
-      <Preview>{`${name} - ${service ?? "not sure yet"}`}</Preview>
+      <Preview>
+        {party ? `${name} - party on ${party.date}` : `${name} - ${topic}`}
+      </Preview>
       <Body
         style={{
           backgroundColor: GROUND,
@@ -90,7 +101,7 @@ export function ContactEnquiryEmail({
               letterSpacing: "0.16em",
             }}
           >
-            New enquiry
+            {party ? "Party request" : "New enquiry"}
           </Text>
 
           <Heading
@@ -107,7 +118,15 @@ export function ContactEnquiryEmail({
 
           <Section>
             <Field label="Email" value={email} />
-            <Field label="Service" value={service ?? "Not sure yet"} />
+            <Field label="About" value={topic} />
+            {party ? (
+              <>
+                <Field label="Party" value={party.kind} />
+                <Field label="Date" value={party.date} />
+                <Field label="Guests" value={String(party.guests)} />
+                <Field label="Area" value={party.area} />
+              </>
+            ) : null}
             <Field label="Found via" value={source} />
             <Field label="Language" value={locale} />
           </Section>
