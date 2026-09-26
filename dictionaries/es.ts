@@ -504,9 +504,9 @@ export const es: Dictionary = {
   // No es objetivo de posicionamiento: el título se escribe para leerse bien.
   gallery: {
     meta: {
-      title: "Mi trabajo en Calgary: uñas, pestañas y maquillaje",
+      title: "Mi trabajo en Calgary: arte y sets de uñas",
       description:
-        "Sets reales, nunca fotos de archivo. Arte de uñas, extensiones de pestañas y maquillaje para eventos hechos en Calgary, en grande para que juzgues el acabado.",
+        "Sets reales, nunca fotos de archivo. Arte de uñas, francés, cromado y Gel-X hechos en Calgary, y algo de mi maquillaje, en grande para que juzgues el acabado.",
     },
     eyebrow: "Cada foto es mía",
     headingLead: "El trabajo,",

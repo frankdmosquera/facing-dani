@@ -97,24 +97,25 @@ work, so it comes before the pages that describe it.
   or makeup shots of hers light up those pages' work strips. A recognisable
   face still stays out until she is asked. The nails and home heroes are picked
   from this set afterwards
-- [ ] 19. **Nails and events** - nails is the one professional service, parties
+- [x] 19. **Nails and events** - nails is the one professional service, parties
   the second side, where she is a station at someone else's party. Lashes and
   makeup are mentioned lightly. Menu becomes Home, Nails, Events, About, Contact
-  - [ ] 19a. **Home page in the new order** - head title and description lead
+  - [x] 19a. **Home page in the new order** - head title and description lead
     with nails then parties; hero, nails menu with Book buttons in place of the
     three service cards, work, a new events section, shorter story, Spanish, in
     the chair, FAQ, closing band
-  - [ ] 19b. **Parties page and contact** - a `/parties` page that says what
+  - [x] 19b. **Parties page and contact** - a `/parties` page that says what
     she does at someone else's party, and one contact page for party requests
     and questions, the party fields shown only for a party. The header link,
     the hero button and the home section's button move to it. Absorbs punch
     item 6
-  - [ ] 19c. **About returns** - its own page again, linked from the story
+  - [x] 19c. **About returns** - its own page again, linked from the story
     ("More about me"). Starts from the story's "new business" lede and "building"
     paragraph, cut from home in 19a (git history has both languages). Remove
     the `/about` redirect in `next.config.ts`
-  - [ ] 19d. **Lashes and makeup made light** - then their pages and Cal.com
-    events hidden, last, once the offer is settled
+  - [x] 19d. **Lashes and makeup made light** - off the desktop header, kept
+    in the phone menu and footer, gone from home and the search copy. Their
+    pages and Cal.com events stay until Frank decides whether they go
 - [ ] 15. **Domain, indexing and production email** - buy the domain, set the
   site URL so robots stops disallowing everything, and give Resend a sender that
   can mail anyone. Blocked until the domain exists

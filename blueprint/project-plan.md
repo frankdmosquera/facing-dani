@@ -81,12 +81,18 @@ being a price list.
 
 ## 3. Features - What does the MVP need?
 
-- Home, framing the three services and pushing to the gallery and to booking
-- One page per service: nails, lashes, makeup, each with pricing and duration
+- Home, leading with nails and then parties, and pushing to the nails page and
+  the parties page
+- Nails as the one professional service, with pricing, duration and a Book
+  button per treatment. Lashes and makeup keep their pages but are mentioned
+  lightly and reached from the phone menu and the footer, not the header
+- A parties page: she comes to a kids' or teen party someone else hosts and
+  does the guests' nails. Never the organiser, never instantly bookable
 - A gallery large enough to judge the work, filterable by service
-- Her training and the trust the business has not earned yet, carried on the
-  home page rather than a separate about page
-- A contact page with a form that reaches her, plus the direct booking route
+- An about page with her training and the trust the business has not earned
+  yet, linked from a short story on the home page
+- A contact page for questions and party requests, the party fields (kind,
+  date, guests, area) shown only for a party
 - A thank-you page, so a submitted form is unambiguous
 - **Every one of the above in English and Spanish**, at `/` and `/es`
 - Per-page metadata, JSON-LD and hreflang, written with each page rather than after
@@ -275,6 +281,11 @@ licensed stock headed "Inspiration" in both languages, under the same rules.
 The heading is what keeps it honest, so the grid never appears without it, and
 it stays when her own photos arrive because it shows styles, not her work.
 
+**Navigation: Home · Nails · Parties · About · The work.** Nails first because
+it is the professional service and the one that should rank. Parties is the
+second side. Lashes and makeup sit in the phone menu and the footer only, so
+their pages stay reachable without crowding the header.
+
 **Motion in CSS only.** Glows, gradients and the ticker cost nothing and need no
 library. `motion` is not installed and is not being added.
 
@@ -324,8 +335,9 @@ That is the reason section 4 insists every business fact comes from
 
 ### What this site has to rank for
 
-The target is **nails and makeup in Calgary**, plus lashes. That is the bar, and
-it decides the page structure rather than following from it.
+The target is **nails in Calgary**, then **nails at kids' and teen parties**.
+Lashes and makeup are no longer ranking targets. That is the bar, and it
+decides the page structure rather than following from it.
 
 - **One page per service, not one services page.** A single page listing three
   services competes with itself and ranks for none of them. Separate pages for
@@ -377,3 +389,9 @@ address, and a service-area listing is the normal answer to that.
 - **2026-09-20** SEO moved from a single item at the end into each page, because
   the coding standards say it is the product and not a finishing pass, and the
   plan contradicted them.
+- **2026-09-25** Nails and parties. Dani is strong at nails and still learning
+  lashes and makeup, so nails became the one professional service and parties
+  (a nail station at someone else's kids' or teen party) the second side. Home,
+  navigation, contact and search copy were rebuilt around that as build-plan
+  item 19, and about came back as its own page. Lashes and makeup keep their
+  pages until it is decided whether they stay.
