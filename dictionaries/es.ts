@@ -7,11 +7,11 @@ export const es: Dictionary = {
     title: "Uñas en Calgary, con cita o en tu fiesta - Glammed Beauty Studio",
     template: "%s - Glammed Beauty Studio",
     description:
-      "Uñas de gel y acrílico en Calgary, con formación colombiana. ¿Organizas una fiesta de niños o adolescentes? Puedo ir y hacerles las uñas a los invitados.",
+      "Uñas de gel y acrílico en Calgary, con formación colombiana. ¿Organizas una fiesta de niños o adolescentes? Puedo ir con uñas, pintura facial y maquillaje para los invitados.",
   },
 
   blurb:
-    "Uñas en Calgary, con cita previa. Formación colombiana. También hago uñas en fiestas de niños y adolescentes.",
+    "Uñas en Calgary, con cita previa. Formación colombiana. También voy a fiestas de niños y adolescentes.",
 
   marquee: ["Uñas", "Fiestas", "Calgary"],
 
@@ -277,15 +277,15 @@ export const es: Dictionary = {
 
   partiesPage: {
     meta: {
-      title: "Uñas para fiestas de niños y adolescentes en Calgary",
+      title: "Uñas, pintura facial y maquillaje para fiestas en Calgary",
       description:
-        "¿Organizas un cumpleaños o un evento escolar en Calgary? Voy a tu fiesta y les hago las uñas a los invitados: diseños sencillos y lindos para niños, sets más de moda para adolescentes.",
+        "¿Organizas un cumpleaños o un evento escolar en Calgary? Voy a tu fiesta con uñas, pintura facial y maquillaje para los invitados: sencillo y divertido para niños, más de moda para adolescentes.",
     },
-    serviceType: "Uñas para fiestas",
+    serviceType: "Uñas, pintura facial y maquillaje para fiestas",
     eyebrow: "Fiestas en Calgary",
-    headingLead: "Uñas para",
+    headingLead: "Uñas y más para",
     headingAccent: "tu fiesta",
-    lede: "¿Organizas un cumpleaños, una pijamada o un evento escolar para niños o adolescentes? Tú haces la fiesta. Yo llego, armo una estación de uñas y les hago las uñas a los invitados.",
+    lede: "¿Organizas un cumpleaños, una pijamada o un evento escolar para niños o adolescentes? Tú haces la fiesta. Yo llego, armo mi estación y les hago uñas, pintura facial y maquillaje a los invitados.",
     ask: "Pregunta por tu fiesta",
     what: {
       eyebrow: "Lo que hago allí",
@@ -296,12 +296,12 @@ export const es: Dictionary = {
           body: "El pastel, los juegos, los invitados y el lugar son tuyos. Yo soy una cosa ese día, no toda la fiesta.",
         },
         nails: {
-          title: "Yo hago las uñas",
-          body: "Una estación de uñas y un diseño para cada invitado. Sencillos y lindos para niños, sets más de moda para adolescentes.",
+          title: "Yo hago la belleza",
+          body: "Uñas, pintura facial y maquillaje, un look para cada invitado. Sencillo y divertido para niños, sets y maquillaje más de moda para adolescentes.",
         },
         extras: {
-          title: "Maquillaje si lo pides",
-          body: "Para los invitados mayores que quieran, puedo agregar maquillaje suave. Menciónalo cuando preguntes.",
+          title: "Pestañas si las pides",
+          body: "Para los invitados mayores que las quieran, puedo agregar pestañas. Menciónalo cuando preguntes.",
         },
       },
     },
@@ -352,7 +352,7 @@ export const es: Dictionary = {
       },
       parties: {
         heading: "También fiestas",
-        body: "Además de las citas, voy a fiestas de niños y adolescentes y les hago las uñas a los invitados. Tú organizas la fiesta; yo llevo la estación de uñas y hago mi parte.",
+        body: "Además de las citas, voy a fiestas de niños y adolescentes con uñas, pintura facial y maquillaje para los invitados. Tú organizas la fiesta; yo llevo mi estación y hago mi parte.",
       },
       spanish: {
         heading: "En inglés o en español",
@@ -362,7 +362,7 @@ export const es: Dictionary = {
     feeling:
       "Lo que más me importa es cómo te sientes cuando te vas. No solo que el set se vea bien, sino que salgas sintiéndote hermosa y segura de ti misma.",
     nails: "Ver el menú de uñas",
-    party: "Uñas para tu fiesta",
+    party: "Para tu fiesta",
   },
 
   thankYou: {
@@ -398,7 +398,7 @@ export const es: Dictionary = {
     },
     parties: {
       q: "¿Puedes ir a una fiesta?",
-      a: "Sí, como la estación de uñas en una fiesta que tú organizas, para niños o adolescentes. Las fiestas no se reservan en línea: mándame la fecha, cuántos invitados y la zona desde la página de contacto, y te confirmo por correo.",
+      a: "Sí, con mi estación en una fiesta que tú organizas, para niños o adolescentes: uñas, pintura facial y maquillaje. Las fiestas no se reservan en línea: mándame la fecha, cuántos invitados y la zona desde la página de contacto, y te confirmo por correo.",
     },
     duration: {
       q: "¿Cuánto dura un set completo?",
@@ -439,9 +439,9 @@ export const es: Dictionary = {
       eyebrow: "Calgary · con cita previa",
       headingLead: "Uñas que",
       headingAccent: "se notan",
-      sell: "Sets de gel y acrílico, con formación colombiana, tomando citas ahora en Calgary. Tráeme una foto de referencia o déjame crear algo para ti. ¿Organizas una fiesta de niños o adolescentes? Puedo ir y hacerles las uñas a los invitados.",
+      sell: "Sets de gel y acrílico, con formación colombiana, tomando citas ahora en Calgary. Tráeme una foto de referencia o déjame crear algo para ti. ¿Organizas una fiesta de niños o adolescentes? Puedo ir con uñas, pintura facial y maquillaje para los invitados.",
       nails: "Reservar uñas",
-      party: "Uñas para tu fiesta",
+      party: "Para tu fiesta",
       dmNote: "O mándame un DM por Instagram, lo que te sea más fácil",
     },
     nails: {
@@ -478,17 +478,17 @@ export const es: Dictionary = {
 
     parties: {
       eyebrow: "Fiestas",
-      headingLead: "Uñas para",
+      headingLead: "Uñas y más para",
       headingAccent: "tu fiesta",
-      lede: "¿Organizas un cumpleaños o una reunión para niños o adolescentes? Tú haces la fiesta, yo voy y les hago las uñas a los invitados.",
+      lede: "¿Organizas un cumpleaños o una reunión para niños o adolescentes? Tú haces la fiesta, yo llego y me encargo de los invitados: uñas, pintura facial, maquillaje, y pestañas para los mayores.",
       points: {
         host: {
-          title: "Tú organizas, yo hago las uñas",
-          body: "El pastel, los juegos y los invitados son tuyos. Yo armo una estación de uñas y voy atendiendo a los invitados.",
+          title: "Tú organizas, yo hago la belleza",
+          body: "El pastel, los juegos y los invitados son tuyos. Yo armo mi estación y voy atendiendo a los invitados.",
         },
         age: {
           title: "Pensado para su edad",
-          body: "Diseños sencillos y lindos para los niños, sets más de moda para los adolescentes. Maquillaje si lo pides.",
+          body: "Pintura facial y uñas sencillas y lindas para los niños. Sets más de moda, maquillaje y pestañas para los adolescentes.",
         },
         ask: {
           title: "Pregunta primero",

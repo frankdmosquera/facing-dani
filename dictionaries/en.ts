@@ -6,11 +6,11 @@ export const en = {
     title: "Nails in Calgary, by Appointment or at Your Party - Glammed Beauty Studio",
     template: "%s - Glammed Beauty Studio",
     description:
-      "Custom gel and acrylic nails in Calgary, trained in Colombia. Hosting a kids' or teen party? I can come and do nails for the guests.",
+      "Custom gel and acrylic nails in Calgary, trained in Colombia. Hosting a kids' or teen party? I can come with nails, face painting and makeup for the guests.",
   },
 
   blurb:
-    "Nails in Calgary, by appointment. Trained in Colombia. I also do nails at kids' and teen parties.",
+    "Nails in Calgary, by appointment. Trained in Colombia. I also come to kids' and teen parties.",
 
   marquee: ["Nails", "Parties", "Calgary"],
 
@@ -274,18 +274,18 @@ export const en = {
       "That did not send, and I would rather tell you than pretend it did. Try again in a moment.",
   },
 
-  // A parent hosts; she comes and does the guests' nails. Never "book me for your party".
+  // A parent hosts; she comes and does her part: nails, face painting, makeup. Never "book me for your party".
   partiesPage: {
     meta: {
-      title: "Nails for Kids' and Teen Parties in Calgary",
+      title: "Party Nails, Face Painting and Makeup in Calgary",
       description:
-        "Hosting a birthday or a school event in Calgary? I come to your party and do the guests' nails: simple, cute designs for kids, trendier sets for teens.",
+        "Hosting a birthday or a school event in Calgary? I come to your party with nails, face painting and makeup for the guests: simple and fun for kids, trendier for teens.",
     },
-    serviceType: "Party nails",
+    serviceType: "Party nails, face painting and makeup",
     eyebrow: "Parties in Calgary",
-    headingLead: "Nails for",
+    headingLead: "Nails and more for",
     headingAccent: "your party",
-    lede: "Hosting a birthday, a sleepover or a school event for kids or teens? You run the party. I come along, set up a nail station and do the guests' nails.",
+    lede: "Hosting a birthday, a sleepover or a school event for kids or teens? You run the party. I come along, set up a station and do the guests' nails, faces and makeup.",
     ask: "Ask about your party",
     what: {
       eyebrow: "What I do there",
@@ -296,12 +296,12 @@ export const en = {
           body: "The cake, the games, the guests and the place are yours. I am one thing on the day, not the whole party.",
         },
         nails: {
-          title: "I do the nails",
-          body: "A nail station and a design for each guest. Simple and cute for kids, trendier sets for teens.",
+          title: "I do the beauty",
+          body: "Nails, face painting and makeup, a look for each guest. Simple and fun for kids, trendier sets and makeup for teens.",
         },
         extras: {
-          title: "Makeup on request",
-          body: "For older guests who want it, I can add light makeup. Mention it when you ask.",
+          title: "Lashes on request",
+          body: "For older guests who want them, I can add lashes. Mention it when you ask.",
         },
       },
     },
@@ -353,7 +353,7 @@ export const en = {
       },
       parties: {
         heading: "Parties, too",
-        body: "Besides appointments, I come to kids' and teen parties and do the guests' nails. You host the party; I bring the nail station and do my part.",
+        body: "Besides appointments, I come to kids' and teen parties with nails, face painting and makeup for the guests. You host the party; I bring my station and do my part.",
       },
       spanish: {
         heading: "In English or in Spanish",
@@ -364,7 +364,7 @@ export const en = {
     feeling:
       "What I care about most is how you feel when you leave. Not just that the set looks good, but that you walk out feeling beautiful and sure of yourself.",
     nails: "See the nails menu",
-    party: "Nails for your party",
+    party: "For your party",
   },
 
   thankYou: {
@@ -401,7 +401,7 @@ export const en = {
     },
     parties: {
       q: "Can you come to a party?",
-      a: "Yes, as the nail station at a party you host, for kids or teens. Parties are not booked online: send me the date, how many guests and the area through the contact page, and I will confirm by email.",
+      a: "Yes, with my station at a party you host, for kids or teens: nails, face painting and makeup. Parties are not booked online: send me the date, how many guests and the area through the contact page, and I will confirm by email.",
     },
     duration: {
       q: "How long does a full set take?",
@@ -443,9 +443,9 @@ export const en = {
       eyebrow: "Calgary · by appointment",
       headingLead: "Nails that",
       headingAccent: "get noticed",
-      sell: "Custom gel and acrylic sets, trained in Colombia, booking now in Calgary. Bring a reference photo or let me build something for you. Hosting a kids' or teen party? I can come and do the guests' nails.",
+      sell: "Custom gel and acrylic sets, trained in Colombia, booking now in Calgary. Bring a reference photo or let me build something for you. Hosting a kids' or teen party? I can come with nails, face painting and makeup for the guests.",
       nails: "Book nails",
-      party: "Nails for your party",
+      party: "For your party",
       dmNote: "Or send a DM on Instagram, whatever is easier",
     },
     nails: {
@@ -485,17 +485,17 @@ export const en = {
 
     parties: {
       eyebrow: "Parties",
-      headingLead: "Nails for",
+      headingLead: "Nails and more for",
       headingAccent: "your party",
-      lede: "Hosting a birthday or a get-together for kids or teens? You run the party, I come and do the guests' nails.",
+      lede: "Hosting a birthday or a get-together for kids or teens? You run the party, I come and set up for the guests: nails, face painting, makeup, and lashes for the older ones.",
       points: {
         host: {
-          title: "You host, I do the nails",
-          body: "Cake, games and guests are yours. I set up a nail station and work through the guests.",
+          title: "You host, I do the beauty",
+          body: "Cake, games and guests are yours. I set up a station and work through the guests.",
         },
         age: {
           title: "Made for their age",
-          body: "Simple, cute designs for kids, trendier sets for teens. Makeup on request.",
+          body: "Face painting and simple, cute nails for kids. Trendier sets, makeup and lashes for teens.",
         },
         ask: {
           title: "Ask first",
