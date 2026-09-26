@@ -5,6 +5,8 @@
 /* Dark is the default, in :root. The light theme lives in .light.
    The dark variant is kept class-based so dark: never follows the OS setting. */
 @custom-variant dark (&:is(.dark *));
+/* light: utilities, for the few things that swap outright in light mode, such as the logo. */
+@custom-variant light (&:is(.light *));
 
 @theme inline {
   /* --- brand surfaces --- */
