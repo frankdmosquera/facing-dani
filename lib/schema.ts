@@ -94,7 +94,7 @@ export function personSchema(t: Dictionary) {
     "@type": "Person",
     name: siteConfig.business.ownerName,
     jobTitle: t.home.jobTitle,
-    description: t.home.story.lede,
+    description: t.home.story.training,
     knowsLanguage: ["en", "es"],
     worksFor: {
       "@type": "LocalBusiness",

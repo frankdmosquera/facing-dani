@@ -306,14 +306,11 @@ export const en = {
       more: "See the full menu and book",
     },
     story: {
-      lede: "A new business has no reviews, no word of mouth and nothing to point at except the work and the person doing it. So here is the person, and where the way I work comes from.",
       eyebrow: "Who is doing your nails",
       headingLead: "Trained in Colombia,",
       headingAccent: "working in Calgary",
       training:
         "I did my training in Colombia, where the standard for nail work is a lot higher than most people here expect. Shape, structure and cuticle work are the parts that decide whether a set still looks good in week three, and they are the parts I was taught to get right.",
-      building:
-        "Since then I have been doing sets for family and friends constantly, and now I am building this into something of my own. What that means for you is the version of me that still cares enormously about every single set. Bring a photo from Pinterest, or sit down with no idea and we will work it out.",
       // "Sure of yourself", never "secure": her word "segura" means confident.
       feeling:
         "What I care about most is how you feel when you leave. Not just that the set looks good, but that you walk out feeling beautiful and sure of yourself.",

@@ -306,14 +306,11 @@ export const es: Dictionary = {
       more: "Ver el menú completo y reservar",
     },
     story: {
-      lede: "Un negocio nuevo no tiene reseñas, no tiene voz a voz y no tiene nada que mostrar aparte del trabajo y de quien lo hace. Así que aquí estoy yo, y de dónde viene mi manera de trabajar.",
       eyebrow: "Quién te hace las uñas",
       headingLead: "Formada en Colombia,",
       headingAccent: "trabajando en Calgary",
       training:
         "Me formé en Colombia, donde el estándar del trabajo de uñas es bastante más alto de lo que la mayoría espera aquí. La forma, la estructura y el trabajo de cutícula son lo que decide si un set sigue viéndose bien en la tercera semana, y es justo lo que me enseñaron a hacer bien.",
-      building:
-        "Desde entonces no he parado de hacerle las uñas a mi familia y a mis amigas, y ahora estoy construyendo esto como algo mío. Lo que eso significa para ti es que recibes la versión de mí que todavía se preocupa muchísimo por cada set. Tráeme una foto de Pinterest, o siéntate sin ninguna idea y lo resolvemos juntas.",
       feeling:
         "Lo que más me importa es cómo te sientes cuando te vas. No solo que el set se vea bien, sino que salgas sintiéndote hermosa y segura de ti misma.",
     },

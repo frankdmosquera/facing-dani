@@ -107,6 +107,9 @@ work, so it comes before the pages that describe it.
   - [ ] 19b. **Events and contact** - one contact page for party requests and
     questions, the event fields shown only for a party. Absorbs punch item 6
   - [ ] 19c. **About returns** - its own page again, linked from the story
+    ("More about me"). Starts from the story's "new business" lede and "building"
+    paragraph, cut from home in 19a (git history has both languages). Remove
+    the `/about` redirect in `next.config.ts`
   - [ ] 19d. **Lashes and makeup made light** - then their pages and Cal.com
     events hidden, last, once the offer is settled
 - [ ] 15. **Domain, indexing and production email** - buy the domain, set the
