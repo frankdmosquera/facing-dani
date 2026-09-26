@@ -559,6 +559,45 @@ export const en = {
       ask: "Ask about your party",
     },
 
+    guide: {
+      eyebrow: "Nail guide",
+      headingLead: "Shapes, finishes",
+      headingAccent: "and aftercare",
+      lede: "A quick guide to what to ask for, and how to keep it looking good once you walk out.",
+      storeLink: "Cuticle oil in the store",
+      columns: {
+        shapes: {
+          heading: "Shapes",
+          items: {
+            almond: { term: "Almond", text: "Tapered sides and a rounded tip. It slims and lengthens the fingers, and it is strong enough for every day." },
+            coffin: { term: "Coffin", text: "Long, with straight sides and a flat tip. The shape for statement sets, and it needs length, so acrylic or Gel‑X." },
+            square: { term: "Square", text: "Straight sides and a flat edge. Easy to wear short, and the tip takes a French line well." },
+            oval: { term: "Oval", text: "Soft and rounded. The most natural look, and the least likely to snag on things." },
+          },
+        },
+        finishes: {
+          heading: "Finishes",
+          items: {
+            chrome: { term: "Chrome", text: "A mirror or pearl powder buffed over gel, so the whole nail catches the light." },
+            french: { term: "French", text: "A clean tip line, classic white or any colour, thick or micro." },
+            catEye: { term: "Cat-eye", text: "Magnetic gel that pulls a band of shimmer across the nail, like light moving on velvet." },
+            sparkle: { term: "Glitter and gems", text: "Fine glitter, a sparkle line along the smile, or crystals on an accent nail." },
+            art: { term: "Hand-painted art", text: "Flowers, hearts, lines, stars. Bring a reference photo and it gets built for your nails." },
+          },
+        },
+        care: {
+          heading: "Make it last",
+          items: {
+            oil: { term: "Cuticle oil every day", text: "Hydrated nails flex instead of cracking, and the set stays glossy at the edges." },
+            gloves: { term: "Gloves for cleaning", text: "Hot water and cleaning products are what lift a set early." },
+            tools: { term: "Nails are not tools", text: "Open cans and peel stickers with something else. That is how tips crack." },
+            lifting: { term: "Never pick a lift", text: "Peeling a lifted corner takes a layer of your own nail with it. Message me and get it fixed." },
+            fills: { term: "Fills every two to three weeks", text: "As your nails grow, a fill keeps the balance right so the set does not snap." },
+          },
+        },
+      },
+    },
+
     expect: {
       eyebrow: "In the chair",
       heading: "What actually happens",

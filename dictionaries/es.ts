@@ -551,6 +551,45 @@ export const es: Dictionary = {
       ask: "Pregunta por tu fiesta",
     },
 
+    guide: {
+      eyebrow: "Guía de uñas",
+      headingLead: "Formas, acabados",
+      headingAccent: "y cuidado",
+      lede: "Una guía rápida de qué pedir, y de cómo mantenerlo bonito cuando te vas.",
+      storeLink: "Aceite de cutícula en la tienda",
+      columns: {
+        shapes: {
+          heading: "Formas",
+          items: {
+            almond: { term: "Almendra", text: "Lados que se afinan y punta redondeada. Estiliza los dedos y aguanta el día a día." },
+            coffin: { term: "Coffin", text: "Larga, con lados rectos y punta plana. La forma de los sets llamativos, y necesita largo, así que acrílico o Gel‑X." },
+            square: { term: "Cuadrada", text: "Lados rectos y borde plano. Fácil de llevar corta, y la punta luce muy bien con francés." },
+            oval: { term: "Ovalada", text: "Suave y redondeada. El look más natural, y la que menos se engancha." },
+          },
+        },
+        finishes: {
+          heading: "Acabados",
+          items: {
+            chrome: { term: "Cromado", text: "Un polvo espejo o perlado pulido sobre el gel, para que toda la uña refleje la luz." },
+            french: { term: "Francés", text: "Una línea limpia en la punta, blanca clásica o de cualquier color, gruesa o micro." },
+            catEye: { term: "Ojo de gato", text: "Gel magnético que forma una franja de brillo sobre la uña, como luz moviéndose en terciopelo." },
+            sparkle: { term: "Glitter y piedras", text: "Glitter fino, una línea brillante en la sonrisa, o cristales en una uña de acento." },
+            art: { term: "Arte a mano", text: "Flores, corazones, líneas, estrellas. Trae una foto de referencia y se arma para tus uñas." },
+          },
+        },
+        care: {
+          heading: "Que dure",
+          items: {
+            oil: { term: "Aceite de cutícula a diario", text: "Las uñas hidratadas se doblan en vez de romperse, y el set sigue brillante en los bordes." },
+            gloves: { term: "Guantes para limpiar", text: "El agua caliente y los productos de limpieza son lo que levanta un set antes de tiempo." },
+            tools: { term: "Las uñas no son herramientas", text: "Abre latas y despega etiquetas con otra cosa. Así es como se rompen las puntas." },
+            lifting: { term: "Nunca arranques una esquina", text: "Si despegas una esquina levantada, se lleva una capa de tu uña natural. Escríbeme y lo arreglamos." },
+            fills: { term: "Relleno cada dos o tres semanas", text: "Mientras tu uña crece, el relleno mantiene el equilibrio para que el set no se quiebre." },
+          },
+        },
+      },
+    },
+
     expect: {
       eyebrow: "En la silla",
       heading: "Lo que realmente pasa",
