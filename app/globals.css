@@ -86,8 +86,8 @@
 }
 
 :root {
-  /* After Party, from prototypes/theme.css. All four accents clear 4.5:1 on --ground.
-     Black and gold, tried for a day to match her logo, is kept in blueprint/reference/palette-black-and-gold.css. */
+  /* After Party. All four accents clear 4.5:1 on --ground.
+     Black and gold, tried for a day to match her logo, survives as the :root.gold preview below. */
 
   /* surfaces */
   --ground: #261f36;
@@ -211,7 +211,7 @@
   --confirm-ui: var(--confirm);
 }
 
-/* Black and gold, for the theme switch on /logos only. Same values as blueprint/reference/palette-black-and-gold.css. */
+/* Black and gold, for the theme switch on /logos only. */
 :root.gold {
   /* surfaces */
   --ground: #0e0c0a;
