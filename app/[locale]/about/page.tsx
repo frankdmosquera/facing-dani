@@ -6,6 +6,7 @@ import { TapedPrint } from "@/components/parties/PartyBoard";
 import { WorkFan } from "@/components/site/WorkFan";
 import type { GalleryKey } from "@/data/gallery";
 import { Band, Hot } from "@/components/site/Band";
+import { LitText } from "@/components/site/LitText";
 import { PhotoBand } from "@/components/site/PhotoBand";
 import { siteConfig } from "@/data/siteConfig";
 import { getDictionary } from "@/dictionaries";
@@ -107,9 +108,10 @@ export default async function About({ params }: PageProps<"/[locale]/about">) {
       </Band>
 
       <PhotoBand imageKey="pinkBlackStars" className="py-40!">
-        <p className="reveal mb-6 max-w-[30ch] text-[clamp(26px,4.2vw,44px)] leading-[1.2] font-medium tracking-[-0.02em] text-ink">
-          {c.feeling}
-        </p>
+        <LitText
+          text={c.feeling}
+          className="mb-6 max-w-[30ch] text-[clamp(26px,4.2vw,44px)] leading-[1.2] font-medium tracking-[-0.02em] text-ink"
+        />
 
         <p className="font-display mb-10 bg-[image:var(--hot-text)] bg-clip-text text-[clamp(56px,9vw,110px)] leading-none font-extrabold tracking-[-0.06em] text-transparent">
           {siteConfig.business.ownerName.toLowerCase()}

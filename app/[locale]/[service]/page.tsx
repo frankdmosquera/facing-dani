@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { SetBuilderBand } from "@/components/builder/SetBuilderBand";
 import { Photo } from "@/components/media/Photo";
 import { TapedPrint } from "@/components/parties/PartyBoard";
 import { DecorativeImage } from "@/components/service/DecorativeImage";
@@ -87,16 +88,21 @@ export default async function ServicePage({
           </div>
 
           {hero ? (
-            <div className="rotate-2 overflow-hidden rounded-xl border-4 border-surface bg-shot shadow-[0_30px_60px_-24px_rgba(0,0,0,0.6)] transition-[rotate] duration-500 ease-out hover:rotate-0 min-[860px]:w-[400px] min-[860px]:shrink-0">
-              <Photo
-                path={hero.imagekitPath}
-                alt={t.gallery.images[hero.key]}
-                width={hero.width}
-                height={hero.height}
-                sizes="(min-width: 860px) 380px, 100vw"
-                priority // The LCP image on a phone.
-                className="block h-auto w-full"
-              />
+            /* Her set framed as an almond nail: a polish rim and a gel shine. */
+            <div className="mx-auto w-full max-w-[300px] rotate-6 drop-shadow-[0_34px_40px_rgba(0,0,0,0.5)] transition-[rotate] duration-500 ease-out hover:rotate-2 min-[860px]:w-[360px] min-[860px]:max-w-none min-[860px]:shrink-0">
+              <div className="nail-almond aspect-[100/150] bg-[image:var(--hot)] p-2">
+                <div className="nail-almond gel-shine relative h-full overflow-hidden bg-shot">
+                  <Photo
+                    path={hero.imagekitPath}
+                    alt={t.gallery.images[hero.key]}
+                    width={hero.width}
+                    height={hero.height}
+                    sizes="(min-width: 860px) 360px, 300px"
+                    priority // The LCP image on a phone.
+                    className="block h-full w-full object-cover"
+                  />
+                </div>
+              </div>
             </div>
           ) : null}
         </div>
@@ -121,6 +127,8 @@ export default async function ServicePage({
           ) : null}
         </div>
       </Band>
+
+      {service.id === "nails" ? <SetBuilderBand t={t} /> : null}
 
       {service.id === "nails" ? <NailGuide locale={locale} t={t} /> : null}
 

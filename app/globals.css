@@ -698,15 +698,75 @@
   }
 }
 
-/* A round text seal turning slowly. */
-@keyframes lift-spin {
-  to {
-    rotate: 360deg;
+
+/*
+ * Glammed's own shapes: photos framed as nails. Almond (a soft point, the
+ * cuticle curve at the foot) for a featured photo, coffin (tapered to a flat
+ * tip) for tiles. A mask, so it stretches to whatever box it is on.
+ */
+@utility nail-almond {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 130' preserveAspectRatio='none'%3E%3Cpath d='M50 0C72 0 100 26 100 56L100 116C100 125 90 130 78 130C66 128 34 128 22 130C10 130 0 125 0 116L0 56C0 26 28 0 50 0Z'/%3E%3C/svg%3E");
+  mask-size: 100% 100%;
+}
+@utility nail-coffin {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 130' preserveAspectRatio='none'%3E%3Cpath d='M24 0L76 0C80 0 82 2 83 5L100 40L100 122C100 127 97 130 92 130L8 130C3 130 0 127 0 122L0 40L17 5C18 2 20 0 24 0Z'/%3E%3C/svg%3E");
+  mask-size: 100% 100%;
+}
+
+/* A gel top coat's shine: a soft diagonal streak of light across a photo. */
+@utility gel-shine {
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(110deg, transparent 28%, rgb(255 255 255 / 0.3) 38%, rgb(255 255 255 / 0.08) 46%, transparent 54%);
+    transition: translate 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    &:hover::after {
+      translate: 30% 0;
+    }
   }
 }
-@utility lift-spin {
-  animation: lift-spin 28s linear infinite;
-  @media (prefers-reduced-motion: reduce) {
-    animation: none;
+
+/* The colour fan opening: each swatch swings out to its own angle (--a). */
+@keyframes fan-open {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: var(--a);
+  }
+}
+@utility lift-fan {
+  rotate: var(--a);
+  transform-origin: 50% 100%;
+  @media (prefers-reduced-motion: no-preference) {
+    animation: fan-open 1100ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(500ms + 70ms * var(--i, 0));
+  }
+}
+
+/* LitText: the block names a view timeline and each word lights along it,
+   between its own --s and --e. */
+@keyframes lit-on {
+  from {
+    opacity: 0.18;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .lit {
+      view-timeline-name: --lit;
+    }
+    .lit-word {
+      animation: lit-on linear both;
+      animation-timeline: --lit;
+      animation-range: cover var(--s) cover var(--e);
+    }
   }
 }

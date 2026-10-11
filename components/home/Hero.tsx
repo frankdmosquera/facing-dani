@@ -4,7 +4,7 @@ import { Sparkle } from "lucide-react";
 
 import { WorkColumns } from "@/components/home/WorkColumns";
 import { Band, Hot } from "@/components/site/Band";
-import { SpinSeal } from "@/components/site/SpinSeal";
+import { SwatchFan } from "@/components/site/SwatchFan";
 import { siteConfig } from "@/data/siteConfig";
 import type { Dictionary } from "@/dictionaries";
 import { localePath, type Locale } from "@/lib/locale";
@@ -61,10 +61,7 @@ export function Hero({ locale, t }: { locale: Locale; t: Dictionary }) {
 
         <div className="relative">
           <WorkColumns />
-          <SpinSeal
-            text={c.eyebrow}
-            className="absolute bottom-10 -left-16 z-10 max-[860px]:hidden"
-          />
+          <SwatchFan className="absolute bottom-4 -left-28 z-10 max-[860px]:hidden" />
         </div>
       </div>
     </Band>

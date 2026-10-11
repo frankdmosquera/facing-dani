@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 
+import { SetBuilderBand } from "@/components/builder/SetBuilderBand";
 import { Bilingual } from "@/components/home/Bilingual";
 import { CareGuide } from "@/components/home/CareGuide";
 import { Expect } from "@/components/home/Expect";
@@ -26,8 +27,9 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
       <Hero locale={locale} t={t} />
       <FinishRibbon t={t} />
       <NailsTeaser locale={locale} t={t} />
-      <Parties locale={locale} t={t} />
+      <SetBuilderBand t={t} />
       <Story locale={locale} t={t} />
+      <Parties locale={locale} t={t} />
       <WorkTeaser locale={locale} t={t} />
       <Bilingual t={t} />
       <Expect t={t} />

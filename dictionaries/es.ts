@@ -765,6 +765,20 @@ export const es: Dictionary = {
       },
     },
 
+    // The set builder: shape and finish terms come from guide, bases and prices from the nails menu.
+    builder: {
+      eyebrow: "Pruébalo aquí",
+      headingLead: "Arma",
+      headingAccent: "tu set",
+      lede: "Elige una base, una forma y un acabado para ver más o menos cómo se ve y desde cuánto empieza el precio. Los detalles los cuadramos en la cita.",
+      base: "Base",
+      shape: "Forma",
+      finish: "Acabado",
+      total: "Tu set empieza en",
+      book: "Reservar este set",
+      note: "Es un punto de partida, no una cotización: el largo y el detalle pueden mover un poco el precio.",
+    },
+
     expect: {
       eyebrow: "En la silla",
       heading: "Lo que realmente pasa",

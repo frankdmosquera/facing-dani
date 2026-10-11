@@ -778,6 +778,20 @@ export const en = {
       },
     },
 
+    // The set builder: shape and finish terms come from guide, bases and prices from the nails menu.
+    builder: {
+      eyebrow: "Try it here",
+      headingLead: "Build",
+      headingAccent: "your set",
+      lede: "Pick a base, a shape and a finish to see roughly how it looks and where the price starts. We settle the details together at the appointment.",
+      base: "Base",
+      shape: "Shape",
+      finish: "Finish",
+      total: "Your set starts at",
+      book: "Book this set",
+      note: "A starting point, not a quote: length and detail can move the price a little.",
+    },
+
     expect: {
       eyebrow: "In the chair",
       heading: "What actually happens",

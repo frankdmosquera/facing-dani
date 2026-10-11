@@ -8,7 +8,8 @@ type Step = { key: string; title: string; body: string };
 type Shot = { path: string; width: number; height: number };
 
 /**
- * Steps told beside one arched frame that stays put while they scroll past,
+ * Steps told beside one nail-shaped frame (almond, a polish-pink rim and a gel
+ * shine) that stays put while they scroll past,
  * its photo changing to match the step in the middle of the screen. The step
  * being read is full strength, the rest fade back. From 900px only; phones get
  * the plain list, since a sticky frame there would cover the text.
@@ -40,7 +41,9 @@ export function StoryScroll({ steps, shots }: { steps: Step[]; shots: Shot[] }) 
     <div className="grid gap-12 min-[900px]:grid-cols-[minmax(0,420px)_1fr] min-[900px]:gap-20">
       <div aria-hidden="true" className="hidden min-[900px]:block">
         <div className="sticky top-28">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-t-full rounded-b-3xl border-[6px] border-surface bg-shot shadow-[0_40px_80px_-30px_rgba(0,0,0,0.55)]">
+          <div className="drop-shadow-[0_34px_40px_rgba(120,30,80,0.32)]">
+          <div className="nail-almond aspect-[100/150] bg-[image:var(--hot)] p-2">
+          <div className="nail-almond gel-shine relative h-full overflow-hidden bg-shot">
             {shots.map((shot, index) => (
               <div
                 key={shot.path}
@@ -56,6 +59,8 @@ export function StoryScroll({ steps, shots }: { steps: Step[]; shots: Shot[] }) 
                 />
               </div>
             ))}
+          </div>
+          </div>
           </div>
           <span className="font-display absolute -right-8 -bottom-10 bg-[image:var(--hot-text)] bg-clip-text text-[150px] leading-none font-extrabold tracking-[-0.06em] text-transparent">
             {String(active + 1).padStart(2, "0")}

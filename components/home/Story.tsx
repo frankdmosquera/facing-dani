@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { Photo } from "@/components/media/Photo";
 import { Band, BandHead, Hot } from "@/components/site/Band";
+import { LitText } from "@/components/site/LitText";
 import { WorkFan } from "@/components/site/WorkFan";
 import { portrait } from "@/data/portrait";
 import { siteConfig } from "@/data/siteConfig";
@@ -24,9 +25,10 @@ export function Story({ locale, t }: { locale: Locale; t: Dictionary }) {
 
       <div className="flex flex-col gap-10 min-[860px]:flex-row min-[860px]:items-start min-[860px]:gap-14">
         <div className="min-w-0 flex-1">
-          <p className="max-w-[52ch] text-[16.5px] text-ink-muted">
-            {c.intro}
-          </p>
+          <LitText
+            text={c.intro}
+            className="max-w-[26ch] text-[clamp(24px,3vw,36px)] leading-[1.25] font-medium tracking-[-0.02em] text-ink"
+          />
 
           <p className="font-display mt-8 bg-[image:var(--hot-text)] bg-clip-text text-[clamp(72px,16vw,140px)] leading-[0.9] font-extrabold tracking-[-0.06em] text-transparent">
             {siteConfig.business.ownerName.toLowerCase()}

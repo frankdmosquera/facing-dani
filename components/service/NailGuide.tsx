@@ -9,7 +9,7 @@ export function NailGuide({ locale, t }: { locale: Locale; t: Dictionary }) {
   const c = t.services.nails.guide;
 
   return (
-    <Band tone="ink">
+    <Band glow={false}>
       <BandHead
         eyebrow={c.eyebrow}
         heading={

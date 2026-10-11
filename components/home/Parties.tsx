@@ -28,8 +28,9 @@ export function Parties({ locale, t }: { locale: Locale; t: Dictionary }) {
         lede={c.lede}
       />
 
-      {/* Photo tiles: her set fills the tile, the words sit on a dark fade at
-          the foot, and hovering zooms the photo and stretches the rule. */}
+      {/* Photo tiles cut as coffin nails from 860px: her set fills the tile,
+          the words sit on a dark fade at the foot, and hovering zooms the
+          photo, sweeps the gel shine and stretches the rule. */}
       <ul className="reveal mb-10 grid gap-4 min-[860px]:grid-cols-3 min-[860px]:gap-5">
         {Object.entries(c.points).map(([key, point], index) => {
           const Icon = ICONS[index % ICONS.length];
@@ -37,7 +38,7 @@ export function Parties({ locale, t }: { locale: Locale; t: Dictionary }) {
           return (
             <li
               key={key}
-              className="group/tile on-dark relative flex aspect-[3/4] flex-col justify-end overflow-hidden rounded-2xl bg-shot p-6 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.8)] max-[860px]:aspect-[4/3]"
+              className="group/tile on-dark gel-shine relative flex aspect-[4/3] flex-col justify-end overflow-hidden rounded-2xl bg-shot p-6 min-[860px]:nail-coffin min-[860px]:aspect-[100/130] min-[860px]:rounded-none min-[860px]:px-8 min-[860px]:pb-9"
             >
               {image ? (
                 <div aria-hidden="true" className="absolute inset-0">
@@ -52,7 +53,7 @@ export function Parties({ locale, t }: { locale: Locale; t: Dictionary }) {
                   <div className="absolute inset-0 bg-[linear-gradient(to_top,rgb(16_11_22/0.94)_0%,rgb(16_11_22/0.6)_45%,rgb(16_11_22/0.05)_75%)]" />
                 </div>
               ) : null}
-              <div className="relative">
+              <div className="relative z-10">
                 <span className="mb-4 grid size-11 place-items-center rounded-full bg-[image:var(--hot)] text-on-hot">
                   <Icon aria-hidden="true" className="size-5" strokeWidth={2} />
                 </span>
