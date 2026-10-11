@@ -2,11 +2,21 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { TapedPrint } from "@/components/parties/PartyBoard";
 import { WorkFan } from "@/components/site/WorkFan";
+import type { GalleryKey } from "@/data/gallery";
 import { Band, Hot } from "@/components/site/Band";
 import { siteConfig } from "@/data/siteConfig";
 import { getDictionary } from "@/dictionaries";
 import { defaultLocale, isLocale, localePath } from "@/lib/locale";
+
+// Her sets beside the about sections, in turn. Nail work only.
+const ABOUT_PRINTS: GalleryKey[] = [
+  "palePinkGloss",
+  "almondBowFrench",
+  "peachFrenchGems",
+  "spiderAccentFrench",
+];
 
 export async function generateMetadata({
   params,
@@ -65,13 +75,31 @@ export default async function About({ params }: PageProps<"/[locale]/about">) {
       </Band>
 
       <Band tinted glow={false}>
-        <div className="flex max-w-[62ch] flex-col gap-10">
-          {Object.entries(c.sections).map(([key, section]) => (
-            <section key={key}>
-              <h2 className="mb-3 text-[clamp(22px,5vw,30px)]">
-                {section.heading}
-              </h2>
-              <p className="text-[15.5px] text-ink-muted">{section.body}</p>
+        {/* Numbered, each beside one of her sets taped up, alternating sides. */}
+        <div className="flex flex-col gap-16 min-[860px]:gap-20">
+          {Object.entries(c.sections).map(([key, section], index) => (
+            <section
+              key={key}
+              className={`reveal grid items-center gap-8 min-[860px]:gap-16 ${index % 2 === 1 ? "min-[860px]:grid-cols-[280px_1fr]" : "min-[860px]:grid-cols-[1fr_280px]"}`}
+            >
+              <div className={index % 2 === 1 ? "min-[860px]:order-2" : ""}>
+                <span
+                  aria-hidden="true"
+                  className="font-display mb-3 block bg-[image:var(--hot-text)] bg-clip-text text-[56px] leading-none font-extrabold text-transparent"
+                >
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h2 className="mb-3 text-[clamp(24px,5vw,34px)]">
+                  {section.heading}
+                </h2>
+                <p className="max-w-[56ch] text-[15.5px] text-ink-muted">
+                  {section.body}
+                </p>
+              </div>
+              <TapedPrint
+                imageKey={ABOUT_PRINTS[index % ABOUT_PRINTS.length]}
+                className={`mx-auto w-full max-w-[260px] max-[860px]:hidden ${index % 2 === 1 ? "-rotate-3 min-[860px]:order-1" : "rotate-3"}`}
+              />
             </section>
           ))}
         </div>

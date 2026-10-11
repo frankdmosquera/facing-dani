@@ -5,6 +5,7 @@ import { GalleryFigure } from "@/components/gallery/GalleryFigure";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
 import { GalleryPhotoSteps } from "@/components/gallery/GalleryPhotoSteps";
 import { GalleryStyles } from "@/components/gallery/GalleryStyles";
+import { PhotoWall } from "@/components/gallery/PhotoWall";
 import { Band, Hot } from "@/components/site/Band";
 import { BookingBand } from "@/components/site/BookingBand";
 import { galleryServiceCounts, orderedGallery } from "@/data/gallery";
@@ -52,15 +53,22 @@ export default async function Gallery({
     <main id="main">
       {/* Not BandHead: that renders an h2, and this is the page's h1. */}
       <Band className="pt-[26px]!">
-        <span className="font-body mb-3 block text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
-          {c.eyebrow}
-        </span>
+        <div className="flex flex-col gap-6 min-[860px]:flex-row min-[860px]:items-center">
+          <div className="min-w-0 flex-1">
+            <span className="font-body mb-3 block text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
+              {c.eyebrow}
+            </span>
 
-        <h1 className="mb-4 text-[clamp(36px,9vw,62px)]">
-          {c.headingLead} <Hot>{c.headingAccent}</Hot>
-        </h1>
+            <h1 className="mb-4 text-[clamp(36px,9vw,62px)]">
+              {c.headingLead} <Hot>{c.headingAccent}</Hot>
+            </h1>
 
-        <p className="max-w-[52ch] text-base text-ink-muted">{c.lede}</p>
+            <p className="max-w-[52ch] text-base text-ink-muted">{c.lede}</p>
+          </div>
+          {images.length === 0 ? null : (
+            <PhotoWall className="-mx-[var(--gutter)] h-[260px] min-[860px]:mx-0 min-[860px]:h-[440px] min-[860px]:w-[520px] min-[860px]:shrink-0" />
+          )}
+        </div>
       </Band>
 
       {images.length === 0 ? (

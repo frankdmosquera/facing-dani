@@ -1,14 +1,25 @@
 import type { Metadata } from "next";
+import { Eye, PartyPopper, Sparkles, type LucideIcon } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { WorkFan } from "@/components/site/WorkFan";
+import { PartyBoard, TapedPrint } from "@/components/parties/PartyBoard";
+import { PartyConfetti } from "@/components/parties/PartyConfetti";
+import { ReadyChecklist } from "@/components/parties/ReadyChecklist";
 import { Band, BandHead, Hot } from "@/components/site/Band";
 import { FaqList } from "@/components/site/FaqList";
 import { StepTimeline } from "@/components/site/StepTimeline";
 import { getDictionary } from "@/dictionaries";
 import { defaultLocale, isLocale, localePath } from "@/lib/locale";
 import { jsonLd, partiesSchema } from "@/lib/schema";
+
+// One icon per "what I do there" point, by its dictionary key.
+const WHAT_ICON: Record<string, LucideIcon> = {
+  host: PartyPopper,
+  nails: Sparkles,
+  extras: Eye,
+};
 
 export async function generateMetadata({
   params,
@@ -46,6 +57,7 @@ export default async function Parties({
   return (
     <main id="main">
       <Band className="pt-[26px]!">
+        <PartyConfetti />
         {/* Her work beside the heading, never her (no photo of her on the site). */}
         <div className="flex flex-col gap-12 min-[860px]:flex-row min-[860px]:items-center">
           <div className="min-w-0 flex-1">
@@ -78,17 +90,31 @@ export default async function Parties({
       <Band tinted glow={false}>
         <BandHead eyebrow={c.what.eyebrow} heading={c.what.heading} />
 
-        <ul className="grid gap-4 min-[860px]:grid-cols-3 min-[860px]:gap-5">
-          {Object.entries(c.what.points).map(([key, point]) => (
-            <li
-              key={key}
-              className="card-hot rounded-xl border border-line bg-surface p-5"
-            >
-              <h3 className="mb-2 text-[18px]">{point.title}</h3>
-              <p className="text-[14.5px] text-ink-muted">{point.body}</p>
-            </li>
-          ))}
-        </ul>
+        <div className="grid items-center gap-12 min-[960px]:grid-cols-[1fr_1fr] min-[960px]:gap-16">
+          <ul className="reveal flex flex-col gap-4">
+            {Object.entries(c.what.points).map(([key, point]) => {
+              const Icon = WHAT_ICON[key] ?? Sparkles;
+              return (
+                <li
+                  key={key}
+                  className="card-hot flex items-start gap-5 rounded-xl border border-line bg-surface p-5"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="grid size-12 shrink-0 place-items-center rounded-full bg-[image:var(--hot)] text-on-hot"
+                  >
+                    <Icon className="size-[22px]" strokeWidth={2} />
+                  </span>
+                  <div>
+                    <h3 className="mb-1.5 text-[19px]">{point.title}</h3>
+                    <p className="text-[14.5px] text-ink-muted">{point.body}</p>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+          <PartyBoard />
+        </div>
       </Band>
 
       <Band glow={false}>
@@ -98,17 +124,18 @@ export default async function Parties({
           lede={c.ready.lede}
         />
 
-        <ul className="grid gap-4 min-[640px]:grid-cols-2 min-[1024px]:grid-cols-4 min-[1024px]:gap-5">
-          {Object.entries(c.ready.items).map(([key, item]) => (
-            <li
-              key={key}
-              className="card-hot rounded-xl border border-line bg-surface p-5"
-            >
-              <h3 className="mb-2 text-[17px]">{item.title}</h3>
-              <p className="text-[14.5px] text-ink-muted">{item.body}</p>
-            </li>
-          ))}
-        </ul>
+        <div className="reveal grid items-center gap-12 min-[960px]:grid-cols-[1.5fr_1fr] min-[960px]:gap-16">
+          <ReadyChecklist
+            items={Object.entries(c.ready.items).map(([key, item]) => ({
+              key,
+              ...item,
+            }))}
+          />
+          <TapedPrint
+            imageKey="whiteGlitterSquare"
+            className="mx-auto w-full max-w-[300px] rotate-3 max-[960px]:hidden"
+          />
+        </div>
       </Band>
 
       <Band tinted glow={false}>

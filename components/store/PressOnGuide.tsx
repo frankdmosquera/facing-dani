@@ -16,10 +16,19 @@ export function PressOnGuide({ t }: { t: Dictionary }) {
         lede={c.lede}
       />
 
-      <div className="grid gap-8 min-[860px]:grid-cols-3 min-[860px]:gap-10">
-        {Object.entries(c.columns).map(([key, column]) => (
-          <div key={key}>
-            <h3 className="mb-3 text-[19px]">{column.heading}</h3>
+      <div className="reveal grid gap-5 min-[860px]:grid-cols-3">
+        {Object.entries(c.columns).map(([key, column], index) => (
+          <div
+            key={key}
+            className="card-hot rounded-xl border border-line bg-surface p-6"
+          >
+            <span
+              aria-hidden="true"
+              className="font-display mb-4 block bg-[image:var(--hot-text)] bg-clip-text text-[40px] leading-none font-extrabold text-transparent"
+            >
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <h3 className="mb-4 text-[20px]">{column.heading}</h3>
             <ul className="flex flex-col gap-2.5">
               {Object.entries(column.items).map(([itemKey, item]) => (
                 <li

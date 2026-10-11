@@ -511,3 +511,61 @@
     }
   }
 }
+
+/* Party confetti: each piece bobs and turns out of step (--d). */
+@keyframes lift-confetti {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 6px -14px;
+    rotate: 25deg;
+  }
+}
+@utility lift-confetti {
+  animation: lift-confetti 6s ease-in-out infinite;
+  animation-delay: var(--d, 0s);
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+/* A checklist tick that fills as its row scrolls in. */
+@keyframes check-fill {
+  from {
+    opacity: 0;
+    scale: 0.4;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+@utility check-fill {
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      animation: check-fill linear both;
+      animation-timeline: view();
+      animation-range: entry 30% cover 45%;
+    }
+  }
+}
+
+/* A price tag swinging from its string; --d offsets each one. */
+@keyframes lift-swing {
+  0%,
+  100% {
+    rotate: -3deg;
+  }
+  50% {
+    rotate: 3deg;
+  }
+}
+@utility lift-swing {
+  transform-origin: top center;
+  animation: lift-swing 3.6s ease-in-out infinite;
+  animation-delay: var(--d, 0s);
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}

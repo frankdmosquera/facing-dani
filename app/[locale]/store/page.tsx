@@ -7,6 +7,7 @@ import { PressOnCompare } from "@/components/store/PressOnCompare";
 import { PressOnGuide } from "@/components/store/PressOnGuide";
 import { StoreCard } from "@/components/store/StoreCard";
 import { StoreGrid } from "@/components/store/StoreGrid";
+import { SwingTags } from "@/components/store/SwingTags";
 import { orderedStoreProducts, type StoreCategory } from "@/data/store";
 import { getDictionary } from "@/dictionaries";
 import { defaultLocale, isLocale, localePath } from "@/lib/locale";
@@ -50,15 +51,22 @@ export default async function Store({ params }: PageProps<"/[locale]/store">) {
   return (
     <main id="main">
       <Band className="pt-[26px]!">
-        <span className="font-body mb-3 block text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
-          {c.eyebrow}
-        </span>
+        <div className="flex flex-col gap-10 min-[1000px]:flex-row min-[1000px]:items-center">
+          <div className="min-w-0 flex-1">
+            <span className="font-body mb-3 block text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
+              {c.eyebrow}
+            </span>
 
-        <h1 className="mb-4 text-[clamp(36px,9vw,62px)]">
-          {c.headingLead} <Hot>{c.headingAccent}</Hot>
-        </h1>
+            <h1 className="mb-4 text-[clamp(36px,9vw,62px)]">
+              {c.headingLead} <Hot>{c.headingAccent}</Hot>
+            </h1>
 
-        <p className="max-w-[54ch] text-base text-ink-muted">{c.lede}</p>
+            <p className="max-w-[54ch] text-base text-ink-muted">{c.lede}</p>
+          </div>
+          <div className="min-[1000px]:w-[580px] min-[1000px]:shrink-0">
+            <SwingTags t={t} />
+          </div>
+        </div>
       </Band>
 
       <Band tinted glow={false}>

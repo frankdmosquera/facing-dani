@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { ContactForm } from "@/components/contact/ContactForm";
+import { ContactNote } from "@/components/contact/ContactNote";
 import { WorkFan } from "@/components/site/WorkFan";
 import { Band, Hot } from "@/components/site/Band";
 import { siteConfig } from "@/data/siteConfig";
@@ -64,7 +65,14 @@ export default async function Contact({
       </Band>
 
       <Band tinted glow={false}>
-        <ContactForm locale={locale} t={t} />
+        <div className="flex gap-16 min-[1000px]:items-start">
+          <div className="min-w-0 flex-1">
+            <ContactForm locale={locale} t={t} />
+          </div>
+          <div className="hidden shrink-0 min-[1000px]:block min-[1000px]:w-[340px] min-[1000px]:pt-10">
+            <ContactNote t={t} />
+          </div>
+        </div>
       </Band>
 
       {/* Hidden until an Instagram handle exists. */}
