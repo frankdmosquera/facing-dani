@@ -1,4 +1,5 @@
 import { siteConfig } from "@/data/siteConfig";
+import { showOptions } from "@/lib/showOptions";
 
 import { HeroSwitch } from "./HeroSwitch";
 import { HeroVariantView, type HeroContent, type HeroVariant } from "./HeroVariants";
@@ -12,7 +13,7 @@ export const HERO_OPTIONS = {
 // A page's hero: the design in siteConfig.hero, or in dev every option behind the options panel's pick.
 export function Hero({ page, content }: { page: "home" | "parties"; content: HeroContent }) {
   const fallback = siteConfig.hero[page];
-  if (process.env.NODE_ENV === "production") return <HeroVariantView variant={fallback} content={content} />;
+  if (!showOptions) return <HeroVariantView variant={fallback} content={content} />;
   return (
     <HeroSwitch
       page={page}

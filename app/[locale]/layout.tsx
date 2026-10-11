@@ -11,6 +11,7 @@ import { ThemeApplier } from "@/components/shell/ThemeApplier";
 import { Ticker } from "@/components/shell/Ticker";
 import { siteConfig } from "@/data/siteConfig";
 import { getDictionary } from "@/dictionaries";
+import { showOptions } from "@/lib/showOptions";
 import {
   defaultLocale,
   isLocale,
@@ -96,7 +97,7 @@ export default async function LocaleLayout({
         <SiteFooter locale={activeLocale} t={t} />
         <ThemeApplier />
         {/* Dev only: Frank's theme and hero picker. */}
-        {process.env.NODE_ENV === "production" ? null : <OptionsPanel />}
+        {showOptions ? <OptionsPanel /> : null}
         <BookingPopup />
       </body>
     </html>

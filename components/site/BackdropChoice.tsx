@@ -1,5 +1,6 @@
 import type { GalleryKey } from "@/data/gallery";
 import { siteConfig, type SiteConfig } from "@/data/siteConfig";
+import { showOptions } from "@/lib/showOptions";
 
 import { BandPhoto } from "./BandPhoto";
 
@@ -32,7 +33,7 @@ export function BackdropChoice({
   const picked = (siteConfig.backdrops as Record<string, Backdrop | undefined>)[id];
   const fx = picked?.effect ?? effect;
   const st = picked?.strength ?? strength;
-  if (process.env.NODE_ENV === "production") {
+  if (!showOptions) {
     return picked ? (
       <div data-fx={fx} data-strength={st} className="contents">
         <BandPhoto imageKey={picked.photo as GalleryKey} />

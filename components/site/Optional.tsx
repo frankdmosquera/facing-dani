@@ -1,4 +1,5 @@
 import { siteConfig } from "@/data/siteConfig";
+import { showOptions } from "@/lib/showOptions";
 
 /**
  * A section (or a decoration) Frank can switch on and off while choosing.
@@ -19,7 +20,7 @@ export function Optional({
   children: React.ReactNode;
 }) {
   const on = siteConfig.sections[id] ?? defaultOn;
-  if (process.env.NODE_ENV === "production") return on ? children : null;
+  if (!showOptions) return on ? children : null;
   return (
     <div data-optional={id} data-label={label} data-default={on ? "on" : "off"} className={on ? "contents" : "hidden"}>
       {children}
