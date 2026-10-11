@@ -43,14 +43,17 @@ export const siteConfig = {
   // Which colour scheme the site wears. The header button switches it between dark and light.
   theme: "pop" as "pop" | "purple" | "gold",
 
-  // Which hero design each page wears: a, b or c (components/site/HeroOptions). The options panel overrides it in dev.
-  hero: { home: "a", parties: "e" } as { home: "a" | "b" | "c" | "d"; parties: "e" | "f" },
+  // Which hero design each page wears (components/site/HeroVariants). The options panel overrides it in dev.
+  hero: { home: "c", parties: "e" } as { home: "b" | "c" | "d"; parties: "e" | "f" },
 
   // Sections switched off (false) or decorations switched on (true), by Optional id. Unset means its default.
   sections: {} as Record<string, boolean>,
 
-  // A band's background photo by BackdropChoice id, as a gallery key. Unset means no photo.
-  backdrops: {} as Record<string, string>,
+  // A band's background photo by BackdropChoice id: a gallery key, faded or dark, and how strong. Unset means no photo.
+  backdrops: {} as Record<
+    string,
+    { photo: string; effect?: "faded" | "dark"; strength?: "faintest" | "faint" | "light" | "medium" | "stronger" }
+  >,
 
   nav: [
     // Home is the nails page, so the link says Nails.

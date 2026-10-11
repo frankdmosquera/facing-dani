@@ -3,13 +3,13 @@ import Link from "next/link";
 import { Photo } from "@/components/media/Photo";
 import { galleryImage, orderedGallery, type GalleryKey } from "@/data/gallery";
 
+import { BackdropChoice } from "./BackdropChoice";
 import { Hot } from "./Band";
-import { PhotoHero } from "./PhotoHero";
 
 /*
  * The hero designs Frank chooses between (siteConfig.hero, or the options
- * panel in dev). Home: a, b, c, d. Parties has its own: e, f. Same words in all:
- *   a  her photo in an edged frame, the headline on a fade
+ * panel in dev). Home: b, c, d (a, the framed photo, was dropped 2026-10-11).
+ * Parties has its own: e, f. Same words in all:
  *   b  the headline on the page, three of her photos stacked beside it
  *   c  her photo edge to edge, the headline centred and huge
  *   d  the headline centred, a ribbon of her sets drifting underneath
@@ -26,11 +26,9 @@ export type HeroContent = {
   secondary?: { href: string; label: string };
   sticker?: React.ReactNode;
   photos: readonly [GalleryKey, GalleryKey, GalleryKey];
-  // Which colour the photo fade rises in for a and c.
-  fade?: "nails" | "ink";
 };
 
-export type HeroVariant = "a" | "b" | "c" | "d" | "e" | "f";
+export type HeroVariant = "b" | "c" | "d" | "e" | "f";
 
 const ON_PHOTO =
   "rounded-pill border-2 border-[color:var(--brand-ink)] px-7 py-4 text-center text-[15px] font-bold shadow-[4px_4px_0_var(--brand-ink)] transition-[translate,box-shadow] duration-150 hover:-translate-0.5 hover:shadow-[6px_6px_0_var(--brand-ink)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
@@ -66,22 +64,6 @@ function Fill({ k, priority = false, sizes }: { k: GalleryKey; priority?: boolea
   );
 }
 
-function HeroA({ content }: { content: HeroContent }) {
-  return (
-    <PhotoHero imageKey={content.photos[0]} fade={content.fade} sticker={content.sticker}>
-      <span className="lift-rise eyebrow mb-5">{content.eyebrow}</span>
-      <h1 className="mb-7 max-w-[11ch] text-[clamp(56px,10.5vw,160px)] leading-[0.86] text-white [text-shadow:4px_4px_0_var(--brand-ink)]">
-        <span className="lift-rise inline-block [--i:1]">{content.lead}</span>{" "}
-        <span className="lift-rise inline-block [--i:2]">{content.accent}</span>
-      </h1>
-      <p className="lift-rise mb-8 max-w-[52ch] text-[16px] leading-[1.55] text-white/90 [--i:3]">{content.lede}</p>
-      <div className="lift-rise [--i:4]">
-        <PhotoActions content={content} />
-      </div>
-    </PhotoHero>
-  );
-}
-
 const STACK = [
   "left-0 top-14 w-[56%] -rotate-[8deg]",
   "right-0 top-0 w-[54%] rotate-[7deg]",
@@ -91,7 +73,8 @@ const STACK = [
 function HeroB({ content }: { content: HeroContent }) {
   return (
     <section className="relative overflow-clip px-[var(--gutter)] pt-10 pb-20">
-      <div className="mx-auto grid max-w-[var(--site)] items-center gap-12 min-[900px]:grid-cols-[1.1fr_1fr]">
+      <BackdropChoice id="hero-b" label="Hero B" options={["frenchGlitterGems", "peachFrenchGems", "pinkFrenchCrystals"]} strength="medium" />
+      <div className="relative mx-auto grid max-w-[var(--site)] items-center gap-12 min-[900px]:grid-cols-[1.1fr_1fr]">
         <div className="min-w-0">
           <span className="lift-rise eyebrow mb-5">{content.eyebrow}</span>
           <h1 className="mb-6 text-[clamp(56px,9vw,132px)] leading-[0.88]">
@@ -194,6 +177,7 @@ function HeroD({ content }: { content: HeroContent }) {
     .map((image) => image.key);
   return (
     <section className="relative overflow-clip pt-12 pb-16">
+      <BackdropChoice id="hero-d" label="Hero D" options={["goldLeafFrench", "palePinkGloss", "pinkBlackStars"]} strength="medium" />
       <div className="relative mx-auto max-w-[var(--site)] px-[var(--gutter)] text-center">
         <span className="lift-rise eyebrow mb-6">{content.eyebrow}</span>
         <h1 className="mx-auto mb-6 max-w-[12ch] text-[clamp(60px,11vw,170px)] leading-[0.84]">
@@ -213,7 +197,7 @@ function HeroD({ content }: { content: HeroContent }) {
         ) : null}
       </div>
 
-      <div aria-hidden="true" className="mt-14 overflow-hidden py-4">
+      <div aria-hidden="true" className="relative mt-14 overflow-hidden py-4">
         <div className="lift-side flex w-max gap-6 [animation-duration:60s]">
           {[...strip, ...strip].map((k, i) => (
             <div
@@ -296,9 +280,8 @@ function HeroF({ content }: { content: HeroContent }) {
 
 export function HeroVariantView({ variant, content }: { variant: HeroVariant; content: HeroContent }) {
   if (variant === "b") return <HeroB content={content} />;
-  if (variant === "c") return <HeroC content={content} />;
   if (variant === "d") return <HeroD content={content} />;
   if (variant === "e") return <HeroE content={content} />;
   if (variant === "f") return <HeroF content={content} />;
-  return <HeroA content={content} />;
+  return <HeroC content={content} />;
 }

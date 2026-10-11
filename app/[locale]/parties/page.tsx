@@ -66,7 +66,6 @@ export default async function Parties({
           lede: c.lede,
           primary: { href: askHref, label: c.ask },
           photos: ["heartsFrench", "pinkFloralArt", "pastelFrenchTips"],
-          fade: "ink",
         }}
       />
 
@@ -116,7 +115,6 @@ export default async function Parties({
             id="parties-ready"
             label="Before I arrive"
             options={["whiteGlitterSquare", "pinkBlackStars", "burgundyCatEye"]}
-            strength={78}
           />
         }
       >
@@ -147,7 +145,6 @@ export default async function Parties({
             id="parties-how"
             label="How it works"
             options={["pinkFloralArt", "almondBowFrench", "frenchGlitterGems"]}
-            strength={74}
           />
         }
       >

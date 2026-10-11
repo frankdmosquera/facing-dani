@@ -5,7 +5,7 @@ import { HeroVariantView, type HeroContent, type HeroVariant } from "./HeroVaria
 
 // Each page's own set of designs: parties never repeats home's.
 export const HERO_OPTIONS = {
-  home: ["a", "b", "c", "d"],
+  home: ["b", "c", "d"],
   parties: ["e", "f"],
 } as const satisfies Record<"home" | "parties", readonly HeroVariant[]>;
 

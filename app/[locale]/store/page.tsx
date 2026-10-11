@@ -51,7 +51,16 @@ export default async function Store({ params }: PageProps<"/[locale]/store">) {
 
   return (
     <main id="main">
-      <Band className="grain pt-[26px]!">
+      <Band
+        className="grain pt-[26px]!"
+        backdrop={
+          <BackdropChoice
+            id="store-hero"
+            label="Top of page"
+            options={["frenchGlitterGems", "peachFrenchGems", "pinkBlackStars"]}
+          />
+        }
+      >
         <div className="flex flex-col gap-10 min-[1000px]:flex-row min-[1000px]:items-center">
           <div className="min-w-0 flex-1">
             <span className="eyebrow mb-5">
@@ -77,7 +86,6 @@ export default async function Store({ params }: PageProps<"/[locale]/store">) {
             id="store-grid"
             label="Products"
             options={["palePinkGloss", "peachFrenchGems", "pinkFrenchCrystals"]}
-            strength={84}
           />
         }
       >
@@ -95,7 +103,6 @@ export default async function Store({ params }: PageProps<"/[locale]/store">) {
             id="store-guide"
             label="Press-on guide"
             options={["pinkBlackStars", "burgundyCatEye", "clearCoffinLinework"]}
-            strength={78}
           />
         }
       />

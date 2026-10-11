@@ -21,14 +21,26 @@ type Store = ReturnType<typeof createBrowserStore>;
 
 // Sections switched by hand, as JSON { id: on }. Unset ids keep their default.
 const sectionPicks = createBrowserStore("section-picks");
-// Band background photos, as JSON { id: galleryKey | "off" }.
+// Band background photos, as JSON { id: galleryKey | "off", "id|fx": effect, "id|strength": strength }.
 const backdropPicks = createBrowserStore("backdrop-picks");
+
+// The same two looks and five strengths as agency-site-app's photo backdrops (globals.css, .band-shade).
+const EFFECTS = [
+  { value: "faded", label: "Faded" },
+  { value: "dark", label: "Dark" },
+];
+const STRENGTHS = [
+  { value: "faintest", label: "Faintest" },
+  { value: "faint", label: "Faint" },
+  { value: "light", label: "Light" },
+  { value: "medium", label: "Medium" },
+  { value: "stronger", label: "Stronger" },
+];
 const panelOpen = createBrowserStore("options-open");
 
 // Mirrors HERO_OPTIONS in components/site/Hero.tsx; parties shows its own two as 1 and 2.
 const HEROES = {
   home: [
-    { value: "a", label: "A" },
     { value: "b", label: "B" },
     { value: "c", label: "C" },
     { value: "d", label: "D" },
@@ -65,7 +77,7 @@ function Row({
   return (
     <div className="flex items-center justify-between gap-2">
       <span className="text-[11px] font-bold tracking-[0.06em] uppercase opacity-70">{label}</span>
-      <div className="flex gap-1">
+      <div className="flex flex-wrap justify-end gap-1">
         {options.map((option) => (
           <button
             key={option.value}
@@ -85,7 +97,9 @@ function Row({
 export function OptionsPanel() {
   const open = useStore(panelOpen) === "1";
   const [sections, setSections] = useState<{ id: string; label: string; on: boolean }[]>([]);
-  const [backdrops, setBackdrops] = useState<{ id: string; label: string; options: string[]; value: string }[]>([]);
+  const [backdrops, setBackdrops] = useState<
+    { id: string; label: string; options: string[]; value: string; fx: string; strength: string }[]
+  >([]);
   const pathname = stripLocale(usePathname());
   const page = pathname === "/" ? "home" : pathname === "/parties" ? "parties" : null;
 
@@ -109,7 +123,8 @@ export function OptionsPanel() {
     // The list comes from the rendered page, an outside system, so it can only be read after render.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setSections(found);
-  }, [picksRaw, pathname]);
+    // The hero ids re-run it: a newly picked hero brings its own optional blocks.
+  }, [picksRaw, pathname, heroHome, heroParties]);
 
   // Same for band background photos: show the picked candidate, hide the rest.
   useEffect(() => {
@@ -117,17 +132,26 @@ export function OptionsPanel() {
     const found = [...document.querySelectorAll<HTMLElement>("[data-backdrop]")].map((el) => {
       const id = el.dataset.backdrop ?? "";
       const value = picks[id] ?? el.dataset.default ?? "off";
+      const fx = picks[`${id}|fx`] ?? el.dataset.defaultFx ?? "faded";
+      const strength = picks[`${id}|strength`] ?? el.dataset.defaultStrength ?? "faint";
+      // No data-fx while off, or a dark pick would turn the band dark with no photo.
+      el.dataset.fx = value === "off" ? "" : fx;
+      el.dataset.strength = strength;
       const children = [...el.querySelectorAll<HTMLElement>("[data-pick]")];
       for (const child of children) {
         const on = child.dataset.pick === value;
         child.classList.toggle("contents", on);
         child.classList.toggle("hidden", !on);
       }
-      return { id, label: el.dataset.label ?? id, options: children.map((c) => c.dataset.pick ?? ""), value };
+      return { id, label: el.dataset.label ?? id, options: children.map((c) => c.dataset.pick ?? ""), value, fx, strength };
     });
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setBackdrops(found);
-  }, [backdropRaw, pathname]);
+  }, [backdropRaw, pathname, heroHome, heroParties]);
+
+  function pickBackdrop(key: string, value: string) {
+    backdropPicks.write(JSON.stringify({ ...readPicks<string>(backdropRaw), [key]: value }));
+  }
 
   function toggle(id: string, on: boolean) {
     sectionPicks.write(JSON.stringify({ ...readPicks(picksRaw), [id]: on }));
@@ -135,7 +159,7 @@ export function OptionsPanel() {
 
   return (
     <div
-      className={`fixed bottom-3 left-3 z-[80] max-h-[75vh] overflow-y-auto rounded-2xl border-2 border-black bg-[#111] font-body text-white shadow-[3px_3px_0_#000] ${open ? "w-[250px] p-2.5" : "px-3 py-1.5"}`}
+      className={`fixed bottom-3 left-3 z-[80] max-h-[75vh] overflow-y-auto rounded-2xl border-2 border-black bg-[#111] font-body text-white shadow-[3px_3px_0_#000] ${open ? "w-[280px] p-2.5" : "px-3 py-1.5"}`}
     >
       <button
         type="button"
@@ -178,16 +202,28 @@ export function OptionsPanel() {
             <div className="mt-1 flex flex-col gap-1.5 border-t border-white/15 pt-2">
               <span className="block text-[11px] font-bold tracking-[0.06em] uppercase opacity-70">Background photos</span>
               {backdrops.map((backdrop) => (
-                <Row
-                  key={backdrop.id}
-                  label={backdrop.label}
-                  options={[
-                    { value: "off", label: "Off" },
-                    ...backdrop.options.map((key, index) => ({ value: key, label: String(index + 1) })),
-                  ]}
-                  value={backdrop.value}
-                  onPick={(v) => backdropPicks.write(JSON.stringify({ ...readPicks<string>(backdropRaw), [backdrop.id]: v }))}
-                />
+                <div key={backdrop.id} className="flex flex-col gap-1">
+                  <Row
+                    label={backdrop.label}
+                    options={[
+                      { value: "off", label: "Off" },
+                      ...backdrop.options.map((key, index) => ({ value: key, label: String(index + 1) })),
+                    ]}
+                    value={backdrop.value}
+                    onPick={(v) => pickBackdrop(backdrop.id, v)}
+                  />
+                  {backdrop.value !== "off" ? (
+                    <div className="mb-1 flex flex-col gap-1 rounded-xl bg-white/5 p-1.5">
+                      <Row label="Look" options={EFFECTS} value={backdrop.fx} onPick={(v) => pickBackdrop(`${backdrop.id}|fx`, v)} />
+                      <Row
+                        label=""
+                        options={STRENGTHS}
+                        value={backdrop.strength}
+                        onPick={(v) => pickBackdrop(`${backdrop.id}|strength`, v)}
+                      />
+                    </div>
+                  ) : null}
+                </div>
               ))}
             </div>
           ) : null}

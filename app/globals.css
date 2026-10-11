@@ -315,7 +315,9 @@
   --nails: var(--brand-ink);
   --ring: var(--brand-ink);
 }
-.tone-ink {
+/* A band whose background photo is set to dark (BackdropChoice) takes the ink tokens, so its words turn light. */
+.tone-ink,
+:is(section, div):has(> [data-fx="dark"]) {
   --ground: var(--brand-dark);
   --surface: var(--brand-dark-2);
   --surface-2: color-mix(in oklab, var(--brand-dark) 60%, var(--brand-dark-2));
@@ -744,4 +746,40 @@ footer .logo-dark,
       animation-range: cover var(--s) cover var(--e);
     }
   }
+}
+
+/*
+ * The shade over a band's background photo (BandPhoto). Faded: the band's own
+ * ground over the photo. Dark: black over it, and the band takes the ink
+ * tokens (above). Five strengths each; stronger shows more photo.
+ */
+.band-shade {
+  background: color-mix(in oklab, var(--ground) 82%, transparent);
+}
+[data-strength="faintest"] .band-shade {
+  background: color-mix(in oklab, var(--ground) 90%, transparent);
+}
+[data-strength="light"] .band-shade {
+  background: color-mix(in oklab, var(--ground) 74%, transparent);
+}
+[data-strength="medium"] .band-shade {
+  background: color-mix(in oklab, var(--ground) 64%, transparent);
+}
+[data-strength="stronger"] .band-shade {
+  background: color-mix(in oklab, var(--ground) 52%, transparent);
+}
+[data-fx="dark"] .band-shade {
+  background: rgb(0 0 0 / 85%);
+}
+[data-fx="dark"][data-strength="faintest"] .band-shade {
+  background: rgb(0 0 0 / 90%);
+}
+[data-fx="dark"][data-strength="light"] .band-shade {
+  background: rgb(0 0 0 / 78%);
+}
+[data-fx="dark"][data-strength="medium"] .band-shade {
+  background: rgb(0 0 0 / 70%);
+}
+[data-fx="dark"][data-strength="stronger"] .band-shade {
+  background: rgb(0 0 0 / 60%);
 }
