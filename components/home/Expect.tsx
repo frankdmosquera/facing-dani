@@ -6,7 +6,7 @@ export function Expect({ t }: { t: Dictionary }) {
   const c = t.home.expect;
 
   return (
-    <Band glow={false}>
+    <Band tone="blush">
       <BandHead eyebrow={c.eyebrow} heading={c.heading} />
 
       <StepTimeline

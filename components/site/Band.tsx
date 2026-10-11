@@ -1,21 +1,36 @@
+/* Each tone re-declares the colour tokens (globals.css), so a band can change
+   mood without its children knowing. base follows the theme; blush and ink look
+   the same in both. */
+export type Tone = "base" | "blush" | "ink";
+
+const TONE: Record<Tone, string> = {
+  base: "",
+  blush: "tone-blush bg-surface-2 text-ink",
+  ink: "tone-ink grain bg-ground text-ink",
+};
+
 export function Band({
   children,
   glow = true,
   tinted = false,
+  tone,
   className,
   id,
 }: {
   children: React.ReactNode;
   glow?: boolean;
+  // The old flag for the second ground; now the blush band.
   tinted?: boolean;
+  tone?: Tone;
   className?: string;
   // For in-page links such as /#faq.
   id?: string;
 }) {
+  const resolved = tone ?? (tinted ? "blush" : "base");
   return (
     <section
       id={id}
-      className={`relative overflow-hidden py-24 ${tinted ? "bg-surface-2" : ""} ${className ?? ""}`}
+      className={`relative overflow-hidden py-24 ${TONE[resolved]} ${className ?? ""}`}
     >
       {glow ? (
         <div aria-hidden="true" className="pointer-events-none absolute inset-0">
@@ -46,7 +61,7 @@ export function BandHead({
       <span className="font-body mb-3 block text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
         {eyebrow}
       </span>
-      <h2 className="mb-3.5 text-[clamp(30px,7vw,46px)]">{heading}</h2>
+      <h2 className="mb-3.5 text-[clamp(34px,6.2vw,60px)]">{heading}</h2>
       {lede ? (
         <p className="max-w-[54ch] text-[15.5px] text-ink-muted">{lede}</p>
       ) : null}

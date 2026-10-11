@@ -52,14 +52,14 @@ export default async function Gallery({
   return (
     <main id="main">
       {/* Not BandHead: that renders an h2, and this is the page's h1. */}
-      <Band className="pt-[26px]!">
+      <Band className="grain pt-[26px]!">
         <div className="flex flex-col gap-6 min-[860px]:flex-row min-[860px]:items-center">
           <div className="min-w-0 flex-1">
             <span className="font-body mb-3 block text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
               {c.eyebrow}
             </span>
 
-            <h1 className="mb-4 text-[clamp(36px,9vw,62px)]">
+            <h1 className="mb-4 text-[clamp(40px,8.6vw,78px)]">
               {c.headingLead} <Hot>{c.headingAccent}</Hot>
             </h1>
 

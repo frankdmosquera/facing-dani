@@ -20,7 +20,6 @@ export function NailSteps({ t }: { t: Dictionary }) {
 
       <StepTimeline
         steps={Object.entries(c.items).map(([key, step]) => ({ key, ...step }))}
-        tinted
       />
     </Band>
   );

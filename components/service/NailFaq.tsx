@@ -7,7 +7,7 @@ export function NailFaq({ t }: { t: Dictionary }) {
   const c = t.services.nails.faq;
 
   return (
-    <Band tinted glow={false}>
+    <Band glow={false}>
       <BandHead
         eyebrow={c.eyebrow}
         heading={

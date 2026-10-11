@@ -16,7 +16,7 @@ export type BookingBandCopy = {
 
 export function BookingBand({ copy }: { copy: BookingBandCopy }) {
   return (
-    <Band className="py-32!">
+    <Band glow={false} className="tone-hot py-36!">
       <WorkWall />
       <div className="reveal relative mx-auto max-w-[720px] text-center">
         <span className="font-body mb-4 block text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">

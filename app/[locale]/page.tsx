@@ -10,6 +10,7 @@ import { Parties } from "@/components/home/Parties";
 import { Story } from "@/components/home/Story";
 import { WorkTeaser } from "@/components/home/WorkTeaser";
 import { BookingBand } from "@/components/site/BookingBand";
+import { FinishRibbon } from "@/components/site/FinishRibbon";
 import { getDictionary } from "@/dictionaries";
 import { isLocale } from "@/lib/locale";
 import { jsonLd, localBusinessSchema, personSchema } from "@/lib/schema";
@@ -23,6 +24,7 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
   return (
     <main id="main">
       <Hero locale={locale} t={t} />
+      <FinishRibbon t={t} />
       <NailsTeaser locale={locale} t={t} />
       <Parties locale={locale} t={t} />
       <Story locale={locale} t={t} />

@@ -5,7 +5,7 @@ export function PressOnGuide({ t }: { t: Dictionary }) {
   const c = t.store.guide;
 
   return (
-    <Band glow={false}>
+    <Band tone="ink">
       <BandHead
         eyebrow={c.eyebrow}
         heading={

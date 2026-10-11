@@ -31,7 +31,7 @@ export function WorkStrip({
   return (
     <>
       <div className="mb-[26px] flex flex-wrap items-baseline justify-between gap-4">
-        <h2 className="text-[clamp(24px,5.5vw,34px)]">{copy.work.heading}</h2>
+        <h2 className="text-[clamp(30px,5.6vw,52px)]">{copy.work.heading}</h2>
         <Link
           href={localePath(locale, "/gallery")}
           className="text-[13.5px] font-bold text-ink-muted transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"

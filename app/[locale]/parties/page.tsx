@@ -56,7 +56,7 @@ export default async function Parties({
 
   return (
     <main id="main">
-      <Band className="pt-[26px]!">
+      <Band className="grain pt-[26px]!">
         <PartyConfetti />
         {/* Her work beside the heading, never her (no photo of her on the site). */}
         <div className="flex flex-col gap-12 min-[860px]:flex-row min-[860px]:items-center">
@@ -65,7 +65,7 @@ export default async function Parties({
               {c.eyebrow}
             </span>
 
-            <h1 className="mb-4 text-[clamp(36px,9vw,62px)]">
+            <h1 className="mb-4 text-[clamp(40px,8.6vw,78px)]">
               {c.headingLead} <Hot>{c.headingAccent}</Hot>
             </h1>
 
@@ -117,7 +117,7 @@ export default async function Parties({
         </div>
       </Band>
 
-      <Band glow={false}>
+      <Band tone="ink">
         <BandHead
           eyebrow={c.ready.eyebrow}
           heading={c.ready.heading}
@@ -146,7 +146,6 @@ export default async function Parties({
             key,
             ...step,
           }))}
-          tinted
         />
       </Band>
 
@@ -160,7 +159,8 @@ export default async function Parties({
         />
       </Band>
 
-      <Band>
+      <Band glow={false} className="tone-hot py-32!">
+        <PartyConfetti />
         <BandHead
           eyebrow={c.closing.eyebrow}
           heading={

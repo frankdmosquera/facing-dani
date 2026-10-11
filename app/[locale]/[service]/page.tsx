@@ -11,6 +11,7 @@ import { TreatmentList } from "@/components/service/TreatmentList";
 import { WorkStrip } from "@/components/service/WorkStrip";
 import { Band, Hot } from "@/components/site/Band";
 import { BookingBand } from "@/components/site/BookingBand";
+import { FinishRibbon } from "@/components/site/FinishRibbon";
 import { inspirationFor } from "@/data/decorativeImages";
 import { SERVICE_HERO, galleryImage, serviceHasWork } from "@/data/gallery";
 import { orderedServices, serviceBySlug, serviceSlug } from "@/data/services";
@@ -68,14 +69,14 @@ export default async function ServicePage({
 
   return (
     <main id="main">
-      <Band className="pt-[26px]!">
+      <Band className="grain pt-[26px]!">
         <div className="flex flex-col gap-10 min-[860px]:flex-row min-[860px]:items-center min-[860px]:gap-14">
           <div className="min-w-0 min-[860px]:flex-1">
             <span className="font-body mb-3 block text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
               {copy.eyebrow}
             </span>
 
-            <h1 className="mb-4 text-[clamp(36px,9vw,62px)]">
+            <h1 className="mb-4 text-[clamp(40px,8.6vw,78px)]">
               {copy.headingLead} <Hot>{copy.headingAccent}</Hot>
             </h1>
 
@@ -100,8 +101,10 @@ export default async function ServicePage({
         </div>
       </Band>
 
+      {service.id === "nails" ? <FinishRibbon t={t} /> : null}
+
       <Band tinted glow={false}>
-        <h2 className="mb-[26px] text-[clamp(24px,5.5vw,34px)]">
+        <h2 className="mb-[26px] text-[clamp(30px,5.6vw,52px)]">
           {copy.menuHeading}
         </h2>
         <TreatmentList serviceId={service.id} t={t} />
@@ -120,7 +123,7 @@ export default async function ServicePage({
 
       {/* Stock photos, after her own work so the real sets come first. */}
       {inspirationFor(service.id).length > 0 ? (
-        <Band glow={false}>
+        <Band tinted glow={false}>
           <InspirationGrid serviceId={service.id} t={t} />
         </Band>
       ) : null}

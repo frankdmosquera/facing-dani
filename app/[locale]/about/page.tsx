@@ -6,6 +6,7 @@ import { TapedPrint } from "@/components/parties/PartyBoard";
 import { WorkFan } from "@/components/site/WorkFan";
 import type { GalleryKey } from "@/data/gallery";
 import { Band, Hot } from "@/components/site/Band";
+import { PhotoBand } from "@/components/site/PhotoBand";
 import { siteConfig } from "@/data/siteConfig";
 import { getDictionary } from "@/dictionaries";
 import { defaultLocale, isLocale, localePath } from "@/lib/locale";
@@ -49,7 +50,7 @@ export default async function About({ params }: PageProps<"/[locale]/about">) {
 
   return (
     <main id="main">
-      <Band className="pt-[26px]!">
+      <Band className="grain pt-[26px]!">
         {/* Her work beside the heading, never her (no photo of her on the site). */}
         <div className="flex flex-col gap-12 min-[860px]:flex-row min-[860px]:items-center">
           <div className="min-w-0 flex-1">
@@ -57,7 +58,7 @@ export default async function About({ params }: PageProps<"/[locale]/about">) {
               {c.eyebrow}
             </span>
 
-            <h1 className="mb-4 text-[clamp(36px,9vw,62px)]">
+            <h1 className="mb-4 text-[clamp(40px,8.6vw,78px)]">
               {c.headingLead} <Hot>{c.headingAccent}</Hot>
             </h1>
 
@@ -105,16 +106,14 @@ export default async function About({ params }: PageProps<"/[locale]/about">) {
         </div>
       </Band>
 
-      <Band>
-        <p className="mb-2 max-w-[54ch] text-[clamp(20px,4.5vw,26px)] font-medium text-ink">
+      <PhotoBand imageKey="pinkBlackStars" className="py-40!">
+        <p className="reveal mb-6 max-w-[30ch] text-[clamp(26px,4.2vw,44px)] leading-[1.2] font-medium tracking-[-0.02em] text-ink">
           {c.feeling}
         </p>
 
-        <p className="font-display mb-8 text-[19px] font-extrabold tracking-[-0.04em] text-ink">
+        <p className="font-display mb-10 bg-[image:var(--hot-text)] bg-clip-text text-[clamp(56px,9vw,110px)] leading-none font-extrabold tracking-[-0.06em] text-transparent">
           {siteConfig.business.ownerName.toLowerCase()}
-          <span className="text-nails">
-            {siteConfig.business.wordmarkAccent}
-          </span>
+          {siteConfig.business.wordmarkAccent}
         </p>
 
         <div className="flex flex-col gap-3 min-[560px]:flex-row">
@@ -131,7 +130,7 @@ export default async function About({ params }: PageProps<"/[locale]/about">) {
             {c.party}
           </Link>
         </div>
-      </Band>
+      </PhotoBand>
     </main>
   );
 }

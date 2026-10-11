@@ -43,7 +43,7 @@ export default async function Contact({
 
   return (
     <main id="main">
-      <Band className="pt-[26px]!">
+      <Band className="grain pt-[26px]!">
         {/* Her work beside the heading, never her (no photo of her on the site). */}
         <div className="flex flex-col gap-12 min-[860px]:flex-row min-[860px]:items-center">
           <div className="min-w-0 flex-1">
@@ -51,7 +51,7 @@ export default async function Contact({
               {c.eyebrow}
             </span>
 
-            <h1 className="mb-4 text-[clamp(36px,9vw,62px)]">
+            <h1 className="mb-4 text-[clamp(40px,8.6vw,78px)]">
               {c.headingLead} <Hot>{c.headingAccent}</Hot>
             </h1>
 

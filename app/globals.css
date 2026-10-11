@@ -211,6 +211,85 @@
   --confirm-ui: var(--confirm);
 }
 
+/*
+ * Section tones (round 5). A band re-declares the tokens, so everything inside
+ * follows without knowing. Blush is the light band and ink the deeper dark one;
+ * both look the same in either theme, so the page keeps its rhythm in light mode.
+ * Sections set text-ink themselves: colour inherited from body would keep the
+ * page ink.
+ */
+.tone-blush {
+  --ground: #fdf6f8;
+  --surface: #ffffff;
+  --surface-2: #fbeef3;
+  --shot: #f3e2e9;
+  --line: #ecd3dd;
+  --line-soft: #f4e3ea;
+
+  --ink: #22172c;
+  --ink-muted: #5f5068;
+  --ink-faint: #74647d;
+
+  --glow-blur: 90px;
+  --glow-a: rgb(255 61 143 / 0.16);
+  --glow-b: rgb(169 123 255 / 0.14);
+  --glow-c: rgb(255 138 61 / 0.14);
+
+  --hot-text: linear-gradient(92deg, var(--nails-on-light), var(--makeup-on-light));
+  --nails-ui: var(--nails-on-light);
+  --lashes-ui: var(--lashes-on-light);
+  --makeup-ui: var(--makeup-on-light);
+  --confirm-ui: var(--confirm-on-light);
+  --primary: var(--nails-on-light);
+  --ring: var(--nails-on-light);
+  --border: var(--line-soft);
+  --input: var(--line);
+}
+.tone-ink {
+  --ground: #17111f;
+  --surface: #241b31;
+  --surface-2: #1d1628;
+  --shot: #100b16;
+  --line: #3e3150;
+  --line-soft: #2c2239;
+
+  --ink: #f6f2fa;
+  --ink-muted: #b8adc6;
+  --ink-faint: #a297b2;
+
+  --glow-blur: 90px;
+  --glow-a: rgb(255 61 143 / 0.42);
+  --glow-b: rgb(169 123 255 / 0.34);
+  --glow-c: rgb(255 138 61 / 0.22);
+
+  --hot-text: var(--hot);
+  --nails-ui: var(--nails);
+  --lashes-ui: var(--lashes);
+  --makeup-ui: var(--makeup);
+  --confirm-ui: var(--confirm);
+  --primary: var(--nails);
+  --ring: var(--nails);
+  --border: var(--line-soft);
+  --input: var(--line);
+}
+
+/* The closing band, painted in the hot gradient itself: dark ink on it, the
+   accent word in white, and the button turned dark so it still stands out. */
+.tone-hot {
+  --ink: #1e1226;
+  --ink-muted: #2b1630;
+  --ink-faint: #2b1630;
+  --line: rgb(30 18 38 / 0.35);
+  --line-soft: rgb(30 18 38 / 0.2);
+  --hot-text: linear-gradient(#ffffff, #ffffff);
+  --hot: linear-gradient(92deg, #1e1226, #3a2150);
+  --on-hot: #ffffff;
+  --nails: #1e1226;
+  --ring: #1e1226;
+  background: linear-gradient(120deg, #ff3d8f 0%, #ff5f6d 50%, #ff8a3d 100%);
+  color: var(--ink);
+}
+
 /* Black and gold, for the theme switch on /logos only. */
 :root.gold {
   /* surfaces */
@@ -567,5 +646,39 @@
   animation-delay: var(--d, 0s);
   @media (prefers-reduced-motion: reduce) {
     animation: none;
+  }
+}
+
+/* Film grain over a dark band, so the dark reads as a surface, not a hole. */
+@utility grain {
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.09;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27180%27 height=%27180%27%3E%3Cfilter id=%27n%27%3E%3CfeTurbulence type=%27fractalNoise%27 baseFrequency=%270.9%27 numOctaves=%273%27 stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23n)%27/%3E%3C/svg%3E");
+  }
+}
+
+/* A photo behind a band settles from a slight zoom as the band scrolls through. */
+@keyframes photo-settle {
+  from {
+    scale: 1.16;
+    translate: 0 -4%;
+  }
+  to {
+    scale: 1.02;
+    translate: 0 4%;
+  }
+}
+@utility photo-settle {
+  scale: 1.06;
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      animation: photo-settle linear both;
+      animation-timeline: view();
+    }
   }
 }

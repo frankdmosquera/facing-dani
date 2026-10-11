@@ -12,7 +12,7 @@ export function Hero({ locale, t }: { locale: Locale; t: Dictionary }) {
   const c = t.home.hero;
 
   return (
-    <Band className="pt-[26px]!">
+    <Band className="grain pt-[26px]!">
       <div className="flex flex-col gap-10 min-[860px]:flex-row min-[860px]:items-center min-[860px]:gap-14">
         <div className="min-w-0 min-[860px]:flex-1">
           <span className="lift-rise font-body mb-3 block text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">

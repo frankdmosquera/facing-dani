@@ -46,7 +46,7 @@ export function WorkWall() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 flex flex-col justify-center gap-3 opacity-25 light:opacity-[0.12] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_75%)]"
+      className="pointer-events-none absolute inset-0 flex flex-col justify-center gap-3 opacity-30 mix-blend-multiply [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_75%)]"
     >
       <Row images={TOP} />
       <Row images={BOTTOM} reverse />

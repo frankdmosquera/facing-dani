@@ -45,7 +45,7 @@ export default async function ThankYou({
           {c.eyebrow}
         </span>
 
-        <h1 className="mb-4 text-[clamp(36px,9vw,62px)]">
+        <h1 className="mb-4 text-[clamp(40px,8.6vw,78px)]">
           {c.headingLead} <Hot>{c.headingAccent}</Hot>
         </h1>
 

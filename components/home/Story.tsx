@@ -12,7 +12,7 @@ export function Story({ locale, t }: { locale: Locale; t: Dictionary }) {
   const c = t.home.story;
 
   return (
-    <Band>
+    <Band tone="blush">
       <BandHead
         eyebrow={c.eyebrow}
         heading={

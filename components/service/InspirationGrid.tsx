@@ -17,7 +17,7 @@ export function InspirationGrid({
   return (
     <>
       <div className="mb-[26px]">
-        <h2 className="mb-2 text-[clamp(24px,5.5vw,34px)]">
+        <h2 className="mb-2 text-[clamp(30px,5.6vw,52px)]">
           {t.inspiration.heading}
         </h2>
         <p className="max-w-[54ch] text-[14.5px] text-ink-muted">
