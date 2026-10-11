@@ -4,12 +4,12 @@ import { Band, BandHead, Hot } from "@/components/site/Band";
 import type { Dictionary } from "@/dictionaries";
 import { localePath, type Locale } from "@/lib/locale";
 
-// Sends anyone who wants a set that lasts to the nails page.
+// Sends anyone who wants a set that lasts to the nails menu.
 export function PressOnCompare({ locale, t }: { locale: Locale; t: Dictionary }) {
   const c = t.store.compare;
 
   return (
-    <Band tinted glow={false}>
+    <Band tinted>
       <BandHead
         eyebrow={c.eyebrow}
         heading={
@@ -44,7 +44,7 @@ export function PressOnCompare({ locale, t }: { locale: Locale; t: Dictionary })
       </div>
 
       <Link
-        href={localePath(locale, "/nails")}
+        href={`${localePath(locale, "/")}#menu`}
         className="hover-fill inline-block rounded-pill border border-line px-7 py-4 text-center text-[15px] font-bold text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
       >
         {c.menu}

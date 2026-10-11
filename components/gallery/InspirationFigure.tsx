@@ -18,7 +18,7 @@ export function InspirationFigure({
   openLabel: string;
 }) {
   return (
-    <figure className="relative mb-2.5 break-inside-avoid overflow-hidden rounded-lg border border-line-soft bg-shot min-[620px]:mb-3">
+    <figure className="relative mb-2.5 break-inside-avoid overflow-hidden rounded-lg border-2 border-line bg-shot min-[620px]:mb-3">
       <button
         type="button"
         data-photo-index={index}

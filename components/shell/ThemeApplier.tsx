@@ -2,18 +2,16 @@
 
 import { useEffect, useSyncExternalStore } from "react";
 
-import { themePreview } from "@/components/logos/previewStore";
+import { applyTheme, siteTheme, themeChoice } from "./theme";
 
-import { activeTheme, applyTheme, siteTheme } from "./theme";
-
-// Keeps the class on <html> in step with the header button and the /logos preview after the first paint.
+// Keeps the classes on <html> in step with the header button and the options panel after the first paint.
 export function ThemeApplier() {
-  const preview = useSyncExternalStore(themePreview.subscribe, themePreview.read, themePreview.server);
-  const site = useSyncExternalStore(siteTheme.subscribe, siteTheme.read, siteTheme.server);
+  const stored = useSyncExternalStore(siteTheme.subscribe, siteTheme.read, siteTheme.server);
+  const choice = useSyncExternalStore(themeChoice.subscribe, themeChoice.read, themeChoice.server);
 
   useEffect(() => {
-    applyTheme(activeTheme(preview, site));
-  }, [preview, site]);
+    applyTheme(stored, choice);
+  }, [stored, choice]);
 
   return null;
 }

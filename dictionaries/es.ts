@@ -16,16 +16,15 @@ export const es: Dictionary = {
   marquee: ["Uñas", "Fiestas", "Calgary"],
 
   nav: {
-    home: "Inicio",
     nails: "Uñas",
     parties: "Fiestas",
-    about: "Sobre mí",
     store: "Tienda",
     lashes: "Pestañas",
     makeup: "Maquillaje",
     gallery: "Galería",
+    faq: "Preguntas",
     contact: "Contacto",
-    logos: "Logos",
+    more: "Más",
   },
 
   cta: {
@@ -43,10 +42,8 @@ export const es: Dictionary = {
       store: "Tienda",
       lashes: "Pestañas",
       makeup: "Maquillaje",
-      gallery: "Galería",
       bookAppointment: "Reservar una cita",
       contact: "Preguntas y fiestas",
-      about: "Sobre mí",
       faq: "Preguntas frecuentes",
       instagram: "Instagram",
     },
@@ -94,7 +91,7 @@ export const es: Dictionary = {
         body: "Estoy armando la lista ahora. Escríbeme y te digo exactamente cuánto te saldría tu set, sin sorpresas en la silla.",
       },
       menuHeading: "Precios de uñas en Calgary",
-      work: { heading: "Trabajo reciente en uñas", all: "Ver todos los sets" },
+      work: { heading: "Trabajo reciente en uñas" },
       guide: {
         eyebrow: "Qué set es para ti",
         headingLead: "Gel, acrílico",
@@ -119,44 +116,6 @@ export const es: Dictionary = {
             tag: "Largo, más liviano",
             body: "Tips de gel suave que cubren toda la uña, pegados con gel. Más livianos que el acrílico, más rápidos de poner y más suaves de retirar.",
             lasts: "Un relleno cada dos a tres semanas.",
-          },
-        },
-      },
-      steps: {
-        eyebrow: "Tu cita",
-        headingLead: "Una cita de uñas,",
-        headingAccent: "paso a paso",
-        lede: "Por qué un set completo toma unas dos horas, y en qué se va ese tiempo. Un manicure en gel no lleva construcción y toma más o menos una.",
-        items: {
-          talk: {
-            title: "Miramos tus manos y tu foto",
-            time: "Unos 5 minutos",
-            body: "Lo que haces todo el día decide qué tan largo puede ser un set y qué forma va a aguantar. El largo, la forma y el color quedan definidos antes de empezar.",
-          },
-          removal: {
-            title: "Retiro, si vienes con un set puesto",
-            time: "Unos 30 minutos",
-            body: "El set anterior se remoja y se lima con cuidado, nunca se arranca. Avísame cuando reserves para que haya tiempo.",
-          },
-          prep: {
-            title: "Preparación",
-            time: "Unos 15 minutos",
-            body: "Cutículas empujadas y limpias, la superficie pulida suave y deshidratada. Casi todo levantamiento empieza por una preparación a medias, así que esta parte nunca va con prisa.",
-          },
-          build: {
-            title: "Construcción y forma",
-            time: "Unos 45 a 60 minutos",
-            body: "Se pone el acrílico o el Gel‑X, y luego cada uña se lima al mismo largo y la misma forma, con el punto más grueso donde la uña necesita resistencia.",
-          },
-          colour: {
-            title: "Color y arte",
-            time: "Unos 20 a 40 minutos",
-            body: "El color en gel, y después francesa, chrome, cat-eye o arte a mano si lo pediste. Cada capa se cura en la lámpara.",
-          },
-          finish: {
-            title: "Top coat, aceite y cuidados",
-            time: "Unos 10 minutos",
-            body: "Un top coat para el brillo, aceite de cutícula y un par de consejos para que el set se vea bien hasta tu relleno.",
           },
         },
       },
@@ -231,7 +190,6 @@ export const es: Dictionary = {
       menuHeading: "Precios de pestañas en Calgary",
       work: {
         heading: "Trabajo reciente en pestañas",
-        all: "Ver todos los sets",
       },
       treatments: {
         classicFullSet: "Set completo clásico",
@@ -267,7 +225,7 @@ export const es: Dictionary = {
         body: "Estoy armando la lista ahora. Dime la ocasión y más o menos cuándo, y te contesto con un precio y una hora.",
       },
       menuHeading: "Precios de maquillaje en Calgary",
-      work: { heading: "Maquillaje reciente", all: "Ver todos los sets" },
+      work: { heading: "Maquillaje reciente" },
       treatments: {
         softGlam: "Soft glam, eventos y sesiones de fotos",
         fullGlam: "Full glam, graduación y prom, pestañas incluidas",
@@ -279,14 +237,14 @@ export const es: Dictionary = {
 
   contact: {
     meta: {
-      title: "Preguntas y fiestas en Calgary",
+      title: "Sobre Dani, preguntas y fiestas en Calgary",
       description:
         "Pregúntame lo que quieras, o cuéntame de la fiesta que organizas en Calgary: la fecha, cuántos invitados y la zona. Contesto todos los mensajes, casi siempre el mismo día. Te atiendo en español.",
     },
     eyebrow: "Preguntas y fiestas",
     headingLead: "Dime qué",
     headingAccent: "necesitas",
-    lede: "Pregúntame lo que quieras, o cuéntame de una fiesta que estás organizando. Me llega al correo y contesto todos, casi siempre el mismo día. Para reservar una cita de uñas es más rápido desde la página de uñas.",
+    lede: "Pregúntame lo que quieras, o cuéntame de una fiesta que estás organizando. Me llega al correo y contesto todos, casi siempre el mismo día. Para reservar una cita de uñas es más rápido desde el menú de uñas.",
 
     direct: {
       heading: "¿Prefieres escribirme directo?",
@@ -456,11 +414,6 @@ export const es: Dictionary = {
   },
 
   about: {
-    meta: {
-      title: "Sobre Dani, artista de uñas en Calgary",
-      description:
-        "Formada en Colombia, haciendo uñas en Calgary con cita previa y en fiestas de niños y adolescentes. Quién te hace las uñas, y por qué el acabado me importa.",
-    },
     eyebrow: "Sobre mí",
     headingLead: "Quién te hace",
     headingAccent: "las uñas",
@@ -603,7 +556,7 @@ export const es: Dictionary = {
     headingAccent: "gracias",
     lede: "Tu mensaje está en mi correo. Contesto todos, casi siempre el mismo día, y te vuelvo a escribir con una hora y un precio.",
     next: "Mientras tanto, vale la pena ver el resto del trabajo.",
-    gallery: "Ver la galería",
+    gallery: "Ver mi trabajo",
     home: "Volver al inicio",
   },
 
@@ -622,7 +575,7 @@ export const es: Dictionary = {
   faq: {
     booking: {
       q: "¿Cómo reservo?",
-      a: "Abre la página de uñas, toca Reservar junto al tratamiento que quieres y elige una hora en el calendario. ¿Tienes preguntas antes? La página de contacto siempre está abierta.",
+      a: "Abre el menú de uñas, toca Reservar junto al tratamiento que quieres y elige una hora en el calendario. ¿Tienes preguntas antes? La página de contacto siempre está abierta.",
     },
     parties: {
       q: "¿Puedes ir a una fiesta?",
@@ -672,14 +625,6 @@ export const es: Dictionary = {
       party: "Para tu fiesta",
       dmNote: "O mándame un DM por Instagram, lo que te sea más fácil",
     },
-    nails: {
-      eyebrow: "Uñas",
-      headingLead: "Gel, acrílico y",
-      headingAccent: "Gel‑X en Calgary",
-      lede: "Sets completos y rellenos, cromado, francés y arte a mano. Forma y trabajo de cutícula que siguen viéndose bien en la tercera semana.",
-      addOns: "Agrega francés, cromado o arte a cualquier set.",
-      more: "Ver el menú completo y reservar",
-    },
     story: {
       eyebrow: "Quién te hace las uñas",
       headingLead: "Formada en Colombia,",
@@ -691,7 +636,6 @@ export const es: Dictionary = {
     work: {
       eyebrow: "Trabajo reciente",
       heading: "El trabajo, no la promesa",
-      all: "Ver todo el trabajo",
     },
 
     jobTitle: "Artista de uñas",
@@ -704,27 +648,6 @@ export const es: Dictionary = {
       body: "No solo esta página. El español es mi primer idioma, así que la consulta, la conversación y el momento en el que cambias de opinión sobre el color pasan en el idioma en el que te sientas más cómoda. Una página traducida solo te dice que la puedes leer. Esto es yo diciéndote que te van a entender.",
     },
 
-    parties: {
-      eyebrow: "Fiestas",
-      headingLead: "Uñas y más para",
-      headingAccent: "tu fiesta",
-      lede: "¿Organizas un cumpleaños o una reunión para niños o adolescentes? Tú haces la fiesta, yo llego y me encargo de los invitados: uñas, pintura facial, maquillaje, y pestañas para los mayores.",
-      points: {
-        host: {
-          title: "Tú organizas, yo hago la belleza",
-          body: "El pastel, los juegos y los invitados son tuyos. Yo armo mi estación y voy atendiendo a los invitados.",
-        },
-        age: {
-          title: "Pensado para su edad",
-          body: "Pintura facial y uñas sencillas y lindas para los niños. Sets más de moda, maquillaje y pestañas para los adolescentes.",
-        },
-        ask: {
-          title: "Pregunta primero",
-          body: "Las fiestas no se reservan en línea. Mándame la fecha, cuántos invitados y la zona, y te confirmo por correo.",
-        },
-      },
-      ask: "Pregunta por tu fiesta",
-    },
 
     guide: {
       eyebrow: "Guía de uñas",
@@ -777,6 +700,7 @@ export const es: Dictionary = {
       total: "Tu set empieza en",
       book: "Reservar este set",
       note: "Es un punto de partida, no una cotización: el largo y el detalle pueden mover un poco el precio.",
+      closest: "Mi set más parecido",
     },
 
     expect: {
@@ -813,16 +737,24 @@ export const es: Dictionary = {
   },
 
   // No es objetivo de posicionamiento: el título se escribe para leerse bien.
+  faqPage: {
+    meta: {
+      title: "Preguntas sobre uñas y fiestas en Calgary",
+      description:
+        "Respuestas sobre sets de gel, acrílico y Gel-X, reservas, precios y fiestas en Calgary, todo en un solo lugar.",
+    },
+    eyebrow: "Preguntas",
+    headingLead: "Todo lo que",
+    headingAccent: "querías preguntar",
+    lede: "Uñas, reservas y fiestas. Si tu pregunta no está aquí, mándamela y te contesto.",
+  },
+
   gallery: {
     meta: {
       title: "Mi trabajo en Calgary: arte y sets de uñas",
       description:
-        "Sets reales, nunca fotos de archivo. Arte de uñas, francés, cromado y Gel-X hechos en Calgary, y algo de mi maquillaje, en grande para que juzgues el acabado.",
+        "Sets reales, nunca fotos de archivo. Arte de uñas, francés, cromado y Gel-X hechos en Calgary, en grande para que juzgues el acabado.",
     },
-    eyebrow: "Cada foto es mía",
-    headingLead: "El trabajo,",
-    headingAccent: "hecho en Calgary",
-    lede: "En grande a propósito. Vas a elegir a alguien con quien te vas a sentar dos horas, y una miniatura no te dice nada de una línea de cutícula.",
     filters: {
       label: "Filtrar por servicio",
       all: "Todo",
@@ -830,67 +762,6 @@ export const es: Dictionary = {
     count: {
       one: "1 foto",
       other: "{n} fotos",
-    },
-    empty: {
-      heading: "Las fotos vienen en camino",
-      body: "Aquí no sube nada que no sea trabajo mío, así que esta página se va llenando conforme voy fotografiando. Mientras tanto dime qué buscas y te muestro lo que tengo.",
-    },
-    cta: {
-      eyebrow: "La parte fácil",
-      headingLead: "¿Viste una que",
-      headingAccent: "quieras?",
-      lede: "Mándamela y la hacemos tuya, o ven sin nada y lo resolvemos juntas.",
-      book: "Reservar con Dani",
-      instagram: "Escríbeme por Instagram",
-    },
-    styles: {
-      eyebrow: "Lo que estás viendo",
-      headingLead: "Los estilos",
-      headingAccent: "de estas fotos",
-      lede: "Los sets de arriba caen en unas pocas familias. Si una de ellas es lo que buscas, dilo al reservar y trae la foto.",
-      bookAs: "Resérvalo: cualquier set +",
-      groups: {
-        french: {
-          title: "Francés, de todas las formas",
-          body: "Puntas blancas clásicas, puntas pastel de un color distinto en cada dedo, un francés azul claro con flores pintadas a mano y una punta blanca bordeada en dorado. La línea del francés es el detalle que mejor muestra el trabajo de forma, por eso hay tantas.",
-        },
-        chrome: {
-          title: "Cromado, ojo de gato y brillo",
-          body: "Un ojo de gato burdeos profundo que refleja una franja de luz en cada uña, un lila perlado con brillo iridiscente y hojuelas iridiscentes sobre blanco.",
-        },
-        art: {
-          title: "Arte a mano",
-          body: "Florecitas blancas sobre rosado intenso, corazones, estrellas en rosado y negro, una flor blanca en relieve, y sets de temporada como un lazo de Navidad, un copo de nieve y un bastón de caramelo.",
-        },
-        sparkle: {
-          title: "Glitter y cristales",
-          body: "Una línea fina de glitter en la sonrisa, cristales a lo largo de la punta o agrupados en una uña de acento, y un acabado de glitter azucarado junto a una textura tejida.",
-        },
-        makeup: {
-          title: "También algo de maquillaje",
-          body: "Un ojo gráfico azul y un look suave y natural para el día a día. El maquillaje es una parte más pequeña de lo que hago, así que hay menos de estos.",
-        },
-      },
-    },
-    photo: {
-      eyebrow: "Cómo reservar un look",
-      headingLead: "Convierte una foto en",
-      headingAccent: "tu set",
-      steps: {
-        save: {
-          title: "Guarda la foto",
-          body: "Un pantallazo de aquí, de Instagram o de Pinterest es perfecto. Muestra la forma, el largo, el color y el arte mejor que cualquier descripción.",
-        },
-        book: {
-          title: "Reserva el set que lleva",
-          body: "Elige la base en el menú de uñas: manicure en gel sobre tus propias uñas, o acrílico o Gel‑X para dar largo. La francesa, el chrome o el arte van encima.",
-        },
-        bring: {
-          title: "Tráela a la cita",
-          body: "La miramos junto con tus manos. Una foto no muestra si ese largo le va a tu lecho de uña, así que la forma o el largo pueden cambiar un poco para que el set aguante tres semanas.",
-        },
-      },
-      menu: "Ver el menú de uñas",
     },
     lightbox: {
       open: "Ver más grande: {photo}",

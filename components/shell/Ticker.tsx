@@ -8,7 +8,7 @@ export function Ticker({ words }: { words: string[] }) {
   return (
     <div
       aria-hidden="true"
-      className="overflow-hidden bg-[linear-gradient(90deg,var(--nails),var(--lashes),var(--makeup))] py-2"
+      className="overflow-hidden border-b-2 border-[color:var(--brand-ink)] bg-[color:var(--brand-ink)] py-2"
     >
       {/* The words render twice and slide exactly -50%, which makes the loop seamless. */}
       <div className="flex w-max animate-ticker motion-reduce:animate-none">
@@ -17,7 +17,7 @@ export function Ticker({ words }: { words: string[] }) {
             {row.map((word, i) => (
               <li
                 key={`${copy}-${i}`}
-                className="px-3.5 text-[10px] font-bold tracking-[0.18em] whitespace-nowrap text-on-hot uppercase before:mr-3.5 before:content-['·']"
+                className="px-3.5 text-[10px] font-bold tracking-[0.18em] whitespace-nowrap text-[color:var(--brand-cream)] uppercase before:mr-3.5 before:text-[color:var(--brand-accent)] before:content-['✦']"
               >
                 {word}
               </li>

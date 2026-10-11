@@ -1,18 +1,26 @@
-import { themePreview, themes } from "@/components/logos/previewStore";
+import { siteConfig } from "@/data/siteConfig";
 import { createBrowserStore } from "@/lib/browserStore";
 
-// The header button. Dark is the brand, so "light" is the only value ever stored.
+// The header button. Light is the default, so "dark" is the only value ever stored.
 export const siteTheme = createBrowserStore("site-theme");
 
-// A /logos pick wins over the button while that page exists.
-export function activeTheme(preview: string | null, site: string | null) {
-  return preview ?? site;
+// The options panel's theme pick (dev only, components/shell/OptionsPanel). Wins over siteConfig.theme while it exists.
+export const themeChoice = createBrowserStore("theme-choice");
+
+export const THEMES = ["pop", "purple", "gold"] as const;
+export type ThemeName = (typeof THEMES)[number];
+
+function themeName(choice: string | null): ThemeName {
+  return (THEMES as readonly string[]).includes(choice ?? "") ? (choice as ThemeName) : siteConfig.theme;
 }
 
-export function applyTheme(active: string | null) {
+// Pop is the bare :root; the others add a class. Class names match the blocks in globals.css.
+export function applyTheme(stored: string | null, choice: string | null) {
   const root = document.documentElement;
-  for (const theme of themes) if (theme.id) root.classList.toggle(theme.id, theme.id === active);
+  const name = themeName(choice);
+  root.classList.toggle("light", stored !== "dark");
+  for (const theme of THEMES) root.classList.toggle(`theme-${theme}`, theme !== "pop" && theme === name);
 }
 
-// Runs before paint, so a light visitor never sees a dark first frame. Same rule as activeTheme.
-export const themeScript = `try{var t=localStorage.getItem(${JSON.stringify(themePreview.key)})||localStorage.getItem(${JSON.stringify(siteTheme.key)});if(t)document.documentElement.classList.add(t)}catch(e){}`;
+// Runs before paint, so a visitor never sees the wrong first frame. Same rule as applyTheme.
+export const themeScript = `try{var d=document.documentElement;if(localStorage.getItem(${JSON.stringify(siteTheme.key)})!=="dark")d.classList.add("light");var c=localStorage.getItem(${JSON.stringify(themeChoice.key)})||${JSON.stringify(siteConfig.theme)};if(c==="purple"||c==="gold")d.classList.add("theme-"+c)}catch(e){}`;

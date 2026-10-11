@@ -1,8 +1,9 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useState } from "react";
 
-import { NAIL_PATHS, NailShape, type NailShapeKind } from "@/components/home/NailShape";
+import { NailShape, type NailShapeKind } from "@/components/home/NailShape";
+import { Photo } from "@/components/media/Photo";
 import { formatPrice } from "@/lib/format";
 
 export type BuilderOption = { key: string; label: string; price?: number; from?: boolean };
@@ -15,7 +16,11 @@ export type BuilderCopy = {
   book: string;
   note: string;
   from: string;
+  closest: string;
 };
+
+// One of her real sets, tagged with the finish it shows and its shape.
+export type BuilderPhoto = { key: string; finish: string; shape: string; path: string; width: number; height: number };
 
 /* Each finish painted like the nail guide's swatch (globals.css). */
 const PAINT: Record<string, string> = {
@@ -25,54 +30,6 @@ const PAINT: Record<string, string> = {
   sparkle: "swatch-sparkle",
   art: "swatch-art",
 };
-
-/* Five fingers, thumb to little finger: each nail's width, length and lift. */
-const HAND = [
-  { w: 92, h: 128, y: 60, r: -14 },
-  { w: 80, h: 160, y: 12, r: -6 },
-  { w: 82, h: 176, y: 0, r: 0 },
-  { w: 78, h: 162, y: 10, r: 6 },
-  { w: 64, h: 132, y: 44, r: 13 },
-];
-
-function Nail({
-  shape,
-  finish,
-  index,
-  w,
-  h,
-}: {
-  shape: NailShapeKind;
-  finish: string;
-  index: number;
-  w: number;
-  h: number;
-}) {
-  const id = useId();
-  return (
-    <svg viewBox="0 0 40 66" width={w} height={h} preserveAspectRatio="none" className="overflow-visible">
-      <defs>
-        <clipPath id={id}>
-          <path d={NAIL_PATHS[shape]} />
-        </clipPath>
-      </defs>
-      <foreignObject x="0" y="0" width="40" height="66" clipPath={`url(#${id})`}>
-        <div className={`h-full w-full ${PAINT[finish] ?? "bg-[image:var(--hot)]"}`} />
-      </foreignObject>
-      {/* The gel's shine, then a fine edge. */}
-      <path
-        d="M11 52V26c0-7 2-12 5-15"
-        fill="none"
-        stroke="white"
-        strokeOpacity={0.55}
-        strokeWidth={2.4}
-        strokeLinecap="round"
-        style={{ opacity: index === 2 ? 1 : 0.8 }}
-      />
-      <path d={NAIL_PATHS[shape]} fill="none" stroke="white" strokeOpacity={0.3} strokeWidth={0.8} />
-    </svg>
-  );
-}
 
 function Chips({
   label,
@@ -89,7 +46,7 @@ function Chips({
 }) {
   return (
     <fieldset className="mb-7">
-      <legend className="eyebrow font-body mb-3 text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
+      <legend className="eyebrow mb-5">
         {label}
       </legend>
       <div className="flex flex-wrap gap-2">
@@ -101,7 +58,7 @@ function Chips({
               type="button"
               aria-pressed={on}
               onClick={() => onChange(option.key)}
-              className={`flex items-center gap-2.5 rounded-pill border px-4 py-2.5 text-[14px] font-semibold transition-[background-color,border-color,color,translate] duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring ${on ? "border-transparent bg-[image:var(--hot)] text-on-hot" : "border-line text-ink hover:border-ink-muted"}`}
+              className={`flex items-center gap-2.5 rounded-pill px-4 py-2.5 text-[14px] font-semibold transition-[background-color,border-color,color,translate] duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring border-2 border-line ${on ? "bg-[image:var(--hot)] text-on-hot shadow-[3px_3px_0_var(--shadow)]" : "text-ink hover:bg-surface-2"}`}
             >
               {marker ? marker(option.key) : null}
               {option.label}
@@ -114,8 +71,8 @@ function Chips({
 }
 
 /**
- * Build your set: pick a base, a shape and a finish, and a hand of five nails
- * redraws in them while the starting price adds up from the nails menu. The
+ * Build your set: pick a base, a shape and a finish, and her real set closest
+ * to it shows while the starting price adds up from the nails menu. The
  * picture is decorative; the chosen options and the price are text.
  */
 export function SetBuilder({
@@ -125,6 +82,7 @@ export function SetBuilder({
   addOnFor,
   copy,
   bookLinks,
+  photos,
 }: {
   bases: BuilderOption[];
   shapes: BuilderOption[];
@@ -134,6 +92,7 @@ export function SetBuilder({
   copy: BuilderCopy;
   // Per base: the booking URL and the attributes that open Cal's popup.
   bookLinks: Record<string, { href: string; attrs: Record<string, string> }>;
+  photos: BuilderPhoto[];
 }) {
   const [base, setBase] = useState(bases[1]?.key ?? bases[0].key);
   const [shape, setShape] = useState(shapes[0].key as NailShapeKind);
@@ -144,27 +103,37 @@ export function SetBuilder({
   const total = (baseOption.price ?? 0) + (addOn?.price ?? 0);
   const from = Boolean(baseOption.from || addOn?.from);
   const link = bookLinks[base];
+  const photo =
+    photos.find((p) => p.finish === finish && p.shape === shape) ?? photos.find((p) => p.finish === finish);
 
   return (
     <div className="grid items-center gap-10 min-[960px]:grid-cols-[1.05fr_1fr] min-[960px]:gap-16">
-      {/* The hand: remounted on every pick so the nails pop in again. */}
+      {/* Her real set closest to the picks: remounted on every change so it settles in again. */}
       <div
         aria-hidden="true"
-        className="relative grid min-h-[440px] place-items-center overflow-hidden rounded-[32px] bg-[radial-gradient(circle_at_50%_85%,#ffc2dc,#fbe6ef_55%,#f6dce8)] px-4 pt-14 pb-16 shadow-[0_40px_80px_-40px_rgba(255,61,143,0.5)] max-[560px]:min-h-[320px]"
+        className="relative aspect-[4/5] overflow-hidden rounded-[28px] border-2 border-line bg-shot shadow-[10px_10px_0_var(--shadow)] max-[960px]:mx-auto max-[960px]:w-full max-[960px]:max-w-[420px]"
       >
-        <div key={`${shape}-${finish}`} className="flex items-end justify-center gap-4 drop-shadow-[0_18px_18px_rgba(120,30,80,0.3)] max-[560px]:[zoom:0.6]">
-          {HAND.map((finger, index) => (
-            <div
-              key={index}
-              style={{ translate: `0 ${finger.y}px`, rotate: `${finger.r}deg` }}
-            >
-              {/* Its own box: lift-rise animates translate, which would undo the finger's. */}
-              <div className="lift-rise" style={{ "--i": index } as React.CSSProperties}>
-                <Nail shape={shape} finish={finish} index={index} w={finger.w} h={finger.h} />
-              </div>
-            </div>
-          ))}
-        </div>
+        {photo ? (
+          <div key={photo.key} className="lift-rise absolute inset-0">
+            <Photo
+              path={photo.path}
+              alt=""
+              width={photo.width}
+              height={photo.height}
+              sizes="(min-width: 960px) 560px, 420px"
+              className="block h-full w-full object-cover"
+            />
+          </div>
+        ) : null}
+        <span className="absolute top-4 left-4 -rotate-6 rounded-pill border-2 border-[color:var(--brand-ink)] bg-[color:var(--brand-sticker)] px-4 py-2 text-[13px] font-bold text-[color:var(--brand-ink)] shadow-[3px_3px_0_var(--brand-ink)]">
+          {copy.closest}
+        </span>
+        <span className="absolute right-4 bottom-4 flex items-center gap-2 rounded-pill border-2 border-[color:var(--brand-ink)] bg-white px-4 py-2 text-[14px] font-bold text-[color:var(--brand-ink)] shadow-[3px_3px_0_var(--brand-ink)]">
+          <span className="-my-2 scale-75">
+            <NailShape kind={shape} />
+          </span>
+          {shapes.find((option) => option.key === shape)?.label} · {finishes.find((option) => option.key === finish)?.label}
+        </span>
       </div>
 
       <div>
@@ -188,7 +157,7 @@ export function SetBuilder({
           marker={(key) => (
             <span
               aria-hidden="true"
-              className={`size-4 rounded-full ring-1 ring-white/30 ${PAINT[key] ?? ""}`}
+              className={`size-4 rounded-full border border-[color:var(--brand-ink)] ${PAINT[key] ?? ""}`}
             />
           )}
         />

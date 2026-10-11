@@ -10,12 +10,13 @@ export type Service = {
 };
 
 export const services: Service[] = [
-  { id: "nails", order: 1, href: "/nails" },
+  // Nails is the home page; /nails redirects there.
+  { id: "nails", order: 1, href: "/" },
   { id: "lashes", order: 2, href: "/lashes" },
   { id: "makeup", order: 3, href: "/makeup" },
 ];
 
-// Derived from href, so the [service] route and the nav links cannot disagree.
+// Derived from href, so the [service] route and the nav links cannot disagree. Nails' slug is empty: it has no route there.
 export function serviceSlug(service: Service): string {
   return service.href.replace(/^\//, "");
 }

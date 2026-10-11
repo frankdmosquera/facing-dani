@@ -72,7 +72,7 @@ export function TreatmentList<S extends ServiceId>({
                 href={bookingHref(eventSlug(serviceId, String(row.key)))}
                 {...bookingTrigger(eventSlug(serviceId, String(row.key)))}
                 aria-label={`${t.treatmentList.book}: ${treatmentLabel(t, serviceId, row.key)}`}
-                className="min-w-[92px] rounded-pill border border-line px-4 py-2 text-center text-[13.5px] font-bold text-ink transition-colors group-hover/row:border-transparent group-hover/row:bg-[image:var(--hot)] group-hover/row:text-on-hot focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                className="min-w-[92px] rounded-pill border-2 border-line px-4 py-2 shadow-[3px_3px_0_var(--shadow)] text-center text-[13.5px] font-bold text-ink transition-colors group-hover/row:border-transparent group-hover/row:bg-[image:var(--hot)] group-hover/row:text-on-hot focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
               >
                 {t.treatmentList.book}
               </a>

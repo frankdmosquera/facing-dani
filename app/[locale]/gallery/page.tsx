@@ -1,20 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { GalleryFigure } from "@/components/gallery/GalleryFigure";
-import { GalleryGrid } from "@/components/gallery/GalleryGrid";
-import { GalleryPhotoSteps } from "@/components/gallery/GalleryPhotoSteps";
-import { GalleryStyles } from "@/components/gallery/GalleryStyles";
-import { PhotoWall } from "@/components/gallery/PhotoWall";
-import { Band, Hot } from "@/components/site/Band";
+import { WorkGallery } from "@/components/home/WorkGallery";
 import { BookingBand } from "@/components/site/BookingBand";
-import { galleryServiceCounts, orderedGallery } from "@/data/gallery";
 import { getDictionary } from "@/dictionaries";
 import { defaultLocale, isLocale, localePath } from "@/lib/locale";
-import { imageGallerySchema, jsonLd } from "@/lib/schema";
-
-// Photos loaded eagerly. The rest are lazy.
-const EAGER = 4;
 
 export async function generateMetadata({
   params,
@@ -38,102 +28,16 @@ export async function generateMetadata({
   };
 }
 
-export default async function Gallery({
-  params,
-}: PageProps<"/[locale]/gallery">) {
+// Her work on its own page (back on 2026-10-11): too many photos for home, which stays about booking nails.
+export default async function Gallery({ params }: PageProps<"/[locale]/gallery">) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-
   const t = getDictionary(locale);
-  const c = t.gallery;
-  const images = orderedGallery();
-  const schema = imageGallerySchema(t);
 
   return (
     <main id="main">
-      {/* Not BandHead: that renders an h2, and this is the page's h1. */}
-      <Band className="grain pt-[26px]!">
-        <div className="flex flex-col gap-6 min-[860px]:flex-row min-[860px]:items-center">
-          <div className="min-w-0 flex-1">
-            <span className="eyebrow font-body mb-3 text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
-              {c.eyebrow}
-            </span>
-
-            <h1 className="mb-4 text-[clamp(40px,8.6vw,78px)]">
-              {c.headingLead} <Hot>{c.headingAccent}</Hot>
-            </h1>
-
-            <p className="max-w-[52ch] text-base text-ink-muted">{c.lede}</p>
-          </div>
-          {images.length === 0 ? null : (
-            <PhotoWall className="-mx-[var(--gutter)] h-[260px] min-[860px]:mx-0 min-[860px]:h-[440px] min-[860px]:w-[520px] min-[860px]:shrink-0" />
-          )}
-        </div>
-      </Band>
-
-      {images.length === 0 ? (
-        <Band tinted glow={false}>
-          <div className="mx-auto max-w-[56ch] rounded-xl border border-line bg-surface p-7 text-center">
-            <h2 className="mb-3 text-[clamp(22px,5vw,28px)]">
-              {c.empty.heading}
-            </h2>
-            <p className="text-[15px] text-ink-muted">{c.empty.body}</p>
-          </div>
-        </Band>
-      ) : (
-        /* Figures render on the server; the client grid only owns the filter. */
-        <div className="mx-auto w-full max-w-[var(--site)] px-[var(--gutter)]">
-          <GalleryGrid
-            chips={galleryServiceCounts().map((entry) => ({
-              id: entry.id,
-              label: t.services[entry.id].name,
-              count: entry.count,
-            }))}
-            total={images.length}
-            allLabel={c.filters.all}
-            filterLabel={c.filters.label}
-            countOne={c.count.one}
-            countOther={c.count.other}
-            /* Must stay in the same order as the children: clicks open by index. */
-            photos={images.map((image) => ({
-              imagekitPath: image.imagekitPath,
-              serviceId: image.serviceId,
-              alt: c.images[image.key],
-              width: image.width,
-              height: image.height,
-            }))}
-            lightboxLabels={c.lightbox}
-          >
-            {images.map((image, index) => (
-              <GalleryFigure
-                key={image.key}
-                image={image}
-                alt={c.images[image.key]}
-                serviceName={t.services[image.serviceId].name}
-                index={index}
-                openLabel={c.lightbox.open.replace(
-                  "{photo}",
-                  c.images[image.key],
-                )}
-                priority={index < EAGER}
-              />
-            ))}
-          </GalleryGrid>
-        </div>
-      )}
-
-      {images.length === 0 ? null : <GalleryStyles locale={locale} t={t} />}
-
-      {images.length === 0 ? null : <GalleryPhotoSteps locale={locale} t={t} />}
-
-      <BookingBand copy={c.cta} />
-
-      {schema ? (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: jsonLd(schema) }}
-        />
-      ) : null}
+      <WorkGallery t={t} />
+      <BookingBand copy={t.home.booking} />
     </main>
   );
 }

@@ -16,7 +16,7 @@ function Column({
 }) {
   return (
     <div>
-      <h2 className="font-body mb-3.5 text-[11px] font-semibold tracking-[0.15em] text-ink-faint uppercase">
+      <h2 className="eyebrow mb-4">
         {heading}
       </h2>
       {children}
@@ -31,7 +31,7 @@ export function SiteFooter({ locale, t }: { locale: Locale; t: Dictionary }) {
   const { business, footer, social } = siteConfig;
 
   return (
-    <footer className="mt-auto overflow-hidden border-t border-line-soft bg-surface-2 pt-11 pb-9">
+    <footer className="tone-ink mt-auto overflow-hidden border-t-2 border-[color:var(--brand-ink)] bg-ground pt-14 pb-9 text-ink">
       <div className="mx-auto max-w-[var(--site)] px-[var(--gutter)]">
         <div className="grid gap-[30px] min-[760px]:grid-cols-[1.4fr_1fr_1fr] min-[760px]:gap-10">
           <div>

@@ -22,9 +22,9 @@ export function BookingPopup() {
     async function configure() {
       const cal = await getCalApi();
       if (cancelled) return;
-      // Read at runtime so the /logos theme preview gets a matching booker.
+      // Read at runtime so the booker matches the header's light or dark switch.
       const root = document.documentElement;
-      const light = root.classList.contains("light") || root.classList.contains("gold-light");
+      const light = root.classList.contains("light");
       const brand = getComputedStyle(root).getPropertyValue("--nails").trim();
       cal("ui", {
         theme: light ? "light" : "dark",

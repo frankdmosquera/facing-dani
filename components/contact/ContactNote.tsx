@@ -20,7 +20,7 @@ export function ContactNote({ t }: { t: Dictionary }) {
       {STICKERS.map(({ topic, place }, index) => (
         <span
           key={topic}
-          className={`lift-float absolute [animation-delay:var(--d)] rounded-pill px-4 py-2 text-[13px] font-bold whitespace-nowrap shadow-[0_18px_30px_-14px_rgba(0,0,0,0.7)] ${index === 1 ? "bg-[image:var(--hot)] text-on-hot" : "border border-line bg-surface text-ink"} ${place}`}
+          className={`lift-float absolute [animation-delay:var(--d)] rounded-pill px-4 py-2 text-[13px] font-bold whitespace-nowrap border-2 border-line shadow-[6px_6px_0_var(--shadow)] ${index === 1 ? "bg-[image:var(--hot)] text-on-hot" : "border border-line bg-surface text-ink"} ${place}`}
         >
           {t.contact.topics[topic]}
         </span>

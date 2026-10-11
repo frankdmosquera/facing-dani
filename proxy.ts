@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 
 import { defaultLocale, isLocale } from "@/lib/locale";
 
-// English lives at the root: /nails is served by /en/nails. Decided per request, not as one
+// English lives at the root: /parties is served by /en/parties. Decided per request, not as one
 // rewrite per route in next.config.ts, because those are built once at startup and a new page
 // 404'd on the dev server until it was restarted.
 export function proxy(request: NextRequest) {

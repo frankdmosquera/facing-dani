@@ -13,8 +13,8 @@ type Route = {
   href: string;
 };
 
-// mobileOnly: left out of the desktop header, still in the phone menu.
-export type NavItem = Route & { key: NavKey; mobileOnly?: true };
+// mobileOnly: left out of the desktop header, still in the phone menu. inMore: in the header's "More" drawer, flat on phones.
+export type NavItem = Route & { key: NavKey; mobileOnly?: true; inMore?: true };
 // No href: every Book button goes through lib/bookingConfig.
 export type CtaItem = { key: CtaKey };
 export type FooterItem = Route & { key: FooterKey };
@@ -40,36 +40,41 @@ export const siteConfig = {
     instagram: null as { handle: string; url: string } | null,
   },
 
+  // Which colour scheme the site wears. The header button switches it between dark and light.
+  theme: "pop" as "pop" | "purple" | "gold",
+
+  // Which hero design each page wears: a, b or c (components/site/HeroOptions). The options panel overrides it in dev.
+  hero: { home: "a", parties: "e" } as { home: "a" | "b" | "c" | "d"; parties: "e" | "f" },
+
+  // Sections switched off (false) or decorations switched on (true), by Optional id. Unset means its default.
+  sections: {} as Record<string, boolean>,
+
   nav: [
-    { key: "home", href: "/" },
-    { key: "nails", href: "/nails" },
+    // Home is the nails page, so the link says Nails.
+    { key: "nails", href: "/" },
     { key: "parties", href: "/parties" },
-    { key: "about", href: "/about" },
     { key: "store", href: "/store" },
     // Kept on phones until it is decided whether these pages stay. Never delete them uninvited.
     { key: "lashes", href: "/lashes", mobileOnly: true },
     { key: "makeup", href: "/makeup", mobileOnly: true },
-    { key: "gallery", href: "/gallery" },
-    { key: "contact", href: "/contact" },
-    // Temporary, while Dani chooses a logo and theme. The page itself is noindex.
-    { key: "logos", href: "/logos" },
+    { key: "gallery", href: "/gallery", inMore: true },
+    { key: "faq", href: "/faq", inMore: true },
+    { key: "contact", href: "/contact", inMore: true },
   ] satisfies NavItem[],
 
   cta: { key: "book" } satisfies CtaItem,
 
   footer: {
     services: [
-      { key: "nails", href: "/nails" },
+      { key: "nails", href: "/" },
       { key: "parties", href: "/parties" },
       { key: "store", href: "/store" },
       { key: "lashes", href: "/lashes" },
       { key: "makeup", href: "/makeup" },
-      { key: "gallery", href: "/gallery" },
     ] satisfies FooterItem[],
     contact: [
-      { key: "about", href: "/about" },
-      { key: "contact", href: "/contact" },
-      { key: "faq", href: "/#faq" },
+        { key: "contact", href: "/contact" },
+      { key: "faq", href: "/faq" },
     ] satisfies FooterItem[],
   },
 } as const;

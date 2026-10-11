@@ -41,7 +41,7 @@ export function StoryScroll({ steps, shots }: { steps: Step[]; shots: Shot[] }) 
     <div className="grid gap-12 min-[900px]:grid-cols-[minmax(0,420px)_1fr] min-[900px]:gap-20">
       <div aria-hidden="true" className="hidden min-[900px]:block">
         <div className="sticky top-28">
-          <div className="drop-shadow-[0_34px_40px_rgba(120,30,80,0.32)]">
+          <div className="drop-shadow-[6px_6px_0_var(--shadow)]">
           <div className="nail-almond aspect-[100/150] bg-[image:var(--hot)] p-2">
           <div className="nail-almond gel-shine relative h-full overflow-hidden bg-shot">
             {shots.map((shot, index) => (

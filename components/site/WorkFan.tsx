@@ -32,7 +32,7 @@ export function WorkFan({
         return (
           <div
             key={key}
-            className={`absolute aspect-[4/5] w-[52%] overflow-hidden rounded-xl border-4 border-surface bg-shot shadow-[0_30px_60px_-20px_rgba(0,0,0,0.6)] transition-[rotate,translate] duration-500 ease-out ${PLACE[index]} ${index === 0 ? "group-hover:-translate-x-3 group-hover:-rotate-[13deg]" : ""} ${index === 1 ? "group-hover:translate-x-3 group-hover:rotate-[12deg]" : ""}`}
+            className={`absolute aspect-[4/5] w-[52%] overflow-hidden rounded-xl bg-shot border-2 border-line shadow-[6px_6px_0_var(--shadow)] transition-[rotate,translate] duration-500 ease-out ${PLACE[index]} ${index === 0 ? "group-hover:-translate-x-3 group-hover:-rotate-[13deg]" : ""} ${index === 1 ? "group-hover:translate-x-3 group-hover:rotate-[12deg]" : ""}`}
           >
             <Photo
               path={image.imagekitPath}

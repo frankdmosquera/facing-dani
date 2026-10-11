@@ -3,12 +3,13 @@ import { Eye, PartyPopper, Sparkles, type LucideIcon } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { WorkFan } from "@/components/site/WorkFan";
 import { PartyBoard, TapedPrint } from "@/components/parties/PartyBoard";
-import { PartyConfetti } from "@/components/parties/PartyConfetti";
 import { ReadyChecklist } from "@/components/parties/ReadyChecklist";
 import { Band, BandHead, Hot, Split } from "@/components/site/Band";
 import { FaqList } from "@/components/site/FaqList";
+import { BandPhoto } from "@/components/site/BandPhoto";
+import { Hero } from "@/components/site/Hero";
+import { Optional } from "@/components/site/Optional";
 import { StepTimeline } from "@/components/site/StepTimeline";
 import { getDictionary } from "@/dictionaries";
 import { defaultLocale, isLocale, localePath } from "@/lib/locale";
@@ -56,38 +57,21 @@ export default async function Parties({
 
   return (
     <main id="main">
-      <Band className="grain pt-[26px]!">
-        <PartyConfetti />
-        {/* Her work beside the heading, never her (no photo of her on the site). */}
-        <div className="flex flex-col gap-12 min-[860px]:flex-row min-[860px]:items-center">
-          <div className="min-w-0 flex-1">
-            <span className="eyebrow font-body mb-3 text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
-              {c.eyebrow}
-            </span>
+      {/* Her party sets behind the heading, never her (no photo of her on the site). */}
+      <Hero
+        page="parties"
+        content={{
+          eyebrow: c.eyebrow,
+          lead: c.headingLead,
+          accent: c.headingAccent,
+          lede: c.lede,
+          primary: { href: askHref, label: c.ask },
+          photos: ["heartsFrench", "pinkFloralArt", "pastelFrenchTips"],
+          fade: "ink",
+        }}
+      />
 
-            <h1 className="mb-4 text-[clamp(40px,8.6vw,78px)]">
-              {c.headingLead} <Hot>{c.headingAccent}</Hot>
-            </h1>
-
-            <p className="mb-[26px] max-w-[54ch] text-base text-ink-muted">
-              {c.lede}
-            </p>
-
-            <Link
-              href={askHref}
-              className="hover-glow inline-block rounded-pill bg-[image:var(--hot)] px-7 py-4 text-center text-[15px] font-bold text-on-hot focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-            >
-              {c.ask}
-            </Link>
-          </div>
-          <WorkFan
-            keys={["pinkFloralArt", "blueGraphicEyeTurned", "pastelFrenchTips"]}
-            className="min-[860px]:w-[400px] min-[860px]:shrink-0"
-          />
-        </div>
-      </Band>
-
-      <Band tinted glow={false}>
+      <Band tinted>
         <BandHead eyebrow={c.what.eyebrow} heading={c.what.heading} />
 
         <div className="grid items-center gap-12 min-[960px]:grid-cols-[1fr_1fr] min-[960px]:gap-16">
@@ -117,7 +101,14 @@ export default async function Parties({
         </div>
       </Band>
 
-      <Band tone="ink">
+      <Band
+        tone="ink"
+        backdrop={
+          <Optional id="parties-ready-photo" label="Before I arrive: photo" defaultOn={false}>
+            <BandPhoto imageKey="whiteGlitterSquare" strength={78} />
+          </Optional>
+        }
+      >
         <BandHead
           eyebrow={c.ready.eyebrow}
           heading={c.ready.heading}
@@ -138,7 +129,14 @@ export default async function Parties({
         </div>
       </Band>
 
-      <Band tinted glow={false}>
+      <Band
+        tinted
+        backdrop={
+          <Optional id="parties-how-photo" label="How it works: photo" defaultOn={false}>
+            <BandPhoto imageKey="pinkFloralArt" strength={74} />
+          </Optional>
+        }
+      >
         <BandHead eyebrow={c.how.eyebrow} heading={c.how.heading} />
 
         <StepTimeline
@@ -149,7 +147,7 @@ export default async function Parties({
         />
       </Band>
 
-      <Band glow={false}>
+      <Band>
         <Split head={<BandHead eyebrow={c.faq.eyebrow} heading={c.faq.heading} />}>
           <FaqList
             items={Object.entries(c.faq.items).map(([key, item]) => ({
@@ -160,8 +158,7 @@ export default async function Parties({
         </Split>
       </Band>
 
-      <Band glow={false} className="tone-hot py-32!">
-        <PartyConfetti />
+      <Band tone="hot" className="py-32!">
         <BandHead
           eyebrow={c.closing.eyebrow}
           heading={

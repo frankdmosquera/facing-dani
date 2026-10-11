@@ -8,7 +8,7 @@ export function Faq({ t }: { t: Dictionary }) {
   const c = t.home.faq;
 
   return (
-    <Band id="faq" tinted glow={false}>
+    <Band id="faq" tinted>
       <Split
         head={
           <>
@@ -21,7 +21,11 @@ export function Faq({ t }: { t: Dictionary }) {
         }
       >
         <FaqList
-          items={siteWideFaq().map((item) => ({ key: item.key, ...t.faq[item.key] }))}
+          items={[
+            // Nail questions first, then the general ones: one list instead of two bands.
+            ...Object.entries(t.services.nails.faq.items).map(([key, item]) => ({ key, ...item })),
+            ...siteWideFaq().map((item) => ({ key: item.key, ...t.faq[item.key] })),
+          ]}
         />
       </Split>
     </Band>

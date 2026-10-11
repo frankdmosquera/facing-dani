@@ -13,19 +13,17 @@ export function isLocale(value: string): value is Locale {
 // Every route without its locale prefix. Feeds the sitemap; a page missing here is still served, just not listed.
 export const routes = [
   "/",
-  "/nails",
   "/parties",
-  "/about",
   "/store",
   "/lashes",
   "/makeup",
   "/gallery",
+  "/faq",
   "/contact",
   "/thank-you",
-  "/logos",
 ] as const;
 
-// localePath("en", "/nails") -> "/nails", localePath("es", "/nails") -> "/es/nails"
+// localePath("en", "/parties") -> "/parties", localePath("es", "/parties") -> "/es/parties"
 export function localePath(locale: Locale, path: string): string {
   const clean = path === "/" ? "" : path;
   if (locale === defaultLocale) return clean || "/";

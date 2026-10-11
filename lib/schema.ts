@@ -1,4 +1,3 @@
-import { orderedGallery } from "@/data/gallery";
 import { portrait } from "@/data/portrait";
 import type { ServiceId } from "@/data/services";
 import { siteConfig } from "@/data/siteConfig";
@@ -20,24 +19,6 @@ export function questionsSchema(items: { q: string; a: string }[]) {
         "@type": "Answer",
         text: item.a,
       },
-    })),
-  };
-}
-
-export function imageGallerySchema(t: Dictionary) {
-  const images = orderedGallery();
-  if (images.length === 0 || !imagekitEndpoint) return null;
-
-  return {
-    "@context": "https://schema.org",
-    "@type": "ImageGallery",
-    name: t.gallery.meta.title,
-    description: t.gallery.meta.description,
-    image: images.map((image) => ({
-      "@type": "ImageObject",
-      // The plain master URL: no transformation, no cache-busting version.
-      contentUrl: `${imagekitEndpoint}${image.imagekitPath}`,
-      name: t.gallery.images[image.key],
     })),
   };
 }

@@ -24,9 +24,9 @@ export function TapedPrint({
   return (
     <div
       aria-hidden="true"
-      className={`relative rounded-lg bg-surface p-2.5 pb-8 shadow-[0_30px_60px_-24px_rgba(0,0,0,0.7)] transition-[rotate] duration-500 ease-out hover:rotate-0 ${className}`}
+      className={`relative rounded-lg bg-surface p-2.5 pb-8 border-2 border-line shadow-[6px_6px_0_var(--shadow)] transition-[rotate] duration-500 ease-out hover:rotate-0 ${className}`}
     >
-      <span className="absolute -top-3 left-1/2 z-10 h-6 w-16 -translate-x-1/2 -rotate-3 rounded-sm bg-[image:var(--hot)] opacity-70" />
+      <span className="absolute -top-3 left-1/2 z-10 h-6 w-16 -translate-x-1/2 -rotate-3 rounded-sm bg-[color:var(--brand-sticker)] opacity-90" />
       <div className="aspect-[4/5] overflow-hidden rounded-md bg-shot">
         <Photo
           path={image.imagekitPath}
@@ -55,9 +55,9 @@ export function PartyBoard() {
         return (
           <div
             key={key}
-            className={`relative rounded-lg bg-surface p-2 pb-6 shadow-[0_24px_50px_-24px_rgba(0,0,0,0.7)] transition-[rotate,translate] duration-500 ease-out hover:translate-y-0 hover:rotate-0 ${place}`}
+            className={`relative rounded-lg bg-surface p-2 pb-6 border-2 border-line shadow-[6px_6px_0_var(--shadow)] transition-[rotate,translate] duration-500 ease-out hover:translate-y-0 hover:rotate-0 ${place}`}
           >
-            <span className="absolute -top-2.5 left-1/2 z-10 h-5 w-14 -translate-x-1/2 -rotate-3 rounded-sm bg-[image:var(--hot)] opacity-70" />
+            <span className="absolute -top-2.5 left-1/2 z-10 h-5 w-14 -translate-x-1/2 -rotate-3 rounded-sm bg-[color:var(--brand-sticker)] opacity-90" />
             <div className="aspect-square overflow-hidden rounded-md bg-shot">
               <Photo
                 path={image.imagekitPath}

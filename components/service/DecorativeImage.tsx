@@ -10,7 +10,7 @@ export function DecorativeImage({ serviceId }: { serviceId: ServiceId }) {
   return (
     <div
       aria-hidden="true"
-      className="mt-8 max-w-[640px] overflow-hidden rounded-lg border border-line-soft bg-shot"
+      className="mt-8 max-w-[640px] overflow-hidden rounded-lg border-2 border-line bg-shot"
     >
       <Photo
         path={image.imagekitPath}

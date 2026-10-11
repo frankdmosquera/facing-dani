@@ -1,69 +1,34 @@
-import Link from "next/link";
-
-import { Sparkle } from "lucide-react";
-
-import { WorkColumns } from "@/components/home/WorkColumns";
-import { Band, Hot } from "@/components/site/Band";
-import { SwatchFan } from "@/components/site/SwatchFan";
-import { siteConfig } from "@/data/siteConfig";
+import { Hero as PageHero } from "@/components/site/Hero";
+import { treatmentsFor } from "@/data/treatments";
 import type { Dictionary } from "@/dictionaries";
 import { localePath, type Locale } from "@/lib/locale";
+
+// The cheapest full appointment, for the sticker. Add-ons are not an appointment on their own.
+function startingPrice() {
+  return Math.min(...treatmentsFor("nails").filter((row) => !row.addOn && row.key !== "removal").map((row) => row.priceCad));
+}
 
 export function Hero({ locale, t }: { locale: Locale; t: Dictionary }) {
   const c = t.home.hero;
 
   return (
-    <Band className="grain pt-[26px]!">
-      <div className="flex flex-col gap-10 min-[860px]:flex-row min-[860px]:items-center min-[860px]:gap-14">
-        <div className="min-w-0 min-[860px]:flex-1">
-          <span className="lift-rise eyebrow font-body mb-3 text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
-            {c.eyebrow}
+    <PageHero
+      page="home"
+      content={{
+        eyebrow: c.eyebrow,
+        lead: c.headingLead,
+        accent: c.headingAccent,
+        lede: c.sell,
+        primary: { href: "#menu", label: c.nails },
+        secondary: { href: localePath(locale, "/parties"), label: c.party },
+        photos: ["pinkBlackStars", "burgundyCatEye", "almondBowFrench"],
+        sticker: (
+          <span className="font-display leading-none font-extrabold tracking-[-0.04em] lowercase">
+            <span className="block text-[14px] min-[760px]:text-[18px]">{t.treatmentList.priceFrom}</span>
+            <span className="block text-[38px] min-[760px]:text-[56px]">${startingPrice()}</span>
           </span>
-
-          <h1 className="relative mb-5 text-[clamp(44px,12vw,92px)] min-[860px]:text-[clamp(56px,6.2vw,92px)]">
-            <span className="lift-rise inline-block [--i:1]">
-              {c.headingLead}
-            </span>{" "}
-            <span className="lift-rise inline-block pr-[0.08em] [--i:2]">
-              <Hot>{c.headingAccent}</Hot>
-            </span>
-            {/* Three sparkles around the headline, twinkling out of step. */}
-            <span aria-hidden="true">
-              <Sparkle className="lift-twinkle absolute -top-4 right-[8%] size-7 fill-nails text-nails" />
-              <Sparkle className="lift-twinkle absolute top-[38%] -left-7 size-4 fill-makeup text-makeup [--d:0.9s] max-[560px]:hidden" />
-              <Sparkle className="lift-twinkle absolute -bottom-2 right-[30%] size-5 fill-lashes text-lashes [--d:1.7s]" />
-            </span>
-          </h1>
-
-          <p className="lift-rise mb-[26px] max-w-[46ch] text-base text-ink-muted [--i:3]">
-            {c.sell}
-          </p>
-
-          <div className="lift-rise flex flex-col gap-3 [--i:4] min-[560px]:flex-row">
-            <Link
-              href={localePath(locale, "/nails")}
-              className="hover-glow rounded-pill bg-[image:var(--hot)] px-7 py-4 text-center text-[15px] font-bold text-on-hot focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-            >
-              {c.nails}
-            </Link>
-            <Link
-              href={localePath(locale, "/parties")}
-              className="hover-fill rounded-pill border border-line px-7 py-4 text-center text-[15px] font-bold text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-            >
-              {c.party}
-            </Link>
-          </div>
-
-          {siteConfig.social.instagram ? (
-            <p className="mt-4 text-[13.5px] text-ink-faint">{c.dmNote}</p>
-          ) : null}
-        </div>
-
-        <div className="relative">
-          <WorkColumns />
-          <SwatchFan className="absolute bottom-4 -left-28 z-10 max-[860px]:hidden" />
-        </div>
-      </div>
-    </Band>
+        ),
+      }}
+    />
   );
 }

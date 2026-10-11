@@ -15,16 +15,16 @@ export const en = {
   marquee: ["Nails", "Parties", "Calgary"],
 
   nav: {
-    home: "Home",
     nails: "Nails",
     parties: "Parties",
-    about: "About",
     store: "Store",
     lashes: "Lashes",
     makeup: "Makeup",
     gallery: "Gallery",
+    faq: "Questions",
     contact: "Contact",
-    logos: "Logos",
+    // The header drawer that holds Gallery, Questions and Contact.
+    more: "More",
   },
 
   cta: {
@@ -42,10 +42,8 @@ export const en = {
       store: "Store",
       lashes: "Lashes",
       makeup: "Makeup",
-      gallery: "Gallery",
       bookAppointment: "Book an appointment",
       contact: "Questions and parties",
-      about: "About",
       faq: "FAQ",
       instagram: "Instagram",
     },
@@ -94,7 +92,7 @@ export const en = {
         body: "I am putting the list together now. Message me and I will tell you exactly what your set would cost, with no surprises in the chair.",
       },
       menuHeading: "Nail prices in Calgary",
-      work: { heading: "Recent nail work", all: "See every set" },
+      work: { heading: "Recent nail work" },
       // Nails only: which set to book. General technique, no promises about her.
       guide: {
         eyebrow: "Which set is for you",
@@ -120,45 +118,6 @@ export const en = {
             tag: "Length, lighter feel",
             body: "Soft gel tips that cover the whole nail, bonded with gel. Lighter than acrylic, quicker to put on, and gentler to take off.",
             lasts: "A fill every two to three weeks.",
-          },
-        },
-      },
-      // Where the two hours of a full set go. Times match data/treatments.ts.
-      steps: {
-        eyebrow: "Your appointment",
-        headingLead: "A nail appointment,",
-        headingAccent: "step by step",
-        lede: "Why a full set takes about two hours, and where that time goes. A gel manicure skips the building and takes about one.",
-        items: {
-          talk: {
-            title: "We look at your hands and your photo",
-            time: "About 5 minutes",
-            body: "What you do all day decides how long a set can be and which shape will hold. Length, shape and colour are settled before anything starts.",
-          },
-          removal: {
-            title: "Removal, if you come in with a set",
-            time: "About 30 minutes",
-            body: "An old set is soaked and filed off gently, never pried. Mention it when you book so the time is there.",
-          },
-          prep: {
-            title: "Prep",
-            time: "About 15 minutes",
-            body: "Cuticles pushed back and cleaned up, the surface lightly buffed and dried out. Most lifting starts with skipped prep, so this part is never rushed.",
-          },
-          build: {
-            title: "Building and shaping",
-            time: "About 45 to 60 minutes",
-            body: "Acrylic or Gel‑X goes on, then every nail is filed to the same length and shape, with the thickest point where the nail needs its strength.",
-          },
-          colour: {
-            title: "Colour and art",
-            time: "About 20 to 40 minutes",
-            body: "Gel colour, then French, chrome, cat-eye or hand-painted art if you asked for it. Every layer cures under the lamp.",
-          },
-          finish: {
-            title: "Top coat, oil and aftercare",
-            time: "About 10 minutes",
-            body: "A top coat for shine, cuticle oil, and a quick word on keeping the set looking good until your fill.",
           },
         },
       },
@@ -232,7 +191,7 @@ export const en = {
         body: "I am putting the list together now. Message me with the look you are after and I will tell you which set gets you there and what it costs.",
       },
       menuHeading: "Lash prices in Calgary",
-      work: { heading: "Recent lash work", all: "See every set" },
+      work: { heading: "Recent lash work" },
       treatments: {
         classicFullSet: "Classic full set",
         hybridFullSet: "Hybrid full set",
@@ -267,7 +226,7 @@ export const en = {
         body: "I am putting the list together now. Tell me the occasion and roughly when, and I will come back with a price and a time.",
       },
       menuHeading: "Makeup prices in Calgary",
-      work: { heading: "Recent makeup", all: "See every set" },
+      work: { heading: "Recent makeup" },
       treatments: {
         softGlam: "Soft glam, events and photoshoots",
         fullGlam: "Full glam, grad and prom, lashes included",
@@ -279,14 +238,14 @@ export const en = {
 
   contact: {
     meta: {
-      title: "Questions and Party Requests in Calgary",
+      title: "About Dani, Questions and Party Requests in Calgary",
       description:
         "Ask me anything, or tell me about the party you are hosting in Calgary: the date, how many guests and the area. I answer every message, usually the same day. Se habla espanol.",
     },
     eyebrow: "Questions and parties",
     headingLead: "Tell me what",
     headingAccent: "you need",
-    lede: "Ask me anything, or tell me about a party you are hosting. It lands in my inbox and I answer every one, usually the same day. Booking a nail appointment is quicker from the nails page.",
+    lede: "Ask me anything, or tell me about a party you are hosting. It lands in my inbox and I answer every one, usually the same day. Booking a nail appointment is quicker from the nails menu.",
 
     direct: {
       heading: "Would rather just message me?",
@@ -461,11 +420,6 @@ export const en = {
 
   // No age and no photo of her. Written in her voice, like the rest of the site.
   about: {
-    meta: {
-      title: "About Dani, Nail Artist in Calgary",
-      description:
-        "Trained in Colombia, doing nails in Calgary by appointment and at kids' and teen parties. Who is doing your nails, and why the finish matters to me.",
-    },
     eyebrow: "About",
     headingLead: "The person doing",
     headingAccent: "your nails",
@@ -611,7 +565,7 @@ export const en = {
     headingAccent: "thank you",
     lede: "Your message is in my inbox. I answer every one, usually the same day, and I will come back with a time and a price.",
     next: "While you wait, the rest of the work is worth a look.",
-    gallery: "See the gallery",
+    gallery: "See my work",
     home: "Back to the start",
   },
 
@@ -631,7 +585,7 @@ export const en = {
     // Offer DMs here again once siteConfig.social.instagram is set.
     booking: {
       q: "How do I book?",
-      a: "Open the nails page, tap Book next to the treatment you want, and pick a time in the calendar. Questions first? The contact page is always open.",
+      a: "Open the nails menu, tap Book next to the treatment you want, and pick a time in the calendar. Questions first? The contact page is always open.",
     },
     parties: {
       q: "Can you come to a party?",
@@ -682,14 +636,6 @@ export const en = {
       party: "For your party",
       dmNote: "Or send a DM on Instagram, whatever is easier",
     },
-    nails: {
-      eyebrow: "Nails",
-      headingLead: "Gel, acrylic and",
-      headingAccent: "Gel‑X in Calgary",
-      lede: "Full sets and fills, chrome, French and hand-painted art. Shape and cuticle work that still looks good in week three.",
-      addOns: "Add French tips, chrome or nail art to any set.",
-      more: "See the full menu and book",
-    },
     story: {
       eyebrow: "Who is doing your nails",
       headingLead: "Trained in Colombia,",
@@ -702,7 +648,6 @@ export const en = {
     work: {
       eyebrow: "Recent work",
       heading: "The work, not the promise",
-      all: "See all the work",
     },
 
     // Schema only, never rendered.
@@ -717,27 +662,6 @@ export const en = {
       body: "Not just this website. Spanish is my first language, so the consultation, the small talk, and the part where you change your mind about the colour all happen in whichever language you are more comfortable in. A translated page only tells you that you can read it. This is me telling you that you will be understood.",
     },
 
-    parties: {
-      eyebrow: "Parties",
-      headingLead: "Nails and more for",
-      headingAccent: "your party",
-      lede: "Hosting a birthday or a get-together for kids or teens? You run the party, I come and set up for the guests: nails, face painting, makeup, and lashes for the older ones.",
-      points: {
-        host: {
-          title: "You host, I do the beauty",
-          body: "Cake, games and guests are yours. I set up a station and work through the guests.",
-        },
-        age: {
-          title: "Made for their age",
-          body: "Face painting and simple, cute nails for kids. Trendier sets, makeup and lashes for teens.",
-        },
-        ask: {
-          title: "Ask first",
-          body: "Parties are not booked online. Send me the date, how many guests and the area, and I will confirm by email.",
-        },
-      },
-      ask: "Ask about your party",
-    },
 
     guide: {
       eyebrow: "Nail guide",
@@ -790,6 +714,8 @@ export const en = {
       total: "Your set starts at",
       book: "Book this set",
       note: "A starting point, not a quote: length and detail can move the price a little.",
+      // Over the photo: her real set closest to the pick, so it reads as a reference, not the exact result.
+      closest: "My closest set",
     },
 
     expect: {
@@ -826,16 +752,24 @@ export const en = {
   },
 
   // meta.title carries Calgary and the service terms itself: the template only appends the business name.
+  faqPage: {
+    meta: {
+      title: "Questions About Nails and Parties in Calgary",
+      description:
+        "Answers about gel, acrylic and Gel-X sets, booking, prices and parties in Calgary, in one place.",
+    },
+    eyebrow: "Questions",
+    headingLead: "Everything you",
+    headingAccent: "wanted to ask",
+    lede: "Nails, booking and parties. If your question is not here, send it to me and I will answer.",
+  },
+
   gallery: {
     meta: {
       title: "Nail Art and Sets Done in Calgary",
       description:
-        "Real sets, never stock photos. Nail art, French, chrome and Gel-X done in Calgary, plus some of my makeup, shown big enough to judge the finish for yourself.",
+        "Real sets, never stock photos. Nail art, French, chrome and Gel-X done in Calgary, shown big enough to judge the finish for yourself.",
     },
-    eyebrow: "Every photo is mine",
-    headingLead: "The work,",
-    headingAccent: "done in Calgary",
-    lede: "Big on purpose. You are choosing someone to sit with for two hours, and a thumbnail tells you nothing about a cuticle line.",
     filters: {
       label: "Filter by service",
       all: "All",
@@ -843,70 +777,6 @@ export const en = {
     count: {
       one: "1 photo",
       other: "{n} photos",
-    },
-    empty: {
-      heading: "Photos are on the way",
-      body: "Nothing goes up here that is not my own work, so this page fills as I shoot. Tell me what you are after in the meantime and I will show you what I have.",
-    },
-    cta: {
-      eyebrow: "The easy part",
-      headingLead: "Seen one you",
-      headingAccent: "want?",
-      lede: "Send it to me and we will make it yours, or bring nothing and we will work it out together.",
-      book: "Book with Dani",
-      instagram: "Message on Instagram",
-    },
-    // Describe the work (shape, finish, detail), not keywords. Also used as ImageObject names.
-    styles: {
-      eyebrow: "What you are looking at",
-      headingLead: "The styles",
-      headingAccent: "in these photos",
-      lede: "The sets above fall into a few families. If one of them is what you are after, say so when you book and bring the photo.",
-      // Before the add-on's own label: "Book it: any set + French tips, add-on".
-      bookAs: "Book it: any set +",
-      groups: {
-        french: {
-          title: "French, every way",
-          body: "Classic white tips, pastel tips in a different colour on each finger, a pale blue French with hand-painted flowers, and a white tip edged in gold. A French line is the detail that shows shape work best, which is why there are so many.",
-        },
-        chrome: {
-          title: "Chrome, cat-eye and shimmer",
-          body: "A deep burgundy cat-eye that throws a band of light across each nail, a pearly lilac with an iridescent shimmer, and iridescent flakes over white.",
-        },
-        art: {
-          title: "Hand-painted art",
-          body: "Small white flowers on bright pink, hearts, stars on pink and black, a raised white flower, and seasonal sets like a Christmas bow, snowflake and candy cane.",
-        },
-        sparkle: {
-          title: "Glitter and crystals",
-          body: "A fine glitter line along the smile, crystals set along the tip or clustered on one accent nail, and a sugar-glitter finish next to a knitted texture.",
-        },
-        makeup: {
-          title: "Some makeup too",
-          body: "A graphic blue eye and a soft, natural everyday look. Makeup is a smaller part of what I do, so there are fewer of these.",
-        },
-      },
-    },
-    // From a photo in the grid to a booking. Nails only: makeup is not being built on.
-    photo: {
-      eyebrow: "How to book a look",
-      headingLead: "Turn a photo into",
-      headingAccent: "your set",
-      steps: {
-        save: {
-          title: "Save the photo",
-          body: "A screenshot from here, Instagram or Pinterest is perfect. It shows the shape, the length, the colour and the art better than any description.",
-        },
-        book: {
-          title: "Book the set underneath it",
-          body: "Pick the base on the nails menu: a gel manicure on your own nails, or acrylic or Gel‑X for length. French, chrome or art go on top.",
-        },
-        bring: {
-          title: "Bring it to the appointment",
-          body: "We look at it together with your hands. A photo cannot show whether that length suits your nail bed, so the shape or length may shift a little so the set holds up for three weeks.",
-        },
-      },
-      menu: "See the nails menu",
     },
     lightbox: {
       open: "Open larger: {photo}",

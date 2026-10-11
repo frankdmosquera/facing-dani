@@ -53,7 +53,7 @@ export default async function Store({ params }: PageProps<"/[locale]/store">) {
       <Band className="grain pt-[26px]!">
         <div className="flex flex-col gap-10 min-[1000px]:flex-row min-[1000px]:items-center">
           <div className="min-w-0 flex-1">
-            <span className="eyebrow font-body mb-3 text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
+            <span className="eyebrow mb-5">
               {c.eyebrow}
             </span>
 
@@ -69,7 +69,7 @@ export default async function Store({ params }: PageProps<"/[locale]/store">) {
         </div>
       </Band>
 
-      <Band tinted glow={false}>
+      <Band tinted>
         <StoreGrid tabs={tabs} allLabel={c.all} tabsLabel={c.tabsLabel}>
           {products.map((product) => (
             <StoreCard key={product.key} product={product} t={t} />
@@ -81,7 +81,7 @@ export default async function Store({ params }: PageProps<"/[locale]/store">) {
 
       <PressOnCompare locale={locale} t={t} />
 
-      <Band glow={false} className="tone-hot py-32!">
+      <Band tone="hot" className="py-32!">
         <div className="max-w-[54ch]">
           <h2 className="mb-3 text-[clamp(30px,5.6vw,52px)]">{c.buy.heading}</h2>
           <p className="mb-6 text-[15.5px] text-ink-muted">{c.buy.body}</p>

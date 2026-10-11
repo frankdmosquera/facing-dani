@@ -1,9 +1,25 @@
 import { Band, BandHead, Hot, type Tone } from "@/components/site/Band";
 import { treatmentLabel, treatmentsFor } from "@/data/treatments";
+import { galleryImage, type GalleryKey } from "@/data/gallery";
 import type { Dictionary } from "@/dictionaries";
 import { bookingHref, bookingTrigger, eventSlug } from "@/lib/bookingConfig";
 
-import { SetBuilder, type BuilderOption } from "./SetBuilder";
+import { SetBuilder, type BuilderOption, type BuilderPhoto } from "./SetBuilder";
+
+/* Her real sets, each tagged with the finish it shows and its shape. The
+   builder shows the one matching both picks, or the finish alone. */
+const SETS: { key: GalleryKey; finish: string; shape: string }[] = [
+  { key: "almondBowFrench", finish: "french", shape: "almond" },
+  { key: "heartsFrench", finish: "french", shape: "square" },
+  { key: "peachFrenchGems", finish: "french", shape: "oval" },
+  { key: "lilacSquare", finish: "chrome", shape: "square" },
+  { key: "burgundyCatEye", finish: "catEye", shape: "almond" },
+  { key: "whiteGlitterSquare", finish: "sparkle", shape: "square" },
+  { key: "frenchGlitterGems", finish: "sparkle", shape: "almond" },
+  { key: "clearCoffinLinework", finish: "art", shape: "coffin" },
+  { key: "pinkBlackStars", finish: "art", shape: "square" },
+  { key: "pinkFloralArt", finish: "art", shape: "oval" },
+];
 
 // The full sets a look is built on, from the nails menu.
 const BASES = ["gelManicure", "acrylicFullSet", "gelXFullSet"] as const;
@@ -44,6 +60,13 @@ export function SetBuilderBand({ t, tone = "ink" }: { t: Dictionary; tone?: Tone
     }),
   );
 
+  const photos: BuilderPhoto[] = SETS.flatMap((set) => {
+    const image = galleryImage(set.key);
+    return image
+      ? [{ ...set, path: image.imagekitPath, width: image.width, height: image.height }]
+      : [];
+  });
+
   return (
     <Band tone={tone}>
       <BandHead
@@ -61,6 +84,7 @@ export function SetBuilderBand({ t, tone = "ink" }: { t: Dictionary; tone?: Tone
         finishes={finishes}
         addOnFor={addOnFor}
         bookLinks={bookLinks}
+        photos={photos}
         copy={{
           base: c.base,
           shape: c.shape,
@@ -68,6 +92,7 @@ export function SetBuilderBand({ t, tone = "ink" }: { t: Dictionary; tone?: Tone
           total: c.total,
           book: c.book,
           note: c.note,
+          closest: c.closest,
           from: t.treatmentList.priceFrom,
         }}
       />

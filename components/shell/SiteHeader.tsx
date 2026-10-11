@@ -7,9 +7,13 @@ import { localePath, type Locale } from "@/lib/locale";
 
 import { HeaderScrollHider } from "./HeaderScrollHider";
 import { LanguageSwitch } from "./LanguageSwitch";
+import { MoreMenu } from "./MoreMenu";
 import { MobileNav } from "./MobileNav";
 import { ThemeToggle } from "./ThemeToggle";
 import { Wordmark } from "./Wordmark";
+
+const NAV_LINK =
+  "rounded-pill px-3 py-1.5 text-[14.5px] font-semibold text-ink transition-colors hover:bg-[color:var(--brand-sticker)] hover:text-[color:var(--brand-ink)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring";
 
 export function SiteHeader({ locale, t }: { locale: Locale; t: Dictionary }) {
   return (
@@ -27,17 +31,20 @@ export function SiteHeader({ locale, t }: { locale: Locale; t: Dictionary }) {
         <nav
           aria-label={t.a11y.mainNav}
           // Every link on one line needs about 1,050px in Spanish; below 1,100px the menu button takes over.
-          className="hidden items-center gap-[30px] whitespace-nowrap min-[1100px]:flex"
+          className="hidden items-center gap-2 whitespace-nowrap min-[1100px]:flex"
         >
-          {siteConfig.nav.filter((item) => !("mobileOnly" in item)).map((item) => (
-            <Link
-              key={item.key}
-              href={localePath(locale, item.href)}
-              className="text-[14.5px] font-medium text-ink-muted transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-            >
+          {siteConfig.nav.filter((item) => !("mobileOnly" in item) && !("inMore" in item)).map((item) => (
+            <Link key={item.key} href={localePath(locale, item.href)} className={NAV_LINK}>
               {t.nav[item.key]}
             </Link>
           ))}
+          <MoreMenu
+            label={t.nav.more}
+            linkClass={NAV_LINK}
+            links={siteConfig.nav
+              .filter((item) => "inMore" in item)
+              .map((item) => ({ key: item.key, href: localePath(locale, item.href), label: t.nav[item.key] }))}
+          />
         </nav>
 
         <div className="col-start-3 flex items-center gap-3 justify-self-end min-[560px]:gap-5">

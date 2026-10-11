@@ -11,7 +11,7 @@ import {
   type Locale,
 } from "@/lib/locale";
 
-// Same page in the other language: /es/nails <-> /nails.
+// Same page in the other language: /es/parties <-> /parties.
 // locale comes as a prop because the pathname cannot be trusted under the root rewrite.
 export function LanguageSwitch({
   locale,

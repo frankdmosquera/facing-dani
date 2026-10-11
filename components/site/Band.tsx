@@ -1,30 +1,33 @@
 /* Each tone re-declares the colour tokens (globals.css), so a band can change
-   mood without its children knowing. base follows the theme; blush and ink look
-   the same in both. */
-export type Tone = "base" | "blush" | "ink";
+   mood without its children knowing. base follows the mode; the others are
+   solid blocks that look the same in both, edged top and bottom in ink. */
+export type Tone = "base" | "blush" | "butter" | "hot" | "ink";
 
 const TONE: Record<Tone, string> = {
   base: "",
-  blush: "tone-blush bg-surface-2 text-ink",
-  ink: "tone-ink grain bg-ground text-ink",
+  blush: "tone-blush bg-ground text-ink border-y-2 border-[color:var(--brand-ink)]",
+  butter: "tone-butter bg-ground text-ink border-y-2 border-[color:var(--brand-ink)]",
+  hot: "tone-hot bg-ground text-ink border-y-2 border-[color:var(--brand-ink)]",
+  ink: "tone-ink grain bg-ground text-ink border-y-2 border-[color:var(--brand-ink)]",
 };
 
 export function Band({
   children,
-  glow = true,
   tinted = false,
   tone,
   className,
   id,
+  backdrop,
 }: {
   children: React.ReactNode;
-  glow?: boolean;
   // The old flag for the second ground; now the blush band.
   tinted?: boolean;
   tone?: Tone;
   className?: string;
   // For in-page links such as /#faq.
   id?: string;
+  // Full-bleed layer behind the content, such as BandPhoto.
+  backdrop?: React.ReactNode;
 }) {
   const resolved = tone ?? (tinted ? "blush" : "base");
   return (
@@ -33,14 +36,7 @@ export function Band({
       /* clip, not hidden: hidden makes the band a scroll box, and sticky children inside it stop sticking. */
       className={`relative overflow-clip py-24 ${TONE[resolved]} ${className ?? ""}`}
     >
-      {glow ? (
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-          <i className="absolute -top-24 -left-24 block size-[420px] rounded-full bg-[var(--glow-a)] blur-[var(--glow-blur)]" />
-          <i className="absolute top-1/3 -right-32 block size-[380px] rounded-full bg-[var(--glow-b)] blur-[var(--glow-blur)]" />
-          <i className="absolute -bottom-32 left-1/4 block size-[320px] rounded-full bg-[var(--glow-c)] blur-[var(--glow-blur)]" />
-        </div>
-      ) : null}
-
+      {backdrop}
       <div className="relative mx-auto w-full max-w-[var(--site)] px-[var(--gutter)]">
         {children}
       </div>
@@ -59,12 +55,10 @@ export function BandHead({
 }) {
   return (
     <div className="mb-[34px]">
-      <span className="eyebrow font-body mb-3 text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
-        {eyebrow}
-      </span>
-      <h2 className="mb-3.5 text-[clamp(34px,6.2vw,60px)]">{heading}</h2>
+      <span className="eyebrow mb-5">{eyebrow}</span>
+      <h2 className="mb-4 text-[clamp(44px,8vw,96px)]">{heading}</h2>
       {lede ? (
-        <p className="max-w-[54ch] text-[15.5px] text-ink-muted">{lede}</p>
+        <p className="max-w-[54ch] text-[17px] leading-[1.55] text-ink-muted">{lede}</p>
       ) : null}
     </div>
   );
@@ -80,7 +74,7 @@ export function Split({
 }) {
   return (
     <div className="grid gap-2 min-[960px]:grid-cols-[minmax(0,400px)_1fr] min-[960px]:gap-16">
-      <div className="min-[960px]:sticky min-[960px]:top-28 min-[960px]:self-start">
+      <div className="min-[960px]:sticky min-[960px]:top-28 min-[960px]:self-start min-[960px]:[&_h2]:text-[clamp(40px,4.6vw,60px)]">
         {head}
       </div>
       <div className="min-w-0">{children}</div>

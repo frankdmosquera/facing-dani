@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, Unbounded } from "next/font/google";
+import { Bricolage_Grotesque, Inter } from "next/font/google";
 import { notFound } from "next/navigation";
 
 import { BookingPopup } from "@/components/booking/BookingPopup";
+import { OptionsPanel } from "@/components/shell/OptionsPanel";
 import { SiteFooter } from "@/components/shell/SiteFooter";
 import { SiteHeader } from "@/components/shell/SiteHeader";
 import { themeScript } from "@/components/shell/theme";
@@ -21,10 +22,10 @@ import {
 
 import "../globals.css";
 
-const unbounded = Unbounded({
-  variable: "--font-unbounded",
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-bricolage",
   subsets: ["latin"],
-  weight: ["800"],
+  weight: ["500", "800"],
   display: "swap",
 });
 
@@ -77,7 +78,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={activeLocale}
-      className={`${unbounded.variable} ${inter.variable} h-full`}
+      className={`${bricolage.variable} ${inter.variable} h-full`}
       // The theme script adds a class before React hydrates.
       suppressHydrationWarning
     >
@@ -94,6 +95,8 @@ export default async function LocaleLayout({
         {children}
         <SiteFooter locale={activeLocale} t={t} />
         <ThemeApplier />
+        {/* Dev only: Frank's theme and hero picker. */}
+        {process.env.NODE_ENV === "production" ? null : <OptionsPanel />}
         <BookingPopup />
       </body>
     </html>

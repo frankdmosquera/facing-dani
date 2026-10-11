@@ -1,19 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { SetBuilderBand } from "@/components/builder/SetBuilderBand";
 import { Photo } from "@/components/media/Photo";
-import { TapedPrint } from "@/components/parties/PartyBoard";
 import { DecorativeImage } from "@/components/service/DecorativeImage";
 import { InspirationGrid } from "@/components/service/InspirationGrid";
-import { NailFaq } from "@/components/service/NailFaq";
-import { NailGuide } from "@/components/service/NailGuide";
-import { NailSteps } from "@/components/service/NailSteps";
 import { TreatmentList } from "@/components/service/TreatmentList";
 import { WorkStrip } from "@/components/service/WorkStrip";
 import { Band, Hot } from "@/components/site/Band";
 import { BookingBand } from "@/components/site/BookingBand";
-import { FinishRibbon } from "@/components/site/FinishRibbon";
 import { inspirationFor } from "@/data/decorativeImages";
 import { SERVICE_HERO, galleryImage, serviceHasWork } from "@/data/gallery";
 import { orderedServices, serviceBySlug, serviceSlug } from "@/data/services";
@@ -21,9 +15,9 @@ import { getDictionary } from "@/dictionaries";
 import { defaultLocale, isLocale, localePath } from "@/lib/locale";
 import { jsonLd, serviceSchema } from "@/lib/schema";
 
-// The locales come from the layout; this only lists the services.
+// The locales come from the layout; this only lists the services. Nails is the home page, not a route here.
 export function generateStaticParams() {
-  return orderedServices().map((service) => ({ service: serviceSlug(service) }));
+  return orderedServices().filter((service) => service.href !== "/").map((service) => ({ service: serviceSlug(service) }));
 }
 
 export const dynamicParams = false;
@@ -62,7 +56,7 @@ export default async function ServicePage({
   if (!isLocale(locale)) notFound();
 
   const service = serviceBySlug(slug);
-  if (!service) notFound();
+  if (!service || service.href === "/") notFound();
 
   const t = getDictionary(locale);
   const copy = t.services[service.id];
@@ -74,7 +68,7 @@ export default async function ServicePage({
       <Band className="grain pt-[26px]!">
         <div className="flex flex-col gap-10 min-[860px]:flex-row min-[860px]:items-center min-[860px]:gap-14">
           <div className="min-w-0 min-[860px]:flex-1">
-            <span className="eyebrow font-body mb-3 text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
+            <span className="eyebrow mb-5">
               {copy.eyebrow}
             </span>
 
@@ -89,7 +83,7 @@ export default async function ServicePage({
 
           {hero ? (
             /* Her set framed as an almond nail: a polish rim and a gel shine. */
-            <div className="mx-auto w-full max-w-[300px] rotate-6 drop-shadow-[0_34px_40px_rgba(0,0,0,0.5)] transition-[rotate] duration-500 ease-out hover:rotate-2 min-[860px]:w-[360px] min-[860px]:max-w-none min-[860px]:shrink-0">
+            <div className="mx-auto w-full max-w-[300px] rotate-6 drop-shadow-[6px_6px_0_var(--shadow)] transition-[rotate] duration-500 ease-out hover:rotate-2 min-[860px]:w-[360px] min-[860px]:max-w-none min-[860px]:shrink-0">
               <div className="nail-almond aspect-[100/150] bg-[image:var(--hot)] p-2">
                 <div className="nail-almond gel-shine relative h-full overflow-hidden bg-shot">
                   <Photo
@@ -108,47 +102,29 @@ export default async function ServicePage({
         </div>
       </Band>
 
-      {service.id === "nails" ? <FinishRibbon t={t} /> : null}
-
       <Band tinted>
-        {/* The menu as a printed card, her set taped beside it. */}
-        <div className="grid items-start gap-12 min-[1000px]:grid-cols-[1fr_300px] min-[1000px]:gap-16">
-          <div className="rounded-2xl bg-surface p-6 shadow-[0_40px_80px_-40px_rgba(120,30,80,0.35)] min-[700px]:p-10">
-            <h2 className="mb-[26px] text-[clamp(30px,5.6vw,52px)]">
-              {copy.menuHeading}
-            </h2>
-            <TreatmentList serviceId={service.id} t={t} />
-          </div>
-          {service.id === "nails" ? (
-            <TapedPrint
-              imageKey="pinkFrenchCrystals"
-              className="sticky top-28 mx-auto w-full max-w-[280px] -rotate-3 max-[1000px]:hidden"
-            />
-          ) : null}
+        {/* The menu as a printed card. */}
+        <div className="rounded-2xl bg-surface p-6 border-2 border-line shadow-[6px_6px_0_var(--shadow)] min-[700px]:p-10">
+          <h2 className="mb-[26px] text-[clamp(30px,5.6vw,52px)]">
+            {copy.menuHeading}
+          </h2>
+          <TreatmentList serviceId={service.id} t={t} />
         </div>
       </Band>
 
-      {service.id === "nails" ? <SetBuilderBand t={t} /> : null}
-
-      {service.id === "nails" ? <NailGuide locale={locale} t={t} /> : null}
-
-      {service.id === "nails" ? <NailSteps t={t} /> : null}
-
       {/* Checked here too, or the empty band still draws its padding. */}
       {serviceHasWork(service.id) ? (
-        <Band glow={false}>
-          <WorkStrip serviceId={service.id} locale={locale} t={t} />
+        <Band>
+          <WorkStrip serviceId={service.id} t={t} />
         </Band>
       ) : null}
 
       {/* Stock photos, after her own work so the real sets come first. */}
       {inspirationFor(service.id).length > 0 ? (
-        <Band tinted glow={false}>
+        <Band tinted>
           <InspirationGrid serviceId={service.id} t={t} />
         </Band>
       ) : null}
-
-      {service.id === "nails" ? <NailFaq t={t} /> : null}
 
       <BookingBand copy={copy.cta} />
 

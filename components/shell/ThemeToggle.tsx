@@ -8,12 +8,12 @@ import type { Dictionary } from "@/dictionaries";
 import { siteTheme } from "./theme";
 
 export function ThemeToggle({ t, className }: { t: Dictionary; className?: string }) {
-  const light = useSyncExternalStore(siteTheme.subscribe, siteTheme.read, siteTheme.server) === "light";
+  const light = useSyncExternalStore(siteTheme.subscribe, siteTheme.read, siteTheme.server) !== "dark";
 
   return (
     <button
       type="button"
-      onClick={() => siteTheme.write(light ? null : "light")}
+      onClick={() => siteTheme.write(light ? "dark" : null)}
       aria-label={light ? t.a11y.darkMode : t.a11y.lightMode}
       className={`grid size-11 place-items-center rounded-full text-ink-muted transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring ${className ?? ""}`}
     >

@@ -34,7 +34,7 @@ export function SwingTags({ t }: { t: Dictionary }) {
               className={`w-px bg-ink-faint ${HANG[index]?.string ?? "h-12"}`}
             />
             <div
-              className={`relative flex w-[88px] flex-col items-center rounded-lg px-3 pt-5 pb-4 text-center shadow-[0_24px_40px_-20px_rgba(0,0,0,0.7)] ${index % 2 === 0 ? "bg-[image:var(--hot)] text-on-hot" : "border border-line bg-surface text-ink"}`}
+              className={`relative flex w-[88px] flex-col items-center rounded-lg px-3 pt-5 pb-4 text-center border-2 border-line shadow-[6px_6px_0_var(--shadow)] ${index % 2 === 0 ? "bg-[image:var(--hot)] text-on-hot" : "border border-line bg-surface text-ink"}`}
             >
               <span className="absolute top-2 size-2 rounded-full bg-ground ring-1 ring-line" />
               <span className="mb-1.5 text-[11.5px] leading-tight font-semibold">

@@ -36,7 +36,7 @@ export function Story({ locale, t }: { locale: Locale; t: Dictionary }) {
           </p>
 
           <Link
-            href={localePath(locale, "/about")}
+            href={localePath(locale, "/contact")}
             className="mt-6 inline-flex items-center gap-2 text-[15px] font-bold text-nails focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           >
             {c.more}

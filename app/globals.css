@@ -85,32 +85,80 @@
   }
 }
 
+/*
+ * Brand colours, one set per theme. Every token below, and every component,
+ * reads these, so a theme is only this block. Pop is the default; the others
+ * are a class on <html> set by siteConfig.theme (or the options panel in dev).
+ * Every accent clears 4.5:1 where it is text, 3:1 where it is display type.
+ */
 :root {
-  /* After Party. All four accents clear 4.5:1 on --ground.
-     Black and gold, tried for a day to match her logo, survives as the :root.gold preview below. */
+  /* Pop: cream and cherry, butter stickers. */
+  --brand-ink: #1f1418; /* edges, hard shadows, text on stickers */
+  --brand-cream: #fff6ef; /* light ground */
+  --brand-paper: #fdebe3; /* light second surface */
+  --brand-dark: #1a1215; /* dark ground */
+  --brand-dark-2: #261b1f; /* dark surface */
+  --brand-accent: #ff5a8c; /* accent on dark */
+  --brand-accent-deep: #d4245e; /* accent on light, and the button fill */
+  --brand-sticker: #ffd84a; /* labels and stickers */
+  --brand-blush: #ffe1ea; /* the soft block */
+  --brand-hot: #ff5a8c; /* the loud block */
+  --brand-hot-text: #ffffff; /* accent words on the loud block */
+}
+:root.theme-purple {
+  /* Lilac: violet and lilac paper, pink stickers. */
+  --brand-ink: #1d1430;
+  --brand-cream: #f6f1ff;
+  --brand-paper: #ebe2ff;
+  --brand-dark: #1f1730;
+  --brand-dark-2: #2b2142;
+  --brand-accent: #c08bff;
+  --brand-accent-deep: #7a3fd6;
+  --brand-sticker: #ff9ecb;
+  --brand-blush: #e6dcff;
+  --brand-hot: #8a5cf6;
+  --brand-hot-text: #ffffff;
+}
+:root.theme-gold {
+  /* Gold: her logo's black and gold, champagne paper. */
+  --brand-ink: #14110c;
+  --brand-cream: #fbf7f0;
+  --brand-paper: #f3eadb;
+  --brand-dark: #0e0c0a;
+  --brand-dark-2: #1c1915;
+  --brand-accent: #e9bf5f;
+  --brand-accent-deep: #8f6414;
+  --brand-sticker: #e9bf5f;
+  --brand-blush: #f3e6cc;
+  --brand-hot: #e2b54f;
+  --brand-hot-text: #5a3d06;
+}
 
+/* Dark mode tokens. Light mode (.light) is the default the theme script sets. */
+:root {
   /* surfaces */
-  --ground: #261f36;
-  --surface: #352948;
-  --surface-2: #2e2440;
-  --shot: #1b1426;
-  --line: #514165;
-  --line-soft: #3d3152;
+  --ground: var(--brand-dark);
+  --surface: var(--brand-dark-2);
+  --surface-2: color-mix(in oklab, var(--brand-dark) 60%, var(--brand-dark-2));
+  --shot: color-mix(in oklab, var(--brand-dark) 70%, black);
+  /* --line is the edge: cards, buttons and photos are outlined in it. */
+  --line: var(--brand-cream);
+  --line-soft: color-mix(in oklab, var(--brand-cream) 16%, var(--brand-dark));
 
-  /* ink. --ink-faint is the lightest that still clears 4.5:1 on --surface. */
-  --ink: #f6f2fa;
-  --ink-muted: #b3a8c2;
-  --ink-faint: #9f94af;
+  /* ink */
+  --ink: var(--brand-cream);
+  --ink-muted: color-mix(in oklab, var(--brand-cream) 76%, var(--brand-dark));
+  --ink-faint: color-mix(in oklab, var(--brand-cream) 64%, var(--brand-dark));
 
   /* accents */
-  --nails: #ff3d8f;
-  --lashes: #a97bff;
-  --makeup: #ff8a3d;
+  --nails: var(--brand-accent);
+  --lashes: #a47dff;
+  --makeup: #ff9f43;
   --confirm: #3de8b0;
 
-  --nails-on-light: #d4176b;
-  --lashes-on-light: #7b45e0;
-  --makeup-on-light: #bf5710;
+  --nails-on-light: var(--brand-accent-deep);
+  --lashes-on-light: #7048e8;
+  --makeup-on-light: #b25800;
   --confirm-on-light: #0e8f63;
 
   --nails-ui: var(--nails);
@@ -118,19 +166,27 @@
   --makeup-ui: var(--makeup);
   --confirm-ui: var(--confirm);
 
-  --hot: linear-gradient(92deg, var(--nails), var(--makeup));
-  /* Gradient headings. Split from --hot so light mode can darken the text and keep the buttons. */
+  /* Sticker colours: the same in both modes, always with the brand ink on them. */
+  --butter: var(--brand-sticker);
+  --lilac: #cdbcff;
+  --sticker-ink: var(--brand-ink);
+
+  /* Flat, not a gradient: --hot fills the buttons, --hot-text the accent words. */
+  --hot: linear-gradient(var(--brand-accent), var(--brand-accent));
   --hot-text: var(--hot);
-  --on-hot: #231a31;
+  --on-hot: var(--brand-dark);
 
-  /* section glow */
-  --glow-blur: 90px;
-  --glow-a: rgb(255 61 143 / 0.42);
-  --glow-b: rgb(169 123 255 / 0.34);
-  --glow-c: rgb(255 138 61 / 0.22);
+  /* The hard offset shadow under every edged thing. */
+  --shadow: #000000;
 
-  /* type. next/font sets --font-unbounded and --font-inter on <html>. */
-  --display: var(--font-unbounded, "Unbounded"), system-ui, sans-serif;
+  /* No glow blobs any more; kept at zero for anything that still reads them. */
+  --glow-blur: 0px;
+  --glow-a: transparent;
+  --glow-b: transparent;
+  --glow-c: transparent;
+
+  /* type. next/font sets --font-bricolage and --font-inter on <html>. */
+  --display: var(--font-bricolage, "Bricolage Grotesque"), system-ui, sans-serif;
   --body: var(--font-inter, "Inter"), system-ui, sans-serif;
   --mono: ui-monospace, monospace;
 
@@ -138,7 +194,7 @@
   --radius: 14px;
   --radius-card: 22px;
   --pill: 999px;
-  --site: 1200px;
+  --site: 1240px;
   --gutter: 20px;
 
   /* ---------- shadcn semantics on brand values ---------- */
@@ -170,190 +226,132 @@
   --chart-5: var(--ink-faint);
 }
 
-/* Light theme. The header button (and the /logos preview) activates it. Glow becomes a pale tint: blurred blobs smudge on light. */
+/* Light mode, the default. */
 .light {
-  --ground: #faf6fc;
+  --ground: var(--brand-cream);
   --surface: #ffffff;
-  --surface-2: #f4eef9;
-  --shot: #efe7f5;
-  --line: #e8dfee;
-  --line-soft: #f0e9f4;
+  --surface-2: var(--brand-paper);
+  --shot: var(--brand-paper);
+  --line: var(--brand-ink);
+  --line-soft: color-mix(in oklab, var(--brand-ink) 14%, var(--brand-cream));
 
-  --ink: #1f1729;
-  --ink-muted: #6b6178;
-  --ink-faint: #7c7289;
+  --ink: var(--brand-ink);
+  --ink-muted: color-mix(in oklab, var(--brand-ink) 74%, var(--brand-cream));
+  --ink-faint: color-mix(in oklab, var(--brand-ink) 66%, var(--brand-cream));
 
-  --glow-blur: 0px;
-  --glow-a: #ffe7f2;
-  --glow-b: #f1e9ff;
-  --glow-c: #fff1e4;
-
-  /* accent fills fail contrast on light, so text uses the darker twins */
-  --primary: var(--nails-on-light);
-  /* The bright orange is 2.2:1 on this ground; the on-light twins clear 4.2:1. */
-  --hot-text: linear-gradient(92deg, var(--nails-on-light), var(--makeup-on-light));
+  --nails: var(--brand-accent-deep);
   --nails-ui: var(--nails-on-light);
   --lashes-ui: var(--lashes-on-light);
   --makeup-ui: var(--makeup-on-light);
   --confirm-ui: var(--confirm-on-light);
+
+  --hot: linear-gradient(var(--brand-accent-deep), var(--brand-accent-deep));
+  --hot-text: var(--hot);
+  --on-hot: #ffffff;
+  --shadow: var(--brand-ink);
+
+  --primary: var(--nails-on-light);
   --ring: var(--nails-on-light);
   --primary-foreground: #ffffff;
 }
 
-/* Surfaces that stay dark in every theme (the photo viewer, labels on photos) keep the dark ink. Same values as :root. */
+/* Surfaces that stay dark in every mode (the photo viewer, labels on photos) keep the dark ink. */
 .on-dark {
-  --ink: #f6f2fa;
-  --ink-muted: #b3a8c2;
-  --ink-faint: #9f94af;
-  --nails-ui: var(--nails);
-  --lashes-ui: var(--lashes);
-  --makeup-ui: var(--makeup);
-  --confirm-ui: var(--confirm);
+  --ink: var(--brand-cream);
+  --ink-muted: color-mix(in oklab, var(--brand-cream) 76%, var(--brand-dark));
+  --ink-faint: color-mix(in oklab, var(--brand-cream) 64%, var(--brand-dark));
+  --nails-ui: var(--brand-accent);
+  --lashes-ui: #a47dff;
+  --makeup-ui: #ff9f43;
+  --confirm-ui: #3de8b0;
 }
 
 /*
- * Section tones (round 5). A band re-declares the tokens, so everything inside
- * follows without knowing. Blush is the light band and ink the deeper dark one;
- * both look the same in either theme, so the page keeps its rhythm in light mode.
- * Sections set text-ink themselves: colour inherited from body would keep the
- * page ink.
+ * Section tones. A band re-declares the tokens, so everything inside follows
+ * without knowing. These blocks look the same in both modes, which is what
+ * gives the page its rhythm: blush, butter and hot are light blocks with ink
+ * edges, ink is the dark one. Sections set text-ink themselves.
  */
-.tone-blush {
-  --ground: #fdf6f8;
+.tone-blush,
+.tone-butter,
+.tone-hot {
   --surface: #ffffff;
-  --surface-2: #fbeef3;
-  --shot: #f3e2e9;
-  --line: #ecd3dd;
-  --line-soft: #f4e3ea;
-
-  --ink: #22172c;
-  --ink-muted: #5f5068;
-  --ink-faint: #74647d;
-
-  --glow-blur: 90px;
-  --glow-a: rgb(255 61 143 / 0.16);
-  --glow-b: rgb(169 123 255 / 0.14);
-  --glow-c: rgb(255 138 61 / 0.14);
-
-  --hot-text: linear-gradient(92deg, var(--nails-on-light), var(--makeup-on-light));
-  --nails-ui: var(--nails-on-light);
+  --line: var(--brand-ink);
+  --line-soft: color-mix(in oklab, var(--brand-ink) 16%, transparent);
+  --ink: var(--brand-ink);
+  --ink-muted: color-mix(in oklab, var(--brand-ink) 84%, white);
+  --ink-faint: color-mix(in oklab, var(--brand-ink) 76%, white);
+  --nails: var(--brand-accent-deep);
+  --nails-ui: var(--brand-accent-deep);
   --lashes-ui: var(--lashes-on-light);
   --makeup-ui: var(--makeup-on-light);
   --confirm-ui: var(--confirm-on-light);
-  --primary: var(--nails-on-light);
-  --ring: var(--nails-on-light);
+  --hot: linear-gradient(var(--brand-accent-deep), var(--brand-accent-deep));
+  --hot-text: var(--hot);
+  --on-hot: #ffffff;
+  --shadow: var(--brand-ink);
+  --primary: var(--brand-accent-deep);
+  --ring: var(--brand-accent-deep);
   --border: var(--line-soft);
   --input: var(--line);
+}
+.tone-blush {
+  --ground: var(--brand-blush);
+  --surface-2: color-mix(in oklab, var(--brand-blush) 50%, white);
+  --shot: color-mix(in oklab, var(--brand-blush) 85%, var(--brand-ink));
+}
+.tone-butter {
+  --ground: var(--brand-sticker);
+  --surface-2: color-mix(in oklab, var(--brand-sticker) 50%, white);
+  --shot: color-mix(in oklab, var(--brand-sticker) 85%, var(--brand-ink));
+}
+/* The closing band: a solid block in the loud colour, the accent words in --brand-hot-text, the button turned ink. */
+.tone-hot {
+  --ground: var(--brand-hot);
+  --surface-2: color-mix(in oklab, var(--brand-hot) 70%, white);
+  --shot: color-mix(in oklab, var(--brand-hot) 85%, var(--brand-ink));
+  --hot: linear-gradient(var(--brand-ink), var(--brand-ink));
+  --hot-text: linear-gradient(var(--brand-hot-text), var(--brand-hot-text));
+  --nails: var(--brand-ink);
+  --ring: var(--brand-ink);
 }
 .tone-ink {
-  --ground: #17111f;
-  --surface: #241b31;
-  --surface-2: #1d1628;
-  --shot: #100b16;
-  --line: #3e3150;
-  --line-soft: #2c2239;
+  --ground: var(--brand-dark);
+  --surface: var(--brand-dark-2);
+  --surface-2: color-mix(in oklab, var(--brand-dark) 60%, var(--brand-dark-2));
+  --shot: color-mix(in oklab, var(--brand-dark) 70%, black);
+  --line: var(--brand-cream);
+  --line-soft: color-mix(in oklab, var(--brand-cream) 16%, var(--brand-dark));
 
-  --ink: #f6f2fa;
-  --ink-muted: #b8adc6;
-  --ink-faint: #a297b2;
+  --ink: var(--brand-cream);
+  --ink-muted: color-mix(in oklab, var(--brand-cream) 76%, var(--brand-dark));
+  --ink-faint: color-mix(in oklab, var(--brand-cream) 64%, var(--brand-dark));
 
-  --glow-blur: 90px;
-  --glow-a: rgb(255 61 143 / 0.42);
-  --glow-b: rgb(169 123 255 / 0.34);
-  --glow-c: rgb(255 138 61 / 0.22);
-
+  --nails: var(--brand-accent);
+  --hot: linear-gradient(var(--brand-accent), var(--brand-accent));
   --hot-text: var(--hot);
-  --nails-ui: var(--nails);
-  --lashes-ui: var(--lashes);
-  --makeup-ui: var(--makeup);
-  --confirm-ui: var(--confirm);
-  --primary: var(--nails);
-  --ring: var(--nails);
+  --on-hot: var(--brand-dark);
+  --shadow: var(--brand-accent);
+  --nails-ui: var(--brand-accent);
+  --lashes-ui: #a47dff;
+  --makeup-ui: #ff9f43;
+  --confirm-ui: #3de8b0;
+  --primary: var(--brand-accent);
+  --ring: var(--brand-accent);
   --border: var(--line-soft);
   --input: var(--line);
 }
 
-/* The closing band, painted in the hot gradient itself: dark ink on it, the
-   accent word in white, and the button turned dark so it still stands out. */
-.tone-hot {
-  --ink: #1e1226;
-  --ink-muted: #2b1630;
-  --ink-faint: #2b1630;
-  --line: rgb(30 18 38 / 0.35);
-  --line-soft: rgb(30 18 38 / 0.2);
-  --hot-text: linear-gradient(#ffffff, #ffffff);
-  --hot: linear-gradient(92deg, #1e1226, #3a2150);
-  --on-hot: #ffffff;
-  --nails: #1e1226;
-  --ring: #1e1226;
-  background: linear-gradient(120deg, #ff3d8f 0%, #ff5f6d 50%, #ff8a3d 100%);
-  color: var(--ink);
+/* The logo for the current theme and mode (Wordmark). The footer is always dark, so it always shows the dark one. */
+.logo-img {
+  display: none;
 }
-
-/* Black and gold, for the theme switch on /logos only. */
-:root.gold {
-  /* surfaces */
-  --ground: #0e0c0a;
-  --surface: #1c1915;
-  --surface-2: #161310;
-  --shot: #080706;
-  --line: #3d3429;
-  --line-soft: #2b251e;
-
-  /* ink. --ink-faint is the lightest that still clears 4.5:1 on --surface. */
-  --ink: #f8f2e7;
-  --ink-muted: #c7bca9;
-  --ink-faint: #a99e8b;
-
-  /* accents */
-  --nails: #e9bf5f;
-  --lashes: #eba3a6;
-  --makeup: #db8a4f;
-  --confirm: #3de8b0;
-
-  --nails-on-light: #d4176b;
-  --lashes-on-light: #7b45e0;
-  --makeup-on-light: #bf5710;
-  --confirm-on-light: #0e8f63;
-
-  --hot: linear-gradient(92deg, #f6dc8f, #d4a23c 55%, #b9832a);
-  --on-hot: #1a1206;
-
-  /* section glow */
-  --glow-blur: 90px;
-  --glow-a: rgb(233 191 95 / 0.26);
-  --glow-b: rgb(235 163 166 / 0.14);
-  --glow-c: rgb(219 138 79 / 0.14);
-}
-
-/* Light gold, the light twin of black and gold, for the /logos switch only. The golds are darkened to read on cream. */
-:root.gold-light {
-  --ground: #fbf7f0;
-  --surface: #ffffff;
-  --surface-2: #f5eee2;
-  --shot: #efe6d6;
-  --line: #e6dccb;
-  --line-soft: #efe7da;
-
-  --ink: #1f1a14;
-  --ink-muted: #6b5f4e;
-  --ink-faint: #7a6d5a;
-
-  --nails: #8f6414;
-  --lashes: #a4525c;
-  --makeup: #9c5220;
-
-  --hot: linear-gradient(92deg, #a8751c, #8f6414 55%, #7d5410);
-  --on-hot: #ffffff;
-
-  --glow-blur: 0px;
-  --glow-a: #fbefd6;
-  --glow-b: #f8e8e6;
-  --glow-c: #f9ecdc;
-
-  --primary: var(--nails);
-  --ring: var(--nails);
-  --primary-foreground: #ffffff;
+:root:not(.light) .logo-dark,
+footer .logo-dark,
+:root.light:not(.theme-purple, .theme-gold) .logo-pop:not(footer *),
+:root.light.theme-purple .logo-purple:not(footer *),
+:root.light.theme-gold .logo-gold:not(footer *) {
+  display: block;
 }
 
 @layer base {
@@ -367,30 +365,68 @@
   h2,
   h3,
   h4 {
-    @apply font-display font-extrabold tracking-[-0.035em] leading-[1.03];
+    @apply font-display font-extrabold tracking-[-0.045em] leading-[0.95];
+  }
+  /* The big headings are lowercase, the way teen beauty brands set them. */
+  h1,
+  h2 {
+    text-transform: lowercase;
   }
 }
 
-/* Button hovers. Only where a mouse exists, so a tap never leaves a phone stuck mid-hover. */
+/* The pop look's edge: an ink outline and a hard offset shadow. */
+@utility edge {
+  border: 2px solid var(--line);
+  box-shadow: 6px 6px 0 var(--shadow);
+}
+
+/* A round sticker: butter yellow, ink edge, tilted. Content sets its own size. */
+@utility sticker {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  border-radius: 999px;
+  border: 2px solid var(--sticker-ink);
+  box-shadow: 4px 4px 0 var(--sticker-ink);
+  background: var(--butter);
+  color: var(--sticker-ink);
+  rotate: 10deg;
+}
+
+/* Buttons. The primary one is edged and presses down on hover, only where a mouse exists. */
 @utility hover-glow {
-  transition: translate 200ms ease-out, box-shadow 200ms ease-out;
+  border: 2px solid var(--line);
+  box-shadow: 4px 4px 0 var(--shadow);
+  transition: translate 150ms ease-out, box-shadow 150ms ease-out;
   @media (hover: hover) {
     &:hover:not(:disabled) {
-      box-shadow: 0 10px 26px -10px var(--nails);
       @media (prefers-reduced-motion: no-preference) {
-        translate: 0 -2px;
+        translate: -2px -2px;
+        box-shadow: 6px 6px 0 var(--shadow);
       }
     }
   }
+  &:active:not(:disabled) {
+    translate: 2px 2px;
+    box-shadow: 1px 1px 0 var(--shadow);
+  }
 }
 
-/* The text is already full --ink, so the border brightens instead. */
+/* The secondary button: the same edge on the page's own ground. */
 @utility hover-fill {
-  transition: background-color 200ms ease-out, border-color 200ms ease-out;
+  border-width: 2px;
+  border-color: var(--line);
+  background-color: var(--surface);
+  box-shadow: 4px 4px 0 var(--shadow);
+  transition: translate 150ms ease-out, box-shadow 150ms ease-out, background-color 150ms ease-out;
   @media (hover: hover) {
     &:hover {
-      background-color: color-mix(in oklab, var(--ink) 8%, transparent);
-      border-color: var(--ink-muted);
+      background-color: var(--butter);
+      color: var(--sticker-ink);
+      @media (prefers-reduced-motion: no-preference) {
+        translate: -2px -2px;
+        box-shadow: 6px 6px 0 var(--shadow);
+      }
     }
   }
 }
@@ -434,17 +470,6 @@
     translate: 0 -10px;
   }
 }
-@keyframes lift-twinkle {
-  0%,
-  100% {
-    opacity: 0.2;
-    scale: 0.6;
-  }
-  50% {
-    opacity: 1;
-    scale: 1;
-  }
-}
 @keyframes lift-reveal {
   from {
     opacity: 0;
@@ -470,24 +495,19 @@
 }
 /* Columns of photos that never stop: the track holds its set twice. */
 @utility lift-up {
-  animation: lift-up 48s linear infinite;
+  animation: lift-up 53s linear infinite;
 }
 @utility lift-down {
-  animation: lift-down 48s linear infinite;
+  animation: lift-down 53s linear infinite;
 }
 @utility lift-side {
-  animation: lift-side 40s linear infinite;
+  animation: lift-side 44s linear infinite;
 }
 @utility lift-side-reverse {
-  animation: lift-side 40s linear infinite reverse;
+  animation: lift-side 44s linear infinite reverse;
 }
 @utility lift-float {
   animation: lift-float 5s ease-in-out infinite;
-}
-/* A sparkle that breathes; --d offsets each one. */
-@utility lift-twinkle {
-  animation: lift-twinkle 2.8s ease-in-out infinite;
-  animation-delay: var(--d, 0s);
 }
 @utility reveal {
   @supports (animation-timeline: view()) {
@@ -516,7 +536,6 @@
   .lift-down,
   .lift-side,
   .lift-side-reverse,
-  .lift-twinkle,
   .lift-float {
     animation: none;
   }
@@ -547,23 +566,17 @@
     #ff3d8f;
 }
 
-/* The site's one card, lifted: a hot-gradient top edge and the hover glow. */
+/* The site's one card: edged, and lifting on hover. */
 @utility card-hot {
   position: relative;
   overflow: hidden;
-  transition: translate 200ms ease-out, box-shadow 200ms ease-out;
-  &::before {
-    content: "";
-    position: absolute;
-    inset-inline: 0;
-    top: 0;
-    height: 3px;
-    background-image: var(--hot);
-  }
+  border: 2px solid var(--line) !important;
+  box-shadow: 6px 6px 0 var(--shadow);
+  transition: translate 150ms ease-out, box-shadow 150ms ease-out;
   @media (hover: hover) and (prefers-reduced-motion: no-preference) {
     &:hover {
-      translate: 0 -3px;
-      box-shadow: 0 18px 40px -18px rgb(255 61 143 / 0.45);
+      translate: -3px -3px;
+      box-shadow: 9px 9px 0 var(--shadow);
     }
   }
 }
@@ -591,24 +604,6 @@
   }
 }
 
-/* Party confetti: each piece bobs and turns out of step (--d). */
-@keyframes lift-confetti {
-  0%,
-  100% {
-    translate: 0 0;
-  }
-  50% {
-    translate: 6px -14px;
-    rotate: 25deg;
-  }
-}
-@utility lift-confetti {
-  animation: lift-confetti 6s ease-in-out infinite;
-  animation-delay: var(--d, 0s);
-  @media (prefers-reduced-motion: reduce) {
-    animation: none;
-  }
-}
 /* A checklist tick that fills as its row scrolls in. */
 @keyframes check-fill {
   from {
@@ -683,33 +678,30 @@
   }
 }
 
-/* The small label above a heading, led by a short rule in the hot gradient. */
+/* The small label above a heading: an edged pill in butter. */
 @utility eyebrow {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-  &::before {
-    content: "";
-    width: 28px;
-    height: 2px;
-    flex-shrink: 0;
-    border-radius: 2px;
-    background-image: var(--hot);
-  }
+  border: 2px solid var(--sticker-ink);
+  border-radius: 999px;
+  padding: 5px 14px;
+  background: var(--butter);
+  color: var(--sticker-ink) !important;
+  font-family: var(--body);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.2;
 }
 
 
 /*
- * Glammed's own shapes: photos framed as nails. Almond (a soft point, the
- * cuticle curve at the foot) for a featured photo, coffin (tapered to a flat
- * tip) for tiles. A mask, so it stretches to whatever box it is on.
+ * Glammed's own shape: a photo framed as an almond nail (a soft point, the
+ * cuticle curve at the foot). A mask, so it stretches to whatever box it is on.
  */
 @utility nail-almond {
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 130' preserveAspectRatio='none'%3E%3Cpath d='M50 0C72 0 100 26 100 56L100 116C100 125 90 130 78 130C66 128 34 128 22 130C10 130 0 125 0 116L0 56C0 26 28 0 50 0Z'/%3E%3C/svg%3E");
-  mask-size: 100% 100%;
-}
-@utility nail-coffin {
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 130' preserveAspectRatio='none'%3E%3Cpath d='M24 0L76 0C80 0 82 2 83 5L100 40L100 122C100 127 97 130 92 130L8 130C3 130 0 127 0 122L0 40L17 5C18 2 20 0 24 0Z'/%3E%3C/svg%3E");
   mask-size: 100% 100%;
 }
 
@@ -730,23 +722,6 @@
   }
 }
 
-/* The colour fan opening: each swatch swings out to its own angle (--a). */
-@keyframes fan-open {
-  from {
-    rotate: 0deg;
-  }
-  to {
-    rotate: var(--a);
-  }
-}
-@utility lift-fan {
-  rotate: var(--a);
-  transform-origin: 50% 100%;
-  @media (prefers-reduced-motion: no-preference) {
-    animation: fan-open 1100ms cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: calc(500ms + 70ms * var(--i, 0));
-  }
-}
 
 /* LitText: the block names a view timeline and each word lights along it,
    between its own --s and --e. */

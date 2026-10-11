@@ -1,10 +1,13 @@
 import { jsonLd, questionsSchema } from "@/lib/schema";
 
-// Home, nails and parties. Each list carries its own FAQPage data, built from the same items it renders.
+// Home, parties and /faq. Each list carries its own FAQPage data, built from the same items it renders,
+// unless the page sends one combined (schema={false}): a page should hold one FAQPage.
 export function FaqList({
   items,
+  schema = true,
 }: {
   items: { key: string; q: string; a: string }[];
+  schema?: boolean;
 }) {
   return (
     <>
@@ -12,7 +15,7 @@ export function FaqList({
         {items.map((item) => (
           <details
             key={item.key}
-            className="group rounded-xl border border-line bg-surface px-5 transition-[box-shadow,border-color] duration-300 open:border-transparent open:shadow-[0_24px_50px_-28px_rgba(255,61,143,0.55)] min-[560px]:px-6"
+            className="group rounded-xl border-2 border-line bg-surface px-5 shadow-[4px_4px_0_var(--shadow)] transition-[box-shadow,background-color] duration-300 open:shadow-[6px_6px_0_var(--shadow)] min-[560px]:px-6"
           >
             <summary className="flex cursor-pointer items-center justify-between gap-4 py-5 text-[16.5px] font-medium text-ink transition-colors hover:text-nails marker:content-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring [&::-webkit-details-marker]:hidden">
               {item.q}
@@ -29,10 +32,12 @@ export function FaqList({
         ))}
       </div>
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: jsonLd(questionsSchema(items)) }}
-      />
+      {schema ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLd(questionsSchema(items)) }}
+        />
+      ) : null}
     </>
   );
 }

@@ -17,7 +17,7 @@ const accentText: Record<ServiceId, string> = {
 };
 
 const FIGURE =
-  "group relative mb-2.5 break-inside-avoid overflow-hidden rounded-lg border border-line-soft bg-shot min-[620px]:mb-3 min-[1000px]:mb-3.5";
+  "group relative mb-2.5 break-inside-avoid overflow-hidden rounded-lg border-2 border-line bg-shot min-[620px]:mb-3 min-[1000px]:mb-3.5";
 
 // The filter is pure CSS off the grid's data-filter. Literal strings, because Tailwind cannot see runtime-built classes.
 const hideWhenOtherFiltered: Record<ServiceId, string> = {

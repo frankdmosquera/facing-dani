@@ -16,16 +16,14 @@ export type BookingBandCopy = {
 
 export function BookingBand({ copy }: { copy: BookingBandCopy }) {
   return (
-    <Band glow={false} className="tone-hot py-36!">
+    <Band tone="hot" className="py-36!">
       <WorkWall />
       <div className="reveal relative mx-auto max-w-[720px] text-center">
-        <span className="font-body mb-4 block text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
-          {copy.eyebrow}
-        </span>
-        <h2 className="mb-5 text-[clamp(40px,10vw,84px)]">
+        <span className="eyebrow mb-5">{copy.eyebrow}</span>
+        <h2 className="mb-5 text-[clamp(56px,12vw,150px)] leading-[0.86]">
           {copy.headingLead} <Hot>{copy.headingAccent}</Hot>
         </h2>
-        <p className="mx-auto mb-9 max-w-[48ch] text-[16.5px] text-ink-muted">
+        <p className="mx-auto mb-9 max-w-[48ch] text-[17px] text-ink">
           {copy.lede}
         </p>
 

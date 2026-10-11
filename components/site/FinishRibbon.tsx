@@ -29,18 +29,18 @@ export function FinishRibbon({ t }: { t: Dictionary }) {
   return (
     <div
       aria-hidden="true"
-      className="tone-ink grain relative overflow-hidden border-y border-line bg-ground py-7 text-ink [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]"
+      className="tone-hot relative overflow-hidden border-y-2 border-[color:var(--brand-ink)] bg-ground py-6 text-ink"
     >
       <div className="lift-side flex w-max items-center gap-10 [animation-duration:70s] hover:[animation-play-state:paused]">
         {[...words, ...words].map((word, index) => (
           <span key={`${word.key}-${index}`} className="flex items-center gap-10">
             <span
-              className={`font-display text-[clamp(40px,6vw,76px)] leading-none font-extrabold tracking-[-0.05em] whitespace-nowrap ${index % 2 === 0 ? "text-ink" : "text-transparent [-webkit-text-stroke:1.5px_var(--nails)]"}`}
+              className={`font-display text-[clamp(40px,6vw,76px)] leading-none font-extrabold tracking-[-0.05em] whitespace-nowrap lowercase ${index % 2 === 0 ? "text-ink" : "text-transparent [-webkit-text-stroke:2px_var(--brand-ink)]"}`}
             >
               {word.term}
             </span>
             <span
-              className={`h-14 w-9 shrink-0 rotate-12 rounded-t-full rounded-b-md ring-1 ring-white/25 ${word.swatch}`}
+              className={`h-14 w-9 shrink-0 rotate-12 rounded-t-full rounded-b-md border-2 border-[color:var(--brand-ink)] shadow-[3px_3px_0_var(--brand-ink)] ${word.swatch}`}
             />
           </span>
         ))}
