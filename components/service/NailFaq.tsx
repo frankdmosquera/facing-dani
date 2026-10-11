@@ -1,4 +1,4 @@
-import { Band, BandHead, Hot } from "@/components/site/Band";
+import { Band, BandHead, Hot, Split } from "@/components/site/Band";
 import { FaqList } from "@/components/site/FaqList";
 import type { Dictionary } from "@/dictionaries";
 
@@ -8,18 +8,22 @@ export function NailFaq({ t }: { t: Dictionary }) {
 
   return (
     <Band glow={false}>
-      <BandHead
-        eyebrow={c.eyebrow}
-        heading={
-          <>
-            {c.headingLead} <Hot>{c.headingAccent}</Hot>
-          </>
+      <Split
+        head={
+          <BandHead
+            eyebrow={c.eyebrow}
+            heading={
+              <>
+                {c.headingLead} <Hot>{c.headingAccent}</Hot>
+              </>
+            }
+          />
         }
-      />
-
-      <FaqList
-        items={Object.entries(c.items).map(([key, item]) => ({ key, ...item }))}
-      />
+      >
+        <FaqList
+          items={Object.entries(c.items).map(([key, item]) => ({ key, ...item }))}
+        />
+      </Split>
     </Band>
   );
 }

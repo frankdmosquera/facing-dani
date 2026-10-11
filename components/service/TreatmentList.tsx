@@ -27,11 +27,11 @@ export function TreatmentList<S extends ServiceId>({
   }
 
   return (
-    <dl className="max-w-[70ch]">
+    <dl>
       {rows.map((row) => (
         <div
           key={String(row.key)}
-          className="group/row -mx-4 flex items-baseline justify-between gap-6 border-b border-line-soft px-4 py-5 transition-colors last:border-b-0 hover:bg-surface"
+          className="group/row -mx-4 flex items-center justify-between gap-6 border-b border-line-soft px-4 py-5 transition-colors last:border-b-0 hover:bg-surface-2"
         >
           <div>
             <dt className="text-[16.5px] font-medium text-ink">
@@ -42,6 +42,12 @@ export function TreatmentList<S extends ServiceId>({
               {formatDuration(row.durationMinutes)}
             </dd>
           </div>
+
+          {/* A menu's dotted leader from the name to its price. */}
+          <span
+            aria-hidden="true"
+            className="min-w-6 flex-1 border-b-2 border-dotted border-line max-[560px]:hidden"
+          />
 
           <dd className="flex shrink-0 items-center gap-4">
             <span className="font-display text-[20px] font-extrabold tracking-[-0.03em] text-ink">

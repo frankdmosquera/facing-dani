@@ -41,7 +41,7 @@ export default async function ThankYou({
   return (
     <main id="main">
       <Band className="pt-[26px]!">
-        <span className="font-body mb-3 block text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
+        <span className="eyebrow font-body mb-3 text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
           {c.eyebrow}
         </span>
 

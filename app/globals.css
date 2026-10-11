@@ -682,3 +682,31 @@
     }
   }
 }
+
+/* The small label above a heading, led by a short rule in the hot gradient. */
+@utility eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  &::before {
+    content: "";
+    width: 28px;
+    height: 2px;
+    flex-shrink: 0;
+    border-radius: 2px;
+    background-image: var(--hot);
+  }
+}
+
+/* A round text seal turning slowly. */
+@keyframes lift-spin {
+  to {
+    rotate: 360deg;
+  }
+}
+@utility lift-spin {
+  animation: lift-spin 28s linear infinite;
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}

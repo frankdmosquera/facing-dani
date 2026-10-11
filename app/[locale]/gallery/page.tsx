@@ -55,7 +55,7 @@ export default async function Gallery({
       <Band className="grain pt-[26px]!">
         <div className="flex flex-col gap-6 min-[860px]:flex-row min-[860px]:items-center">
           <div className="min-w-0 flex-1">
-            <span className="font-body mb-3 block text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
+            <span className="eyebrow font-body mb-3 text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
               {c.eyebrow}
             </span>
 

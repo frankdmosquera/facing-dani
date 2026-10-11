@@ -7,7 +7,7 @@ import { WorkFan } from "@/components/site/WorkFan";
 import { PartyBoard, TapedPrint } from "@/components/parties/PartyBoard";
 import { PartyConfetti } from "@/components/parties/PartyConfetti";
 import { ReadyChecklist } from "@/components/parties/ReadyChecklist";
-import { Band, BandHead, Hot } from "@/components/site/Band";
+import { Band, BandHead, Hot, Split } from "@/components/site/Band";
 import { FaqList } from "@/components/site/FaqList";
 import { StepTimeline } from "@/components/site/StepTimeline";
 import { getDictionary } from "@/dictionaries";
@@ -61,7 +61,7 @@ export default async function Parties({
         {/* Her work beside the heading, never her (no photo of her on the site). */}
         <div className="flex flex-col gap-12 min-[860px]:flex-row min-[860px]:items-center">
           <div className="min-w-0 flex-1">
-            <span className="font-body mb-3 block text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
+            <span className="eyebrow font-body mb-3 text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
               {c.eyebrow}
             </span>
 
@@ -150,13 +150,14 @@ export default async function Parties({
       </Band>
 
       <Band glow={false}>
-        <BandHead eyebrow={c.faq.eyebrow} heading={c.faq.heading} />
-        <FaqList
-          items={Object.entries(c.faq.items).map(([key, item]) => ({
-            key,
-            ...item,
-          }))}
-        />
+        <Split head={<BandHead eyebrow={c.faq.eyebrow} heading={c.faq.heading} />}>
+          <FaqList
+            items={Object.entries(c.faq.items).map(([key, item]) => ({
+              key,
+              ...item,
+            }))}
+          />
+        </Split>
       </Band>
 
       <Band glow={false} className="tone-hot py-32!">

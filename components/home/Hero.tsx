@@ -4,6 +4,7 @@ import { Sparkle } from "lucide-react";
 
 import { WorkColumns } from "@/components/home/WorkColumns";
 import { Band, Hot } from "@/components/site/Band";
+import { SpinSeal } from "@/components/site/SpinSeal";
 import { siteConfig } from "@/data/siteConfig";
 import type { Dictionary } from "@/dictionaries";
 import { localePath, type Locale } from "@/lib/locale";
@@ -15,7 +16,7 @@ export function Hero({ locale, t }: { locale: Locale; t: Dictionary }) {
     <Band className="grain pt-[26px]!">
       <div className="flex flex-col gap-10 min-[860px]:flex-row min-[860px]:items-center min-[860px]:gap-14">
         <div className="min-w-0 min-[860px]:flex-1">
-          <span className="lift-rise font-body mb-3 block text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
+          <span className="lift-rise eyebrow font-body mb-3 text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
             {c.eyebrow}
           </span>
 
@@ -58,7 +59,13 @@ export function Hero({ locale, t }: { locale: Locale; t: Dictionary }) {
           ) : null}
         </div>
 
-        <WorkColumns />
+        <div className="relative">
+          <WorkColumns />
+          <SpinSeal
+            text={c.eyebrow}
+            className="absolute bottom-10 -left-16 z-10 max-[860px]:hidden"
+          />
+        </div>
       </div>
     </Band>
   );

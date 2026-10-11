@@ -47,7 +47,7 @@ export default async function Contact({
         {/* Her work beside the heading, never her (no photo of her on the site). */}
         <div className="flex flex-col gap-12 min-[860px]:flex-row min-[860px]:items-center">
           <div className="min-w-0 flex-1">
-            <span className="font-body mb-3 block text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
+            <span className="eyebrow font-body mb-3 text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
               {c.eyebrow}
             </span>
 

@@ -30,7 +30,8 @@ export function Band({
   return (
     <section
       id={id}
-      className={`relative overflow-hidden py-24 ${TONE[resolved]} ${className ?? ""}`}
+      /* clip, not hidden: hidden makes the band a scroll box, and sticky children inside it stop sticking. */
+      className={`relative overflow-clip py-24 ${TONE[resolved]} ${className ?? ""}`}
     >
       {glow ? (
         <div aria-hidden="true" className="pointer-events-none absolute inset-0">
@@ -58,13 +59,31 @@ export function BandHead({
 }) {
   return (
     <div className="mb-[34px]">
-      <span className="font-body mb-3 block text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
+      <span className="eyebrow font-body mb-3 text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
         {eyebrow}
       </span>
       <h2 className="mb-3.5 text-[clamp(34px,6.2vw,60px)]">{heading}</h2>
       {lede ? (
         <p className="max-w-[54ch] text-[15.5px] text-ink-muted">{lede}</p>
       ) : null}
+    </div>
+  );
+}
+
+/** A band's heading held on the left while its content scrolls past on the right, from 960px. */
+export function Split({
+  head,
+  children,
+}: {
+  head: React.ReactNode;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="grid gap-2 min-[960px]:grid-cols-[minmax(0,400px)_1fr] min-[960px]:gap-16">
+      <div className="min-[960px]:sticky min-[960px]:top-28 min-[960px]:self-start">
+        {head}
+      </div>
+      <div className="min-w-0">{children}</div>
     </div>
   );
 }

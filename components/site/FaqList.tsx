@@ -8,11 +8,11 @@ export function FaqList({
 }) {
   return (
     <>
-      <div className="max-w-[70ch]">
+      <div className="flex max-w-[70ch] flex-col gap-3">
         {items.map((item) => (
           <details
             key={item.key}
-            className="group border-b border-line-soft last:border-b-0"
+            className="group rounded-xl border border-line bg-surface px-5 transition-[box-shadow,border-color] duration-300 open:border-transparent open:shadow-[0_24px_50px_-28px_rgba(255,61,143,0.55)] min-[560px]:px-6"
           >
             <summary className="flex cursor-pointer items-center justify-between gap-4 py-5 text-[16.5px] font-medium text-ink transition-colors hover:text-nails marker:content-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring [&::-webkit-details-marker]:hidden">
               {item.q}

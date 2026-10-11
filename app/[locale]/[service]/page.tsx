@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { Photo } from "@/components/media/Photo";
+import { TapedPrint } from "@/components/parties/PartyBoard";
 import { DecorativeImage } from "@/components/service/DecorativeImage";
 import { InspirationGrid } from "@/components/service/InspirationGrid";
 import { NailFaq } from "@/components/service/NailFaq";
@@ -72,7 +73,7 @@ export default async function ServicePage({
       <Band className="grain pt-[26px]!">
         <div className="flex flex-col gap-10 min-[860px]:flex-row min-[860px]:items-center min-[860px]:gap-14">
           <div className="min-w-0 min-[860px]:flex-1">
-            <span className="font-body mb-3 block text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
+            <span className="eyebrow font-body mb-3 text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
               {copy.eyebrow}
             </span>
 
@@ -103,11 +104,22 @@ export default async function ServicePage({
 
       {service.id === "nails" ? <FinishRibbon t={t} /> : null}
 
-      <Band tinted glow={false}>
-        <h2 className="mb-[26px] text-[clamp(30px,5.6vw,52px)]">
-          {copy.menuHeading}
-        </h2>
-        <TreatmentList serviceId={service.id} t={t} />
+      <Band tinted>
+        {/* The menu as a printed card, her set taped beside it. */}
+        <div className="grid items-start gap-12 min-[1000px]:grid-cols-[1fr_300px] min-[1000px]:gap-16">
+          <div className="rounded-2xl bg-surface p-6 shadow-[0_40px_80px_-40px_rgba(120,30,80,0.35)] min-[700px]:p-10">
+            <h2 className="mb-[26px] text-[clamp(30px,5.6vw,52px)]">
+              {copy.menuHeading}
+            </h2>
+            <TreatmentList serviceId={service.id} t={t} />
+          </div>
+          {service.id === "nails" ? (
+            <TapedPrint
+              imageKey="pinkFrenchCrystals"
+              className="sticky top-28 mx-auto w-full max-w-[280px] -rotate-3 max-[1000px]:hidden"
+            />
+          ) : null}
+        </div>
       </Band>
 
       {service.id === "nails" ? <NailGuide locale={locale} t={t} /> : null}
