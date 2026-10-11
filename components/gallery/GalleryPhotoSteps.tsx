@@ -28,7 +28,7 @@ export function GalleryPhotoSteps({
         {Object.entries(c.steps).map(([key, step], index) => (
           <li
             key={key}
-            className="rounded-xl border border-line bg-surface p-5"
+            className="card-hot rounded-xl border border-line bg-surface p-5"
           >
             <span
               aria-hidden="true"

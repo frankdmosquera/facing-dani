@@ -21,7 +21,7 @@ export function PressOnCompare({ locale, t }: { locale: Locale; t: Dictionary })
 
       <ul className="mb-8 grid gap-4 min-[760px]:grid-cols-2 min-[760px]:gap-5">
         {Object.entries(c.options).map(([key, option]) => (
-          <li key={key} className="rounded-xl border border-line bg-surface p-5">
+          <li key={key} className="card-hot rounded-xl border border-line bg-surface p-5">
             <span className="mb-2 block text-[10.5px] font-semibold tracking-[0.14em] text-nails uppercase">
               {option.best}
             </span>

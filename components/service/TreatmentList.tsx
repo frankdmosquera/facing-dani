@@ -31,7 +31,7 @@ export function TreatmentList<S extends ServiceId>({
       {rows.map((row) => (
         <div
           key={String(row.key)}
-          className="flex items-baseline justify-between gap-6 border-b border-line-soft py-4 last:border-b-0"
+          className="group/row -mx-4 flex items-baseline justify-between gap-6 border-b border-line-soft px-4 py-5 transition-colors last:border-b-0 hover:bg-surface"
         >
           <div>
             <dt className="text-[16.5px] font-medium text-ink">
@@ -44,7 +44,7 @@ export function TreatmentList<S extends ServiceId>({
           </div>
 
           <dd className="flex shrink-0 items-center gap-4">
-            <span className="font-display text-[17px] font-extrabold tracking-[-0.03em] text-ink">
+            <span className="font-display text-[20px] font-extrabold tracking-[-0.03em] text-ink">
               {/* The {" "} is needed, or screen readers read "From$5". */}
               {row.from ? (
                 <>
@@ -53,7 +53,9 @@ export function TreatmentList<S extends ServiceId>({
                   </span>{" "}
                 </>
               ) : null}
-              {formatPrice(row.priceCad)}
+              <span className="bg-[image:var(--hot-text)] bg-clip-text text-transparent">
+                {formatPrice(row.priceCad)}
+              </span>
             </span>
 
             {/* Add-ons are chosen inside a booking. The spacer keeps their price in line with the rows that have a button. */}
@@ -64,7 +66,7 @@ export function TreatmentList<S extends ServiceId>({
                 href={bookingHref(eventSlug(serviceId, String(row.key)))}
                 {...bookingTrigger(eventSlug(serviceId, String(row.key)))}
                 aria-label={`${t.treatmentList.book}: ${treatmentLabel(t, serviceId, row.key)}`}
-                className="hover-fill min-w-[92px] rounded-pill border border-line px-4 py-2 text-center text-[13.5px] font-bold text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                className="min-w-[92px] rounded-pill border border-line px-4 py-2 text-center text-[13.5px] font-bold text-ink transition-colors group-hover/row:border-transparent group-hover/row:bg-[image:var(--hot)] group-hover/row:text-on-hot focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
               >
                 {t.treatmentList.book}
               </a>

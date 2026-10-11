@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { WorkFan } from "@/components/site/WorkFan";
 import { Band, Hot } from "@/components/site/Band";
 import { siteConfig } from "@/data/siteConfig";
 import { getDictionary } from "@/dictionaries";
@@ -39,15 +40,28 @@ export default async function About({ params }: PageProps<"/[locale]/about">) {
   return (
     <main id="main">
       <Band className="pt-[26px]!">
-        <span className="font-body mb-3 block text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
-          {c.eyebrow}
-        </span>
+        {/* Her work beside the heading, never her (no photo of her on the site). */}
+        <div className="flex flex-col gap-12 min-[860px]:flex-row min-[860px]:items-center">
+          <div className="min-w-0 flex-1">
+            <span className="font-body mb-3 block text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
+              {c.eyebrow}
+            </span>
 
-        <h1 className="mb-4 text-[clamp(36px,9vw,62px)]">
-          {c.headingLead} <Hot>{c.headingAccent}</Hot>
-        </h1>
+            <h1 className="mb-4 text-[clamp(36px,9vw,62px)]">
+              {c.headingLead} <Hot>{c.headingAccent}</Hot>
+            </h1>
 
-        <p className="max-w-[54ch] text-base text-ink-muted">{c.lede}</p>
+            <p className="max-w-[54ch] text-base text-ink-muted">{c.lede}</p>
+          </div>
+          <WorkFan
+            keys={[
+              "whiteFlowerGoldFrench",
+              "colourSwatchArm",
+              "frenchGlitterGems",
+            ]}
+            className="min-[860px]:w-[400px] min-[860px]:shrink-0"
+          />
+        </div>
       </Band>
 
       <Band tinted glow={false}>
@@ -70,7 +84,9 @@ export default async function About({ params }: PageProps<"/[locale]/about">) {
 
         <p className="font-display mb-8 text-[19px] font-extrabold tracking-[-0.04em] text-ink">
           {siteConfig.business.ownerName.toLowerCase()}
-          <span className="text-nails">{siteConfig.business.wordmarkAccent}</span>
+          <span className="text-nails">
+            {siteConfig.business.wordmarkAccent}
+          </span>
         </p>
 
         <div className="flex flex-col gap-3 min-[560px]:flex-row">

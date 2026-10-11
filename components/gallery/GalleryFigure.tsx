@@ -7,7 +7,8 @@ import { OpenCue } from "./OpenCue";
 // Must match the grid's column counts, or Next picks the wrong source width.
 const SIZES = "(min-width: 1000px) 25vw, (min-width: 620px) 33vw, 50vw";
 // Square tiles: four across on a phone, eight across from 900px, inside the 1200px page.
-const SQUARE_SIZES = "(min-width: 900px) 150px, 25vw";
+// Up to 400px: the home bento's feature tile is two columns and two rows.
+const SQUARE_SIZES = "(min-width: 900px) 400px, 50vw";
 
 const accentText: Record<ServiceId, string> = {
   nails: "text-nails",
@@ -59,7 +60,7 @@ export function GalleryFigure({
       height={image.height}
       sizes={square ? SQUARE_SIZES : SIZES}
       priority={priority}
-      className={square ? "block size-full object-cover" : "block h-auto w-full"}
+      className={square ? "block size-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" : "block h-auto w-full"}
     />
   );
 

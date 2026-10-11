@@ -3,7 +3,11 @@ import Link from "next/link";
 import { Photo } from "@/components/media/Photo";
 import { Band, BandHead, Hot } from "@/components/site/Band";
 import { HOME_HERO, orderedGallery } from "@/data/gallery";
-import { treatmentLabel, treatmentsFor, type TreatmentRow } from "@/data/treatments";
+import {
+  treatmentLabel,
+  treatmentsFor,
+  type TreatmentRow,
+} from "@/data/treatments";
 import type { Dictionary } from "@/dictionaries";
 import { formatPrice } from "@/lib/format";
 import { localePath, type Locale } from "@/lib/locale";
@@ -29,15 +33,27 @@ export function NailsTeaser({ locale, t }: { locale: Locale; t: Dictionary }) {
     <Band tinted glow={false}>
       <div className="flex flex-col gap-10 min-[860px]:flex-row min-[860px]:items-center min-[860px]:gap-14">
         {cover ? (
-          <div className="overflow-hidden rounded-xl border border-line-soft bg-shot min-[860px]:w-[380px] min-[860px]:shrink-0">
-            <Photo
-              path={cover.imagekitPath}
-              alt={t.gallery.images[cover.key]}
-              width={cover.width}
-              height={cover.height}
-              sizes="(min-width: 860px) 380px, 100vw"
-              className="block h-auto w-full"
-            />
+          <div className="relative mx-auto w-full max-w-[420px] min-[860px]:w-[400px] min-[860px]:shrink-0">
+            {/* Tilted like a print, straightening on hover, with the cheapest set
+              stuck on it as a price sticker. */}
+            <div className="-rotate-2 overflow-hidden rounded-xl border-4 border-surface bg-shot shadow-[0_30px_60px_-24px_rgba(0,0,0,0.6)] transition-[rotate] duration-500 ease-out hover:rotate-0">
+              <Photo
+                path={cover.imagekitPath}
+                alt={t.gallery.images[cover.key]}
+                width={cover.width}
+                height={cover.height}
+                sizes="(min-width: 860px) 380px, 100vw"
+                className="block h-auto w-full"
+              />
+            </div>
+            {rows[0] ? (
+              <span className="lift-float absolute -right-3 -bottom-5 rotate-6 rounded-pill bg-[image:var(--hot)] px-5 py-3 text-[14px] font-bold text-on-hot shadow-[0_14px_30px_-10px_rgba(255,61,143,0.7)]">
+                {treatmentLabel(t, "nails", rows[0].key)}{" "}
+                <span className="font-display font-extrabold">
+                  {formatPrice(rows[0].priceCad)}
+                </span>
+              </span>
+            ) : null}
           </div>
         ) : null}
 
@@ -56,12 +72,12 @@ export function NailsTeaser({ locale, t }: { locale: Locale; t: Dictionary }) {
             {rows.map((row) => (
               <div
                 key={row.key}
-                className="flex items-baseline justify-between gap-6 border-b border-line-soft py-3"
+                className="flex items-baseline justify-between gap-6 border-b border-line-soft py-4 transition-colors hover:border-nails"
               >
                 <dt className="text-[16px] font-medium text-ink">
                   {treatmentLabel(t, "nails", row.key)}
                 </dt>
-                <dd className="shrink-0 font-display text-[16px] font-extrabold tracking-[-0.03em] text-ink">
+                <dd className="shrink-0 font-display text-[22px] font-extrabold tracking-[-0.03em]">
                   {/* The {" "} is needed, or screen readers read "From$5". */}
                   {row.from ? (
                     <>
@@ -70,7 +86,9 @@ export function NailsTeaser({ locale, t }: { locale: Locale; t: Dictionary }) {
                       </span>{" "}
                     </>
                   ) : null}
-                  {formatPrice(row.priceCad)}
+                  <span className="bg-[image:var(--hot-text)] bg-clip-text text-transparent">
+                    {formatPrice(row.priceCad)}
+                  </span>
                 </dd>
               </div>
             ))}

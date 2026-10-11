@@ -24,13 +24,18 @@ export function WorkTeaser({ locale, t }: { locale: Locale; t: Dictionary }) {
     <Band glow={false}>
       <BandHead eyebrow={c.eyebrow} heading={c.heading} />
 
-      {/* Eight small squares, not the full wall: the gallery page has every photo. */}
-      <PhotoGrid
-        items={items}
-        t={t}
-        square
-        gridClassName="grid grid-cols-4 gap-2 min-[620px]:gap-3 min-[900px]:grid-cols-8"
-      />
+      {/* Eight tiles, not the full wall: the gallery page has every photo. A
+          bento: the first set takes a 2x2 feature tile and the last runs two
+          wide, so the eight fill four columns on a phone and six from 900px
+          with no gaps. */}
+      <div className="reveal">
+        <PhotoGrid
+          items={items}
+          t={t}
+          square
+          gridClassName="grid grid-cols-4 gap-2 min-[620px]:gap-3 min-[900px]:grid-cols-6 [&>figure:first-child]:col-span-2 [&>figure:first-child]:row-span-2 [&>figure:first-child]:aspect-auto [&>figure:last-child]:col-span-2 [&>figure:last-child]:aspect-auto [&>figure:first-child_img]:absolute [&>figure:first-child_img]:inset-0 [&>figure:last-child_img]:absolute [&>figure:last-child_img]:inset-0"
+        />
+      </div>
 
       <Link
         href={localePath(locale, "/gallery")}

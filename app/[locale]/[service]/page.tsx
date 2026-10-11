@@ -85,7 +85,7 @@ export default async function ServicePage({
           </div>
 
           {hero ? (
-            <div className="overflow-hidden rounded-xl border border-line-soft bg-shot min-[860px]:w-[380px] min-[860px]:shrink-0">
+            <div className="rotate-2 overflow-hidden rounded-xl border-4 border-surface bg-shot shadow-[0_30px_60px_-24px_rgba(0,0,0,0.6)] transition-[rotate] duration-500 ease-out hover:rotate-0 min-[860px]:w-[400px] min-[860px]:shrink-0">
               <Photo
                 path={hero.imagekitPath}
                 alt={t.gallery.images[hero.key]}

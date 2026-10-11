@@ -315,3 +315,199 @@
     }
   }
 }
+
+/*
+ * THE DESIGN LIFT (2026-10-10). All CSS, all off under reduced motion.
+ * Mount animations only on the first screen; further down, `reveal` is driven
+ * by the element's own scroll position, behind @supports so a browser without
+ * scroll timelines simply shows the content.
+ */
+@keyframes lift-rise {
+  from {
+    opacity: 0;
+    translate: 0 0.5em;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@keyframes lift-up {
+  to {
+    translate: 0 -50%;
+  }
+}
+@keyframes lift-down {
+  from {
+    translate: 0 -50%;
+  }
+  to {
+    translate: 0 0;
+  }
+}
+@keyframes lift-side {
+  to {
+    translate: -50% 0;
+  }
+}
+@keyframes lift-float {
+  50% {
+    translate: 0 -10px;
+  }
+}
+@keyframes lift-twinkle {
+  0%,
+  100% {
+    opacity: 0.2;
+    scale: 0.6;
+  }
+  50% {
+    opacity: 1;
+    scale: 1;
+  }
+}
+@keyframes lift-reveal {
+  from {
+    opacity: 0;
+    translate: 0 32px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@keyframes lift-draw {
+  from {
+    scale: 1 0;
+  }
+  to {
+    scale: 1 1;
+  }
+}
+
+@utility lift-rise {
+  animation: lift-rise 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(100ms + 120ms * var(--i, 0));
+}
+/* Columns of photos that never stop: the track holds its set twice. */
+@utility lift-up {
+  animation: lift-up 48s linear infinite;
+}
+@utility lift-down {
+  animation: lift-down 48s linear infinite;
+}
+@utility lift-side {
+  animation: lift-side 40s linear infinite;
+}
+@utility lift-side-reverse {
+  animation: lift-side 40s linear infinite reverse;
+}
+@utility lift-float {
+  animation: lift-float 5s ease-in-out infinite;
+}
+/* A sparkle that breathes; --d offsets each one. */
+@utility lift-twinkle {
+  animation: lift-twinkle 2.8s ease-in-out infinite;
+  animation-delay: var(--d, 0s);
+}
+@utility reveal {
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      animation: lift-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 22%;
+    }
+  }
+}
+/* A vertical line that draws itself as it scrolls through. */
+@utility reveal-draw {
+  transform-origin: top;
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      animation: lift-draw linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 60%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lift-rise,
+  .lift-up,
+  .lift-down,
+  .lift-side,
+  .lift-side-reverse,
+  .lift-twinkle,
+  .lift-float {
+    animation: none;
+  }
+}
+
+/* The nail guide's finish swatches (CareGuide), each painted like the finish
+   it names. Fixed colours on purpose: a finish looks the same in either theme. */
+@utility swatch-chrome {
+  background: linear-gradient(135deg, #f6f2fa, #9f94af 32%, #ffffff 50%, #7a6e8c 70%, #e8e2f0);
+}
+@utility swatch-french {
+  background: linear-gradient(to top, #f2c4c8 68%, #ffffff 68%);
+}
+@utility swatch-cat-eye {
+  background: linear-gradient(120deg, #3a0f2a 34%, #ff8fc8 50%, #3a0f2a 66%);
+}
+@utility swatch-sparkle {
+  background:
+    radial-gradient(#ffffff 1px, transparent 1.6px) 0 0 / 6px 6px,
+    radial-gradient(#ffd6ea 1px, transparent 1.6px) 3px 3px / 9px 9px,
+    #c2185b;
+}
+@utility swatch-art {
+  background:
+    radial-gradient(circle at 32% 36%, #ffffff 0 3px, transparent 4px),
+    radial-gradient(circle at 64% 62%, #ffd23d 0 2.5px, transparent 3.5px),
+    radial-gradient(circle at 40% 72%, #a97bff 0 2px, transparent 3px),
+    #ff3d8f;
+}
+
+/* The site's one card, lifted: a hot-gradient top edge and the hover glow. */
+@utility card-hot {
+  position: relative;
+  overflow: hidden;
+  transition: translate 200ms ease-out, box-shadow 200ms ease-out;
+  &::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 3px;
+    background-image: var(--hot);
+  }
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    &:hover {
+      translate: 0 -3px;
+      box-shadow: 0 18px 40px -18px rgb(255 61 143 / 0.45);
+    }
+  }
+}
+
+/* FAQ answers open and close smoothly where the browser can animate to auto
+   height; elsewhere they snap, as before. */
+@supports (interpolate-size: allow-keywords) {
+  :root {
+    interpolate-size: allow-keywords;
+  }
+  details::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition:
+      block-size 300ms ease-out,
+      content-visibility 300ms allow-discrete;
+  }
+  details[open]::details-content {
+    block-size: auto;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    details::details-content {
+      transition: none;
+    }
+  }
+}

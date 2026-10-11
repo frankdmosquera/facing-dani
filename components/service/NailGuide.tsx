@@ -24,7 +24,7 @@ export function NailGuide({ locale, t }: { locale: Locale; t: Dictionary }) {
         {Object.entries(c.kinds).map(([key, kind]) => (
           <li
             key={key}
-            className="flex flex-col rounded-xl border border-line bg-surface p-5"
+            className="flex flex-col card-hot rounded-xl border border-line bg-surface p-5"
           >
             <span className="mb-2 text-[10.5px] font-semibold tracking-[0.14em] text-nails uppercase">
               {kind.tag}

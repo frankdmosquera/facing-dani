@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { Photo } from "@/components/media/Photo";
 import { Band, BandHead, Hot } from "@/components/site/Band";
+import { WorkFan } from "@/components/site/WorkFan";
 import { portrait } from "@/data/portrait";
 import { siteConfig } from "@/data/siteConfig";
 import type { Dictionary } from "@/dictionaries";
@@ -27,11 +28,9 @@ export function Story({ locale, t }: { locale: Locale; t: Dictionary }) {
             {c.intro}
           </p>
 
-          <p className="font-display mt-6 text-[19px] font-extrabold tracking-[-0.04em] text-ink">
+          <p className="font-display mt-8 bg-[image:var(--hot-text)] bg-clip-text text-[clamp(72px,16vw,140px)] leading-[0.9] font-extrabold tracking-[-0.06em] text-transparent">
             {siteConfig.business.ownerName.toLowerCase()}
-            <span className="text-nails">
-              {siteConfig.business.wordmarkAccent}
-            </span>
+            {siteConfig.business.wordmarkAccent}
           </p>
 
           <Link
@@ -54,7 +53,13 @@ export function Story({ locale, t }: { locale: Locale; t: Dictionary }) {
               className="block h-auto w-full"
             />
           </div>
-        ) : null}
+        ) : (
+          // No photo of her, ever (portrait.ts). Her work stands in.
+          <WorkFan
+            keys={["heartsFrench", "blueGraphicEyeProfile", "almondBowFrench"]}
+            className="min-[860px]:w-[420px] min-[860px]:max-w-none min-[860px]:shrink-0"
+          />
+        )}
       </div>
     </Band>
   );
