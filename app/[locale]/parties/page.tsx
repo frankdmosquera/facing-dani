@@ -7,9 +7,8 @@ import { PartyBoard, TapedPrint } from "@/components/parties/PartyBoard";
 import { ReadyChecklist } from "@/components/parties/ReadyChecklist";
 import { Band, BandHead, Hot, Split } from "@/components/site/Band";
 import { FaqList } from "@/components/site/FaqList";
-import { BandPhoto } from "@/components/site/BandPhoto";
+import { BackdropChoice } from "@/components/site/BackdropChoice";
 import { Hero } from "@/components/site/Hero";
-import { Optional } from "@/components/site/Optional";
 import { StepTimeline } from "@/components/site/StepTimeline";
 import { getDictionary } from "@/dictionaries";
 import { defaultLocale, isLocale, localePath } from "@/lib/locale";
@@ -71,7 +70,16 @@ export default async function Parties({
         }}
       />
 
-      <Band tinted>
+      <Band
+        tinted
+        backdrop={
+          <BackdropChoice
+            id="parties-what"
+            label="What's included"
+            options={["peachFrenchGems", "pinkFrenchCrystals", "heartsFrench"]}
+          />
+        }
+      >
         <BandHead eyebrow={c.what.eyebrow} heading={c.what.heading} />
 
         <div className="grid items-center gap-12 min-[960px]:grid-cols-[1fr_1fr] min-[960px]:gap-16">
@@ -104,9 +112,12 @@ export default async function Parties({
       <Band
         tone="ink"
         backdrop={
-          <Optional id="parties-ready-photo" label="Before I arrive: photo" defaultOn={false}>
-            <BandPhoto imageKey="whiteGlitterSquare" strength={78} />
-          </Optional>
+          <BackdropChoice
+            id="parties-ready"
+            label="Before I arrive"
+            options={["whiteGlitterSquare", "pinkBlackStars", "burgundyCatEye"]}
+            strength={78}
+          />
         }
       >
         <BandHead
@@ -132,9 +143,12 @@ export default async function Parties({
       <Band
         tinted
         backdrop={
-          <Optional id="parties-how-photo" label="How it works: photo" defaultOn={false}>
-            <BandPhoto imageKey="pinkFloralArt" strength={74} />
-          </Optional>
+          <BackdropChoice
+            id="parties-how"
+            label="How it works"
+            options={["pinkFloralArt", "almondBowFrench", "frenchGlitterGems"]}
+            strength={74}
+          />
         }
       >
         <BandHead eyebrow={c.how.eyebrow} heading={c.how.heading} />
@@ -147,7 +161,15 @@ export default async function Parties({
         />
       </Band>
 
-      <Band>
+      <Band
+        backdrop={
+          <BackdropChoice
+            id="parties-faq"
+            label="Before you ask"
+            options={["goldLeafFrench", "palePinkGloss", "pastelFrenchTips"]}
+          />
+        }
+      >
         <Split head={<BandHead eyebrow={c.faq.eyebrow} heading={c.faq.heading} />}>
           <FaqList
             items={Object.entries(c.faq.items).map(([key, item]) => ({

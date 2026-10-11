@@ -5,11 +5,19 @@ import type { Dictionary } from "@/dictionaries";
 import { localePath, type Locale } from "@/lib/locale";
 
 // Sends anyone who wants a set that lasts to the nails menu.
-export function PressOnCompare({ locale, t }: { locale: Locale; t: Dictionary }) {
+export function PressOnCompare({
+  locale,
+  t,
+  backdrop,
+}: {
+  locale: Locale;
+  t: Dictionary;
+  backdrop?: React.ReactNode;
+}) {
   const c = t.store.compare;
 
   return (
-    <Band tinted>
+    <Band tinted backdrop={backdrop}>
       <BandHead
         eyebrow={c.eyebrow}
         heading={

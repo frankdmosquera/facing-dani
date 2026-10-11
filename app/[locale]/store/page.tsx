@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { BackdropChoice } from "@/components/site/BackdropChoice";
 import { Band, Hot } from "@/components/site/Band";
 import { PressOnCompare } from "@/components/store/PressOnCompare";
 import { PressOnGuide } from "@/components/store/PressOnGuide";
@@ -69,7 +70,17 @@ export default async function Store({ params }: PageProps<"/[locale]/store">) {
         </div>
       </Band>
 
-      <Band tinted>
+      <Band
+        tinted
+        backdrop={
+          <BackdropChoice
+            id="store-grid"
+            label="Products"
+            options={["palePinkGloss", "peachFrenchGems", "pinkFrenchCrystals"]}
+            strength={84}
+          />
+        }
+      >
         <StoreGrid tabs={tabs} allLabel={c.all} tabsLabel={c.tabsLabel}>
           {products.map((product) => (
             <StoreCard key={product.key} product={product} t={t} />
@@ -77,11 +88,41 @@ export default async function Store({ params }: PageProps<"/[locale]/store">) {
         </StoreGrid>
       </Band>
 
-      <PressOnGuide t={t} />
+      <PressOnGuide
+        t={t}
+        backdrop={
+          <BackdropChoice
+            id="store-guide"
+            label="Press-on guide"
+            options={["pinkBlackStars", "burgundyCatEye", "clearCoffinLinework"]}
+            strength={78}
+          />
+        }
+      />
 
-      <PressOnCompare locale={locale} t={t} />
+      <PressOnCompare
+        locale={locale}
+        t={t}
+        backdrop={
+          <BackdropChoice
+            id="store-compare"
+            label="Press-ons vs a set"
+            options={["almondBowFrench", "frenchGlitterGems", "heartsFrench"]}
+          />
+        }
+      />
 
-      <Band tone="hot" className="py-32!">
+      <Band
+        tone="hot"
+        className="py-32!"
+        backdrop={
+          <BackdropChoice
+            id="store-buy"
+            label="How to buy"
+            options={["goldLeafFrench", "whiteGlitterSquare", "pinkFloralArt"]}
+          />
+        }
+      >
         <div className="max-w-[54ch]">
           <h2 className="mb-3 text-[clamp(30px,5.6vw,52px)]">{c.buy.heading}</h2>
           <p className="mb-6 text-[15.5px] text-ink-muted">{c.buy.body}</p>

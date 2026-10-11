@@ -49,6 +49,9 @@ export const siteConfig = {
   // Sections switched off (false) or decorations switched on (true), by Optional id. Unset means its default.
   sections: {} as Record<string, boolean>,
 
+  // A band's background photo by BackdropChoice id, as a gallery key. Unset means no photo.
+  backdrops: {} as Record<string, string>,
+
   nav: [
     // Home is the nails page, so the link says Nails.
     { key: "nails", href: "/" },

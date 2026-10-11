@@ -1,11 +1,11 @@
 import { Band, BandHead, Hot } from "@/components/site/Band";
 import type { Dictionary } from "@/dictionaries";
 
-export function PressOnGuide({ t }: { t: Dictionary }) {
+export function PressOnGuide({ t, backdrop }: { t: Dictionary; backdrop?: React.ReactNode }) {
   const c = t.store.guide;
 
   return (
-    <Band tone="ink">
+    <Band tone="ink" backdrop={backdrop}>
       <BandHead
         eyebrow={c.eyebrow}
         heading={

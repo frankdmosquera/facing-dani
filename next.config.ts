@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
   // Without this, a phone on the Wi-Fi address gets the HTML but no scripts, so nothing on the page responds.
   allowedDevOrigins: ["10.0.0.235"],
 
+  // The "N" badge sat under the options panel. Build errors still open their own overlay.
+  devIndicators: false,
+
   async redirects() {
     return [
       // Pages folded into others on 2026-10-11. The live site was indexed with them, so they stay permanent.
