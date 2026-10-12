@@ -59,6 +59,15 @@ export const en = {
     darkMode: "Switch to dark mode",
   },
 
+  // The phone menu's line under each main link.
+  mobileNav: {
+    blurbs: {
+      nails: "Gel, acrylic and Gel-X",
+      parties: "Kids and teens, at your place",
+      store: "Press-ons and nail care",
+    },
+  },
+
   languageSwitch: {
     to: "Español",
     label: "Ver este sitio en español",

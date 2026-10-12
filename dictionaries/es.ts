@@ -59,6 +59,14 @@ export const es: Dictionary = {
     darkMode: "Cambiar a modo oscuro",
   },
 
+  mobileNav: {
+    blurbs: {
+      nails: "Gel, acrílico y Gel-X",
+      parties: "Niños y adolescentes, en tu casa",
+      store: "Press-ons y cuidado de uñas",
+    },
+  },
+
   languageSwitch: {
     to: "English",
     label: "View this site in English",
